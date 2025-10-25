@@ -36,17 +36,12 @@
                     <span>Data User</span></a>
             </li>
 
-            <!-- Nav Item - Tables -->
-            <li class="nav-item">
-                <a class="nav-link" href="tables.html">
-                    <i class="fas fa-address-card"></i>
-                    <span>Data Customer</span></a>
-            </li>
+
 
                         <!-- Nav Item - Tables -->
-            <li class="nav-item">
-                <a class="nav-link" href="tables.html">
-                    <i class="fas fa-university"></i>
+            <li class="nav-item {{ $menuAdminMasjid ?? '' }}">
+                <a class="nav-link" href="{{ route('masjid') }}">
+                    <i class="fas fa-university "></i>
                     <span>Data Mesjid/Mushola</span></a>
             </li>
 

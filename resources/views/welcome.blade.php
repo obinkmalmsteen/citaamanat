@@ -105,11 +105,13 @@
           <div class="col-lg-4 d-flex" data-aos="fade-up" data-aos-delay="100">
             <div class="service-item position-relative">
               <div class="icon">
-  <img src="{{ asset('enno/assets/img/dapurmbbg.png') }}" alt="Dapur MBG" class="img-fluid icon-box">
+  <img src="{{ asset('enno/assets/img/masjidlampu.png') }}" alt="Dapur MBG" class="img-fluid icon-box">
 </div>
 
-              <h4><a href="" class="stretched-link">Dapur MBG</a></h4>
-              <p>Kami mengelola dapur untuk program MBG (Makanan Bergizi Gratis) yang bersih dan profesional, Terjaga Gizi dan Kebersihannya.</p>
+              <h4><a href="" class="stretched-link">Terangi Beribu Masjid & Mushola</a></h4>
+              <p>Kami mengelola dapur untuk program MBG (Makanan Bergizi Gratis) yang bersih dan profesional, Terjaga Gizi dan KebersihannyaSebuah gerakan mengembalikan kejayaan Masjid dan Mushola sebagai pusat dari kegiatan Agama serta mendidik dan mencetak generasi yang berjiwa Islami dengan mewujudkan tempat yang nyaman dan asri dengan penerangan yang baik dan cukup.
+
+Kami hadir menyalurkan dan memastikan setiap Masjid dan Mushola tersedia token listrik yang cukup, demi kelangsungan operasional masjid yang sehat..</p>
             </div>
           </div><!-- End Service Item -->
 
@@ -119,8 +121,12 @@
   <img src="{{ asset('enno/assets/img/renovmushola.png') }}" alt="Dapur MBG" class="img-fluid icon-box">
 </div>
 
-              <h4><a href="" class="stretched-link">Amanat Untuk Ummat</a></h4>
-              <p>Kami mengadakan berbagai program untuk kesejahteraan mesjid dan mushola, seperti perbaikan-perbaikan,renovasi dan juga membayarkan tagihan listrik untuk beribu masjid di Indonesia.</p>
+              <h4><a href="" class="stretched-link">Perbaikan Beribu Masjid & Mushola</a></h4>
+              <p>Sebuh gerakan #Memperbaiki Bangunan,Memperkuat Iman dalam wujudkan mimpi bersama untuk mempercantik rumah-rumah Allah.
+
+Mengembalikan masjid sebagai pusat ibadah, kebudayaan dan jantung peradaban umat. Kini banyak  diantaranya yang telah lapuk dimakan usia dan perlu uluran tangan kita. Bersama dalam gerakan Perbaikan 1.000 Masjid dan Mushola kita tidak hanya memperbaiki bangunan, tetapi merawat peradaban dan warisan Islami untuk generasi mendatang.
+
+Masjid adalah rumah kita semua. Tapi banyak dari rumah itu yang kini rapuh dan membutuhkan bantuan kita. Mari bersama kita perbaiki masjid, setiap rupiah donasi anda adalah pilar dan penopang bagi saudara-saudara kita yang ingin beribadah dengan tenang dan nyaman, kini saatnya buktikan cinta kita kepada rumah Allah.</p>
             </div>
           </div><!-- End Service Item -->
 
@@ -130,8 +136,8 @@
   <img src="{{ asset('enno/assets/img/nenek.png') }}" alt="Dapur MBG" class="img-fluid icon-box">
 </div>
 
-              <h4><a href="" class="stretched-link">Sosial Responsibility</a></h4>
-              <p>Kami membuat sebuah program santunan untuk berbagai masyarakat, seperti program "Nyaah Ka Indung" yang memberikan santunan kepada para ibu.</p>
+              <h4><a href="" class="stretched-link">Nyaah Ka Indung</a></h4>
+              <p>Program Nyaah ka Indung adalah sebuah inisiatif yang sangat mulia kepedulian sosial terhadap orang tua, mewujudkan masyarakat yang peduli dan berbakti kepada orang tua manula sebagai bentuk tanggung jawab sosial.</p>
             </div>
           </div><!-- End Service Item -->
 
@@ -146,9 +152,9 @@
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <span>About Us<br></span>
-        <h2>About</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+        <span>Tentang Kami<br></span>
+        <h2>Tentang Kami</h2>
+        <p>Menjadi Pelopor Gerakan Filantropi yang memberdayakan Umat untuk Kemandirian dan kemulian dalam bingkai Keimanan dan Ketaqwaan</p>
       </div><!-- End Section Title -->
 
       <div class="container">
@@ -159,20 +165,15 @@
             <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8" class="glightbox pulsating-play-btn"></a>
           </div>
           <div class="col-lg-6 content" data-aos="fade-up" data-aos-delay="200">
-            <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h3>
-            <p class="fst-italic">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua.
-            </p>
+            <h3>Misi Kami</h3>
+            
             <ul>
-              <li><i class="bi bi-check2-all"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></li>
-              <li><i class="bi bi-check2-all"></i> <span>Duis aute irure dolor in reprehenderit in voluptate velit.</span></li>
-              <li><i class="bi bi-check2-all"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</span></li>
+              <li><i class="bi bi-check2-all"></i> <span>Mewujudkan sarana ibadah yang layak, nyaman, dan berkelanjutan melalui revitalisasi insfrastruktur Masjid dan Mushola.</span></li>
+              <li><i class="bi bi-check2-all"></i> <span>Meningkatkan kualitas kehidupan seorang Ibu dan keluarga sebagai pilar utama peradaban melalui program Santunan dalam bentuk uang dan sembako (Nyaah ka Indung).</span></li>
+              <li><i class="bi bi-check2-all"></i> <span>membangun jejaring kolaborasi (mitra) dengan berbagai pihak untuk memperluas dampak kebaikan dan keberlanjutan program.</span></li>
+               <li><i class="bi bi-check2-all"></i> <span>Menjaga Amanah dan menyalurkan donasi dengan prinsip transparansi, akuntabilitas dan profesional.</span></li>
             </ul>
-            <p>
-              Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-              velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident
-            </p>
+           
           </div>
         </div>
 
@@ -235,18 +236,17 @@
 
         <div class="row gy-4">
 
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+         <div class="col-lg-4 d-flex" data-aos="fade-up" data-aos-delay="300">
             <div class="service-item position-relative">
-              <div class="icon">
-                <i class="bi bi-activity"></i>
-              </div>
-              <a href="service-details.html" class="stretched-link">
-                <h3>Nesciunt Mete</h3>
-              </a>
-              <p>Provident nihil minus qui consequatur non omnis maiores. Eos accusantium minus dolores iure perferendis tempore et consequatur.</p>
+               <div class="icon">
+  <img src="{{ asset('enno/assets/img/nenek.png') }}" alt="Dapur MBG" class="img-fluid icon-box">
+</div>
+
+              <h4><a href="" class="stretched-link">Nyaah Ka Indung</a></h4>
+              <p>Program Nyaah ka Indung adalah sebuah inisiatif yang sangat mulia kepedulian sosial terhadap orang tua, mewujudkan masyarakat yang peduli dan berbakti kepada orang tua manula sebagai bentuk tanggung jawab sosial.</p>
             </div>
           </div><!-- End Service Item -->
-
+          
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
             <div class="service-item position-relative">
               <div class="icon">
@@ -512,7 +512,7 @@
               <div class="testimonial-item" "="">
             <p>
               <i class=" bi bi-quote quote-icon-left"></i>
-                <span>Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.</span>
+                <span>Proins. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.</span>
                 <i class="bi bi-quote quote-icon-right"></i>
                 </p>
                 <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
@@ -716,23 +716,23 @@
               <div class="row gy-4">
 
                 <div class="col-md-6">
-                  <label for="name-field" class="pb-2">Your Name</label>
-                  <input type="text" name="name" id="name-field" class="form-control" required="">
+                  <label for="name-field" class="pb-2">Id pelanggan</label>
+                  <input type="text" name="id_pelanggan" id="id_pelanggan-field" class="form-control" required="">
                 </div>
 
                 <div class="col-md-6">
-                  <label for="email-field" class="pb-2">Your Email</label>
-                  <input type="email" class="form-control" name="email" id="email-field" required="">
+                  <label for="email-field" class="pb-2">Nama Pelanggan</label>
+                  <input type="text" class="form-control" name="nama_pelanggan" id="nama_pelanggan-field" required="">
                 </div>
 
                 <div class="col-md-12">
-                  <label for="subject-field" class="pb-2">Subject</label>
-                  <input type="text" class="form-control" name="subject" id="subject-field" required="">
+                  <label for="subject-field" class="pb-2">Nama Masjid</label>
+                  <input type="text" class="form-control" name="nama_masjid" id="nama_masjid-field" required="">
                 </div>
 
                 <div class="col-md-12">
-                  <label for="message-field" class="pb-2">Message</label>
-                  <textarea class="form-control" name="message" rows="10" id="message-field" required=""></textarea>
+                  <label for="message-field" class="pb-2">Nama Ketua DKM</label>
+                  <input type="text"  class="form-control" name="nama_ketua_dkm" id="nama_ketua_dkm-field" required="">
                 </div>
 
                 <div class="col-md-12 text-center">
@@ -746,6 +746,20 @@
               </div>
             </form>
           </div><!-- End Contact Form -->
+
+
+
+
+  <div style="text-align: center; margin-top: 50px;">
+    <h2>Selamat Datang di Portal Masjid</h2>
+    <p>Silakan daftar masjid baru melalui tombol di bawah ini:</p>
+
+    <a href="{{ route('registrasi') }}" class="btn btn-primary">Registrasi Masjid</a>
+
+</div>
+
+
+
 
         </div>
 
