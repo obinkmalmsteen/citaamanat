@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Form Isian Data Masjid</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -52,10 +53,10 @@
 </div>
 
 
-<body class="p-5">
+<body>
     <div class="container">
         <h2>Form Registrasi Masjid</h2>
-        <form method="POST" action="{{ route('masjidPublicStore') }}">
+        <form method="POST" enctype="multipart/form-data" action="{{ route('masjidPublicStore') }}">
             @csrf
             {{-- start form data pengelola mesjid --}}
             <div class="card mb-4">
@@ -68,13 +69,13 @@
                         <div class="col-md-6 mb-4">
                             <label for="nama_ketua_dkm-field" class="pb-2">Nama Ketua DKM</label>
                             <input type="text" class="form-control" style="background-color: #fff8b3;"
-                                name="nama_ketua_dkm" id="nama_ketua_dkm-field" required>
+                                name="nama_ketua_dkm" id="nama_ketua_dkm-field" value="{{ old('nama_ketua_dkm') }}" required>
                         </div>
 
                         <div class="col-md-6 mb-4">
                             <label for="telp_ketua_dkm-field" class="pb-2">Telepon/HP Ketua DKM</label>
                             <input type="text" class="form-control" style="background-color: #fff8b3;"
-                                name="telp_ketua_dkm" id="telp_ketua_dkm-field" required>
+                                name="telp_ketua_dkm" id="telp_ketua_dkm-field" value="{{ old('telp_ketua_dkm') }}"required>
                         </div>
 
                         <div class="col-md-6 mb-4">
@@ -83,14 +84,14 @@
                                 <small class="text-muted d-block">(Bisa ketua DKM, marbot, atau yang ditunjuk)</small>
                             </label>
                             <input type="text" class="form-control" style="background-color: #fff8b3;"
-                                name="penerima_informasi" id="penerima_informasi-field" required>
+                                name="penerima_informasi" id="penerima_informasi-field" value="{{ old('penerima_informasi') }}" required>
                         </div>
 
                         <div class="col-md-6 mb-4">
                             <label for="telp_penerima_informasi-field" class="pb-2">Nomor Telepon Penerima
                                 Informasi</label>
                             <input type="text" class="form-control" style="background-color: #fff8b3;"
-                                name="telp_penerima_informasi" id="telp_penerima_informasi-field" required>
+                                name="telp_penerima_informasi" id="telp_penerima_informasi-field" value="{{ old('telp_penerima_informasi') }}" required>
                         </div>
                     </div>
                 </div>
@@ -130,12 +131,12 @@
                         <div class="col-md-6 mb-4">
                             <label for="nama_masjid-field" class="pb-2">Nama Masjid / Mushola</label>
                             <input type="text" class="form-control" style="background-color: #fff8b3;"
-                                name="nama_masjid" id="nama_masjid-field" required="">
+                                name="nama_masjid" id="nama_masjid-field" value="{{ old('nama_masjid') }}" required>
                         </div>
                         <div class="col-md-12 mb-4">
                             <label for="alamat_lengkap-field" class="pb-2">Alamat Lengkap</label>
                             <input type="text" class="form-control" style="background-color: #fff8b3;"
-                                name="alamat_lengkap" id="alamat_lengkap-field" required="">
+                                name="alamat_lengkap" id="alamat_lengkap-field" value="{{ old('penerima_informasi') }}" required>
                         </div>
 
                         {{-- Provinsi --}}
@@ -184,6 +185,15 @@
                                 style="background-color: #fff8b3;" accept="image/*" capture="environment">
                         </div>
 
+                        <div class="mb-3">
+                            <label for="map">Tandai Lokasi Masjid di Peta</label>
+                            <div id="map" style="height: 400px; border-radius: 10px;"></div>
+
+                            <input type="hidden" name="map_lokasi_masjid" id="map_lokasi_masjid"
+                                value="{{ old('map_lokasi_masjid') }}">
+                        </div>
+
+
                     </div>
                 </div>
             </div>
@@ -197,11 +207,19 @@
                 <div class="card-body">
                     <div class="row">
 
-                        <div class="col-md-6 mb-4">
-                            <label for="name-field" class="pb-2">1. Id pelanggan PLN</label>
+
+                        <div class="mb-3">
+                            <label for="id_pelanggan" class="form-label">ID Pelanggan</label>
                             <input type="text" name="id_pelanggan" class="form-control" id="id_pelanggan-field"
-                                style="background-color: #fff8b3;" required="">
+                                style="background-color: #fff8b3;"
+                                value="{{ old('id_pelanggan') }}" required>
+
+                            @error('id_pelanggan')
+                                <div class="text-danger mt-2">{{ $message }}</div>
+                            @enderror
                         </div>
+
+
 
                         <div class="col-md-6 mb-4">
                             <label for="nama_pelanggan-field" class="pb-2">2. Nama Pelanggan PLN</label>
@@ -287,12 +305,12 @@
             </div>
 
             {{-- End form data pengelola mesjid --}}
-<div class="form-check mb-4">
-    <input class="form-check-input" type="checkbox" name="agreement" id="agreement" required>
-    <label class="form-check-label" for="agreement">
-        Saya telah membaca dan menyetujui bahwa semua data yang saya isi adalah benar.
-    </label>
-</div>
+            <div class="form-check mb-4">
+                <input class="form-check-input" type="checkbox" name="agreement" id="agreement" required>
+                <label class="form-check-label" for="agreement">
+                    Saya telah membaca dan menyetujui bahwa semua data yang saya isi adalah benar.
+                </label>
+            </div>
 
 
     </div>
@@ -300,8 +318,8 @@
 
 
     <div class="row">
-        <div class="col-12 mb-4">
-            <button type="submit" class="btn btn-sm btn-primary col-12">
+        <div class="col-10 mb-4">
+            <button type="submit" class="btn btn-primary col-12">
                 <i class="fas fa-save mr-2"></i>
                 Simpan
             </button>
@@ -370,6 +388,104 @@
             });
         });
     </script>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Koordinat default (Yogyakarta)
+            var defaultLat = -7.7956;
+            var defaultLng = 110.3695;
+
+            // Coba parse koordinat dari input jika sudah ada
+            var savedCoords = document.getElementById('map_lokasi_masjid').value;
+            var lat = defaultLat;
+            var lng = defaultLng;
+
+            if (savedCoords && savedCoords.includes(',')) {
+                var parts = savedCoords.split(',');
+                lat = parseFloat(parts[0]);
+                lng = parseFloat(parts[1]);
+            }
+
+            // Buat peta
+            var map = L.map('map').setView([lat, lng], 13);
+
+            // Tambahkan layer OpenStreetMap
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+                attribution: '© OpenStreetMap'
+            }).addTo(map);
+
+            // Tambahkan marker
+            var marker = L.marker([lat, lng], {
+                draggable: true
+            }).addTo(map);
+
+            // Saat marker digeser
+            marker.on('dragend', function(e) {
+                var latlng = marker.getLatLng();
+                document.getElementById('map_lokasi_masjid').value = latlng.lat.toFixed(7) + ',' + latlng
+                    .lng.toFixed(7);
+            });
+
+            // Saat klik peta, pindahkan marker
+            map.on('click', function(e) {
+                marker.setLatLng(e.latlng);
+                document.getElementById('map_lokasi_masjid').value = e.latlng.lat.toFixed(7) + ',' + e
+                    .latlng.lng.toFixed(7);
+            });
+
+            // Ambil lokasi pengguna (jika diizinkan)
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    var userLat = position.coords.latitude;
+                    var userLng = position.coords.longitude;
+                    map.setView([userLat, userLng], 15);
+                    marker.setLatLng([userLat, userLng]);
+                    document.getElementById('map_lokasi_masjid').value = userLat.toFixed(7) + ',' + userLng
+                        .toFixed(7);
+                });
+            }
+        });
+    </script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+    @if (session('success'))
+        Swal.fire({
+            icon: 'success',
+            title: 'Berhasil!',
+            text: '{{ session('success') }}',
+            confirmButtonColor: '#198754'
+        });
+    @endif
+
+    @if (session('error'))
+        Swal.fire({
+            icon: 'error',
+            title: 'Gagal!',
+            text: '{{ session('error') }}',
+            confirmButtonColor: '#d33'
+        });
+    @endif
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const input = document.getElementById("id_pelanggan");
+    const errorText = document.getElementById("id_pelanggan_error");
+
+    if (input && errorText) {
+        input.addEventListener("input", function () {
+            // Ketika user mulai mengetik, hapus pesan error
+            errorText.style.display = "none";
+        });
+    }
+});
+</script>
+
+
 </body>
 
 </html>

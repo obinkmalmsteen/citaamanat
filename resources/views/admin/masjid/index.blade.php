@@ -1,5 +1,6 @@
 @extends('layouts/app')
 
+
 @section('content')
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800">
@@ -41,6 +42,7 @@
                         <th>Ketua DKM</th>
                         <th>No HP Ketua DKM</th>
                         <th>Penerima Informasi</th>
+                         <th>Disetujui</th>
                         <th>
                             <i class="fas fa-cog"></i>
                         </th>
@@ -57,16 +59,20 @@
                         <td>{{ $item->nama_ketua_dkm }}</td>
                         <td>{{ $item->telp_ketua_dkm }}</td>
                         <td>{{ $item->penerima_informasi }}</td>
-                        
-                       
+                      <td class="text-center">
+    <input type="checkbox" class="approve-checkbox"
+           data-id="{{ $item->id_pelanggan }}"
+           {{ $item->disetujui ? 'checked' : '' }}>
+</td>
+
                         <td class="text-center">
-                            <a href="#" class="btn btn-sm btn-warning">
-                                <i class="fas fa-edit"></i>
-                            </a>
-                             <a href="#" class="btn btn-sm btn-danger">
-                                <i class="fas fa-trash"></i>
-                            </a>
+                            
+                             <a href="{{ route('masjid.show', $item->id_pelanggan) }}" 
+       class="btn btn-sm btn-info">
+        Detail
+    </a>
                         </td>
+
                        </tr>
                    @endforeach
                 </tbody>
@@ -74,3 +80,27 @@
         </div>
     </div>
 @endsection
+
+<script>
+$(document).ready(function() {
+    $('.approve-checkbox').on('change', function() {
+        var idPelanggan = $(this).data('id');
+        var disetujui = $(this).is(':checked') ? 1 : 0;
+
+        $.ajax({
+            url: '/masjid/approve/' + idPelanggan,
+            type: 'POST',
+            data: {
+                disetujui: disetujui,
+                _token: '{{ csrf_token() }}'
+            },
+            success: function(response) {
+                console.log('Status persetujuan diperbarui.');
+            },
+            error: function() {
+                alert('Terjadi kesalahan saat menyimpan status persetujuan.');
+            }
+        });
+    });
+});
+</script>

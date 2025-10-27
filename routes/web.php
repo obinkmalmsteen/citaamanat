@@ -1,13 +1,16 @@
 <?php
 
+use App\Models\Testimonial;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MasjidController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\TestimonialController;
 
 Route::get('/', function () {
-    return view('welcome');
+    $testimonials = Testimonial::orderBy('created_at', 'desc')->take(6)->get();
+    return view('welcome', compact('testimonials'));
 })->name('welcome');
 
 // Login
@@ -32,9 +35,7 @@ Route::get('/get-districts/{regency_id}', [MasjidController::class, 'getDistrict
 Route::get('/get-villages/{district_id}', [MasjidController::class, 'getVillages'])->name('getVillages');
 
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+
 
 
 
@@ -53,6 +54,27 @@ Route::middleware('checkLogin')->group(function(){
     Route::get('masjid',[MasjidController::class,'index'])->name('masjid');
     Route::get('masjid/create',[MasjidController::class,'create'])->name('masjidCreate');
     Route::post('masjid/store',[MasjidController::class,'store'])->name('masjidStore');
+
+    Route::post('/masjid/approve/{id_pelanggan}', [MasjidController::class, 'approve'])->name('masjid.approve');
+
+    Route::get('/masjid/detail/{id_pelanggan}', [MasjidController::class, 'show'])->name('masjid.show');
+    
+    Route::post('/masjid/{id_pelanggan}/setujui', [MasjidController::class, 'setujui'])->name('masjid.setujui');
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/masjid/{id_pelanggan}', [MasjidController::class, 'show'])->name('masjid.show');
+    
+    Route::post('/masjid/{id_pelanggan}/request-token', [MasjidController::class, 'requestToken'])->name('masjid.requestToken');
+
+Route::post('/masjid/{id_pelanggan}/realisasi-token', [MasjidController::class, 'realisasiToken'])->name('masjid.realisasiToken');
+  // Testimonial(versi admin)
+    Route::get('testimonial',[TestimonialController::class,'index'])->name('testimonial');
+ Route::get('/testimonial', [TestimonialController::class, 'index'])->name('testimonial.index');
+    Route::post('/testimonial/store', [TestimonialController::class, 'store'])->name('testimonial.store');
+
+
+
+});
 
 });
 

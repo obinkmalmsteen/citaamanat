@@ -19,7 +19,7 @@
 
       <!-- Form isi data Start --> 
         <div class="card-body">
-            <form action="{{ route('masjidStore') }}" method="post">
+            <form action="{{ route('masjidStore') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                     <div class="col-12">

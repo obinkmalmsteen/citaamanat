@@ -46,12 +46,12 @@
                                     <form class="user" method="POST" action="{{ route('loginProses') }}">
                                         @csrf
                                         <div class="form-group">
-                                            <input type="email"
-                                                class="form-control form-control-user @error('email')
+                                            <input type="text"
+                                                class="form-control form-control-user @error('nama')
                                              is-invalid   
                                             @enderror"
-                                                placeholder="Masukan Email" name="email" value="{{ old('email') }}">
-                                            @error('email')
+                                                placeholder="Masukan Kode Registrasi" name="nama" value="{{ old('nama') }}">
+                                            @error('nama')
                                                 <small class="text-danger">
                                                     {{ $message }}
                                                 </small>

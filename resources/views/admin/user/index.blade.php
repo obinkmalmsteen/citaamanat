@@ -13,7 +13,7 @@
             <div class="mb-1 mr-2">
                 <a href="{{ route('userCreate') }}" class="btn btn-sm btn-primary">
                     <i class="fas fa-plus mr-2"></i>
-                    Tambah Data
+                    Tambah Data User
                 </a>
             </div>
             <div>
@@ -46,44 +46,54 @@
                 </thead>
 
                 <tbody>
-                   @foreach ($user as $item )
-                       <tr>
-                        <td class="text-center">{{ $loop->iteration }}</td>
-                        <td>{{ $item->nama }}</td>
-                        <td>{{ $item->email }}</td>
-                        <td class="text-center">
-                            @if ($item->jabatan == 'Admin')
-                            <span class="badge badge-primary">
-                                {{ $item->jabatan}}
-                            </span>
-                            @else
-                                 <span class="badge badge-info">
-                                {{ $item->jabatan}}
-                            </span>
-                            @endif
-                        </td>
-                        <td class="text-center">
-                            @if ($item->is_tugas == false)
-                            <span class="badge badge-danger">
-                                Belum Ditugaskan
-                            </span>
-                            @else
-                                 <span class="badge badge-success">
-                                Sudah Ditugaskan
-                            </span>
-                            @endif
-                        </td>
-                       
-                        <td class="text-center">
-                            <a href="#" class="btn btn-sm btn-warning">
-                                <i class="fas fa-edit"></i>
-                            </a>
-                             <a href="#" class="btn btn-sm btn-danger">
-                                <i class="fas fa-trash"></i>
-                            </a>
-                        </td>
-                       </tr>
-                   @endforeach
+                    @foreach ($user as $item)
+                        <tr>
+                            <td class="text-center">{{ $loop->iteration }}</td>
+                            <td>{{ $item->nama }}</td>
+                            <td>{{ $item->email }}</td>
+                            <td class="text-center">
+                                @if ($item->jabatan == 'Admin')
+                                    <span class="badge badge-primary">
+                                        {{ $item->jabatan }}
+                                    </span>
+                                @elseif ($item->jabatan == 'Karyawan')
+                                    <span class="badge badge-info">
+
+                                        {{ $item->jabatan }}
+                                    </span>
+                                @elseif ($item->jabatan == 'User')
+                                    <span class="badge badge-warning text-dark">
+                                        {{ $item->jabatan }}
+                                    </span>
+                                @else
+                                    <span class="badge badge-secondary">
+                                        {{ $item->jabatan }}
+                                    </span>
+                                @endif
+                            </td>
+
+                            <td class="text-center">
+                                @if ($item->is_tugas == false)
+                                    <span class="badge badge-danger">
+                                        Belum Ditugaskan
+                                    </span>
+                                @else
+                                    <span class="badge badge-success">
+                                        Sudah Ditugaskan
+                                    </span>
+                                @endif
+                            </td>
+
+                            <td class="text-center">
+                                <a href="#" class="btn btn-sm btn-warning">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <a href="#" class="btn btn-sm btn-danger">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
