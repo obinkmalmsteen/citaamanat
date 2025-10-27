@@ -56,15 +56,7 @@
                     <li><a href="#services">Services</a></li>
                     <li><a href="#portfolio">Portfolio</a></li>
                     <li><a href="#team">Team</a></li>
-                    <li class="dropdown"><a href="#"><span>Dapur</span> <i
-                                class="bi bi-chevron-down toggle-dropdown"></i></a>
-                        <ul>
-                            <li><a href="#">Dapur 1</a></li>
-                            <li><a href="#">Dapur 2</a></li>
-                            <li><a href="#">Dapur 3</a></li>
-                            <li><a href="#">Dapur 4</a></li>
-                        </ul>
-                    </li>
+                    
                     <li><a href="#contact">Contact</a></li>
                 </ul>
                 <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
