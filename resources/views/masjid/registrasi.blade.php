@@ -327,67 +327,65 @@
     </div>
 
     </form>
-    <script>
-        $(document).ready(function() {
+   <script>
+    $(document).ready(function() {
 
-            // ========================
-            // 1️⃣ Provinsi -> Kabupaten
-            // ========================
-            $('#province_id-field').on('change', function() {
-                var provinceID = $(this).val();
+        // ========================
+        // 1️⃣ Provinsi -> Kabupaten
+        // ========================
+        $('#province_id-field').on('change', function() {
+            var provinceID = $(this).val();
 
-                $('#regency_id-field').html('<option value="">-- Pilih Kabupaten/Kota --</option>');
-                $('#district_id-field').html('<option value="">-- Pilih Kecamatan --</option>');
-                $('#village_id-field').html('<option value="">-- Pilih Kelurahan/Desa --</option>');
+            $('#regency_id-field').html('<option value="">-- Pilih Kabupaten/Kota --</option>');
+            $('#district_id-field').html('<option value="">-- Pilih Kecamatan --</option>');
+            $('#village_id-field').html('<option value="">-- Pilih Kelurahan/Desa --</option>');
 
-                if (provinceID) {
-                    $.get('/get-regencies/' + provinceID, function(data) {
-                        $.each(data, function(index, regency) {
-                            $('#regency_id-field').append('<option value="' + regency.id +
-                                '">' + regency.name + '</option>');
-                        });
+            if (provinceID) {
+                $.get("{{ url('get-regencies') }}/" + provinceID, function(data) {
+                    $.each(data, function(index, regency) {
+                        $('#regency_id-field').append('<option value="' + regency.id + '">' + regency.name + '</option>');
                     });
-                }
-            });
-
-            // ========================
-            // 2️⃣ Kabupaten -> Kecamatan
-            // ========================
-            $('#regency_id-field').on('change', function() {
-                var regencyID = $(this).val();
-
-                $('#district_id-field').html('<option value="">-- Pilih Kecamatan --</option>');
-                $('#village_id-field').html('<option value="">-- Pilih Kelurahan/Desa --</option>');
-
-                if (regencyID) {
-                    $.get('/get-districts/' + regencyID, function(data) {
-                        $.each(data, function(index, district) {
-                            $('#district_id-field').append('<option value="' + district.id +
-                                '">' + district.name + '</option>');
-                        });
-                    });
-                }
-            });
-
-            // ========================
-            // 3️⃣ Kecamatan -> Kelurahan
-            // ========================
-            $('#district_id-field').on('change', function() {
-                var districtID = $(this).val();
-
-                $('#village_id-field').html('<option value="">-- Pilih Kelurahan/Desa --</option>');
-
-                if (districtID) {
-                    $.get('/get-villages/' + districtID, function(data) {
-                        $.each(data, function(index, village) {
-                            $('#village_id-field').append('<option value="' + village.id +
-                                '">' + village.name + '</option>');
-                        });
-                    });
-                }
-            });
+                });
+            }
         });
-    </script>
+
+        // ========================
+        // 2️⃣ Kabupaten -> Kecamatan
+        // ========================
+        $('#regency_id-field').on('change', function() {
+            var regencyID = $(this).val();
+
+            $('#district_id-field').html('<option value="">-- Pilih Kecamatan --</option>');
+            $('#village_id-field').html('<option value="">-- Pilih Kelurahan/Desa --</option>');
+
+            if (regencyID) {
+                $.get("{{ url('get-districts') }}/" + regencyID, function(data) {
+                    $.each(data, function(index, district) {
+                        $('#district_id-field').append('<option value="' + district.id + '">' + district.name + '</option>');
+                    });
+                });
+            }
+        });
+
+        // ========================
+        // 3️⃣ Kecamatan -> Kelurahan
+        // ========================
+        $('#district_id-field').on('change', function() {
+            var districtID = $(this).val();
+
+            $('#village_id-field').html('<option value="">-- Pilih Kelurahan/Desa --</option>');
+
+            if (districtID) {
+                $.get("{{ url('get-villages') }}/" + districtID, function(data) {
+                    $.each(data, function(index, village) {
+                        $('#village_id-field').append('<option value="' + village.id + '">' + village.name + '</option>');
+                    });
+                });
+            }
+        });
+    });
+</script>
+
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
