@@ -69,14 +69,25 @@
                         <div class="col-md-6 mb-4">
                             <label for="nama_ketua_dkm-field" class="pb-2">Nama Ketua DKM</label>
                             <input type="text" class="form-control" style="background-color: #fff8b3;"
-                                name="nama_ketua_dkm" id="nama_ketua_dkm-field" value="{{ old('nama_ketua_dkm') }}" required>
+                                name="nama_ketua_dkm" id="nama_ketua_dkm-field" value="{{ old('nama_ketua_dkm') }}"
+                                required>
                         </div>
 
+
                         <div class="col-md-6 mb-4">
-                            <label for="telp_ketua_dkm-field" class="pb-2">Telepon/HP Ketua DKM</label>
-                            <input type="text" class="form-control" style="background-color: #fff8b3;"
-                                name="telp_ketua_dkm" id="telp_ketua_dkm-field" value="{{ old('telp_ketua_dkm') }}"required>
+                            <label for="telp_ketua_dkm" class="form-label">Telepon/HP Ketua DKM</label>
+                            <input type="text" name="telp_ketua_dkm" class="form-control" id="telp_ketua_dkm-field"
+                                style="background-color: #fff8b3;" value="{{ old('telp_ketua_dkm') }}" required>
+
+                            @error('telp_ketua_dkm')
+                                <div class="text-danger mt-2">{{ $message }}</div>
+                            @enderror
                         </div>
+
+
+
+
+
 
                         <div class="col-md-6 mb-4">
                             <label for="penerima_informasi-field" class="pb-2">
@@ -84,15 +95,26 @@
                                 <small class="text-muted d-block">(Bisa ketua DKM, marbot, atau yang ditunjuk)</small>
                             </label>
                             <input type="text" class="form-control" style="background-color: #fff8b3;"
-                                name="penerima_informasi" id="penerima_informasi-field" value="{{ old('penerima_informasi') }}" required>
+                                name="penerima_informasi" id="penerima_informasi-field"
+                                value="{{ old('penerima_informasi') }}" required>
                         </div>
 
+
+
                         <div class="col-md-6 mb-4">
-                            <label for="telp_penerima_informasi-field" class="pb-2">Nomor Telepon Penerima
+                            <label for="telp_penerima_informasi" class="form-label">Nomor Telepon Penerima
                                 Informasi</label>
-                            <input type="text" class="form-control" style="background-color: #fff8b3;"
-                                name="telp_penerima_informasi" id="telp_penerima_informasi-field" value="{{ old('telp_penerima_informasi') }}" required>
+                            <input type="text" name="telp_penerima_informasi" class="form-control"
+                                id="telp_penerima_informasi-field" style="background-color: #fff8b3;"
+                                value="{{ old('telp_penerima_informasi') }}" required>
+
+                            @error('telp_penerima_informasi')
+                                <div class="text-danger mt-2">{{ $message }}</div>
+                            @enderror
                         </div>
+
+
+
                     </div>
                 </div>
             </div>
@@ -108,7 +130,7 @@
 
                         <div class="col-md-6 mb-4">
                             <label class="form-label">
-                                <span class="text-danger">*</span> 3. Jenis Bangunan (Masjid atau Mushola):
+                                <span class="text-danger">*</span> Jenis Bangunan (Masjid atau Mushola):
                             </label>
                             <div
                                 style="background-color: #fff8b3; padding: 10px; border-radius: 5px; display: flex; gap: 30px; align-items: center;">
@@ -136,7 +158,8 @@
                         <div class="col-md-12 mb-4">
                             <label for="alamat_lengkap-field" class="pb-2">Alamat Lengkap</label>
                             <input type="text" class="form-control" style="background-color: #fff8b3;"
-                                name="alamat_lengkap" id="alamat_lengkap-field" value="{{ old('penerima_informasi') }}" required>
+                                name="alamat_lengkap" id="alamat_lengkap-field"
+                                value="{{ old('penerima_informasi') }}" required>
                         </div>
 
                         {{-- Provinsi --}}
@@ -182,7 +205,7 @@
                         <div class="col-md-6 mb-4">
                             <label for="foto_masjid" class="form-label">Foto Masjid</label>
                             <input type="file" name="foto_masjid" id="foto_masjid-field" class="form-control"
-                                style="background-color: #fff8b3;" accept="image/*" capture="environment">
+                                style="background-color: #fff8b3;" accept="image/*">
                         </div>
 
                         <div class="mb-3">
@@ -208,11 +231,10 @@
                     <div class="row">
 
 
-                        <div class="mb-3">
+                        <div class="col-md-6 mb-4">
                             <label for="id_pelanggan" class="form-label">ID Pelanggan</label>
                             <input type="text" name="id_pelanggan" class="form-control" id="id_pelanggan-field"
-                                style="background-color: #fff8b3;"
-                                value="{{ old('id_pelanggan') }}" required>
+                                style="background-color: #fff8b3;" value="{{ old('id_pelanggan') }}" required>
 
                             @error('id_pelanggan')
                                 <div class="text-danger mt-2">{{ $message }}</div>
@@ -220,9 +242,22 @@
                         </div>
 
 
+                        <div class="col-md-6 mb-4">
+                            <label for="no_meteran_listrik" class="form-label">Nomor Meteran Listrik</label>
+                            <input type="text" name="no_meteran_listrik" class="form-control"
+                                id="no_meteran_listrik-field" style="background-color: #fff8b3;"
+                                value="{{ old('id_pelanggan') }}" required>
+
+                            @error('no_meteran_listrik')
+                                <div class="text-danger mt-2">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+
+
 
                         <div class="col-md-6 mb-4">
-                            <label for="nama_pelanggan-field" class="pb-2">2. Nama Pelanggan PLN</label>
+                            <label for="nama_pelanggan-field" class="pb-2">Nama Pelanggan PLN</label>
                             <input type="text" class="form-control" style="background-color: #fff8b3;"
                                 name="nama_pelanggan" id="nama_pelanggan-field" required="">
                         </div>
@@ -230,7 +265,7 @@
                         <!-- 4. Jenis Pembayaran Listrik -->
                         <div class="col-md-6 mb-4">
                             <label class="form-label">
-                                <span class="text-danger">*</span> 4. Jenis Pembayaran Listrik :
+                                <span class="text-danger">*</span>Jenis Pembayaran Listrik :
                             </label>
                             <div
                                 style="background-color: #fff8b3; padding: 10px; border-radius: 5px; display: flex; gap: 30px; align-items: center;">
@@ -278,13 +313,23 @@
                             @enderror
                         </div>
 
+
+
+
+
                         <div class="col-md-6 mb-4">
-                            <label for="estimasi_biaya-field" class="pb-2">Perkiraan Biaya Listrik Tiap Bulan atau
-                                sekali
-                                mengisi Token (isi dengan angka Nominal)</label>
-                            <input type="text" class="form-control" style="background-color: #fff8b3;"
-                                name="estimasi_biaya" id="estimasi_biaya-field" required="">
+                            <label for="estimasi_biaya" class="form-label">Perkiraan Harga Bayar Setiap Bulan (Setiap
+                                Isi Token)</label>
+                            <input type="text" name="estimasi_biaya" class="form-control"
+                                id="estimasi_biaya-field" style="background-color: #fff8b3;"
+                                value="{{ old('estimasi_biaya') }}" required>
+
+                            @error('estimasi_biaya')
+                                <div class="text-danger mt-2">{{ $message }}</div>
+                            @enderror
                         </div>
+
+
                         <div class="col-md-6 mb-4">
                             <label for="alasan_id_berbeda-field" class="pb-2">Apa alasan nya kenapa Id Pelanggan PLN
                                 memakai
@@ -296,16 +341,31 @@
                         <div class="col-md-6 mb-4">
                             <label for="foto_meteran_listrik" class="form-label">Foto Meteran Listrik</label>
                             <input type="file" name="foto_meteran_listrik" id="foto_meteran_listrik-field"
-                                class="form-control" style="background-color: #fff8b3;" accept="image/*"
-                                capture="environment">
+                                class="form-control" style="background-color: #fff8b3;" accept="image/*">
                         </div>
 
                     </div>
                 </div>
             </div>
 
-            {{-- End form data pengelola mesjid --}}
-            <div class="form-check mb-4">
+            <style>
+                /* Perbesar ukuran kotak checkbox */
+                .form-check-input {
+                    width: 1.5em;
+                    height: 1.5em;
+                    cursor: pointer;
+                    accent-color: #007bff;
+                    /* warna biru Bootstrap */
+                }
+
+                /* Tambah sedikit jarak agar seimbang dengan teks */
+                .form-check-label {
+                    margin-left: 8px;
+                    font-weight: 500;
+                }
+            </style>
+
+            <div class="form-check mb-4 ">
                 <input class="form-check-input" type="checkbox" name="agreement" id="agreement" required>
                 <label class="form-check-label" for="agreement">
                     Saya telah membaca dan menyetujui bahwa semua data yang saya isi adalah benar.
@@ -313,78 +373,82 @@
             </div>
 
 
+
     </div>
 
 
-
+ <div class="card mb-4">
     <div class="row">
-        <div class="col-10 mb-4">
+        <div class="col-md-12 mb-4">
             <button type="submit" class="btn btn-primary col-12">
                 <i class="fas fa-save mr-2"></i>
                 Simpan
             </button>
         </div>
     </div>
-
+</div>
     </form>
-   <script>
-    $(document).ready(function() {
+    <script>
+        $(document).ready(function() {
 
-        // ========================
-        // 1️⃣ Provinsi -> Kabupaten
-        // ========================
-        $('#province_id-field').on('change', function() {
-            var provinceID = $(this).val();
+            // ========================
+            // 1️⃣ Provinsi -> Kabupaten
+            // ========================
+            $('#province_id-field').on('change', function() {
+                var provinceID = $(this).val();
 
-            $('#regency_id-field').html('<option value="">-- Pilih Kabupaten/Kota --</option>');
-            $('#district_id-field').html('<option value="">-- Pilih Kecamatan --</option>');
-            $('#village_id-field').html('<option value="">-- Pilih Kelurahan/Desa --</option>');
+                $('#regency_id-field').html('<option value="">-- Pilih Kabupaten/Kota --</option>');
+                $('#district_id-field').html('<option value="">-- Pilih Kecamatan --</option>');
+                $('#village_id-field').html('<option value="">-- Pilih Kelurahan/Desa --</option>');
 
-            if (provinceID) {
-                $.get("{{ url('get-regencies') }}/" + provinceID, function(data) {
-                    $.each(data, function(index, regency) {
-                        $('#regency_id-field').append('<option value="' + regency.id + '">' + regency.name + '</option>');
+                if (provinceID) {
+                    $.get("{{ url('get-regencies') }}/" + provinceID, function(data) {
+                        $.each(data, function(index, regency) {
+                            $('#regency_id-field').append('<option value="' + regency.id +
+                                '">' + regency.name + '</option>');
+                        });
                     });
-                });
-            }
-        });
+                }
+            });
 
-        // ========================
-        // 2️⃣ Kabupaten -> Kecamatan
-        // ========================
-        $('#regency_id-field').on('change', function() {
-            var regencyID = $(this).val();
+            // ========================
+            // 2️⃣ Kabupaten -> Kecamatan
+            // ========================
+            $('#regency_id-field').on('change', function() {
+                var regencyID = $(this).val();
 
-            $('#district_id-field').html('<option value="">-- Pilih Kecamatan --</option>');
-            $('#village_id-field').html('<option value="">-- Pilih Kelurahan/Desa --</option>');
+                $('#district_id-field').html('<option value="">-- Pilih Kecamatan --</option>');
+                $('#village_id-field').html('<option value="">-- Pilih Kelurahan/Desa --</option>');
 
-            if (regencyID) {
-                $.get("{{ url('get-districts') }}/" + regencyID, function(data) {
-                    $.each(data, function(index, district) {
-                        $('#district_id-field').append('<option value="' + district.id + '">' + district.name + '</option>');
+                if (regencyID) {
+                    $.get("{{ url('get-districts') }}/" + regencyID, function(data) {
+                        $.each(data, function(index, district) {
+                            $('#district_id-field').append('<option value="' + district.id +
+                                '">' + district.name + '</option>');
+                        });
                     });
-                });
-            }
-        });
+                }
+            });
 
-        // ========================
-        // 3️⃣ Kecamatan -> Kelurahan
-        // ========================
-        $('#district_id-field').on('change', function() {
-            var districtID = $(this).val();
+            // ========================
+            // 3️⃣ Kecamatan -> Kelurahan
+            // ========================
+            $('#district_id-field').on('change', function() {
+                var districtID = $(this).val();
 
-            $('#village_id-field').html('<option value="">-- Pilih Kelurahan/Desa --</option>');
+                $('#village_id-field').html('<option value="">-- Pilih Kelurahan/Desa --</option>');
 
-            if (districtID) {
-                $.get("{{ url('get-villages') }}/" + districtID, function(data) {
-                    $.each(data, function(index, village) {
-                        $('#village_id-field').append('<option value="' + village.id + '">' + village.name + '</option>');
+                if (districtID) {
+                    $.get("{{ url('get-villages') }}/" + districtID, function(data) {
+                        $.each(data, function(index, village) {
+                            $('#village_id-field').append('<option value="' + village.id +
+                                '">' + village.name + '</option>');
+                        });
                     });
-                });
-            }
+                }
+            });
         });
-    });
-</script>
+    </script>
 
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -448,41 +512,76 @@
             }
         });
     </script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-<script>
-    @if (session('success'))
-        Swal.fire({
-            icon: 'success',
-            title: 'Berhasil!',
-            text: '{{ session('success') }}',
-            confirmButtonColor: '#198754'
+    <script>
+        @if (session('success'))
+            Swal.fire({
+                icon: 'success',
+                title: 'Berhasil!',
+                text: 'terimakasih telah mengikuti program Terangi beribu masjid, data anda sudah masuk dalam antrian verifikasi, selanjutnya hasil verivikasi akan di hungi via Whatsap terdaftar',
+                confirmButtonColor: '#198754'
+            });
+        @endif
+
+        @if (session('error'))
+            Swal.fire({
+                icon: 'error',
+                title: 'Gagal!',
+                text: '{{ session('error') }}',
+                confirmButtonColor: '#d33'
+            });
+        @endif
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const input = document.getElementById("id_pelanggan");
+            const errorText = document.getElementById("id_pelanggan_error");
+
+            if (input && errorText) {
+                input.addEventListener("input", function() {
+                    // Ketika user mulai mengetik, hapus pesan error
+                    errorText.style.display = "none";
+                });
+            }
         });
-    @endif
+    </script>
 
-    @if (session('error'))
-        Swal.fire({
-            icon: 'error',
-            title: 'Gagal!',
-            text: '{{ session('error') }}',
-            confirmButtonColor: '#d33'
-        });
-    @endif
-</script>
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    const input = document.getElementById("id_pelanggan");
-    const errorText = document.getElementById("id_pelanggan_error");
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    if (input && errorText) {
-        input.addEventListener("input", function () {
-            // Ketika user mulai mengetik, hapus pesan error
-            errorText.style.display = "none";
-        });
-    }
-});
-</script>
+    <script>
+        function hanyaAngka(fieldId, pesan) {
+            const field = document.getElementById(fieldId);
 
+            if (!field) return; // kalau elemen tidak ditemukan, hentikan
+
+            field.addEventListener('input', function(e) {
+                const input = e.target;
+                const onlyNumbers = input.value.replace(/[^0-9]/g, '');
+
+                if (input.value !== onlyNumbers) {
+                    input.value = onlyNumbers;
+
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Input Tidak Valid',
+                        text: pesan,
+                        timer: 3500,
+                        showConfirmButton: false
+                    });
+                }
+            });
+        }
+
+        // Daftar field yang ingin dipantau
+        hanyaAngka('id_pelanggan-field', 'ID Pelanggan hanya boleh berisi angka!');
+        hanyaAngka('no_meteran_listrik-field', 'Nomor Meteran Listrik hanya boleh berisi angka!');
+        hanyaAngka('estimasi_biaya-field', 'Perkiraan biaya bayar PLN hanya boleh berisi angka!');
+        hanyaAngka('telp_penerima_informasi-field', 'Nomor Telepon hanya boleh berisi angka!');
+        hanyaAngka('telp_ketua_dkm-field', 'Perkiraan biaya bayar PLN hanya boleh berisi angka!');
+
+        telp_penerima_informasi - field
+    </script>
 
 </body>
 

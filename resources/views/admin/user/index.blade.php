@@ -37,7 +37,6 @@
                         <th>No</th>
                         <th>Nama</th>
                         <th>Email</th>
-                        <th>Jabatan</th>
                         <th>Status</th>
                         <th>
                             <i class="fas fa-cog"></i>
@@ -72,17 +71,7 @@
                                 @endif
                             </td>
 
-                            <td class="text-center">
-                                @if ($item->is_tugas == false)
-                                    <span class="badge badge-danger">
-                                        Belum Ditugaskan
-                                    </span>
-                                @else
-                                    <span class="badge badge-success">
-                                        Sudah Ditugaskan
-                                    </span>
-                                @endif
-                            </td>
+
 
                             <td class="text-center">
                                 <a href="#" class="btn btn-sm btn-warning">

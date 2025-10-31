@@ -36,6 +36,16 @@
                 <span>Data User</span>
             </a>
         </li>
+
+          <!-- Nav Item - Data pengajuan Token Listrik -->
+    <li class="nav-item {{ $menuAdminPengajuan ?? '' }}">
+        <a class="nav-link" href="{{ route('pengajuantoken.index') }}">
+
+            <i class="fas fa-university"></i>
+            <span> List Pengajuan</span>
+        </a>
+    </li>
+        
     @endif
 
     <!-- Nav Item - Data Masjid/Mushola (SEMUA BISA AKSES) -->
@@ -54,6 +64,9 @@
             <span>Testimonial</span>
         </a>
     </li>
+  
+     
+
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">

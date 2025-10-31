@@ -36,14 +36,15 @@ class MasjidController extends Controller
 }
 
 
-        public function create(){
-        $data = array(
-            'title' => 'Tambah Data Masjid',
-            'menuAdminMasjid' => 'active',
-           
-        );
-        return view('admin/masjid/create',$data);
-    }
+public function create()
+{
+    $data = [
+        'title' => 'Tambah Data Masjid',
+        'menuAdminMasjid' => 'active',
+    ];
+
+    return view('admin.masjid.create', $data);
+}
 
 
      
@@ -117,6 +118,7 @@ public function storePublic(Request $request)
     // Simpan data ke database dengan kolom tambahan otomatis
     \App\Models\Masjid::create([
         'id_pelanggan' => $request->id_pelanggan,
+        'no_meteran_listrik' => $request->no_meteran_listrik,
         'nama_pelanggan' => $request->nama_pelanggan,
         'jenis_bangunan' => $request->jenis_bangunan,
         'nama_masjid' => $request->nama_masjid,
@@ -292,6 +294,8 @@ public function show($id_pelanggan)
         'historiBayar' => $historiBayar,
         'adaRequestBelumRealisasi' => $adaRequestBelumRealisasi,
         'title' => 'Detail Masjid'
+
+        
     ]);
 }
 
@@ -300,14 +304,16 @@ public function requestToken(Request $request, $id_pelanggan)
     $masjid = Masjid::where('id_pelanggan', $id_pelanggan)->firstOrFail();
 
     $request->validate([
-        'jumlah_request_token' => 'required|numeric|min:1',
+       // 'jumlah_request_token' => 'required|numeric|min:1',
     ]);
 
     DB::table('histori_bayar')->insert([
         'id_pelanggan' => $masjid->id_pelanggan,
+        'no_meteran_listrik' => $masjid->no_meteran_listrik,
+        'nama_masjid' => $masjid->jenis_bangunan . ' ' . $masjid->nama_masjid,
         'tgl_request_token' => now(),
-        'jumlah_request_token' => $request->jumlah_request_token,
         'tgl_realisasi_token' => null,
+        'no_token_listrik' => null,
         'jumlah_realisasi_token' => null,
     ]);
 
@@ -320,17 +326,18 @@ public function realisasiToken(Request $request, $id_pelanggan)
     $masjid = Masjid::where('id_pelanggan', $id_pelanggan)->firstOrFail();
 
     $request->validate([
+        'no_token_listrik' => 'required|numeric|min:1',
         'jumlah_realisasi_token' => 'required|numeric|min:1',
     ]);
 
     // Ambil request terakhir yang belum direalisasi
-    $requestToken = DB::table('histori_bayar')
+    $histori = DB::table('histori_bayar')
         ->where('id_pelanggan', $masjid->id_pelanggan)
         ->whereNull('tgl_realisasi_token')
         ->orderBy('tgl_request_token', 'desc')
         ->first();
 
-    if (!$requestToken) {
+    if (!$histori) {
         return redirect()->back()->with('warning', 'Tidak ada request token yang perlu direalisasi.');
     }
 
@@ -340,12 +347,15 @@ public function realisasiToken(Request $request, $id_pelanggan)
         ->whereNull('tgl_realisasi_token')
         ->update([
             'tgl_realisasi_token' => now(),
+            'no_token_listrik' => $request->no_token_listrik,
             'jumlah_realisasi_token' => $request->jumlah_realisasi_token,
+             'status_realisasi' => 1, // otomatis ubah jadi 1
         ]);
 
     return redirect()->route('masjid.show', $id_pelanggan)
         ->with('success', 'Token berhasil direalisasikan!');
 }
+
 
 
 }

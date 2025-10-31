@@ -26,6 +26,7 @@ class Masjid extends Model
 
     protected $fillable = [
         'id_pelanggan',
+        'no_meteran_listrik',
         'nama_pelanggan',
         'jenis_bangunan',
         'nama_masjid',

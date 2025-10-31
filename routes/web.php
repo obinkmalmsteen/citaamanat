@@ -5,13 +5,13 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MasjidController;
+
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PengajuanController;
 use App\Http\Controllers\TestimonialController;
 
-Route::get('/', function () {
-    $testimonials = Testimonial::orderBy('created_at', 'desc')->take(6)->get();
-    return view('welcome', compact('testimonials'));
-})->name('welcome');
+// ✅ Halaman utama (welcome page) menampilkan data + testimonial
+Route::get('/', [DashboardController::class, 'welcome'])->name('welcome');
 
 // Login
 Route::get('login',[AuthController::class,'login'])->name('login');
@@ -39,6 +39,8 @@ Route::get('/get-villages/{district_id}', [MasjidController::class, 'getVillages
 
 
 
+
+
 // 🔒 ROUTE YANG PERLU LOGIN
 Route::middleware('checkLogin')->group(function(){
 
@@ -54,6 +56,8 @@ Route::middleware('checkLogin')->group(function(){
     Route::get('masjid',[MasjidController::class,'index'])->name('masjid');
     Route::get('masjid/create',[MasjidController::class,'create'])->name('masjidCreate');
     Route::post('masjid/store',[MasjidController::class,'store'])->name('masjidStore');
+
+   Route::get('masjid',[MasjidController::class,'index'])->name('masjid');
 
     Route::post('/masjid/approve/{id_pelanggan}', [MasjidController::class, 'approve'])->name('masjid.approve');
 
@@ -73,6 +77,9 @@ Route::post('/masjid/{id_pelanggan}/realisasi-token', [MasjidController::class, 
     Route::post('/testimonial/store', [TestimonialController::class, 'store'])->name('testimonial.store');
 
 
+ Route::get('/pengajuantoken', [PengajuanController::class, 'index'])->name('pengajuantoken.index');
+
+Route::post('/pengajuantoken/import', [PengajuanController::class, 'import'])->name('histori.import');
 
 });
 
