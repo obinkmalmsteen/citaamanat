@@ -449,7 +449,7 @@
                                     alt=""></div>
                             <div class="member-info">
                                 <h4>Erick Martadiredja</h4>
-                                <span>CEO</span>
+                                <span>Chief Executive Officer</span>
                                 <div class="social">
                                     <a href=""><i class="bi bi-twitter-x"></i></a>
                                     <a href=""><i class="bi bi-facebook"></i></a>
@@ -466,7 +466,7 @@
                                     alt=""></div>
                             <div class="member-info">
                                 <h4>Wiji Samiono</h4>
-                                <span>COO</span>
+                                <span>Chief Operating Officer</span>
                                 <div class="social">
                                     <a href=""><i class="bi bi-twitter-x"></i></a>
                                     <a href=""><i class="bi bi-facebook"></i></a>
@@ -483,7 +483,7 @@
                                     alt=""></div>
                             <div class="member-info">
                                 <h4>Robi</h4>
-                                <span>CTO</span>
+                                <span>Chief Technology Officer</span>
                                 <div class="social">
                                     <a href=""><i class="bi bi-twitter-x"></i></a>
                                     <a href=""><i class="bi bi-facebook"></i></a>

@@ -30,7 +30,7 @@ class AuthController extends Controller
         );
 
         if(Auth::attempt($data)){
-            return redirect()->route('dashboard')->with('success','Anda Berhasil Login');
+            return redirect()->route('masjid')->with('success','Anda Berhasil Login');
         }else{
             return redirect()->back()->with('error','Kode User atau Password Salah');
         }

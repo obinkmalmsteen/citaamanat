@@ -451,35 +451,41 @@ document.addEventListener("DOMContentLoaded", function() {
     const btn = document.getElementById("btnRequestToken");
     const tglRequestInput = document.getElementById("tgl_request_token");
 
-    if (!btn) return; // tombol nonaktif, keluar
+    if (!btn) return; // tombol tidak ditemukan
 
     btn.addEventListener("click", function(e) {
         const tglStr = tglRequestInput.value;
 
-        // Jika belum pernah request sama sekali
-        if (!tglStr) return; 
+        // Jika belum pernah request sama sekali, biarkan tombol berfungsi normal
+        if (!tglStr) return;
 
         const tglTerakhir = new Date(tglStr);
         const hariIni = new Date();
 
-        // Hitung selisih dalam hari
-        const selisihHari = Math.floor((hariIni - tglTerakhir) / (1000 * 60 * 60 * 24));
+        // Ambil bulan dan tahun dari masing-masing tanggal
+        const bulanTerakhir = tglTerakhir.getMonth();
+        const tahunTerakhir = tglTerakhir.getFullYear();
 
-        if (selisihHari < 30) {
-    e.preventDefault(); // hentikan event click default
-    e.stopImmediatePropagation(); // hentikan event lanjutannya
-    const sisa = 30 - selisihHari;
+        const bulanSekarang = hariIni.getMonth();
+        const tahunSekarang = hariIni.getFullYear();
 
-    Swal.fire({
-        icon: 'warning',
-        title: 'Tunggu Dulu!',
-        text: `Anda baru bisa melakukan permintaan lagi setelah ${sisa} hari dari tanggal terakhir anda melakukan permintaan token`,
-        confirmButtonText: 'OK'
-    });
+        // Cek apakah masih di bulan dan tahun yang sama
+        if (bulanSekarang === bulanTerakhir && tahunSekarang === tahunTerakhir) {
+            e.preventDefault();
+            e.stopImmediatePropagation();
 
-    return false; // pastikan event berhenti di sini
-}
+            Swal.fire({
+                icon: 'warning',
+                title: 'Mohon Maaf',
+                text: `" Berdasarkan catatan kami, Masjid Anda telah menggunakan kuota untuk bulan ini. Pengajuan selanjutnya dapat dilakukan mulai bulan depan. Atas Pengertiannya Kami ucapkan terima kasih "` ,
+                confirmButtonText: 'OK'
+            });
 
+            return false;
+        }
+
+        // Kalau sudah masuk bulan baru, biarkan tombol berfungsi normal
     });
 });
 </script>
+
