@@ -56,7 +56,7 @@
                     <li><a href="#services">Services</a></li>
                     <li><a href="#portfolio">Portfolio</a></li>
                     <li><a href="#team">Team</a></li>
-                    
+
                     <li><a href="#contact">Contact</a></li>
                 </ul>
                 <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -107,9 +107,12 @@
                             </div>
 
                             <h4><a href="" class="stretched-link">Terangi Beribu Masjid & Mushola</a></h4>
-                            <p>Sebuah gerakan mengembalikan kejayaan Masjid dan Mushola sebagai pusat dari kegiatan Agama, mendidik dan mencetak generasi berjiwa Islami dengan mewujudkan tempat yang nyaman dan asri serta penerangan yang baik dan cukup.
+                            <p>Sebuah gerakan mengembalikan kejayaan Masjid dan Mushola sebagai pusat dari kegiatan
+                                Agama, mendidik dan mencetak generasi berjiwa Islami dengan mewujudkan tempat yang
+                                nyaman dan asri serta penerangan yang baik dan cukup.
 
-Kami hadir menyalurkan dan memastikan setiap Masjid dan Mushola tersedia token listrik yang cukup, demi kelangsungan operasional masjid yang sehat.</p>
+                                Kami hadir menyalurkan dan memastikan setiap Masjid dan Mushola tersedia token listrik
+                                yang cukup, demi kelangsungan operasional masjid yang sehat.</p>
                         </div>
                     </div><!-- End Service Item -->
 
@@ -121,9 +124,13 @@ Kami hadir menyalurkan dan memastikan setiap Masjid dan Mushola tersedia token l
                             </div>
 
                             <h4><a href="" class="stretched-link">Perbaikan Beribu Masjid & Mushola</a></h4>
-                            <p>Memperbaiki Bangunan, memperkuat Iman dalam wujudkan mimpi bersama untuk mempercantik rumah-rumah Allah.
+                            <p>Memperbaiki Bangunan, memperkuat Iman dalam wujudkan mimpi bersama untuk mempercantik
+                                rumah-rumah Allah.
 
-Mengembalikan masjid sebagai pusat ibadah, kebudayaan dan jantung peradaban umat. Kini banyak  diantaranya yang telah lapuk dimakan usia dan perlu uluran tangan kita. Bersama dalam gerakan perbaikan beribu Masjid dan Mushola kita tidak hanya memperbaiki bangunan, tetapi merawat peradaban dan warisan Islami untuk generasi mendatang.</p>
+                                Mengembalikan masjid sebagai pusat ibadah, kebudayaan dan jantung peradaban umat. Kini
+                                banyak diantaranya yang telah lapuk dimakan usia dan perlu uluran tangan kita. Bersama
+                                dalam gerakan perbaikan beribu Masjid dan Mushola kita tidak hanya memperbaiki bangunan,
+                                tetapi merawat peradaban dan warisan Islami untuk generasi mendatang.</p>
                         </div>
                     </div><!-- End Service Item -->
 
@@ -135,7 +142,9 @@ Mengembalikan masjid sebagai pusat ibadah, kebudayaan dan jantung peradaban umat
                             </div>
 
                             <h4><a href="" class="stretched-link">Nyaah Ka Indung</a></h4>
-                            <p>Nyaah ka Indung sebuah program yang kami hadirkan sebagai bukti kepedulian, cinta dan kasih kita kepada orang tua. Mewujudkan masyarakat yang peduli dan berbakti kepada orang tua manula sebagai bentuk tanggung jawab sosial.</p>
+                            <p>Nyaah ka Indung sebuah program yang kami hadirkan sebagai bukti kepedulian, cinta dan
+                                kasih kita kepada orang tua. Mewujudkan masyarakat yang peduli dan berbakti kepada orang
+                                tua manula sebagai bentuk tanggung jawab sosial.</p>
                         </div>
                     </div><!-- End Service Item -->
 
@@ -147,11 +156,14 @@ Mengembalikan masjid sebagai pusat ibadah, kebudayaan dan jantung peradaban umat
                             </div>
 
                             <h4><a href="" class="stretched-link">Muadzin Cilik</a></h4>
-                            <p>Lebih dari sekadar panggilan. Ini adalah program kaderisasi berbasis apresiasi yang bertujuan mulia, yaitu menanamkan kecintaan pada ibadah sekaligus memastikan pelestarian seni dan syiar Adzan dari generasi ke generasi. Kami membina hari ini untuk Adzan yang berkelanjutan esok hari</p>
+                            <p>Lebih dari sekadar panggilan. Ini adalah program kaderisasi berbasis apresiasi yang
+                                bertujuan mulia, yaitu menanamkan kecintaan pada ibadah sekaligus memastikan pelestarian
+                                seni dan syiar Adzan dari generasi ke generasi. Kami membina hari ini untuk Adzan yang
+                                berkelanjutan esok hari</p>
                         </div>
                     </div><!-- End Service Item -->
 
-                      <div class="col-lg-4 d-flex" data-aos="fade-up" data-aos-delay="300">
+                    <div class="col-lg-4 d-flex" data-aos="fade-up" data-aos-delay="300">
                         <div class="service-item position-relative">
                             <div class="icon">
                                 <img src="{{ asset('enno/assets/img/guru_ngaji.png') }}" alt="Adzan Cilik"
@@ -159,7 +171,13 @@ Mengembalikan masjid sebagai pusat ibadah, kebudayaan dan jantung peradaban umat
                             </div>
 
                             <h4><a href="" class="stretched-link">Bantuan Honor Guru Ngaji</a></h4>
-                            <p>Dengan bangga meluncurkan Program Bantuan Honor Guru Ngaji , sebuah inisiatif nyata untuk memberikan apresiasi dan dukungan Finansial kepada para guru ngaji di wilayah kita. Mereka adalah Pejuang Huruf Hijaiyah yang telah mengabdikan diri dengan tulus, mengajarkan Al-Qur'an dan menanamkan akhlak mulia kepada anak-anak kita. Program ini bukan sekadar bantuan, melainkan sebuah Tunjangan Kehormatan sebagai wujud terima kasih kami, memastikan cahaya Al-Qur'an akan terus bersinar melalui pengabdian mereka yang mulia."</p>
+                            <p>Dengan bangga meluncurkan Program Bantuan Honor Guru Ngaji , sebuah inisiatif nyata untuk
+                                memberikan apresiasi dan dukungan Finansial kepada para guru ngaji di wilayah kita.
+                                Mereka adalah Pejuang Huruf Hijaiyah yang telah mengabdikan diri dengan tulus,
+                                mengajarkan Al-Qur'an dan menanamkan akhlak mulia kepada anak-anak kita. Program ini
+                                bukan sekadar bantuan, melainkan sebuah Tunjangan Kehormatan sebagai wujud terima kasih
+                                kami, memastikan cahaya Al-Qur'an akan terus bersinar melalui pengabdian mereka yang
+                                mulia."</p>
                         </div>
                     </div><!-- End Service Item -->
 
@@ -170,7 +188,7 @@ Mengembalikan masjid sebagai pusat ibadah, kebudayaan dan jantung peradaban umat
         </section><!-- /Featured Services Section -->
 
 
-        
+
         <!-- About Section -->
         <section id="about" class="about section">
 
@@ -185,7 +203,7 @@ Mengembalikan masjid sebagai pusat ibadah, kebudayaan dan jantung peradaban umat
             <div class="container">
 
                 <div class="row gy-4">
-                    
+
                     <div class="col-lg-6 content" data-aos="fade-up" data-aos-delay="200">
                         <h3>Misi Kami</h3>
 
@@ -218,20 +236,20 @@ Mengembalikan masjid sebagai pusat ibadah, kebudayaan dan jantung peradaban umat
 
                     <div class="col-lg-3 col-md-6">
                         <div class="stats-item text-center w-100 h-100">
-                            <span data-purecounter-start="0" data-purecounter-end="{{ $masjidBelumDisetujui }}" data-purecounter-duration="1"
-                                class="purecounter"></span>
+                            <span data-purecounter-start="0" data-purecounter-end="{{ $masjidBelumDisetujui }}"
+                                data-purecounter-duration="1" class="purecounter"></span>
                             <p>Masjid Dalam Proses Registrasi</p>
                         </div>
                     </div><!-- End Stats Item -->
 
 
-                   
+
 
 
                     <div class="col-lg-3 col-md-6">
                         <div class="stats-item text-center w-100 h-100">
-                            <span data-purecounter-start="0" data-purecounter-end="{{ $masjidDisetujui }}" data-purecounter-duration="1"
-                                class="purecounter"></span>
+                            <span data-purecounter-start="0" data-purecounter-end="{{ $masjidDisetujui }}"
+                                data-purecounter-duration="1" class="purecounter"></span>
                             <p>Masjid Sudah Teregistrasi</p>
                         </div>
                     </div><!-- End Stats Item -->
@@ -251,27 +269,27 @@ Mengembalikan masjid sebagai pusat ibadah, kebudayaan dan jantung peradaban umat
 
         </section><!-- /Stats Section -->
 
- 
 
-<!-- /video Section -->
 
-<!-- <section id="testimonials" class="py-5">
+        <!-- /video Section -->
+
+        <!-- <section id="testimonials" class="py-5">
     <div class="container">
         <h2 class="text-center mb-5" data-aos="fade-up">Testimoni Terbaru</h2>
 
         <div class="row gy-4 justify-content-center">
             @forelse ($testimonials as $item)
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="{{ $loop->iteration * 100 }}">
+<div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="{{ $loop->iteration * 100 }}">
                     <div class="service-item position-relative text-center shadow-sm p-3 rounded bg-light">
                         <div class="icon mb-3">
                             @if ($item->video)
-                                <video width="50%" height="auto" controls class="rounded shadow-sm">
+<video width="50%" height="auto" controls class="rounded shadow-sm">
                                     <source src="{{ asset('storage/' . $item->video) }}" type="video/mp4">
                                     Browser kamu tidak mendukung pemutar video.
                                 </video>
-                            @else
-                                <p class="text-muted small">Tidak ada video.</p>
-                            @endif
+@else
+<p class="text-muted small">Tidak ada video.</p>
+@endif
                         </div>
 
                         <h5 class="mt-3">{{ $item->id_pelanggan }}</h5>
@@ -279,11 +297,11 @@ Mengembalikan masjid sebagai pusat ibadah, kebudayaan dan jantung peradaban umat
                         <h2 class="text-muted small">{{ $item->keterangan }}</h2>
                     </div>
                 </div>
-            @empty
+        @empty
                 <div class="col-12 text-center">
                     <p class="text-muted">Belum ada testimonial yang tersedia.</p>
                 </div>
-            @endforelse
+@endforelse
         </div>
     </div>
 </section> -->
@@ -336,210 +354,239 @@ Mengembalikan masjid sebagai pusat ibadah, kebudayaan dan jantung peradaban umat
 
                         <div class="swiper-slide">
                             <div class="swiper-wrapper">
-    @foreach($testimonials as $testimonial)
-    <div class="swiper-slide">
-        <div class="testimonial-item">
-            <p>
-                <i class="bi bi-quote quote-icon-left"></i>
-                <span>{{ $testimonial->ucapan }}</span>
-                <i class="bi bi-quote quote-icon-right"></i>
-            </p>
-            <!-- Kalau ada gambar, bisa simpan nama file di DB -->
-            <img src="assets/img/testimonials/testimonials-{{ $loop->iteration }}.jpg" class="testimonial-img" alt="">
-            <h3>{{ $testimonial->keterangan }}</h3>
+                                @foreach ($testimonials as $testimonial)
+                                    <div class="swiper-slide">
+                                        <div class="testimonial-item">
+                                            <p>
+                                                <i class="bi bi-quote quote-icon-left"></i>
+                                                <span>{{ $testimonial->ucapan }}</span>
+                                                <i class="bi bi-quote quote-icon-right"></i>
+                                            </p>
+                                            <!-- Kalau ada gambar, bisa simpan nama file di DB -->
+                                            <img src="assets/img/testimonials/testimonials-{{ $loop->iteration }}.jpg"
+                                                class="testimonial-img" alt="">
+                                            <h3>{{ $testimonial->keterangan }}</h3>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+
+
+
+
+
+
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+
+                </div>
+
+        </section><!-- /Testimonials Section -->
+
+
+<!-- registrasi MASJID Section -->
+<section id="call-to-action" class="call-to-action section accent-background" style="background-color: #7daaed;">
+
+    <div class="container">
+        <div class="row text-center" data-aos="zoom-in" data-aos-delay="100">
+
+     
+
+            <!-- Kolom 1-->
+            <div class="col-md-4 mb-4">
+                <h3>Step 1</h3>
+                <br>
+                <h3>Registrasi Masjid</h3>
+                <p>Silakan registrasi masjid baru melalui tombol di bawah ini:</p>
+                <a class="cta-btn btn btn-primary" href="{{ route('registrasi') }}">Registrasi Masjid</a>
+            </div>
+
+                   <!-- Kolom 2 -->
+            <div class="col-md-4 mb-4">
+                <h3>Step 2</h3>
+                <br>
+                <h2>Daftar Masjid </h2>
+                <p>Melihat lebih lanjut List Masjid Yang Sudah Mendaftar dan Untuk Mengetahui Status Masjid Yang Anda Daftarkan</p>
+                <a href="{{ route('data.masjid.publik') }}" class="cta-btn btn btn-primary">Lihat Data</a>
+            </div>
+
+            <!-- Kolom 3 -->
+            <div class="col-md-4 mb-4">
+                <h3>Step 3</h3>
+                <br>
+                <h2>Login</h2>
+                <p>Jika Masjid Anda Sudah Teregistrasi, maka tim Kami akan memberikan akun  dan password untuk login.</p>
+                <a href="{{ route('login') }}" class="cta-btn btn btn-primary">Login</a>
+            </div>
+
         </div>
     </div>
-    @endforeach
-</div>
+
+</section>
+<!-- registrasi MASJID Section -->
 
 
-          
-
-           
-
-          </div>
-          <div class="swiper-pagination"></div>
-        </div>
-
-      </div>
-
-    </section><!-- /Testimonials Section -->
-
-  
- <!-- registrasi MASJID Section -->
-    <section id="call-to-action" class="call-to-action section accent-background"
-         style="background-color: #7daaed;">
 
 
-      <div class="container">
-        <div class="row justify-content-center" data-aos="zoom-in" data-aos-delay="100">
-          <div class="col-xl-10">
-            <div class="text-center">
-              <div style="text-align: center; margin-top: 50px;">
-    <h2>Registrasi Masjid</h2>
-    <p>Silakan registrasi masjid baru melalui tombol di bawah ini:</p>
+        <!-- Team Section -->
+        <section id="team" class="team section">
 
-   
-<a class="cta-btn" href="{{ route('registrasi') }}">Registrasi Masjid</a>
-</div>
-            </div>
-          </div>
-        </div>
-      </div>
+            <!-- Section Title -->
+            <div class="container section-title" data-aos="fade-up">
+                <span>Section Title</span>
+                <h2>Team</h2>
+                <p>-----------</p>
+            </div><!-- End Section Title -->
 
-    </section><!-- registrasi MASJID Section -->
+            <div class="container">
 
-   
+                <div class="row gy-5">
 
-    <!-- Team Section -->
-    <section id="team" class="team section">
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                        <div class="member">
+                            <div class="pic"><img src="assets/img/team/team-1.jpg" class="img-fluid"
+                                    alt=""></div>
+                            <div class="member-info">
+                                <h4>Erick Martadiredja</h4>
+                                <span>CEO</span>
+                                <div class="social">
+                                    <a href=""><i class="bi bi-twitter-x"></i></a>
+                                    <a href=""><i class="bi bi-facebook"></i></a>
+                                    <a href=""><i class="bi bi-instagram"></i></a>
+                                    <a href=""><i class="bi bi-linkedin"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- End Team Member -->
 
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <span>Section Title</span>
-        <h2>Team</h2>
-        <p>-----------</p>
-      </div><!-- End Section Title -->
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                        <div class="member">
+                            <div class="pic"><img src="assets/img/team/team-2.jpg" class="img-fluid"
+                                    alt=""></div>
+                            <div class="member-info">
+                                <h4>Wiji Samiono</h4>
+                                <span>COO</span>
+                                <div class="social">
+                                    <a href=""><i class="bi bi-twitter-x"></i></a>
+                                    <a href=""><i class="bi bi-facebook"></i></a>
+                                    <a href=""><i class="bi bi-instagram"></i></a>
+                                    <a href=""><i class="bi bi-linkedin"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- End Team Member -->
 
-      <div class="container">
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                        <div class="member">
+                            <div class="pic"><img src="assets/img/team/team-3.jpg" class="img-fluid"
+                                    alt=""></div>
+                            <div class="member-info">
+                                <h4>Robi</h4>
+                                <span>CTO</span>
+                                <div class="social">
+                                    <a href=""><i class="bi bi-twitter-x"></i></a>
+                                    <a href=""><i class="bi bi-facebook"></i></a>
+                                    <a href=""><i class="bi bi-instagram"></i></a>
+                                    <a href=""><i class="bi bi-linkedin"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- End Team Member -->
 
-        <div class="row gy-5">
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-            <div class="member">
-              <div class="pic"><img src="assets/img/team/team-1.jpg" class="img-fluid" alt=""></div>
-              <div class="member-info">
-                <h4>Erick Martadiredja</h4>
-                <span>CEO</span>
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter-x"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
                 </div>
-              </div>
+
             </div>
-          </div><!-- End Team Member -->
 
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-            <div class="member">
-              <div class="pic"><img src="assets/img/team/team-2.jpg" class="img-fluid" alt=""></div>
-              <div class="member-info">
-                <h4>Wiji Samiono</h4>
-                <span>COO</span>
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter-x"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
+        </section><!-- /Team Section -->
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact section">
+
+            <!-- Section Title -->
+            <div class="container section-title" data-aos="fade-up">
+                <span>Section Title</span>
+                <h2>Kontak</h2>
+                <p>Silahkan Kontak Kami</p>
+            </div><!-- End Section Title -->
+
+            <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+                <div class="row gy-4">
+
+                    <div class="col-lg-12">
+
+                        <div class="info-wrap">
+                            <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="200">
+                                <i class="bi bi-geo-alt flex-shrink-0"></i>
+                                <div>
+                                    <h3>Alamat</h3>
+                                    <p>Puri Indah Cihampelas, Blok E7, No.15, Citapen, Cihampelas, Kab Bandung Barat,
+                                        Jawa Barat, Indonesia</p>
+                                </div>
+                            </div><!-- End Info Item -->
+
+                            <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
+                                <i class="bi bi-telephone flex-shrink-0"></i>
+                                <div>
+                                    <h3>Kontak Kami</h3>
+                                    <h5>Erick Martadiredja</h5>
+
+                                    <p> </p>
+                                    <br>
+                                    <h5>Wiji Samiono</h5>
+                                    <p> </p>
+                                </div>
+                            </div><!-- End Info Item -->
+
+
+                        </div>
+                    </div>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d4441.356178896311!2d107.50141794366138!3d-6.9455762552019324!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sid!2sid!4v1761649431069!5m2!1sid!2sid"
+                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+
                 </div>
-              </div>
+
             </div>
-          </div><!-- End Team Member -->
 
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-            <div class="member">
-              <div class="pic"><img src="assets/img/team/team-3.jpg" class="img-fluid" alt=""></div>
-              <div class="member-info">
-                <h4>Robi</h4>
-                <span>CTO</span>
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter-x"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
-            </div>
-          </div><!-- End Team Member -->
+        </section><!-- /Contact Section -->
 
-        </div>
+    </main>
 
-      </div>
+    <footer id="footer" class="footer">
 
-    </section><!-- /Team Section -->
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact section">
 
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <span>Section Title</span>
-        <h2>Kontak</h2>
-        <p>Silahkan Kontak Kami</p>
-      </div><!-- End Section Title -->
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row gy-4">
-
-          <div class="col-lg-12">
-
-            <div class="info-wrap">
-              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="200">
-                <i class="bi bi-geo-alt flex-shrink-0"></i>
-                <div>
-                  <h3>Alamat</h3>
-                  <p>Puri Indah Cihampelas, Blok E7, No.15, Citapen, Cihampelas, Kab Bandung Barat, Jawa Barat, Indonesia</p>
-                </div>
-              </div><!-- End Info Item -->
-
-              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
-                <i class="bi bi-telephone flex-shrink-0"></i>
-                <div>
-                  <h3>Kontak Kami</h3>
-                  <h5>Erick Martadiredja</h5>
-                  
-                  <p> </p>
-                  <br>
-                  <h5>Wiji Samiono</h5>
-                  <p> </p>
-                </div>
-              </div><!-- End Info Item -->
-
-             
-            </div>
-          </div>
-<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d4441.356178896311!2d107.50141794366138!3d-6.9455762552019324!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sid!2sid!4v1761649431069!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-   
+        <div class="container copyright text-center mt-4">
+            <p>© <span>Copyright</span> <strong class="px-1 sitename">Cita Amanat Martadiredja</strong>
+                <span>V.1.00</span></p>
 
         </div>
 
-      </div>
+    </footer>
 
-    </section><!-- /Contact Section -->
+    <!-- Scroll Top -->
+    <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></a>
 
-  </main>
+    <!-- Preloader -->
+    <div id="preloader"></div>
 
-  <footer id="footer" class="footer">
+    <!-- Vendor JS Files -->
+    <script src="{{ asset('enno/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('enno/assets/vendor/php-email-form/validate.js') }}"></script>
+    <script src="{{ asset('enno/assets/vendor/aos/aos.js') }}"></script>
+    <script src="{{ asset('enno/assets/vendor/glightbox/js/glightbox.min.js') }}"></script>
+    <script src="{{ asset('enno/assets/vendor/purecounter/purecounter_vanilla.js') }}"></script>
+    <script src="{{ asset('enno/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js') }}"></script>
+    <script src="{{ asset('enno/assets/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
+    <script src="{{ asset('enno/assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
 
-   
-
-    <div class="container copyright text-center mt-4">
-      <p>© <span>Copyright</span> <strong class="px-1 sitename">Cita Amanat Martadiredja</strong> <span>V.1.00</span></p>
-      
-    </div>
-
-  </footer>
-
-  <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-  <!-- Preloader -->
-  <div id="preloader"></div>
-
-  <!-- Vendor JS Files -->
-  <script src="{{ asset('enno/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-  <script src="{{ asset('enno/assets/vendor/php-email-form/validate.js') }}"></script>
-  <script src="{{ asset('enno/assets/vendor/aos/aos.js') }}"></script>
-  <script src="{{ asset('enno/assets/vendor/glightbox/js/glightbox.min.js') }}"></script>
-  <script src="{{ asset('enno/assets/vendor/purecounter/purecounter_vanilla.js') }}"></script>
-  <script src="{{ asset('enno/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js') }}"></script>
-  <script src="{{ asset('enno/assets/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
-  <script src="{{ asset('enno/assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
-
-  <!-- Main JS File -->
-  <script src="{{ asset('enno/assets/js/main.js') }}"></script>
+    <!-- Main JS File -->
+    <script src="{{ asset('enno/assets/js/main.js') }}"></script>
 
 </body>
 

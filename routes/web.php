@@ -36,7 +36,7 @@ Route::get('/get-villages/{district_id}', [MasjidController::class, 'getVillages
 
 
 
-
+Route::get('masjid/data-masjid', [MasjidController::class, 'dataMasjidPublik'])->name('data.masjid.publik');
 
 
 

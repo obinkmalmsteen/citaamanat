@@ -82,6 +82,29 @@ public function create()
     return view('masjid.public_form');
 }
 
+
+public function dataMasjidPublik()
+{
+    $masjid = DB::table('masjids')
+    ->leftJoin('reg_regencies', 'masjids.kota_id', '=', 'reg_regencies.id')
+    ->select(
+        'masjids.*',
+        'reg_regencies.name as nama_kota'
+    )
+    ->orderBy('masjids.created_at', 'desc') // 🔹 Urutkan dari terbaru
+    ->get();
+
+    return view('masjid.data-masjid', [
+        'masjid' => $masjid,
+        'title' => 'Data Masjid Terdaftar',
+        compact('masjid')
+    ]);
+}
+
+
+
+
+
 public function storePublic(Request $request)
 {
       $validator = Validator::make($request->all(), [
@@ -283,18 +306,27 @@ public function show($id_pelanggan)
         ->orderBy('tgl_request_token', 'desc')
         ->get();
 
-    // Cek apakah ada request yang belum direalisasi
-    $adaRequestBelumRealisasi = DB::table('histori_bayar')
-        ->where('id_pelanggan', $masjid->id_pelanggan)
-        ->whereNull('tgl_realisasi_token')
-        ->exists();
+// Cek apakah ada request yang belum direalisasi
+$adaRequestBelumRealisasi = DB::table('histori_bayar')
+    ->where('id_pelanggan', $masjid->id_pelanggan)
+    ->whereNull('tgl_realisasi_token')
+    ->where('status_realisasi', 0)
+    ->exists();
 
-    return view('admin.masjid.show', [
-        'masjid' => $masjid,
-        'historiBayar' => $historiBayar,
-        'adaRequestBelumRealisasi' => $adaRequestBelumRealisasi,
-        'title' => 'Detail Masjid'
+// Ambil tanggal request terakhir (jika ada)
+$tglRequestTokenTerakhir = DB::table('histori_bayar')
+    ->where('id_pelanggan', $masjid->id_pelanggan)
+    ->max('tgl_request_token'); // Ambil tanggal paling akhir
 
+
+
+
+return view('admin.masjid.show', [
+    'masjid' => $masjid,
+    'historiBayar' => $historiBayar,
+    'adaRequestBelumRealisasi' => $adaRequestBelumRealisasi,
+    'tglRequestTokenTerakhir' => $tglRequestTokenTerakhir, // ⬅️ tambahkan baris ini
+    'title' => 'Detail Masjid',
         
     ]);
 }
@@ -311,6 +343,8 @@ public function requestToken(Request $request, $id_pelanggan)
         'id_pelanggan' => $masjid->id_pelanggan,
         'no_meteran_listrik' => $masjid->no_meteran_listrik,
         'nama_masjid' => $masjid->jenis_bangunan . ' ' . $masjid->nama_masjid,
+        'nama_kota' => $masjid->regency->name ?? '-',
+        'nama_provinsi' => $masjid->province->name ?? '-',
         'tgl_request_token' => now(),
         'tgl_realisasi_token' => null,
         'no_token_listrik' => null,

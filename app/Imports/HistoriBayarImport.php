@@ -17,6 +17,7 @@ class HistoriBayarImport implements ToModel, WithHeadingRow
             ->update([
                 'no_token_listrik' => $row['no_token_listrik'],
                 'jumlah_realisasi_token' => $row['jumlah_realisasi_token'],
+                'status_realisasi' => $row['status_realisasi'],
             ]);
     }
 }

@@ -34,7 +34,7 @@
         </div>
 
         <div class="form-group">
-            <label for="keterangan">Keterangan (opsional)</label>
+            <label for="keterangan">Diisi Oleh: contoh( Ketua DKM Al Abror, Ahmad Saeful)</label>
             <input type="text" name="keterangan" id="keterangan" class="form-control">
         </div>
 
