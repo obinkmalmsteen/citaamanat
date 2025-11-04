@@ -11,24 +11,9 @@
         overflow: hidden;
     }
 
-    /* Sidebar tetap di kiri */
-    .sidebar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        height: 100vh;
-        width: 250px;
-        z-index: 1000;
-    }
 
-    /* Geser isi agar tidak tertutup sidebar */
-    #content-wrapper {
-        margin-left: 250px;
-        flex-grow: 1;
-        display: flex;
-        flex-direction: column;
-        height: 100vh;
-    }
+
+
 
     /* Topbar tetap di atas */
     .topbar {
@@ -56,6 +41,7 @@
 
 <body id="page-top">
 
+
     <!-- Page Wrapper -->
     <div id="wrapper">
 
@@ -78,6 +64,22 @@
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
 
+<!-- Tombol Fullscreen di Navbar -->
+<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+    <!-- Tombol Sidebar Toggle (Hanya contoh, biarkan kode kamu yang asli di sini) -->
+    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+        <i class="fa fa-bars"></i>
+    </button>
+
+    <!-- Tambahkan tombol fullscreen di kanan atas -->
+    <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+            <button id="goFull" class="btn btn-sm btn-primary" title="Fullscreen">
+                <i class="fas fa-expand"></i>
+            </button>
+        </li>
+    </ul>
+</nav>
                         <!-- Nav Item - Search Dropdown (Visible Only XS) -->
                         <li class="nav-item dropdown no-arrow d-sm-none">
                             <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
@@ -218,3 +220,16 @@
     </div>
 
 @include('layouts/footer')
+
+<script>
+document.getElementById('goFull').addEventListener('click', () => {
+  const doc = document.documentElement;
+  if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+    if (doc.requestFullscreen) doc.requestFullscreen();
+    else if (doc.webkitRequestFullscreen) doc.webkitRequestFullscreen();
+  } else {
+    if (document.exitFullscreen) document.exitFullscreen();
+    else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+  }
+});
+</script>
