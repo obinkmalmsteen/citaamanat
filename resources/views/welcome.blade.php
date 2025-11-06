@@ -297,7 +297,7 @@
                         <h2 class="text-muted small">{{ $item->keterangan }}</h2>
                     </div>
                 </div>
-        @empty
+@empty
                 <div class="col-12 text-center">
                     <p class="text-muted">Belum ada testimonial yang tersedia.</p>
                 </div>
@@ -324,107 +324,115 @@
             <div class="container" data-aos="fade-up" data-aos-delay="100">
 
                 <div class="swiper init-swiper" data-speed="600" data-delay="5000"
-                    data-breakpoints="{ &quot;320&quot;: { &quot;slidesPerView&quot;: 1, &quot;spaceBetween&quot;: 40 }, &quot;1200&quot;: { &quot;slidesPerView&quot;: 3, &quot;spaceBetween&quot;: 40 } }">
-                    <script type="application/json" class="swiper-config">
-            {
-              "loop": true,
-              "speed": 600,
-              "autoplay": {
-                "delay": 5000
-              },
-              "slidesPerView": "auto",
-              "pagination": {
-                "el": ".swiper-pagination",
-                "type": "bullets",
-                "clickable": true
-              },
-              "breakpoints": {
-                "320": {
-                  "slidesPerView": 1,
-                  "spaceBetween": 40
-                },
-                "1200": {
-                  "slidesPerView": 3,
-                  "spaceBetween": 20
-                }
-              }
-            }
-          </script>
-                    <div class="swiper-wrapper">
+    data-breakpoints='{"320": {"slidesPerView": 1, "spaceBetween": 40}, "1200": {"slidesPerView": 3, "spaceBetween": 40}}'>
 
-                        <div class="swiper-slide">
-                            <div class="swiper-wrapper">
-                                @foreach ($testimonials as $testimonial)
-                                    <div class="swiper-slide">
-                                        <div class="testimonial-item">
-                                            <p>
-                                                <i class="bi bi-quote quote-icon-left"></i>
-                                                <span>{{ $testimonial->ucapan }}</span>
-                                                <i class="bi bi-quote quote-icon-right"></i>
-                                            </p>
-                                            <!-- Kalau ada gambar, bisa simpan nama file di DB -->
-                                            <img src="assets/img/testimonials/testimonials-{{ $loop->iteration }}.jpg"
-                                                class="testimonial-img" alt="">
-                                            <h3>{{ $testimonial->keterangan }}</h3>
-                                        </div>
-                                    </div>
-                                @endforeach
-                            </div>
+    <script type="application/json" class="swiper-config">
+    {
+      "loop": true,
+      "speed": 600,
+      "autoplay": {
+        "delay": 5000
+      },
+      "slidesPerView": "auto",
+      "pagination": {
+        "el": ".swiper-pagination",
+        "type": "bullets",
+        "clickable": true
+      },
+      "navigation": {
+        "nextEl": ".swiper-button-next",
+        "prevEl": ".swiper-button-prev"
+      },
+      "breakpoints": {
+        "320": {
+          "slidesPerView": 1,
+          "spaceBetween": 40
+        },
+        "1200": {
+          "slidesPerView": 3,
+          "spaceBetween": 20
+        }
+      }
+    }
+    </script>
+
+    <div class="swiper-wrapper">
+
+        @foreach ($testimonials as $testimonial)
+        <div class="swiper-slide">
+            <div class="testimonial-item">
+                <p>
+                    <i class="bi bi-quote quote-icon-left"></i>
+                    <span>{{ $testimonial->ucapan }}</span>
+                    <i class="bi bi-quote quote-icon-right"></i>
+                </p>
+
+                <img src="assets/img/testimonials/testimonials-{{ $loop->iteration }}.jpg"
+                    class="testimonial-img" alt="">
+
+                <h3>{{ $testimonial->keterangan }}</h3>
+            </div>
+        </div>
+        @endforeach
+
+    </div>
+
+    <!-- Pagination -->
+    <div class="swiper-pagination"></div>
+
+    <!-- Navigation Buttons -->
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+
+</div>
 
 
-
-
-
-
-                        </div>
-                        <div class="swiper-pagination"></div>
-                    </div>
-
-                </div>
 
         </section><!-- /Testimonials Section -->
 
 
-<!-- registrasi MASJID Section -->
-<section id="call-to-action" class="call-to-action section accent-background" style="background-color: #7daaed;">
+        <!-- registrasi MASJID Section -->
+        <section id="call-to-action" class="call-to-action section accent-background"
+            style="background-color: #7daaed;">
 
-    <div class="container">
-        <div class="row text-center" data-aos="zoom-in" data-aos-delay="100">
+            <div class="container">
+                <div class="row text-center" data-aos="zoom-in" data-aos-delay="100">
 
-     
 
-            <!-- Kolom 1-->
-            <div class="col-md-4 mb-4">
-                <h3>Step 1</h3>
-                <br>
-                <h3>Registrasi Masjid</h3>
-                <p>Silakan registrasi masjid baru melalui tombol di bawah ini:</p>
-                <a class="cta-btn btn btn-primary" href="{{ route('registrasi') }}">Registrasi Masjid</a>
+
+                    <!-- Kolom 1-->
+                    <div class="col-md-4 mb-4">
+                        <h3>Step 1</h3>
+                        <br>
+                        <h3>Registrasi Masjid</h3>
+                        <p>Silakan registrasi masjid baru melalui tombol di bawah ini:</p>
+                        <a class="cta-btn btn btn-primary" href="{{ route('registrasi') }}">Registrasi Masjid</a>
+                    </div>
+
+                    <!-- Kolom 2 -->
+                    <div class="col-md-4 mb-4">
+                        <h3>Step 2</h3>
+                        <br>
+                        <h2>List Masjid </h2>
+                        <p>Melihat lebih lanjut List Masjid Yang Sudah Mendaftar dan Untuk Mengetahui Status Masjid Yang
+                            Anda Daftarkan</p>
+                        <a href="{{ route('data.masjid.publik') }}" class="cta-btn btn btn-primary">Lihat Data</a>
+                    </div>
+
+                    <!-- Kolom 3 -->
+                    <div class="col-md-4 mb-4">
+                        <h3>Step 3</h3>
+                        <br>
+                        <h2>Login</h2>
+                        <p>Jika status registrasi telah diverifikasi, maka silahkan login ID dan password adalah Nomor ID Pelangan yang didaftarkan.</p>
+                        <a href="{{ route('login') }}" class="cta-btn btn btn-primary">Login</a>
+                    </div>
+
+                </div>
             </div>
 
-                   <!-- Kolom 2 -->
-            <div class="col-md-4 mb-4">
-                <h3>Step 2</h3>
-                <br>
-                <h2>Daftar Masjid </h2>
-                <p>Melihat lebih lanjut List Masjid Yang Sudah Mendaftar dan Untuk Mengetahui Status Masjid Yang Anda Daftarkan</p>
-                <a href="{{ route('data.masjid.publik') }}" class="cta-btn btn btn-primary">Lihat Data</a>
-            </div>
-
-            <!-- Kolom 3 -->
-            <div class="col-md-4 mb-4">
-                <h3>Step 3</h3>
-                <br>
-                <h2>Login</h2>
-                <p>Jika Masjid Anda Sudah Teregistrasi, maka tim Kami akan memberikan akun  dan password untuk login.</p>
-                <a href="{{ route('login') }}" class="cta-btn btn btn-primary">Login</a>
-            </div>
-
-        </div>
-    </div>
-
-</section>
-<!-- registrasi MASJID Section -->
+        </section>
+        <!-- registrasi MASJID Section -->
 
 
 
@@ -562,7 +570,8 @@
 
         <div class="container copyright text-center mt-4">
             <p>© <span>Copyright</span> <strong class="px-1 sitename">Cita Amanat Martadiredja</strong>
-                <span>V.1.00</span></p>
+                <span>V.1.00</span>
+            </p>
 
         </div>
 

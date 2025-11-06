@@ -66,6 +66,8 @@ Route::middleware('checkLogin')->group(function(){
     Route::post('/masjid/{id_pelanggan}/setujui', [MasjidController::class, 'setujui'])->name('masjid.setujui');
 
 Route::middleware(['auth'])->group(function () {
+
+  Route::get('/masjid/export', [MasjidController::class, 'export'])->name('masjid.export');
     Route::get('/masjid/{id_pelanggan}', [MasjidController::class, 'show'])->name('masjid.show');
     
     Route::post('/masjid/{id_pelanggan}/request-token', [MasjidController::class, 'requestToken'])->name('masjid.requestToken');
@@ -80,6 +82,20 @@ Route::post('/masjid/{id_pelanggan}/realisasi-token', [MasjidController::class, 
  Route::get('/pengajuantoken', [PengajuanController::class, 'index'])->name('pengajuantoken.index');
 
 Route::post('/pengajuantoken/import', [PengajuanController::class, 'import'])->name('histori.import');
+
+Route::get('/masjid/{id}/edit/{field}', [MasjidController::class, 'editField'])
+     ->name('masjid.editField');
+
+Route::put('/masjid/{id}/updateField', [MasjidController::class, 'updateField'])
+     ->name('masjid.updateField');
+
+Route::put('/masjid/{id}/verify', [MasjidController::class, 'verify'])
+    ->name('masjid.verify');
+
+
+
+
+
 
 });
 

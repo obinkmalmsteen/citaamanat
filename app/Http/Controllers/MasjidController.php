@@ -7,10 +7,15 @@ use App\Models\User;
 use App\Models\Masjid;
 
 use Illuminate\Http\Request;
+use App\Exports\MasjidExport;
 use Illuminate\Support\Facades\DB;
+use App\Exports\HistoriBayarExport;
 use Illuminate\Support\Facades\Hash;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth; // <-- tambahkan baris ini
+
+
 
 class MasjidController extends Controller
 {
@@ -390,7 +395,56 @@ public function realisasiToken(Request $request, $id_pelanggan)
         ->with('success', 'Token berhasil direalisasikan!');
 }
 
+public function editField($id, $field)
+{
+    $allowed = ['nama_masjid','nama_pelanggan','no_telp_ketua_dkm', /* dst */];
 
+    if (!in_array($field, $allowed)) {
+        abort(404);
+    }
+
+    $masjid = Masjid::findOrFail($id);
+    return view('admin.masjid.edit_field', ['masjid'=>$masjid, 'field'=>$field]);
+}
+
+
+public function updateField(Request $request, $id)
+{
+    $masjid = Masjid::findOrFail($id);
+
+    if ($masjid->is_verified) {
+        return back()->with('error', 'Data sudah diverifikasi admin dan tidak dapat diubah lagi.');
+    }
+
+    $field = array_keys($request->except('_token','_method'))[0];
+    $masjid->$field = $request->$field;
+    $masjid->save();
+
+    return redirect()->route('masjid.show', $id)->with('success', 'Data berhasil diperbarui!');
+}
+
+
+public function verify(Request $request, $id)
+{
+    $masjid = Masjid::findOrFail($id);
+
+    // ambil nilai langsung (0 atau 1)
+    $masjid->is_verified = $request->is_verified;
+    $masjid->save();
+
+    return back()->with('success', 'Status verifikasi diperbarui.');
+}
+public function export(Request $request)
+{
+    $status = $request->query('status'); // null / '1' / '0'
+
+    $filename = 'histori_bayar';
+    if ($status === '1') $filename .= '_teralisasi';
+    elseif ($status === '0') $filename .= '_belum_teralisasi';
+    $filename .= '_' . date('Ymd_His') . '.xlsx';
+
+    return Excel::download(new HistoriBayarExport($status), $filename);
+}
 
 
 

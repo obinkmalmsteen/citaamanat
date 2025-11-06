@@ -166,7 +166,7 @@
                         <div class="col-md-6 mb-4">
                             <label>Provinsi</label>
                             <select name="province_id" id="province_id-field" class="form-control"
-                                style="background-color:#fff8b3;">
+                                style="background-color:#fff8b3;" required>
                                 <option value="">-- Pilih Provinsi --</option>
                                 @foreach ($provinces as $prov)
                                     <option value="{{ $prov->id }}">{{ $prov->name }}</option>
@@ -178,7 +178,7 @@
                         <div class="col-md-6 mb-4">
                             <label>Kabupaten / Kota</label>
                             <select name="regency_id" id="regency_id-field" class="form-control"
-                                style="background-color:#fff8b3;">
+                                style="background-color:#fff8b3;" required>
                                 <option value="">-- Pilih Kabupaten/Kota --</option>
 
                             </select>
@@ -188,7 +188,7 @@
                         <div class="col-md-6 mb-4">
                             <label>Kecamatan</label>
                             <select name="district_id" id="district_id-field" class="form-control"
-                                style="background-color:#fff8b3;">
+                                style="background-color:#fff8b3;" required>
                                 <option value="">-- Pilih Kecamatan --</option>
                             </select>
                         </div>
@@ -197,7 +197,7 @@
                         <div class="col-md-6 mb-4">
                             <label>Kelurahan / Desa</label>
                             <select name="village_id" id="village_id-field" class="form-control"
-                                style="background-color:#fff8b3;">
+                                style="background-color:#fff8b3;" required>
                                 <option value="">-- Pilih Kelurahan/Desa --</option>
                             </select>
                         </div>
@@ -213,7 +213,7 @@
                             <div id="map" style="height: 400px; border-radius: 10px;"></div>
 
                             <input type="hidden" name="map_lokasi_masjid" id="map_lokasi_masjid"
-                                value="{{ old('map_lokasi_masjid') }}">
+                                value="{{ old('map_lokasi_masjid') }}" >
                         </div>
 
 
@@ -259,7 +259,7 @@
                         <div class="col-md-6 mb-4">
                             <label for="nama_pelanggan-field" class="pb-2">Nama Pelanggan PLN</label>
                             <input type="text" class="form-control" style="background-color: #fff8b3;"
-                                name="nama_pelanggan" id="nama_pelanggan-field" required="">
+                                name="nama_pelanggan" id="nama_pelanggan-field" required>
                         </div>
 
                         <!-- 4. Jenis Pembayaran Listrik -->

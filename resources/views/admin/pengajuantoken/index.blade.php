@@ -20,38 +20,33 @@
                 <!-- Bagian kiri (misal judul atau teks) -->
                 <h5 class="mb-0">Histori Pembayaran</h5>
             </div>
-            <select id="filterStatus" class="form-select form-select-sm" style="width: 200px;">
-                <option value="">Tampilkan Semua</option>
-                <option value="1">Terealisasi</option>
-                <option value="0">Belum Direalisasi</option>
-            </select>
+<select id="filterStatus" class="form-select form-select-sm" style="width: 200px;">
+    <option value="" {{ request('status') === null ? '' : '' }}>Tampilkan Semua</option>
+    <option value="1" {{ request('status') == '1' ? '' : '' }}>Terealisasi</option>
+    <option value="0" {{ request('status') == '0' || request('status') === null ? 'selected' : '' }}>Belum Direalisasi</option>
+</select>
+
 
             <div>
                 <!-- Bagian kanan (tombol export) -->
                 <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+<a href="#" id="btnExport" class="btn btn-sm btn-success">
+    <i class="fas fa-file-excel mr-2"></i> Download Data Ke Excel
+</a>
 
-                <a href="#" onclick="confirmAndExport('dataTable', 'histori_bayar')" class="btn btn-sm btn-success">
-                    <i class="fas fa-file-excel mr-2"></i> Excel
-                </a>
 
-                <script>
-                    function confirmAndExport(tableID, filename = '') {
-                        if (confirm(
-                                "Anda hendak mendownload isi tabel ini.\nApakah betul? Tekan 'OK' untuk melanjutkan atau 'Cancel' untuk membatalkan."
-                            )) {
-                            var wb = XLSX.utils.table_to_book(document.getElementById(tableID), {
-                                sheet: "Sheet1"
-                            });
-                            XLSX.writeFile(wb, (filename || 'data') + ".xlsx");
-                        } else {
-                            alert("Proses dibatalkan.");
-                        }
-                    }
-                </script>
+<script>
+    document.getElementById('btnExport').addEventListener('click', function(e) {
+        e.preventDefault();
+        var status = document.getElementById('filterStatus').value;
+        // encodeURIComponent jaga aman jika ada karakter aneh
+        var url = "{{ route('masjid.export') }}" + (status !== '' ? '?status=' + encodeURIComponent(status) : '');
+        window.location.href = url;
+    });
+</script>
+
+
             </div>
-
-
-
 
         </div>
 
@@ -154,21 +149,20 @@
 
 <script>
     $(document).ready(function() {
+
         // Inisialisasi DataTable
         const table = $('#dataTable').DataTable({
-            "pageLength": 10, // jumlah baris per halaman (opsional)
-            "ordering": false, // nonaktifkan sorting jika tidak perlu
+            "pageLength": 10,
+            "ordering": false,
         });
 
-        // Tambahkan event untuk filter
+        // Fungsi Filter
         $('#filterStatus').on('change', function() {
             const selected = $(this).val();
 
-            // Gunakan custom filter dari DataTables
             $.fn.dataTable.ext.search = [];
             $.fn.dataTable.ext.search.push(function(settings, data, dataIndex) {
-                const statusCell = $(table.row(dataIndex).node()).find(
-                'td:eq(7) i'); // kolom ke-8
+                const statusCell = $(table.row(dataIndex).node()).find('td:eq(7) i');
                 let statusValue = "";
 
                 if (statusCell.hasClass('fa-check')) statusValue = "1";
@@ -177,9 +171,13 @@
                 return selected === "" || statusValue === selected;
             });
 
-            // Refresh tabel dan pindah ke halaman pertama
             table.draw();
             table.page('first').draw('page');
         });
+
+        // ✅ SET DEFAULT FILTER KE 0 + langsung apply
+        $('#filterStatus').val('0').trigger('change');
     });
 </script>
+
+

@@ -5,30 +5,30 @@
         <div class="card">
             <div class="card-header bg-primary text-white">
                 Detail Pelanggan: {{ $masjid->nama_pelanggan }}
-               
-                
+
+
             </div>
 
-             <div><a href="{{ url()->previous() }}" class="btn btn-secondary mb-3">Kembali</a></div>
-             
+            <div><a href="{{ url()->previous() }}" class="btn btn-secondary mb-3">Kembali</a></div>
+
 
             <div class="card-body">
 
                 {{-- Tambahkan pembungkus untuk tombol --}}
-<div class="text-center my-4">
-    @if (!$adaRequestBelumRealisasi)
-        <button class="btn btn-success" id="btnRequestToken">
-            Permintaan Pengisian Token / Pembayaran Listrik
-        </button>
-    @else
-        <button class="btn btn-secondary" disabled>
-            Permintaan Anda Menunggu Direalisasi...
-        </button>
-    @endif
-</div>
+                <div class="text-center my-4">
+                    @if (!$adaRequestBelumRealisasi)
+                        <button class="btn btn-success" id="btnRequestToken">
+                            Permintaan Pengisian Token / Pembayaran Listrik
+                        </button>
+                    @else
+                        <button class="btn btn-secondary" disabled>
+                            Permintaan Anda Menunggu Direalisasi...
+                        </button>
+                    @endif
+                </div>
 
-<!-- Simpan tanggal request terakhir ke hidden input -->
-<input type="hidden" id="tgl_request_token" value="{{ $tglRequestTokenTerakhir }}">
+                <!-- Simpan tanggal request terakhir ke hidden input -->
+                <input type="hidden" id="tgl_request_token" value="{{ $tglRequestTokenTerakhir }}">
 
 
                 <!-- Form Request Token -->
@@ -38,7 +38,7 @@
                         @csrf
                         <div class="d-flex justify-content-end ">
                             <button type="button" class="btn btn-secondary me-2" id="btnBatalRequest">Batal</button>
-                            <button type="submit" class="btn btn-success">Kirim Request</button>
+                            <button type="submit" class="btn btn-success">Kirim Permintaan</button>
                         </div>
                     </form>
                 </div>
@@ -47,7 +47,7 @@
         </div>
     </div>
 
-<input type="hidden" id="tgl_request_token" value="{{ $tglRequestTokenTerakhir }}">
+    <input type="hidden" id="tgl_request_token" value="{{ $tglRequestTokenTerakhir }}">
 
 
     <div class="text-center my-4">
@@ -63,7 +63,7 @@
         @endif
 
     </div>
-   
+
 
     <!-- Form Realisasi Token -->
     <div id="formRealisasiToken" class="card p-3 mb-3" style="display: none;">
@@ -193,6 +193,7 @@
                 <tr>
                     <th>ID Pelanggan</th>
                     <td>{{ $masjid->id_pelanggan }}</td>
+
                 </tr>
                 <tr>
                     <th>Nomor Meteran Listrik</th>
@@ -201,6 +202,7 @@
                 <tr>
                     <th>Nama Pelanggan</th>
                     <td>{{ $masjid->nama_pelanggan }}</td>
+
                 </tr>
                 <tr>
                     <th>Jenis Bangunan</th>
@@ -209,6 +211,12 @@
                 <tr>
                     <th>Nama Masjid</th>
                     <td>{{ $masjid->nama_masjid }}</td>
+                    <td>
+                        <a href="{{ route('masjid.editField', ['id' => $masjid->id_pelanggan, 'field' => 'nama_masjid']) }}"
+                            class="btn btn-sm btn-primary">
+                            Edit
+                        </a>
+                    </td>
                 </tr>
                 <tr>
                     <th>Jenis Layanan</th>
@@ -310,10 +318,10 @@
                     </td>
                 </tr>
 
-                
+<td></td>
 
             </tbody>
-        </table> 
+        </table>
 
 
 
@@ -329,6 +337,9 @@
                 </span>
             @endif
         </div>
+
+
+
 
         <hr>
 
@@ -370,14 +381,6 @@
                 }
             });
         </script>
-
-
-
-
-
-
-
-
 
 
     </div>
@@ -447,45 +450,44 @@
     </script>
 @endif
 <script>
-document.addEventListener("DOMContentLoaded", function() {
-    const btn = document.getElementById("btnRequestToken");
-    const tglRequestInput = document.getElementById("tgl_request_token");
+    document.addEventListener("DOMContentLoaded", function() {
+        const btn = document.getElementById("btnRequestToken");
+        const tglRequestInput = document.getElementById("tgl_request_token");
 
-    if (!btn) return; // tombol tidak ditemukan
+        if (!btn) return; // tombol tidak ditemukan
 
-    btn.addEventListener("click", function(e) {
-        const tglStr = tglRequestInput.value;
+        btn.addEventListener("click", function(e) {
+            const tglStr = tglRequestInput.value;
 
-        // Jika belum pernah request sama sekali, biarkan tombol berfungsi normal
-        if (!tglStr) return;
+            // Jika belum pernah request sama sekali, biarkan tombol berfungsi normal
+            if (!tglStr) return;
 
-        const tglTerakhir = new Date(tglStr);
-        const hariIni = new Date();
+            const tglTerakhir = new Date(tglStr);
+            const hariIni = new Date();
 
-        // Ambil bulan dan tahun dari masing-masing tanggal
-        const bulanTerakhir = tglTerakhir.getMonth();
-        const tahunTerakhir = tglTerakhir.getFullYear();
+            // Ambil bulan dan tahun dari masing-masing tanggal
+            const bulanTerakhir = tglTerakhir.getMonth();
+            const tahunTerakhir = tglTerakhir.getFullYear();
 
-        const bulanSekarang = hariIni.getMonth();
-        const tahunSekarang = hariIni.getFullYear();
+            const bulanSekarang = hariIni.getMonth();
+            const tahunSekarang = hariIni.getFullYear();
 
-        // Cek apakah masih di bulan dan tahun yang sama
-        if (bulanSekarang === bulanTerakhir && tahunSekarang === tahunTerakhir) {
-            e.preventDefault();
-            e.stopImmediatePropagation();
+            // Cek apakah masih di bulan dan tahun yang sama
+            if (bulanSekarang === bulanTerakhir && tahunSekarang === tahunTerakhir) {
+                e.preventDefault();
+                e.stopImmediatePropagation();
 
-            Swal.fire({
-                icon: 'warning',
-                title: 'Mohon Maaf',
-                text: `" Berdasarkan catatan kami, Masjid Anda telah menggunakan kuota untuk bulan ini. Pengajuan selanjutnya dapat dilakukan mulai bulan depan. Atas Pengertiannya Kami ucapkan terima kasih "` ,
-                confirmButtonText: 'OK'
-            });
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Mohon Maaf',
+                    text: `" Berdasarkan catatan kami, Masjid Anda telah menggunakan kuota untuk bulan ini. Pengajuan selanjutnya dapat dilakukan mulai bulan depan. Atas Pengertiannya Kami ucapkan terima kasih "`,
+                    confirmButtonText: 'OK'
+                });
 
-            return false;
-        }
+                return false;
+            }
 
-        // Kalau sudah masuk bulan baru, biarkan tombol berfungsi normal
+            // Kalau sudah masuk bulan baru, biarkan tombol berfungsi normal
+        });
     });
-});
 </script>
-

@@ -76,6 +76,7 @@
                         <th>Penerima Informasi</th>
                         <th>Disetujui</th>
                         <th><i class="fas fa-cog"></i></th>
+                        <th><i class="fas fa-edit">EDIT</i></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -95,9 +96,15 @@
                                     <i class="fa fa-hourglass-half text-warning"></i>
                                 @endif
                             </td>
+                            
                             <td class="text-center">
                                 <a href="{{ route('masjid.show', $item->id_pelanggan) }}"
                                     class="btn btn-sm btn-info">Detail</a>
+                            </td>
+                             <td>
+                               
+                                    <i class="btn btn-sm btn-warning fa fa-edit"> Edit</i>
+                               
                             </td>
                         </tr>
                     @endforeach
