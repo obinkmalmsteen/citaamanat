@@ -613,11 +613,11 @@
                 <div class="testimonial-item">
                     <div class="d-flex mb-3">
                         <div class="position-relative">
-                            <img src="/mosque/img/testimonial-1.jpg" class="img-fluid" alt="">
-                            <div class="btn-md-square bg-primary rounded-circle position-absolute"
+                             <img src="/mosque/img/person.png" class="img-fluid" alt=""> 
+                            {{-- <div class="btn-md-square bg-primary rounded-circle position-absolute"
                                 style="top: 25px; left: -25px;">
                                 <i class="fa fa-quote-left text-dark"></i>
-                            </div>
+                            </div> --}}
                                <div class="ps-3 my-auto ">
                             <h5 class="mb-0">{{ $testimonial->nama_testi }}</h5>
                             <p class="m-0">{{ $testimonial->keterangan }}</p>
