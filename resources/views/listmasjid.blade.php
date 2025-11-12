@@ -141,7 +141,7 @@
                     <div class="testimonial-item h-100 p-3 border rounded shadow-sm">
                         <div class="d-flex mb-3">
                             <div class="position-relative">
-                                <img src="{{ asset('storage/foto_masjid/' . $item->foto_masjid) }}"
+                                <img src="{{ asset('public/storage/foto_masjid/' . $item->foto_masjid) }}"
                                      alt="Foto Masjid"
                                      height="250"
                                      class="rounded shadow w-100 object-fit-cover">
