@@ -6,7 +6,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Beranda</title>
     <meta name="description" content="">
-    <meta name="keywords" content="">
+    <meta name="keywords" content=""> 
 
     <!-- Favicons -->
     <link href="{{ asset('enno/assets/img/favicon.png') }}" rel="icon">
@@ -36,9 +36,13 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+
+
 </head>
 
 <body class="index-page">
+
+    
 
     <header id="header" class="header d-flex align-items-center sticky-top">
         <div class="container-fluid container-xl position-relative d-flex align-items-center">

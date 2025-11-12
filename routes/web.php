@@ -11,7 +11,15 @@ use App\Http\Controllers\PengajuanController;
 use App\Http\Controllers\TestimonialController;
 
 // ✅ Halaman utama (welcome page) menampilkan data + testimonial
-Route::get('/', [DashboardController::class, 'welcome'])->name('welcome');
+Route::get('/welcome-page', [DashboardController::class, 'welcome'])->name('welcome');
+Route::get('/', [DashboardController::class, 'landingpage'])->name('landingpage');
+Route::get('/tentang-kami', [DashboardController::class, 'tentangkami'])->name('tentangkami');
+Route::get('/aktifitas-kami', [DashboardController::class, 'aktifitas'])->name('aktifitas');
+Route::get('/acara-kami', [DashboardController::class, 'acara'])->name('acara');
+Route::get('/testimoni-kami', [DashboardController::class, 'testimoni'])->name('testimoni');
+Route::get('/kontak-kami', [DashboardController::class, 'kontakkami'])->name('kontakkami');
+Route::get('/list-masjid', [DashboardController::class, 'listmasjid'])->name('listmasjid');
+
 
 // Login
 Route::get('login',[AuthController::class,'login'])->name('login');
@@ -36,8 +44,22 @@ Route::get('/get-villages/{district_id}', [MasjidController::class, 'getVillages
 
 
 
+
 Route::get('masjid/data-masjid', [MasjidController::class, 'dataMasjidPublik'])->name('data.masjid.publik');
 
+use Illuminate\Support\Facades\Http;
+
+Route::post('/kirim-wa', function () {
+    $to = request('to');
+    $message = request('message');
+
+     $response = Http::withoutVerifying()->get('https://markeyza.web.id/send', [
+        'to' => $to,
+        'message' => $message
+    ]);
+
+    return $response->body();
+});
 
 
 

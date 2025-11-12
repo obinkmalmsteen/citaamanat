@@ -23,38 +23,78 @@
         opacity: 0;
         transition: opacity 0.3s ease;
     }
+
+           .table-container {
+            background: #f5f7fb;
+            border-radius: 16px;
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+            padding: 20px;
+            margin-top: 150px;
+        }
+                body {
+            background-color: #f5f7fb;
+            font-family: "Poppins", sans-serif;
+            color: #333;
+            font-size: 0.8rem; /* 🔹 perkecil seluruh teks jadi ~70% */
+              margin-top: 150px;
+        }
 </style>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const selectField = document.querySelector('select[name="sesuai_id_mesjid"]');
-        const alasanFieldDiv = document.querySelector('#alasan_id_berbeda-field').closest('.col-md-12');
 
-        function toggleAlasanField() {
-            if (selectField.value === 'Tidak') {
-                alasanFieldDiv.classList.remove('hidden');
-            } else {
-                alasanFieldDiv.classList.add('hidden');
-                document.querySelector('#alasan_id_berbeda-field').value = '';
-            }
-        }
 
-        // Jalankan saat pertama kali halaman dimuat
-        toggleAlasanField();
 
-        // Jalankan setiap kali pilihan berubah
-        selectField.addEventListener('change', toggleAlasanField);
-    });
-</script>
-<div class="mt-4 text-center">
-    <a href="{{ route('welcome') }}" class="btn btn-outline-dark" style="border-radius: 8px; padding: 8px 20px;">
+
+<!-- Topbar start -->
+<div class="container-fluid fixed-top bg-white bg-opacity-100">
+    <div class="container">
+        <nav class="navbar navbar-light navbar-expand-lg py-3">
+
+                <a href="{{ route('landingpage') }}" class="navbar-brand">
+                     
+                    <h2 class="mb-0"> <span><img src="/mosque/img/logoyayasan.png" class="img-fluid flex-shrink-10" alt="" width="100"> </span><span class="text-primary">Cita Amanat Martadiredja</span>   </h2>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarCollapse">
+                    <span class="fa fa-bars text-primary"></span>
+                </button>
+                <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
+                    <div class="navbar-nav ms-lg-auto mx-xl-auto">
+                        <a href="index.html" class="nav-item nav-link active">Beranda</a>
+                        <a href="about.html" class="nav-item nav-link">Tentang Kami</a>
+                        <a href="activity.html" class="nav-item nav-link">Aktifitas</a>
+                        <a href="event.html" class="nav-item nav-link">Acara</a>
+                        <a href="sermon.html" class="nav-item nav-link">Sermons</a>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                            <div class="dropdown-menu m-0 rounded-0">
+                                <a href="blog.html" class="dropdown-item">Latest Blog</a>
+                                <a href="team.html" class="dropdown-item">Our Team</a>
+                                <a href="testimonial.html" class="dropdown-item">Testimonial</a>
+                                <a href="404.html" class="dropdown-item">404 Page</a>
+                            </div>
+                        </div>
+                        <a href="contact.html" class="nav-item nav-link">Contact</a>
+                    </div>
+                    <a href="" class="btn btn-primary py-2 px-4 d-none d-xl-inline-block">Donate</a>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- Topbar End -->
+
+<body>
+
+
+
+
+
+    <div class="container">
+
+        <div class="mt-4 text-center">
+    <a href="{{ route('landingpage') }}" class="btn btn-outline-dark" style="border-radius: 8px; padding: 8px 20px;">
         ⬅ Kembali ke Halaman Utama
     </a>
 </div>
-
-
-<body>
-    <div class="container">
         <h2>Form Registrasi Masjid</h2>
         <form method="POST" enctype="multipart/form-data" action="{{ route('masjidPublicStore') }}">
             @csrf
@@ -68,7 +108,7 @@
                     <div class="row">
                         <div class="col-md-6 mb-4">
                             <label for="nama_ketua_dkm-field" class="pb-2">Nama Ketua DKM</label>
-                            <input type="text" class="form-control" style="background-color: #fff8b3;"
+                            <input type="text" class="form-control" style="background-color: #f9f7e7;"
                                 name="nama_ketua_dkm" id="nama_ketua_dkm-field" value="{{ old('nama_ketua_dkm') }}"
                                 required>
                         </div>
@@ -77,7 +117,7 @@
                         <div class="col-md-6 mb-4">
                             <label for="telp_ketua_dkm" class="form-label">Telepon/HP Ketua DKM</label>
                             <input type="text" name="telp_ketua_dkm" class="form-control" id="telp_ketua_dkm-field"
-                                style="background-color: #fff8b3;" value="{{ old('telp_ketua_dkm') }}" required>
+                                style="background-color: #f9f7e7;" value="{{ old('telp_ketua_dkm') }}" required>
 
                             @error('telp_ketua_dkm')
                                 <div class="text-danger mt-2">{{ $message }}</div>
@@ -94,7 +134,7 @@
                                 Nama Penerima Informasi
                                 <small class="text-muted d-block">(Bisa ketua DKM, marbot, atau yang ditunjuk)</small>
                             </label>
-                            <input type="text" class="form-control" style="background-color: #fff8b3;"
+                            <input type="text" class="form-control" style="background-color: #f9f7e7;"
                                 name="penerima_informasi" id="penerima_informasi-field"
                                 value="{{ old('penerima_informasi') }}" required>
                         </div>
@@ -105,7 +145,7 @@
                             <label for="telp_penerima_informasi" class="form-label">Nomor Telepon Penerima
                                 Informasi</label>
                             <input type="text" name="telp_penerima_informasi" class="form-control"
-                                id="telp_penerima_informasi-field" style="background-color: #fff8b3;"
+                                id="telp_penerima_informasi-field" style="background-color: #f9f7e7;"
                                 value="{{ old('telp_penerima_informasi') }}" required>
 
                             @error('telp_penerima_informasi')
@@ -133,7 +173,7 @@
                                 <span class="text-danger">*</span> Jenis Bangunan (Masjid atau Mushola):
                             </label>
                             <div
-                                style="background-color: #fff8b3; padding: 10px; border-radius: 5px; display: flex; gap: 30px; align-items: center;">
+                                style="background-color: #f9f7e7; padding: 10px; border-radius: 5px; display: flex; gap: 30px; align-items: center;">
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="jenis_bangunan" id="masjid"
                                         value="Masjid" {{ old('jenis_bangunan') == 'Masjid' ? 'checked' : '' }}>
@@ -152,12 +192,12 @@
 
                         <div class="col-md-6 mb-4">
                             <label for="nama_masjid-field" class="pb-2">Nama Masjid / Mushola</label>
-                            <input type="text" class="form-control" style="background-color: #fff8b3;"
+                            <input type="text" class="form-control" style="background-color: #f9f7e7;"
                                 name="nama_masjid" id="nama_masjid-field" value="{{ old('nama_masjid') }}" required>
                         </div>
                         <div class="col-md-12 mb-4">
                             <label for="alamat_lengkap-field" class="pb-2">Alamat Lengkap</label>
-                            <input type="text" class="form-control" style="background-color: #fff8b3;"
+                            <input type="text" class="form-control" style="background-color: #f9f7e7;"
                                 name="alamat_lengkap" id="alamat_lengkap-field"
                                 value="{{ old('penerima_informasi') }}" required>
                         </div>
@@ -166,7 +206,7 @@
                         <div class="col-md-6 mb-4">
                             <label>Provinsi</label>
                             <select name="province_id" id="province_id-field" class="form-control"
-                                style="background-color:#fff8b3;" required>
+                                style="background-color:#f9f7e7;" required>
                                 <option value="">-- Pilih Provinsi --</option>
                                 @foreach ($provinces as $prov)
                                     <option value="{{ $prov->id }}">{{ $prov->name }}</option>
@@ -178,7 +218,7 @@
                         <div class="col-md-6 mb-4">
                             <label>Kabupaten / Kota</label>
                             <select name="regency_id" id="regency_id-field" class="form-control"
-                                style="background-color:#fff8b3;" required>
+                                style="background-color:#f9f7e7;" required>
                                 <option value="">-- Pilih Kabupaten/Kota --</option>
 
                             </select>
@@ -188,7 +228,7 @@
                         <div class="col-md-6 mb-4">
                             <label>Kecamatan</label>
                             <select name="district_id" id="district_id-field" class="form-control"
-                                style="background-color:#fff8b3;" required>
+                                style="background-color:#f9f7e7;" required>
                                 <option value="">-- Pilih Kecamatan --</option>
                             </select>
                         </div>
@@ -197,7 +237,7 @@
                         <div class="col-md-6 mb-4">
                             <label>Kelurahan / Desa</label>
                             <select name="village_id" id="village_id-field" class="form-control"
-                                style="background-color:#fff8b3;" required>
+                                style="background-color:#f9f7e7;" required>
                                 <option value="">-- Pilih Kelurahan/Desa --</option>
                             </select>
                         </div>
@@ -205,7 +245,7 @@
                         <div class="col-md-6 mb-4">
                             <label for="foto_masjid" class="form-label">Foto Masjid</label>
                             <input type="file" name="foto_masjid" id="foto_masjid-field" class="form-control"
-                                style="background-color: #fff8b3;" accept="image/*">
+                                style="background-color: #f9f7e7;" accept="image/*">
                         </div>
 
                         <div class="mb-3">
@@ -234,7 +274,7 @@
                         <div class="col-md-6 mb-4">
                             <label for="id_pelanggan" class="form-label">ID Pelanggan</label>
                             <input type="text" name="id_pelanggan" class="form-control" id="id_pelanggan-field"
-                                style="background-color: #fff8b3;" value="{{ old('id_pelanggan') }}" required>
+                                style="background-color: #f9f7e7;" value="{{ old('id_pelanggan') }}" required>
 
                             @error('id_pelanggan')
                                 <div class="text-danger mt-2">{{ $message }}</div>
@@ -245,7 +285,7 @@
                         <div class="col-md-6 mb-4">
                             <label for="no_meteran_listrik" class="form-label">Nomor Meteran Listrik</label>
                             <input type="text" name="no_meteran_listrik" class="form-control"
-                                id="no_meteran_listrik-field" style="background-color: #fff8b3;"
+                                id="no_meteran_listrik-field" style="background-color: #f9f7e7;"
                                 value="{{ old('id_pelanggan') }}" required>
 
                             @error('no_meteran_listrik')
@@ -258,7 +298,7 @@
 
                         <div class="col-md-6 mb-4">
                             <label for="nama_pelanggan-field" class="pb-2">Nama Pelanggan PLN</label>
-                            <input type="text" class="form-control" style="background-color: #fff8b3;"
+                            <input type="text" class="form-control" style="background-color: #f9f7e7;"
                                 name="nama_pelanggan" id="nama_pelanggan-field" required>
                         </div>
 
@@ -268,7 +308,7 @@
                                 <span class="text-danger">*</span>Jenis Pembayaran Listrik :
                             </label>
                             <div
-                                style="background-color: #fff8b3; padding: 10px; border-radius: 5px; display: flex; gap: 30px; align-items: center;">
+                                style="background-color: #f9f7e7; padding: 10px; border-radius: 5px; display: flex; gap: 30px; align-items: center;">
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="jenis_layanan"
                                         id="prabayar" value="PraBayar"
@@ -294,7 +334,7 @@
                                 Masjid/Mushola?
                             </label>
                             <div
-                                style="background-color: #fff8b3; padding: 10px; border-radius: 5px; display: flex; gap: 30px; align-items: center;">
+                                style="background-color: #f9f7e7; padding: 10px; border-radius: 5px; display: flex; gap: 30px; align-items: center;">
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="sesuai_id_masjid"
                                         id="ya" value="Ya"
@@ -321,7 +361,7 @@
                             <label for="estimasi_biaya" class="form-label">Perkiraan Harga Bayar Setiap Bulan (Setiap
                                 Isi Token)</label>
                             <input type="text" name="estimasi_biaya" class="form-control"
-                                id="estimasi_biaya-field" style="background-color: #fff8b3;"
+                                id="estimasi_biaya-field" style="background-color: #f9f7e7;"
                                 value="{{ old('estimasi_biaya') }}" required>
 
                             @error('estimasi_biaya')
@@ -334,14 +374,14 @@
                             <label for="alasan_id_berbeda-field" class="pb-2">Apa alasan nya kenapa Id Pelanggan PLN
                                 memakai
                                 Nama yang berbeda dari nama Masjid atau Mushola nya</label>
-                            <input type="text" class="form-control" style="background-color: #fff8b3;"
+                            <input type="text" class="form-control" style="background-color: #f9f7e7;"
                                 name="alasan_id_berbeda" id="alasan_id_berbeda-field">
                         </div>
 
                         <div class="col-md-6 mb-4">
                             <label for="foto_meteran_listrik" class="form-label">Foto Meteran Listrik</label>
                             <input type="file" name="foto_meteran_listrik" id="foto_meteran_listrik-field"
-                                class="form-control" style="background-color: #fff8b3;" accept="image/*">
+                                class="form-control" style="background-color: #f9f7e7;" accept="image/*">
                         </div>
 
                     </div>
@@ -582,7 +622,27 @@
 
         telp_penerima_informasi - field
     </script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const selectField = document.querySelector('select[name="sesuai_id_mesjid"]');
+        const alasanFieldDiv = document.querySelector('#alasan_id_berbeda-field').closest('.col-md-12');
 
+        function toggleAlasanField() {
+            if (selectField.value === 'Tidak') {
+                alasanFieldDiv.classList.remove('hidden');
+            } else {
+                alasanFieldDiv.classList.add('hidden');
+                document.querySelector('#alasan_id_berbeda-field').value = '';
+            }
+        }
+
+        // Jalankan saat pertama kali halaman dimuat
+        toggleAlasanField();
+
+        // Jalankan setiap kali pilihan berubah
+        selectField.addEventListener('change', toggleAlasanField);
+    });
+</script>
 </body>
 
 </html>

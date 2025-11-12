@@ -27,7 +27,7 @@
             border-radius: 16px;
             box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
             padding: 20px;
-            margin-top: 50px;
+            margin-top: 150px;
         }
 
         .table-modern {
@@ -125,13 +125,57 @@
 </head>
 
 <body>
-<div class="mt-4 text-center">
-    <a href="{{ route('welcome') }}" class="btn btn-outline-dark" style="border-radius: 8px; padding: 8px 20px;">
+
+ <!-- Topbar start -->
+<div class="container-fluid fixed-top bg-white bg-opacity-100">
+    <div class="container">
+        <nav class="navbar navbar-light navbar-expand-lg py-3">
+
+                <a href="{{ route('landingpage') }}" class="navbar-brand">
+                     
+                    <h2 class="mb-0"> <span><img src="/mosque/img/logoyayasan.png" class="img-fluid flex-shrink-10" alt="" width="100"> </span><span class="text-primary">Cita Amanat Martadiredja</span>   </h2>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarCollapse">
+                    <span class="fa fa-bars text-primary"></span>
+                </button>
+                <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
+                    <div class="navbar-nav ms-lg-auto mx-xl-auto">
+                        <a href="index.html" class="nav-item nav-link active">Beranda</a>
+                        <a href="about.html" class="nav-item nav-link">Tentang Kami</a>
+                        <a href="activity.html" class="nav-item nav-link">Aktifitas</a>
+                        <a href="event.html" class="nav-item nav-link">Acara</a>
+                        <a href="sermon.html" class="nav-item nav-link">Sermons</a>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                            <div class="dropdown-menu m-0 rounded-0">
+                                <a href="blog.html" class="dropdown-item">Latest Blog</a>
+                                <a href="team.html" class="dropdown-item">Our Team</a>
+                                <a href="testimonial.html" class="dropdown-item">Testimonial</a>
+                                <a href="404.html" class="dropdown-item">404 Page</a>
+                            </div>
+                        </div>
+                        <a href="contact.html" class="nav-item nav-link">Contact</a>
+                    </div>
+                    {{-- <a href="" class="btn btn-primary py-2 px-4 d-none d-xl-inline-block">Donate</a> --}}
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- Topbar End -->
+
+
+ <!-- content Start -->
+
+
+    <div class="container ">
+        <div class="table-container">
+
+            <div class="mt-4 text-center">
+    <a href="{{ route('landingpage') }}" class="btn btn-outline-dark" style="border-radius: 8px; padding: 8px 20px;">
         ⬅ Kembali ke Halaman Utama
     </a>
 </div>
-    <div class="container">
-        <div class="table-container">
             <h2 class="mb-3">📋 Daftar Masjid </h2>
 
             <table class="table-modern">
@@ -182,6 +226,7 @@
             </table>
         </div>
     </div>
+ <!-- content End -->
 
 </body>
 </html>

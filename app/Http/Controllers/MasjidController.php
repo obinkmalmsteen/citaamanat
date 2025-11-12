@@ -11,6 +11,7 @@ use App\Exports\MasjidExport;
 use Illuminate\Support\Facades\DB;
 use App\Exports\HistoriBayarExport;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Http;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth; // <-- tambahkan baris ini
@@ -110,6 +111,7 @@ public function dataMasjidPublik()
 
 
 
+
 public function storePublic(Request $request)
 {
       $validator = Validator::make($request->all(), [
@@ -172,6 +174,19 @@ public function storePublic(Request $request)
 'disetujui' => 0,
     ]);
 
+
+      // ==========================================
+    // KIRIM PESAN WHATSAPP OTOMATIS
+    // ==========================================
+
+    if ($request->telp_penerima_informasi) {
+        $response = Http::withoutVerifying()->get('https://markeyza.web.id/send', [
+            'to' => $request->telp_penerima_informasi,
+            'message' => 
+            "Assalamualaikum.\n\nRegistrasi masjid *{$request->nama_masjid}* telah berhasil.\nData sedang diproses dan menunggu verifikasi.\n\nTerima kasih."
+        ]);
+        dd($response->body());
+    }
     // Redirect kembali dengan pesan sukses
     return redirect()->back()->with('success', 'Data masjid berhasil disimpan!');
 }
@@ -256,7 +271,14 @@ public function setujui($id)
     'jabatan' => 'user',
 ]);
 
+ if ($masjid->telp_penerima_informasi) {
+        $response = Http::withoutVerifying()->get('https://markeyza.web.id/send', [
+            'to' => $masjid->telp_penerima_informasi,
+            'message' => "Subjek: Persetujuan Program Terangi Beribu Masjid\n\nKepada Bapak/Ibu Pengurus, *{$masjid->nama_masjid}* Dengan mengucap Alhamdulillahi rabbil 'alamin, kami sampaikan kabar gembira bahwa masjid/mushala yang Bapak/Ibu daftarkan telah disetujui untuk mengikuti Program 'Terangi Beribu Masjid'.\n\nSebagai langkah selanjutnya, kami mohon kesediaan Bapak/Ibu untuk:\n\n1. Login ke dalam sistem kami.\n\n2. Melakukan permintaan (request) Token di dalam sistem.\n\n3. Bergabung ke dalam Grup WhatsApp resmi program ini melalui tautan berikut: [https://chat.whatsapp.com/KW0hoNt1YHI57i8aK6kdGK]\n\nKeikutsertaan dalam grup WA ini sangat penting agar Bapak/Ibu tidak tertinggal informasi dan update terbaru seputar program.\n\nTerima kasih atas kerjasamanya."
 
+        ]);
+        dd($response->body());
+    }
 
     return redirect()->back()->with('success', 'Masjid telah disetujui dan akun user dibuat.');
 }

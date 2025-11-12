@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\Masjid;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Testimonial; // ✅ Tambahkan ini
@@ -39,14 +41,64 @@ class DashboardController extends Controller
         return view('dashboard', $data);
     }
 
-    // ✅ untuk halaman welcome
-    public function welcome()
-    {
-        $data = $this->getDashboardData();
 
-        // tambahkan data testimonial
-        $data['testimonials'] = Testimonial::orderBy('created_at', 'desc')->take(6)->get();
+public function landingpage()
+{
+    // Hitung jumlah masjid yang disetujui (disetujui = 1)
+    $masjidDisetujui = Masjid::where('disetujui', 1)->count();
 
-        return view('welcome', $data);
-    }
+    // Ambil testimoni terbaru
+    $testimonials = Testimonial::latest()->take(5)->get();
+
+    // Kirim ke view
+    return view('landingpage', compact('masjidDisetujui', 'testimonials'));
+}
+
+
+public function tentangkami()
+{
+    // Hitung semua user terdaftar
+    $jumlahUser = User::count();
+
+    // Kirim hasilnya ke view
+    return view('tentangkami', compact('jumlahUser'));
+}
+
+
+public function aktifitas()
+{
+   
+    return view('aktifitas');
+}
+
+public function acara()
+{
+   
+    return view('acara');
+}
+
+public function testimoni()
+{
+    // Ambil testimoni terbaru
+    $testimonials = Testimonial::latest()->take(50)->get();
+
+    // Kirim ke view
+    return view('testimoni', compact( 'testimonials'));
+}
+
+public function kontakkami()
+{
+   
+    return view('kontakkami');
+}
+
+public function listmasjid()
+{
+    // Ambil testimoni terbaru
+    $listmasjid = Masjid::where('disetujui', 1)->take(50)->get();
+
+    // Kirim ke view
+    return view('listmasjid', compact( 'listmasjid'));
+}
+
 }

@@ -52,9 +52,9 @@
                                             @enderror"
                                                 placeholder="Masukan Kode Registrasi" name="nama" value="{{ old('nama') }}">
                                             @error('nama')
-                                                <small class="text-danger">
+                                                <medium class="text-danger">
                                                     {{ $message }}
-                                                </small>
+                                                </medium>
                                             @enderror
                                         </div>
                                         <div class="form-group">
@@ -64,9 +64,9 @@
                                             @enderror"
                                                 placeholder="Masukan Password"name="password">
                                             @error('password')
-                                                <small class="text-danger">
+                                                <medium class="text-danger">
                                                     {{ $message }}
-                                                </small>
+                                                </medium>
                                             @enderror
                                         </div>
 
@@ -78,10 +78,10 @@
                                     </form>
                                     <hr>
                                     <div class="text-center">
-                                        <small>
+                                        <medium>
                                             Kembali Ke Beranda
-                                            <a href="{{ route('welcome') }}">Klik Disini</a>
-                                        </small>
+                                            <a href="{{ route('landingpage') }}">Klik Disini</a>
+                                        </medium>
                                     </div>
 
                                 </div>
