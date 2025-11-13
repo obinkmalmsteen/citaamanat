@@ -153,15 +153,14 @@
                 <div class="row g-4 event-item wow fadeIn" data-wow-delay="0.3s">
                     <div class="col-3 col-lg-2 pe-0">
                         <div class="text-center border-bottom border-dark py-3 px-2">
-                            <h6>01 Jan 2045</h6>
+                            <h6>01 Feb 2025</h6>
                             <p class="mb-0">Wed 11:30</p>
                         </div>
                     </div>
                     <div class="col-9 col-lg-6 border-start border-dark pb-5">
                         <div class="ms-3">
-                            <h4 class="mb-3">Eid Ul Fitr</h4>
-                            <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut 
-                                aliquip ex ea commodo consequat. Duis aute irure dolor in </p>
+                            <h4 class="mb-3">Kunjungan Ke Pondok Pesantren</h4>
+                            <p class="mb-4">Kunjungan Ke pondok Pesantren di kab bandung Barat</p>
                             <a href="#" class="btn btn-primary px-3">Join Now</a>
                         </div>
                     </div>
@@ -174,15 +173,14 @@
                 <div class="row g-4 event-item wow fadeIn" data-wow-delay="0.5s">
                     <div class="col-3 col-lg-2 pe-0">
                         <div class="text-center border-bottom border-dark py-3 px-2">
-                            <h6>01 Jan 2045</h6>
+                            <h6>21 Feb 2025</h6>
                             <p class="mb-0">Thu 11:30</p>
                         </div>
                     </div>
                     <div class="col-9 col-lg-6 border-start border-dark pb-5">
                         <div class="ms-3">
-                            <h4 class="mb-3">Eud Ul Azha</h4>
-                            <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut 
-                                aliquip ex ea commodo consequat. Duis aute irure dolor in </p>
+                            <h4 class="mb-3">Acara Pertemuan dengan Penerima Manfaat Token Listrik</h4>
+                            <p class="mb-4"> Acara yang di selenggarakan secara inisiatif oleh para penerima manfaat dari token listrik yang diadakan di bandung</p>
                             <a href="#" class="btn btn-primary px-3">Join Now</a>
                         </div>
                     </div>

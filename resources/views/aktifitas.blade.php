@@ -133,7 +133,7 @@
         <div class="container py-5">
             <div class="text-center mx-auto mb-5 wow fadeIn" data-wow-delay="0.1s" style="max-width: 700px;">
                 <p class="fs-5 text-uppercase text-primary">Aktifitas Kami</p>
-                <h3 class="display-1">Berbagai Aktifitas Kami yang Sudah Terlaksana Dan Akan Menjadi Program Untuk
+                <h3 class="display-7">Berbagai Aktifitas Kami yang Sudah Terlaksana Dan Akan Menjadi Program Untuk
                     Selanjutnya</h3>
             </div>
             <div class="row g-4 justify-content-center">
@@ -143,20 +143,7 @@
                             <img src="/mosque/img/renov.png" class="img-fluid w-100" alt="">
                         </div>
                         <div class="p-4">
-                            <div class="sermon-meta d-flex justify-content-between pb-2">
-                                <div class="">
-                                    <small><i class="fa fa-calendar me-2 text-muted"></i><a href=""
-                                            class="text-muted me-2">13 Nov 2023</small></a>
-                                    <small><i class="fas fa-user me-2 text-muted"></i><a href=""
-                                            class="text-muted">Admin</small></a>
-                                </div>
-                                <div class="">
-                                    <a href="" class="me-1"><i class="fas fa-video text-muted"></i></a>
-                                    <a href="" class="me-1"><i class="fas fa-headphones text-muted"></i></a>
-                                    <a href="" class="me-1"><i class="fas fa-file-alt text-muted"></i></a>
-                                    <a href="" class=""><i class="fas fa-image text-muted"></i></a>
-                                </div>
-                            </div>
+                           
                             <a href="" class="d-inline-block h4 lh-sm mb-3">Perbaikan Beribu Masjid & Mushola</a>
                             <p class="mb-0">Memperbaiki Bangunan, memperkuat Iman dalam wujudkan mimpi bersama untuk mempercantik
                                 rumah-rumah Allah.
@@ -174,20 +161,7 @@
                             <img src="/mosque/img/santunan.png" class="img-fluid w-100" alt="">
                         </div>
                         <div class="p-4">
-                            <div class="sermon-meta d-flex justify-content-between pb-2">
-                                <div class="">
-                                    <small><i class="fa fa-calendar me-2 text-muted"></i><a href=""
-                                            class="text-muted me-2">13 Nov 2023</small></a>
-                                    <small><i class="fas fa-user me-2 text-muted"></i><a href=""
-                                            class="text-muted">Admin</small></a>
-                                </div>
-                                <div class="">
-                                    <a href="" class="me-1"><i class="fas fa-video text-muted"></i></a>
-                                    <a href="" class="me-1"><i class="fas fa-headphones text-muted"></i></a>
-                                    <a href="" class="me-1"><i class="fas fa-file-alt text-muted"></i></a>
-                                    <a href="" class=""><i class="fas fa-image text-muted"></i></a>
-                                </div>
-                            </div>
+                            
                             <a href="" class="d-inline-block h4 lh-sm mb-3">Nyaah Ka Indung</a>
                             <p class="mb-0">Nyaah ka Indung sebuah program yang kami hadirkan sebagai bukti
                                 kepedulian, cinta dan
@@ -202,20 +176,7 @@
                             <img src="/mosque/img/adzancilik.png" class="img-fluid w-100" alt="">
                         </div>
                         <div class="p-4">
-                            <div class="sermon-meta d-flex justify-content-between pb-2">
-                                <div class="">
-                                    <small><i class="fa fa-calendar me-2 text-muted"></i><a href=""
-                                            class="text-muted me-2">13 Nov 2023</small></a>
-                                    <small><i class="fas fa-user me-2 text-muted"></i><a href=""
-                                            class="text-muted">Admin</small></a>
-                                </div>
-                                <div class="">
-                                    <a href="" class="me-1"><i class="fas fa-video text-muted"></i></a>
-                                    <a href="" class="me-1"><i class="fas fa-headphones text-muted"></i></a>
-                                    <a href="" class="me-1"><i class="fas fa-file-alt text-muted"></i></a>
-                                    <a href="" class=""><i class="fas fa-image text-muted"></i></a>
-                                </div>
-                            </div>
+                         
                             <a href="" class="d-inline-block h4 lh-sm mb-3">Muadzin Cilik</a>
                             <p class="mb-0">Lebih dari sekadar panggilan. Ini adalah program kaderisasi berbasis
                                 apresiasi yang
@@ -232,20 +193,7 @@
                             <img src="/mosque/img/Gurungaji.jpg" class="img-fluid w-100" alt="">
                         </div>
                         <div class="p-4">
-                            <div class="sermon-meta d-flex justify-content-between pb-2">
-                                <div class="">
-                                    <small><i class="fa fa-calendar me-2 text-muted"></i><a href=""
-                                            class="text-muted me-2">13 Nov 2023</small></a>
-                                    <small><i class="fas fa-user me-2 text-muted"></i><a href=""
-                                            class="text-muted">Admin</small></a>
-                                </div>
-                                <div class="">
-                                    <a href="" class="me-1"><i class="fas fa-video text-muted"></i></a>
-                                    <a href="" class="me-1"><i class="fas fa-headphones text-muted"></i></a>
-                                    <a href="" class="me-1"><i class="fas fa-file-alt text-muted"></i></a>
-                                    <a href="" class=""><i class="fas fa-image text-muted"></i></a>
-                                </div>
-                            </div>
+                          
                             <a href="" class="d-inline-block h4 lh-sm mb-3">Bantuan Honor Guru Ngaji</a>
                             <p class="mb-0">Sebuah inisiatif nyata untuk
                                 memberikan apresiasi dan dukungan Finansial kepada para guru ngaji di wilayah kita.

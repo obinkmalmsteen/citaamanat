@@ -109,7 +109,7 @@
 
 
     <!-- Hero Start -->
-    <div class="container-fluid hero-header-testimoni">
+    <div class="container-fluid hero-header-listmasjid">
         <div class="container">
             <div class="row">
                 <div class="col-lg-7">
@@ -152,7 +152,8 @@
                         <div class="ps-1 my-auto text-center">
                             <h5 class="mb-1">{{ $item->nama_masjid }}</h5>
                             <p class="mb-0 small text-muted">{{ $item->alamat_lengkap }}</p>
-                            <p class="mb-0">{{ $item->nama_ketua_dkm }}</p>
+                            <p  class="mb-0"><b>{{ $item->nama_ketua_dkm }}</b></p>
+                            <p class="mb-0 small text-muted">{{ $item->regency->name ?? '-' }}</p>
                         </div>
                     </div>
                     
