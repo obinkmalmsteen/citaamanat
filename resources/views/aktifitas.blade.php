@@ -31,9 +31,10 @@
 
 
 
+
 </head>
 
-<body>
+<body class="index-page">
 
     <!-- Spinner Start -->
     <div id="spinner"
@@ -43,21 +44,20 @@
     <!-- Spinner End -->
 
 
-
     <!-- Topbar start -->
     <div class="container-fluid fixed-top">
         <div class="container topbar d-none d-lg-block">
             <div class="topbar-inner">
                 <div class="row gx-0">
                     <div class="col-lg-7 text-start">
-                        <div class="h-100 d-inline-flex align-items-center me-4">
+                        {{-- <div class="h-100 d-inline-flex align-items-center me-4">
                             <span class="fa fa-phone-alt me-2 text-dark"></span>
                             <a href="#" class="text-secondary"><span>+012 345 6789</span></a>
                         </div>
                         <div class="h-100 d-inline-flex align-items-center">
                             <span class="far fa-envelope me-2 text-dark"></span>
                             <a href="#" class="text-secondary"><span>info@example.com</span></a>
-                        </div>
+                        </div> --}}
                     </div>
                     <div class="col-lg-5 text-end">
                         <div class="h-100 d-inline-flex align-items-center">
@@ -74,18 +74,20 @@
             </div>
         </div>
         <div class="container">
-            <nav class="navbar navbar-light navbar-expand-lg py-3 navbar-transparent">
+            <nav class="navbar navbar-light navbar-expand-lg py-1 navbar-transparent">
 
                 <a href="{{ route('landingpage') }}" class="navbar-brand">
 
                     <h3 class="mb-0"> <span><img src="/mosque/img/logoyayasan.png" class="img-fluid flex-shrink-10"
-                                alt="" width="80"> </span><span class="text-primary">Cita Amanat
+                                alt="" width="50"> </span><span class="text-primary fs-5">Cita Amanat
                             Martadiredja</span> </h3>
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarCollapse">
-                    <span class="fa fa-bars text-primary"></span>
+                <button class="navbar-toggler p-0 no-btn-style" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarCollapse" aria-label="Toggle navigation">
+                    <span class="fa fa-bars text-primary fs-3"></span>
                 </button>
+
+
                 <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
                     <div class="navbar-nav ms-lg-auto mx-xl-auto">
                         <a href="{{ route('landingpage') }}" class="nav-item nav-link ">Beranda</a>
@@ -98,8 +100,10 @@
                             <div class="dropdown-menu m-0 rounded-0">
                                 <a href="{{ route('testimoni') }}" class="dropdown-item">Testimonial</a>
                                 <a href="{{ route('listmasjid') }}" class="dropdown-item">List Masjid</a>
+                                <a href="{{ route('registrasi') }}" class="dropdown-item">Registrasi</a>
                             </div>
                         </div>
+
                     </div>
                     {{-- <a href="" class="btn btn-primary py-2 px-4 d-none d-xl-inline-block">Donate</a> --}}
                 </div>
@@ -145,7 +149,7 @@
                         <div class="p-4">
                            
                             <a href="" class="d-inline-block h4 lh-sm mb-3">Perbaikan Beribu Masjid & Mushola</a>
-                            <p class="mb-0">Memperbaiki Bangunan, memperkuat Iman dalam wujudkan mimpi bersama untuk mempercantik
+                            <p class="mb-0" style="text-align: justify;">Memperbaiki Bangunan, memperkuat Iman dalam wujudkan mimpi bersama untuk mempercantik
                                 rumah-rumah Allah.
 
                                 Mengembalikan masjid sebagai pusat ibadah, kebudayaan dan jantung peradaban umat. Kini
@@ -163,7 +167,7 @@
                         <div class="p-4">
                             
                             <a href="" class="d-inline-block h4 lh-sm mb-3">Nyaah Ka Indung</a>
-                            <p class="mb-0">Nyaah ka Indung sebuah program yang kami hadirkan sebagai bukti
+                            <p class="mb-0" style="text-align: justify;">Nyaah ka Indung sebuah program yang kami hadirkan sebagai bukti
                                 kepedulian, cinta dan
                                 kasih kita kepada orang tua. Mewujudkan masyarakat yang peduli dan berbakti kepada orang
                                 tua manula sebagai bentuk tanggung jawab sosial.</p>
@@ -178,7 +182,7 @@
                         <div class="p-4">
                          
                             <a href="" class="d-inline-block h4 lh-sm mb-3">Muadzin Cilik</a>
-                            <p class="mb-0">Lebih dari sekadar panggilan. Ini adalah program kaderisasi berbasis
+                            <p class="mb-0" style="text-align: justify;">Lebih dari sekadar panggilan. Ini adalah program kaderisasi berbasis
                                 apresiasi yang
                                 bertujuan mulia, yaitu menanamkan kecintaan pada ibadah sekaligus memastikan pelestarian
                                 seni dan syiar Adzan dari generasi ke generasi. Kami membina hari ini untuk Adzan yang
@@ -195,7 +199,7 @@
                         <div class="p-4">
                           
                             <a href="" class="d-inline-block h4 lh-sm mb-3">Bantuan Honor Guru Ngaji</a>
-                            <p class="mb-0">Sebuah inisiatif nyata untuk
+                            <p class="mb-0" style="text-align: justify;">Sebuah inisiatif nyata untuk
                                 memberikan apresiasi dan dukungan Finansial kepada para guru ngaji di wilayah kita.
                                 Mereka adalah Pejuang Huruf Hijaiyah yang telah mengabdikan diri dengan tulus,
                                 mengajarkan Al-Qur'an dan menanamkan akhlak mulia kepada anak-anak kita. Program ini
@@ -236,12 +240,12 @@
                                 <a href="" class="text">Puri Indah Cihampelas, Blok E7, No.15, Citapen, Cihampelas, Kab Bandung Barat,
                                         Jawa Barat, Indonesia</a>
                             </div>
-                            <h6 class="text-light mt-4 mb-0">Phone </h6>
+                            {{-- <h6 class="text-light mt-4 mb-0">Phone </h6>
                             <div class="d-flex align-items-center py-4">
                                 <span class="flex-shrink-0 btn-square bg-primary me-3 p-4"><i
                                         class="fa fa-phone-alt text-dark"></i></span>
                                 <a href="" class="text-light">+012 345 67890</a>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>

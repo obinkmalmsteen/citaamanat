@@ -19,7 +19,7 @@ Route::get('/acara-kami', [DashboardController::class, 'acara'])->name('acara');
 Route::get('/testimoni-kami', [DashboardController::class, 'testimoni'])->name('testimoni');
 Route::get('/kontak-kami', [DashboardController::class, 'kontakkami'])->name('kontakkami');
 Route::get('/list-masjid', [DashboardController::class, 'listmasjid'])->name('listmasjid');
-
+Route::get('/form-registrasi', [DashboardController::class, 'formregistrasi'])->name('formregistrasi');
 
 // Login
 Route::get('login',[AuthController::class,'login'])->name('login');

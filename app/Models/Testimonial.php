@@ -9,6 +9,7 @@ class Testimonial extends Model
      protected $fillable = [
         'id_testimonial',
         'ucapan',
+        'photo',
         'video',
         'keterangan',
        

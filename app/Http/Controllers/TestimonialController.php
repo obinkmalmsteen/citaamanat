@@ -43,10 +43,16 @@ public function store(Request $request)
         $videoPath = $request->file('video')->store('videos', 'public');
     }
 
+$fotoPengelolaMasjid = null;
+if ($request->hasFile('foto_pengelola')) {
+    $path = $request->file('foto_pengelola')->store('foto_pengelola', 'public');
+    $fotoPengelolaMasjid = basename($path);
+}
     // Simpan data testimonial
     Testimonial::create([
         'id_testimonial' => $user->nama,
         'ucapan' => $request->ucapan,
+        'photo' => $fotoPengelolaMasjid,
         'video' => $videoPath,
         'keterangan' => $request->keterangan,
     ]);

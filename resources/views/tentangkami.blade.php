@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-      <meta charset="utf-8">
+<head>
+    <meta charset="utf-8">
     <title>Cita Amanat Martadiredja</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
@@ -31,11 +31,12 @@
 
 
 
-    </head>
 
-    <body>
+</head>
 
-     <!-- Spinner Start -->
+<body class="index-page">
+
+    <!-- Spinner Start -->
     <div id="spinner"
         class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
         <div class="spinner-grow text-primary" role="status"></div>
@@ -49,14 +50,14 @@
             <div class="topbar-inner">
                 <div class="row gx-0">
                     <div class="col-lg-7 text-start">
-                        <div class="h-100 d-inline-flex align-items-center me-4">
+                        {{-- <div class="h-100 d-inline-flex align-items-center me-4">
                             <span class="fa fa-phone-alt me-2 text-dark"></span>
                             <a href="#" class="text-secondary"><span>+012 345 6789</span></a>
                         </div>
                         <div class="h-100 d-inline-flex align-items-center">
                             <span class="far fa-envelope me-2 text-dark"></span>
                             <a href="#" class="text-secondary"><span>info@example.com</span></a>
-                        </div>
+                        </div> --}}
                     </div>
                     <div class="col-lg-5 text-end">
                         <div class="h-100 d-inline-flex align-items-center">
@@ -73,30 +74,36 @@
             </div>
         </div>
         <div class="container">
-            <nav class="navbar navbar-light navbar-expand-lg py-3 navbar-transparent">
+            <nav class="navbar navbar-light navbar-expand-lg py-1 navbar-transparent">
 
                 <a href="{{ route('landingpage') }}" class="navbar-brand">
-                     
-                    <h3 class="mb-0"> <span><img src="/mosque/img/logoyayasan.png" class="img-fluid flex-shrink-10" alt="" width="80"> </span><span class="text-primary">Cita Amanat Martadiredja</span>   </h3>
+
+                    <h3 class="mb-0"> <span><img src="/mosque/img/logoyayasan.png" class="img-fluid flex-shrink-10"
+                                alt="" width="50"> </span><span class="text-primary fs-5">Cita Amanat
+                            Martadiredja</span> </h3>
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarCollapse">
-                    <span class="fa fa-bars text-primary"></span>
+                <button class="navbar-toggler p-0 no-btn-style" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarCollapse" aria-label="Toggle navigation">
+                    <span class="fa fa-bars text-primary fs-3"></span>
                 </button>
+
+
                 <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
                     <div class="navbar-nav ms-lg-auto mx-xl-auto">
                         <a href="{{ route('landingpage') }}" class="nav-item nav-link ">Beranda</a>
                         <a href="{{ route('tentangkami') }}" class="nav-item nav-link active">Tentang Kami</a>
-                        <a href="{{ route('aktifitas') }}" class="nav-item nav-link ">Aktifitas</a>
-                        <a href="{{ route('acara') }}" class="nav-item nav-link ">Acara</a>
-                         <a href="{{ route('kontakkami') }}" class="nav-item nav-link">Kontak Kami</a>
+                        <a href="{{ route('aktifitas') }}" class="nav-item nav-link">Aktifitas</a>
+                        <a href="{{ route('acara') }}" class="nav-item nav-link">Acara</a>
+                        <a href="{{ route('kontakkami') }}" class="nav-item nav-link">Kontak Kami</a>
                         <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                                <div class="dropdown-menu m-0 rounded-0">
-                                    <a href="{{ route('testimoni') }}" class="dropdown-item">Testimonial</a>   
-                                    <a href="{{ route('listmasjid') }}" class="dropdown-item">List Masjid</a>
-                                </div>
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                            <div class="dropdown-menu m-0 rounded-0">
+                                <a href="{{ route('testimoni') }}" class="dropdown-item">Testimonial</a>
+                                <a href="{{ route('listmasjid') }}" class="dropdown-item">List Masjid</a>
+                                <a href="{{ route('registrasi') }}" class="dropdown-item">Registrasi</a>
                             </div>
+                        </div>
+
                     </div>
                     {{-- <a href="" class="btn btn-primary py-2 px-4 d-none d-xl-inline-block">Donate</a> --}}
                 </div>
@@ -147,7 +154,7 @@
                             <div class="col-md-12">
                                 <div class="ps-3 d-flex align-items-center justify-content-start">
                                     <span class="bg-primary btn-md-square rounded-circle mt-4 me-2"><i class="fa fa-eye text-dark fa-4x mb-5 pb-2"></i></span>
-                                    <div class="ms-4">
+                                    <div class="ms-4 justify">
                                         <h4>VISI</h4>
                                         <p>Menjadi Pelopor Gerakan Filantropi yang memberdayakan Umat untuk Kemandirian dan kemulian dalam
                     bingkai Keimanan dan Ketaqwaan.</p>
@@ -158,18 +165,18 @@
                             <div class="col-md-12">
                                 <div class="ps-3 d-flex align-items-center justify-content-start">
                                     <span class="bg-primary btn-md-square rounded-circle mt-4 me-2"><i class="fa fa-flag text-dark fa-4x mb-5 pb-2"></i></span>
-                                    <div class="ms-4">
+                                    <div class="ms-4 justify">
                                         <h4>MISI</h4>
                                         <ul>
-                            <li><i class=""></i> <span>Mewujudkan sarana ibadah yang layak, nyaman, dan
+                            <li><i class="justify"></i> <span>Mewujudkan sarana ibadah yang layak, nyaman, dan
                                     berkelanjutan melalui revitalisasi insfrastruktur Masjid dan Mushola.</span></li>
-                            <li><i class=""></i> <span>Meningkatkan kualitas kehidupan seorang Ibu dan
+                            <li><i class="justify"></i> <span>Meningkatkan kualitas kehidupan seorang Ibu dan
                                     keluarga sebagai pilar utama peradaban melalui program Santunan dalam bentuk uang
                                     dan sembako (Nyaah ka Indung).</span></li>
-                            <li><i class=""></i> <span>membangun jejaring kolaborasi (mitra) dengan
+                            <li><i class="justify"></i> <span>membangun jejaring kolaborasi (mitra) dengan
                                     berbagai pihak untuk memperluas dampak kebaikan dan keberlanjutan program.</span>
                             </li>
-                            <li><i class=""></i> <span>Menjaga Amanah dan menyalurkan donasi dengan
+                            <li><i class="justify"></i> <span>Menjaga Amanah dan menyalurkan donasi dengan
                                     prinsip transparansi, akuntabilitas dan profesional.</span></li>
                         </ul>
                                     </div>
@@ -312,12 +319,12 @@
                                 <a href="" class="text">Puri Indah Cihampelas, Blok E7, No.15, Citapen, Cihampelas, Kab Bandung Barat,
                                         Jawa Barat, Indonesia</a>
                             </div>
-                            <h6 class="text-light mt-4 mb-0">Phone </h6>
+                            {{-- <h6 class="text-light mt-4 mb-0">Phone </h6>
                             <div class="d-flex align-items-center py-4">
                                 <span class="flex-shrink-0 btn-square bg-primary me-3 p-4"><i
                                         class="fa fa-phone-alt text-dark"></i></span>
                                 <a href="" class="text-light">+012 345 67890</a>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>

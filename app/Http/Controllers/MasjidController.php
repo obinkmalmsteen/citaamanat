@@ -135,7 +135,7 @@ public function storePublic(Request $request)
     $fotoMasjidName = null;
     if ($request->hasFile('foto_masjid')) {
         $path = $request->file('foto_masjid')->store('foto_masjid', 'public'); // disimpan ke storage/app/public/foto_masjid
-        $fotoMasjidName = basename($path); // hanya ambil nama file
+        $fotoMasjidName = basename($path); // hanya ambil nama A
     }
 
     // Simpan file foto meteran (jika di-upload)
@@ -271,14 +271,14 @@ public function setujui($id)
     'jabatan' => 'user',
 ]);
 
- if ($masjid->telp_penerima_informasi) {
-        $response = Http::withoutVerifying()->get('https://markeyza.web.id/send', [
-            'to' => $masjid->telp_penerima_informasi,
-            'message' => "Subjek: Persetujuan Program Terangi Beribu Masjid\n\nKepada Bapak/Ibu Pengurus, *{$masjid->nama_masjid}* Dengan mengucap Alhamdulillahi rabbil 'alamin, kami sampaikan kabar gembira bahwa masjid/mushala yang Bapak/Ibu daftarkan telah disetujui untuk mengikuti Program 'Terangi Beribu Masjid'.\n\nSebagai langkah selanjutnya, kami mohon kesediaan Bapak/Ibu untuk:\n\n1. Login ke dalam sistem kami.\n\n2. Melakukan permintaan (request) Token di dalam sistem.\n\n3. Bergabung ke dalam Grup WhatsApp resmi program ini melalui tautan berikut: [https://chat.whatsapp.com/KW0hoNt1YHI57i8aK6kdGK]\n\nKeikutsertaan dalam grup WA ini sangat penting agar Bapak/Ibu tidak tertinggal informasi dan update terbaru seputar program.\n\nTerima kasih atas kerjasamanya."
+//  if ($masjid->telp_penerima_informasi) {
+//         $response = Http::withoutVerifying()->get('https://markeyza.web.id/send', [
+//             'to' => $masjid->telp_penerima_informasi,
+//             'message' => "Subjek: Persetujuan Program Terangi Beribu Masjid\n\nKepada Bapak/Ibu Pengurus, *{$masjid->nama_masjid}* Dengan mengucap Alhamdulillahi rabbil 'alamin, kami sampaikan kabar gembira bahwa masjid/mushala yang Bapak/Ibu daftarkan telah disetujui untuk mengikuti Program 'Terangi Beribu Masjid'.\n\nSebagai langkah selanjutnya, kami mohon kesediaan Bapak/Ibu untuk:\n\n1. Login ke dalam sistem kami.\n\n2. Melakukan permintaan (request) Token di dalam sistem.\n\n3. Bergabung ke dalam Grup WhatsApp resmi program ini melalui tautan berikut: [https://chat.whatsapp.com/KW0hoNt1YHI57i8aK6kdGK]\n\nKeikutsertaan dalam grup WA ini sangat penting agar Bapak/Ibu tidak tertinggal informasi dan update terbaru seputar program.\n\nTerima kasih atas kerjasamanya."
 
-        ]);
-        dd($response->body());
-    }
+//         ]);
+//         dd($response->body());
+//     }
 
     return redirect()->back()->with('success', 'Masjid telah disetujui dan akun user dibuat.');
 }

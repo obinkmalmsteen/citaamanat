@@ -47,11 +47,13 @@ public function landingpage()
     // Hitung jumlah masjid yang disetujui (disetujui = 1)
     $masjidDisetujui = Masjid::where('disetujui', 1)->count();
 
+    $masjidBelumDisetujui = DB::table('masjids')->where('disetujui', '!=', 1)->count();
+     $totalRequestRealisasi = DB::table('histori_bayar')->whereNotNull('tgl_realisasi_token')->count();
     // Ambil testimoni terbaru
     $testimonials = Testimonial::latest()->take(5)->get();
 
     // Kirim ke view
-    return view('landingpage', compact('masjidDisetujui', 'testimonials'));
+    return view('landingpage', compact('masjidDisetujui','masjidBelumDisetujui' ,'totalRequestRealisasi','testimonials'));
 }
 
 
@@ -80,7 +82,7 @@ public function acara()
 public function testimoni()
 {
     // Ambil testimoni terbaru
-    $testimonials = Testimonial::latest()->take(50)->get();
+    $testimonials = Testimonial::latest()->take(150)->get();
 
     // Kirim ke view
     return view('testimoni', compact( 'testimonials'));
@@ -95,10 +97,16 @@ public function kontakkami()
 public function listmasjid()
 {
     // Ambil testimoni terbaru
-    $listmasjid = Masjid::where('disetujui', 1)->take(50)->get();
+    $listmasjid = Masjid::where('disetujui', 1)->take(150)->get();
 
     // Kirim ke view
     return view('listmasjid', compact( 'listmasjid'));
+}
+
+public function formregistrasi()
+{
+   
+    return view('formregistrasi');
 }
 
 }

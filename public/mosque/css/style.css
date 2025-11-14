@@ -229,20 +229,36 @@ h4, h5, h6, .h4, .h5, .h6 {
 .hero-header .breadcrumb-item {
     font-size: 18px;
 }
+.justify {
+    text-align: justify;
+}
 
 
 /*** Hero Header ***/
 
+.no-btn-style {
+    border: none !important;
+    background: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+.no-btn-style:focus,
+.no-btn-style:active {
+    border: none !important;
+    background: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
 
 /*** tentang kami Start ***/
 
 .hero-header-tentangkami {
-    height: 80vh;
+    height: 40vh;
     background: url("../img/orang.png") center center no-repeat; /* obink beri jarak dari tepi bawah */
     background-size: cover;
     display: flex;
     align-items: flex-end; /* turun ke bawah */
-    padding-bottom: 2rem; /* beri jarak dari tepi bawah */
+    padding-bottom: 1rem; /* beri jarak dari tepi bawah */
 }
 .hero-header-tentangkami .hero-header-inner {
     padding: 3rem;
@@ -290,7 +306,7 @@ h4, h5, h6, .h4, .h5, .h6 {
 /*** acara END ***/
 /*** testimoni Start ***/
 
-.hero-header-testimoni {
+.hero-header-testimoni { 
     height: 80vh;
     background: url("../img/testimoni.jpg") center center no-repeat; /* obink beri jarak dari tepi bawah */
     background-size: cover;
@@ -343,6 +359,26 @@ h4, h5, h6, .h4, .h5, .h6 {
     border-radius: 10px; /* opsional, biar lebih lembut */
 }
 /*** list masjid END ***/
+
+
+/*** registrasi Start ***/
+
+.hero-header-registrasi {
+    height: 80vh;
+    background: url("../img/listrik.png") center center no-repeat; /* obink beri jarak dari tepi bawah */
+    background-size: cover;
+    display: flex;
+    align-items: flex-end; /* turun ke bawah */
+    padding-bottom: 2rem; /* beri jarak dari tepi bawah */
+}
+.hero-header-registrasi .hero-header-inner {
+    padding: 3rem;
+    max-height: 200px; /* batasi lebar */
+     max-width: 500px; /* batasi lebar */
+    background: rgba(255, 255, 255, .5);
+    border-radius: 10px; /* opsional, biar lebih lembut */
+}
+/*** registrasi END ***/
 
 .about a.btn.btn-light:hover {
     background: var(--bs-dark) !important;
