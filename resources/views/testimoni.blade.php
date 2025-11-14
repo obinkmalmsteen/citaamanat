@@ -149,7 +149,7 @@
                     {{-- FOTO --}}
                     <div class="col-md-4 text-center mb-3 mb-md-0">
                         @if ($testimonial->photo)
-                            <img src="{{ asset('storage/foto_pengelola/' . $testimonial->photo) }}"
+                            <img src="{{ asset('public/storage/foto_pengelola/' . $testimonial->photo) }}"
                                  alt="Foto Pengelola"
                                  class="img-fluid"
                                  style="width: 100%; max-width: 120px; height: 150px; object-fit: cover; border-radius: 12px;">

@@ -645,7 +645,7 @@
                         <div class="d-flex mb-3">
                             <div class="position-relative">
                                 @if ($testimonial->photo)
-                                    <img src="{{ asset('storage/foto_pengelola/' . $testimonial->photo) }}"
+                                    <img src="{{ asset('public/storage/foto_pengelola/' . $testimonial->photo) }}"
                                         class="img-fluid" alt="Foto Pengelola"
                                         style="width: 120px; height: 170px; object-fit: cover; border-radius: 12px;">
                                 @else
