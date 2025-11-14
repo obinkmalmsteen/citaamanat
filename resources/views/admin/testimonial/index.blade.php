@@ -21,7 +21,7 @@
         </div>
 
         <div class="d-flex justify-content-center">
-            <div id="formTambahTestimonial" class="collapse mt-3 w-50">
+            <div id="formTambahTestimonial" class="collapse mt-3 w-100">
                 <form action="{{ route('testimonial.store') }}" method="POST" enctype="multipart/form-data"
                     class="p-3 border rounded bg-white shadow">
                     <div class="mx-auto text-center mb-5 wow fadeIn" data-wow-delay="0.1s" style="max-width: 700px;">

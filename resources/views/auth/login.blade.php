@@ -50,7 +50,7 @@
                                                 class="form-control form-control-user @error('nama')
                                              is-invalid   
                                             @enderror"
-                                                placeholder="Masukan Kode Registrasi" name="nama" value="{{ old('nama') }}">
+                                                placeholder="Masukan ID Pelanggan" name="nama" value="{{ old('nama') }}">
                                             @error('nama')
                                                 <medium class="text-danger">
                                                     {{ $message }}

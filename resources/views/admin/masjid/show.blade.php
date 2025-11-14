@@ -11,6 +11,28 @@
 
             <div><a href="{{ url()->previous() }}" class="btn btn-secondary mb-3">Kembali</a></div>
 
+ {{-- panel aturan--}}
+
+<div class="row justify-content-center mt-4">
+        <div class="col-md-7">
+
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-body p-4">
+                    <h4>Aturan Pengisian Token</h4>
+                    <p>1. Kami melakukan pengisian token setiap <b>HARI MINGGU</b></p>
+                    <p>2. Anda bisa menyesuaikan permintaan token anda dengan menyesuaikan jadwal pengisian token dari kami</p>
+                    <p>3. Tidak ada pertanyaan "kenapa token saya belum di realisasikan?" karena kami melakukan pembelian token dikolektifkan Seminggu Sekali.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+ {{-- panel aturan--}}
+
+
+
+
+
 
             <div class="card-body">
 
@@ -90,101 +112,142 @@
 
     </div>
 
+<!-- Card histori Realisasi Token START-->
+    
+<h4 class="mt-4">Histori Permintaan & Realisasi Token</h4>
 
-    <div class="card-body">
-        <h4 class="mt-4">Histori Permintaan & Realisasi Token</h4>
+@if ($historiBayar->isEmpty())
+    <p class="text-muted">Belum ada histori permintaan token.</p>
+@else
 
-        @if ($historiBayar->isEmpty())
-            <p class="text-muted">Belum ada histori permintaan token.</p>
-        @else
-        <div class="table-responsive">
-            <table class="table table-bordered mt-3">
-                <thead class="table">
-                    <tr>
-                        <th>No</th>
-                        <th>Tanggal Request Token</th>
-                        <th>ID Pelanggan</th>
-                        <th>Nomor Meteran Listrik</th>
-                        <th>Nama Masjid</th>
-                        <th>Tanggal Realisasi Token</th>
-                        <th>Nomor Token Listrik</th>
-                        <th>Harga Token Listrik</th>
-                        <th>Status Realisasi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($historiBayar as $index => $bayar)
-                        <tr>
-                            <td>{{ $index + 1 }}</td>
-                            <td>
-                                @if ($bayar->tgl_request_token)
-                                    {{ \Carbon\Carbon::parse($bayar->tgl_request_token)->format('d/m/Y') }}
-                                @else
-                                    <span class="text-muted">-</span>
-                                @endif
-                            </td>
-                            <td>
-                                @if ($bayar->id_pelanggan)
-                                    {{ $bayar->id_pelanggan }}
-                                @else
-                                    <span class="text-muted">-</span>
-                                @endif
-                            </td>
-                            <td>
-                                @if ($bayar->no_meteran_listrik)
-                                    {{ $bayar->no_meteran_listrik }}
-                                @else
-                                    <span class="text-muted">-</span>
-                                @endif
-                            </td>
-                            <td>
-                                @if ($bayar->nama_masjid)
-                                    {{ $bayar->nama_masjid }}
-                                @else
-                                    <span class="text-muted">-</span>
-                                @endif
-                            </td>
-                            <td>
-                                @if ($bayar->tgl_realisasi_token)
-                                    {{ \Carbon\Carbon::parse($bayar->tgl_realisasi_token)->format('d/m/Y') }}
-                                @else
-                                    <span class="text-muted">Belum direalisasikan</span>
-                                @endif
-                            </td>
-                            <td>
-                                @if ($bayar->no_token_listrik)
-                                    {{ $bayar->no_token_listrik }}
-                                @else
-                                    <span class="text-muted">Belum direalisasikan</span>
-                                @endif
-                            </td>
-                            <td>
-                                @if ($bayar->jumlah_realisasi_token)
-                                    Rp {{ number_format($bayar->jumlah_realisasi_token, 0, ',', '.') }}
-                                @else
-                                    <span class="text-muted"></span>
-                                @endif
-                            </td>
-                            <td>
-                                @if ($bayar->status_realisasi == 1)
-                                    <i class="fa fa-check text-success"></i> {{-- Icon checklist --}}
-                                @else
-                                    <i class="fa fa-hourglass-half text-warning"></i> {{-- Icon waiting --}}
-                                @endif
-                            </td>
+<style>
+    .history-slider {
+        display: flex;
+        overflow-x: auto;
+        gap: 16px;
+        padding-bottom: 10px;
+        scroll-snap-type: x mandatory;
+    }
+    .history-card {
+        min-width: 320px;
+        flex: 0 0 auto;
+        scroll-snap-align: start;
+    }
+    .history-slider::-webkit-scrollbar {
+        height: 6px;
+    }
+    .history-slider::-webkit-scrollbar-thumb {
+        background: #0d6efd;
+        border-radius: 10px;
+    }
+</style>
 
-                            <td>
+<div class="history-slider mt-3">
 
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        @endif
+    @foreach ($historiBayar as $index => $bayar)
+        <div class="card shadow history-card rounded-4">
+
+@php
+    $nomor = $historiBayar->count() - $index;
+
+    // Tentukan warna bar
+    $warnaHeader = $bayar->status_realisasi == 1 
+                    ? 'bg-success'     // Hijau
+                    : 'bg-warning text-dark'; // Oranye
+@endphp
+
+<div class="card-header {{ $warnaHeader }} text-white rounded-top-4">
+    <strong>Permintaan Token Ke {{ $nomor }}</strong>
+</div>
+
+
+            <div class="card-body">
+
+                 <div class="mb-2">
+                    <small class="text-muted">"Silahkan isikan nomor ini jika sudah tersedia" </small><br>
+                    <small class="text-muted">Nomor Token </small><br>
+                    <span class="fw-semibold">
+                       <h3><b> {{ $bayar->no_token_listrik ?? '-' }}</b></h3>
+                    </span>
+                </div>
+
+<hr>
+                  <div class="mb-2">
+                    <small class="text-muted">Tanggal Realisasi</small><br>
+                    <span class="fw-semibold">
+                        @if ($bayar->tgl_realisasi_token)
+                            {{ \Carbon\Carbon::parse($bayar->tgl_realisasi_token)->format('d/m/Y') }}
+                        @else
+                            <span class="text-warning"><b>Belum direalisasikan</b></span>
+                        @endif
+                    </span>
+                </div>
+
+<div class="mb-2">
+                    <small class="text-muted">Tanggal Request</small><br>
+                    <span class="fw-semibold">
+                        @if ($bayar->tgl_request_token)
+                            {{ \Carbon\Carbon::parse($bayar->tgl_request_token)->format('d/m/Y') }}
+                        @else
+                            -
+                        @endif
+                    </span>
+                </div>
+
+              
+
+                <div class="mb-2">
+                    <small class="text-muted">ID Pelanggan</small><br>
+                    <span class="fw-semibold">{{ $bayar->id_pelanggan ?? '-' }}</span>
+                </div>
+
+                <div class="mb-2">
+                    <small class="text-muted">Nomor Meteran</small><br>
+                    <span class="fw-semibold">{{ $bayar->no_meteran_listrik ?? '-' }}</span>
+                </div>
+
+                <div class="mb-2">
+                    <small class="text-muted">Nama Masjid</small><br>
+                    <span class="fw-semibold">{{ $bayar->nama_masjid ?? '-' }}</span>
+                </div>
+
+                <hr>
+
+                
+
+               
+
+                <div class="mb-2">
+                    <small class="text-muted">Harga Token</small><br>
+                    <span class="fw-semibold">
+                        @if ($bayar->jumlah_realisasi_token)
+                            Rp {{ number_format($bayar->jumlah_realisasi_token, 0, ',', '.') }}
+                        @else
+                            -
+                        @endif
+                    </span>
+                </div>
+
+                <div class="mt-3">
+                    @if ($bayar->status_realisasi == 1)
+                        <span class="badge bg-success text-light px-3 py-2">
+                            <i class="fa fa-check text-light"></i> Selesai
+                        </span>
+                    @else
+                        <span class="badge bg-warning text-dark px-3 py-2">
+                            <i class="fa fa-hourglass-half text-dark"></i> Menunggu
+                        </span>
+                    @endif
+                </div>
+
+            </div>
         </div>
+    @endforeach
 
-    </div>
+</div>
+@endif
 
-
+<!-- Card histori Realisasi Token END-->
 
 
 

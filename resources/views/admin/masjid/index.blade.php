@@ -21,23 +21,39 @@
                         Tambah Data Masjid
                     </a>
                 </div>
+
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <div>
+                        <h5>Daftar Masjid</h5>
+                        <select id="filterStatus" class="form-select form-select-sm" style="width: 200px;">
+                            <option value="">Tampilkan Semua</option>
+                            <option value="1">Disetujui</option>
+                            <option value="0">Belum Disetujui</option>
+                        </select>
+                    </div>
+
+                </div>
                 <div>
                     <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
 
-                      <a href="#" onclick="confirmAndExport('dataTable', 'masjids')" class="btn btn-sm btn-success">
-            <i class="fas fa-file-excel mr-2"></i> Excel
-        </a>
+                    <a href="#" onclick="confirmAndExport('dataTable', 'masjids')" class="btn btn-sm btn-success">
+                        <i class="fas fa-file-excel mr-2"></i> Excel
+                    </a>
 
-        <script>
-            function confirmAndExport(tableID, filename = '') {
-                if (confirm("Anda hendak mendownload isi tabel ini.\nApakah betul? Tekan 'OK' untuk melanjutkan atau 'Cancel' untuk membatalkan.")) {
-                    var wb = XLSX.utils.table_to_book(document.getElementById(tableID), { sheet: "Sheet1" });
-                    XLSX.writeFile(wb, (filename || 'data') + ".xlsx");
-                } else {
-                    alert("Proses dibatalkan.");
-                }
-            }
-        </script>
+                    <script>
+                        function confirmAndExport(tableID, filename = '') {
+                            if (confirm(
+                                    "Anda hendak mendownload isi tabel ini.\nApakah betul? Tekan 'OK' untuk melanjutkan atau 'Cancel' untuk membatalkan."
+                                    )) {
+                                var wb = XLSX.utils.table_to_book(document.getElementById(tableID), {
+                                    sheet: "Sheet1"
+                                });
+                                XLSX.writeFile(wb, (filename || 'data') + ".xlsx");
+                            } else {
+                                alert("Proses dibatalkan.");
+                            }
+                        }
+                    </script>
                     <a href="#" class="btn btn-sm btn-danger">
                         <i class="fas fa-file-pdf mr-2"></i>
                         PDF
@@ -48,69 +64,141 @@
         </div>
 
 
+@if (Auth::check() && Auth::user()->jabatan != 'User')
 
 
 
-        <div class="d-flex justify-content-between align-items-center mb-3">
-            <div>
-<h5>Daftar Masjid</h5>
-             <select id="filterStatus" class="form-select form-select-sm" style="width: 200px;">
-                <option value="">Tampilkan Semua</option>
-                <option value="1">Disetujui</option>
-                <option value="0">Belum Disetujui</option>
-            </select>
-            </div>
-            
-        </div>
+    {{-- =======================
+        TABEL UNTUK ADMIN
+    ======================== --}}
+    <div class="table-responsive">
+        <table class="table table-bordered" id="dataTable" width="100%">
+            <thead class="bg-primary text-white">
+                <tr>
+                    <th>No</th>
+                    <th>ID Pelanggan</th>
+                    <th>Nama Pelanggan</th>
+                    <th>Nama Masjid</th>
+                    <th>Ketua DKM</th>
+                    <th>No HP Ketua DKM</th>
+                    <th>Penerima Informasi</th>
+                    <th>Disetujui</th>
+                    <th>Aksi</th>
+                    <th>Edit</th>
+                </tr>
+            </thead>
 
-        <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <thead class="bg-primary text-white">
+            <tbody>
+                @foreach ($masjid as $item)
                     <tr>
-                        <th>No</th>
-                        <th>ID Pelanggan</th>
-                        <th>Nama Pelanggan</th>
-                        <th>Nama Masjid</th>
-                        <th>Ketua DKM</th>
-                        <th>No HP Ketua DKM</th>
-                        <th>Penerima Informasi</th>
-                        <th>Disetujui</th>
-                        <th><i class="fas fa-cog"></i></th>
-                        <th><i class="fas fa-edit">EDIT</i></th>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $item->id_pelanggan }}</td>
+                        <td>{{ $item->nama_pelanggan }}</td>
+                        <td>{{ $item->nama_masjid }}</td>
+                        <td>{{ $item->nama_ketua_dkm }}</td>
+                        <td>{{ $item->telp_ketua_dkm }}</td>
+                        <td>{{ $item->penerima_informasi }}</td>
+                        <td>
+                            @if ($item->disetujui)
+                                <i class="fa fa-check text-success"></i>
+                            @else
+                                <i class="fa fa-hourglass-half text-warning"></i>
+                            @endif
+                        </td>
+                        <td>
+                            <a href="{{ route('masjid.show', $item->id_pelanggan) }}"
+                               class="btn btn-info btn-sm">Detail</a>
+                        </td>
+                        <td>
+                            <a class="btn btn-warning btn-sm"><i class="fa fa-edit"></i> Edit</a>
+                        </td>
                     </tr>
-                </thead>
-                <tbody>
-                    @foreach ($masjid as $item)
-                        <tr data-disetujui="{{ $item->disetujui }}">
-                            <td class="text-center">{{ $loop->iteration }}</td>
-                            <td>{{ $item->id_pelanggan }}</td>
-                            <td>{{ $item->nama_pelanggan }}</td>
-                            <td>{{ $item->nama_masjid }}</td>
-                            <td>{{ $item->nama_ketua_dkm }}</td>
-                            <td>{{ $item->telp_ketua_dkm }}</td>
-                            <td>{{ $item->penerima_informasi }}</td>
-                            <td>
-                                @if ($item->disetujui == 1)
-                                    <i class="fa fa-check text-success"></i>
-                                @else
-                                    <i class="fa fa-hourglass-half text-warning"></i>
-                                @endif
-                            </td>
-                            
-                            <td class="text-center">
-                                <a href="{{ route('masjid.show', $item->id_pelanggan) }}"
-                                    class="btn btn-sm btn-info">Detail</a>
-                            </td>
-                             <td>
-                               
-                                    <i class="btn btn-sm btn-warning fa fa-edit"> Edit</i>
-                               
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody> 
-            </table>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+
+@else
+
+    {{-- =======================
+        CARD ELEGAN UNTUK USER
+    ======================== --}}
+    @php $item = $masjid->first(); @endphp
+
+    <div class="row justify-content-center mt-4">
+        <div class="col-md-7">
+
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-header bg-primary text-white py-3 rounded-top-4">
+                    <h4 class="m-0">
+                        <i class="fa fa-mosque me-2"></i> Profil Singkat Masjid Anda
+                    </h4>
+                </div>
+
+                <div class="card-body p-4">
+
+                    <div class="mb-3">
+                        <label class="fw-bold text-secondary">ID Pelanggan</label>
+                        <div class="fs-5"><b>{{ $item->id_pelanggan }}</b></div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="fw-bold text-secondary">Nama Pelanggan</label>
+                        <div class="fs-5"><b>{{ $item->nama_pelanggan }}</b></div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="fw-bold text-secondary">Nama Masjid</label>
+                        <div class="fs-4 fw-bold text-dark"><b>{{ $item->nama_masjid }}</b></div>
+                    </div>
+
+                    <hr>
+
+                    <h5 class="text-muted mb-3">Informasi DKM</h5>
+
+                    <div class="mb-2">
+                        <label class="fw-bold text-secondary">Ketua DKM</label>
+                        <div class="fs-5"><b>{{ $item->nama_ketua_dkm }}</b></div>
+                    </div>
+
+                    <div class="mb-2">
+                        <label class="fw-bold text-secondary">No HP Ketua DKM</label>
+                        <div class="fs-5"><b>{{ $item->telp_ketua_dkm }}</b></div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="fw-bold text-secondary">Penerima Informasi</label>
+                        <div class="fs-5"><b>{{ $item->penerima_informasi }}</b></div>
+                    </div>
+
+                    <hr>
+
+                    <div class="mb-4">
+                        <label class="fw-bold text-secondary">Status</label><br>
+                        @if ($item->disetujui)
+                            <span class="badge bg-success text-light px-3 py-2">Disetujui ✔</span>
+                        @else
+                            <span class="badge bg-warning text-dark px-3 py-2">Menunggu Persetujuan</span>
+                        @endif
+                    </div>
+
+                    <a href="{{ route('masjid.show', $item->id_pelanggan) }}"
+                       class="btn btn-primary w-100 py-2">
+                        <i class=" me-2"></i> Klik Disini Untuk Masuk ke PENGAJUAN TOKEN dan Lihat Detail Lengkap masjid
+                    </a>
+
+                </div>
+            </div>
+
         </div>
+    </div>
+
+@endif
+
+
+
+
+        
 
         <script>
             document.getElementById('filterDisetujui').addEventListener('change', function() {
@@ -153,7 +241,7 @@
             $.fn.dataTable.ext.search = [];
             $.fn.dataTable.ext.search.push(function(settings, data, dataIndex) {
                 const statusCell = $(table.row(dataIndex).node()).find(
-                'td:eq(7) i'); // kolom ke-8
+                    'td:eq(7) i'); // kolom ke-8
                 let statusValue = "";
 
                 if (statusCell.hasClass('fa-check')) statusValue = "1";
