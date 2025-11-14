@@ -97,6 +97,7 @@
         @if ($historiBayar->isEmpty())
             <p class="text-muted">Belum ada histori permintaan token.</p>
         @else
+        <div class="table-responsive">
             <table class="table table-bordered mt-3">
                 <thead class="table">
                     <tr>
@@ -179,6 +180,7 @@
                 </tbody>
             </table>
         @endif
+        </div>
 
     </div>
 
