@@ -178,8 +178,8 @@
 
                 {{-- BAGIAN NAMA & UCAPAN --}}
                 <div class="mt-3">
-                    <h5 class="mb-1 text-primary">{{ $testimonial->id_testimonial }}</h5>
-                    <p class="mb-2 text-muted">{{ $testimonial->keterangan }}</p>
+                    
+                    <h6 class="mb-2 text-muted">{{ $testimonial->keterangan }}</h6>
                     <p class="fs-5 fst-italic text-dark">" {{ $testimonial->ucapan }} "</p>
                 </div>
 
