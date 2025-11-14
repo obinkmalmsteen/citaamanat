@@ -165,16 +165,28 @@
                     <div class="col-md-8">
                         @if ($testimonial->video)
                             <div class="ratio ratio-16x9">
-                                <video controls style="border-radius: 12px;">
-                                    <source src="{{ asset('public/storage/videos/' . $testimonial->video) }}" type="video/mp4">
-                                    Browser Anda tidak mendukung pemutaran video.
+                               <video width="50%" height="auto" controls class="rounded shadow-sm">
+                                    <source src="{{ asset('storage/' . $testimonial->video) }}" type="video/mp4">
+                                    Browser kamu tidak mendukung pemutar video.
                                 </video>
                             </div>
                         @else
                             <p class="text-muted fst-italic">Tidak ada video tersedia.</p>
                         @endif
                     </div>
+
+
+                    
                 </div>
+
+
+
+
+
+
+
+
+
 
                 {{-- BAGIAN NAMA & UCAPAN --}}
                 <div class="mt-3">

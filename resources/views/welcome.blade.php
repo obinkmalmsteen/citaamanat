@@ -277,7 +277,7 @@
 
         <!-- /video Section -->
 
-        <!-- <section id="testimonials" class="py-5">
+        <section id="testimonials" class="py-5">
     <div class="container">
         <h2 class="text-center mb-5" data-aos="fade-up">Testimoni Terbaru</h2>
 
@@ -308,7 +308,7 @@
 @endforelse
         </div>
     </div>
-</section> -->
+</section> 
 
 
 
