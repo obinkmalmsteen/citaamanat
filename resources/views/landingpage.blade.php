@@ -29,6 +29,8 @@
     <!-- Template Stylesheet -->
     <link href="/mosque/css/style.css" rel="stylesheet">
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 
 
@@ -632,51 +634,57 @@
 
 
     <!-- Testiminial Start -->
-    <div class="container-fluid testimonial py-5">
-        <div class="container py-5">
-            <div class="text-center mx-auto mb-5 wow fadeIn" data-wow-delay="0.1s" style="max-width: 700px;">
-                <p class="fs-5 text-uppercase text-primary">Testimonial</p>
-                <h1 class="display-3">Apa Kata Mereka </h1>
-            </div>
-            <div class="owl-carousel testimonial-carousel wow fadeIn" data-wow-delay="0.1s">
+   <div class="container-fluid testimonial py-5">
+    <div class="container py-5">
+        <div class="text-center mx-auto mb-5" style="max-width: 700px;">
+            <p class="fs-5 text-uppercase text-primary">Testimonial</p>
+            <h1 class="display-3">Apa Kata Mereka</h1>
+        </div>
+
+        <!-- Swiper Container -->
+        <div class="swiper myTestimonialSwiper">
+            <div class="swiper-wrapper">
 
                 @foreach ($testimonials as $testimonial)
-                    <div class="testimonial-item">
+                <div class="swiper-slide">
+                    <div class="testimonial-item p-3 shadow-sm bg-white rounded">
                         <div class="d-flex mb-3">
                             <div class="position-relative">
                                 @if ($testimonial->photo)
-                                    <img src="{{ asset('public/storage/foto_pengelola/' . $testimonial->photo) }}"
-                                        class="img-fluid" alt="Foto Pengelola"
-                                        style="width: 120px; height: 170px; object-fit: cover; border-radius: 12px;">
+                                    <img src="{{ asset('public/storage/foto_pengelola/'.$testimonial->photo) }}"
+                                        class="img-fluid rounded"
+                                        style="width: 120px; height: 150px; object-fit: cover;">
                                 @else
-                                    <img src="/mosque/img/person.png" class="img-fluid" alt="Default Foto"
-                                        style="width: 100px; height: 150px; object-fit: cover; border-radius: 12px;">
+                                    <img src="/mosque/img/person.png" class="img-fluid rounded"
+                                        style="width: 100px; height: 130px; object-fit: cover;">
                                 @endif
-                                {{-- <div class="btn-md-square bg-primary rounded-circle position-absolute"
-                                style="top: 25px; left: -25px;">
-                                <i class="fa fa-quote-left text-dark"></i>
-                            </div> --}}
-                                <div class="ps-3 my-auto ">
-                                    <h5 class="mb-0">{{ $testimonial->nama_testi }}</h5>
-                                    <p class="m-0">{{ $testimonial->keterangan }}</p>
-                                </div>
                             </div>
 
-                        </div>
-                        <div class="testimonial-content">
-                            <p class="fs-5 m-0 pt-3 fst-italic">" {{ $testimonial->ucapan }} "</p>
+                            <div class="ps-3 my-auto">
+                                <h5 class="mb-0">{{ $testimonial->nama_testi }}</h5>
+                                <p class="m-0">{{ $testimonial->keterangan }}</p>
+                            </div>
                         </div>
 
+                        <p class="fs-5 fst-italic m-0">
+                            " {{ $testimonial->ucapan }} "
+                        </p>
                     </div>
+                </div>
                 @endforeach
 
-
-
-
-
             </div>
+
+            <!-- Navigation Buttons -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+
+            <!-- Pagination Dots (optional) -->
+            <!-- <div class="swiper-pagination"></div> -->
         </div>
     </div>
+</div>
+
     <!-- Testiminial End -->
 
 
@@ -801,6 +809,24 @@
     <script>
         new PureCounter();
     </script>
+<script>
+var swiper = new Swiper(".myTestimonialSwiper", {
+    slidesPerView: 1,
+    spaceBetween: 20,
+    loop: true,
+    navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+    },
+    autoplay: {
+        delay: 3500,
+        disableOnInteraction: false,
+    },
+});
+</script>
+
+
+
 </body>
 
 </html>

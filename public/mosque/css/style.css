@@ -233,6 +233,47 @@ h4, h5, h6, .h4, .h5, .h6 {
     text-align: justify;
 }
 
+/** carousel ***/
+/* Pastikan setiap slide membungkus konten rapi */
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+}
+
+/* Pastikan kotak testimonial punya background jelas */
+.testimonial-item {
+    background: #f8f8f8 !important;
+    border-radius: 12px;
+    padding: 20px;
+}
+
+/* Tambahkan bayangan agar kotak terlihat */
+.testimonial-item {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+}
+
+.myTestimonialSwiper {
+    padding: 10px;
+    
+}
+
+.testimonial-item {
+    width: 100% !important;
+}
+
+/* Perkecil tombol panah dan turunkan posisinya */
+.swiper-button-next,
+.swiper-button-prev {
+    display: none !important;
+}
+
+
+/* Perkecil icon panah di dalamnya */
+.swiper-button-next::after,
+.swiper-button-prev::after {
+    font-size: 14px;      /* lebih kecil */
+}
+
 
 /*** Hero Header ***/
 
