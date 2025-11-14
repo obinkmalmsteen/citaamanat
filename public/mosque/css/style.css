@@ -271,7 +271,7 @@ h4, h5, h6, .h4, .h5, .h6 {
 /* Perkecil icon panah di dalamnya */
 .swiper-button-next::after,
 .swiper-button-prev::after {
-    font-size: 14px;      /* lebih kecil */
+   display: none !important;
 }
 
 
