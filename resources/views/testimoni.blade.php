@@ -152,7 +152,7 @@
                             <img src="{{ asset('public/storage/foto_pengelola/' . $testimonial->photo) }}"
                                  alt="Foto Pengelola"
                                  class="img-fluid"
-                                 style="width: 100%; max-width: 120px; height: 150px; object-fit: cover; border-radius: 12px;">
+                                 style="width: 100%; max-width: 120px; height: 250px; object-fit: cover; border-radius: 6px;">
                         @else
                             <img src="/mosque/img/person.png"
                                  alt="Default Foto"
