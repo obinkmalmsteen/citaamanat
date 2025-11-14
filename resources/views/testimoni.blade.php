@@ -166,7 +166,7 @@
                         @if ($testimonial->video)
                             <div class="ratio ratio-16x9">
                                 <video controls style="border-radius: 12px;">
-                                    <source src="{{ asset('storage/video/' . $testimonial->video) }}" type="video/mp4">
+                                    <source src="{{ asset('public/storage/videos/' . $testimonial->video) }}" type="video/mp4">
                                     Browser Anda tidak mendukung pemutaran video.
                                 </video>
                             </div>
