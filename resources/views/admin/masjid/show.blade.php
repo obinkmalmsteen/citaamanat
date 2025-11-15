@@ -14,14 +14,18 @@
  {{-- panel aturan--}}
 
 <div class="row justify-content-center mt-4">
-        <div class="col-md-7">
+        <div class="col-md-8">
 
             <div class="card shadow-lg border-0 rounded-4">
                 <div class="card-body p-4">
-                    <h4>Aturan Pengisian Token</h4>
-                    <p>1. Kami melakukan pengisian token setiap <b>HARI MINGGU</b></p>
-                    <p>2. Anda bisa menyesuaikan permintaan token anda dengan menyesuaikan jadwal pengisian token dari kami</p>
-                    <p>3. Tidak ada pertanyaan "kenapa token saya belum di realisasikan?" karena kami melakukan pembelian token dikolektifkan Seminggu Sekali.</p>
+                    <h4>SOP PENGAJUAN & REALISASI TOKEN LISTRIK</h4>
+                    <p><b>1. Frekuensi Pengisian</b><br> Token Listrik (PraBayar maupun PascaBayar) diberikan <b>1 Kali Setiap Bulan.</b></p>
+                    
+                    <p><b>2. Kewajiban DKM</b><br>DKM Wajib melakukan pengajuan token setiap bulan sebagai bentuk konfirmasi bahwa DKM masih Aktif.</p>
+                    
+                    <p><b>3. Jadwal  Realisasi</b><br>Kami melakukan pembelian token secara berkala dan kolektif per <b>10 hari (tgl 10, 20 dan 30)</b>  setiap bulan</p>
+                   
+                    <p style="color: #d9534f; font-weight: bold;">Demi KELANCARAN DATA untuk Proses Realisasi, maka diharapkan untuk membuat pengajuan paling dekat berjarak 3 hari (H-3) sebelum jadwal realisasi, (Jangan terlalu mepet dengan tgl-tgl tersebut).</p>
                 </div>
             </div>
 
