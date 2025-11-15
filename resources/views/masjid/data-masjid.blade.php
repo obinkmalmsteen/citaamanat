@@ -232,7 +232,7 @@
                                         Tidak Diketahui</span>
                                 @endif
                             </td>
-                            <td><strong>{{ $item->total_pengajuan }} Kali</strong><br>
+                            <td><strong>{{ $item->total_pengajuan }} Kali</strong>
 
                             </td>
                         </tr>
