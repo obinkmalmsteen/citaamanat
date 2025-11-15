@@ -129,6 +129,8 @@
 
     </div>
 
+    <div class="card-body">
+
     <!-- Card histori Realisasi Token START-->
 
     <h4 class="mt-4">Histori Permintaan & Realisasi Token</h4>
@@ -268,7 +270,7 @@
 
         </div>
     @endif
-
+</div>
     <!-- Card histori Realisasi Token END-->
 
 
