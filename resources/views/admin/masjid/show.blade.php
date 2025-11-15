@@ -240,7 +240,7 @@
 
 
                         <div class="mb-2">
-                            <small class="text-muted">Harga Token</small><br>
+                            <small class="text-muted">Nominal Token</small><br>
                             <span class="fw-semibold">
                                 @if ($bayar->jumlah_realisasi_token)
                                     Rp {{ number_format($bayar->jumlah_realisasi_token, 0, ',', '.') }}
