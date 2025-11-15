@@ -163,13 +163,14 @@
 
             <div class="card-body">
 
-                 <div class="mb-2">
-                    <small class="text-muted">"Silahkan isikan nomor ini jika sudah tersedia" </small><br>
-                    <small class="text-muted">Nomor Token </small><br>
-                    <span class="fw-semibold">
-                       <h3><b> {{ $bayar->no_token_listrik ?? '-' }}</b></h3>
-                    </span>
-                </div>
+<div class="mb-2">
+    <small class="text-muted">"Silahkan isikan nomor ini jika sudah tersedia"</small><br>
+    <small class="text-muted">Nomor Token</small><br>
+    <span class="fw-semibold">
+        <h6><b>{{ $bayar->no_token_listrik ? trim(chunk_split($bayar->no_token_listrik, 4, ' ')) : '-' }}</b></h6>
+    </span>
+</div>
+
 
 <hr>
                   <div class="mb-2">
