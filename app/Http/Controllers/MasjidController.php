@@ -175,18 +175,18 @@ public function storePublic(Request $request)
     ]);
 
 
-      // ==========================================
-    // KIRIM PESAN WHATSAPP OTOMATIS
-    // ==========================================
+    //   // ==========================================
+    // // KIRIM PESAN WHATSAPP OTOMATIS
+    // // ==========================================
 
-    if ($request->telp_penerima_informasi) {
-        $response = Http::withoutVerifying()->get('https://markeyza.web.id/send', [
-            'to' => $request->telp_penerima_informasi,
-            'message' => 
-            "Assalamualaikum.\n\nRegistrasi masjid *{$request->nama_masjid}* telah berhasil.\nData sedang diproses dan menunggu verifikasi.\n\nTerima kasih."
-        ]);
-        dd($response->body());
-    }
+    // if ($request->telp_penerima_informasi) {
+    //     $response = Http::withoutVerifying()->get('https://markeyza.web.id/send', [
+    //         'to' => $request->telp_penerima_informasi,
+    //         'message' => 
+    //         "Assalamualaikum.\n\nRegistrasi masjid *{$request->nama_masjid}* telah berhasil.\nData sedang diproses dan menunggu verifikasi.\n\nTerima kasih."
+    //     ]);
+    //     dd($response->body());
+    // }
     // Redirect kembali dengan pesan sukses
     return redirect()->back()->with('success', 'Data masjid berhasil disimpan!');
 }
