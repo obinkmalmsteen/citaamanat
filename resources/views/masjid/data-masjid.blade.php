@@ -13,7 +13,8 @@
             background-color: #f5f7fb;
             font-family: "Poppins", sans-serif;
             color: #333;
-            font-size: 0.8rem; /* 🔹 perkecil seluruh teks jadi ~70% */
+            font-size: 0.8rem;
+            /* 🔹 perkecil seluruh teks jadi ~70% */
         }
 
         h2 {
@@ -34,7 +35,8 @@
             border-collapse: separate;
             border-spacing: 0 8px;
             width: 100%;
-            font-size: 0.7rem; /* 🔹 teks tabel juga kecil */
+            font-size: 0.7rem;
+            /* 🔹 teks tabel juga kecil */
         }
 
         .table-modern thead th {
@@ -117,23 +119,25 @@
         small.text-muted {
             font-size: 0.6rem;
         }
-        .table-modern td.kota {
-    text-transform: uppercase;
-}
 
+        .table-modern td.kota {
+            text-transform: uppercase;
+        }
     </style>
 </head>
 
 <body>
 
- <!-- Topbar start -->
-<div class="container-fluid fixed-top bg-white bg-opacity-100">
-    <div class="container">
-        <nav class="navbar navbar-light navbar-expand-lg py-3">
+    <!-- Topbar start -->
+    <div class="container-fluid fixed-top bg-white bg-opacity-100">
+        <div class="container">
+            <nav class="navbar navbar-light navbar-expand-lg py-3">
 
                 <a href="{{ route('landingpage') }}" class="navbar-brand">
-                     
-                    <h2 class="mb-0"> <span><img src="/mosque/img/logoyayasan.png" class="img-fluid flex-shrink-10" alt="" width="100"> </span><span class="text-primary">Cita Amanat Martadiredja</span>   </h2>
+
+                    <h2 class="mb-0"> <span><img src="/mosque/img/logoyayasan.png" class="img-fluid flex-shrink-10"
+                                alt="" width="100"> </span><span class="text-primary">Cita Amanat
+                            Martadiredja</span> </h2>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarCollapse">
@@ -165,27 +169,35 @@
     <!-- Topbar End -->
 
 
- <!-- content Start -->
+    <!-- content Start -->
 
 
     <div class="container ">
         <div class="table-container">
 
-            <div class="mt-4 text-center">
-    <a href="{{ route('landingpage') }}" class="btn btn-outline-dark" style="border-radius: 8px; padding: 8px 20px;">
-        ⬅ Kembali ke Halaman Utama
+         <div class="mt-4 d-flex justify-content-between">
+    <a href="{{ route('landingpage') }}" class="btn btn-outline-dark"
+        style="border-radius: 8px; padding: 8px 20px;">
+        ⬅ Ke Beranda
     </a>
+
+    <a href="" style="color: #d9534f; font-weight: bold;" class="btn"
+        >
+        Untuk Masjid Yang sudah terverifikasi tapi masih belum membuat pengajuan Token, segera lakukan pengajuan token dengan login ke akun anda.
+</a>
 </div>
-            <h2 class="mb-3">📋 Daftar Masjid </h2>
+
+            <h3 class="mb-3">📋 Daftar Masjid </h3>
 
             <table class="table-modern">
                 <thead>
                     <tr>
                         <th>No</th>
-                        
+
                         <th>Nama Masjid</th>
                         <th>Kota</th>
                         <th>Status</th>
+                        <th>Pengajuan</th>
                     </tr>
                 </thead>
 
@@ -198,7 +210,7 @@
                                     ID: {{ substr($item->id_pelanggan, 0, -3) . 'xxx' }}
                                 </small><br>
                                 <small class="text-muted">
-                                     {{ $item->created_at }}
+                                    {{ $item->created_at }}
                                 </small>
                             </td>
                             <td><strong>{{ $item->nama_kota }}</strong><br>
@@ -220,13 +232,17 @@
                                         Tidak Diketahui</span>
                                 @endif
                             </td>
+                            <td><strong>{{ $item->total_pengajuan }} Kali</strong><br>
+
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
         </div>
     </div>
- <!-- content End -->
+    <!-- content End -->
 
 </body>
+
 </html>

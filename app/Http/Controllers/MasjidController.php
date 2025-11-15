@@ -363,9 +363,10 @@ public function requestToken(Request $request, $id_pelanggan)
     $masjid = Masjid::where('id_pelanggan', $id_pelanggan)->firstOrFail();
 
     $request->validate([
-       // 'jumlah_request_token' => 'required|numeric|min:1',
+        // Validasi lain jika ada
     ]);
 
+    // Insert histori baru
     DB::table('histori_bayar')->insert([
         'id_pelanggan' => $masjid->id_pelanggan,
         'no_meteran_listrik' => $masjid->no_meteran_listrik,
@@ -378,9 +379,13 @@ public function requestToken(Request $request, $id_pelanggan)
         'jumlah_realisasi_token' => null,
     ]);
 
+    // 🔥 Tambahkan 1 ke total pengajuan masjid ini
+    Masjid::where('id_pelanggan', $id_pelanggan)->increment('total_pengajuan');
+
     return redirect()->route('masjid.show', $id_pelanggan)
         ->with('success', 'Request token berhasil dikirim!');
 }
+
 
 public function realisasiToken(Request $request, $id_pelanggan)
 {
