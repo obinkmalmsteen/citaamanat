@@ -11,27 +11,35 @@
 
             <div><a href="{{ url()->previous() }}" class="btn btn-secondary mb-3">Kembali</a></div>
 
- {{-- panel aturan--}}
+            {{-- panel aturan --}}
 
-<div class="row justify-content-center mt-4">
-        <div class="col-md-8">
+            <div class="row justify-content-center mt-4">
+                <div class="col-md-8">
 
-            <div class="card shadow-lg border-0 rounded-4">
-                <div class="card-body p-4">
-                    <h4>SOP PENGAJUAN & REALISASI TOKEN LISTRIK</h4>
-                    <p><b>1. Frekuensi Pengisian</b><br> Token Listrik (PraBayar maupun PascaBayar) diberikan <b>1 Kali Setiap Bulan.</b></p>
-                    
-                    <p><b>2. Kewajiban DKM</b><br>DKM Wajib melakukan pengajuan token setiap bulan sebagai bentuk konfirmasi bahwa DKM masih Aktif.</p>
-                    
-                    <p><b>3. Jadwal  Realisasi</b><br>Kami melakukan pembelian token secara berkala dan kolektif per <b>10 hari (tgl 10, 20 dan 30)</b>  setiap bulan</p>
-                   
-                    <p style="color: #d9534f; font-weight: bold;">Demi KELANCARAN DATA untuk Proses Realisasi, maka diharapkan untuk membuat pengajuan paling dekat berjarak 3 hari (H-3) sebelum jadwal realisasi, (Jangan terlalu mepet dengan tgl-tgl tersebut).</p>
+                    <div class="card shadow-lg border-0 rounded-4">
+                        <div class="card-body p-4">
+                            <h4>SOP PENGAJUAN & REALISASI TOKEN LISTRIK</h4>
+                            <p><b>1. Frekuensi Pengisian</b><br> Token Listrik (PraBayar maupun PascaBayar) diberikan <b>1
+                                    Kali Setiap Bulan.</b></p>
+
+                            <p><b>2. Kewajiban DKM</b><br>DKM Wajib melakukan pengajuan token setiap bulan sebagai bentuk
+                                konfirmasi bahwa DKM masih Aktif.</p>
+
+                            <p><b>3. Jadwal Realisasi</b><br>Kami melakukan pembelian token secara berkala dan kolektif per
+                                <b>10 hari (tgl 10, 20 dan 30)</b> setiap bulan</p>
+
+                            <p style="color: #d9534f; font-weight: bold;"> HARAP MENJADI PERHATIAN! <br>Demi Kelancaran Data
+                                untuk Proses Realisasi, maka diharapkan untuk membuat pengajuan paling dekat berjarak 3 hari
+                                (H-3) sebelum jadwal realisasi, (Jangan terlalu mepet dengan tgl-tgl tersebut).</p>
+                            <p>4. Jika sudah mengajukan permintaan token diharapkan Cek secara berkala ke akun anda, dan
+                                segera isikan token jika sudah tersedia, karena jika tidak segera dipakai maka token itu
+                                akan Hangus dan jadi Mubadzir.</p>
+                        </div>
+                    </div>
+
                 </div>
             </div>
-
-        </div>
-    </div>
- {{-- panel aturan--}}
+            {{-- panel aturan --}}
 
 
 
@@ -41,24 +49,24 @@
             <div class="card-body">
 
                 {{-- Tambahkan pembungkus untuk tombol --}}
- <div class="text-center my-4">
-    @if (!$adaRequestBelumRealisasi)
-        <button class="btn btn-success w-100 py-2" id="btnRequestToken">
-            Permintaan Pengisian Token / Pembayaran Listrik
-        </button>
-    @else
-        <div id="progressContainer">
-            <div class="progress" style="height: 40px;">
-                <div id="progressBar" class="progress-bar bg-secondary" 
-                     role="progressbar" style="width: 0%;">
+                <div class="text-center my-4">
+                    @if (!$adaRequestBelumRealisasi)
+                        <button class="btn btn-success w-100 py-2" id="btnRequestToken">
+                            Permintaan Pengisian Token / Pembayaran Listrik
+                        </button>
+                    @else
+                        <div id="progressContainer">
+                            <div class="progress" style="height: 40px;">
+                                <div id="progressBar" class="progress-bar bg-secondary" role="progressbar"
+                                    style="width: 0%;">
+                                </div>
+                            </div>
+                            <small id="progressText" class="text-muted d-block mt-2 text-center"></small>
+                        </div>
+                    @endif
                 </div>
-            </div>
-            <small id="progressText" class="text-muted d-block mt-2 text-center"></small>
-        </div>
-    @endif
-</div>
 
-<input type="hidden" id="tgl_request_token" value="{{ $tglRequestTokenTerakhir }}">
+                <input type="hidden" id="tgl_request_token" value="{{ $tglRequestTokenTerakhir }}">
 
 
 
@@ -121,143 +129,147 @@
 
     </div>
 
-<!-- Card histori Realisasi Token START-->
-    
-<h4 class="mt-4">Histori Permintaan & Realisasi Token</h4>
+    <!-- Card histori Realisasi Token START-->
 
-@if ($historiBayar->isEmpty())
-    <p class="text-muted">Belum ada histori permintaan token.</p>
-@else
+    <h4 class="mt-4">Histori Permintaan & Realisasi Token</h4>
 
-<style>
-    .history-slider {
-        display: flex;
-        overflow-x: auto;
-        gap: 16px;
-        padding-bottom: 10px;
-        scroll-snap-type: x mandatory;
-    }
-    .history-card {
-        min-width: 320px;
-        flex: 0 0 auto;
-        scroll-snap-align: start;
-    }
-    .history-slider::-webkit-scrollbar {
-        height: 6px;
-    }
-    .history-slider::-webkit-scrollbar-thumb {
-        background: #0d6efd;
-        border-radius: 10px;
-    }
-</style>
+    @if ($historiBayar->isEmpty())
+        <p class="text-muted">Belum ada histori permintaan token.</p>
+    @else
+        <style>
+            .history-slider {
+                display: flex;
+                overflow-x: auto;
+                gap: 16px;
+                padding-bottom: 10px;
+                scroll-snap-type: x mandatory;
+            }
 
-<div class="history-slider mt-3">
+            .history-card {
+                min-width: 320px;
+                flex: 0 0 auto;
+                scroll-snap-align: start;
+            }
 
-    @foreach ($historiBayar as $index => $bayar)
-        <div class="card shadow history-card rounded-4">
+            .history-slider::-webkit-scrollbar {
+                height: 6px;
+            }
 
-@php
-    $nomor = $historiBayar->count() - $index;
+            .history-slider::-webkit-scrollbar-thumb {
+                background: #0d6efd;
+                border-radius: 10px;
+            }
+        </style>
 
-    // Tentukan warna bar
-    $warnaHeader = $bayar->status_realisasi == 1 
-                    ? 'bg-success'     // Hijau
-                    : 'bg-warning text-dark'; // Oranye
-@endphp
+        <div class="history-slider mt-3">
 
-<div class="card-header {{ $warnaHeader }} text-white rounded-top-4">
-    <strong>Permintaan Token Ke {{ $nomor }}</strong>
-</div>
+            @foreach ($historiBayar as $index => $bayar)
+                <div class="card shadow history-card rounded-4">
 
+                    @php
+                        $nomor = $historiBayar->count() - $index;
 
-            <div class="card-body">
+                        // Tentukan warna bar
+                        $warnaHeader =
+                            $bayar->status_realisasi == 1
+                                ? 'bg-success' // Hijau
+                                : 'bg-warning text-dark'; // Oranye
+                    @endphp
 
-<div class="mb-2">
-    <small class="text-muted">"Silahkan isikan nomor ini jika sudah tersedia"</small><br>
-    <small class="text-muted">Nomor Token</small><br>
-    <span class="fw-semibold">
-        <h5><b>{{ $bayar->no_token_listrik ? trim(chunk_split($bayar->no_token_listrik, 4, ' ')) : '-' }}</b></h5>
-    </span>
-</div>
+                    <div class="card-header {{ $warnaHeader }} text-white rounded-top-4">
+                        <strong>Permintaan Token Ke {{ $nomor }}</strong>
+                    </div>
 
 
-<hr>
-                  <div class="mb-2">
-                    <small class="text-muted">Tanggal Realisasi</small><br>
-                    <span class="fw-semibold">
-                        @if ($bayar->tgl_realisasi_token)
-                            {{ \Carbon\Carbon::parse($bayar->tgl_realisasi_token)->format('d/m/Y') }}
-                        @else
-                            <span class="text-warning"><b>Belum direalisasikan</b></span>
-                        @endif
-                    </span>
+                    <div class="card-body">
+
+                        <div class="mb-2">
+                            <small class="text-muted">"Silahkan isikan nomor ini jika sudah tersedia"</small><br>
+                            <small class="text-muted">Nomor Token</small><br>
+                            <span class="fw-semibold">
+                                <h5><b>{{ $bayar->no_token_listrik ? trim(chunk_split($bayar->no_token_listrik, 4, ' ')) : '-' }}</b>
+                                </h5>
+                            </span>
+                        </div>
+
+
+                        <hr>
+                        <div class="mb-2">
+                            <small class="text-muted">Tanggal Realisasi</small><br>
+                            <span class="fw-semibold">
+                                @if ($bayar->tgl_realisasi_token)
+                                    {{ \Carbon\Carbon::parse($bayar->tgl_realisasi_token)->format('d/m/Y') }}
+                                @else
+                                    <span class="text-warning"><b>Belum direalisasikan</b></span>
+                                @endif
+                            </span>
+                        </div>
+
+                        <div class="mb-2">
+                            <small class="text-muted">Tanggal Request</small><br>
+                            <span class="fw-semibold">
+                                @if ($bayar->tgl_request_token)
+                                    {{ \Carbon\Carbon::parse($bayar->tgl_request_token)->format('d/m/Y') }}
+                                @else
+                                    -
+                                @endif
+                            </span>
+                        </div>
+
+
+
+                        <div class="mb-2">
+                            <small class="text-muted">ID Pelanggan</small><br>
+                            <span class="fw-semibold">{{ $bayar->id_pelanggan ?? '-' }}</span>
+                        </div>
+
+                        <div class="mb-2">
+                            <small class="text-muted">Nomor Meteran</small><br>
+                            <span class="fw-semibold">{{ $bayar->no_meteran_listrik ?? '-' }}</span>
+                        </div>
+
+                        <div class="mb-2">
+                            <small class="text-muted">Nama Masjid</small><br>
+                            <span class="fw-semibold">{{ $bayar->nama_masjid ?? '-' }}</span>
+                        </div>
+
+                        <hr>
+
+
+
+
+
+                        <div class="mb-2">
+                            <small class="text-muted">Harga Token</small><br>
+                            <span class="fw-semibold">
+                                @if ($bayar->jumlah_realisasi_token)
+                                    Rp {{ number_format($bayar->jumlah_realisasi_token, 0, ',', '.') }}
+                                @else
+                                    -
+                                @endif
+                            </span>
+                        </div>
+
+                        <div class="mt-3">
+                            @if ($bayar->status_realisasi == 1)
+                                <span class="badge bg-success text-light px-3 py-2">
+                                    <i class="fa fa-check text-light"></i> Selesai
+                                </span>
+                            @else
+                                <span class="badge bg-warning text-dark px-3 py-2">
+                                    <i class="fa fa-hourglass-half text-dark"></i> Menunggu
+                                </span>
+                            @endif
+                        </div>
+
+                    </div>
                 </div>
+            @endforeach
 
-<div class="mb-2">
-                    <small class="text-muted">Tanggal Request</small><br>
-                    <span class="fw-semibold">
-                        @if ($bayar->tgl_request_token)
-                            {{ \Carbon\Carbon::parse($bayar->tgl_request_token)->format('d/m/Y') }}
-                        @else
-                            -
-                        @endif
-                    </span>
-                </div>
-
-              
-
-                <div class="mb-2">
-                    <small class="text-muted">ID Pelanggan</small><br>
-                    <span class="fw-semibold">{{ $bayar->id_pelanggan ?? '-' }}</span>
-                </div>
-
-                <div class="mb-2">
-                    <small class="text-muted">Nomor Meteran</small><br>
-                    <span class="fw-semibold">{{ $bayar->no_meteran_listrik ?? '-' }}</span>
-                </div>
-
-                <div class="mb-2">
-                    <small class="text-muted">Nama Masjid</small><br>
-                    <span class="fw-semibold">{{ $bayar->nama_masjid ?? '-' }}</span>
-                </div>
-
-                <hr>
-
-                
-
-               
-
-                <div class="mb-2">
-                    <small class="text-muted">Harga Token</small><br>
-                    <span class="fw-semibold">
-                        @if ($bayar->jumlah_realisasi_token)
-                            Rp {{ number_format($bayar->jumlah_realisasi_token, 0, ',', '.') }}
-                        @else
-                            -
-                        @endif
-                    </span>
-                </div>
-
-                <div class="mt-3">
-                    @if ($bayar->status_realisasi == 1)
-                        <span class="badge bg-success text-light px-3 py-2">
-                            <i class="fa fa-check text-light"></i> Selesai
-                        </span>
-                    @else
-                        <span class="badge bg-warning text-dark px-3 py-2">
-                            <i class="fa fa-hourglass-half text-dark"></i> Menunggu
-                        </span>
-                    @endif
-                </div>
-
-            </div>
         </div>
-    @endforeach
+    @endif
 
-</div>
-@endif
-
-<!-- Card histori Realisasi Token END-->
+    <!-- Card histori Realisasi Token END-->
 
 
 
@@ -393,7 +405,7 @@
                     </td>
                 </tr>
 
-<td></td>
+                <td></td>
 
             </tbody>
         </table>
@@ -525,60 +537,59 @@
     </script>
 @endif
 <script>
-document.addEventListener("DOMContentLoaded", function() {
-    const btn = document.getElementById("btnRequestToken");
-    const tglRequestInput = document.getElementById("tgl_request_token");
-    const progressBar = document.getElementById("progressBar");
-    const progressText = document.getElementById("progressText");
+    document.addEventListener("DOMContentLoaded", function() {
+        const btn = document.getElementById("btnRequestToken");
+        const tglRequestInput = document.getElementById("tgl_request_token");
+        const progressBar = document.getElementById("progressBar");
+        const progressText = document.getElementById("progressText");
 
-    const tglStr = tglRequestInput.value;
-    if (!tglStr) return;
+        const tglStr = tglRequestInput.value;
+        if (!tglStr) return;
 
-    const tglTerakhir = new Date(tglStr);
-    const hariIni = new Date();
+        const tglTerakhir = new Date(tglStr);
+        const hariIni = new Date();
 
-    const bulanTerakhir = tglTerakhir.getMonth();
-    const tahunTerakhir = tglTerakhir.getFullYear();
+        const bulanTerakhir = tglTerakhir.getMonth();
+        const tahunTerakhir = tglTerakhir.getFullYear();
 
-    const bulanSekarang = hariIni.getMonth();
-    const tahunSekarang = hariIni.getFullYear();
+        const bulanSekarang = hariIni.getMonth();
+        const tahunSekarang = hariIni.getFullYear();
 
-    // Jika request masih dalam bulan yang sama → tampilkan progress
-    if (bulanSekarang === bulanTerakhir && tahunSekarang === tahunTerakhir) {
+        // Jika request masih dalam bulan yang sama → tampilkan progress
+        if (bulanSekarang === bulanTerakhir && tahunSekarang === tahunTerakhir) {
 
-        if (progressBar) {
-            const totalHariBulanIni = new Date(tahunSekarang, bulanSekarang + 1, 0).getDate();
-            const hariSekarang = hariIni.getDate();
+            if (progressBar) {
+                const totalHariBulanIni = new Date(tahunSekarang, bulanSekarang + 1, 0).getDate();
+                const hariSekarang = hariIni.getDate();
 
-            const progress = (hariSekarang / totalHariBulanIni) * 100;
-            const sisaHari = totalHariBulanIni - hariSekarang;
+                const progress = (hariSekarang / totalHariBulanIni) * 100;
+                const sisaHari = totalHariBulanIni - hariSekarang;
 
-            progressBar.style.width = progress + "%";
-            progressBar.innerHTML = Math.floor(progress) + "%";
+                progressBar.style.width = progress + "%";
+                progressBar.innerHTML = Math.floor(progress) + "%";
 
-            if (progressText) {
-                progressText.innerHTML =
-                    `Tombol PERMINTRAAN TOKEN  Akan Aktif Dalam <b>${sisaHari}</b> Hari Lagi (reset pada tanggal 1 bulan depan).`;
+                if (progressText) {
+                    progressText.innerHTML =
+                        `Tombol PERMINTRAAN TOKEN  Akan Aktif Dalam <b>${sisaHari}</b> Hari Lagi (reset pada tanggal 1 bulan depan).`;
+                }
+            }
+
+            // Jika user klik tombol normal, tetap blok
+            if (btn) {
+                btn.addEventListener("click", function(e) {
+                    e.preventDefault();
+                    e.stopImmediatePropagation();
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Mohon Maaf',
+                        text: "Anda telah melakukan permintaan bulan ini. Mohon tunggu hingga bulan depan.",
+                        confirmButtonText: 'OK'
+                    });
+                    return false;
+
+                });
+
             }
         }
-
-        // Jika user klik tombol normal, tetap blok
-        if (btn) {
-            btn.addEventListener("click", function(e) {
-                e.preventDefault();
-                e.stopImmediatePropagation();
-                Swal.fire({
-                    icon: 'warning',
-                    title: 'Mohon Maaf',
-                    text: "Anda telah melakukan permintaan bulan ini. Mohon tunggu hingga bulan depan.",
-                    confirmButtonText: 'OK'
-                });
-return false;
-               
-            });
-             
-        }
-    }
-});
+    });
 </script>
-
