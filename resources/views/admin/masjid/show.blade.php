@@ -562,13 +562,17 @@ document.addEventListener("DOMContentLoaded", function() {
         if (btn) {
             btn.addEventListener("click", function(e) {
                 e.preventDefault();
+                e.stopImmediatePropagation();
                 Swal.fire({
                     icon: 'warning',
                     title: 'Mohon Maaf',
                     text: "Anda telah melakukan permintaan bulan ini. Mohon tunggu hingga bulan depan.",
                     confirmButtonText: 'OK'
                 });
+return false;
+               
             });
+             
         }
     }
 });
