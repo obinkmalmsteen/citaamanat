@@ -286,7 +286,7 @@
                             <label for="no_meteran_listrik" class="form-label">Nomor Meteran Listrik</label>
                             <input type="text" name="no_meteran_listrik" class="form-control"
                                 id="no_meteran_listrik-field" style="background-color: #f9f7e7;"
-                                value="{{ old('id_pelanggan') }}" required>
+                                value="{{ old('no_meteran_listrik') }}" required>
 
                             @error('no_meteran_listrik')
                                 <div class="text-danger mt-2">{{ $message }}</div>
@@ -299,7 +299,7 @@
                         <div class="col-md-6 mb-4">
                             <label for="nama_pelanggan-field" class="pb-2">Nama Pelanggan PLN</label>
                             <input type="text" class="form-control" style="background-color: #f9f7e7;"
-                                name="nama_pelanggan" id="nama_pelanggan-field" required>
+                               value="{{ old('nama_pelanggan') }}" name="nama_pelanggan" id="nama_pelanggan-field" required>
                         </div>
 
                         <!-- 4. Jenis Pembayaran Listrik -->
@@ -375,7 +375,7 @@
                                 memakai
                                 Nama yang berbeda dari nama Masjid atau Mushola nya</label>
                             <input type="text" class="form-control" style="background-color: #f9f7e7;"
-                                name="alasan_id_berbeda" id="alasan_id_berbeda-field">
+                                 value="{{ old('alasan_id_berbeda') }}"  name="alasan_id_berbeda" id="alasan_id_berbeda-field">
                         </div>
 
                         <div class="col-md-6 mb-4">

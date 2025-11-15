@@ -29,8 +29,8 @@
     <!-- Template Stylesheet -->
     <link href="/mosque/css/style.css" rel="stylesheet">
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 
 
@@ -181,40 +181,36 @@
 
 
                     <div class="bg-light p-3 mb-4">
-    <div class="row justify-content-center text-center g-4">
+                        <div class="row justify-content-center text-center g-4">
 
-        <div class="col-4 col-md-3">
-            <h2 class="mb-0 text-primary">
-                <span data-purecounter-start="0"
-                      data-purecounter-end="{{ $masjidBelumDisetujui}}"
-                      data-purecounter-duration="2"
-                      class="purecounter"></span>
-            </h2>
-            <p class="mb-2"><b>Masjid Baru Mendaftar</b></p>
-        </div>
+                            <div class="col-4 col-md-3">
+                                <h2 class="mb-0 text-primary">
+                                    <span data-purecounter-start="0"
+                                        data-purecounter-end="{{ $masjidBelumDisetujui }}"
+                                        data-purecounter-duration="2" class="purecounter"></span>
+                                </h2>
+                                <p class="mb-2"><b>Masjid Baru Mendaftar</b></p>
+                            </div>
 
-        <div class="col-4 col-md-3">
-            <h2 class="mb-0 text-primary">
-                <span data-purecounter-start="0"
-                      data-purecounter-end="{{ $masjidDisetujui }}"
-                      data-purecounter-duration="2"
-                      class="purecounter"></span>
-            </h2>
-            <p class="mb-2"><b>Masjid Sudah Terdaftar</b></p>
-        </div>
+                            <div class="col-4 col-md-3">
+                                <h2 class="mb-0 text-primary">
+                                    <span data-purecounter-start="0" data-purecounter-end="{{ $masjidDisetujui }}"
+                                        data-purecounter-duration="2" class="purecounter"></span>
+                                </h2>
+                                <p class="mb-2"><b>Masjid Sudah Terdaftar</b></p>
+                            </div>
 
-        <div class="col-4 col-md-3">
-            <h2 class="mb-0 text-primary">
-                <span data-purecounter-start="0"
-                      data-purecounter-end="{{ $totalRequestRealisasi }}"
-                      data-purecounter-duration="2"
-                      class="purecounter"></span>
-            </h2>
-            <p class="mb-2"><b>Realisasi Token Listrik</b></p>
-        </div>
+                            <div class="col-4 col-md-3">
+                                <h2 class="mb-0 text-primary">
+                                    <span data-purecounter-start="0"
+                                        data-purecounter-end="{{ $totalRequestRealisasi }}"
+                                        data-purecounter-duration="2" class="purecounter"></span>
+                                </h2>
+                                <p class="mb-2"><b>Realisasi Token Listrik</b></p>
+                            </div>
 
-    </div>
-</div>
+                        </div>
+                    </div>
 
 
                 </div>
@@ -634,56 +630,56 @@
 
 
     <!-- Testiminial Start -->
-   <div class="container-fluid testimonial py-5">
-    <div class="container py-5">
-        <div class="text-center mx-auto mb-5" style="max-width: 700px;">
-            <p class="fs-5 text-uppercase text-primary">Testimonial</p>
-            <h1 class="display-3">Apa Kata Mereka</h1>
-        </div>
-
-        <!-- Swiper Container -->
-        <div class="swiper myTestimonialSwiper">
-            <div class="swiper-wrapper">
-
-                @foreach ($testimonials as $testimonial)
-                <div class="swiper-slide">
-                    <div class="testimonial-item p-3 shadow-sm bg-white rounded">
-                        <div class="d-flex mb-3">
-                            <div class="position-relative">
-                                @if ($testimonial->photo)
-                                    <img src="{{ asset('public/storage/foto_pengelola/'.$testimonial->photo) }}"
-                                        class="img-fluid rounded"
-                                        style="width: 120px; height: 150px; object-fit: cover;">
-                                @else
-                                    <img src="/mosque/img/person.png" class="img-fluid rounded"
-                                        style="width: 100px; height: 130px; object-fit: cover;">
-                                @endif
-                            </div>
-
-                            <div class="ps-3 my-auto">
-                                <h5 class="mb-0">{{ $testimonial->nama_testi }}</h5>
-                                <p class="m-0">{{ $testimonial->keterangan }}</p>
-                            </div>
-                        </div>
-
-                        <p class="fs-5 fst-italic m-0">
-                            " {{ $testimonial->ucapan }} "
-                        </p>
-                    </div>
-                </div>
-                @endforeach
-
+    <div class="container-fluid testimonial py-5">
+        <div class="container py-5">
+            <div class="text-center mx-auto mb-5" style="max-width: 700px;">
+                <p class="fs-5 text-uppercase text-primary">Testimonial</p>
+                <h1 class="display-3">Apa Kata Mereka</h1>
             </div>
 
-            <!-- Navigation Buttons -->
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
+            <!-- Swiper Container -->
+            <div class="swiper myTestimonialSwiper">
+                <div class="swiper-wrapper">
 
-            <!-- Pagination Dots (optional) -->
-            <!-- <div class="swiper-pagination"></div> -->
+                    @foreach ($testimonials as $testimonial)
+                        <div class="swiper-slide">
+                            <div class="testimonial-item p-3 shadow-sm bg-white rounded">
+                                <div class="d-flex mb-3">
+                                    <div class="position-relative">
+                                        @if ($testimonial->photo)
+                                            <img src="{{ asset('public/storage/foto_pengelola/' . $testimonial->photo) }}"
+                                                class="img-fluid rounded"
+                                                style="width: 120px; height: 150px; object-fit: cover;">
+                                        @else
+                                            <img src="/mosque/img/person.png" class="img-fluid rounded"
+                                                style="width: 100px; height: 130px; object-fit: cover;">
+                                        @endif
+                                    </div>
+
+                                    <div class="ps-3 my-auto">
+                                        <h5 class="mb-0">{{ $testimonial->nama_testi }}</h5>
+                                        <p class="m-0">{{ $testimonial->keterangan }}</p>
+                                    </div>
+                                </div>
+
+                                <p class="fs-5 fst-italic m-0">
+                                    " {{ $testimonial->ucapan }} "
+                                </p>
+                            </div>
+                        </div>
+                    @endforeach
+
+                </div>
+
+                <!-- Navigation Buttons -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+
+                <!-- Pagination Dots (optional) -->
+                <!-- <div class="swiper-pagination"></div> -->
+            </div>
         </div>
     </div>
-</div>
 
     <!-- Testiminial End -->
 
@@ -786,7 +782,7 @@
         </div>
     </div>
 
-    
+
     <!-- Footer End -->
 
 
@@ -811,21 +807,21 @@
     <script>
         new PureCounter();
     </script>
-<script>
-var swiper = new Swiper(".myTestimonialSwiper", {
-    slidesPerView: 1,
-    spaceBetween: 20,
-    loop: true,
-    navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-    },
-    autoplay: {
-        delay: 3500,
-        disableOnInteraction: false,
-    },
-});
-</script>
+    <script>
+        var swiper = new Swiper(".myTestimonialSwiper", {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            loop: true,
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            autoplay: {
+                delay: 3500,
+                disableOnInteraction: false,
+            },
+        });
+    </script>
 
 
 
