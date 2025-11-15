@@ -37,20 +37,25 @@
             <div class="card-body">
 
                 {{-- Tambahkan pembungkus untuk tombol --}}
-                <div class="text-center my-4">
-                    @if (!$adaRequestBelumRealisasi)
-                        <button class="btn btn-success" id="btnRequestToken">
-                            Permintaan Pengisian Token / Pembayaran Listrik
-                        </button>
-                    @else
-                        <button class="btn btn-secondary" disabled>
-                            Permintaan Anda Menunggu Direalisasi...
-                        </button>
-                    @endif
+ <div class="text-center my-4">
+    @if (!$adaRequestBelumRealisasi)
+        <button class="btn btn-success w-100 py-2" id="btnRequestToken">
+            Permintaan Pengisian Token / Pembayaran Listrik
+        </button>
+    @else
+        <div id="progressContainer">
+            <div class="progress" style="height: 40px;">
+                <div id="progressBar" class="progress-bar bg-secondary" 
+                     role="progressbar" style="width: 0%;">
                 </div>
+            </div>
+            <small id="progressText" class="text-muted d-block mt-2 text-center"></small>
+        </div>
+    @endif
+</div>
 
-                <!-- Simpan tanggal request terakhir ke hidden input -->
-                <input type="hidden" id="tgl_request_token" value="{{ $tglRequestTokenTerakhir }}">
+<input type="hidden" id="tgl_request_token" value="{{ $tglRequestTokenTerakhir }}">
+
 
 
                 <!-- Form Request Token -->
@@ -516,44 +521,56 @@
     </script>
 @endif
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const btn = document.getElementById("btnRequestToken");
-        const tglRequestInput = document.getElementById("tgl_request_token");
+document.addEventListener("DOMContentLoaded", function() {
+    const btn = document.getElementById("btnRequestToken");
+    const tglRequestInput = document.getElementById("tgl_request_token");
+    const progressBar = document.getElementById("progressBar");
+    const progressText = document.getElementById("progressText");
 
-        if (!btn) return; // tombol tidak ditemukan
+    const tglStr = tglRequestInput.value;
+    if (!tglStr) return;
 
-        btn.addEventListener("click", function(e) {
-            const tglStr = tglRequestInput.value;
+    const tglTerakhir = new Date(tglStr);
+    const hariIni = new Date();
 
-            // Jika belum pernah request sama sekali, biarkan tombol berfungsi normal
-            if (!tglStr) return;
+    const bulanTerakhir = tglTerakhir.getMonth();
+    const tahunTerakhir = tglTerakhir.getFullYear();
 
-            const tglTerakhir = new Date(tglStr);
-            const hariIni = new Date();
+    const bulanSekarang = hariIni.getMonth();
+    const tahunSekarang = hariIni.getFullYear();
 
-            // Ambil bulan dan tahun dari masing-masing tanggal
-            const bulanTerakhir = tglTerakhir.getMonth();
-            const tahunTerakhir = tglTerakhir.getFullYear();
+    // Jika request masih dalam bulan yang sama → tampilkan progress
+    if (bulanSekarang === bulanTerakhir && tahunSekarang === tahunTerakhir) {
 
-            const bulanSekarang = hariIni.getMonth();
-            const tahunSekarang = hariIni.getFullYear();
+        if (progressBar) {
+            const totalHariBulanIni = new Date(tahunSekarang, bulanSekarang + 1, 0).getDate();
+            const hariSekarang = hariIni.getDate();
 
-            // Cek apakah masih di bulan dan tahun yang sama
-            if (bulanSekarang === bulanTerakhir && tahunSekarang === tahunTerakhir) {
+            const progress = (hariSekarang / totalHariBulanIni) * 100;
+            const sisaHari = totalHariBulanIni - hariSekarang;
+
+            progressBar.style.width = progress + "%";
+            progressBar.innerHTML = Math.floor(progress) + "%";
+
+            if (progressText) {
+                progressText.innerHTML =
+                    `Tombol PERMINTRAAN TOKEN  Akan Aktif Dalam <b>${sisaHari}</b> Hari Lagi (reset pada tanggal 1 bulan depan).`;
+            }
+        }
+
+        // Jika user klik tombol normal, tetap blok
+        if (btn) {
+            btn.addEventListener("click", function(e) {
                 e.preventDefault();
-                e.stopImmediatePropagation();
-
                 Swal.fire({
                     icon: 'warning',
                     title: 'Mohon Maaf',
-                    text: `" Berdasarkan catatan kami, Masjid Anda telah menggunakan kuota untuk bulan ini. Pengajuan selanjutnya dapat dilakukan mulai bulan depan. Atas Pengertiannya Kami ucapkan terima kasih "`,
+                    text: "Anda telah melakukan permintaan bulan ini. Mohon tunggu hingga bulan depan.",
                     confirmButtonText: 'OK'
                 });
-
-                return false;
-            }
-
-            // Kalau sudah masuk bulan baru, biarkan tombol berfungsi normal
-        });
-    });
+            });
+        }
+    }
+});
 </script>
+
