@@ -35,13 +35,14 @@
                 <div class="d-flex justify-content-between align-items-center mb-3">
                     <div>
                         <h5>Jumlah Pengajuan</h5>
-                        <select name="filter_pengajuan" class="form-select form-select-sm" style="width: 200px;>
+                        <select name="filter_pengajuan" class="form-select form-select-sm" style="width: 200px;">
 
-                            <option value="">Semua</option>
+                            <option value="Semua" {{ request('filter_pengajuan') == 'Semua' ? 'selected' : '' }}>Semua</option>
                             <option value="0" {{ request('filter_pengajuan') == '0' ? 'selected' : '' }}>Belum Pernah
                                 (0)</option>
                             <option value="1" {{ request('filter_pengajuan') == '1' ? 'selected' : '' }}>Sudah Pernah
                                 (≥1)</option>
+                                
                         </select>
                     </div>
                 </div>
@@ -271,6 +272,7 @@
                 let matchPengajuan = true;
                 if (selectedPengajuan === "0") matchPengajuan = jumlahPengajuan === 0;
                 if (selectedPengajuan === "1") matchPengajuan = jumlahPengajuan >= 1;
+                if (selectedPengajuan === "Semua") matchPengajuan = jumlahPengajuan >= 0;
 
                 // Return true jika kedua filter cocok
                 return matchStatus && matchPengajuan;
