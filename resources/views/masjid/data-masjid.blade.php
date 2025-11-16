@@ -189,6 +189,19 @@
 
             <h3 class="mb-3">📋 Daftar Masjid </h3>
 
+<form method="GET" class="mb-3 d-flex" style="gap:10px;">
+    <select name="filter_pengajuan" class="form-select" onchange="this.form.submit()">
+
+        <option value="">Semua</option>
+        <option value="0" {{ request('filter_pengajuan') == '0' ? 'selected' : '' }}>Belum Pernah (0)</option>
+        <option value="1" {{ request('filter_pengajuan') == '1' ? 'selected' : '' }}>Sudah Pernah (≥1)</option>
+    </select>
+
+  
+</form>
+
+
+
             <table class="table-modern">
                 <thead>
                     <tr>

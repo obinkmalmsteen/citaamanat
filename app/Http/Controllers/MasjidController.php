@@ -89,24 +89,32 @@ public function create()
 }
 
 
-public function dataMasjidPublik()
+public function dataMasjidPublik(Request $request)
 {
+    $filter = $request->filter_pengajuan;
+
     $masjid = DB::table('masjids')
-    ->leftJoin('reg_regencies', 'masjids.kota_id', '=', 'reg_regencies.id')
-    ->select(
-        'masjids.*',
-        'reg_regencies.name as nama_kota'
-    )
-    ->orderBy('masjids.created_at', 'desc') // 🔹 Urutkan dari terbaru
-    ->get();
+        ->leftJoin('reg_regencies', 'masjids.kota_id', '=', 'reg_regencies.id')
+        ->select(
+            'masjids.*',
+            'reg_regencies.name as nama_kota'
+        )
+        ->when($filter === '0', function ($q) {
+            // 🔹 Hanya yang total_pengajuan = 0
+            return $q->where('masjids.total_pengajuan', 0);
+        })
+        ->when($filter === '1', function ($q) {
+            // 🔹 Hanya yang total_pengajuan ≥1
+            return $q->where('masjids.total_pengajuan', '>', 0);
+        })
+        ->orderBy('masjids.created_at', 'desc')
+        ->get();
 
     return view('masjid.data-masjid', [
         'masjid' => $masjid,
-        'title' => 'Data Masjid Terdaftar',
-        compact('masjid')
+        'title' => 'Data Masjid Terdaftar'
     ]);
 }
-
 
 
 
