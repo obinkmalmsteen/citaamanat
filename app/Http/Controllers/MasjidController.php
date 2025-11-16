@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Masjid;
 
+use App\Helpers\StorageSync;
 use Illuminate\Http\Request;
 use App\Exports\MasjidExport;
 use Illuminate\Support\Facades\DB;
@@ -144,6 +145,9 @@ public function storePublic(Request $request)
     if ($request->hasFile('foto_masjid')) {
         $path = $request->file('foto_masjid')->store('foto_masjid', 'public'); // disimpan ke storage/app/public/foto_masjid
         $fotoMasjidName = basename($path); // hanya ambil nama A
+
+            // setelah upload → langsung sinkron
+    StorageSync::run();
     }
 
     // Simpan file foto meteran (jika di-upload)
@@ -151,6 +155,7 @@ public function storePublic(Request $request)
     if ($request->hasFile('foto_meteran_listrik')) {
         $path = $request->file('foto_meteran_listrik')->store('foto_meteran_listrik', 'public');
         $fotoMeteranName = basename($path);
+         StorageSync::run();
     }
     
     // Simpan data ke database dengan kolom tambahan otomatis

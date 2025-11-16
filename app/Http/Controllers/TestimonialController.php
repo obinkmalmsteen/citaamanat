@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Testimonial;
+use App\Helpers\StorageSync;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -41,12 +42,14 @@ public function store(Request $request)
     $videoPath = null;
     if ($request->hasFile('video')) {
         $videoPath = $request->file('video')->store('videos', 'public');
+        StorageSync::run();
     }
 
 $fotoPengelolaMasjid = null;
 if ($request->hasFile('foto_pengelola')) {
     $path = $request->file('foto_pengelola')->store('foto_pengelola', 'public');
     $fotoPengelolaMasjid = basename($path);
+    StorageSync::run();
 }
     // Simpan data testimonial
     Testimonial::create([
