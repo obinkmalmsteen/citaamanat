@@ -872,21 +872,45 @@
             },
         });
     </script>
-    <script>
-        var swiper = new Swiper(".myVideoTestimonialSwiper", {
-            slidesPerView: 1,
-            spaceBetween: 20,
-            loop: true,
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-            },
-            autoplay: {
-                delay: 3500,
-                disableOnInteraction: false,
-            },
+<script>
+    var swiper = new Swiper(".myVideoTestimonialSwiper", {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        loop: true,
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+        autoplay: {
+            delay: 3500,
+            disableOnInteraction: false,
+        },
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const videos = document.querySelectorAll(".myVideoTestimonialSwiper video");
+
+        videos.forEach(video => {
+
+            // Ketika video mulai play → stop autoplay
+            video.addEventListener("play", () => {
+                swiper.autoplay.stop();
+            });
+
+            // Ketika video di pause → mulai autoplay lagi
+            video.addEventListener("pause", () => {
+                swiper.autoplay.start();
+            });
+
+            // Ketika video selesai → mulai autoplay lagi
+            video.addEventListener("ended", () => {
+                swiper.autoplay.start();
+            });
+
         });
-    </script>
+    });
+</script>
+
 
 
 <script>

@@ -348,6 +348,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const swiperEl = document.querySelector(".myVideoTestimonialSwiper");
+
+    swiper.on('slideChange', function () {
+        const videos = swiperEl.querySelectorAll("video");
+        videos.forEach(v => v.pause());
+    });
+});
+</script>
 
 </body>
 
