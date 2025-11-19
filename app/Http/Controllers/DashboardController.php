@@ -50,7 +50,7 @@ public function landingpage()
     $masjidBelumDisetujui = DB::table('masjids')->where('disetujui', '!=', 1)->count();
      $totalRequestRealisasi = DB::table('histori_bayar')->whereNotNull('tgl_realisasi_token')->count();
     // Ambil testimoni terbaru
-    $testimonials = Testimonial::latest()->take(5)->get();
+    $testimonials = Testimonial::latest()->take(20)->get();
 
     // Kirim ke view
     return view('landingpage', compact('masjidDisetujui','masjidBelumDisetujui' ,'totalRequestRealisasi','testimonials'));
@@ -87,6 +87,8 @@ public function testimoni()
     // Kirim ke view
     return view('testimoni', compact( 'testimonials'));
 }
+
+
 
 public function kontakkami()
 {

@@ -657,9 +657,9 @@
                             <h5 class="text-center mb-1">{{ $testimonial->nama_testi }}</h5>
                             <p class="text-muted text-center mb-2">{{ $testimonial->keterangan }}</p>
 
-                            <p class="fs-5 fst-italic text-center">
+                            {{-- <p class="fs-5 fst-italic text-center">
                                 " {{ $testimonial->ucapan }} "
-                            </p>
+                            </p> --}}
                         </div>
                     </div>
                 @endforeach
