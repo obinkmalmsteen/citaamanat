@@ -221,11 +221,11 @@
                         <i class="fa fa-mosque fa-5x text-white"></i>
                     </div>
                     <div class="col-lg-7 text-center text-primary">
-                        <h2 class="mb-0 text-light">"Penerangan adalah fasilitas penting yang menunjang
+                        <h3 class="mb-0 text-light">"Penerangan adalah fasilitas penting yang menunjang
                             kenyamanan dan
                             kekhusyukan beribadah di masjid. <br> Cahaya yang menerangi masjid, InsyaAllah
                             menjadi
-                            cahaya bagi para jamaahnya."</h2>
+                            cahaya bagi para jamaahnya."</h3>
                     </div>
 
                 </div>
@@ -240,7 +240,7 @@
         <div class="container py-5">
             <div class="mx-auto text-center mb-5 wow fadeIn" data-wow-delay="0.1s" style="max-width: 700px;">
                 <p class="fs-5 text-uppercase text-primary">Mulai</p>
-                <h3 class="display-1">Registrasi Masjid / Mushola Anda </h3>
+                <h3 class="display-6">Registrasi Masjid / Mushola Anda </h3>
             </div>
 
             <div class="row g-4">
@@ -544,6 +544,8 @@
 
 
     <!-- Team Start
+
+
         <div class="container-fluid team py-5">
             <div class="container py-5">
                 <div class="text-center mx-auto mb-5 wow fadeIn" data-wow-delay="0.1s" style="max-width: 700px;">
@@ -628,20 +630,64 @@
         </div>
         Team End -->
 
+ <!-- Testiminial video -->
+<div class="container-fluid testimonial py-5">
+    <div class="container py-5">
+        <div class="text-center mx-auto mb-5" style="max-width: 700px;">
+            <p class="fs-5 text-uppercase text-primary">Testimonial Video</p>
+            <h5 class="display-6">Video Terbaru</h5>
+        </div>
 
+        <!-- Swiper Container -->
+        <div class="swiper myTestimonialSwiper">
+            <div class="swiper-wrapper">
+
+                @foreach ($testimonials->whereNotNull('video') as $testimonial)
+                    <div class="swiper-slide">
+                        <div class="testimonial-item p-3 shadow-sm bg-white rounded">
+
+                            <!-- VIDEO -->
+                            <div class="ratio ratio-16x9 mb-3">
+                                <video controls class="rounded shadow-sm w-100">
+                                    <source src="{{ asset('public/storage/' . $testimonial->video) }}" type="video/mp4">
+                                </video>
+                            </div>
+
+                            <!-- Nama & Ucapan -->
+                            <h5 class="text-center mb-1">{{ $testimonial->nama_testi }}</h5>
+                            <p class="text-muted text-center mb-2">{{ $testimonial->keterangan }}</p>
+
+                            <p class="fs-5 fst-italic text-center">
+                                " {{ $testimonial->ucapan }} "
+                            </p>
+                        </div>
+                    </div>
+                @endforeach
+
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+
+        </div>
+    </div>
+</div>
+
+    {{-- testimoni test video --}}
     <!-- Testiminial Start -->
     <div class="container-fluid testimonial py-5">
         <div class="container py-5">
             <div class="text-center mx-auto mb-5" style="max-width: 700px;">
                 <p class="fs-5 text-uppercase text-primary">Testimonial</p>
-                <h1 class="display-3">Apa Kata Mereka</h1>
+                <h1 class="display-6">Apa Kata Mereka</h1>
             </div>
 
             <!-- Swiper Container -->
             <div class="swiper myTestimonialSwiper">
                 <div class="swiper-wrapper">
 
-                    @foreach ($testimonials as $testimonial)
+                    @foreach ($testimonials->whereNotNull('photo') as $testimonial)
                         <div class="swiper-slide">
                             <div class="testimonial-item p-3 shadow-sm bg-white rounded">
                                 <div class="d-flex mb-3">
@@ -681,7 +727,11 @@
         </div>
     </div>
 
-    <!-- Testiminial End -->
+   
+
+
+
+
 
 
     <!-- Footer Start -->
@@ -822,6 +872,16 @@
             },
         });
     </script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const swiperEl = document.querySelector(".myTestimonialSwiper");
+
+    swiper.on('slideChange', function () {
+        const videos = swiperEl.querySelectorAll("video");
+        videos.forEach(v => v.pause());
+    });
+});
+</script>
 
 
 

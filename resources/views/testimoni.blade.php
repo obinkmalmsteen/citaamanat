@@ -174,18 +174,8 @@
                             <p class="text-muted fst-italic">Tidak ada video tersedia.</p>
                         @endif
                     </div>
-
-
-                    
+              
                 </div>
-
-
-
-
-
-
-
-
 
 
                 {{-- BAGIAN NAMA & UCAPAN --}}
@@ -321,6 +311,44 @@
     <script>
         new PureCounter();
     </script>
+
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const videos = document.querySelectorAll("video");
+
+    // ================================
+    // 1. Pause semua video lain saat ada 1 video yang play
+    // ================================
+    videos.forEach(video => {
+        video.addEventListener("play", () => {
+            videos.forEach(v => {
+                if (v !== video) v.pause();
+            });
+        });
+    });
+
+    // ================================
+    // 2. Pause video otomatis jika keluar dari layar
+    // ================================
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            const video = entry.target;
+
+            // Jika video tidak terlihat sama sekali di viewport → pause
+            if (entry.intersectionRatio === 0 && !video.paused) {
+                video.pause();
+            }
+        });
+    }, {
+        threshold: 0     // 0 artinya: begitu keluar sedikit saja → pause
+    });
+
+    videos.forEach(video => observer.observe(video));
+
+});
+</script>
+
 </body>
 
 </html>
