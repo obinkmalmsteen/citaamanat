@@ -639,7 +639,7 @@
         </div>
 
         <!-- Swiper Container -->
-        <div class="swiper myTestimonialSwiper">
+        <div class="swiper myVideoTestimonialSwiper">
             <div class="swiper-wrapper">
 
                 @foreach ($testimonials->whereNotNull('video') as $testimonial)
@@ -872,9 +872,26 @@
             },
         });
     </script>
+    <script>
+        var swiper = new Swiper(".myVideoTestimonialSwiper", {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            loop: true,
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            autoplay: {
+                delay: 3500,
+                disableOnInteraction: false,
+            },
+        });
+    </script>
+
+
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-    const swiperEl = document.querySelector(".myTestimonialSwiper");
+    const swiperEl = document.querySelector(".myVideoTestimonialSwiper");
 
     swiper.on('slideChange', function () {
         const videos = swiperEl.querySelectorAll("video");
