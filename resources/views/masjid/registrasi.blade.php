@@ -38,6 +38,31 @@
             font-size: 0.8rem; /* 🔹 perkecil seluruh teks jadi ~70% */
               margin-top: 150px;
         }
+
+
+
+
+        .hp-warning {
+    display: none;
+    background: #dc3545;
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: 4px;
+    opacity: 0;
+    transition: opacity .3s ease;
+    z-index: 10;
+}
+
+.hp-warning.show {
+    display: block;
+    opacity: 1;
+}
+
 </style>
 
 
@@ -114,15 +139,16 @@
                         </div>
 
 
-                        <div class="col-md-6 mb-4">
-                            <label for="telp_ketua_dkm" class="form-label">Telepon/HP Ketua DKM</label>
-                            <input type="text" name="telp_ketua_dkm" class="form-control" id="telp_ketua_dkm-field"
-                                style="background-color: #f9f7e7;" value="{{ old('telp_ketua_dkm') }}" required>
+                      <div class="col-md-6 mb-4 position-relative">
+    <label class="form-label">Telepon/HP Ketua DKM (Awali nomor dengan 62 bukan Nol)</label>
+     <small class="text-muted d-block">Mengetik Angka nol di awal akan otomatis jadi <b>62</b> , tinggal lanjutkan ke angka berikutnya. <b>Contoh: 628157XXXX</b></small>
+    <input type="text" name="telp_ketua_dkm" 
+           class="form-control input-hp"
+           style="background-color: #f9f7e7;"
+           required>
 
-                            @error('telp_ketua_dkm')
-                                <div class="text-danger mt-2">{{ $message }}</div>
-                            @enderror
-                        </div>
+    <div class="hp-warning popup-hp">Nomor harus diawali 62 (bukan 0)</div>
+</div>
 
 
 
@@ -141,17 +167,15 @@
 
 
 
-                        <div class="col-md-6 mb-4">
-                            <label for="telp_penerima_informasi" class="form-label">Nomor Telepon Penerima
-                                Informasi</label>
-                            <input type="text" name="telp_penerima_informasi" class="form-control"
-                                id="telp_penerima_informasi-field" style="background-color: #f9f7e7;"
-                                value="{{ old('telp_penerima_informasi') }}" required>
+                      <div class="col-md-6 mb-4 position-relative">
+    <label class="form-label">Telepon Penerima Informasi (Awali nomor dengan 62 bukan Nol)</label>
+     <small class="text-muted d-block">Mengetik angka nol di awal akan otomatis jadi <b>62</b> , tinggal lanjutkan ke angka berikutnya. <b>Contoh: 628157XXXX</b></small>
+    <input type="text" name="telp_penerima_informasi" 
+           class="form-control input-hp"
+           style="background-color: #f9f7e7;">
 
-                            @error('telp_penerima_informasi')
-                                <div class="text-danger mt-2">{{ $message }}</div>
-                            @enderror
-                        </div>
+    <div class="hp-warning popup-hp">Nomor harus diawali 62 (bukan 0)</div>
+</div>
 
 
 
@@ -643,6 +667,64 @@
         selectField.addEventListener('change', toggleAlasanField);
     });
 </script>
+
+
+<script>
+// Ambil semua input HP
+const hpInputs = document.querySelectorAll(".input-hp");
+
+// Fungsi menampilkan popup fade
+function showWarning(el) {
+    const warn = el.parentElement.querySelector(".hp-warning");
+    warn.classList.add("show");
+}
+
+// Fungsi menyembunyikan popup
+function hideWarning(el) {
+    const warn = el.parentElement.querySelector(".hp-warning");
+    warn.classList.remove("show");
+}
+
+// Event listener untuk setiap input HP
+hpInputs.forEach(input => {
+    input.addEventListener("input", function() {
+        let v = this.value;
+
+        // Jika ketik 0 di awal → otomatis jadi 62
+        if (v.startsWith("0")) {
+            this.value = "62" + v.substring(1);
+            showWarning(this);
+            return;
+        }
+
+        // Jika tidak diawali 62
+        if (v.length > 0 && !v.startsWith("62")) {
+            showWarning(this);
+        } else {
+            hideWarning(this);
+        }
+    });
+});
+
+// VALIDASI SAAT SUBMIT FORM
+document.querySelector("form").addEventListener("submit", function(e) {
+    let valid = true;
+
+    hpInputs.forEach(input => {
+        let v = input.value.trim();
+
+        if (v !== "" && !v.startsWith("62")) {
+            showWarning(input);
+            valid = false;
+        }
+    });
+
+    if (!valid) {
+        e.preventDefault(); // blokir submit
+    }
+});
+</script>
+
 </body>
 
 </html>

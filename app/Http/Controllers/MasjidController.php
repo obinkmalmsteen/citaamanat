@@ -198,11 +198,18 @@ public function storePublic(Request $request)
     if ($request->telp_penerima_informasi) {
 
         $pesan = 
-            "Assalamualaikum.\n\n".
-            "Registrasi Masjid/Mushola *{$request->nama_masjid}* telah masuk.\n".
-            "Data sedang diproses dan menunggu verifikasi.\n\n".
-            "Terima kasih..\n\n".
-            "Cita Amanat Martadiredja.";
+            
+"Assalamu’alaikum Wr.Wb
+
+Alhamdulillah,
+Registrasi Masjid/Mushola *{$masjid->nama_masjid}* telah kami terima.
+Saat ini data sedang dalam proses dan menunggu tahap verifikasi.
+Kunjungi Website kami http://www.Citaamanatmartadiredja.id untuk pengecekan status secara berkala
+
+Wassalamu'alikum Wr.WB
+
+Hormat kami,
+Yayasan Cita Amanat Martadiredja";
 
        // WifiHelper::send($request->telp_penerima_informasi, $pesan);
         // atau
@@ -385,19 +392,27 @@ public function setujui($id)
     if ($masjid->telp_penerima_informasi) {
 
         $pesan = 
-            "Assalamualaikum WR WB.\n\n".
-            "Subjek: Persetujuan Program Terangi Beribu Masjid.\n\n".
-            "Kepada Bapak/Ibu Pengurus, *{$masjid->nama_masjid}* Dengan mengucap Alhamdulillahi rabbil 'alamin, kami sampaikan kabar gembira bahwa masjid/mushala yang Bapak/Ibu daftarkan telah disetujui untuk mengikuti Program 'Terangi Beribu Masjid'.\n".
-            "Sebagai langkah selanjutnya, kami mohon kesediaan Bapak/Ibu untuk:\n\n".
-            "1. Login ke dalam sistem kami dengan nomor id_pelanggan:*{$masjid->id_pelanggan}*,
-                Dan Password nya adalah:*{$masjid->id_pelanggan}*.\n\n".
-            "2. Melakukan permintaan (request) Token di dalam sistem.\n\n".
-            "3. Bergabung ke dalam Grup WhatsApp resmi program ini melalui tautan berikut: [https://chat.whatsapp.com/KW0hoNt1YHI57i8aK6kdGK].\n\n".
-            "Keikutsertaan dalam grup WA ini sangat penting agar Bapak/Ibu tidak tertinggal informasi dan update terbaru seputar program.\n".
-            "Atas Perhatiannya Kami ucapkan terima Kasih.\n\n".
-            "Terima Kasih.\n\n".
-            "Assalamualaikum WR WB.\n\n".
-"Cita Amanat Martadiredja.";
+"Assalamu’alaikum warahmatullahi wabarakatuh.
+
+Subjek: Persetujuan Program Terangi Beribu Masjid
+Bapak/Ibu Pengurus Masjid/Mushala *{$masjid->nama_masjid}*
+
+Dengan mengucap Alhamdulillahi rabbil ‘alamin, kami sampaikan kabar gembira bahwa masjid/mushala yang Bapak/Ibu ajukan telah disetujui untuk mengikuti Program “Terangi Beribu Masjid”.
+
+Sebagai tindak lanjut, mohon kesediaan Bapak/Ibu untuk melakukan beberapa langkah berikut:
+Login ke sistem menggunakan:
+* ID Pelanggan: *{$masjid->id_pelanggan}*
+* Password: *{$masjid->id_pelanggan}*
+Melakukan permintaan (request) token melalui sistem kami.
+Bergabung ke Grup WhatsApp resmi program melalui tautan berikut:
+https://chat.whatsapp.com/KW0hoNt1YHI57i8aK6kdGK
+(Keikutsertaan dalam grup WA sangat penting agar Bapak/Ibu mendapatkan seluruh informasi dan pembaruan program.)
+Terimakasih telah menjadi bagian dalam memakmurkan Masjid/Mushola, semoga menjadi amal kebaikan.
+
+Wassalamu’alaikum Wr.Wb.
+
+Hormat kami,
+Yayasan Cita Amanat Martadiredja ";
          WhatsappHelper::send($masjid->telp_penerima_informasi, $pesan);
     }
 
@@ -555,13 +570,24 @@ public function realisasiToken(Request $request, $id_pelanggan)
          if ($masjid->telp_penerima_informasi) {
 
         $pesan = 
-            "Assalamualaikum.\n\n".
-            "Kepada Masjid *{$masjid->nama_masjid}* .\n".
-            "Selamat, Permintaan token anda sudah kami realisasikan.\n\n".
-            "Nomor Token Listrik anda adalah:\n\n". " *{$request->no_token_listrik}*\n\n".
-            "dengan jumlah saldo token sebesar:\n\n". "Rp *{$request->jumlah_realisasi_token}*\n\n".
-            "Terima kasih.\n\n".
-"Cita Amanat Martadiredja.";
+            
+"Assalamu’alaikum warahmatullahi wabarakatuh.
+
+Bapak/Ibu Pengurus Masjid/Mushola *{$masjid->nama_masjid}*
+Dengan ini kami sampaikan bahwa permintaan token listrik yang diajukan telah berhasil direalisasikan.
+
+Berikut informasi token :
+
+Nomor Token : *{$request->no_token_listrik}*
+Jumlah Saldo : Rp *{$request->jumlah_realisasi_token}*
+
+Semoga bantuan ini dapat bermanfaat bagi kegiatan operasional Masjid/Mushola *{$masjid->nama_masjid}*.
+Atas perhatian dan kerja samanya, kami ucapkan terima kasih.
+
+Wassalamu’alaikum Wr.Wb
+
+Hormat kami,
+Cita Amanat Martadiredja ";
 
          WhatsappHelper::send($masjid->telp_penerima_informasi, $pesan);
     }
