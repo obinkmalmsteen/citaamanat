@@ -204,7 +204,7 @@ public function storePublic(Request $request)
 Alhamdulillah,
 Registrasi Masjid/Mushola *{$masjid->nama_masjid}* telah kami terima.
 Saat ini data sedang dalam proses dan menunggu tahap verifikasi.
-Kunjungi Website kami http://www.Citaamanatmartadiredja.id untuk pengecekan status secara berkala
+Kunjungi Website kami http://citaamanatmartadiredja.id untuk pengecekan status secara berkala
 
 Wassalamu'alikum Wr.WB
 
@@ -568,9 +568,12 @@ public function realisasiToken(Request $request, $id_pelanggan)
         ]);
 
          if ($masjid->telp_penerima_informasi) {
+    // FORMAT TOKEN PER 4 DIGIT
+    $tokenFormatted = trim(chunk_split($request->no_token_listrik, 4, ' '));
 
+    // FORMAT JUMLAH DENGAN TITIK RIBUAN
+    $jumlahFormatted = number_format($request->jumlah_realisasi_token, 0, ',', '.');
         $pesan = 
-            
 "Assalamu’alaikum warahmatullahi wabarakatuh.
 
 Bapak/Ibu Pengurus Masjid/Mushola *{$masjid->nama_masjid}*
@@ -578,8 +581,8 @@ Dengan ini kami sampaikan bahwa permintaan token listrik yang diajukan telah ber
 
 Berikut informasi token :
 
-Nomor Token : *{$request->no_token_listrik}*
-Jumlah Saldo : Rp *{$request->jumlah_realisasi_token}*
+Nomor Token : *{$tokenFormatted}*
+Jumlah Saldo : Rp *{$jumlahFormatted}*
 
 Semoga bantuan ini dapat bermanfaat bagi kegiatan operasional Masjid/Mushola *{$masjid->nama_masjid}*.
 Atas perhatian dan kerja samanya, kami ucapkan terima kasih.
@@ -587,7 +590,7 @@ Atas perhatian dan kerja samanya, kami ucapkan terima kasih.
 Wassalamu’alaikum Wr.Wb
 
 Hormat kami,
-Cita Amanat Martadiredja ";
+Cita Amanat Martadiredja";
 
          WhatsappHelper::send($masjid->telp_penerima_informasi, $pesan);
     }
