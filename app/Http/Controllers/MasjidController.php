@@ -541,7 +541,7 @@ public function realisasiToken(Request $request, $id_pelanggan)
     $masjid = Masjid::where('id_pelanggan', $id_pelanggan)->firstOrFail();
 
     $request->validate([
-        'no_token_listrik' => 'required|numeric|min:1',
+        'no_token_listrik' => 'required|min:1',
         'jumlah_realisasi_token' => 'required|numeric|min:1',
     ]);
 

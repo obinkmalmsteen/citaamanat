@@ -110,7 +110,7 @@
             @csrf
             <div class="mb-3">
                 <label for="no_token_listrik" class="form-label">Nomor Token Listrik</label>
-                <input type="number" name="no_token_listrik" id="no_token_listrik" class="form-control" required
+                <input type="text" name="no_token_listrik" id="no_token_listrik" class="form-control" required
                     min="1">
             </div>
             <div class="mb-3">
