@@ -1,14 +1,22 @@
 <?php
 
+
 use App\Models\Testimonial;
+use App\Exports\MasjidsExport;
+use Illuminate\Support\Facades\Http;
+use Maatwebsite\Excel\Facades\Excel;
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MasjidController;
-
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PengajuanController;
 use App\Http\Controllers\TestimonialController;
+
+
+
+
 
 // ✅ Halaman utama (welcome page) menampilkan data + testimonial
 Route::get('/welcome-page', [DashboardController::class, 'welcome'])->name('welcome');
@@ -47,7 +55,8 @@ Route::get('/get-villages/{district_id}', [MasjidController::class, 'getVillages
 
 Route::get('masjid/data-masjid', [MasjidController::class, 'dataMasjidPublik'])->name('data.masjid.publik');
 
-use Illuminate\Support\Facades\Http;
+
+
 
 Route::post('/kirim-wa', function () {
     $to = request('to');
@@ -114,8 +123,20 @@ Route::put('/masjid/{id}/updateField', [MasjidController::class, 'updateField'])
 Route::put('/masjid/{id}/verify', [MasjidController::class, 'verify'])
     ->name('masjid.verify');
 
+Route::get('masjid/{id}/edit-full', [MasjidController::class, 'editFull'])
+    ->name('masjid.editFull');
+
+Route::put('masjid/{id}/update-full', [MasjidController::class, 'updateFull'])
+    ->name('masjid.updateFull');
 
 
+
+Route::get('/export/masjids', function () {
+    $timestamp = now()->format('d-m-Y');
+ // contoh: 2025-11-22_14-35
+
+    return Excel::download(new MasjidsExport, "masjids_{$timestamp}.xlsx");
+});
 
 
 

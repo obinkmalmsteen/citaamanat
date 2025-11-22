@@ -601,7 +601,7 @@ Cita Amanat Martadiredja";
 
 public function editField($id, $field)
 {
-    $allowed = ['nama_masjid','nama_pelanggan','no_telp_ketua_dkm', /* dst */];
+    $allowed = ['nama_masjid','nama_pelanggan','nama_ketua_dkm','telp_ketua_dkm', /* dst */];
 
     if (!in_array($field, $allowed)) {
         abort(404);
@@ -610,6 +610,30 @@ public function editField($id, $field)
     $masjid = Masjid::findOrFail($id);
     return view('admin.masjid.edit_field', ['masjid'=>$masjid, 'field'=>$field]);
 }
+
+public function editFull($id)
+{
+    $masjid = Masjid::findOrFail($id);
+
+    return view('admin.masjid.edit-full', compact('masjid'));
+}
+
+public function updateFull(Request $request, $id)
+{
+    $masjid = Masjid::findOrFail($id);
+
+    // Jika data sudah diverifikasi, tidak boleh diubah
+    if ($masjid->is_verified) {
+        return back()->with('error', 'Data sudah diverifikasi admin dan tidak dapat diubah lagi.');
+    }
+
+    $data = $request->except(['_token','_method']);
+    $masjid->update($data);
+
+    return redirect()->route('masjid.show', $id)
+                     ->with('success', 'Semua data berhasil diperbarui!');
+}
+
 
 
 public function updateField(Request $request, $id)

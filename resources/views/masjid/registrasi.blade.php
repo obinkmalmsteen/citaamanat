@@ -145,7 +145,7 @@
     <input type="text" name="telp_ketua_dkm" 
            class="form-control input-hp"
            style="background-color: #f9f7e7;"
-           required>
+            value="{{ old('telp_ketua_dkm') }}" required>
 
     <div class="hp-warning popup-hp">Nomor harus diawali 62 (bukan 0)</div>
 </div>
@@ -172,7 +172,7 @@
      <small class="text-muted d-block">Mengetik angka nol di awal akan otomatis jadi <b>62</b> , tinggal lanjutkan ke angka berikutnya. <b>Contoh: 628157XXXX</b></small>
     <input type="text" name="telp_penerima_informasi" 
            class="form-control input-hp"
-           style="background-color: #f9f7e7;">
+           style="background-color: #f9f7e7;" value="{{ old('telp_penerima_informasi') }}" required>
 
     <div class="hp-warning popup-hp">Nomor harus diawali 62 (bukan 0)</div>
 </div>
@@ -223,7 +223,7 @@
                             <label for="alamat_lengkap-field" class="pb-2">Alamat Lengkap</label>
                             <input type="text" class="form-control" style="background-color: #f9f7e7;"
                                 name="alamat_lengkap" id="alamat_lengkap-field"
-                                value="{{ old('penerima_informasi') }}" required>
+                                value="{{ old('alamat_lengkap') }}" required>
                         </div>
 
                         {{-- Provinsi --}}
@@ -269,8 +269,11 @@
                         <div class="col-md-6 mb-4">
                             <label for="foto_masjid" class="form-label">Foto Masjid</label>
                             <input type="file" name="foto_masjid" id="foto_masjid-field" class="form-control"
-                                style="background-color: #f9f7e7;" accept="image/*">
+                                style="background-color: #f9f7e7;" accept="image/*" required>
                         </div>
+<div id="koordinatDisplay" style="margin-bottom: 10px; font-weight: bold;">
+    Lat: - , Lng: -
+</div>
 
                         <div class="mb-3">
                             <label for="map">Tandai Lokasi Masjid di Peta</label>
@@ -310,7 +313,7 @@
                             <label for="no_meteran_listrik" class="form-label">Nomor Meteran Listrik</label>
                             <input type="text" name="no_meteran_listrik" class="form-control"
                                 id="no_meteran_listrik-field" style="background-color: #f9f7e7;"
-                                value="{{ old('no_meteran_listrik') }}" required>
+                                value="{{ old('no_meteran_listrik') }}" >
 
                             @error('no_meteran_listrik')
                                 <div class="text-danger mt-2">{{ $message }}</div>
@@ -405,8 +408,9 @@
                         <div class="col-md-6 mb-4">
                             <label for="foto_meteran_listrik" class="form-label">Foto Meteran Listrik</label>
                             <input type="file" name="foto_meteran_listrik" id="foto_meteran_listrik-field"
-                                class="form-control" style="background-color: #f9f7e7;" accept="image/*">
+                                class="form-control" style="background-color: #f9f7e7;" accept="image/*" required>
                         </div>
+                        
 
                     </div>
                 </div>
@@ -518,64 +522,81 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            // Koordinat default (Yogyakarta)
-            var defaultLat = -7.7956;
-            var defaultLng = 110.3695;
+   <script>
+document.addEventListener("DOMContentLoaded", function() {
 
-            // Coba parse koordinat dari input jika sudah ada
-            var savedCoords = document.getElementById('map_lokasi_masjid').value;
-            var lat = defaultLat;
-            var lng = defaultLng;
+    var defaultLat = -7.7956;
+    var defaultLng = 110.3695;
 
-            if (savedCoords && savedCoords.includes(',')) {
-                var parts = savedCoords.split(',');
-                lat = parseFloat(parts[0]);
-                lng = parseFloat(parts[1]);
+    var savedCoords = document.getElementById('map_lokasi_masjid').value;
+    var lat = defaultLat;
+    var lng = defaultLng;
+
+    // Tampilkan koordinat
+    function updateDisplay(lat, lng) {
+        document.getElementById('koordinatDisplay').innerHTML =
+            "Lat: " + lat.toFixed(7) + " | Lng: " + lng.toFixed(7);
+    }
+
+    // Kalau sudah ada koordinat tersimpan
+    if (savedCoords && savedCoords.includes(',')) {
+        var parts = savedCoords.split(',');
+        lat = parseFloat(parts[0]);
+        lng = parseFloat(parts[1]);
+    }
+
+    // Buat peta
+    var map = L.map('map').setView([lat, lng], 13);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '© OpenStreetMap'
+    }).addTo(map);
+
+    // Marker
+    var marker = L.marker([lat, lng], { draggable: true }).addTo(map);
+
+    // Update tampilan koordinat awal
+    updateDisplay(lat, lng);
+
+    // Saat marker digeser
+    marker.on('dragend', function() {
+        var pos = marker.getLatLng();
+        updateDisplay(pos.lat, pos.lng);
+        document.getElementById('map_lokasi_masjid').value =
+            pos.lat.toFixed(7) + ',' + pos.lng.toFixed(7);
+    });
+
+    // Saat klik peta
+    map.on('click', function(e) {
+        marker.setLatLng(e.latlng);
+        updateDisplay(e.latlng.lat, e.latlng.lng);
+        document.getElementById('map_lokasi_masjid').value =
+            e.latlng.lat.toFixed(7) + ',' + e.latlng.lng.toFixed(7);
+    });
+
+    // Ambil lokasi user (GPS)
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+
+            var userLat = position.coords.latitude;
+            var userLng = position.coords.longitude;
+
+            if (!savedCoords) {
+                map.setView([userLat, userLng], 15);
+                marker.setLatLng([userLat, userLng]);
+                updateDisplay(userLat, userLng);
+                document.getElementById('map_lokasi_masjid').value =
+                    userLat.toFixed(7) + ',' + userLng.toFixed(7);
             }
 
-            // Buat peta
-            var map = L.map('map').setView([lat, lng], 13);
-
-            // Tambahkan layer OpenStreetMap
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 19,
-                attribution: '© OpenStreetMap'
-            }).addTo(map);
-
-            // Tambahkan marker
-            var marker = L.marker([lat, lng], {
-                draggable: true
-            }).addTo(map);
-
-            // Saat marker digeser
-            marker.on('dragend', function(e) {
-                var latlng = marker.getLatLng();
-                document.getElementById('map_lokasi_masjid').value = latlng.lat.toFixed(7) + ',' + latlng
-                    .lng.toFixed(7);
-            });
-
-            // Saat klik peta, pindahkan marker
-            map.on('click', function(e) {
-                marker.setLatLng(e.latlng);
-                document.getElementById('map_lokasi_masjid').value = e.latlng.lat.toFixed(7) + ',' + e
-                    .latlng.lng.toFixed(7);
-            });
-
-            // Ambil lokasi pengguna (jika diizinkan)
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(function(position) {
-                    var userLat = position.coords.latitude;
-                    var userLng = position.coords.longitude;
-                    map.setView([userLat, userLng], 15);
-                    marker.setLatLng([userLat, userLng]);
-                    document.getElementById('map_lokasi_masjid').value = userLat.toFixed(7) + ',' + userLng
-                        .toFixed(7);
-                });
-            }
         });
-    </script>
+    }
+
+});
+</script>
+
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>

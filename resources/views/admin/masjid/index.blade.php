@@ -21,7 +21,7 @@
                         Tambah Data Masjid
                     </a>
                 </div>
-      
+
                 <div class="d-flex justify-content-between align-items-center mb-3">
                     <div>
                         <h5>Status Masjid</h5>
@@ -37,12 +37,13 @@
                         <h5>Jumlah Pengajuan</h5>
                         <select name="filter_pengajuan" class="form-select form-select-sm" style="width: 200px;">
 
-                            <option value="Semua" {{ request('filter_pengajuan') == 'Semua' ? 'selected' : '' }}>Semua</option>
+                            <option value="Semua" {{ request('filter_pengajuan') == 'Semua' ? 'selected' : '' }}>Semua
+                            </option>
                             <option value="0" {{ request('filter_pengajuan') == '0' ? 'selected' : '' }}>Belum Pernah
                                 (0)</option>
                             <option value="1" {{ request('filter_pengajuan') == '1' ? 'selected' : '' }}>Sudah Pernah
                                 (≥1)</option>
-                                
+
                         </select>
                     </div>
                 </div>
@@ -50,10 +51,12 @@
                 <div>
                     <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
 
-                    <a href="#" onclick="confirmAndExport('dataTable', 'masjids')" class="btn btn-sm btn-success">
+                    <a href="{{ url('/export/masjids') }}" class="btn btn-sm btn-success">
                         <i class="fas fa-file-excel mr-2"></i> Excel
                     </a>
 
+
+          
                     <script>
                         function confirmAndExport(tableID, filename = '') {
                             if (confirm(
@@ -96,6 +99,7 @@
                             <th>Disetujui</th>
                             <th>Aksi</th>
                             <th>Pengajuan</th>
+                            <th>Koordinat</th>
                         </tr>
                     </thead>
 
@@ -121,6 +125,7 @@
                                         class="btn btn-info btn-sm">Detail</a>
                                 </td>
                                 <td>{{ $item->total_pengajuan }}</td>
+                                  <td>{{ $item->map_lokasi_masjid }}</td>
 
                             </tr>
                         @endforeach
@@ -202,6 +207,14 @@
             </div>
         @endif
 
+  <!-- MAP -->
+        <div class="mb-3">
+                            <label for="map">Tandai Lokasi Masjid di Peta</label>
+                            <div id="map" style="height: 400px; border-radius: 10px;"></div>
+
+                         
+                        </div>
+            <!-- MAP END-->
 
 
         <script>
@@ -289,4 +302,55 @@
 
     });
 </script>
+<script>
+    const masjids = @json($masjid);
+</script>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+   <script>
+document.addEventListener("DOMContentLoaded", function() {
+
+    // Default map jika tidak ada marker
+    var defaultLat = -7.7956;
+    var defaultLng = 110.3695;
+    var map = L.map('map').setView([defaultLat, defaultLng], 13);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '© OpenStreetMap'
+    }).addTo(map);
+
+    var markersGroup = L.featureGroup();
+
+    masjids.forEach(function(item) {
+
+        if (!item.map_lokasi_masjid) return;
+
+        let coords = item.map_lokasi_masjid.split(',');
+        let lat = parseFloat(coords[0]);
+        let lng = parseFloat(coords[1]);
+
+        if (isNaN(lat) || isNaN(lng)) return;
+
+        // Marker dengan tooltip permanen (selalu tampil)
+        let marker = L.marker([lat, lng]).addTo(map);
+
+        marker.bindTooltip(item.nama_masjid, {
+            permanent: true,   // tampil terus
+            direction: 'top',  // posisi tulisan di atas marker
+            className: 'leaflet-tooltip-nama-masjid' // bisa custom CSS
+        });
+
+        markersGroup.addLayer(marker);
+    });
+
+    if (markersGroup.getLayers().length > 0) {
+        map.fitBounds(markersGroup.getBounds());
+    }
+
+});
+</script>
+
 
