@@ -305,6 +305,26 @@
     <!--  Activities Start -->
 
 
+
+
+
+    <div class="container-fluid testimonial py-5">
+        <div class="container py-5">
+            <div class="mx-auto text-center mb-5 wow fadeIn" data-wow-delay="0.1s" style="max-width: 700px;">
+                <p class="fs-5 text-uppercase text-primary">MAPS</p>
+                <h3 class="display-6">Sebaran Lokasi Masjid Yang sudah Teverifikasi</h3>
+            </div>
+            <div class="mb-3">
+                <label for="map">Lokasi</label>
+                <div id="map" style="height: 400px;  border-radius: 10px;"></div>
+            </div>
+        </div>
+    </div>
+    <!-- MAP -->
+
+
+    <!-- MAP END-->
+
     <!-- Events Start
         <div class="container-fluid event py-5">
             <div class="container py-5">
@@ -630,49 +650,50 @@
         </div>
         Team End -->
 
- <!-- Testiminial video -->
-<div class="container-fluid testimonial py-5">
-    <div class="container py-5">
-        <div class="text-center mx-auto mb-5" style="max-width: 700px;">
-            <p class="fs-5 text-uppercase text-primary">Testimonial Video</p>
-            <h5 class="display-6">Video Terbaru</h5>
-        </div>
-
-        <!-- Swiper Container -->
-        <div class="swiper myVideoTestimonialSwiper">
-            <div class="swiper-wrapper">
-
-                @foreach ($testimonials->whereNotNull('video') as $testimonial)
-                    <div class="swiper-slide">
-                        <div class="testimonial-item p-3 shadow-sm bg-white rounded">
-
-                            <!-- VIDEO -->
-                            <div class="ratio ratio-16x9 mb-3">
-                                <video controls class="rounded shadow-sm w-100">
-                                    <source src="{{ asset('public/storage/' . $testimonial->video) }}" type="video/mp4">
-                                </video>
-                            </div>
-
-                            <!-- Nama & Ucapan -->
-                            <h5 class="text-center mb-1">{{ $testimonial->nama_testi }}</h5>
-                            <p class="text-muted text-center mb-2">{{ $testimonial->keterangan }}</p>
-
-                            {{-- <p class="fs-5 fst-italic text-center">
-                                " {{ $testimonial->ucapan }} "
-                            </p> --}}
-                        </div>
-                    </div>
-                @endforeach
-
+    <!-- Testiminial video -->
+    <div class="container-fluid testimonial py-5">
+        <div class="container py-5">
+            <div class="text-center mx-auto mb-5" style="max-width: 700px;">
+                <p class="fs-5 text-uppercase text-primary">Testimonial Video</p>
+                <h5 class="display-6">Video Terbaru</h5>
             </div>
 
-            <!-- Navigation Buttons -->
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
+            <!-- Swiper Container -->
+            <div class="swiper myVideoTestimonialSwiper">
+                <div class="swiper-wrapper">
 
+                    @foreach ($testimonials->whereNotNull('video') as $testimonial)
+                        <div class="swiper-slide">
+                            <div class="testimonial-item p-3 shadow-sm bg-white rounded">
+
+                                <!-- VIDEO -->
+                                <div class="ratio ratio-16x9 mb-3">
+                                    <video controls class="rounded shadow-sm w-100">
+                                        <source src="{{ asset('public/storage/' . $testimonial->video) }}"
+                                            type="video/mp4">
+                                    </video>
+                                </div>
+
+                                <!-- Nama & Ucapan -->
+                                <h5 class="text-center mb-1">{{ $testimonial->nama_testi }}</h5>
+                                <p class="text-muted text-center mb-2">{{ $testimonial->keterangan }}</p>
+
+                                {{-- <p class="fs-5 fst-italic text-center">
+                                " {{ $testimonial->ucapan }} "
+                            </p> --}}
+                            </div>
+                        </div>
+                    @endforeach
+
+                </div>
+
+                <!-- Navigation Buttons -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+
+            </div>
         </div>
     </div>
-</div>
 
     {{-- testimoni test video --}}
     <!-- Testiminial Start -->
@@ -727,7 +748,7 @@
         </div>
     </div>
 
-   
+
 
 
 
@@ -872,57 +893,134 @@
             },
         });
     </script>
-<script>
-    var swiper = new Swiper(".myVideoTestimonialSwiper", {
-        slidesPerView: 1,
-        spaceBetween: 20,
-        loop: true,
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-        },
-        autoplay: {
-            delay: 3500,
-            disableOnInteraction: false,
-        },
-    });
+    <script>
+        var swiper = new Swiper(".myVideoTestimonialSwiper", {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            loop: true,
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            autoplay: {
+                delay: 3500,
+                disableOnInteraction: false,
+            },
+        });
 
-    document.addEventListener("DOMContentLoaded", function () {
-        const videos = document.querySelectorAll(".myVideoTestimonialSwiper video");
+        document.addEventListener("DOMContentLoaded", function() {
+            const videos = document.querySelectorAll(".myVideoTestimonialSwiper video");
 
-        videos.forEach(video => {
+            videos.forEach(video => {
 
-            // Ketika video mulai play → stop autoplay
-            video.addEventListener("play", () => {
-                swiper.autoplay.stop();
+                // Ketika video mulai play → stop autoplay
+                video.addEventListener("play", () => {
+                    swiper.autoplay.stop();
+                });
+
+                // Ketika video di pause → mulai autoplay lagi
+                video.addEventListener("pause", () => {
+                    swiper.autoplay.start();
+                });
+
+                // Ketika video selesai → mulai autoplay lagi
+                video.addEventListener("ended", () => {
+                    swiper.autoplay.start();
+                });
+
+            });
+        });
+    </script>
+
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const swiperEl = document.querySelector(".myVideoTestimonialSwiper");
+
+            swiper.on('slideChange', function() {
+                const videos = swiperEl.querySelectorAll("video");
+                videos.forEach(v => v.pause());
+            });
+        });
+    </script>
+    <script>
+        // aman: jika variabel tidak dikirim dari controller, gunakan array kosong
+        const masjids = @json($masjids ?? []);
+    </script>
+
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <!-- data dari controller (aman meskipun kosong) -->
+    <script>
+        const masjids = @json($masjids ?? []);
+    </script>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <style>
+        .leaflet-tooltip-nama-masjid {
+            background: rgba(255, 255, 255, 0.95);
+            color: #222;
+            font-weight: 600;
+            border: 1px solid #ccc;
+            padding: 2px 6px;
+            border-radius: 6px;
+            box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.12);
+            white-space: nowrap;
+        }
+    </style>
+
+    <div id="map" style="height: 400px; border-radius: 10px;"></div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+
+            // Default map jika tidak ada marker
+            var defaultLat = -7.7956;
+            var defaultLng = 110.3695;
+            var map = L.map('map').setView([defaultLat, defaultLng], 13);
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+                attribution: '© OpenStreetMap'
+            }).addTo(map);
+
+            var markersGroup = L.featureGroup();
+
+            // masjids adalah array dari PHP; aman walau kosong
+            masjids.forEach(function(item) {
+
+                if (!item.map_lokasi_masjid) return;
+
+                let coords = item.map_lokasi_masjid.split(',');
+                let lat = parseFloat(coords[0]);
+                let lng = parseFloat(coords[1]);
+
+                if (isNaN(lat) || isNaN(lng)) return;
+
+                // Marker dengan tooltip permanen (selalu tampil)
+                let marker = L.marker([lat, lng]).addTo(map);
+
+                marker.bindTooltip(item.nama_masjid, {
+                    // permanent: true,   // tampil terus
+                    direction: 'top', // posisi tulisan di atas marker
+                    offset: [0, -10],
+                    className: 'leaflet-tooltip-nama-masjid' // custom CSS
+                });
+
+                markersGroup.addLayer(marker);
             });
 
-            // Ketika video di pause → mulai autoplay lagi
-            video.addEventListener("pause", () => {
-                swiper.autoplay.start();
-            });
-
-            // Ketika video selesai → mulai autoplay lagi
-            video.addEventListener("ended", () => {
-                swiper.autoplay.start();
-            });
+            if (markersGroup.getLayers().length > 0) {
+                map.fitBounds(markersGroup.getBounds());
+            }
 
         });
-    });
-</script>
-
-
-
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    const swiperEl = document.querySelector(".myVideoTestimonialSwiper");
-
-    swiper.on('slideChange', function () {
-        const videos = swiperEl.querySelectorAll("video");
-        videos.forEach(v => v.pause());
-    });
-});
-</script>
+    </script>
 
 
 

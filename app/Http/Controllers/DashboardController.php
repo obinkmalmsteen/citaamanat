@@ -47,14 +47,32 @@ public function landingpage()
     // Hitung jumlah masjid yang disetujui (disetujui = 1)
     $masjidDisetujui = Masjid::where('disetujui', 1)->count();
 
-    $masjidBelumDisetujui = DB::table('masjids')->where('disetujui', '!=', 1)->count();
-     $totalRequestRealisasi = DB::table('histori_bayar')->whereNotNull('tgl_realisasi_token')->count();
+    // Hitung masjid yang belum disetujui
+    $masjidBelumDisetujui = Masjid::where('disetujui', '!=', 1)->count();
+
+    // Hitung jumlah histori realisasi token
+    $totalRequestRealisasi = DB::table('histori_bayar')
+        ->whereNotNull('tgl_realisasi_token')
+        ->count();
+
     // Ambil testimoni terbaru
     $testimonials = Testimonial::latest()->take(20)->get();
 
+    // Ambil semua masjid beserta nama dan koordinat map (jika ada)
+    $masjids = Masjid::select('nama_masjid', 'map_lokasi_masjid')
+        ->whereNotNull('map_lokasi_masjid')
+        ->get();
+
     // Kirim ke view
-    return view('landingpage', compact('masjidDisetujui','masjidBelumDisetujui' ,'totalRequestRealisasi','testimonials'));
+    return view('landingpage', compact(
+        'masjidDisetujui',
+        'masjidBelumDisetujui',
+        'totalRequestRealisasi',
+        'testimonials',
+        'masjids'
+    ));
 }
+
 
 
 public function tentangkami()

@@ -338,9 +338,9 @@ document.addEventListener("DOMContentLoaded", function() {
         let marker = L.marker([lat, lng]).addTo(map);
 
         marker.bindTooltip(item.nama_masjid, {
-            permanent: true,   // tampil terus
-            direction: 'top',  // posisi tulisan di atas marker
-            className: 'leaflet-tooltip-nama-masjid' // bisa custom CSS
+            // permanent: true,   // tampil terus
+             direction: 'top',  // posisi tulisan di atas marker
+             className: 'leaflet-tooltip-nama-masjid' // bisa custom CSS
         });
 
         markersGroup.addLayer(marker);
