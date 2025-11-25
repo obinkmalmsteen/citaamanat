@@ -14,46 +14,150 @@
 
     <div class="card">
 
-
-        <div class="card-header d-flex flex-wrap justify-content-between align-items-center">
-            <div>
+<div>
                 <!-- Bagian kiri (misal judul atau teks) -->
                 <h5 class="mb-0">Histori Pembayaran</h5>
             </div>
-<select id="filterStatus" class="form-select form-select-sm" style="width: 200px;">
-    <option value="" {{ request('status') === null ? '' : '' }}>Tampilkan Semua</option>
-    <option value="1" {{ request('status') == '1' ? '' : '' }}>Terealisasi</option>
-    <option value="0" {{ request('status') == '0' || request('status') === null ? 'selected' : '' }}>Belum Direalisasi</option>
-</select>
+        <div class="card-header d-flex flex-wrap justify-content-between align-items-center">
+            
+
+            <div class="row mb-4 ">
+                <div class="col-md-4 ">
+                    <label>Dari Tanggal:</label>
+                    <input type="date" id="minDate" class="form-control">
+                </div>
+
+                <div class="col-md-4">
+                    <label>Sampai Tanggal:</label>
+                    <input type="date" id="maxDate" class="form-control">
+                </div>
+
+                <div class="col-md-3 mt-2">
+                    <!-- type="button" penting supaya tidak submit form -->
+                    <button id="resetDate" type="button" class="btn btn-primary btn-sm">Reset Tanggal</button>
+                </div>
+            </div>
+
+
+
+
+<div class="col-md-2">
+    <label>Status:</label>
+            <select id="filterStatus" class="form-select form-select-sm form-control" style="width: 200px;">
+                <option value="" {{ request('status') === null ? '' : '' }}>Tampilkan Semua</option>
+                <option value="1" {{ request('status') == '1' ? '' : '' }}>Terealisasi</option>
+                <option value="0" {{ request('status') == '0' || request('status') === null ? 'selected' : '' }}>Belum
+                    Direalisasi</option>
+            </select>
+            </div>
+
+<div class="col-md-2">
+    <label>Jenis Layanan:</label>
+    <select id="filterJenisLayanan" class="form-control">
+        <option value="">Semua</option>
+        <option value="PraBayar">Prabayar</option>
+        <option value="PascaBayar">Pascabayar</option>
+    </select>
+</div>
 
 
             <div>
                 <!-- Bagian kanan (tombol export) -->
                 <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
-<a href="#" id="btnExport" class="btn btn-sm btn-success">
-    <i class="fas fa-file-excel mr-2"></i> Download Data Ke Excel
-</a>
+                <a href="#" id="btnExport" class="btn btn-sm btn-success">
+                    <i class="fas fa-file-excel mr-2"></i> Download Data Ke Excel
+                </a>
 
 
-<script>
-    document.getElementById('btnExport').addEventListener('click', function(e) {
-        e.preventDefault();
-        var status = document.getElementById('filterStatus').value;
-        // encodeURIComponent jaga aman jika ada karakter aneh
-        var url = "{{ route('masjid.export') }}" + (status !== '' ? '?status=' + encodeURIComponent(status) : '');
-        window.location.href = url;
-    });
-</script>
+                <script>
+                    document.getElementById('btnExport').addEventListener('click', function(e) {
+                        e.preventDefault();
+                        var status = document.getElementById('filterStatus').value;
+                        // encodeURIComponent jaga aman jika ada karakter aneh
+                        var url = "{{ route('masjid.export') }}" + (status !== '' ? '?status=' + encodeURIComponent(status) :
+                            '');
+                        window.location.href = url;
+                    });
+                </script>
 
 
             </div>
 
         </div>
 
+<style>
+    #dataTable {
+        font-size: 13px;
+    }
+
+    /* No */
+#dataTable th:nth-child(1),
+#dataTable td:nth-child(1) {
+    width: 40px;     /* contoh */
+    text-align: center;
+}
+
+/* ID Pelanggan */
+#dataTable th:nth-child(2),
+#dataTable td:nth-child(2) {
+    width: 120px;
+}
+
+/* Nama Masjid */
+#dataTable th:nth-child(3),
+#dataTable td:nth-child(3) {
+    width: 200px;
+}
+
+/* Kota */
+#dataTable th:nth-child(4),
+#dataTable td:nth-child(4) {
+    width: 120px;
+}
+
+/* Provinsi */
+#dataTable th:nth-child(5),
+#dataTable td:nth-child(5) {
+    width: 120px;
+}
+
+/* Nomor Token */
+#dataTable th:nth-child(6),
+#dataTable td:nth-child(6) {
+    width: 160px;
+}
+
+/* Harga */
+#dataTable th:nth-child(7),
+#dataTable td:nth-child(7) {
+    width: 120px;
+}
+
+/* Status */
+#dataTable th:nth-child(8),
+#dataTable td:nth-child(8) {
+    width: 50px;
+    text-align: center;
+}
+
+/* Tanggal */
+#dataTable th:nth-child(9),
+#dataTable td:nth-child(9) {
+    width: 140px;
+}
+
+/* Tombol Aksi */
+#dataTable th:nth-child(10),
+#dataTable td:nth-child(10) {
+    width: 80px;
+    text-align: center;
+}
+
+</style>
 
 
         <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <table class="table table-bordered table-sm small-text"id="dataTable" width="100%" cellspacing="0">
                 <thead class="bg-primary text-white">
                     <tr>
                         <th>No</th>
@@ -64,9 +168,13 @@
                         <th>Nomor Token Listrik</th>
                         <th>Harga Token listrik</th>
                         <th>Status Realisasi</th>
+                        <th>Tgl Realisasi</th>
+                        <th>No Telepon</th>
+                        <th>Jenis Layanan</th>
                         <th>
                             <i class="fas fa-cog"></i>
                         </th>
+                        <th>Kirim Pesan</th>
                     </tr>
                 </thead>
 
@@ -89,15 +197,31 @@
                                 @endif
                             </td>
 
-
-
+                            <td>{{ $item->tgl_realisasi_token }}</td>
+                            <td>{{ $item->telp_ketua_dkm }}</td>
+                            <td>{{ $item->jenis_layanan }}</td>
                             <td class="text-center">
 
                                 <a href="{{ route('masjid.show', $item->id_pelanggan) }}" class="btn btn-sm btn-info">
                                     Detail
                                 </a>
                             </td>
+                            <td class="text-center">
+@if($item->pesan_terkirim_at)
+    <button class="btn btn-secondary btn-sm" disabled>
+        Pesan Terkirim
+    </button>
+@else
+    <a href="{{ route('kirim.pesan', $item->id_pelanggan) }}"
+       class="btn btn-success btn-sm">
+       Kirim WA
+    </a>
+@endif
 
+
+                              
+                            </td>
+                           
                         </tr>
                     @endforeach
                 </tbody>
@@ -146,38 +270,97 @@
     });
 </script>
 
-
 <script>
-    $(document).ready(function() {
+$(document).ready(function() {
 
-        // Inisialisasi DataTable
-        const table = $('#dataTable').DataTable({
-            "pageLength": 10,
-            "ordering": false,
-        });
-
-        // Fungsi Filter
-        $('#filterStatus').on('change', function() {
-            const selected = $(this).val();
-
-            $.fn.dataTable.ext.search = [];
-            $.fn.dataTable.ext.search.push(function(settings, data, dataIndex) {
-                const statusCell = $(table.row(dataIndex).node()).find('td:eq(7) i');
-                let statusValue = "";
-
-                if (statusCell.hasClass('fa-check')) statusValue = "1";
-                else if (statusCell.hasClass('fa-hourglass-half')) statusValue = "0";
-
-                return selected === "" || statusValue === selected;
-            });
-
-            table.draw();
-            table.page('first').draw('page');
-        });
-
-        // ✅ SET DEFAULT FILTER KE 0 + langsung apply
-        $('#filterStatus').val('0').trigger('change');
+    const table = $('#dataTable').DataTable({
+        pageLength: 20,
+        ordering: false
     });
+
+    // ============================
+    // KONVERSI FORMAT TANGGAL
+    // ============================
+    function convertToYMD(dateStr) {
+        if (!dateStr) return "";
+        if (/^\d{4}-\d{2}-\d{2}$/.test(dateStr)) return dateStr;
+
+        const parts = dateStr.includes('-') ? dateStr.split('-') : dateStr.split('/');
+        if (parts.length !== 3) return "";
+        return `${parts[2]}-${parts[1].padStart(2, '0')}-${parts[0].padStart(2, '0')}`;
+    }
+
+    // ============================
+    // FILTER GABUNGAN (tanggal + status + layanan)
+    // ============================
+    $.fn.dataTable.ext.search.push(function(settings, data, dataIndex) {
+
+        // Nilai dari input
+        const min = $('#minDate').val();
+        const max = $('#maxDate').val();
+        const statusSelected = $('#filterStatus').val();
+        const layananSelected = $('#filterJenisLayanan').val().toLowerCase();
+
+        const row = $(table.row(dataIndex).node());
+
+        // -------- FILTER TANGGAL ----------
+        let colDate = row.find('td:eq(8)').text().trim();
+        colDate = convertToYMD(colDate);
+
+        if (min && colDate < min) return false;
+        if (max && colDate > max) return false;
+
+        // -------- FILTER STATUS ----------
+        const statusCell = row.find('td:eq(7) i');
+        let statusValue = "";
+
+        if (statusCell.hasClass('fa-check')) statusValue = "1";
+        else if (statusCell.hasClass('fa-hourglass-half')) statusValue = "0";
+
+        if (statusSelected !== "" && statusValue !== statusSelected) {
+            return false;
+        }
+
+        // -------- FILTER JENIS LAYANAN ----------
+        // Kolom ke-10 sesuai thead Anda
+        const jenisText = row.find('td:eq(10)').text().trim().toLowerCase();
+
+        if (layananSelected !== "" && jenisText !== layananSelected) {
+            return false;
+        }
+
+        return true;
+    });
+
+    // ============================
+    // EVENT FILTER
+    // ============================
+    $('#minDate, #maxDate').on('change', function () {
+        table.draw();
+    });
+
+    $('#filterStatus').on('change', function () {
+        table.draw();
+        table.page('first').draw('page');
+    });
+
+    $('#filterJenisLayanan').on('change', function () {
+        table.draw();
+        table.page('first').draw('page');
+    });
+
+    // ============================
+    // RESET TANGGAL
+    // ============================
+    $('#resetDate').on('click', function(e) {
+        e.preventDefault();
+        $('#minDate').val('');
+        $('#maxDate').val('');
+        table.page('first').draw('page');
+        table.draw();
+    });
+
+});
 </script>
 
 

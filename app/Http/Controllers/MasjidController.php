@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Masjid;
 
 use App\Helpers\StorageSync;
+use App\Models\HistoriBayar;
 use Illuminate\Http\Request;
 use App\Exports\MasjidExport;
 use App\Helpers\WhatsappHelper;
@@ -220,89 +221,6 @@ Yayasan Cita Amanat Martadiredja";
 }
 
 
-// public function storePublic(Request $request)
-// {
-//       $validator = Validator::make($request->all(), [
-//         'id_pelanggan' => 'required|unique:masjids,id_pelanggan',
-//         'nama_pelanggan' => 'required',
-//         'nama_masjid' => 'required',
-//     ], [
-//         'id_pelanggan.unique' => 'ID Pelanggan sudah terdaftar.',
-//         'id_pelanggan.required' => 'ID Pelanggan wajib diisi.',
-//     ]);
-
-//     if ($validator->fails()) {
-//         return redirect()->back()
-//             ->withErrors($validator)
-//             ->withInput() // 
-//             ->with('error', 'Data gagal disimpan karena ID pelanggan sudah terdaftar.')
-//             ->withInput();
-//     }
-
-//      // Simpan file foto masjid (jika di-upload)
-//     $fotoMasjidName = null;
-//     if ($request->hasFile('foto_masjid')) {
-//         $path = $request->file('foto_masjid')->store('foto_masjid', 'public'); // disimpan ke storage/app/public/foto_masjid
-//         $fotoMasjidName = basename($path); // hanya ambil nama A
-
-//             // setelah upload → langsung sinkron
-//     StorageSync::run();
-//     }
-
-//     // Simpan file foto meteran (jika di-upload)
-//     $fotoMeteranName = null;
-//     if ($request->hasFile('foto_meteran_listrik')) {
-//         $path = $request->file('foto_meteran_listrik')->store('foto_meteran_listrik', 'public');
-//         $fotoMeteranName = basename($path);
-//          StorageSync::run();
-//     }
-    
-//     // Simpan data ke database dengan kolom tambahan otomatis
-//     \App\Models\Masjid::create([
-//         'id_pelanggan' => $request->id_pelanggan,
-//         'no_meteran_listrik' => $request->no_meteran_listrik,
-//         'nama_pelanggan' => $request->nama_pelanggan,
-//         'jenis_bangunan' => $request->jenis_bangunan,
-//         'nama_masjid' => $request->nama_masjid,
-//         'jenis_layanan' => $request->jenis_layanan,
-//         'sesuai_id_masjid' => $request->sesuai_id_masjid,
-//         'alasan_id_berbeda'=> $request->alasan_id_berbeda,
-//          'nama_ketua_dkm' => $request->nama_ketua_dkm,
-//           'telp_ketua_dkm' => $request->telp_ketua_dkm ,
-
-//          'penerima_informasi'=>  $request->penerima_informasi ,
-// 'telp_penerima_informasi'=>  $request->telp_penerima_informasi ,
-// 'provinsi_id'=>  $request->province_id ,
-// 'kota_id'=>  $request->regency_id ,
-// 'kecamatan_id'=>  $request-> district_id,
-// 'kelurahan_id'=>  $request-> village_id,
-// 'alamat_lengkap'=>  $request-> alamat_lengkap,
-// 'foto_masjid' => $fotoMasjidName,
-// 'foto_meteran_listrik' => $fotoMeteranName,
-// 'map_lokasi_masjid'=>  $request->map_lokasi_masjid ,
-// 'estimasi_biaya'=> $request->estimasi_biaya,
-// 'kode_relawan'=>  $request->kode_relawan ,
-// 'pernyataan'=>  $request->pernyataan ,
-// 'disetujui' => 0,
-//     ]);
-
-
-//     //   // ==========================================
-//     // // KIRIM PESAN WHATSAPP OTOMATIS
-//     // // ==========================================
-
-//     // if ($request->telp_penerima_informasi) {
-//     //     $response = Http::withoutVerifying()->get('https://markeyza.web.id/send', [
-//     //         'to' => $request->telp_penerima_informasi,
-//     //         'message' => 
-//     //         "Assalamualaikum.\n\nRegistrasi masjid *{$request->nama_masjid}* telah berhasil.\nData sedang diproses dan menunggu verifikasi.\n\nTerima kasih."
-//     //     ]);
-//     //     dd($response->body());
-//     // }
-//     // Redirect kembali dengan pesan sukses
-//     return redirect()->back()->with('success', 'Data masjid berhasil disimpan!');
-// }
-
 
 
 public function showProvinces()
@@ -502,7 +420,21 @@ public function requestToken(Request $request, $id_pelanggan)
         // Validasi lain jika ada
     ]);
 
-    // Insert histori baru
+    // 🔍 Ambil histori terakhir pelanggan yang sama
+    $historiTerakhir = DB::table('histori_bayar')
+        ->where('id_pelanggan', $id_pelanggan)
+        ->orderBy('tgl_request_token', 'desc')
+        ->first();
+
+    // Default realisasi baru = null
+    $jumlahRealisasiBaru = null;
+
+    // Jika ada histori sebelumnya dan ada jumlah realisasi → pakai angkanya
+    if ($historiTerakhir && $historiTerakhir->jumlah_realisasi_token !== null) {
+        $jumlahRealisasiBaru = $historiTerakhir->jumlah_realisasi_token;
+    }
+
+    // 🟢 Insert histori baru
     DB::table('histori_bayar')->insert([
         'id_pelanggan' => $masjid->id_pelanggan,
         'no_meteran_listrik' => $masjid->no_meteran_listrik,
@@ -512,23 +444,27 @@ public function requestToken(Request $request, $id_pelanggan)
         'tgl_request_token' => now(),
         'tgl_realisasi_token' => null,
         'no_token_listrik' => null,
-        'jumlah_realisasi_token' => null,
+
+        // ⬇️ Realisasi otomatis terisi dari histori sebelumnya
+        'jumlah_realisasi_token' => $jumlahRealisasiBaru,
     ]);
 
 
-    // 🔥 Tambahkan 1 ke total pengajuan masjid ini
+    // Tambahkan jumlah pengajuan
     Masjid::where('id_pelanggan', $id_pelanggan)->increment('total_pengajuan');
 
-        if ($masjid->telp_penerima_informasi) {
+    // Kirim WA
+    if ($masjid->telp_penerima_informasi) {
 
-        $pesan = 
+        $pesan =
             "Assalamualaikum.\n\n".
             "Masjid *{$masjid->nama_masjid}* .\n".
             "Berhasil Melakukan Permintaan pengisian token listrik.\n\n".
             "Silahkan Menunggu sampai Permintaan Anda Di realisasikan. Kami akan mengirimkan pesan kepada anda jika sudah ada realisasi token.\n\n".
             "Terima kasih.\n\n".
-"Cita Amanat Martadiredja.";
-         WhatsappHelper::send($masjid->telp_penerima_informasi, $pesan);
+            "Cita Amanat Martadiredja.";
+
+        WhatsappHelper::send($masjid->telp_penerima_informasi, $pesan);
     }
 
     return redirect()->route('masjid.show', $id_pelanggan)
@@ -674,6 +610,51 @@ public function export(Request $request)
     return Excel::download(new HistoriBayarExport($status), $filename);
 }
 
+public function kirimPesan($id_pelanggan)
+{
+    // Ambil data histori + masjid
+    $data = HistoriBayar::join('masjids', 'histori_bayar.id_pelanggan', '=', 'masjids.id_pelanggan')
+        ->select(
+            'histori_bayar.*',
+            'masjids.nama_masjid',
+            'masjids.telp_ketua_dkm'
+        )
+        ->where('histori_bayar.id_pelanggan', $id_pelanggan)
+        ->firstOrFail();
+
+    // Format data
+    $tokenFormatted  = trim(chunk_split($data->no_token_listrik, 4, ' '));
+    $jumlahFormatted = number_format($data->jumlah_realisasi_token, 0, ',', '.');
+
+    $pesan = "
+Assalamu’alaikum warahmatullahi wabarakatuh.
+
+Bapak/Ibu Pengurus Masjid/Mushola *{$data->nama_masjid}*
+Dengan ini kami sampaikan bahwa permintaan token listrik yang diajukan telah berhasil direalisasikan.
+
+Berikut informasi token :
+
+Nomor Token : *{$tokenFormatted}*
+Jumlah Saldo : Rp *{$jumlahFormatted}*
+
+Semoga bantuan ini dapat bermanfaat bagi kegiatan operasional Masjid/Mushola *{$data->nama_masjid}*.
+Atas perhatian dan kerja samanya, kami ucapkan terima kasih.
+
+Wassalamu’alaikum Wr.Wb
+
+Hormat kami,
+Cita Amanat Martadiredja
+";
+
+    // Kirim WA
+    WhatsappHelper::send($data->telp_ketua_dkm, $pesan);
+
+    // Simpan status pesan terkirim
+    HistoriBayar::where('id_pelanggan', $id_pelanggan)
+        ->update(['pesan_terkirim_at' => now()]);
+
+    return back()->with('success', 'Pesan berhasil dikirim!');
+}
 
 
 

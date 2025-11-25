@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MasjidController;
+use App\Http\Controllers\LandingController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PengajuanController;
 use App\Http\Controllers\TestimonialController;
@@ -20,7 +21,9 @@ use App\Http\Controllers\TestimonialController;
 
 // ✅ Halaman utama (welcome page) menampilkan data + testimonial
 Route::get('/welcome-page', [DashboardController::class, 'welcome'])->name('welcome');
-Route::get('/', [DashboardController::class, 'landingpage'])->name('landingpage');
+Route::get('/', [DashboardController::class, 'redirectLanding']);
+
+Route::get('/landing-page', [DashboardController::class, 'landingpage'])->name('landingpage');
 Route::get('/tentang-kami', [DashboardController::class, 'tentangkami'])->name('tentangkami');
 Route::get('/aktifitas-kami', [DashboardController::class, 'aktifitas'])->name('aktifitas');
 Route::get('/acara-kami', [DashboardController::class, 'acara'])->name('acara');
@@ -28,6 +31,7 @@ Route::get('/testimoni-kami', [DashboardController::class, 'testimoni'])->name('
 Route::get('/kontak-kami', [DashboardController::class, 'kontakkami'])->name('kontakkami');
 Route::get('/list-masjid', [DashboardController::class, 'listmasjid'])->name('listmasjid');
 Route::get('/form-registrasi', [DashboardController::class, 'formregistrasi'])->name('formregistrasi');
+Route::get('/mobile-landingpage', [DashboardController::class, 'landingpage'])->name('landingpage');
 
 // Login
 Route::get('login',[AuthController::class,'login'])->name('login');
@@ -58,17 +62,8 @@ Route::get('masjid/data-masjid', [MasjidController::class, 'dataMasjidPublik'])-
 
 
 
-Route::post('/kirim-wa', function () {
-    $to = request('to');
-    $message = request('message');
 
-     $response = Http::withoutVerifying()->get('https://markeyza.web.id/send', [
-        'to' => $to,
-        'message' => $message
-    ]);
 
-    return $response->body();
-});
 
 
 
@@ -128,6 +123,8 @@ Route::get('masjid/{id}/edit-full', [MasjidController::class, 'editFull'])
 
 Route::put('masjid/{id}/update-full', [MasjidController::class, 'updateFull'])
     ->name('masjid.updateFull');
+    
+Route::get('/kirim-pesan/{id}', [MasjidController::class, 'kirimPesan'])->name('kirim.pesan');
 
 
 

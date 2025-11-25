@@ -40,6 +40,21 @@ class DashboardController extends Controller
         $data = $this->getDashboardData();
         return view('dashboard', $data);
     }
+ public function redirectLanding(Request $request)
+{
+    $agent = $request->header('User-Agent');
+
+    if ($this->isMobile($agent)) {
+        return redirect('/mobile-landingpage');
+    }
+
+    return redirect('/landing-page');
+}
+
+private function isMobile($agent)
+{
+    return preg_match('/iphone|ipad|android|blackberry|opera mini|windows phone|mobile/i', $agent);
+}
 
 
 public function landingpage()
@@ -83,7 +98,36 @@ public function tentangkami()
     // Kirim hasilnya ke view
     return view('tentangkami', compact('jumlahUser'));
 }
+public function mobilelandingpage()
+{
+   // Hitung jumlah masjid yang disetujui (disetujui = 1)
+    $masjidDisetujui = Masjid::where('disetujui', 1)->count();
 
+    // Hitung masjid yang belum disetujui
+    $masjidBelumDisetujui = Masjid::where('disetujui', '!=', 1)->count();
+
+    // Hitung jumlah histori realisasi token
+    $totalRequestRealisasi = DB::table('histori_bayar')
+        ->whereNotNull('tgl_realisasi_token')
+        ->count();
+
+    // Ambil testimoni terbaru
+    $testimonials = Testimonial::latest()->take(50)->get();
+
+    // Ambil semua masjid beserta nama dan koordinat map (jika ada)
+    $masjids = Masjid::select('nama_masjid', 'map_lokasi_masjid')
+        ->whereNotNull('map_lokasi_masjid')
+        ->get();
+
+    // Kirim ke view
+    return view('mobilelandingpage', compact(
+        'masjidDisetujui',
+        'masjidBelumDisetujui',
+        'totalRequestRealisasi',
+        'testimonials',
+        'masjids'
+    ));
+}
 
 public function aktifitas()
 {

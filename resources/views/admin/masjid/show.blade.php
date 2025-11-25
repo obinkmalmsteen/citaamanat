@@ -560,6 +560,8 @@
             timer: 2000
         });
     </script>
+    {{ session()->forget('success') }}
+
 @endif
 
 @if (session('warning'))

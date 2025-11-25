@@ -13,22 +13,43 @@ use Maatwebsite\Excel\Facades\Excel;
 class PengajuanController extends Controller
 {
 public function index()
-    
-    {
-        $user = Auth::user();
+{
+    $user = Auth::user();
 
-        if (strtolower($user->jabatan) === 'admin') {
-            $pengajuantoken = HistoriBayar::all();
-        } else {
-            $pengajuantoken = HistoriBayar::where('id_pelanggan', $user->nama)->get();
-        }
-
-        return view('admin.pengajuantoken.index', [
-            'pengajuantoken' => $pengajuantoken,
-            'title' => 'Data Pengajuan Token',
-            'menuAdminPengajuan' => 'active'
-        ]);
+    if (strtolower($user->jabatan) === 'admin') {
+        $pengajuantoken = HistoriBayar::join('masjids', 'histori_bayar.id_pelanggan', '=', 'masjids.id_pelanggan')
+            ->select(
+                'histori_bayar.*',
+                'masjids.telp_ketua_dkm',
+                'masjids.jenis_layanan'
+            )
+            ->get();
+    } else {
+        $pengajuantoken = HistoriBayar::join('masjids', 'histori_bayar.id_pelanggan', '=', 'masjids.id_pelanggan')
+            ->select(
+                'histori_bayar.*',
+                'masjids.telp_ketua_dkm',
+                'masjids.jenis_layanan'
+            )
+            ->where('histori_bayar.id_pelanggan', $user->nama)
+            ->get();
     }
+
+    // Reset otomatis jika bukan hari ini
+    foreach ($pengajuantoken as $item) {
+        if ($item->pesan_terkirim_at && !$item->pesan_terkirim_at->isToday()) {
+            $item->pesan_terkirim_at = null;
+        }
+    }
+
+    return view('admin.pengajuantoken.index', [
+        'pengajuantoken' => $pengajuantoken,
+        'title' => 'Data Pengajuan Token',
+        'menuAdminPengajuan' => 'active'
+    ]);
+}
+
+
 
 
 public function import(Request $pengajuantoken)

@@ -19,6 +19,14 @@ class HistoriBayar extends Model
         'no_meteran_listrik',
         'nama_masjid',
         'no_token_listrik',
-        'jumlah_realisasi_token'
-     ];
+        'jumlah_realisasi_token',
+        
+             'pesan_terkirim_at'   // ← tambahkan
+    ];
+
+    protected $casts = [
+    'pesan_terkirim_at' => 'datetime',
+];
+
+
 }
