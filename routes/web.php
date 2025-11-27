@@ -31,7 +31,8 @@ Route::get('/testimoni-kami', [DashboardController::class, 'testimoni'])->name('
 Route::get('/kontak-kami', [DashboardController::class, 'kontakkami'])->name('kontakkami');
 Route::get('/list-masjid', [DashboardController::class, 'listmasjid'])->name('listmasjid');
 Route::get('/form-registrasi', [DashboardController::class, 'formregistrasi'])->name('formregistrasi');
-Route::get('/mobile-landingpage', [DashboardController::class, 'landingpage'])->name('landingpage');
+Route::get('/mobile-landingpage', [DashboardController::class, 'mobilelandingpage'])->name('mobilelandingpage');
+Route::get('/mobile-daftarmasjid', [DashboardController::class, 'mobiledaftarmasjid'])->name('mobiledaftarmasjid');
 
 // Login
 Route::get('login',[AuthController::class,'login'])->name('login');
@@ -123,7 +124,7 @@ Route::get('masjid/{id}/edit-full', [MasjidController::class, 'editFull'])
 
 Route::put('masjid/{id}/update-full', [MasjidController::class, 'updateFull'])
     ->name('masjid.updateFull');
-    
+
 Route::get('/kirim-pesan/{id}', [MasjidController::class, 'kirimPesan'])->name('kirim.pesan');
 
 

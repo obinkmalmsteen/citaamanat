@@ -201,12 +201,12 @@
         <!-- Events End -->
 
 
-  <!-- Footer Start -->
-    <div class="container-fluid footer pt-5 wow fadeIn" data-wow-delay="0.1s">
-        <div class="container py-5">
+    <!-- Footer Start -->
+        <div class="container-fluid footer pt-15 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container py-15">
          
             <div class="row g-4 footer-inner">
-                <div class="col-md-6 col-lg-6 col-xl-4">
+                <div class="col-md-4 col-lg-6 col-xl-4">
                     <div class="footer-item mt-5">
                         <h4 class="text-light mb-4">Cita <span class="text-primary">Amanat Martadiredja</span></h4>
                         <p class="mb-4 text-light">Menjadi Pelopor Gerakan Filantropi yang memberdayakan Umat untuk Kemandirian dan kemulian dalam
@@ -214,7 +214,7 @@
                         {{-- <a href="" class="btn btn-primary py-2 px-4">Donate Now</a> --}}
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-6 col-xl-4">
+                <div class="col-md-4 col-lg-6 col-xl-4">
                     <div class="footer-item mt-5">
                         <h4 class="text-light mb-4">Alamat</h4>
                         <div class="d-flex flex-column">
@@ -224,17 +224,11 @@
                                         class="fa fa-map-marker-alt text-dark"></i></span>
                                 <a href="" class="text">Puri Indah Cihampelas, Blok E7, No.15, Citapen, Cihampelas, Kab Bandung Barat,
                                         Jawa Barat, Indonesia</a>
-                            </div>
-                            {{-- <h6 class="text-light mt-4 mb-0">Phone </h6>
-                            <div class="d-flex align-items-center py-4">
-                                <span class="flex-shrink-0 btn-square bg-primary me-3 p-4"><i
-                                        class="fa fa-phone-alt text-dark"></i></span>
-                                <a href="" class="text-light">+012 345 67890</a>
-                            </div> --}}
+                            </div>                       
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-6 col-xl-4">
+                <div class="col-md-4 col-lg-6 col-xl-4">
                     <div class="footer-item mt-5">
                         <h4 class="text-light mb-4">Explore Link</h4>
                         <div class="d-flex flex-column align-items-start">
@@ -242,32 +236,27 @@
                             <a class="text-light mb-2" href="{{ route('tentangkami') }}"><i class="fa fa-check text-light me-2"></i>Tentang Kami</a>
                             <a class="text-light mb-2" href="{{ route('aktifitas') }}"><i class="fa fa-check text-primary me-2"></i>Aktifitas</a>
                             <a class="text-light mb-2" href="{{ route('acara') }}"><i class="fa fa-check text-light me-2"></i>Acara</a>
-                            <a class="text-light mb-2" href="{{ route('kontakkami') }}"><i class="fa fa-check text-primary me-2"></i>Kontak Kami</a>
+                            {{-- <a class="text-light mb-2" href="{{ route('kontakkami') }}"><i class="fa fa-check text-primary me-2"></i>Kontak Kami</a> --}}
                             <a class="text-light mb-2" href="{{ route('testimoni') }}"><i class="fa fa-check text-primary me-2"></i>Testimonial</a>
                             <a class="text-light mb-2" href="{{ route('listmasjid') }}"><i class="fa fa-check text-light me-2"></i>List Masjid</a>
                             
                         </div>
                     </div>
-                </div>
-                {{-- <div class="col-md-6 col-lg-6 col-xl-3">
-                    <div class="footer-item mt-5">
-                        <h4 class="text-light mb-4">Latest Post</h4>
-                        <div class="d-flex border-bottom border-secondary py-4">
-                            <img src="/mosque/img/blog-mini-1.jpg" class="img-fluid flex-shrink-0" alt="">
-                            <div class="ps-3">
-                                <p class="mb-0 text-muted">01 Jan 2045</p>
-                                <a href="" class="text-body">Lorem ipsum dolor sit amet elit eros vel</a>
-                            </div>
-                        </div>
-                        <div class="d-flex py-4">
-                            <img src="/mosque/img/blog-mini-2.jpg" class="img-fluid flex-shrink-0" alt="">
-                            <div class="ps-3">
-                                <p class="mb-0 text-muted">01 Jan 2045</p>
-                                <a href="" class="text-body">Lorem ipsum dolor sit amet elit eros vel</a>
-                            </div>
-                        </div>
+                </div> 
+                <div class="footer-item mt-5">
+                        <h4 class="text-light mb-4"> <span class="text-primary">Donasi :</span>
+                        </h4>
+                        <p class="mb-1 text-light">Dengan segala kerendahan hati, kami membuka kesempatan bagi
+                            Bapak/Ibu yang ingin menunaikan sedekah jariyah untuk kemaslahatan masjid. Donasi dapat
+                            ditransfer ke:<span class="text-primary">Yayasan Cita Amanat martadiredja
+                                <b>BNI 1967473460</b> </span> .</p>
+                        <p class="mb-1 text-light">Insya Allah, setiap amanah yang diberikan akan kami salurkan melalui
+                            program-program yang kami jalankan demi kemakmuran masjid khususnya, serta kemaslahatan umat
+                            pada umumnya. Semoga Allah membalas setiap kebaikan yang dititipkan, dan menjadikannya amal
+                            yang terus mengalir manfaatnya bagi umat.</p>
+                        {{-- <a href="" class="btn btn-primary py-2 px-4">Donate Now</a> --}}
                     </div>
-                </div> --}}
+                          
             </div>
         </div>
         <div class="container py-4">
@@ -285,7 +274,9 @@
             </div>
         </div>
     </div>
-    <!-- Footer End -->
+
+        <!-- Footer End -->
+
 
 
     <!-- Back to Top -->

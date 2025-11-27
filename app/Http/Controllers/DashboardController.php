@@ -78,13 +78,16 @@ public function landingpage()
         ->whereNotNull('map_lokasi_masjid')
         ->get();
 
+         // Ambil testimoni terbaru
+    $listmasjid = Masjid::where('disetujui', 1)->take(150)->get();
     // Kirim ke view
     return view('landingpage', compact(
         'masjidDisetujui',
         'masjidBelumDisetujui',
         'totalRequestRealisasi',
         'testimonials',
-        'masjids'
+        'masjids',
+        'listmasjid' 
     ));
 }
 
@@ -127,6 +130,15 @@ public function mobilelandingpage()
         'testimonials',
         'masjids'
     ));
+}
+
+public function mobiledaftarmasjid()
+{
+    // Hitung semua user terdaftar
+    $jumlahUser = User::count();
+
+    // Kirim hasilnya ke view
+    return view('mobiledaftarmasjid', compact('jumlahUser'));
 }
 
 public function aktifitas()

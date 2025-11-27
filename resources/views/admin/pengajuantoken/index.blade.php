@@ -88,37 +88,38 @@
 <style>
     #dataTable {
         font-size: 13px;
+        color:  rgb(43, 42, 42) ;
     }
 
     /* No */
 #dataTable th:nth-child(1),
 #dataTable td:nth-child(1) {
-    width: 40px;     /* contoh */
+    width: 35px;     /* contoh */
     text-align: center;
 }
 
 /* ID Pelanggan */
 #dataTable th:nth-child(2),
 #dataTable td:nth-child(2) {
-    width: 120px;
+    width: 100px;
 }
 
 /* Nama Masjid */
 #dataTable th:nth-child(3),
 #dataTable td:nth-child(3) {
-    width: 200px;
+    width: 150px;
 }
 
 /* Kota */
 #dataTable th:nth-child(4),
 #dataTable td:nth-child(4) {
-    width: 120px;
+    width: 100px;
 }
 
 /* Provinsi */
 #dataTable th:nth-child(5),
 #dataTable td:nth-child(5) {
-    width: 120px;
+    width: 100px;
 }
 
 /* Nomor Token */
@@ -130,20 +131,20 @@
 /* Harga */
 #dataTable th:nth-child(7),
 #dataTable td:nth-child(7) {
-    width: 120px;
+    width: 100px;
 }
 
 /* Status */
 #dataTable th:nth-child(8),
 #dataTable td:nth-child(8) {
-    width: 50px;
+    width: 40px;
     text-align: center;
 }
 
 /* Tanggal */
 #dataTable th:nth-child(9),
 #dataTable td:nth-child(9) {
-    width: 140px;
+    width: 100px;
 }
 
 /* Tombol Aksi */
@@ -181,26 +182,37 @@
                 <tbody>
                     @foreach ($pengajuantoken as $item)
                         <tr>
-                            <td class="text-center">{{ $loop->iteration }}</td>
-                            <td class="text-center copyable">{{ $item->id_pelanggan }}</td>
+                            <td class="text-center" style="vertical-align: middle;"> {{ $loop->iteration }}</td>
+                            <td class="text-center copyable" style="vertical-align: middle ;">{{ $item->id_pelanggan }}</td>
 
-                            <td>{{ $item->nama_masjid }}</td>
-                            <td>{{ $item->nama_kota }}</td>
-                            <td>{{ $item->nama_provinsi }}</td>
-                            <td>{{ $item->no_token_listrik }}</td>
-                            <td>{{ $item->jumlah_realisasi_token }}</td>
-                            <td>
+                            <td class="text-center" style="vertical-align: middle;"> {{ $item->nama_masjid }}</td>
+                            <td class="text-center" style="vertical-align: middle;"> {{ $item->nama_kota }}</td>
+                            <td class="text-center" style="vertical-align: middle;"> {{ $item->nama_provinsi }}</td>
+                            <td class="text-center" style="vertical-align: middle;"> {{ $item->no_token_listrik }}</td>
+                            <td class="text-center" style="vertical-align: middle;">    
+
+
+                                    @if ($item->jumlah_realisasi_token)
+                                        Rp {{ number_format($item->jumlah_realisasi_token, 0, ',', '.') }}
+                                    @else
+                                        -
+                                    @endif
+
+</td>
+
+                           <td class="text-center" style="vertical-align: middle;"> 
                                 @if ($item->status_realisasi == 1)
-                                    <i class="fa fa-check text-success"></i> {{-- Icon checklist --}}
+                                    <i class="fa fa-check text-success" style="transform: scale(1.6);"></i>
+ {{-- Icon checklist --}}
                                 @else
-                                    <i class="fa fa-hourglass-half text-warning"></i> {{-- Icon waiting --}}
+                                    <i class="fa fa-hourglass-half text-warning " style="transform: scale(1.6);"></i> {{-- Icon waiting --}}
                                 @endif
                             </td>
 
-                            <td>{{ $item->tgl_realisasi_token }}</td>
-                            <td>{{ $item->telp_ketua_dkm }}</td>
-                            <td>{{ $item->jenis_layanan }}</td>
-                            <td class="text-center">
+                            <td class="text-center" style="vertical-align: middle;"> {{ $item->tgl_realisasi_token }}</td>
+                            <td class="text-center" style="vertical-align: middle;"> {{ $item->telp_ketua_dkm }}</td>
+                            <td class="text-center" style="vertical-align: middle;"> {{ $item->jenis_layanan }}</td>
+                            <td class="text-center" style="vertical-align: middle;"> 
 
                                 <a href="{{ route('masjid.show', $item->id_pelanggan) }}" class="btn btn-sm btn-info">
                                     Detail

@@ -94,11 +94,11 @@
                     <button class="btn  btn-link text-white menu-btn"><img src="mobile/img/linkmenu.png"
                             alt=""><span class="new-notification"></span></button>
                 </div>
-                <div class="col text-center"><img src="mobile/img/logoyayasanwhite.png" alt=""
-                        class="header-logo">
+                <div class="col text-center">
+                         <h6 class=" mt-3 text-white">Cita Amanat Martadiredja</h6>
                 </div>
                 <div class="col-auto">
-                    <a href="profile.html" class="btn  btn-link text-dark"><i
+                    <a href="profile.html" class="btn  btn-link text-white"><i
                             class="material-icons">account_circle</i></a>
                 </div>
             </div>
@@ -125,7 +125,7 @@
             <div class="subtitle h6 mb-3">
                 <div class="d-inline-block">
                     Program Utama Kami:<br>
-                    <p class="small text-mute">Terangi Beribu Masjid</p>
+                   
                 </div>
             </div>
             {{-- row 1 end --}}
@@ -292,7 +292,7 @@
                     <div class="row">
                         <div class="col-auto align-self-center pr-1">
                             <span class="">
-                                <img src="/mosque/img/logoyayasan.png" width="70" height="70"
+                                <img src="/mobile/img/logo masjid.png" width="70" height="70"
                                     class="img-fluid rounded-circle" alt="">
                             </span>
                         </div>
@@ -366,13 +366,36 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-auto">
-                                    <figure class="product-image my-0"><img src="mobile/img/registrasi.png" width="70" height="70"
+                                    <figure class="product-image my-0"><img src="mobile/img/online-registration.png" width="70" height="70"
                                             alt="" class=""></figure>
                                 </div>
                                 <div class="col pl-0">
-                                    <h5 class="text-dark my-0">1. Daftarkan Masjid / Mushola</h5>
+                                    <h6 class="text-dark my-0">1. Daftarkan Masjid/Mushola Anda</h6>
                                     <p class="text-secondary mb-1">Silakan daftarkan masjid baru melalui tombol di
                                         samping ini</p>
+
+                                </div>
+                                <div class="col-auto pl-0 align-self-center">
+                                    <button class="btn btn-default button-rounded-56 shadow"><i
+                                            class="material-icons">add</i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card shadow-sm border-0 mb-4">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-auto">
+                                    <figure class="product-image my-0"><img src="mobile/img/mosque.png" width="70" height="70"
+                                            alt="" class=""></figure>
+                                </div>
+                                <div class="col pl-0">
+                                    <h6 class="text-dark my-0">2. Data Status Masjid/Mushola</h6>
+                                    <p class="text-secondary mb-1">Melihat lebih lanjut List Masjid Yang dan status Masjid yang Anda Daftarkan.</p>
 
                                 </div>
                                 <div class="col-auto pl-0 align-self-center">
@@ -394,33 +417,8 @@
                                             alt="" class=""></figure>
                                 </div>
                                 <div class="col pl-0">
-                                    <h4 class="text-dark my-0">Registrasi</h4>
-                                    <p class="text-secondary mb-1">Silakan daftarkan masjid baru melalui tombol di
-                                        samping ini</p>
-
-                                </div>
-                                <div class="col-auto pl-0 align-self-center">
-                                    <button class="btn btn-default button-rounded-56 shadow"><i
-                                            class="material-icons">add</i></button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card shadow-sm border-0 mb-4">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-auto">
-                                    <figure class="product-image my-0"><img src="mobile/img/registrasi.png" width="70" height="70"
-                                            alt="" class=""></figure>
-                                </div>
-                                <div class="col pl-0">
-                                    <h4 class="text-dark my-0">Registrasi</h4>
-                                    <p class="text-secondary mb-1">Silakan daftarkan masjid baru melalui tombol di
-                                        samping ini</p>
+                                    <h6 class="text-dark my-0">3. Login</h6>
+                                    <p class="text-secondary mb-1">Jika status Pendaftaran telah diverifikasi, maka silahkan login ID dan password adalah Nomor ID Pelangan yang didaftarkan.</p>
 
                                 </div>
                                 <div class="col-auto pl-0 align-self-center">
@@ -610,12 +608,12 @@
                 <div class="col-auto mx-auto">
                     <div class="row no-gutters justify-content-center">
                         <div class="col-auto">
-                            <a href="index.html" class="btn btn-link-default ">
+                            <a href="{{ route('mobilelandingpage') }}" class="btn btn-link-default active">
                                 <i class="material-icons">store_mall_directory</i>
                             </a>
                         </div>
                         <div class="col-auto">
-                            <a href="statistics.html" class="btn btn-link-default active">
+                            <a href="statistics.html" class="btn btn-link-default ">
                                 <i class="material-icons">insert_chart_outline</i>
                             </a>
                         </div>
@@ -625,7 +623,7 @@
                             </a>
                         </div>
                         <div class="col-auto">
-                            <a href="favorite-products.html" class="btn btn-link-default">
+                            <a href="{{ route('mobiledaftarmasjid') }}" class="btn btn-link-default">
                                 <i class="material-icons">favorite</i>
                             </a>
                         </div>
