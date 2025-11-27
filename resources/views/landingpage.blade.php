@@ -758,8 +758,8 @@
                 </div>
 
                 <!-- Navigation Buttons -->
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
+                {{-- <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div> --}}
 
             </div>
         </div>
@@ -809,8 +809,8 @@
                 </div>
 
                 <!-- Navigation Buttons -->
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
+                {{-- <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div> --}}
 
                 <!-- Pagination Dots (optional) -->
                 <!-- <div class="swiper-pagination"></div> -->
