@@ -244,6 +244,7 @@ h4, h5, h6, .h4, .h5, .h6 {
 .swiper-slide {
     display: flex;
     justify-content: center;
+    height: 180vh;
 }
 
 /* Pastikan kotak testimonial punya background jelas */
