@@ -204,7 +204,7 @@ h4, h5, h6, .h4, .h5, .h6 {
 
 /*** Hero Header ***/
 .hero-header {
-    height: 80vh;
+    height: 60vh;
     background: url("../img/bulan.png") center center no-repeat;
     background-size: cover;
     display: flex;
@@ -216,6 +216,8 @@ h4, h5, h6, .h4, .h5, .h6 {
 .hero-header .hero-header-inner {
     width: 100%;                   /* penuh melebar */
     background: rgba(255, 255, 255, 0.5);
+    max-height: 400px; /* batasi lebar */
+    max-width: 700px; /* batasi lebar */
     padding: 3rem;                 /* tinggi akan mengikuti padding + isi */
     border-radius: 10px;
     backdrop-filter: blur(4px);    /* opsional, biar smooth */
@@ -300,21 +302,6 @@ h4, h5, h6, .h4, .h5, .h6 {
 
 /*** tentang kami Start ***/
 
-.hero-header-beranda {
-    height: 60vh;
-    background: url("../img/bulan.png")  center center no-repeat; /* obink beri jarak dari tepi bawah */
-    background-size: cover;
-    display: flex;
-    align-items: flex-end; /* turun ke bawah */
-    padding-bottom: 1rem; /* beri jarak dari tepi bawah */
-}
-.hero-header-beranda .hero-header-inner {
-    padding: 3rem;
-    max-height: 400px; /* batasi lebar */
-     max-width: 1900px; /* batasi lebar */
-    background: rgba(255, 255, 255, .3);
-    border-radius: 10px; /* opsional, biar lebih lembut */
-}
 
 
 /*** tentang kami Start ***/

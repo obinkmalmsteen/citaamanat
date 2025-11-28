@@ -134,7 +134,7 @@
 
      
     <!-- Hero Start -->
-    <div class="container-fluid hero-header-beranda">
+    <div class="container-fluid hero-header">
         <div class="container">
             <div class="row">
                 <div class="col-lg-7">
