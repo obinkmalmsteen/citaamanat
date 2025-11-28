@@ -76,31 +76,15 @@
 
                 <a href="{{ route('landingpage') }}" class="navbar-brand">
                      
-                    <h2 class="mb-0"> <span><img src="/mosque/img/logoyayasan.png" class="img-fluid flex-shrink-10" alt="" width="100"> </span><span class="text-primary">Cita Amanat Martadiredja</span>   </h2>
+                    <h2 class="mb-0"> <span><img src="/mosque/img/logoyayasan.png" class="img-fluid flex-shrink-10" alt="" width="100"> </span><span class="text-dark">Cita Amanat Martadiredja</span>   </h2>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarCollapse">
                     <span class="fa fa-bars text-primary"></span>
                 </button>
                 <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
-                    <div class="navbar-nav ms-lg-auto mx-xl-auto">
-                        <a href="index.html" class="nav-item nav-link active">Beranda</a>
-                        <a href="about.html" class="nav-item nav-link">Tentang Kami</a>
-                        <a href="activity.html" class="nav-item nav-link">Aktifitas</a>
-                        <a href="event.html" class="nav-item nav-link">Acara</a>
-                        <a href="sermon.html" class="nav-item nav-link">Sermons</a>
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                            <div class="dropdown-menu m-0 rounded-0">
-                                <a href="blog.html" class="dropdown-item">Latest Blog</a>
-                                <a href="team.html" class="dropdown-item">Our Team</a>
-                                <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                                <a href="404.html" class="dropdown-item">404 Page</a>
-                            </div>
-                        </div>
-                        <a href="contact.html" class="nav-item nav-link">Contact</a>
-                    </div>
-                    <a href="" class="btn btn-primary py-2 px-4 d-none d-xl-inline-block">Donate</a>
+                   
+                    
                 </div>
             </nav>
         </div>
@@ -115,12 +99,13 @@
 
     <div class="container">
 
-        <div class="mt-4 text-center">
-    <a href="{{ route('landingpage') }}" class="btn btn-outline-dark" style="border-radius: 8px; padding: 8px 20px;">
+        <div class="mt-4 text-left">
+    <a href="{{ route('landingpage') }}" class="btn btn-warning btn-outline-dark" style="border-radius: 8px; padding: 8px 20px;">
         ⬅ Kembali ke Halaman Utama
     </a>
 </div>
-        <h2>Form Registrasi Masjid</h2>
+        <h2 class="mt-4 text-center">Form Registrasi Masjid</h2>
+        <br>
         <form method="POST" enctype="multipart/form-data" action="{{ route('masjidPublicStore') }}">
             @csrf
             {{-- start form data pengelola mesjid --}}
@@ -267,7 +252,7 @@
                         </div>
 
                         <div class="col-md-6 mb-4">
-                            <label for="foto_masjid" class="form-label">Foto Masjid</label>
+                            <label for="foto_masjid" class="form-label">Foto Masjid (Diusahakan Foto posisi Landscape)</label>
                             <input type="file" name="foto_masjid" id="foto_masjid-field" class="form-control"
                                 style="background-color: #f9f7e7;" accept="image/*" required>
                         </div>
@@ -456,6 +441,9 @@
     </div>
 </div>
     </form>
+
+
+    
     <script>
         $(document).ready(function() {
 

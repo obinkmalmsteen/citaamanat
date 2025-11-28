@@ -132,12 +132,18 @@
 
 
 
+     
     <!-- Hero Start -->
-    <div class="container-fluid hero-header">
+    <div class="container-fluid hero-header-beranda">
         <div class="container">
-            <div class="hero-header-inner animated zoomIn">
-                <p class="fs-4 text-dark">Selamat Datang Di Laman</p>
-                <h1 class="hero-title">Cita Amanat Martadiredja</h1>
+            <div class="row">
+                <div class="col-lg-7">
+                    <div class="hero-header-inner animated zoomIn">
+                        <p class="fs-5 text-uppercase text-white"><b>Selamat Datang Di Laman</b></p>
+                        <h1 class="display-6 text-black">Cita Amanat Martadiredja</h1>
+                       
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -957,16 +963,16 @@
                         <h4 class="text-light mb-4">Explore Link</h4>
                         <div class="d-flex flex-column align-items-start">
                             <a class="text-light mb-2" href="{{ route('landingpage') }}"><i
-                                    class="fa fa-check text-light me-2"></i>Beranda</a>
+                                    class="fa fa-check text-primary me-2"></i>Beranda</a>
                             <a class="text-light mb-2" href="{{ route('tentangkami') }}"><i
                                     class="fa fa-check text-light me-2"></i>Tentang Kami</a>
                             <a class="text-light mb-2" href="{{ route('aktifitas') }}"><i
-                                    class="fa fa-check text-primary me-2"></i>Aktifitas</a>
+                                    class="fa fa-check text-light me-2"></i>Aktifitas</a>
                             <a class="text-light mb-2" href="{{ route('acara') }}"><i
                                     class="fa fa-check text-light me-2"></i>Acara</a>
                             {{-- <a class="text-light mb-2" href="{{ route('kontakkami') }}"><i class="fa fa-check text-primary me-2"></i>Kontak Kami</a> --}}
                             <a class="text-light mb-2" href="{{ route('testimoni') }}"><i
-                                    class="fa fa-check text-primary me-2"></i>Testimonial</a>
+                                    class="fa fa-check text-light me-2"></i>Testimonial</a>
                             <a class="text-light mb-2" href="{{ route('listmasjid') }}"><i
                                     class="fa fa-check text-light me-2"></i>List Masjid</a>
 
@@ -999,7 +1005,7 @@
                     <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
                     <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
                     <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
-                    Designed By <a class="border-bottom" href="https://htmlcodex.com">Obink</a>
+                    Designed By | Obink
                 </div>
             </div>
         </div>
