@@ -125,7 +125,7 @@ h4, h5, h6, .h4, .h5, .h6 {
 }
 /*** Topbar End ***/
 .hero-header .display-1 {
-    font-size: 3rem;
+    font-size: 1rem;
 }
 .navbar-transparent {
     background: rgba(255, 255, 255, 0.4); /* putih transparan */
@@ -205,20 +205,26 @@ h4, h5, h6, .h4, .h5, .h6 {
 /*** Hero Header ***/
 .hero-header {
     height: 80vh;
-    background: url("../img/bulan.png") center center no-repeat; /* beri jarak dari tepi bawah */
+    background: url("../img/bulan.png") center center no-repeat;
     background-size: cover;
     display: flex;
-    align-items: flex-end; /* turun ke bawah */
-    padding-bottom: 2rem; /* beri jarak dari tepi bawah */
+    align-items: flex-end;
+    padding-bottom: 2rem;
 }
 
+/* KOTAK PUTIH TRANSPARAN FULL WIDTH */
 .hero-header .hero-header-inner {
-    padding: 3rem;
-    max-height: 400px; /* batasi lebar */
-     max-width: 500px; /* batasi lebar */
-    background: rgba(255, 255, 255, .5);
-    border-radius: 10px; /* opsional, biar lebih lembut */
+    width: 100%;                   /* penuh melebar */
+    background: rgba(255, 255, 255, 0.5);
+    padding: 3rem;                 /* tinggi akan mengikuti padding + isi */
+    border-radius: 10px;
+    backdrop-filter: blur(4px);    /* opsional, biar smooth */
 }
+
+.hero-title {
+    white-space: nowrap;      /* paksa satu baris */
+}
+
 
 @media (max-width: 992px) {
     .hero-header {

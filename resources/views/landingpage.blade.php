@@ -115,42 +115,59 @@
     <!-- Topbar End -->
 
 
-    <!-- Hero Start -->
-    <div class="container-fluid hero-header">
+<!-- Topbar start -->
+    <div class="container-fluid ">
+        <div class="container topbar d-none d-lg-block">
+        
+        </div>
         <div class="container">
-            <div class="row">
-                <div class="col-lg-7">
-                    <div class="hero-header-inner animated zoomIn">
-                        <p class="fs-4 text-dark">Selamat Datang Di Laman</p>
-                        <h1 class="display-2 mb-5 text-dark">Cita Amanat Martadiredja</h1>
-                        {{-- <a href="" class="btn btn-primary py-3 px-5">Read More</a> --}}
-                    </div>
-                </div>
-            </div>
+            <nav class="navbar navbar-light navbar-expand-lg py-1 navbar-transparent">
+
+            
+            </nav>
         </div>
     </div>
+    <!-- Topbar End -->
+
+
+
+
+    <!-- Hero Start -->
+<div class="container-fluid hero-header">
+    <div class="container">
+        <div class="hero-header-inner animated zoomIn">
+            <p class="fs-4 text-dark">Selamat Datang Di Laman</p>
+            <h1 class="hero-title">Cita Amanat Martadiredja</h1>
+        </div>
+    </div>
+</div>
+
     <!-- Hero End -->
     <style>
-/* Membesarkan titik */
-.carousel-indicators [data-bs-target] {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: #ffffff;   /* warna titik normal */
-    opacity: 0.3;
-    margin: 6px 6px;            /* jarak antar titik */
-}
+        /* Membesarkan titik */
+        .carousel-indicators [data-bs-target] {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #ffffff;
+            /* warna titik normal */
+            opacity: 0.3;
+            margin: 6px 6px;
+            /* jarak antar titik */
+        }
 
-/* Titik aktif */
-.carousel-indicators .active {
-    opacity: 1;
-    background-color: #0d6efd;  /* warna titik aktif (biru bootstrap) */
-}
+        /* Titik aktif */
+        .carousel-indicators .active {
+            opacity: 1;
+            background-color: #0d6efd;
+            /* warna titik aktif (biru bootstrap) */
+        }
 
-/* Geser titik lebih ke bawah */
-.carousel-indicators {
-    bottom: -10px;  /* geser 10px di bawah gambar */
-}
+        /* Geser titik lebih ke bawah */
+        .carousel-indicators {
+            bottom: -10px;
+            /* geser 10px di bawah gambar */
+        }
     </style>
 
 
@@ -201,7 +218,7 @@
                                 </div>
                             </div>
 
-<br>
+                            <br>
 
                             <div class="bg-light p-3 mb-4">
                                 <div class="row justify-content-center text-center g-4">
@@ -236,7 +253,7 @@
                                 </div>
                             </div>
 
-                            
+
                         </div>
 
                         {{-- <div class="col-6">
@@ -819,95 +836,105 @@
     </div>
 
 
-    <div class="container py-5">
-        <div class="row g-5 mb-5">
+   
 
+            <!-- Sermon Start -->
+            <div class="container-fluid sermon py-5">
+                <div class="container py-5">
+                    <div class="text-center mx-auto mb-5 wow fadeIn" data-wow-delay="0.1s" style="max-width: 700px;">
+                        <p class="fs-5 text-uppercase text-primary">Aktifitas Kami</p>
+                        <h3 class="display-7">Berbagai Aktifitas Kami yang Sudah Terlaksana Dan Akan Menjadi Program
+                            Untuk
+                            Selanjutnya</h3>
+                    </div>
+                    <div class="row g-4 justify-content-center">
+                        <div class="col-lg-6 col-xl-3">
+                            <div class="sermon-item wow fadeIn" data-wow-delay="0.1s">
+                                <div class="overflow-hidden p-4 pb-0">
+                                    <img src="/mosque/img/renov.png" class="img-fluid w-100" alt="">
+                                </div>
+                                <div class="p-4">
 
+                                    <a href="" class="d-inline-block h4 lh-sm mb-3">Perbaikan Beribu Masjid &
+                                        Mushola</a>
+                                    <p class="mb-0" style="text-align: justify;">Memperbaiki Bangunan, memperkuat
+                                        Iman dalam wujudkan mimpi bersama untuk mempercantik
+                                        rumah-rumah Allah.
 
-            <div class="col-xl-6 wow fadeIn" data-wow-delay="0.5s">
-                <p class="fs-5 text-uppercase text-primary"><b>Berbagai Program Kami </b></p>
-                <h1 class="display-5 pb-4 m-0">Berbagai Aktifitas Kami yang Sudah Terlaksana Dan Akan Menjadi Program
-                    Untuk Selanjutnya</h1>
-                <p class="pb-4" style="text-align: justify;">
-
-                <p class="mb-4">Untuk mengetahui lebih lanjut berbagai program kami.</p>
-                <a href="{{ route('aktifitas') }}" class="btn btn-primary px-3">Lanjut Baca</a>
-                </p>
-
-
-                {{-- <div class="bg-light p-3 mb-4">
-                    <div class="row align-items-center justify-content-center">
-                        <div class="col-3">
-                            <img src="/mosque/img/logoyayasan.png" class="img-fluid rounded-circle" alt="">
+                                        Mengembalikan masjid sebagai pusat ibadah, kebudayaan dan jantung peradaban
+                                        umat. Kini
+                                        banyak diantaranya yang telah lapuk dimakan usia dan perlu uluran tangan kita.
+                                        Bersama
+                                        dalam gerakan perbaikan beribu Masjid dan Mushola kita tidak hanya memperbaiki
+                                        bangunan,
+                                        tetapi merawat peradaban dan warisan Islami untuk generasi mendatang.</p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-9">
-                            <p class="mb-0 justify"><i>"Kami Akan Berusaha Untuk Mewujudkan Sarana Ibadah Yang
-                                    Layak,
-                                    Nyaman, dan
-                                    Berkelanjutan Melalui Revitalisasi Insfrastruktur Masjid dan Mushola."</i></p>
+                        <div class="col-lg-6 col-xl-3">
+                            <div class="sermon-item wow fadeIn" data-wow-delay="0.3s">
+                                <div class="overflow-hidden p-4 pb-0">
+                                    <img src="/mosque/img/santunan.png" class="img-fluid w-100" alt="">
+                                </div>
+                                <div class="p-4">
+
+                                    <a href="" class="d-inline-block h4 lh-sm mb-3">Nyaah Ka Indung</a>
+                                    <p class="mb-0" style="text-align: justify;">Nyaah ka Indung sebuah program yang
+                                        kami hadirkan sebagai bukti
+                                        kepedulian, cinta dan
+                                        kasih kita kepada orang tua. Mewujudkan masyarakat yang peduli dan berbakti
+                                        kepada orang
+                                        tua manula sebagai bentuk tanggung jawab sosial.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-xl-3">
+                            <div class="sermon-item wow fadeIn" data-wow-delay="0.5s">
+                                <div class="overflow-hidden p-4 pb-0">
+                                    <img src="/mosque/img/adzancilik.png" class="img-fluid w-100" alt="">
+                                </div>
+                                <div class="p-4">
+
+                                    <a href="" class="d-inline-block h4 lh-sm mb-3">Muadzin Cilik</a>
+                                    <p class="mb-0" style="text-align: justify;">Lebih dari sekadar panggilan. Ini
+                                        adalah program kaderisasi berbasis
+                                        apresiasi yang
+                                        bertujuan mulia, yaitu menanamkan kecintaan pada ibadah sekaligus memastikan
+                                        pelestarian
+                                        seni dan syiar Adzan dari generasi ke generasi. Kami membina hari ini untuk
+                                        Adzan yang
+                                        berkelanjutan esok hari.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-xl-3">
+                            <div class="sermon-item wow fadeIn" data-wow-delay="0.5s">
+                                <div class="overflow-hidden p-4 pb-0">
+                                    <img src="/mosque/img/Gurungaji.jpg" class="img-fluid w-100" alt="">
+                                </div>
+                                <div class="p-4">
+
+                                    <a href="" class="d-inline-block h4 lh-sm mb-3">Bantuan Honor Guru
+                                        Ngaji</a>
+                                    <p class="mb-0" style="text-align: justify;">Sebuah inisiatif nyata untuk
+                                        memberikan apresiasi dan dukungan Finansial kepada para guru ngaji di wilayah
+                                        kita.
+                                        Mereka adalah Pejuang Huruf Hijaiyah yang telah mengabdikan diri dengan tulus,
+                                        mengajarkan Al-Qur'an dan menanamkan akhlak mulia kepada anak-anak kita. Program
+                                        ini
+                                        bukan sekadar bantuan, melainkan sebuah Tunjangan Kehormatan sebagai wujud
+                                        terima kasih
+                                        kami, memastikan cahaya Al-Qur'an akan terus bersinar melalui pengabdian mereka
+                                        yang
+                                        mulia..</p>
+                                </div>
+                            </div>
                         </div>
 
                     </div>
-                </div> --}}
-            </div>
-
-
-            {{-- dfgd --}}
-
-            <div class="col-xl-6">
-                <div class="row g-4">
-
-                    <div class="col-6">
-                        <div class="img-wrapper">
-                            <img src="/mobile/img/baikmasjid.png" class="img-fluid pb-3 wow zoomIn"
-                                data-wow-delay="0.1s" alt="">
-                            <div class="img-text text-warning"> <a href=""
-                                    class="d-inline-block h6 lh-sm mb-3  text-warning">Perbaikan Beribu Masjid &
-                                    Mushola</a>
-                                <p class="mb-0" style="text-align: justify;">Memperbaiki Bangunan, memperkuat Iman
-                                    dalam wujudkan...</p>
-                            </div>
-                        </div>
-
-                        <div class="img-wrapper">
-                            <img src="/mosque/img/santunan.png" class="img-fluid pt-3 wow zoomIn"
-                                data-wow-delay="0.1s" alt="">
-                            <div class="img-text text-warning"> <a href=""
-                                    class="d-inline-block h6 lh-sm mb-3  text-warning">Nyaah Ka Indung</a>
-                                <p class="mb-0" style="text-align: justify;">Nyaah ka Indung sebuah program yang
-                                    kami hadirkan...</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-6">
-                        <div class="img-wrapper">
-                            <img src="/mosque/img/adzancilik.png" class="img-fluid pb-3 wow zoomIn"
-                                data-wow-delay="0.1s" alt="">
-                            <div class="img-text text-warning"> <a href=""
-                                    class="d-inline-block h6 lh-sm mb-3  text-warning">Muadzin Cilik</a>
-                                <p class="mb-0" style="text-align: justify;">Lebih dari sekadar panggilan. Ini
-                                    adalah program...</p>
-                            </div>
-                        </div>
-
-                        <div class="img-wrapper">
-                            <img src="/mosque/img/gurungaji.png" class="img-fluid pt-3 wow zoomIn"
-                                data-wow-delay="0.1s" alt="">
-                            <div class="img-text text-warning"> <a href=""
-                                    class="d-inline-block h6 lh-sm mb-3  text-warning">Bantuan Honor Guru Ngaji</a>
-                                <p class="mb-0" style="text-align: justify;">Sebuah inisiatif nyata untuk
-                                    memberikan...</p>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-
-                {{-- sdfsdf --}}
-
-            </div>
+            
+            <!-- Sermon End -->
 
 
         </div>
