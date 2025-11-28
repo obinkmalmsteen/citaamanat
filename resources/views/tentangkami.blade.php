@@ -91,8 +91,8 @@
                 <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
                     <div class="navbar-nav ms-lg-auto mx-xl-auto">
                         <a href="{{ route('landingpage') }}" class="nav-item nav-link ">Beranda</a>
-                        <a href="{{ route('tentangkami') }}" class="nav-item nav-link active">Tentang Kami</a>
                         <a href="{{ route('aktifitas') }}" class="nav-item nav-link">Aktifitas</a>
+                        <a href="{{ route('tentangkami') }}" class="nav-item nav-link active">Tentang Kami</a>
                         <a href="{{ route('acara') }}" class="nav-item nav-link">Acara</a>
                         {{-- <a href="{{ route('kontakkami') }}" class="nav-item nav-link">Kontak Kami</a> --}}
                         <div class="nav-item dropdown">
@@ -113,196 +113,219 @@
     <!-- Topbar End -->
 
 
-        <!-- Hero Start -->
-        <div class="container-fluid hero-header-tentangkami">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-7">
-                        <div class="hero-header-inner animated zoomIn">
-                            <h1 class="display-1 text-dark">Tentang kami</h1>
-                            <ol class="breadcrumb mb-0">
-                            
-                                <li class="breadcrumb-item text-dark" aria-current="page">About</li>
-                            </ol>
-                        </div>
+    <!-- Hero Start -->
+    <div class="container-fluid hero-header-tentangkami">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7">
+                    <div class="hero-header-inner animated zoomIn">
+                        <h1 class="display-1 text-dark">Tentang kami</h1>
+                        <ol class="breadcrumb mb-0">
+
+                            <li class="breadcrumb-item text-dark" aria-current="page">About</li>
+                        </ol>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Hero End -->
+    </div>
+    <!-- Hero End -->
 
 
-        <!-- About Satrt -->
-        <div class="container-fluid about py-5">
-            <div class="container py-5">
-                <div class="row g-5 mb-5">
-                    <div class="col-xl-4">
-                        <div class="row g-4">
-                            
+    <!-- About Satrt -->
+    <div class="container-fluid about py-5">
+        <div class="container py-5">
+            <div class="row g-5 mb-5">
+                <div class="col-xl-4">
+                    <div class="row g-4">
+
                         <div class="col-12">
                             <img src="/mosque/img/sholat.png" class="img-fluid pb-3 wow zoomIn" data-wow-delay="0.1s"
                                 alt="">
                             <img src="/mosque/img/olat.png" class="img-fluid pt-3 wow zoomIn" data-wow-delay="0.1s"
                                 alt="">
                         </div>
-                        </div>
                     </div>
-                    <div class="col-xl-8 wow fadeIn" data-wow-delay="0.5s">
-                        <p class="fs-5 text-uppercase text-primary">TENTANG KAMI</p>
-                        
-                          <div class="row g-4 mb-4">
-                            <div class="col-md-12">
-                                <div class="ps-3 d-flex align-items-center justify-content-start">
-                                    <span class="bg-primary btn-md-square rounded-circle mt-4 me-2"><i class="fa fa-eye text-dark fa-4x mb-5 pb-2"></i></span>
-                                    <div class="ms-4 justify">
-                                        <h4>VISI</h4>
-                                        <p>Menjadi Pelopor Gerakan Filantropi yang memberdayakan Umat untuk Kemandirian dan kemulian dalam
-                    bingkai Keimanan dan Ketaqwaan.</p>
-                                    </div>
+                </div>
+                <div class="col-xl-8 wow fadeIn" data-wow-delay="0.5s">
+                    <p class="fs-5 text-uppercase text-primary">TENTANG KAMI</p>
+
+                    <div class="row g-4 mb-4">
+                        <div class="col-md-12">
+                            <div class="ps-3 d-flex align-items-center justify-content-start">
+                                <span class="bg-primary btn-md-square rounded-circle mt-4 me-2"><i
+                                        class="fa fa-eye text-dark fa-4x mb-5 pb-2"></i></span>
+                                <div class="ms-4 justify">
+                                    <h4>VISI</h4>
+                                    <p>Menjadi Pelopor Gerakan Filantropi yang memberdayakan Umat untuk Kemandirian dan
+                                        kemulian dalam
+                                        bingkai Keimanan dan Ketaqwaan.</p>
                                 </div>
                             </div>
-                            <div class="row g-4 mb-4">
+                        </div>
+                        <div class="row g-4 mb-4">
                             <div class="col-md-12">
                                 <div class="ps-3 d-flex align-items-center justify-content-start">
-                                    <span class="bg-primary btn-md-square rounded-circle mt-4 me-2"><i class="fa fa-flag text-dark fa-4x mb-5 pb-2"></i></span>
+                                    <span class="bg-primary btn-md-square rounded-circle mt-4 me-2"><i
+                                            class="fa fa-flag text-dark fa-4x mb-5 pb-2"></i></span>
                                     <div class="ms-4 justify">
                                         <h4>MISI</h4>
                                         <ul>
-                            <li><i class="justify"></i> <span>Mewujudkan sarana ibadah yang layak, nyaman, dan
-                                    berkelanjutan melalui revitalisasi insfrastruktur Masjid dan Mushola.</span></li>
-                            <li><i class="justify"></i> <span>Meningkatkan kualitas kehidupan seorang Ibu dan
-                                    keluarga sebagai pilar utama peradaban melalui program Santunan dalam bentuk uang
-                                    dan sembako (Nyaah ka Indung).</span></li>
-                            <li><i class="justify"></i> <span>membangun jejaring kolaborasi (mitra) dengan
-                                    berbagai pihak untuk memperluas dampak kebaikan dan keberlanjutan program.</span>
-                            </li>
-                            <li><i class="justify"></i> <span>Menjaga Amanah dan menyalurkan donasi dengan
-                                    prinsip transparansi, akuntabilitas dan profesional.</span></li>
-                        </ul>
+                                            <li><i class="justify"></i> <span>Mewujudkan sarana ibadah yang layak,
+                                                    nyaman, dan
+                                                    berkelanjutan melalui revitalisasi insfrastruktur Masjid dan
+                                                    Mushola.</span></li>
+                                            <li><i class="justify"></i> <span>Meningkatkan kualitas kehidupan seorang
+                                                    Ibu dan
+                                                    keluarga sebagai pilar utama peradaban melalui program Santunan
+                                                    dalam bentuk uang
+                                                    dan sembako (Nyaah ka Indung).</span></li>
+                                            <li><i class="justify"></i> <span>membangun jejaring kolaborasi (mitra)
+                                                    dengan
+                                                    berbagai pihak untuk memperluas dampak kebaikan dan keberlanjutan
+                                                    program.</span>
+                                            </li>
+                                            <li><i class="justify"></i> <span>Menjaga Amanah dan menyalurkan donasi
+                                                    dengan
+                                                    prinsip transparansi, akuntabilitas dan profesional.</span></li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
-                            </div>
                         </div>
-                        <div class="bg-light p-3 mb-4">
-                            <div class="row align-items-center justify-content-center">
-                                <div class="col-3">
-                                   <img src="/mosque/img/logoyayasan.png" class="img-fluid rounded-circle"
+                    </div>
+                    <div class="bg-light p-3 mb-4">
+                        <div class="row align-items-center justify-content-center">
+                            <div class="col-3">
+                                <img src="/mosque/img/logoyayasan.png" class="img-fluid rounded-circle"
                                     alt="">
-                                </div>
-                                <div class="col-6">
-                                    <p class="mb-0"><i>"Bagi Kami Seluruh Personal Yang Terlibat Mulai Dari Karyawan, Donatur, Dan Penerima Manfaat Adalah Keluarga Besar Yang Senantiasa Kita Jaga Kebersamaannya."</i></p>
-                                </div>
-                                <div class="col-3">
-                                         <h2 class="mb-0 text-primary text-center">
-    <span 
-        data-purecounter-start="0" 
-        data-purecounter-end="{{ $jumlahUser }}" 
-        data-purecounter-duration="2" 
-        class="purecounter">
-    </span>
-</h2>
-                                        <p class="mb-0 text-center"><b>Jumlah Pengguna Sampai Saat Ini</b></p>
+                            </div>
+                            <div class="col-6">
+                                <p class="mb-0"><i>"Bagi Kami Seluruh Personal Yang Terlibat Mulai Dari Karyawan,
+                                        Donatur, Dan Penerima Manfaat Adalah Keluarga Besar Yang Senantiasa Kita Jaga
+                                        Kebersamaannya."</i></p>
+                            </div>
+                            <div class="col-3">
+                                <h2 class="mb-0 text-primary text-center">
+                                    <span data-purecounter-start="0" data-purecounter-end="{{ $jumlahUser }}"
+                                        data-purecounter-duration="2" class="purecounter">
+                                    </span>
+                                </h2>
+                                <p class="mb-0 text-center"><b>Jumlah Pengguna Sampai Saat Ini</b></p>
 
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row g-2">
-                            <div class="col-md-6">
-                                <p class="mb-2"><i class="fa fa-check text-primary me-3"></i>Charity & Donation</p>
-                                <p class="mb-0"><i class="fa fa-check text-primary me-3"></i>Parent Education</p>
-                            </div>
-                            <div class="col-md-6">
-                                <p class="mb-2"><i class="fa fa-check text-primary me-3"></i>Hadith & Sunnah</p>
-                                <p class="mb-0"><i class="fa fa-check text-primary me-3"></i>Mosque Development</p>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="container text-center bg-success py-5 wow fadeIn" data-wow-delay="0.1s">
-                    <div class="row g-4 align-items-center">
-                        <div class="col-lg-2">
-                            <i class="fa fa-mosque fa-5x text-white"></i>
+                    <div class="row g-2">
+                        <div class="col-md-6">
+                            <p class="mb-2"><i class="fa fa-check text-primary me-3"></i>Charity & Donation</p>
+                            <p class="mb-0"><i class="fa fa-check text-primary me-3"></i>Parent Education</p>
                         </div>
-                        <div class="col-lg-9 text-center text-lg-start ">
-                            <h1 class="mb-0 text-white">Menguatkan Martabat Islami melalui Dukungan untuk Masjid dan Seluruh Ummat.</h1>
+                        <div class="col-md-6">
+                            <p class="mb-2"><i class="fa fa-check text-primary me-3"></i>Hadith & Sunnah</p>
+                            <p class="mb-0"><i class="fa fa-check text-primary me-3"></i>Mosque Development</p>
                         </div>
-                        
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- About End -->
+            <div class="container text-center bg-success py-5 wow fadeIn" data-wow-delay="0.1s">
+                <div class="row g-4 align-items-center">
+                    <div class="col-lg-2">
+                        <i class="fa fa-mosque fa-5x text-white"></i>
+                    </div>
+                    <div class="col-lg-9 text-center text-lg-start ">
+                        <h1 class="mb-0 text-white">Menguatkan Martabat Islami melalui Dukungan untuk Masjid dan
+                            Seluruh Ummat.</h1>
+                    </div>
 
-
-        <!-- Team Start -->
-        <div class="container-fluid team py-15">
-            <div class="container py-15">
-                <div class="text-center mx-auto mb-5 wow fadeIn" data-wow-delay="0.1s" style="max-width: 700px;">
-                    <p class="fs-5 text-uppercase text-primary">Our Team</p>
-                    {{-- <h1 class="display-3">Meet Our Organizer</h1> --}}
-                </div>
-                <div class="row g-5">
-                    <div class="col-lg-4 col-xl-5">    
-                    </div>
-                    <div class="col-lg-8 col-xl-7">
-                       
-                    </div>
-                    <div class="col-lg-8 col-xl-7">
-                        <div class="team-item wow fadeIn" data-wow-delay="0.1s">
-                            <h1>Erick Martadiredja</h1>
-                            <h5 class="fw-normal fst-italic text-primary mb-4">Chief Executive Officer / Founder</h5>
-                            <p class="mb-4">Phone:</p>
-                            <div class="team-icon d-flex pb-4 mb-4 border-bottom border-primary">
-                                <a class="btn btn-primary btn-lg-square me-2" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-primary btn-lg-square me-2" href=""><i class="fab fa-twitter"></i></a>
-                                <a href="#" class="btn btn-primary btn-lg-square me-2"><i class="fab fa-instagram"></i></a>
-                                <a href="#" class="btn btn-primary btn-lg-square"><i class="fab fa-linkedin-in"></i></a>
-                            </div>
-                        </div> 
-                    </div>
-                    <div class="col-lg-8 col-xl-7">
-                        <div class="team-item wow fadeIn" data-wow-delay="0.1s">
-                            <h1>Wiji Samiono</h1>
-                            <h5 class="fw-normal fst-italic text-primary mb-4">Chief Operating Officer / Co-Founder</h5>
-                            <p class="mb-4">Phone:</p>
-                            <div class="team-icon d-flex pb-4 mb-4 border-bottom border-primary">
-                                <a class="btn btn-primary btn-lg-square me-2" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-primary btn-lg-square me-2" href=""><i class="fab fa-twitter"></i></a>
-                                <a href="#" class="btn btn-primary btn-lg-square me-2"><i class="fab fa-instagram"></i></a>
-                                <a href="#" class="btn btn-primary btn-lg-square"><i class="fab fa-linkedin-in"></i></a>
-                            </div>
-                        </div> 
-                    </div>
-                    <div class="col-lg-8 col-xl-7">
-                        <div class="team-item wow fadeIn" data-wow-delay="0.1s">
-                            <h1>Robi</h1>
-                            <h5 class="fw-normal fst-italic text-primary mb-4">Chief Technology Officer</h5>
-                            <p class="mb-4">Phone:</p>
-                            <div class="team-icon d-flex pb-4 mb-4 border-bottom border-primary">
-                                <a class="btn btn-primary btn-lg-square me-2" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-primary btn-lg-square me-2" href=""><i class="fab fa-twitter"></i></a>
-                                <a href="#" class="btn btn-primary btn-lg-square me-2"><i class="fab fa-instagram"></i></a>
-                                <a href="#" class="btn btn-primary btn-lg-square"><i class="fab fa-linkedin-in"></i></a>
-                            </div>
-                        </div> 
-                    </div>
                 </div>
             </div>
         </div>
-        <!-- Team End -->
+    </div>
+    <!-- About End -->
 
 
-   <!-- Footer Start -->
-        <div class="container-fluid footer pt-15 wow fadeIn" data-wow-delay="0.1s">
+    <!-- Team Start -->
+    <div class="container-fluid team py-15">
         <div class="container py-15">
-         
+            <div class="text-center mx-auto mb-5 wow fadeIn" data-wow-delay="0.1s" style="max-width: 700px;">
+                <p class="fs-5 text-uppercase text-primary">Our Team</p>
+                {{-- <h1 class="display-3">Meet Our Organizer</h1> --}}
+            </div>
+            <div class="row g-5">
+                <div class="col-lg-4 col-xl-5">
+                </div>
+                <div class="col-lg-8 col-xl-7">
+
+                </div>
+                <div class="col-lg-8 col-xl-7">
+                    <div class="team-item wow fadeIn" data-wow-delay="0.1s">
+                        <h1>Erick Martadiredja</h1>
+                        <h5 class="fw-normal fst-italic text-primary mb-4">Chief Executive Officer / Founder</h5>
+                        <p class="mb-4">Phone:</p>
+                        <div class="team-icon d-flex pb-4 mb-4 border-bottom border-primary">
+                            <a class="btn btn-primary btn-lg-square me-2" href=""><i
+                                    class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-primary btn-lg-square me-2" href=""><i
+                                    class="fab fa-twitter"></i></a>
+                            <a href="#" class="btn btn-primary btn-lg-square me-2"><i
+                                    class="fab fa-instagram"></i></a>
+                            <a href="#" class="btn btn-primary btn-lg-square"><i
+                                    class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8 col-xl-7">
+                    <div class="team-item wow fadeIn" data-wow-delay="0.1s">
+                        <h1>Wiji Samiono</h1>
+                        <h5 class="fw-normal fst-italic text-primary mb-4">Chief Operating Officer / Co-Founder</h5>
+                        <p class="mb-4">Phone:</p>
+                        <div class="team-icon d-flex pb-4 mb-4 border-bottom border-primary">
+                            <a class="btn btn-primary btn-lg-square me-2" href=""><i
+                                    class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-primary btn-lg-square me-2" href=""><i
+                                    class="fab fa-twitter"></i></a>
+                            <a href="#" class="btn btn-primary btn-lg-square me-2"><i
+                                    class="fab fa-instagram"></i></a>
+                            <a href="#" class="btn btn-primary btn-lg-square"><i
+                                    class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8 col-xl-7">
+                    <div class="team-item wow fadeIn" data-wow-delay="0.1s">
+                        <h1>Robi</h1>
+                        <h5 class="fw-normal fst-italic text-primary mb-4">Chief Technology Officer</h5>
+                        <p class="mb-4">Phone:</p>
+                        <div class="team-icon d-flex pb-4 mb-4 border-bottom border-primary">
+                            <a class="btn btn-primary btn-lg-square me-2" href=""><i
+                                    class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-primary btn-lg-square me-2" href=""><i
+                                    class="fab fa-twitter"></i></a>
+                            <a href="#" class="btn btn-primary btn-lg-square me-2"><i
+                                    class="fab fa-instagram"></i></a>
+                            <a href="#" class="btn btn-primary btn-lg-square"><i
+                                    class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Team End -->
+
+
+    <!-- Footer Start -->
+    <div class="container-fluid footer pt-15 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container py-15">
+
             <div class="row g-4 footer-inner">
                 <div class="col-md-4 col-lg-6 col-xl-4">
                     <div class="footer-item mt-5">
                         <h4 class="text-light mb-4">Cita <span class="text-primary">Amanat Martadiredja</span></h4>
-                        <p class="mb-4 text-light">Menjadi Pelopor Gerakan Filantropi yang memberdayakan Umat untuk Kemandirian dan kemulian dalam
-                    bingkai Keimanan dan Ketaqwaan.</p>
+                        <p class="mb-4 text-light">Menjadi Pelopor Gerakan Filantropi yang memberdayakan Umat untuk
+                            Kemandirian dan kemulian dalam
+                            bingkai Keimanan dan Ketaqwaan.</p>
                         {{-- <a href="" class="btn btn-primary py-2 px-4">Donate Now</a> --}}
                     </div>
                 </div>
@@ -314,9 +337,10 @@
                             <div class="d-flex align-items-center border-bottom py-4">
                                 <span class="flex-shrink-0 btn-square bg-primary me-3 p-4"><i
                                         class="fa fa-map-marker-alt text-dark"></i></span>
-                                <a href="" class="text">Puri Indah Cihampelas, Blok E7, No.15, Citapen, Cihampelas, Kab Bandung Barat,
-                                        Jawa Barat, Indonesia</a>
-                            </div>                       
+                                <a href="" class="text">Puri Indah Cihampelas, Blok E7, No.15, Citapen,
+                                    Cihampelas, Kab Bandung Barat,
+                                    Jawa Barat, Indonesia</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -324,38 +348,44 @@
                     <div class="footer-item mt-5">
                         <h4 class="text-light mb-4">Explore Link</h4>
                         <div class="d-flex flex-column align-items-start">
-                            <a class="text-light mb-2" href="{{ route('landingpage') }}"><i class="fa fa-check text-light me-2"></i>Beranda</a>
-                            <a class="text-light mb-2" href="{{ route('tentangkami') }}"><i class="fa fa-check text-light me-2"></i>Tentang Kami</a>
-                            <a class="text-light mb-2" href="{{ route('aktifitas') }}"><i class="fa fa-check text-primary me-2"></i>Aktifitas</a>
-                            <a class="text-light mb-2" href="{{ route('acara') }}"><i class="fa fa-check text-light me-2"></i>Acara</a>
+                            <a class="text-light mb-2" href="{{ route('landingpage') }}"><i
+                                    class="fa fa-check text-light me-2"></i>Beranda</a>
+                            <a class="text-light mb-2" href="{{ route('tentangkami') }}"><i
+                                    class="fa fa-check text-light me-2"></i>Tentang Kami</a>
+                            <a class="text-light mb-2" href="{{ route('aktifitas') }}"><i
+                                    class="fa fa-check text-primary me-2"></i>Aktifitas</a>
+                            <a class="text-light mb-2" href="{{ route('acara') }}"><i
+                                    class="fa fa-check text-light me-2"></i>Acara</a>
                             {{-- <a class="text-light mb-2" href="{{ route('kontakkami') }}"><i class="fa fa-check text-primary me-2"></i>Kontak Kami</a> --}}
-                            <a class="text-light mb-2" href="{{ route('testimoni') }}"><i class="fa fa-check text-primary me-2"></i>Testimonial</a>
-                            <a class="text-light mb-2" href="{{ route('listmasjid') }}"><i class="fa fa-check text-light me-2"></i>List Masjid</a>
-                            
+                            <a class="text-light mb-2" href="{{ route('testimoni') }}"><i
+                                    class="fa fa-check text-primary me-2"></i>Testimonial</a>
+                            <a class="text-light mb-2" href="{{ route('listmasjid') }}"><i
+                                    class="fa fa-check text-light me-2"></i>List Masjid</a>
+
                         </div>
                     </div>
-                </div> 
+                </div>
                 <div class="footer-item mt-5">
-                        <h4 class="text-light mb-4"> <span class="text-primary">Donasi :</span>
-                        </h4>
-                        <p class="mb-1 text-light">Dengan segala kerendahan hati, kami membuka kesempatan bagi
-                            Bapak/Ibu yang ingin menunaikan sedekah jariyah untuk kemaslahatan masjid. Donasi dapat
-                            ditransfer ke:<span class="text-primary">Yayasan Cita Amanat martadiredja
-                                <b>BNI 1967473460</b> </span> .</p>
-                        <p class="mb-1 text-light">Insya Allah, setiap amanah yang diberikan akan kami salurkan melalui
-                            program-program yang kami jalankan demi kemakmuran masjid khususnya, serta kemaslahatan umat
-                            pada umumnya. Semoga Allah membalas setiap kebaikan yang dititipkan, dan menjadikannya amal
-                            yang terus mengalir manfaatnya bagi umat.</p>
-                        {{-- <a href="" class="btn btn-primary py-2 px-4">Donate Now</a> --}}
-                    </div>
-                          
+                    <h4 class="text-light mb-4"> <span class="text-primary">Donasi :</span>
+                    </h4>
+                    <p class="mb-1 text-light">Dengan segala kerendahan hati, kami membuka kesempatan bagi
+                        Bapak/Ibu yang ingin menunaikan sedekah jariyah untuk kemaslahatan masjid. Donasi dapat
+                        ditransfer ke:<span class="text-primary">Yayasan Cita Amanat martadiredja
+                            <b>BNI 1967473460</b> </span> .</p>
+                    <p class="mb-1 text-light">Insya Allah, setiap amanah yang diberikan akan kami salurkan melalui
+                        program-program yang kami jalankan demi kemakmuran masjid khususnya, serta kemaslahatan umat
+                        pada umumnya. Semoga Allah membalas setiap kebaikan yang dititipkan, dan menjadikannya amal
+                        yang terus mengalir manfaatnya bagi umat.</p>
+                    {{-- <a href="" class="btn btn-primary py-2 px-4">Donate Now</a> --}}
+                </div>
+
             </div>
         </div>
         <div class="container py-4">
             <div class="border-top border-secondary pb-4"></div>
             <div class="row">
                 <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                     <a class="" href="#"> &copy; Cita Amanat Martadiredja 2025 , All Right Reserved.</a>
+                    <a class="" href="#"> &copy; Cita Amanat Martadiredja 2025 , All Right Reserved.</a>
                 </div>
                 <div class="col-md-6 text-center text-md-end">
                     <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
@@ -367,9 +397,9 @@
         </div>
     </div>
 
-        <!-- Footer End -->
+    <!-- Footer End -->
 
-
+    </div>
 
     <!-- Back to Top -->
     <a href="#" class="btn btn-primary border-3 border-light back-to-top"><i class="fa fa-arrow-up"></i></a>
@@ -388,10 +418,10 @@
 
     <!-- Template Javascript -->
     <script src="/mosque/js/main.js"></script>
-      <script src="{{ asset('enno/assets/vendor/purecounter/purecounter_vanilla.js') }}"></script>
-<script>
-    new PureCounter();
-</script>
+    <script src="{{ asset('enno/assets/vendor/purecounter/purecounter_vanilla.js') }}"></script>
+    <script>
+        new PureCounter();
+    </script>
 </body>
 
 </html>

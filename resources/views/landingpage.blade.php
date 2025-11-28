@@ -93,8 +93,8 @@
                 <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
                     <div class="navbar-nav ms-lg-auto mx-xl-auto">
                         <a href="{{ route('landingpage') }}" class="nav-item nav-link active">Beranda</a>
-                        <a href="{{ route('tentangkami') }}" class="nav-item nav-link">Tentang Kami</a>
                         <a href="{{ route('aktifitas') }}" class="nav-item nav-link">Aktifitas</a>
+                        <a href="{{ route('tentangkami') }}" class="nav-item nav-link">Tentang Kami</a>
                         <a href="{{ route('acara') }}" class="nav-item nav-link">Acara</a>
                         {{-- <a href="{{ route('kontakkami') }}" class="nav-item nav-link">Kontak Kami</a> --}}
                         <div class="nav-item dropdown">
@@ -856,7 +856,7 @@
                 <div class="col-lg-6 col-xl-3">
                     <div class="sermon-item h-100 d-flex flex-column wow fadeIn" data-wow-delay="0.3s">
                         <div class="overflow-hidden p-4 pb-0">
-                            <img src="/mosque/img/santunan.png" class="img-fluid w-100" alt="">
+                            <img src="/mosque/img/indung6.jpg" class="img-fluid w-100" alt="">
                         </div>
                         <div class="p-4 d-flex flex-column flex-grow-1">
                             <a href="#" class="d-inline-block h4 lh-sm mb-3">Nyaah Ka Indung</a>
@@ -1006,7 +1006,7 @@
     </div>
 
     <!-- Footer End -->
-    </div>
+   </div>
 
     <!-- Back to Top -->
     <a href="#" class="btn btn-primary border-3 border-light back-to-top"><i class="fa fa-arrow-up"></i></a>
@@ -1146,7 +1146,7 @@
         }
     </style>
 
-    <div id="map" style="height: 400px; border-radius: 10px;"></div>
+   
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {

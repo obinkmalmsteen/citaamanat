@@ -90,9 +90,9 @@
 
                 <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
                     <div class="navbar-nav ms-lg-auto mx-xl-auto">
-                        <a href="{{ route('landingpage') }}" class="nav-item nav-link ">Beranda</a>
-                        <a href="{{ route('tentangkami') }}" class="nav-item nav-link">Tentang Kami</a>
+                        <a href="{{ route('landingpage') }}" class="nav-item nav-link active">Beranda</a>
                         <a href="{{ route('aktifitas') }}" class="nav-item nav-link">Aktifitas</a>
+                        <a href="{{ route('tentangkami') }}" class="nav-item nav-link">Tentang Kami</a>
                         <a href="{{ route('acara') }}" class="nav-item nav-link">Acara</a>
                         {{-- <a href="{{ route('kontakkami') }}" class="nav-item nav-link">Kontak Kami</a> --}}
                         <div class="nav-item dropdown">
