@@ -94,7 +94,7 @@
                         <a href="{{ route('tentangkami') }}" class="nav-item nav-link active">Tentang Kami</a>
                         <a href="{{ route('aktifitas') }}" class="nav-item nav-link">Aktifitas</a>
                         <a href="{{ route('acara') }}" class="nav-item nav-link">Acara</a>
-                        <a href="{{ route('kontakkami') }}" class="nav-item nav-link">Kontak Kami</a>
+                        {{-- <a href="{{ route('kontakkami') }}" class="nav-item nav-link">Kontak Kami</a> --}}
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu m-0 rounded-0">
@@ -219,17 +219,15 @@
                         </div>
                     </div>
                 </div>
-                <div class="container text-center bg-primary py-5 wow fadeIn" data-wow-delay="0.1s">
+                <div class="container text-center bg-success py-5 wow fadeIn" data-wow-delay="0.1s">
                     <div class="row g-4 align-items-center">
                         <div class="col-lg-2">
                             <i class="fa fa-mosque fa-5x text-white"></i>
                         </div>
-                        <div class="col-lg-7 text-center text-lg-start">
-                            <h1 class="mb-0">Every Muslim Needs To Realise The Importance Of The "Pillar" Of Islam</h1>
+                        <div class="col-lg-9 text-center text-lg-start ">
+                            <h1 class="mb-0 text-white">Menguatkan Martabat Islami melalui Dukungan untuk Masjid dan Seluruh Ummat.</h1>
                         </div>
-                        <div class="col-lg-3">
-                            <a href="" class="btn btn-light py-2 px-4">Learn More</a>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -238,8 +236,8 @@
 
 
         <!-- Team Start -->
-        <div class="container-fluid team py-5">
-            <div class="container py-5">
+        <div class="container-fluid team py-15">
+            <div class="container py-15">
                 <div class="text-center mx-auto mb-5 wow fadeIn" data-wow-delay="0.1s" style="max-width: 700px;">
                     <p class="fs-5 text-uppercase text-primary">Our Team</p>
                     {{-- <h1 class="display-3">Meet Our Organizer</h1> --}}
@@ -253,7 +251,7 @@
                     <div class="col-lg-8 col-xl-7">
                         <div class="team-item wow fadeIn" data-wow-delay="0.1s">
                             <h1>Erick Martadiredja</h1>
-                            <h5 class="fw-normal fst-italic text-primary mb-4">Chief Executive Officer</h5>
+                            <h5 class="fw-normal fst-italic text-primary mb-4">Chief Executive Officer / Founder</h5>
                             <p class="mb-4">Phone:</p>
                             <div class="team-icon d-flex pb-4 mb-4 border-bottom border-primary">
                                 <a class="btn btn-primary btn-lg-square me-2" href=""><i class="fab fa-facebook-f"></i></a>
@@ -266,7 +264,7 @@
                     <div class="col-lg-8 col-xl-7">
                         <div class="team-item wow fadeIn" data-wow-delay="0.1s">
                             <h1>Wiji Samiono</h1>
-                            <h5 class="fw-normal fst-italic text-primary mb-4">Chief Operating Officer</h5>
+                            <h5 class="fw-normal fst-italic text-primary mb-4">Chief Operating Officer / Co-Founder</h5>
                             <p class="mb-4">Phone:</p>
                             <div class="team-icon d-flex pb-4 mb-4 border-bottom border-primary">
                                 <a class="btn btn-primary btn-lg-square me-2" href=""><i class="fab fa-facebook-f"></i></a>

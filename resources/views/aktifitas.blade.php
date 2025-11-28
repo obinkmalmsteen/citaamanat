@@ -94,7 +94,7 @@
                         <a href="{{ route('tentangkami') }}" class="nav-item nav-link">Tentang Kami</a>
                         <a href="{{ route('aktifitas') }}" class="nav-item nav-link active">Aktifitas</a>
                         <a href="{{ route('acara') }}" class="nav-item nav-link">Acara</a>
-                        <a href="{{ route('kontakkami') }}" class="nav-item nav-link">Kontak Kami</a>
+                        {{-- <a href="{{ route('kontakkami') }}" class="nav-item nav-link">Kontak Kami</a> --}}
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu m-0 rounded-0">
@@ -130,90 +130,253 @@
         </div>
     </div>
     <!-- Hero End -->
+<style>
+    .custom-img {
+    width: 100%;      /* atau angka tertentu seperti 600px */
+    height: 280px;    /* tinggi yang kamu inginkan */
+    object-fit: cover; /* supaya gambar tidak gepeng */
+}
+</style>
+
+  <div class="container-fluid team py-15">
+            <div class="container py-15">
+                <div class="text-center mx-auto mb-5 wow fadeIn" data-wow-delay="0.1s" style="max-width: 700px;">
+                    <p class="fs-1 text-uppercase text-primary"></p> <br> <br>
+                    <h4 class="display-6">Berbagai Aktifitas Kami yang Sudah Terlaksana Dan Akan Menjadi Program
+                    Untuk
+                    Selanjutnya</h4>
+                </div>
 
 
-    <!-- Sermon Start -->
-    <div class="container-fluid sermon py-5">
-        <div class="container py-5">
-            <div class="text-center mx-auto mb-5 wow fadeIn" data-wow-delay="0.1s" style="max-width: 700px;">
-                <p class="fs-5 text-uppercase text-primary">Aktifitas Kami</p>
-                <h3 class="display-7">Berbagai Aktifitas Kami yang Sudah Terlaksana Dan Akan Menjadi Program Untuk
-                    Selanjutnya</h3>
-            </div>
-            <div class="row g-4 justify-content-center">
-                <div class="col-lg-6 col-xl-3">
-                    <div class="sermon-item wow fadeIn" data-wow-delay="0.1s">
-                        <div class="overflow-hidden p-4 pb-0">
-                            <img src="/mosque/img/renov.png" class="img-fluid w-100" alt="">
+                
+                <div class="row g-5">
+                    <div class="col-lg-4 col-xl-5">
+                        <div class="team-img wow zoomIn" data-wow-delay="0.1s">
+                            <img src="/mosque/img/renov1.png" class="img-fluid" alt="">
                         </div>
-                        <div class="p-4">
+                    </div>
+                    <div class="col-lg-8 col-xl-7">
+                        <div class="team-item wow fadeIn" data-wow-delay="0.1s">
+                            <h3 id="bagian-perbaikan">Perbaikan Beribu Masjid & Mushola</h3>
                            
-                            <a href="" class="d-inline-block h4 lh-sm mb-3">Perbaikan Beribu Masjid & Mushola</a>
-                            <p class="mb-0" style="text-align: justify;">Memperbaiki Bangunan, memperkuat Iman dalam wujudkan mimpi bersama untuk mempercantik
+                           <p class="mb-0" style="text-align: justify;">Memperbaiki Bangunan, memperkuat Iman dalam wujudkan mimpi bersama untuk mempercantik
                                 rumah-rumah Allah.
 
                                 Mengembalikan masjid sebagai pusat ibadah, kebudayaan dan jantung peradaban umat. Kini
                                 banyak diantaranya yang telah lapuk dimakan usia dan perlu uluran tangan kita. Bersama
                                 dalam gerakan perbaikan beribu Masjid dan Mushola kita tidak hanya memperbaiki bangunan,
                                 tetapi merawat peradaban dan warisan Islami untuk generasi mendatang.</p>
+                            <div class="team-icon d-flex pb-4 mb-4 border-bottom border-primary">
+                                
+                            </div>
+                        </div>
+                        <div class="row g-4">
+                            <div class="col-md-4">
+                                <div class="team-item wow zoomIn" data-wow-delay="0.2s">
+                                    <img src="/mosque/img/renov2.png" class="img-fluid custom-img" alt="">
+
+                                   
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="team-item wow zoomIn" data-wow-delay="0.4s">
+                                    <img src="/mosque/img/renov3.png" class="img-fluid custom-img" alt="">
+                                    
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="team-item wow zoomIn" data-wow-delay="0.6s">
+                                    <img src="/mosque/img/renov4.png" class="img-fluid custom-img" alt="">
+                                
+                                </div>
+                            </div>
                         </div>
                     </div>
+                    
                 </div>
-                <div class="col-lg-6 col-xl-3">
-                    <div class="sermon-item wow fadeIn" data-wow-delay="0.3s">
-                        <div class="overflow-hidden p-4 pb-0">
-                            <img src="/mosque/img/santunan.png" class="img-fluid w-100" alt="">
+
+<br>
+ <div class="team-icon d-flex pb-4 mb-4 border-bottom border-primary">
+                                
+                            </div>
+                           <br>
+
+
+{{--  --}}
+
+<div class="row g-5">
+                    <div class="col-lg-4 col-xl-5">
+                        <div class="team-img wow zoomIn" data-wow-delay="0.1s">
+                            <img src="/mosque/img/ibu0.jpg" class="img-fluid" alt="">
                         </div>
-                        <div class="p-4">
-                            
-                            <a href="" class="d-inline-block h4 lh-sm mb-3">Nyaah Ka Indung</a>
+                    </div>
+                    <div class="col-lg-8 col-xl-7">
+                        <div class="team-item wow fadeIn" data-wow-delay="0.1s">
+                            <h3 id="bagian-indung">Nyaah Ka Indung</h3> <br>
+                           
                             <p class="mb-0" style="text-align: justify;">Nyaah ka Indung sebuah program yang kami hadirkan sebagai bukti
                                 kepedulian, cinta dan
                                 kasih kita kepada orang tua. Mewujudkan masyarakat yang peduli dan berbakti kepada orang
                                 tua manula sebagai bentuk tanggung jawab sosial.</p>
+                            <div class="team-icon d-flex pb-4 mb-4 border-bottom border-primary">
+                                
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-xl-3">
-                    <div class="sermon-item wow fadeIn" data-wow-delay="0.5s">
-                        <div class="overflow-hidden p-4 pb-0">
-                            <img src="/mosque/img/adzancilik.png" class="img-fluid w-100" alt="">
-                        </div>
-                        <div class="p-4">
-                         
-                            <a href="" class="d-inline-block h4 lh-sm mb-3">Muadzin Cilik</a>
-                            <p class="mb-0" style="text-align: justify;">Lebih dari sekadar panggilan. Ini adalah program kaderisasi berbasis
-                                apresiasi yang
-                                bertujuan mulia, yaitu menanamkan kecintaan pada ibadah sekaligus memastikan pelestarian
-                                seni dan syiar Adzan dari generasi ke generasi. Kami membina hari ini untuk Adzan yang
-                                berkelanjutan esok hari.</p>
-                        </div>
-                    </div>
-                </div>
+                        <div class="row g-4">
+                            <div class="col-md-4">
+                                <div class="team-item wow zoomIn" data-wow-delay="0.2s">
+                                    <img src="/mosque/img/ibu1.jpg" class="img-fluid custom-img" alt="">
 
-                <div class="col-lg-6 col-xl-3">
-                    <div class="sermon-item wow fadeIn" data-wow-delay="0.5s">
-                        <div class="overflow-hidden p-4 pb-0">
-                            <img src="/mosque/img/Gurungaji.jpg" class="img-fluid w-100" alt="">
+                                   
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="team-item wow zoomIn" data-wow-delay="0.4s">
+                                    <img src="/mosque/img/ibu2.jpg" class="img-fluid custom-img" alt="">
+                                    
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="team-item wow zoomIn" data-wow-delay="0.6s">
+                                    <img src="/mosque/img/ibu3.jpg" class="img-fluid custom-img" alt="">
+                                
+                                </div>
+                            </div>
                         </div>
-                        <div class="p-4">
-                          
-                            <a href="" class="d-inline-block h4 lh-sm mb-3">Bantuan Honor Guru Ngaji</a>
+                    </div>
+                    
+                </div>
+                <br>
+{{-- --}}
+ <div class="team-icon d-flex pb-4 mb-4 border-bottom border-primary">
+                                
+                            </div>
+                            <br>
+
+                            <div class="row g-5">
+                    <div class="col-lg-4 col-xl-5">
+                        <div class="team-img wow zoomIn" data-wow-delay="0.1s">
+                            <img src="/mosque/img/adzan0.png" class="img-fluid" alt="">
+                        </div>
+                    </div>
+                    <div class="col-lg-8 col-xl-7">
+                        <div class="team-item wow fadeIn" data-wow-delay="0.1s">
+                            <h3 id="bagian-muadzin">Muadzin Cilik</h3>
+                             <h5 class="fw-normal fst-italic text-primary mb-4" >Mengasah Keberanian & Membentuk Generasi Pecinta Masjid</h5>
+                            
+
+                           
+                            <p class="mb-0" style="text-align: justify;">Program Muadzin Cilik yang telah diselenggarakan sejak Februari 2025 di Masjid Hunusl Khotimah, Cileunyi – Bandung, menjadi salah satu upaya mulia untuk menumbuhkan kecintaan anak-anak terhadap masjid serta melatih keberanian mereka dalam mengumandangkan adzan.
+
+Melihat semangat para peserta dan dukungan dari masyarakat, Yayasan Cita Amanat Martadiredja merasa sangat terdorong untuk mengambil bagian dalam program ini. Kami meyakini bahwa membina generasi sejak dini adalah investasi terbaik bagi kemajuan umat.
+
+Program ini tidak hanya mengajarkan teknis adzan, tetapi juga menanamkan nilai-nilai:
+
+Keberanian untuk tampil di depan publik
+
+Kepercayaan diri dan disiplin
+
+Kecintaan terhadap masjid
+
+Pembiasaan ibadah sejak usia dini
+
+Kami berharap kehadiran kami dapat memperkuat keberlanjutan program ini dan memberikan manfaat yang lebih luas bagi para santri, masyarakat, dan lingkungan sekitar Masjid Hunusl Khotimah.
+
+Dengan izin Allah, semoga program Muadzin Cilik dapat terus berkembang dan menjadi inspirasi bagi masjid-masjid lainnya.</p>
+                            <div class="team-icon d-flex pb-4 mb-4 border-bottom border-primary">
+                                
+                            </div>
+                        </div>
+                        <div class="row g-4">
+                            <div class="col-md-4">
+                                <div class="team-item wow zoomIn" data-wow-delay="0.2s">
+                                    <img src="/mosque/img/adzan1.jpg" class="img-fluid custom-img" alt="">
+
+                                   
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="team-item wow zoomIn" data-wow-delay="0.4s">
+                                    <img src="/mosque/img/adzan4.png" class="img-fluid custom-img" alt="">
+                                    
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="team-item wow zoomIn" data-wow-delay="0.6s">
+                                    <img src="/mosque/img/adzan2.jpg" class="img-fluid custom-img" alt="">
+                                
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+{{-- --}}
+ <div class="team-icon d-flex pb-4 mb-4 border-bottom border-primary">
+                                
+                            </div>
+
+                            <br>
+
+                            <div class="row g-5">
+                    <div class="col-lg-4 col-xl-5">
+                        <div class="team-img wow zoomIn" data-wow-delay="0.1s">
+                            <img src="/mosque/img/ngaji0.png" class="img-fluid" alt="">
+                        </div>
+                    </div>
+                    <div class="col-lg-8 col-xl-7">
+                        <div class="team-item wow fadeIn" data-wow-delay="0.1s">
+                            <h3 id="bagian-ngaji">Bantuan Honor Guru Ngaji</h3>
+                            
+                           
                             <p class="mb-0" style="text-align: justify;">Sebuah inisiatif nyata untuk
                                 memberikan apresiasi dan dukungan Finansial kepada para guru ngaji di wilayah kita.
                                 Mereka adalah Pejuang Huruf Hijaiyah yang telah mengabdikan diri dengan tulus,
                                 mengajarkan Al-Qur'an dan menanamkan akhlak mulia kepada anak-anak kita. Program ini
                                 bukan sekadar bantuan, melainkan sebuah Tunjangan Kehormatan sebagai wujud terima kasih
                                 kami, memastikan cahaya Al-Qur'an akan terus bersinar melalui pengabdian mereka yang
-                                mulia..</p>
+                                mulia.</p>
+                            <div class="team-icon d-flex pb-4 mb-4 border-bottom border-primary">
+                                
+                            </div>
+                        </div>
+                        <div class="row g-4">
+                            <div class="col-md-4">
+                                <div class="team-item wow zoomIn" data-wow-delay="0.2s">
+                                    <img src="/mosque/img/ngaji1.png" class="img-fluid custom-img" alt="">
+
+                                   
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="team-item wow zoomIn" data-wow-delay="0.4s">
+                                    <img src="/mosque/img/ngaji2.png" class="img-fluid custom-img" alt="">
+                                    
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="team-item wow zoomIn" data-wow-delay="0.6s">
+                                    <img src="/mosque/img/ngaji3.png" class="img-fluid custom-img" alt="">
+                                
+                                </div>
+                            </div>
                         </div>
                     </div>
+                    
                 </div>
 
+
+
+
             </div>
+            
         </div>
-    </div>
-    <!-- Sermon End -->
+
+{{-- satu --}}
+
+
+
+    
 
 
    <!-- Footer Start -->

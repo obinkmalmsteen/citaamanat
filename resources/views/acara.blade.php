@@ -94,7 +94,7 @@
                         <a href="{{ route('tentangkami') }}" class="nav-item nav-link">Tentang Kami</a>
                         <a href="{{ route('aktifitas') }}" class="nav-item nav-link">Aktifitas</a>
                         <a href="{{ route('acara') }}" class="nav-item nav-link active">Acara</a>
-                        <a href="{{ route('kontakkami') }}" class="nav-item nav-link">Kontak Kami</a>
+                        {{-- <a href="{{ route('kontakkami') }}" class="nav-item nav-link">Kontak Kami</a> --}}
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu m-0 rounded-0">

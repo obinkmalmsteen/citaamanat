@@ -826,91 +826,90 @@
         <div class="container py-15">
             <div class="text-center mx-auto mb-5 wow fadeIn" data-wow-delay="0.1s" style="max-width: 700px;">
                 <p class="fs-5 text-uppercase text-primary">Aktifitas Kami</p>
-                <h3 class="display-7">Berbagai Aktifitas Kami yang Sudah Terlaksana Dan Akan Menjadi Program
-                    Untuk
-                    Selanjutnya</h3>
+                <h3 class="display-7">Program yang Telah Direalisasikan dan Agenda Masa Depan</h3>
             </div>
             <div class="row g-4 justify-content-center">
+
                 <div class="col-lg-6 col-xl-3">
-                    <div class="sermon-item wow fadeIn" data-wow-delay="0.1s">
+                    <div class="sermon-item h-100 d-flex flex-column wow fadeIn" data-wow-delay="0.3s">
                         <div class="overflow-hidden p-4 pb-0">
                             <img src="/mosque/img/renov.png" class="img-fluid w-100" alt="">
                         </div>
-                        <div class="p-4">
-
-                            <a href="" class="d-inline-block h4 lh-sm mb-3">Perbaikan Beribu Masjid &
+                        <div class="p-4 d-flex flex-column flex-grow-1">
+                            <a href="" class="d-inline-block h4 lh-sm mb-3" >Perbaikan Beribu Masjid &
                                 Mushola</a>
-                            <p class="mb-0" style="text-align: justify;">Memperbaiki Bangunan, memperkuat
+                            <p class="mb-3" style="text-align: justify; flex-grow: 1;">Memperbaiki Bangunan, memperkuat
                                 Iman dalam wujudkan mimpi bersama untuk mempercantik
                                 rumah-rumah Allah.
 
                                 Mengembalikan masjid sebagai pusat ibadah, kebudayaan dan jantung peradaban
-                                umat. Kini
-                                banyak diantaranya yang telah lapuk dimakan usia dan perlu uluran tangan kita.
-                                Bersama
-                                dalam gerakan perbaikan beribu Masjid dan Mushola kita tidak hanya memperbaiki
-                                bangunan,
-                                tetapi merawat peradaban dan warisan Islami untuk generasi mendatang.</p>
+                                umat.
+                                .</p>
+                             <a href="{{ route('aktifitas') . '#bagian-perbaikan' }}" 
+   class="btn btn-primary px-3">
+   Lanjut Baca
+</a>
                         </div>
                     </div>
                 </div>
+
                 <div class="col-lg-6 col-xl-3">
-                    <div class="sermon-item wow fadeIn" data-wow-delay="0.3s">
+                    <div class="sermon-item h-100 d-flex flex-column wow fadeIn" data-wow-delay="0.3s">
                         <div class="overflow-hidden p-4 pb-0">
                             <img src="/mosque/img/santunan.png" class="img-fluid w-100" alt="">
                         </div>
-                        <div class="p-4">
-
-                            <a href="" class="d-inline-block h4 lh-sm mb-3">Nyaah Ka Indung</a>
-                            <p class="mb-0" style="text-align: justify;">Nyaah ka Indung sebuah program yang
-                                kami hadirkan sebagai bukti
-                                kepedulian, cinta dan
-                                kasih kita kepada orang tua. Mewujudkan masyarakat yang peduli dan berbakti
-                                kepada orang
-                                tua manula sebagai bentuk tanggung jawab sosial.</p>
+                        <div class="p-4 d-flex flex-column flex-grow-1">
+                            <a href="#" class="d-inline-block h4 lh-sm mb-3">Nyaah Ka Indung</a>
+                            <p class="mb-3" style="text-align: justify; flex-grow: 1;">
+                                Nyaah ka Indung sebuah program yang kami hadirkan sebagai bukti
+                                kepedulian, cinta dan kasih kita kepada orang tua.
+                            </p>
+                            <a href="{{ route('aktifitas') . '#bagian-indung' }}" 
+   class="btn btn-primary px-3">
+   Lanjut Baca
+</a>
                         </div>
                     </div>
                 </div>
+
                 <div class="col-lg-6 col-xl-3">
-                    <div class="sermon-item wow fadeIn" data-wow-delay="0.5s">
+                    <div class="sermon-item h-100 d-flex flex-column wow fadeIn" data-wow-delay="0.3s">
                         <div class="overflow-hidden p-4 pb-0">
                             <img src="/mosque/img/adzancilik.png" class="img-fluid w-100" alt="">
                         </div>
-                        <div class="p-4">
-
+                        <div class="p-4 d-flex flex-column flex-grow-1">
                             <a href="" class="d-inline-block h4 lh-sm mb-3">Muadzin Cilik</a>
-                            <p class="mb-0" style="text-align: justify;">Lebih dari sekadar panggilan. Ini
-                                adalah program kaderisasi berbasis
-                                apresiasi yang
-                                bertujuan mulia, yaitu menanamkan kecintaan pada ibadah sekaligus memastikan
-                                pelestarian
-                                seni dan syiar Adzan dari generasi ke generasi. Kami membina hari ini untuk
-                                Adzan yang
-                                berkelanjutan esok hari.</p>
+                            <p class="mb-3" style="text-align: justify; flex-grow: 1;">Program Muadzin Cilik yang telah
+                                diselenggarakan sejak Februari 2025 di Masjid Hunusl Khotimah, Cileunyi Bandung, </p>
+                                 <a href="{{ route('aktifitas') . '#bagian-muadzin' }}" 
+   class="btn btn-primary px-3">
+   Lanjut Baca
+</a>
+
+
+                            
                         </div>
                     </div>
                 </div>
 
                 <div class="col-lg-6 col-xl-3">
-                    <div class="sermon-item wow fadeIn" data-wow-delay="0.5s">
+                    <div class="sermon-item h-100 d-flex flex-column wow fadeIn" data-wow-delay="0.3s">
                         <div class="overflow-hidden p-4 pb-0">
                             <img src="/mosque/img/Gurungaji.jpg" class="img-fluid w-100" alt="">
                         </div>
-                        <div class="p-4">
+                        <div class="p-4 d-flex flex-column flex-grow-1">
 
-                            <a href="" class="d-inline-block h4 lh-sm mb-3">Bantuan Honor Guru
-                                Ngaji</a>
-                            <p class="mb-0" style="text-align: justify;">Sebuah inisiatif nyata untuk
+                            <a href="" class="d-inline-block h4 lh-sm mb-3">Bantuan Honor Guru Ngaji</a>
+                            <p class="mb-3" style="text-align: justify; flex-grow: 1;">Sebuah inisiatif nyata untuk
                                 memberikan apresiasi dan dukungan Finansial kepada para guru ngaji di wilayah
                                 kita.
-                                Mereka adalah Pejuang Huruf Hijaiyah yang telah mengabdikan diri dengan tulus,
-                                mengajarkan Al-Qur'an dan menanamkan akhlak mulia kepada anak-anak kita. Program
-                                ini
-                                bukan sekadar bantuan, melainkan sebuah Tunjangan Kehormatan sebagai wujud
-                                terima kasih
-                                kami, memastikan cahaya Al-Qur'an akan terus bersinar melalui pengabdian mereka
-                                yang
-                                mulia..</p>
+                                </p> 
+                                <a href="{{ route('aktifitas') . '#bagian-ngaji' }}" 
+   class="btn btn-primary px-3">
+   Lanjut Baca
+</a>
+
+
                         </div>
                     </div>
                 </div>
