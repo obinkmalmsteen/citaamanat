@@ -9,7 +9,7 @@ class PengadaanRequestItem extends Model
     protected $table = 'pengadaan_request_items';
 
     protected $fillable = [
-        'pengadaan_request_id','barang_id','qty','note','status'
+        'pengadaan_request_id','barang_id','qty','harga','note','status'
     ];
 
     public function barang()

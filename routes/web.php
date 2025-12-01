@@ -154,12 +154,15 @@ Route::get('/kirim-pesan/{id}', [MasjidController::class, 'kirimPesan'])->name('
     // admin approve/reject
     Route::post('pengadaan/{id}/approve', [PengadaanRequestController::class,'approve'])->name('pengadaan.approve');
     Route::post('pengadaan/{id}/reject', [PengadaanRequestController::class,'reject'])->name('pengadaan.reject');
+    Route::post('pengadaan/{id}/approve-items', [PengadaanRequestController::class,'approveItems'])
+    ->name('pengadaan.approve_items');
+
 
 Route::get('/export/masjids', function () {
     $timestamp = now()->format('d-m-Y');
  // contoh: 2025-11-22_14-35
 
-    return Excel::download(new MasjidsExport, "masjids_{$timestamp}.xlsx");
+    return Excel::download(new MasjidsExport, "masjids_{$timestamp}.xlsx"); 
 });
 
 

@@ -31,6 +31,7 @@
                     @if($r->status === 'pending') <span class="badge bg-warning">Pending</span> @endif
                     @if($r->status === 'approved') <span class="badge bg-success">Approved</span> @endif
                     @if($r->status === 'rejected') <span class="badge bg-danger">Rejected</span> @endif
+                    @if($r->status === 'partially_approved') <span class="badge bg-primary">Partially Approved</span> @endif
                 </td>
                 <td>{{ $r->items->count() }}</td>
                 <td>
@@ -45,3 +46,13 @@
     </table>
 </div>
 @endsection
+<style>
+    .badge.bg-warning,
+.badge.bg-success,
+.badge.bg-danger,
+.badge.bg-primary {
+    color: #ffffff !important;
+    font-weight: 600;
+}
+
+</style>

@@ -67,6 +67,7 @@ $menu = $this->getMenuData();
             'items' => 'required|array|min:1',
             'items.*.barang_id' => 'required|exists:barang,id',
             'items.*.qty' => 'required|integer|min:1',
+            'items.*.harga' => 'required|integer|min:1',
         ]);
 
         DB::beginTransaction();
@@ -78,6 +79,7 @@ $menu = $this->getMenuData();
                 'kode' => $kode,
                 'user_id' => $user->id,
                 'cabang_id' => $user->cabang_id,
+                'divisi' => $request->divisi?? null,
                 'status' => 'pending',
                 'note' => $request->note ?? null,
             ]);
@@ -87,6 +89,7 @@ $menu = $this->getMenuData();
                     'pengadaan_request_id' => $pengadaan->id,
                     'barang_id' => $it['barang_id'],
                     'qty' => $it['qty'],
+                    'harga' => $it['harga'],
                     'note' => $it['note'] ?? null,
                 ]);
             }
@@ -161,4 +164,44 @@ $menu = $this->getMenuData();
             abort(403, 'Unauthorized');
         }
     }
+
+public function approveItems(Request $request, $id)
+{
+    // Ambil request beserta items
+    $pengadaan = PengadaanRequest::with('items')->findOrFail($id);
+
+    // Ambil item yang dicentang
+    $itemsToApprove = $request->input('items', []);
+
+    if(empty($itemsToApprove)){
+        return back()->with('error','Pilih minimal 1 item untuk disetujui.');
+    }
+
+    // Update status tiap item yang dicentang
+    foreach($pengadaan->items as $item){
+        if(isset($itemsToApprove[$item->id])){
+            $item->update(['status' => 'approved']); // string literal
+        }
+    }
+
+    // Hitung status pengadaan keseluruhan
+    $totalItems = $pengadaan->items->count();
+    $approvedItems = $pengadaan->items->where('status','approved')->count();
+
+    if ($approvedItems === 0) {
+        $pengadaan->update(['status' => 'pending']); // string literal
+    } elseif ($approvedItems < $totalItems) {
+        $pengadaan->update(['status' => 'partially_approved']); // string literal
+    } else {
+        $pengadaan->update(['status' => 'approved']); // string literal
+    }
+
+    return redirect()->route('pengadaan.index')
+        ->with('success','Item berhasil diapprove.');
+}
+
+
+
+
+
 }

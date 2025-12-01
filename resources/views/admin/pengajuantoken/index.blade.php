@@ -91,57 +91,58 @@
         color:  rgb(43, 42, 42) ;
     }
 
-    /* No */
+
+ /* no */
 #dataTable th:nth-child(1),
 #dataTable td:nth-child(1) {
-    width: 35px;     /* contoh */
+    width: 30px;     /* contoh */
     text-align: center;
 }
 
-/* ID Pelanggan */
+/* tanggal request*/
 #dataTable th:nth-child(2),
 #dataTable td:nth-child(2) {
-    width: 100px;
+    width: 150px;
 }
 
-/* Nama Masjid */
+/* id pelanggan */
 #dataTable th:nth-child(3),
 #dataTable td:nth-child(3) {
     width: 150px;
 }
 
-/* Kota */
+/* nama masjid*/
 #dataTable th:nth-child(4),
 #dataTable td:nth-child(4) {
-    width: 100px;
+    width: 80px;
 }
 
-/* Provinsi */
+/* kota */
 #dataTable th:nth-child(5),
 #dataTable td:nth-child(5) {
-    width: 100px;
+    width: 80px;
 }
 
-/* Nomor Token */
+/* provinsi */
 #dataTable th:nth-child(6),
 #dataTable td:nth-child(6) {
-    width: 160px;
-}
-
-/* Harga */
-#dataTable th:nth-child(7),
-#dataTable td:nth-child(7) {
     width: 100px;
 }
 
-/* Status */
+/* nomor token */
+#dataTable th:nth-child(7),
+#dataTable td:nth-child(7) {
+    width: 60px;
+}
+
+/* harga*/
 #dataTable th:nth-child(8),
 #dataTable td:nth-child(8) {
-    width: 40px;
+    width: 100px;
     text-align: center;
 }
 
-/* Tanggal */
+/* status */
 #dataTable th:nth-child(9),
 #dataTable td:nth-child(9) {
     width: 100px;
@@ -162,6 +163,7 @@
                 <thead class="bg-primary text-white">
                     <tr>
                         <th>No</th>
+                        <th>Tanggal request</th>
                         <th>Id Pelanggan</th>
                         <th>Nama Masjid</th>
                         <th>Kota</th>
@@ -183,8 +185,8 @@
                     @foreach ($pengajuantoken as $item)
                         <tr>
                             <td class="text-center" style="vertical-align: middle;"> {{ $loop->iteration }}</td>
+                            <td class="text-center " style="vertical-align: middle ;">{{ $item->tgl_request_token }}</td>
                             <td class="text-center copyable" style="vertical-align: middle ;">{{ $item->id_pelanggan }}</td>
-
                             <td class="text-center" style="vertical-align: middle;"> {{ $item->nama_masjid }}</td>
                             <td class="text-center" style="vertical-align: middle;"> {{ $item->nama_kota }}</td>
                             <td class="text-center" style="vertical-align: middle;"> {{ $item->nama_provinsi }}</td>
@@ -316,14 +318,14 @@ $(document).ready(function() {
         const row = $(table.row(dataIndex).node());
 
         // -------- FILTER TANGGAL ----------
-        let colDate = row.find('td:eq(8)').text().trim();
+        let colDate = row.find('td:eq(9)').text().trim();
         colDate = convertToYMD(colDate);
 
         if (min && colDate < min) return false;
         if (max && colDate > max) return false;
 
         // -------- FILTER STATUS ----------
-        const statusCell = row.find('td:eq(7) i');
+        const statusCell = row.find('td:eq(8) i');
         let statusValue = "";
 
         if (statusCell.hasClass('fa-check')) statusValue = "1";
@@ -335,7 +337,7 @@ $(document).ready(function() {
 
         // -------- FILTER JENIS LAYANAN ----------
         // Kolom ke-10 sesuai thead Anda
-        const jenisText = row.find('td:eq(10)').text().trim().toLowerCase();
+        const jenisText = row.find('td:eq(11)').text().trim().toLowerCase();
 
         if (layananSelected !== "" && jenisText !== layananSelected) {
             return false;
