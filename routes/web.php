@@ -9,11 +9,15 @@ use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\DapurController;
+use App\Http\Controllers\BarangController;
 use App\Http\Controllers\MasjidController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PengajuanController;
+use App\Http\Controllers\JenisBarangController;
 use App\Http\Controllers\TestimonialController;
+use App\Http\Controllers\PengadaanRequestController;
 
 
 
@@ -31,7 +35,7 @@ Route::get('/testimoni-kami', [DashboardController::class, 'testimoni'])->name('
 Route::get('/kontak-kami', [DashboardController::class, 'kontakkami'])->name('kontakkami');
 Route::get('/list-masjid', [DashboardController::class, 'listmasjid'])->name('listmasjid');
 Route::get('/form-registrasi', [DashboardController::class, 'formregistrasi'])->name('formregistrasi');
-Route::get('/mobile-landingpage', [DashboardController::class, 'landingpage'])->name('landingpage');
+Route::get('/mobile-landingpage', [DashboardController::class, 'mobilelandingpage'])->name('mobilelandingpage');
 Route::get('/mobile-daftarmasjid', [DashboardController::class, 'mobiledaftarmasjid'])->name('mobiledaftarmasjid');
 
 // Login
@@ -73,6 +77,20 @@ Route::middleware('checkLogin')->group(function(){
 
     // Dashboard
     Route::get('dashboard',[DashboardController::class,'index'])->name('dashboard');
+    //dapurdashboard
+     Route::get('dapurdashboard',[DapurController::class,'dapurdashboard'])->name('dapurdashboard');
+
+     //barang
+
+   
+    
+    Route::resource('jenis_barang', JenisBarangController::class);
+
+Route::resource('barang', BarangController::class);
+
+
+
+
 
     // User
     Route::get('user',[UserController::class,'index'])->name('user');
@@ -92,7 +110,7 @@ Route::middleware('checkLogin')->group(function(){
     
     Route::post('/masjid/{id_pelanggan}/setujui', [MasjidController::class, 'setujui'])->name('masjid.setujui');
 
-Route::middleware(['auth'])->group(function () {
+    Route::middleware(['auth'])->group(function () {
 
   Route::get('/masjid/export', [MasjidController::class, 'export'])->name('masjid.export');
     Route::get('/masjid/{id_pelanggan}', [MasjidController::class, 'show'])->name('masjid.show');
@@ -127,7 +145,15 @@ Route::put('masjid/{id}/update-full', [MasjidController::class, 'updateFull'])
 
 Route::get('/kirim-pesan/{id}', [MasjidController::class, 'kirimPesan'])->name('kirim.pesan');
 
+  // karyawan membuat request
+    Route::get('pengadaan', [PengadaanRequestController::class,'index'])->name('pengadaan.index');
+    Route::post('pengadaan/store', [PengadaanRequestController::class,'store'])->name('pengadaan.store');
+    Route::get('pengadaan/create', [PengadaanRequestController::class,'create'])->name('pengadaan.create');
+    Route::get('pengadaan/{id}', [PengadaanRequestController::class,'show'])->name('pengadaan.show');
 
+    // admin approve/reject
+    Route::post('pengadaan/{id}/approve', [PengadaanRequestController::class,'approve'])->name('pengadaan.approve');
+    Route::post('pengadaan/{id}/reject', [PengadaanRequestController::class,'reject'])->name('pengadaan.reject');
 
 Route::get('/export/masjids', function () {
     $timestamp = now()->format('d-m-Y');

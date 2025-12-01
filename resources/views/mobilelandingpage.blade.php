@@ -50,8 +50,8 @@
             <div class="figure-menu shadow">
                 <figure><img src="mobile/img/user1.png" alt=""></figure>
             </div>
-            <h5 class="mb-1 ">Ammy Jahnson</h5>
-            <p class="text-mute small">Sydney, Australia</p>
+            <h5 class="mb-1 ">Robi</h5>
+            <p class="text-mute small">Bandung</p>
         </div>
         <br>
         <div class="row mx-0">
@@ -166,7 +166,7 @@
                             <div class="swiper-slide">
                                 <div class="card  border-0 ">
                                     <figure class="background">
-                                        <img src="mobile/img/wall.jpg" alt="">
+                                        <img src="mosque/img/masjid1.jpg" alt="">
                                     </figure>
 
                                 </div>
@@ -174,69 +174,50 @@
                             <div class="swiper-slide">
                                 <div class="card shadow-sm border-0 bg-dark text-white">
                                     <figure class="background">
-                                        <img src="mobile/img/kitchen.jpg" alt="">
+                                        <img src="mosque/img/masjid2.jpg" alt="">
                                     </figure>
                                     <div class="card-body">
-                                        <a href=""
-                                            class="btn btn-default button-rounded-36 shadow-sm float-bottom-right"><i
-                                                class="material-icons md-18">arrow_forward</i></a>
-                                        <h5 class="small">Multipurpose Furniture allows you to grow faster</h5>
-                                        <p class="text-mute small">By Anand Mangal</p>
+                                        
                                     </div>
                                 </div>
                             </div>
                             <div class="swiper-slide">
                                 <div class="card shadow-sm border-0 bg-dark text-white">
                                     <figure class="background">
-                                        <img src="mobile/img/wall.jpg" alt="">
+                                        <img src="mosque/img/masjid3.jpg" alt="">
                                     </figure>
                                     <div class="card-body">
-                                        <a href=""
-                                            class="btn btn-default button-rounded-36 shadow-sm float-bottom-right"><i
-                                                class="material-icons md-18">arrow_forward</i></a>
-                                        <h5 class="small">Multipurpose Furniture allows you to grow faster</h5>
-                                        <p class="text-mute small">By Anand Mangal</p>
+                                        
                                     </div>
                                 </div>
                             </div>
                             <div class="swiper-slide">
                                 <div class="card shadow-sm border-0 bg-dark text-white">
                                     <figure class="background">
-                                        <img src="mobile/img/kitchen.jpg" alt="">
+                                        <img src="mosque/img/masjid4.jpg" alt="">
                                     </figure>
                                     <div class="card-body">
-                                        <a href=""
-                                            class="btn btn-default button-rounded-36 shadow-sm float-bottom-right"><i
-                                                class="material-icons md-18">arrow_forward</i></a>
-                                        <h5 class="small">Multipurpose Furniture allows you to grow faster</h5>
-                                        <p class="text-mute small">By Anand Mangal</p>
+                                        
                                     </div>
                                 </div>
                             </div>
                             <div class="swiper-slide">
                                 <div class="card shadow-sm border-0 bg-dark text-white">
                                     <figure class="background">
-                                        <img src="mobile/img/wall.jpg" alt="">
+                                        <img src="mosque/img/masjid5.jpg" alt="">
                                     </figure>
                                     <div class="card-body">
-                                        <a href=""
-                                            class="btn btn-default button-rounded-36 shadow-sm float-bottom-right"><i
-                                                class="material-icons md-18">arrow_forward</i></a>
-                                        <h5 class="small">Multipurpose Furniture allows you to grow faster</h5>
-                                        <p class="text-mute small">By Anand Mangal</p>
+                                       
                                     </div>
                                 </div>
                             </div>
                             <div class="swiper-slide">
                                 <div class="card shadow-sm border-0 bg-dark text-white">
                                     <figure class="background">
-                                        <img src="mobile/img/kitchen.jpg" alt="">
+                                       <img src="mosque/img/masjid6.jpg" alt="">
                                     </figure>
                                     <div class="card-body">
-                                        <a href=""
-                                            class="btn btn-default button-rounded-36 shadow-sm float-bottom-right"><i
-                                                class="material-icons md-18">arrow_forward</i></a>
-                                        <h5 class="small">Multipurpose Furniture allows you to grow faster</h5>
+                                       
                                         <p class="text-mute small">By Anand Mangal</p>
                                     </div>
                                 </div>
@@ -377,7 +358,7 @@
                                 </div>
                                 <div class="col-auto pl-0 align-self-center">
                                     <button class="btn btn-default button-rounded-56 shadow"><i
-                                            class="material-icons">add</i></button>
+                                            class="material-icons ">create</i></button>
                                 </div>
                             </div>
                         </div>
@@ -400,7 +381,7 @@
                                 </div>
                                 <div class="col-auto pl-0 align-self-center">
                                     <button class="btn btn-default button-rounded-56 shadow"><i
-                                            class="material-icons">add</i></button>
+                                            class="material-icons">playlist_add_check</i></button>
                                 </div>
                             </div>
                         </div>
@@ -423,7 +404,7 @@
                                 </div>
                                 <div class="col-auto pl-0 align-self-center">
                                     <button class="btn btn-default button-rounded-56 shadow"><i
-                                            class="material-icons">add</i></button>
+                                            class="material-icons">install_mobile</i></button>
                                 </div>
                             </div>
                         </div>

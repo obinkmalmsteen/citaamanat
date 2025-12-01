@@ -58,6 +58,23 @@
                     </div>
                 </div>
 
+                 <div class="row">
+                    <div class="col-12">
+                        <label class="form-label"><span class="text-danger">*</span> Cabang :</label>
+                        <select name="cabang_id" class="form-control" value="{{ old('cabang_id') }}">
+                            <option selected disabled>== Pilih Jabatan ==</option>
+                            <option value="1">Dapur 1 (Singajaya)</option>
+                            <option value="2">Dapur 2 (Margaasih)</option>
+                            <option value="3">Dapur 3 (Baleendah)</option>
+                            <option value="4">Dapur 4 (Tegalluar)</option>
+                        </select>
+                        @error('cabang_id')
+                        <small class="text-danger">{{ $message }}</small>  
+                        @enderror
+                    </div>
+                </div>
+
+
                 <div class="row">
                     <div class="col-6">
                         <label class="form-label"><span class="text-danger">*</span> Password :</label>

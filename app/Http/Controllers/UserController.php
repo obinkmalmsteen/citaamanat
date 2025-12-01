@@ -31,12 +31,15 @@ class UserController extends Controller
             'nama' =>'required',
             'email'=>'required|unique:users,email',
             'jabatan' =>'required',
+            'cabang_id' =>'required',
             'password' =>'required|confirmed|min:8',
         ],[
             'nama.required' =>'Nama Tidak Boleh Kosong',
             'email.required' =>'email Tidak Boleh Kosong',
             'email.unique' =>'Email ini Sudah Terdaftar',
             'jabatan.required' =>'Jabatan Tidak Boleh Kosong',
+            
+
             'password.required' =>'Password Tidak Boleh Kosong',
             'passwword.confirmed' =>'Password Konfirmasi Tidak Sama',
             'password.min' =>'Password Minimal 8 Karakter',
@@ -45,6 +48,7 @@ class UserController extends Controller
         $user->nama = $request->nama;
         $user->email = $request->email;
         $user->jabatan = $request->jabatan;
+        $user->cabang_id = $request->cabang_id;
         $user->password = Hash::make($request->password);
         $user->is_tugas = false;
         $user->save();

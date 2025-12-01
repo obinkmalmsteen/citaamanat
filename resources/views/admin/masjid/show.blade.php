@@ -11,7 +11,7 @@
 
             <div><a href="{{ url()->previous() }}" class="btn btn-secondary mb-3">Kembali</a></div>
 
-            {{-- panel aturan --}}
+            {{-- panel aturan start --}}
 
             <div class="row justify-content-center mt-4">
                 <div class="col-md-8">
@@ -40,21 +40,18 @@
 
                 </div>
             </div>
-            {{-- panel aturan --}}
-
-
-
-
-
+            {{-- panel aturan end--}}
 
             <div class="card-body">
 
                 {{-- Tambahkan pembungkus untuk tombol --}}
                 <div class="text-center my-4">
                     @if (!$adaRequestBelumRealisasi)
-                        <button class="btn btn-success w-100 py-2" id="btnRequestToken">
-                            Permintaan Pengisian Token / Pembayaran Listrik
+                    <div class="d-flex justify-content-center my-3">
+                        <button class="btn btn-success w-50 py-4" id="btnRequestToken">
+                            PENGAJUAN TOKEN / PEMBAYARAN LISTRIK
                         </button>
+                        </div>
                     @else
                         <div id="progressContainer">
                             <div class="progress" style="height: 40px;">
@@ -76,9 +73,9 @@
                 <div id="formRequestToken" class="card p-3 mb-3" style="display: none;">
                     <form action="{{ route('masjid.requestToken', $masjid->id_pelanggan) }}" method="POST">
                         @csrf
-                        <div class="d-flex justify-content-end ">
-                            <button type="button" class="btn btn-secondary me-2" id="btnBatalRequest">Batal</button>
-                            <button type="submit" class="btn btn-success">Kirim Permintaan</button>
+                        <div class="d-flex justify-content-center ">
+                            <button type="button" class="btn btn-secondary w-25 py-4 me-2" id="btnBatalRequest">Batal</button>
+                            <button type="submit" class="btn btn-success w-25 py-2">Kirim Permintaan</button>
                         </div>
                     </form>
                 </div>
@@ -263,8 +260,6 @@
                                 </span>
                             </div>
 
-
-
                             <div class="mb-2">
                                 <small class="text-muted">ID Pelanggan</small><br>
                                 <span class="fw-semibold">{{ $bayar->id_pelanggan ?? '-' }}</span>
@@ -281,10 +276,6 @@
                             </div>
 
                             <hr>
-
-
-
-
 
                             <div class="mb-2">
                                 <small class="text-muted">Nominal Token</small><br>
@@ -500,10 +491,6 @@
         </div>
 
     </div>
-
-
-
-
 
     <!-- Card data masjid END-->
 

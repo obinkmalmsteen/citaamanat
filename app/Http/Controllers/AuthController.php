@@ -36,6 +36,8 @@ class AuthController extends Controller
                 return redirect()->route('dashboard')->with('success', 'Selamat datang, Admin!');
             } elseif ($user->jabatan === 'User') {
                 return redirect()->route('masjid')->with('success', 'Selamat datang, User!');
+                 } elseif ($user->jabatan === 'Karyawan') {
+                return redirect()->route('dapurdashboard')->with('success', 'Selamat datang, Karyawan!');
             } else {
                 // jika jabatan tidak dikenali
                 Auth::logout();

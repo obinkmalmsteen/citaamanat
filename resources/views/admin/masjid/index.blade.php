@@ -56,7 +56,7 @@
                     </a>
 
 
-          
+
                     <script>
                         function confirmAndExport(tableID, filename = '') {
                             if (confirm(
@@ -125,7 +125,7 @@
                                         class="btn btn-info btn-sm">Detail</a>
                                 </td>
                                 <td>{{ $item->total_pengajuan }}</td>
-                                  <td>{{ $item->map_lokasi_masjid }}</td>
+                                <td>{{ $item->map_lokasi_masjid }}</td>
 
                             </tr>
                         @endforeach
@@ -142,10 +142,17 @@
                 <div class="col-md-7">
 
                     <div class="card shadow-lg border-0 rounded-4">
-                        <div class="card-header bg-primary text-white py-3 rounded-top-4">
+                        <div class="card-header bg-white text-dark py-3 rounded-top-4">
                             <h4 class="m-0">
                                 <i class="fa fa-mosque me-2"></i> Profil Singkat Masjid Anda
                             </h4>
+                        </div>
+                        <br>
+                        <div class="d-flex justify-content-center my-3">
+                            <a href="{{ route('masjid.show', $item->id_pelanggan) }}"
+                                class="btn btn-primary w-50 py-3 text-center">
+                                <i class="me-2"></i> PENGAJUAN TOKEN
+                            </a>
                         </div>
 
                         <div class="card-body p-4">
@@ -183,22 +190,35 @@
                                 <label class="fw-bold text-secondary">Penerima Informasi</label>
                                 <div class="fs-5"><b>{{ $item->penerima_informasi }}</b></div>
                             </div>
+                            <div class="mb-3">
+                                <label class="fw-bold text-secondary"></label>
+                                @if ($item->testimonial_status)
+                                    <span class="badge bg-success text-light px-3 py-2"> ✔ Sudah Memberikan
+                                        Testimonial</span>
+                                @else
+                                    <span class="badge bg-danger text-light px-3 py-2">X Belum Memberikan Testimonial</span>
+                                @endif
+
+
+                            </div>
+
+
+
 
                             <hr>
 
-                            <div class="mb-4">
+                            {{-- <div class="mb-4">
                                 <label class="fw-bold text-secondary">Status</label><br>
                                 @if ($item->disetujui)
                                     <span class="badge bg-success text-light px-3 py-2">Disetujui ✔</span>
                                 @else
                                     <span class="badge bg-warning text-dark px-3 py-2">Menunggu Persetujuan</span>
                                 @endif
-                            </div>
+                            </div> --}}
 
-                            <a href="{{ route('masjid.show', $item->id_pelanggan) }}" class="btn btn-primary w-100 py-2">
-                                <i class=" me-2"></i> Klik Disini Untuk Masuk ke PENGAJUAN TOKEN dan Lihat Detail Lengkap
-                                masjid
-                            </a>
+
+
+
 
                         </div>
                     </div>
@@ -207,14 +227,14 @@
             </div>
         @endif
 
-  <!-- MAP -->
+        <!-- MAP -->
         <div class="mb-3">
-                            <label for="map">Tandai Lokasi Masjid di Peta</label>
-                            <div id="map" style="height: 400px; border-radius: 10px;"></div>
+            <label for="map">Tandai Lokasi Masjid di Peta</label>
+            <div id="map" style="height: 400px; border-radius: 10px;"></div>
 
-                         
-                        </div>
-            <!-- MAP END-->
+
+        </div>
+        <!-- MAP END-->
 
 
         <script>
@@ -307,50 +327,69 @@
 </script>
 
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
-   <script>
-document.addEventListener("DOMContentLoaded", function() {
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
 
-    // Default map jika tidak ada marker
-    var defaultLat = -7.7956;
-    var defaultLng = 110.3695;
-    var map = L.map('map').setView([defaultLat, defaultLng], 13);
+        // Default map jika tidak ada marker
+        var defaultLat = -7.7956;
+        var defaultLng = 110.3695;
+        var map = L.map('map').setView([defaultLat, defaultLng], 13);
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19,
-        attribution: '© OpenStreetMap'
-    }).addTo(map);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '© OpenStreetMap'
+        }).addTo(map);
 
-    var markersGroup = L.featureGroup();
+        var markersGroup = L.featureGroup();
 
-    masjids.forEach(function(item) {
+        masjids.forEach(function(item) {
 
-        if (!item.map_lokasi_masjid) return;
+            if (!item.map_lokasi_masjid) return;
 
-        let coords = item.map_lokasi_masjid.split(',');
-        let lat = parseFloat(coords[0]);
-        let lng = parseFloat(coords[1]);
+            let coords = item.map_lokasi_masjid.split(',');
+            let lat = parseFloat(coords[0]);
+            let lng = parseFloat(coords[1]);
 
-        if (isNaN(lat) || isNaN(lng)) return;
+            if (isNaN(lat) || isNaN(lng)) return;
 
-        // Marker dengan tooltip permanen (selalu tampil)
-        let marker = L.marker([lat, lng]).addTo(map);
+            // Marker dengan tooltip permanen (selalu tampil)
+            let marker = L.marker([lat, lng]).addTo(map);
 
-        marker.bindTooltip(item.nama_masjid, {
-            // permanent: true,   // tampil terus
-             direction: 'top',  // posisi tulisan di atas marker
-             className: 'leaflet-tooltip-nama-masjid' // bisa custom CSS
+            marker.bindTooltip(item.nama_masjid, {
+                // permanent: true,   // tampil terus
+                direction: 'top', // posisi tulisan di atas marker
+                className: 'leaflet-tooltip-nama-masjid' // bisa custom CSS
+            });
+
+            markersGroup.addLayer(marker);
         });
 
-        markersGroup.addLayer(marker);
+        if (markersGroup.getLayers().length > 0) {
+            map.fitBounds(markersGroup.getBounds());
+        }
+
     });
-
-    if (markersGroup.getLayers().length > 0) {
-        map.fitBounds(markersGroup.getBounds());
-    }
-
-});
 </script>
 
 
+@if (Auth::check() && Auth::user()->jabatan == 'User' && $item->testimonial_status != 1 && $item->total_pengajuan >= 1)
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            Swal.fire({
+                title: "Terima Kasih Sudah berpartisipasi dalam Program Terangi Beribu Masjid",
+                text: "Sebagai bentuk dukungan, berikan testimoni, agar program ini terus berjalan, setelah itu Anda bisa melakukan pengajuan token seperti Biasa",
+                icon: "info",
+                confirmButtonText: "Berikan Testimonial",
+                allowOutsideClick: false,
+                allowEscapeKey: false
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href =
+                        "{{ route('testimonial.index', $item->id_pelanggan) }}?open=form";
+                }
+            });
+        });
+    </script>
+@endif
