@@ -38,7 +38,7 @@
             <div class="mb-3 d-flex justify-content-end">
                 <button type="button" id="generateBtn" class="btn btn-primary">Generate Request</button>
             </div>
-<div class="mb-3">
+            <div class="mb-3">
                 <label for="divisi">Divisi</label>
                 <input name="divisi" id="divisi" class="form-control" rows="2">{{ old('divisi') }}</input>
             </div>
@@ -80,12 +80,12 @@
                                     data-id="{{ $b->id }}" disabled>
                             </td>
                             <td>
-    <div class="input-group">
-        <span class="input-group-text">Rp</span>
-        <input type="text" min="0" class="form-control harga-input"
-               data-id="{{ $b->id }}" disabled>
-    </div>
-</td>
+                                <div class="input-group">
+                                    <span class="input-group-text">Rp</span>
+                                    <input type="text" min="0" class="form-control harga-input"
+                                        data-id="{{ $b->id }}" disabled>
+                                </div>
+                            </td>
 
                             <td>
                                 <input type="text" class="form-control note-input" data-id="{{ $b->id }}"
@@ -129,7 +129,7 @@
                     qty.disabled = false;
                     qty.value = qty.value || 1;
                     harga.disabled = false;
-                    harga.value = harga.value || 1;
+                    harga.value = '';
                     note.disabled = false;
                 } else {
                     qty.disabled = true;
@@ -142,23 +142,24 @@
             }
 
             // saat klik generate, buat input hidden array sesuai format yang diharapkan backend
-            document.getElementById('generateBtn').addEventListener('click', function() {
-                const items = [];
-                document.querySelectorAll('.check-item:checked').forEach(cb => {
-                    const id = cb.getAttribute('data-id');
-                    const qty = document.querySelector('.qty-input[data-id="' + id + '"]').value ||
-                        0;
-                    const harga = document.querySelector('.harga-input[data-id="' + id + '"]')
-                        .value || 0;
-                    const note = document.querySelector('.note-input[data-id="' + id + '"]')
-                        .value || null;
-                    items.push({
-                        barang_id: id,
-                        qty: parseInt(qty),
-                        harga: parseInt(harga),
-                        note: note
-                    });
-                });
+           document.getElementById('generateBtn').addEventListener('click', function() {
+    const items = [];
+    document.querySelectorAll('.check-item:checked').forEach(cb => {
+        const id = cb.getAttribute('data-id');
+        const qty = document.querySelector('.qty-input[data-id="' + id + '"]').value || 0;
+        const hargaRaw = document.querySelector('.harga-input[data-id="' + id + '"]').value || 0;
+        const note = document.querySelector('.note-input[data-id="' + id + '"]').value || null;
+
+        const hargaBersih = parseInt(hargaRaw.replace(/\./g, ''));
+
+        items.push({
+            barang_id: id,
+            qty: parseInt(qty),
+            harga: hargaBersih,
+            note: note
+        });
+    });
+
 
                 if (items.length === 0) {
                     alert('Pilih minimal 1 barang untuk direquest.');
@@ -248,15 +249,17 @@
             document.getElementById('previewContainer').scrollIntoView({
                 behavior: 'smooth'
             });
+
+
+
         });
     </script>
     <script>
-document.addEventListener("input", function(e) {
-    if (e.target.classList.contains("harga-input")) {
-        let value = e.target.value.replace(/\D/g, ""); // hanya angka
-        e.target.value = new Intl.NumberFormat('id-ID').format(value);
-    }
-});
-</script>
-
+        document.addEventListener("input", function(e) {
+            if (e.target.classList.contains("harga-input")) {
+                let value = e.target.value.replace(/\D/g, ""); // hanya angka
+                e.target.value = new Intl.NumberFormat('id-ID').format(value);
+            }
+        });
+    </script>
 @endsection

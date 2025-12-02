@@ -58,49 +58,61 @@ $menu = $this->getMenuData();
         return view('pengadaan.create', compact('barang','menu'));
     }
 
-    // store request (dari checklist)
-    public function store(Request $request)
-    {
-        $user = auth()->user();
+    // ===== Method store untuk =====
+   public function store(Request $request)
+{
+    $user = auth()->user();
 
-        $request->validate([
-            'items' => 'required|array|min:1',
-            'items.*.barang_id' => 'required|exists:barang,id',
-            'items.*.qty' => 'required|integer|min:1',
-            'items.*.harga' => 'required|integer|min:1',
-        ]);
-
-        DB::beginTransaction();
-        try {
-            // buat kode unik
-            $kode = 'PR-' . Carbon::now()->format('Ymd') . '-' . Str::upper(Str::random(4));
-
-            $pengadaan = PengadaanRequest::create([
-                'kode' => $kode,
-                'user_id' => $user->id,
-                'cabang_id' => $user->cabang_id,
-                'divisi' => $request->divisi?? null,
-                'status' => 'pending',
-                'note' => $request->note ?? null,
-            ]);
-
-            foreach ($request->items as $it) {
-                PengadaanRequestItem::create([
-                    'pengadaan_request_id' => $pengadaan->id,
-                    'barang_id' => $it['barang_id'],
-                    'qty' => $it['qty'],
-                    'harga' => $it['harga'],
-                    'note' => $it['note'] ?? null,
+    // 🔥 bersihkan separasi ribuan sebelum validasi
+    if ($request->has('items')) {
+        foreach ($request->items as $k => $it) {
+            if (isset($it['harga'])) {
+                $request->merge([
+                    "items.$k.harga" => str_replace('.', '', $it['harga'])
                 ]);
             }
-
-            DB::commit();
-            return redirect()->route('pengadaan.index')->with('success','Request pengadaan berhasil dibuat.');
-        } catch (\Throwable $e) {
-            DB::rollBack();
-            return redirect()->back()->withInput()->with('error','Gagal membuat request: '.$e->getMessage());
         }
     }
+
+    // validate setelah dibersihkan
+    $request->validate([
+        'items' => 'required|array|min:1',
+        'items.*.barang_id' => 'required|exists:barang,id',
+        'items.*.qty' => 'required|integer|min:1',
+        'items.*.harga' => 'required|integer|min:1',
+    ]);
+
+    DB::beginTransaction();
+    try {
+
+        $kode = 'PR-' . Carbon::now()->format('Ymd') . '-' . Str::upper(Str::random(4));
+
+        $pengadaan = PengadaanRequest::create([
+            'kode' => $kode,
+            'user_id' => $user->id,
+            'cabang_id' => $user->cabang_id,
+            'divisi' => $request->divisi ?? null,
+            'status' => 'pending',
+            'note' => $request->note ?? null,
+        ]);
+
+        foreach ($request->items as $it) {
+            PengadaanRequestItem::create([
+                'pengadaan_request_id' => $pengadaan->id,
+                'barang_id' => $it['barang_id'],
+                'qty' => $it['qty'],
+                'harga' => $it['harga'], // sudah menjadi 500000
+                'note' => $it['note'] ?? null,
+            ]);
+        }
+
+        DB::commit();
+        return redirect()->route('pengadaan.index')->with('success','Request pengadaan berhasil dibuat.');
+    } catch (\Throwable $e) {
+        DB::rollBack();
+        return redirect()->back()->withInput()->with('error','Gagal membuat request: '.$e->getMessage());
+    }
+}
 
     public function show($id)
     {
