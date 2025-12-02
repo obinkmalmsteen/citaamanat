@@ -61,7 +61,7 @@
                         <th>Stok</th>
                         <th>Satuan</th>
                         <th style="width:120px">Qty Request</th>
-                        <th style="width:120px">Harga Request</th>
+                        <th style="width:210px">Harga Request</th>
                         <th>Keterangan</th>
                     </tr>
                 </thead>
@@ -80,9 +80,13 @@
                                     data-id="{{ $b->id }}" disabled>
                             </td>
                             <td>
-                                <input type="number" min="1" class="form-control harga-input"
-                                    data-id="{{ $b->id }}" disabled>
-                            </td>
+    <div class="input-group">
+        <span class="input-group-text">Rp</span>
+        <input type="text" min="0" class="form-control harga-input"
+               data-id="{{ $b->id }}" disabled>
+    </div>
+</td>
+
                             <td>
                                 <input type="text" class="form-control note-input" data-id="{{ $b->id }}"
                                     disabled>
@@ -246,4 +250,13 @@
             });
         });
     </script>
+    <script>
+document.addEventListener("input", function(e) {
+    if (e.target.classList.contains("harga-input")) {
+        let value = e.target.value.replace(/\D/g, ""); // hanya angka
+        e.target.value = new Intl.NumberFormat('id-ID').format(value);
+    }
+});
+</script>
+
 @endsection
