@@ -157,6 +157,10 @@ Route::get('/kirim-pesan/{id}', [MasjidController::class, 'kirimPesan'])->name('
     Route::post('pengadaan/{id}/approve-items', [PengadaanRequestController::class,'approveItems'])
     ->name('pengadaan.approve_items');
 
+Route::get('/pengadaan/{id}/export-pdf', [PengadaanRequestController::class, 'exportPdf'])
+    ->name('pengadaan.export_pdf');
+
+
 
 Route::get('/export/masjids', function () {
     $timestamp = now()->format('d-m-Y');
@@ -164,6 +168,7 @@ Route::get('/export/masjids', function () {
 
     return Excel::download(new MasjidsExport, "masjids_{$timestamp}.xlsx"); 
 });
+
 
 
 

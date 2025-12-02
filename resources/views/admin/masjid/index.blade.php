@@ -28,7 +28,8 @@
                         <select id="filterStatus" class="form-select form-select-sm" style="width: 200px;">
                             <option value="">Tampilkan Semua</option>
                             <option value="1">Disetujui</option>
-                            <option value="0">Belum Disetujui</option>
+                            <option value="0" selected >Belum Disetujui</option>
+
                         </select>
                     </div>
                 </div>
@@ -319,6 +320,9 @@
         // Event kedua filter
         $('#filterStatus').on('change', applyFilters);
         $('[name="filter_pengajuan"]').on('change', applyFilters);
+
+         // === DEFAULT FILTER: Belum Disetujui ===
+    applyFilters();
 
     });
 </script>

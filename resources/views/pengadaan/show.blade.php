@@ -1,293 +1,322 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container py-4">
+    <div class="container py-4">
 
-    {{-- ========================== HEADER INVOICE ============================ --}}
-    <div class="d-flex justify-content-between align-items-center border-bottom pb-3 mb-4">
-        <div>
-            <h2 class="fw-bold mb-0">REQUEST PENGADAAN BARANG</h2>
-            <div class="text-muted">Kode: {{ $pengadaan->kode }}</div>
+        {{-- ========================== HEADER INVOICE ============================ --}}
+        <div class="d-flex justify-content-between align-items-center border-bottom pb-3 mb-4">
+            <div>
+                <h2 class="fw-bold mb-0">REQUEST PENGADAAN BARANG</h2>
+                <div class="text-muted">Kode: {{ $pengadaan->kode }}</div>
+            </div>
+
+            <div>
+                <img src="/mosque/img/logoyayasan.png" alt="Logo" style="height:100px;">
+            </div>
         </div>
+        <a href="{{ route('pengadaan.export_pdf', $pengadaan->id) }}" 
+   class="btn btn-danger mb-3" 
+   target="_blank">
+    <i class="fas fa-file-pdf me-2"></i>
+    Export PDF
+</a>
 
-        <div>
-            <img src="/mosque/img/logoyayasan.png" alt="Logo" style="height:100px;">
-        </div>
-    </div>
 
-    {{-- ========================== INFORMASI PEMOHON ============================ --}}
-    <div class="card shadow-sm mb-4">
-        <div class="card-header bg-light fw-bold">Informasi Pemohon</div>
-        <div class="card-body">
+        {{-- ========================== INFORMASI PEMOHON ============================ --}}
+        <div class="card shadow-sm mb-4">
+            <div class="card-header bg-light fw-bold">Informasi Pemohon</div>
+            <div class="card-body">
 
-            <div class="row mb-2">
-                <div class="col-md-4 fw-semibold">Pemohon</div>
-                <div class="col-md-8">{{ $pengadaan->user->nama ?? '-' }}</div>
-            </div>
-
-            <div class="row mb-2">
-                <div class="col-md-4 fw-semibold">Cabang</div>
-                <div class="col-md-8">{{ $pengadaan->cabang_id ?? '-' }}</div>
-            </div>
-
-            <div class="row mb-2">
-                <div class="col-md-4 fw-semibold">Divisi</div>
-                <div class="col-md-8">{{ $pengadaan->divisi ?? '-' }}</div>
-            </div>
-
-            <div class="row mb-2">
-                <div class="col-md-4 fw-semibold">Catatan Pemohon</div>
-                <div class="col-md-8">{{ $pengadaan->note ?? '-' }}</div>
-            </div>
-
-            {{-- STATUS BADGE --}}
-            @php
-                $badgeColor = match($pengadaan->status) {
-                    'approved' => 'success',
-                    'pending' => 'warning',
-                    'rejected' => 'danger',
-                    'partially_approved' => 'primary',
-                    default => 'secondary'
-                };
-            @endphp
-
-            <div class="row mt-3">
-                <div class="col-md-4 fw-semibold">Status</div>
-                <div class="col-md-8">
-                    <span class="badge bg-{{ $badgeColor }} px-3 py-2 fs-6 text-white">
-                        {{ ucfirst(str_replace('_',' ', $pengadaan->status)) }}
-                    </span>
+                <div class="row mb-2">
+                    <div class="col-md-4 fw-semibold">Pemohon</div>
+                    <div class="col-md-8">{{ $pengadaan->user->nama ?? '-' }}</div>
                 </div>
+
+                <div class="row mb-2">
+    <div class="col-md-4 fw-semibold">Cabang</div>
+    <div class="col-md-8">{{ $pengadaan->cabang->nama_cabang ?? '-' }}</div>
+</div>
+
+                <div class="row mb-2">
+                    <div class="col-md-4 fw-semibold">Divisi</div>
+                    <div class="col-md-8">{{ $pengadaan->divisi ?? '-' }}</div>
+                </div>
+
+                <div class="row mb-2">
+                    <div class="col-md-4 fw-semibold">Catatan Pemohon</div>
+                    <div class="col-md-8">{{ $pengadaan->note ?? '-' }}</div>
+                </div>
+
+                {{-- STATUS BADGE --}}
+                @php
+                    $badgeColor = match ($pengadaan->status) {
+                        'approved' => 'success',
+                        'pending' => 'warning',
+                        'rejected' => 'danger',
+                        'partially_approved' => 'primary',
+                        default => 'secondary',
+                    };
+                @endphp
+
+                <div class="row mt-3">
+                    <div class="col-md-4 fw-semibold">Status</div>
+                    <div class="col-md-8">
+                        <span class="badge bg-{{ $badgeColor }} px-3 py-2 fs-6 text-white">
+                            {{ ucfirst(str_replace('_', ' ', $pengadaan->status)) }}
+                        </span>
+                    </div>
+                </div>
+
             </div>
-
         </div>
-    </div>
 
-    {{-- ========================== TABEL ITEM ============================ --}}
+        {{-- ========================== TABEL ITEM ============================ --}}
 
-    <div class="card shadow-sm">
-        <div class="card-header bg-light fw-bold">Detail Barang</div>
-        <div class="card-body">
+        <div class="card shadow-sm">
+            <div class="card-header bg-light fw-bold">Detail Barang</div>
+            <div class="card-body">
 
-        <form 
-            @if(auth()->user()->jabatan === 'Admin' && $pengadaan->status === 'pending')
-                action="{{ route('pengadaan.approve_items', $pengadaan->id) }}" 
-                method="POST"
-            @endif
-        >
-            @csrf
+                <form
+                    @if (auth()->user()->jabatan === 'Admin' && $pengadaan->status === 'pending') action="{{ route('pengadaan.approve_items', $pengadaan->id) }}" 
+                method="POST" @endif>
+                    @csrf
 
-            <table class="table table-bordered table-striped align-middle">
-                <thead class="table-dark">
-                    <tr>
-                        <th>#</th>
-                        <th>Nama Barang</th>
-                        <th>Qty</th>
-                        <th>Harga</th>
-                        <th>Note</th>
-                        <th>
-                            @if($pengadaan->status === 'pending')
-                                Approve <br>
-                                <input type="checkbox" id="check_all">
-                            @else
-                                Status
-                            @endif
-                        </th>
-                    </tr>
-                </thead>
+                    <table class="table table-bordered table-striped align-middle">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>#</th>
+                                <th>Nama Barang</th>
+                                <th>Qty</th>
+                                <th>Harga</th>
+                                <th>Note</th>
+                                <th>
+                                    @if ($pengadaan->status === 'pending')
+                                        Approve <br>
+                                        <input type="checkbox" id="check_all">
+                                    @else
+                                        Status
+                                    @endif
+                                </th>
+                            </tr>
+                        </thead>
 
-                <tbody>
-                    @php $total = 0; @endphp
-                    @foreach($pengadaan->items as $i => $item)
-                        @php $total += ($item->harga * $item->qty); @endphp
-                        <tr>
-                            <td>{{ $i+1 }}</td>
-                            <td>{{ $item->barang->nama_barang ?? '-' }}</td>
-                           <td class="qty-item" data-qty="{{ $item->qty }}">
-    {{ $item->qty }}
-</td>
+                        <tbody>
+                            @php $total = 0; @endphp
+                            @foreach ($pengadaan->items as $i => $item)
+                                @php $total += ($item->harga * $item->qty); @endphp
+                                <tr>
+                                    <td>{{ $i + 1 }}</td>
+                                    <td>{{ $item->barang->nama_barang ?? '-' }}</td>
+                                    <td class="qty-item" data-qty="{{ $item->qty }}">
+                                        {{ $item->qty }}
+                                    </td>
 
-<td class="harga-item" data-harga="{{ $item->harga }}">
-    Rp {{ number_format($item->harga, 0, ',', '.') }}
-</td>
+                                    <td class="harga-item" data-harga="{{ $item->harga }}">
+                                        Rp {{ number_format($item->harga, 0, ',', '.') }}
+                                    </td>
 
 
-                            <td>{{ $item->note }}</td>
+                                    <td>{{ $item->note }}</td>
 
-                            <td>
-                                @if($pengadaan->status === 'pending')
-                                    <input type="checkbox" 
-                                        class="check-item"
-                                        name="items[{{ $item->id }}][approve]"
-                                        value="1"
-                                        {{ $item->status === 'approved' ? 'checked' : '' }}>
-                                @else
-                                    <span class="badge 
-                                        @if($item->status === 'approved') bg-success 
+                                    <td>
+                                        @if ($pengadaan->status === 'pending')
+                                            <input type="checkbox" class="check-item"
+                                                name="items[{{ $item->id }}][approve]" value="1"
+                                                {{ $item->status === 'approved' ? 'checked' : '' }}>
+                                        @else
+                                            <span
+                                                class="badge 
+                                        @if ($item->status === 'approved') bg-success 
                                         @elseif($item->status === 'rejected') bg-danger 
                                         @elseif($item->status === 'partially_approved') bg-warning
-                                        @else bg-secondary 
-                                        @endif
+                                        @else bg-secondary @endif
                                     ">
-                                        {{ $item->status }}
-                                    </span>
-                                @endif
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
+                                                {{ $item->status }}
+                                            </span>
+                                        @endif
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
 
-          {{-- ==================== PERHITUNGAN TOTAL ===================== --}}
-@if(auth()->user()->jabatan === 'Admin' && $pengadaan->status === 'pending')
-<div class="d-flex justify-content-end mt-3">
-    <div class="card shadow-sm" style="width: 260px;">
-        <div class="card-body text-end">
-            <div class="fw-bold mb-1">Total Checklist:</div>
-            <div id="total_selected" class="fw-bold text-danger fs-5">Rp 0</div>
-        </div>
-    </div>
-</div>
-@endif
-
-
-
-@php
-    $totalRequest = 0;
-    $totalApproved = 0;
-
-    foreach ($pengadaan->items as $it) {
-        $totalRequest += ($it->harga * $it->qty);
-
-        // Hitung hanya yg approved
-        if ($it->status === 'approved') {
-            $totalApproved += ($it->harga * $it->qty);
-        }
-    }
-@endphp
-
-<div class="mt-4">
-
-    {{-- TOTAL REQUEST --}}
-    <div class="d-flex justify-content-between border-bottom pb-2 mb-2">
-        <div class="fw-bold">Total Request</div>
-        <div class="fw-bold text-primary">
-            Rp {{ number_format($totalRequest, 0, ',', '.') }}
-        </div>
-    </div>
-
-    {{-- TOTAL YANG DISETUJUI --}}
-    <div class="d-flex justify-content-between border-bottom pb-2 mb-3">
-        <div class="fw-bold">Total Disetujui</div>
-        <div class="fw-bold text-success">
-            Rp {{ number_format($totalApproved, 0, ',', '.') }}
-        </div>
-    </div>
-
-    {{-- TOTAL SELECTED (untuk Admin saat pending) --}}
-    @if(auth()->user()->jabatan === 'Admin' && $pengadaan->status === 'pending')
-        <div class="d-flex justify-content-between">
-            <div class="fw-bold">Total Checklist (Belum Submit)</div>
-            <div id="total_selected" class="fw-bold text-danger">Rp 0</div>
-        </div>
-    @endif
-
-</div>
-
-            {{-- BUTTON APPROVAL --}}
-            @if(auth()->user()->jabatan === 'Admin' && $pengadaan->status === 'pending')
-                <button class="btn btn-success mt-3">Approve Selected Items</button>
-            @endif
-
-        </form>
-
-        </div>
-    </div>
+                    {{-- ==================== PERHITUNGAN TOTAL ===================== --}}
+                    @if (auth()->user()->jabatan === 'Admin' && $pengadaan->status === 'pending')
+                        <div class="d-flex justify-content-end mt-3">
+                            <div class="card shadow-sm" style="width: 260px;">
+                                <div class="card-body text-end">
+                                    <div class="fw-bold mb-1">Total Checklist:</div>
+                                    <div id="total_selected" class="fw-bold text-danger fs-5">Rp 0</div>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
 
 
-    {{-- BUTTON REJECT --}}
-    @if(auth()->user()->jabatan === 'Admin' && $pengadaan->status === 'pending')
-        <button class="btn btn-danger mt-3" data-bs-toggle="modal" data-bs-target="#rejectModal">
-            Reject Request
-        </button>
 
-        {{-- MODAL REJECT --}}
-        <div class="modal fade" id="rejectModal" tabindex="-1">
-            <div class="modal-dialog">
-                <form action="{{ route('pengadaan.reject', $pengadaan->id) }}" method="POST">
-                    @csrf
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">Tolak Request</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    @php
+                        $totalRequest = 0;
+                        $totalApproved = 0;
+
+                        foreach ($pengadaan->items as $it) {
+                            $totalRequest += $it->harga * $it->qty;
+
+                            // Hitung hanya yg approved
+                            if ($it->status === 'approved') {
+                                $totalApproved += $it->harga * $it->qty;
+                            }
+                        }
+                    @endphp
+
+                    <div class="mt-4">
+
+                        {{-- TOTAL REQUEST --}}
+                        <div class="d-flex justify-content-between border-bottom pb-2 mb-2">
+                            <div class="fw-bold">Total Request</div>
+                            <div class="fw-bold text-primary">
+                                Rp {{ number_format($totalRequest, 0, ',', '.') }}
+                            </div>
                         </div>
 
-                        <div class="modal-body">
-                            <textarea name="approval_note" class="form-control" required 
-                                placeholder="Tuliskan alasan penolakan..."></textarea>
+                        {{-- TOTAL YANG DISETUJUI --}}
+                        <div class="d-flex justify-content-between border-bottom pb-2 mb-3">
+                            <div class="fw-bold">Total Disetujui</div>
+                            <div class="fw-bold text-success">
+                                Rp {{ number_format($totalApproved, 0, ',', '.') }}
+                            </div>
                         </div>
 
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                            <button type="submit" class="btn btn-danger">Tolak</button>
-                        </div>
+                        {{-- TOTAL SELECTED (untuk Admin saat pending) --}}
+                        @if (auth()->user()->jabatan === 'Admin' && $pengadaan->status === 'pending')
+                            <div class="d-flex justify-content-between">
+                                <div class="fw-bold">Total Checklist (Belum Submit)</div>
+                                <div id="total_selected" class="fw-bold text-danger">Rp 0</div>
+                            </div>
+                        @endif
+
                     </div>
+
+                  
+
+
+
                 </form>
+
             </div>
         </div>
-    @endif
+  {{-- BUTTON APPROVE --}}
+@if (auth()->user()->jabatan === 'Admin' && $pengadaan->status === 'pending')
+    <button class="btn btn-success mt-3" data-bs-toggle="modal" data-bs-target="#approveModal">
+        Approve Request
+    </button>
 
-</div>
+    {{-- MODAL APPROVE --}}
+    <div class="modal fade" id="approveModal" tabindex="-1">
+        <div class="modal-dialog">
+            <form action="{{ route('pengadaan.approve', $pengadaan->id) }}" method="POST">
+                @csrf
 
-{{-- CHECK ALL SCRIPT --}}
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const checkAll = document.getElementById('check_all');
-    const checkItems = document.querySelectorAll('.check-item');
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Setujui Request</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
 
-    checkAll?.addEventListener('change', function() {
-        checkItems.forEach(cb => cb.checked = this.checked);
-    });
-});
-</script>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
+                    <div class="modal-body">
+                        <textarea name="approval_note" class="form-control"
+                            placeholder="Catatan (opsional)..."></textarea>
+                    </div>
 
-    const checkAll = document.getElementById('check_all');
-    const checkItems = document.querySelectorAll('.check-item');
-    const totalSelected = document.getElementById('total_selected');
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                        <button type="submit" class="btn btn-success">Setujui</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+@endif
 
-    // Jika elemen total tidak ada (bukan admin atau status bukan pending), stop
-    if (!totalSelected) return;
+        {{-- BUTTON REJECT --}}
+        @if (auth()->user()->jabatan === 'Admin' && $pengadaan->status === 'pending')
+            <button class="btn btn-danger mt-3" data-bs-toggle="modal" data-bs-target="#rejectModal">
+                Reject Request
+            </button>
 
-    // Hitung ulang ketika Check All berubah
-    checkAll?.addEventListener('change', function() {
-        checkItems.forEach(cb => cb.checked = this.checked);
-        hitungTotalChecklist();
-    });
+            {{-- MODAL REJECT --}}
+            <div class="modal fade" id="rejectModal" tabindex="-1">
+                <div class="modal-dialog">
+                    <form action="{{ route('pengadaan.reject', $pengadaan->id) }}" method="POST">
+                        @csrf
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Tolak Request</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
 
-    // Hitung setiap kali ada checkbox yang berubah
-    checkItems.forEach(cb => {
-        cb.addEventListener('change', hitungTotalChecklist);
-    });
+                            <div class="modal-body">
+                                <textarea name="approval_note" class="form-control" required placeholder="Tuliskan alasan penolakan..."></textarea>
+                            </div>
 
-    function hitungTotalChecklist() {
-        let total = 0;
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                <button type="submit" class="btn btn-danger">Tolak</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        @endif
 
-        document.querySelectorAll('.check-item:checked').forEach(cb => {
-            const row = cb.closest('tr');
+    </div>
 
-            const qty = parseInt(row.querySelector('.qty-item').dataset.qty);
-            const harga = parseInt(row.querySelector('.harga-item').dataset.harga);
+    {{-- CHECK ALL SCRIPT --}}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const checkAll = document.getElementById('check_all');
+            const checkItems = document.querySelectorAll('.check-item');
 
-            total += qty * harga;
+            checkAll?.addEventListener('change', function() {
+                checkItems.forEach(cb => cb.checked = this.checked);
+            });
         });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
 
-        totalSelected.innerHTML = 'Rp ' + total.toLocaleString('id-ID');
-    }
+            const checkAll = document.getElementById('check_all');
+            const checkItems = document.querySelectorAll('.check-item');
+            const totalSelected = document.getElementById('total_selected');
 
-});
-</script>
+            // Jika elemen total tidak ada (bukan admin atau status bukan pending), stop
+            if (!totalSelected) return;
 
+            // Hitung ulang ketika Check All berubah
+            checkAll?.addEventListener('change', function() {
+                checkItems.forEach(cb => cb.checked = this.checked);
+                hitungTotalChecklist();
+            });
 
+            // Hitung setiap kali ada checkbox yang berubah
+            checkItems.forEach(cb => {
+                cb.addEventListener('change', hitungTotalChecklist);
+            });
+
+            function hitungTotalChecklist() {
+                let total = 0;
+
+                document.querySelectorAll('.check-item:checked').forEach(cb => {
+                    const row = cb.closest('tr');
+
+                    const qty = parseInt(row.querySelector('.qty-item').dataset.qty);
+                    const harga = parseInt(row.querySelector('.harga-item').dataset.harga);
+
+                    total += qty * harga;
+                });
+
+                totalSelected.innerHTML = 'Rp ' + total.toLocaleString('id-ID');
+            }
+
+        });
+    </script>
 @endsection

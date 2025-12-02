@@ -27,31 +27,36 @@ public function index(Request $request)
     $user = auth()->user();
     $cabang_id = $request->cabang_id;
 
-     // --- Jika karyawan, override cabang_id ---
+    // --- Jika karyawan, override cabang_id ---
     if ($user->jabatan === 'Karyawan') {
         $cabang_id = $user->cabang_id;
     }
-    // jika admin ingin melihat semua cabang, boleh pakai kondisi
-    // kalau mau tetap filter, hapus kondisi admin
 
-     // --- Load data ---
+    // --- Load data barang ---
     $data = Barang::with('jenis')
         ->when($cabang_id, fn($q) => $q->where('cabang_id', $cabang_id))
         ->orderBy('id','DESC')
         ->get();
 
-    // jenis ikut difilter berdasarkan barang yg ada di cabang tsb
-      $jenis = JenisBarang::with(['barang' => function($q) use ($cabang_id) {
+    // --- Load jenis (filter ikut cabang) ---
+    $jenis = JenisBarang::with(['barang' => function($q) use ($cabang_id) {
         $q->when($cabang_id, fn($q) => $q->where('cabang_id', $cabang_id));
     }])
     ->orderBy('nama_jenis')
     ->get();
 
-    // ambil menu aktif
+    // --- Ambil nama cabang berdasarkan ID ---
+    $cabang = null;
+    if ($cabang_id) {
+        $cabang = \DB::table('cabang')->where('id', $cabang_id)->first();
+    }
+
+    // menu aktif
     $menu = $this->getMenuData();
 
-    return view('admin.barang.index', compact('jenis', 'cabang_id', 'menu'));
+    return view('admin.barang.index', compact('jenis', 'cabang_id', 'cabang', 'menu'));
 }
+
  // ===== Method private untuk menu aktif =====
     private function getMenuData()
     {

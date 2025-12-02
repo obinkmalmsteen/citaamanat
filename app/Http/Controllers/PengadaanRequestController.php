@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use Barryvdh\DomPDF\Facade\Pdf;
+use Carbon\Carbon;
+use App\Models\Barang;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\PengadaanRequest;
-use App\Models\PengadaanRequestItem;
-use App\Models\Barang;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Str;
-use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use App\Models\PengadaanRequestItem;
+use Illuminate\Support\Facades\Auth;
 
 class PengadaanRequestController extends Controller
 {
@@ -27,6 +28,10 @@ class PengadaanRequestController extends Controller
                         ->orderBy('created_at','desc')
                         ->get();
         }
+
+
+
+        
 $menu = $this->getMenuData();
         return view('pengadaan.index', compact('requests','menu'));
     }
@@ -138,7 +143,7 @@ $menu = $this->getMenuData();
 
         $pengadaan = PengadaanRequest::findOrFail($id);
         $pengadaan->status = 'approved';
-        $pengadaan->approved_by = auth()->id();
+        $pengadaan->approved_by = auth()->user()->nama;
         $pengadaan->approved_at = now();
         $pengadaan->approval_note = $request->approval_note ?? null;
         $pengadaan->save();
@@ -149,6 +154,7 @@ $menu = $this->getMenuData();
         return redirect()->back()->with('success','Request disetujui.');
     }
 
+     // reject (Admin)
     public function reject(Request $request, $id)
     {
         $this->authorizeActionAdmin();
@@ -159,7 +165,7 @@ $menu = $this->getMenuData();
 
         $pengadaan = PengadaanRequest::findOrFail($id);
         $pengadaan->status = 'rejected';
-        $pengadaan->approved_by = auth()->id();
+        $pengadaan->approved_by = auth()->user()->nama;
         $pengadaan->approved_at = now();
         $pengadaan->approval_note = $request->approval_note;
         $pengadaan->save();
@@ -210,6 +216,31 @@ public function approveItems(Request $request, $id)
 
     return redirect()->route('pengadaan.index')
         ->with('success','Item berhasil diapprove.');
+}
+
+public function exportPdf($id)
+{
+    $pengadaan = PengadaanRequest::with(['items.barang', 'user'])
+        ->findOrFail($id);
+
+    $totalRequest = 0;
+    $totalApproved = 0;
+
+    foreach ($pengadaan->items as $it) {
+        $totalRequest += $it->harga * $it->qty;
+        if ($it->status === 'approved') {
+            $totalApproved += $it->harga * $it->qty;
+        }
+    }
+$pengadaan = PengadaanRequest::with('cabang')->findOrFail($id);
+
+    $pdf = PDF::loadView('pengadaan.invoice_pdf', [
+        'pengadaan'      => $pengadaan,
+        'totalRequest'   => $totalRequest,
+        'totalApproved'  => $totalApproved,
+    ])->setPaper('A4');
+
+    return $pdf->stream('Invoice-' . $pengadaan->kode . '.pdf');
 }
 
 

@@ -26,4 +26,9 @@ class PengadaanRequest extends Model
     {
         return $this->belongsTo(User::class, 'approved_by');
     }
+    public function cabang()
+{
+    return $this->belongsTo(Cabang::class, 'cabang_id');
+}
+
 }

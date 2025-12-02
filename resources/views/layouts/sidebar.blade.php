@@ -173,7 +173,7 @@
 <li class="nav-item {{ $menuPengadaan ?? '' }}">
     <a class="nav-link" href="{{ route('pengadaan.index') }}">
         <i class="fas fa-box"></i>
-        <span>Pengadaan Barang (Semua Cabang)</span>
+        <span>Pengadaan Barang </span>
     </a>
 </li>
 

@@ -6,9 +6,12 @@
 
         <a href="{{ route('barang.create') }}" class="btn btn-primary mb-3">Tambah Barang</a>
 
-        @if($cabang_id)
-    <h5 class="text-primary">Cabang Aktif: {{ $cabang_id }}</h5>
+   @if($cabang)
+    <h5 class="text-primary">
+        Cabang Aktif: {{ $cabang->nama_cabang }}
+    </h5>
 @endif
+
 
         {{-- TAB NAV --}}
 @php
@@ -67,7 +70,7 @@ $iconMap = [
                                 {{-- <th>Jenis</th> --}}
                                 <th>Stok</th>
                                 <th>Satuan</th>
-                                <th>Harga</th>
+                                {{-- <th>Harga</th> --}}
                                 <th>Keterangan</th>
                                 <th width="150">Aksi</th>
                             </tr>
@@ -81,7 +84,7 @@ $iconMap = [
                                     {{-- <td>{{ $item->jenis->nama_jenis ?? '-' }}</td> --}}
                                     <td>{{ $item->stok }}</td>
                                     <td>{{ $item->satuan }}</td>
-                                    <td>{{ number_format($item->harga) }}</td>
+                                    {{-- <td>{{ number_format($item->harga) }}</td> --}}
                                     <td>{{ $item->keterangan }}</td>
                                     <td>
                                         <a href="{{ route('barang.edit', $item->id) }}"
