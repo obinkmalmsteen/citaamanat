@@ -11,7 +11,7 @@
         </div>
 
         <div>
-            <img src="/your-logo.png" alt="Logo" style="height:70px;">
+            <img src="/mosque/img/logoyayasan.png" alt="Logo" style="height:100px;">
         </div>
     </div>
 
