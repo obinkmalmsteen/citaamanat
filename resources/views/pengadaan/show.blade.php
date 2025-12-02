@@ -103,10 +103,14 @@
                         <tr>
                             <td>{{ $i+1 }}</td>
                             <td>{{ $item->barang->nama_barang ?? '-' }}</td>
-                            <td>{{ $item->qty }}</td>
+                           <td class="qty-item" data-qty="{{ $item->qty }}">
+    {{ $item->qty }}
+</td>
 
-                            {{-- FORMAT RUPIAH --}}
-                            <td>Rp {{ number_format($item->harga, 0, ',', '.') }}</td>
+<td class="harga-item" data-harga="{{ $item->harga }}">
+    Rp {{ number_format($item->harga, 0, ',', '.') }}
+</td>
+
 
                             <td>{{ $item->note }}</td>
 
@@ -134,14 +138,61 @@
                 </tbody>
             </table>
 
-            {{-- TOTAL --}}
-            <div class="text-end mt-3">
-                <h5 class="fw-bold">Total: 
-                    <span class="text-primary">
-                        Rp {{ number_format($total, 0, ',', '.') }}
-                    </span>
-                </h5>
-            </div>
+          {{-- ==================== PERHITUNGAN TOTAL ===================== --}}
+@if(auth()->user()->jabatan === 'Admin' && $pengadaan->status === 'pending')
+<div class="d-flex justify-content-end mt-3">
+    <div class="card shadow-sm" style="width: 260px;">
+        <div class="card-body text-end">
+            <div class="fw-bold mb-1">Total Checklist:</div>
+            <div id="total_selected" class="fw-bold text-danger fs-5">Rp 0</div>
+        </div>
+    </div>
+</div>
+@endif
+
+
+
+@php
+    $totalRequest = 0;
+    $totalApproved = 0;
+
+    foreach ($pengadaan->items as $it) {
+        $totalRequest += ($it->harga * $it->qty);
+
+        // Hitung hanya yg approved
+        if ($it->status === 'approved') {
+            $totalApproved += ($it->harga * $it->qty);
+        }
+    }
+@endphp
+
+<div class="mt-4">
+
+    {{-- TOTAL REQUEST --}}
+    <div class="d-flex justify-content-between border-bottom pb-2 mb-2">
+        <div class="fw-bold">Total Request</div>
+        <div class="fw-bold text-primary">
+            Rp {{ number_format($totalRequest, 0, ',', '.') }}
+        </div>
+    </div>
+
+    {{-- TOTAL YANG DISETUJUI --}}
+    <div class="d-flex justify-content-between border-bottom pb-2 mb-3">
+        <div class="fw-bold">Total Disetujui</div>
+        <div class="fw-bold text-success">
+            Rp {{ number_format($totalApproved, 0, ',', '.') }}
+        </div>
+    </div>
+
+    {{-- TOTAL SELECTED (untuk Admin saat pending) --}}
+    @if(auth()->user()->jabatan === 'Admin' && $pengadaan->status === 'pending')
+        <div class="d-flex justify-content-between">
+            <div class="fw-bold">Total Checklist (Belum Submit)</div>
+            <div id="total_selected" class="fw-bold text-danger">Rp 0</div>
+        </div>
+    @endif
+
+</div>
 
             {{-- BUTTON APPROVAL --}}
             @if(auth()->user()->jabatan === 'Admin' && $pengadaan->status === 'pending')
@@ -199,5 +250,44 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 </script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+
+    const checkAll = document.getElementById('check_all');
+    const checkItems = document.querySelectorAll('.check-item');
+    const totalSelected = document.getElementById('total_selected');
+
+    // Jika elemen total tidak ada (bukan admin atau status bukan pending), stop
+    if (!totalSelected) return;
+
+    // Hitung ulang ketika Check All berubah
+    checkAll?.addEventListener('change', function() {
+        checkItems.forEach(cb => cb.checked = this.checked);
+        hitungTotalChecklist();
+    });
+
+    // Hitung setiap kali ada checkbox yang berubah
+    checkItems.forEach(cb => {
+        cb.addEventListener('change', hitungTotalChecklist);
+    });
+
+    function hitungTotalChecklist() {
+        let total = 0;
+
+        document.querySelectorAll('.check-item:checked').forEach(cb => {
+            const row = cb.closest('tr');
+
+            const qty = parseInt(row.querySelector('.qty-item').dataset.qty);
+            const harga = parseInt(row.querySelector('.harga-item').dataset.harga);
+
+            total += qty * harga;
+        });
+
+        totalSelected.innerHTML = 'Rp ' + total.toLocaleString('id-ID');
+    }
+
+});
+</script>
+
 
 @endsection
