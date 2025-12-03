@@ -71,7 +71,7 @@ public function landingpage()
         ->count();
 
     // Ambil testimoni terbaru
-    $testimonials = Testimonial::latest()->take(50)->get();
+    $testimonials = Testimonial::latest()->take(150)->get();
 
     // Ambil semua masjid beserta nama dan koordinat map (jika ada)
     $masjids = Masjid::select('nama_masjid', 'map_lokasi_masjid')
@@ -115,7 +115,7 @@ public function mobilelandingpage()
         ->count();
 
     // Ambil testimoni terbaru
-    $testimonials = Testimonial::latest()->take(50)->get();
+    $testimonials = Testimonial::latest()->take(150)->get();
 
     // Ambil semua masjid beserta nama dan koordinat map (jika ada)
     $masjids = Masjid::select('nama_masjid', 'map_lokasi_masjid')

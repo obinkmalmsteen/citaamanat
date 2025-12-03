@@ -241,6 +241,14 @@ $pengadaan = PengadaanRequest::with('cabang')->findOrFail($id);
     ])->setPaper('A4');
 
     return $pdf->stream('Invoice-' . $pengadaan->kode . '.pdf');
+
+    $pdf = PDF::setOptions([
+    'isHtml5ParserEnabled' => true,
+    'isRemoteEnabled' => true
+])->loadView('admin.pengadaan.pdf', compact('pengadaan'));
+
+return $pdf->stream();
+
 }
 
 
