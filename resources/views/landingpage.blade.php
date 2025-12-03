@@ -1154,51 +1154,62 @@
 
    
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
+   <script>
+document.addEventListener("DOMContentLoaded", function() {
 
-            // Default map jika tidak ada marker
-            var defaultLat = -7.7956;
-            var defaultLng = 110.3695;
-            var map = L.map('map').setView([defaultLat, defaultLng], 13);
+    // Default map jika tidak ada marker
+    var defaultLat = -7.7956;
+    var defaultLng = 110.3695;
+    var map = L.map('map').setView([defaultLat, defaultLng], 13);
 
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 19,
-                attribution: '© OpenStreetMap'
-            }).addTo(map);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '© OpenStreetMap'
+    }).addTo(map);
 
-            var markersGroup = L.featureGroup();
+    var markersGroup = L.featureGroup();
 
-            // masjids adalah array dari PHP; aman walau kosong
-            masjids.forEach(function(item) {
 
-                if (!item.map_lokasi_masjid) return;
+    // 👇 TAMBAHKAN BAGIAN INI DI SINI
+    var greenIcon = L.icon({
+        iconUrl: '/mosque/img/marker-greentua.png',   // ganti sesuai lokasi file
+        shadowUrl: '/mosque/img/marker-shadow.png',
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [41, 41]
+    });
+    // 👆 SAMPAI DI SINI
 
-                let coords = item.map_lokasi_masjid.split(',');
-                let lat = parseFloat(coords[0]);
-                let lng = parseFloat(coords[1]);
 
-                if (isNaN(lat) || isNaN(lng)) return;
+    // masjids adalah array dari PHP
+    masjids.forEach(function(item) {
 
-                // Marker dengan tooltip permanen (selalu tampil)
-                let marker = L.marker([lat, lng]).addTo(map);
+        if (!item.map_lokasi_masjid) return;
 
-                marker.bindTooltip(item.nama_masjid, {
-                    // permanent: true,   // tampil terus
-                    direction: 'top', // posisi tulisan di atas marker
-                    offset: [0, -10],
-                    className: 'leaflet-tooltip-nama-masjid' // custom CSS
-                });
+        let coords = item.map_lokasi_masjid.split(',');
+        let lat = parseFloat(coords[0]);
+        let lng = parseFloat(coords[1]);
 
-                markersGroup.addLayer(marker);
-            });
+        if (isNaN(lat) || isNaN(lng)) return;
 
-            if (markersGroup.getLayers().length > 0) {
-                map.fitBounds(markersGroup.getBounds());
-            }
+        let marker = L.marker([lat, lng], { icon: greenIcon }).addTo(map);
 
+        marker.bindTooltip(item.nama_masjid, {
+            direction: 'top',
+            offset: [0, -10],
+            className: 'leaflet-tooltip-nama-masjid'
         });
-    </script>
+
+        markersGroup.addLayer(marker);
+    });
+
+    if (markersGroup.getLayers().length > 0) {
+        map.fitBounds(markersGroup.getBounds());
+    }
+
+});
+</script>
 
 
 
