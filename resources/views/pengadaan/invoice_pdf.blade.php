@@ -38,7 +38,8 @@
         <td style="width:50%; text-align:right; vertical-align:top;">
 
             <div style="display:inline-block; text-align:right;">
-                <img src="{{ public_path('mosque/img/logoyayasan.png') }}"
+                <<img src="{{ base_path('public/mosque/img/logoyayasan.png') }}"
+
                      style="height:50px; display:block; margin-left:auto;">
 
                 <div style="font-size:14px; font-weight:700; margin-top:5px;">
