@@ -220,7 +220,7 @@ public function approveItems(Request $request, $id)
 
 public function exportPdf($id)
 {
-    $pengadaan = PengadaanRequest::with(['items.barang', 'user'])
+    $pengadaan = PengadaanRequest::with(['items.barang', 'user', 'cabang'])
         ->findOrFail($id);
 
     $totalRequest = 0;
@@ -232,24 +232,21 @@ public function exportPdf($id)
             $totalApproved += $it->harga * $it->qty;
         }
     }
-$pengadaan = PengadaanRequest::with('cabang')->findOrFail($id);
-
-    $pdf = PDF::loadView('pengadaan.invoice_pdf', [
-        'pengadaan'      => $pengadaan,
-        'totalRequest'   => $totalRequest,
-        'totalApproved'  => $totalApproved,
-    ])->setPaper('A4');
-
-    return $pdf->stream('Invoice-' . $pengadaan->kode . '.pdf');
 
     $pdf = PDF::setOptions([
-    'isHtml5ParserEnabled' => true,
-    'isRemoteEnabled' => true
-])->loadView('admin.pengadaan.pdf', compact('pengadaan'));
+            'isHtml5ParserEnabled' => true,
+            'isRemoteEnabled' => true
+        ])
+        ->loadView('pengadaan.invoice_pdf', [
+            'pengadaan'      => $pengadaan,
+            'totalRequest'   => $totalRequest,
+            'totalApproved'  => $totalApproved,
+        ])
+        ->setPaper('A4');
 
-return $pdf->stream();
-
+    return $pdf->stream('Invoice-' . $pengadaan->kode . '.pdf');
 }
+
 
 
 
