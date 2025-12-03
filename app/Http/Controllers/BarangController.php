@@ -86,6 +86,9 @@ public function store(Request $request)
         'keterangan'  => 'nullable',
     ]);
 
+    // Ambil cabang_id dari user yang login
+    $validated['cabang_id'] = auth()->user()->cabang_id;
+
     Barang::create($validated);
 
     return redirect()->route('barang.index')->with('success', 'Barang berhasil ditambahkan.');

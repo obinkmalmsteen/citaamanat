@@ -16,13 +16,13 @@
         <option value="{{ $j->id }}">{{ $j->nama_jenis }}</option>
     @endforeach
 </select>
-
-
             </div>
-            <div class="mb-3">
+             <div class="mb-3">
                 <label>Nama Barang</label>
                 <input type="text" name="nama_barang" class="form-control" required>
             </div>
+
+          
 
             <div class="mb-3">
                 <label>Stok</label>
