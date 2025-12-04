@@ -49,7 +49,7 @@
                             <option selected disabled>== Pilih Jabatan ==</option>
                             <option value="Admin">Admin</option>
                             <option value="Karyawan">Karyawan</option>
-                            <option value="PenerimaManfaat">Penerima Manfaat</option>
+                            <option value="User">Penerima Manfaat</option>
                             <option value="Relawan">Relawan</option>
                         </select>
                         @error('jabatan')
@@ -67,6 +67,7 @@
                             <option value="2">Dapur 2 (Margaasih)</option>
                             <option value="3">Dapur 3 (Baleendah)</option>
                             <option value="4">Dapur 4 (Tegalluar)</option>
+                            <option value="">-</option>
                         </select>
                         @error('cabang_id')
                         <small class="text-danger">{{ $message }}</small>  

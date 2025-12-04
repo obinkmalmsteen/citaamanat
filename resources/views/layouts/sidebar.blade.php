@@ -40,6 +40,13 @@
             </a>
         </li>
 
+        <!-- Nav Item - Data User -->
+        <li class="nav-item {{ $menuAdminDonatur ?? '' }}">
+            <a class="nav-link" href="{{ route('donatur.index') }}">
+                <i class="fas fa-user"></i>
+                <span>Data Donatur</span>
+            </a>
+        </li>
           <!-- Nav Item - Data pengajuan Token Listrik -->
     <li class="nav-item {{ $menuAdminPengajuan ?? '' }}">
         <a class="nav-link" href="{{ route('pengajuantoken.index') }}">

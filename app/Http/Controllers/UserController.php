@@ -31,7 +31,6 @@ class UserController extends Controller
             'nama' =>'required',
             'email'=>'required|unique:users,email',
             'jabatan' =>'required',
-            'cabang_id' =>'required',
             'password' =>'required|confirmed|min:8',
         ],[
             'nama.required' =>'Nama Tidak Boleh Kosong',

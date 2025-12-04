@@ -935,17 +935,17 @@
     </div>
 
     <!-- Modal Gambar Besar -->
-<div class="modal fade" id="imageModal" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content bg-dark border-0">
-            <div class="modal-body p-0">
+    <div class="modal fade" id="imageModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content bg-dark border-0">
+                <div class="modal-body p-0">
 
-                <img id="modalImage" src="" class="img-fluid w-100 rounded">
+                    <img id="modalImage" src="" class="img-fluid w-100 rounded">
 
+                </div>
             </div>
         </div>
     </div>
-</div>
 
 
     <!-- Footer Start -->
@@ -1019,38 +1019,50 @@
 
                 <div class="col-md-4 col-lg-6 col-xl-3">
                     <div class="footer-item mt-5">
-                         <h4 class="text-light mb-4"><span class="text-primary">Qris:</span></h4>
+                        <h4 class="text-light mb-4"><span class="text-primary">Qris:</span></h4>
                         <div class="d-flex flex-column align-items-start">
-                             <span class=""> <img src="/mosque/img/qris.png"
-     class="img-fluid flex-shrink-10"
-     alt="QRIS"
-     width="120"
-     style="cursor:pointer;"
-     data-bs-toggle="modal"
-     data-bs-target="#imageModal"
-     onclick="showImageModal('/mosque/img/qrisCAM.jpg')">
-</span> <p class="mb-1 text-light"><i> Klik Gambar untuk Memperbesar.</i></p>
+                            <span class=""> <img src="/mosque/img/qris.png" class="img-fluid flex-shrink-10"
+                                    alt="QRIS" width="120" style="cursor:pointer;" data-bs-toggle="modal"
+                                    data-bs-target="#imageModal" onclick="showImageModal('/mosque/img/qrisCAM.jpg')">
+                            </span>
+                            <p class="mb-1 text-light"><i> Klik Gambar untuk Memperbesar.</i></p>
                         </div>
                     </div>
                 </div>
             </div>
 
-    </div>
 
-    <div class="container py-4">
-        <div class="border-top border-secondary pb-4"></div>
-        <div class="row">
-            <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                <a class="" href="#"> &copy; Cita Amanat Martadiredja 2025 , All Right Reserved.</a>
+ <div class="row g-4 footer-inner">
+                <div class="col-md-4 col-lg-6 col-xl-12">
+                    <div class="footer-item mt-5">
+                        <h4 class="text-light mb-4"><span class="text-primary">Donatur Tetap :</span></h4>
+                   
+                        <p class="mb-1 text-light">Dapur MBG Singajaya | Dapur MBG MargaAsih | Koperasi Sahabat Sukses Mulya</p>
+                        {{-- <a href="" class="btn btn-primary py-2 px-4">Donate Now</a> --}}
+                    </div>
+                </div>
+
+              
             </div>
-            <div class="col-md-6 text-center text-md-end">
-                <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
-                <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
-                <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
-                Designed By | Obink
+
+
+
+        </div>
+
+        <div class="container py-4">
+            <div class="border-top border-secondary pb-4"></div>
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    <a class="" href="#"> &copy; Cita Amanat Martadiredja 2025 , All Right Reserved.</a>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
+                    <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
+                    <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
+                    Designed By | Obink
+                </div>
             </div>
         </div>
-    </div>
     </div>
 
     <!-- Footer End -->
@@ -1255,11 +1267,11 @@
         });
     </script>
 
-<script>
-function showImageModal(src) {
-    document.getElementById('modalImage').src = src;
-}
-</script>
+    <script>
+        function showImageModal(src) {
+            document.getElementById('modalImage').src = src;
+        }
+    </script>
 
 
 </body>

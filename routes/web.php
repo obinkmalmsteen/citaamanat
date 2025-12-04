@@ -12,6 +12,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\DapurController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\MasjidController;
+use App\Http\Controllers\DonaturController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PengajuanController;
@@ -160,6 +161,7 @@ Route::get('/kirim-pesan/{id}', [MasjidController::class, 'kirimPesan'])->name('
 Route::get('/pengadaan/{id}/export-pdf', [PengadaanRequestController::class, 'exportPdf'])
     ->name('pengadaan.export_pdf');
 
+Route::resource('donatur', DonaturController::class);
 
 
 Route::get('/export/masjids', function () {
