@@ -132,7 +132,7 @@
 
 
 
-
+     
     <!-- Hero Start -->
     <div class="container-fluid hero-header">
         <div class="container">
@@ -141,7 +141,7 @@
                     <div class="hero-header-inner animated zoomIn">
                         <p class="fs-5 text-uppercase text-white"><b>Selamat Datang Di Laman</b></p>
                         <h1 class="display-6 text-black">Cita Amanat Martadiredja</h1>
-
+                       
                     </div>
                 </div>
             </div>
@@ -150,30 +150,42 @@
 
     <!-- Hero End -->
     <style>
-        /* Membesarkan titik */
-        .carousel-indicators [data-bs-target] {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background-color: #ffffff;
-            /* warna titik normal */
-            opacity: 0.3;
-            margin: 6px 6px;
-            /* jarak antar titik */
-        }
+  /* Container indikator harus bisa di-scroll */
+.carousel-indicators {
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 5px 10px;
+    text-align: left !important;          /* ⬅ memastikan mulai dari kiri */
+    justify-content: flex-start !important; /* ⬅ paksa align kiri */
+    scrollbar-width: none;
+}
 
-        /* Titik aktif */
-        .carousel-indicators .active {
-            opacity: 1;
-            background-color: #0d6efd;
-            /* warna titik aktif (biru bootstrap) */
-        }
+.carousel-indicators::-webkit-scrollbar {
+    display: none; /* Chrome */
+}
 
-        /* Geser titik lebih ke bawah */
-        .carousel-indicators {
-            bottom: -10px;
-            /* geser 10px di bawah gambar */
-        }
+/* Membuat titik tetap bulat */
+.carousel-indicators [data-bs-target] {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    opacity: 0.4;
+    margin: 0 4px;
+    flex: 0 0 auto; /* supaya ukuran tidak mengecil */
+}
+
+/* Titik aktif */
+.carousel-indicators .active {
+    opacity: 1;
+    background-color: #0d6efd;
+}
+
     </style>
 
 
@@ -184,234 +196,235 @@
             <div class="row g-5 mb-5">
                 <div class="col-xl-6">
                     <div class="row g-4">
-                        <div id="masjidCarousel" class="carousel slide" data-bs-ride="carousel">
-                            <div id="staticCarousel" class="carousel slide" data-bs-ride="carousel">
+                        <div id="carouselMasjid" class="carousel slide" data-ride="carousel">
+                             <div id="staticCarousel" class="carousel slide" data-bs-ride="carousel">
+                                <div class="carousel-inner">
 
+                                    @php
+                                        $images = [
+                                            'mosque/fotomasjid/masjid001.jpg',
+                                            'mosque/fotomasjid/masjid002.jpg',
+                                            'mosque/fotomasjid/masjid003.jpg',
+                                            'mosque/fotomasjid/masjid004.jpg',
+                                            'mosque/fotomasjid/masjid005.jpg',
+                                            'mosque/fotomasjid/masjid006.jpg',
+                                            'mosque/fotomasjid/masjid007.jpg',
+                                            'mosque/fotomasjid/masjid008.jpg',
+                                            'mosque/fotomasjid/masjid009.jpg',
+                                            'mosque/fotomasjid/masjid010.jpg',
+                                            'mosque/fotomasjid/masjid011.jpg',
+                                            'mosque/fotomasjid/masjid012.jpg',
+                                            'mosque/fotomasjid/masjid013.jpg',
+                                            'mosque/fotomasjid/masjid014.jpg',
+                                            'mosque/fotomasjid/masjid015.jpg',
+                                            'mosque/fotomasjid/masjid016.jpg',
+                                            'mosque/fotomasjid/masjid017.jpg',
+                                            'mosque/fotomasjid/masjid018.jpg',
+                                            'mosque/fotomasjid/masjid019.jpg',
+                                            'mosque/fotomasjid/masjid020.jpg',
+                                            
+                                            'mosque/fotomasjid/masjid021.jpg',
+                                            'mosque/fotomasjid/masjid022.jpg',
+                                            'mosque/fotomasjid/masjid023.jpg',
+                                            'mosque/fotomasjid/masjid024.jpg',
+                                            'mosque/fotomasjid/masjid025.jpg',
+                                            'mosque/fotomasjid/masjid026.jpg',
+                                            'mosque/fotomasjid/masjid027.jpg',
+                                            'mosque/fotomasjid/masjid028.jpg',
+                                            
+                                            
+                                        ];
+                                    @endphp
 
-                               <div id="staticCarousel" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
+                                    <!-- INDICATORS -->
+                                    <div class="carousel-indicators">
+                                        @foreach ($images as $key => $img)
+                                            <button type="button" data-bs-target="#staticCarousel"
+                                                data-bs-slide-to="{{ $key }}"
+                                                class="{{ $key === 0 ? 'active' : '' }}"
+                                                aria-current="{{ $key === 0 ? 'true' : 'false' }}"
+                                                aria-label="Slide {{ $key + 1 }}"></button>
+                                        @endforeach
+                                    </div>
 
-        <!-- Indicators -->
-        <div class="carousel-indicators">
-            @foreach ($images as $key => $img)
-                <button type="button" data-bs-target="#staticCarousel"
-                    data-bs-slide-to="{{ $key }}"
-                    class="{{ $key === 0 ? 'active' : '' }}"
-                    aria-label="Slide {{ $key + 1 }}"></button>
-            @endforeach
-        </div>
+                                    @foreach ($images as $key => $img)
+                                        <div class="carousel-item {{ $key === 0 ? 'active' : '' }}">
+                                            <img src="{{ asset($img) }}" class="d-block w-100 rounded"
+                                                style="height:350px; object-fit:cover;"
+                                                alt="Slide {{ $key + 1 }}">
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
 
-        <!-- Slides -->
-        @foreach ($images as $key => $img)
-            <div class="carousel-item {{ $key === 0 ? 'active' : '' }}">
-                <img src="{{ asset($img) }}"
-                     class="d-block w-100 rounded"
-                     style="height:350px; object-fit:cover;">
-            </div>
-        @endforeach
-
-    </div>
+    {{-- <a class="carousel-control-prev" href="#carouselMasjid" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Prev</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselMasjid" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a> --}}
 </div>
 
 
-
-
-                                <br>
-
-                                <div class="bg-light p-3 mb-4">
-                                    <div class="row justify-content-center text-center g-4">
-
-                                        <div class="col-4 col-md-3">
-                                            <h2 class="mb-0 text-primary">
-                                                <span data-purecounter-start="0"
-                                                    data-purecounter-end="{{ $masjidBelumDisetujui }}"
-                                                    data-purecounter-duration="2" class="purecounter"></span>
-                                            </h2>
-                                            <p class="mb-2"><b>Masjid Baru Mendaftar</b></p>
-                                        </div>
-
-                                        <div class="col-4 col-md-3">
-                                            <h2 class="mb-0 text-primary">
-                                                <span data-purecounter-start="0"
-                                                    data-purecounter-end="{{ $masjidDisetujui }}"
-                                                    data-purecounter-duration="2" class="purecounter"></span>
-                                            </h2>
-                                            <p class="mb-2"><b>Masjid Sudah Terdaftar</b></p>
-                                        </div>
-
-                                        <div class="col-4 col-md-3">
-                                            <h2 class="mb-0 text-primary">
-                                                <span data-purecounter-start="0"
-                                                    data-purecounter-end="{{ $totalRequestRealisasi }}"
-                                                    data-purecounter-duration="2" class="purecounter"></span>
-                                            </h2>
-                                            <p class="mb-2"><b>Realisasi Token Listrik</b></p>
-                                        </div>
-
-                                    </div>
-                                </div>
-
-
-                            </div>
-
-                            {{-- <div class="col-6">
+                        {{-- <div class="col-6">
                             <img src="/mosque/img/about2.png" class="img-fluid pb-3 wow zoomIn" data-wow-delay="0.1s"
                                 alt="">
                             <img src="/mosque/img/003.png" class="img-fluid pt-3 wow zoomIn" data-wow-delay="0.1s"
                                 alt="">
                         </div> --}}
-                        </div>
-                    </div>
-
-
-                    <div class="col-xl-6 wow fadeIn" data-wow-delay="0.5s">
-                        <p class="fs-5 text-uppercase text-primary"><b>Program Utama Kami</b></p>
-                        <h1 class="display-5 pb-4 m-0">Terangi Beribu Masjid & Mushola</h1>
-                        <p class="pb-4" style="text-align: justify;">
-                            Sebuah gerakan mengembalikan kejayaan Masjid dan Mushola sebagai pusat dari
-                            kegiatan Agama, mendidik dan mencetak generasi berjiwa Islami dengan mewujudkan tempat yang
-                            nyaman dan asri serta penerangan yang baik dan cukup.
-
-                            Kami hadir menyalurkan dan memastikan setiap Masjid dan Mushola tersedia token listrik
-                            yang cukup, demi kelangsungan operasional masjid yang sehat.
-                        </p>
-
-
-                        <div class="bg-light p-3 mb-4">
-                            <div class="row align-items-center justify-content-center">
-                                <div class="col-3">
-                                    <img src="/mosque/img/logoyayasan.png" class="img-fluid rounded-circle"
-                                        alt="">
-                                </div>
-                                <div class="col-9">
-                                    <p class="mb-0 justify"><i>"Kami Akan Berusaha Untuk Mewujudkan Sarana Ibadah Yang
-                                            Layak,
-                                            Nyaman, dan
-                                            Berkelanjutan Melalui Revitalisasi Insfrastruktur Masjid dan Mushola."</i>
-                                    </p>
-                                </div>
-
-                            </div>
-                        </div>
-
-
-
-
-
                     </div>
                 </div>
 
-                <div class="container text-center bg-success-custom py-5 wow fadeIn" data-wow-delay="0.1s">
-                    <div class="row g-4 align-items-center">
-                        <div class="col-lg-2">
-                            <i class="fa fa-mosque fa-5x text-white"></i>
-                        </div>
-                        <div class="col-lg-7 text-center text-primary">
-                            <h5 class="mb-0 text-light">"Penerangan adalah fasilitas penting yang menunjang
-                                kenyamanan dan
-                                kekhusyukan beribadah di masjid. <br> Cahaya yang menerangi masjid, InsyaAllah
-                                menjadi
-                                cahaya bagi para jamaahnya."</h5>
-                        </div>
 
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- About End -->
+                <div class="col-xl-6 wow fadeIn" data-wow-delay="0.5s">
+                    <p class="fs-5 text-uppercase text-primary"><b>Program Utama Kami</b></p>
+                    <h1 class="display-5 pb-4 m-0">Terangi Beribu Masjid & Mushola</h1>
+                    <p class="pb-4" style="text-align: justify;">
+                        Sebuah gerakan mengembalikan kejayaan Masjid dan Mushola sebagai pusat dari
+                        kegiatan Agama, mendidik dan mencetak generasi berjiwa Islami dengan mewujudkan tempat yang
+                        nyaman dan asri serta penerangan yang baik dan cukup.
+
+                        Kami hadir menyalurkan dan memastikan setiap Masjid dan Mushola tersedia token listrik
+                        yang cukup, demi kelangsungan operasional masjid yang sehat.
+                    </p>
 
 
-        <!-- kolom registrasi  -->
-        <div class="container-fluid activities bg-light py-10 wow fadeIn">
-            <div class="container py-10">
-                <div class="mx-auto text-center mb-3 wow fadeIn" data-wow-delay="0.1s" style="max-width: 700px;">
-                    {{-- <p class="fs-5 text-uppercase text-primary">Mulai</p> --}}
-                    <h3 class="display-6">Registrasi Masjid / Mushola Anda </h3>
-                </div>
-
-                <div class="row g-4">
-
-
-                    <div class="col-lg-6 col-xl-4">
-
-                        <div class="activities-item p-4 wow fadeIn" data-wow-delay="0.5s">
-
-                            <i class="fa fa-pen fa-4x text-dark"></i>
-
-                            <div class="ms-4">
-
-                                <h4>1. Daftarkan Masjid / Mushola </h4>
-                                <p class="mb-4">Silakan daftarkan masjid baru melalui tombol di bawah ini:</p>
-                                <a href="{{ route('registrasi') }}" class="btn btn-primary px-3">Daftar
-                                    Sekarang</a>
-                                <div class="btn-md-square bg-primary rounded-circle position-absolute"
-                                    style="top: 25px; left: -25px;">
-                                    <i class="fa fa-quote-left text-dark"></i>
-                                </div>
+                    <div class="bg-light p-3 mb-4">
+                        <div class="row align-items-center justify-content-center">
+                            <div class="col-3">
+                                <img src="/mosque/img/logoyayasan.png" class="img-fluid rounded-circle"
+                                    alt="">
+                            </div>
+                            <div class="col-9">
+                                <p class="mb-0 justify"><i>"Kami Akan Berusaha Untuk Mewujudkan Sarana Ibadah Yang
+                                        Layak,
+                                        Nyaman, dan
+                                        Berkelanjutan Melalui Revitalisasi Insfrastruktur Masjid dan Mushola."</i></p>
                             </div>
 
                         </div>
-
-                    </div>
-
-                    <div class="col-lg-6 col-xl-4">
-                        <div class="activities-item p-4 wow fadeIn" data-wow-delay="0.1s">
-                            <i class="fa fa-mosque fa-4x text-dark"></i>
-                            <div class="ms-4">
-                                <h4>2. Data Masjid / Mushola</h4>
-                                <p class="mb-4">Melihat lebih lanjut List Masjid Yang Sudah Mendaftar dan Untuk
-                                    Mengetahui Status Masjid, Apakah Sudah Disetujui Atau Belum Dari Masjid Yang
-                                    Anda Daftarkan.</p>
-                                <a href="{{ route('data.masjid.publik') }}" class="btn btn-primary px-3">Lihat
-                                    Data
-                                    Pendaftar</a>
-                            </div>
-                        </div>
                     </div>
 
 
 
-                    <div class="col-lg-6 col-xl-4">
-                        <div class="activities-item p-4 wow fadeIn" data-wow-delay="0.1s">
-                            <i class="fa fa-book fa-4x text-dark"></i>
-                            <div class="ms-4">
-                                <h4>3. Login</h4>
-                                <p class="mb-4">Jika status Pendaftaran telah diverifikasi, maka silahkan login
-                                    ID dan
-                                    password adalah Nomor ID Pelangan yang didaftarkan.</p>
-                                <a href="{{ route('login') }}" class="btn btn-primary px-3">Login</a>
-                            </div>
-                        </div>
-                    </div>
 
 
                 </div>
             </div>
-        </div>
-        <!--  Activities Start -->
 
+            <div class="container text-center bg-success-custom py-5 wow fadeIn" data-wow-delay="0.1s">
+                <div class="row g-4 align-items-center">
+                    <div class="col-lg-2">
+                        <i class="fa fa-mosque fa-5x text-white"></i>
+                    </div>
+                    <div class="col-lg-7 text-center text-primary">
+                        <h5 class="mb-0 text-light">"Penerangan adalah fasilitas penting yang menunjang
+                            kenyamanan dan
+                            kekhusyukan beribadah di masjid. <br> Cahaya yang menerangi masjid, InsyaAllah
+                            menjadi
+                            cahaya bagi para jamaahnya."</h5>
+                    </div>
 
-
-
-
-        <div class="container-fluid testimonial py-5">
-            <div class="container py-15">
-                <div class="mx-auto text-center mb-5 wow fadeIn" data-wow-delay="0.1s" style="max-width: 700px;">
-                    {{-- <p class="fs-5 text-uppercase text-primary">MAPS</p> --}}
-                    <h3 class="display-6">Sebaran Lokasi Masjid</h3>
-                </div>
-                <div class="mb-1">
-                    <label for="map">Lokasi</label>
-                    <div id="map" style="height: 400px;  border-radius: 10px;"></div>
                 </div>
             </div>
         </div>
-        <!-- MAP -->
+    </div>
+    <!-- About End -->
 
 
-        <!-- MAP END-->
+    <!-- kolom registrasi  -->
+    <div class="container-fluid activities bg-light py-10 wow fadeIn">
+        <div class="container py-10">
+            <div class="mx-auto text-center mb-3 wow fadeIn" data-wow-delay="0.1s" style="max-width: 700px;">
+                {{-- <p class="fs-5 text-uppercase text-primary">Mulai</p> --}}
+                <h3 class="display-6">Registrasi Masjid / Mushola Anda </h3>
+            </div>
 
-        <!-- Events Start
+            <div class="row g-4">
+
+
+                <div class="col-lg-6 col-xl-4">
+
+                    <div class="activities-item p-4 wow fadeIn" data-wow-delay="0.5s">
+
+                        <i class="fa fa-pen fa-4x text-dark"></i>
+
+                        <div class="ms-4">
+
+                            <h4>1. Daftarkan Masjid / Mushola </h4>
+                            <p class="mb-4">Silakan daftarkan masjid baru melalui tombol di bawah ini:</p>
+                            <a href="{{ route('registrasi') }}" class="btn btn-primary px-3">Daftar
+                                Sekarang</a>
+                            <div class="btn-md-square bg-primary rounded-circle position-absolute"
+                                style="top: 25px; left: -25px;">
+                                <i class="fa fa-quote-left text-dark"></i>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-lg-6 col-xl-4">
+                    <div class="activities-item p-4 wow fadeIn" data-wow-delay="0.1s">
+                        <i class="fa fa-mosque fa-4x text-dark"></i>
+                        <div class="ms-4">
+                            <h4>2. Data Masjid / Mushola</h4>
+                            <p class="mb-4">Melihat lebih lanjut List Masjid Yang Sudah Mendaftar dan Untuk
+                                Mengetahui Status Masjid, Apakah Sudah Disetujui Atau Belum Dari Masjid Yang
+                                Anda Daftarkan.</p>
+                            <a href="{{ route('data.masjid.publik') }}" class="btn btn-primary px-3">Lihat
+                                Data
+                                Pendaftar</a>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="col-lg-6 col-xl-4">
+                    <div class="activities-item p-4 wow fadeIn" data-wow-delay="0.1s">
+                        <i class="fa fa-book fa-4x text-dark"></i>
+                        <div class="ms-4">
+                            <h4>3. Login</h4>
+                            <p class="mb-4">Jika status Pendaftaran telah diverifikasi, maka silahkan login
+                                ID dan
+                                password adalah Nomor ID Pelangan yang didaftarkan.</p>
+                            <a href="{{ route('login') }}" class="btn btn-primary px-3">Login</a>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <!--  Activities Start -->
+
+
+
+
+
+    <div class="container-fluid testimonial py-5">
+        <div class="container py-15">
+            <div class="mx-auto text-center mb-5 wow fadeIn" data-wow-delay="0.1s" style="max-width: 700px;">
+                {{-- <p class="fs-5 text-uppercase text-primary">MAPS</p> --}}
+                <h3 class="display-6">Sebaran Lokasi Masjid</h3>
+            </div>
+            <div class="mb-1">
+                <label for="map">Lokasi</label>
+                <div id="map" style="height: 400px;  border-radius: 10px;"></div>
+            </div>
+        </div>
+    </div>
+    <!-- MAP -->
+
+
+    <!-- MAP END-->
+
+    <!-- Events Start
         <div class="container-fluid event py-5">
             <div class="container py-5">
                 <h1 class="display-3 mb-5 wow fadeIn" data-wow-delay="0.1s">Upcoming <span class="text-primary">Events</span></h1>
@@ -483,7 +496,7 @@
         Events End -->
 
 
-        <!-- Sermon Start
+    <!-- Sermon Start
         <div class="container-fluid sermon py-5">
             <div class="container py-5">
                 <div class="text-center mx-auto mb-5 wow fadeIn" data-wow-delay="0.1s" style="max-width: 700px;">
@@ -569,7 +582,7 @@
         Sermon End -->
 
 
-        <!-- Blog Start
+    <!-- Blog Start
         <div class="container-fluid py-5">
             <div class="container py-5">
                 <h1 class="display-3 mb-5 wow fadeIn" data-wow-delay="0.1s">Latest From <span class="text-primary">Our Blog</span></h1>
@@ -649,7 +662,7 @@
         Blog End -->
 
 
-        <!-- Team Start
+    <!-- Team Start
 
 
         <div class="container-fluid team py-5">
@@ -736,279 +749,276 @@
         </div>
         Team End -->
 
-        <div class="container-fluid testimonial py-15">
-            <div class="container py-15">
+    <div class="container-fluid testimonial py-15">
+        <div class="container py-15">
 
-                <div class="row">
-                    <!-- ============================= -->
-                    <!--  KOLOM KIRI: VIDEO            -->
-                    <!-- ============================= -->
-                    <div class="col-lg-6 mb-5">
-                        <div class="text-center mx-auto mb-4" style="max-width: 700px;">
-                            <p class="fs-5 text-uppercase text-primary">Testimonial Video</p>
-                            <h5 class="display-6">Video Terbaru</h5>
-                        </div>
+            <div class="row">
+                <!-- ============================= -->
+                <!--  KOLOM KIRI: VIDEO            -->
+                <!-- ============================= -->
+                <div class="col-lg-6 mb-5">
+                    <div class="text-center mx-auto mb-4" style="max-width: 700px;">
+                        <p class="fs-5 text-uppercase text-primary">Testimonial Video</p>
+                        <h5 class="display-6">Video Terbaru</h5>
+                    </div>
 
-                        <div class="swiper myVideoTestimonialSwiper">
-                            <div class="swiper-wrapper">
-                                @foreach ($testimonials->whereNotNull('video') as $testimonial)
-                                    <div class="swiper-slide">
-                                        <div class="testimonial-item p-3 shadow-sm bg-white rounded">
-                                            <div class="ratio ratio-16x9 mb-3">
-                                                <video controls class="rounded shadow-sm w-100">
-                                                    <source src="{{ asset('public/storage/' . $testimonial->video) }}"
-                                                        type="video/mp4">
-                                                </video>
-                                            </div>
-                                            <h5 class="text-center mb-1">{{ $testimonial->nama_testi }}</h5>
-                                            <p class="text-muted text-center mb-2">{{ $testimonial->keterangan }}</p>
+                    <div class="swiper myVideoTestimonialSwiper">
+                        <div class="swiper-wrapper">
+                            @foreach ($testimonials->whereNotNull('video') as $testimonial)
+                                <div class="swiper-slide">
+                                    <div class="testimonial-item p-3 shadow-sm bg-white rounded">
+                                        <div class="ratio ratio-16x9 mb-3">
+                                            <video controls class="rounded shadow-sm w-100">
+                                                <source src="{{ asset('public/storage/' . $testimonial->video) }}"
+                                                    type="video/mp4">
+                                            </video>
                                         </div>
+                                        <h5 class="text-center mb-1">{{ $testimonial->nama_testi }}</h5>
+                                        <p class="text-muted text-center mb-2">{{ $testimonial->keterangan }}</p>
                                     </div>
-                                @endforeach
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- ============================= -->
-                    <!--  KOLOM KANAN: TESTI FOTO/TEXT -->
-                    <!-- ============================= -->
-                    <div class="col-lg-6 mb-5">
-                        <div class="text-center mx-auto mb-4" style="max-width: 700px;">
-                            <p class="fs-5 text-uppercase text-primary">Testimonial</p>
-                            <h1 class="display-6">Apa Kata Mereka</h1>
-                        </div>
-
-                        <div class="swiper myTestimonialSwiper">
-                            <div class="swiper-wrapper">
-
-                                @foreach ($testimonials->whereNotNull('photo') as $testimonial)
-                                    <div class="swiper-slide">
-                                        <div class="testimonial-item p-3 shadow-sm bg-white rounded">
-                                            <div class="d-flex mb-3">
-                                                <div class="position-relative">
-                                                    @if ($testimonial->photo)
-                                                        <img src="{{ asset('public/storage/foto_pengelola/' . $testimonial->photo) }}"
-                                                            class="img-fluid rounded"
-                                                            style="width: 120px; height: 150px; object-fit: cover;">
-                                                    @else
-                                                        <img src="/mosque/img/person.png" class="img-fluid rounded"
-                                                            style="width: 100px; height: 130px; object-fit: cover;">
-                                                    @endif
-                                                </div>
-
-                                                <div class="ps-3 my-auto">
-                                                    <h5 class="mb-0">{{ $testimonial->nama_testi }}</h5>
-                                                    <p class="m-0">{{ $testimonial->keterangan }}</p>
-                                                </div>
-                                            </div>
-
-                                            <p class="fs-5 fst-italic m-0">
-                                                " {{ $testimonial->ucapan }} "
-                                            </p>
-                                        </div>
-                                    </div>
-                                @endforeach
-
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-        </div>
-
-
-
-        <!-- Sermon Start -->
-        <div class="container-fluid sermon py-15">
-            <div class="container py-15">
-                <div class="text-center mx-auto mb-5 wow fadeIn" data-wow-delay="0.1s" style="max-width: 700px;">
-                    <p class="fs-5 text-uppercase text-primary">Aktifitas Kami</p>
-                    <h3 class="display-7">Program yang Telah Direalisasikan dan Agenda Masa Depan</h3>
-                </div>
-                <div class="row g-4 justify-content-center">
-
-                    <div class="col-lg-6 col-xl-3">
-                        <div class="sermon-item h-100 d-flex flex-column wow fadeIn" data-wow-delay="0.3s">
-                            <div class="overflow-hidden p-4 pb-0">
-                                <img src="/mosque/img/renov.png" class="img-fluid w-100" alt="">
-                            </div>
-                            <div class="p-4 d-flex flex-column flex-grow-1">
-                                <a href="" class="d-inline-block h4 lh-sm mb-3">Perbaikan Beribu Masjid &
-                                    Mushola</a>
-                                <p class="mb-3" style="text-align: justify; flex-grow: 1;">Memperbaiki Bangunan,
-                                    memperkuat
-                                    Iman dalam wujudkan mimpi bersama untuk mempercantik
-                                    rumah-rumah Allah.
-
-                                    Mengembalikan masjid sebagai pusat ibadah, kebudayaan dan jantung peradaban
-                                    umat.
-                                    .</p>
-                                <a href="{{ route('aktifitas') . '#bagian-perbaikan' }}"
-                                    class="btn btn-primary px-3">
-                                    Lanjut Baca
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-6 col-xl-3">
-                        <div class="sermon-item h-100 d-flex flex-column wow fadeIn" data-wow-delay="0.3s">
-                            <div class="overflow-hidden p-4 pb-0">
-                                <img src="/mosque/img/indung6.jpg" class="img-fluid w-100" alt="">
-                            </div>
-                            <div class="p-4 d-flex flex-column flex-grow-1">
-                                <a href="#" class="d-inline-block h4 lh-sm mb-3">Nyaah Ka Indung</a>
-                                <p class="mb-3" style="text-align: justify; flex-grow: 1;">
-                                    Nyaah ka Indung sebuah program yang kami hadirkan sebagai bukti
-                                    kepedulian, cinta dan kasih kita kepada orang tua.
-                                </p>
-                                <a href="{{ route('aktifitas') . '#bagian-indung' }}" class="btn btn-primary px-3">
-                                    Lanjut Baca
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-6 col-xl-3">
-                        <div class="sermon-item h-100 d-flex flex-column wow fadeIn" data-wow-delay="0.3s">
-                            <div class="overflow-hidden p-4 pb-0">
-                                <img src="/mosque/img/adzancilik.png" class="img-fluid w-100" alt="">
-                            </div>
-                            <div class="p-4 d-flex flex-column flex-grow-1">
-                                <a href="" class="d-inline-block h4 lh-sm mb-3">Muadzin Cilik</a>
-                                <p class="mb-3" style="text-align: justify; flex-grow: 1;">Program Muadzin Cilik
-                                    yang telah
-                                    diselenggarakan sejak Februari 2025 di Masjid Hunusl Khotimah, Cileunyi Bandung,
-                                </p>
-                                <a href="{{ route('aktifitas') . '#bagian-muadzin' }}" class="btn btn-primary px-3">
-                                    Lanjut Baca
-                                </a>
-
-
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-6 col-xl-3">
-                        <div class="sermon-item h-100 d-flex flex-column wow fadeIn" data-wow-delay="0.3s">
-                            <div class="overflow-hidden p-4 pb-0">
-                                <img src="/mosque/img/Gurungaji.jpg" class="img-fluid w-100" alt="">
-                            </div>
-                            <div class="p-4 d-flex flex-column flex-grow-1">
-
-                                <a href="" class="d-inline-block h4 lh-sm mb-3">Bantuan Honor Guru Ngaji</a>
-                                <p class="mb-3" style="text-align: justify; flex-grow: 1;">Sebuah inisiatif nyata
-                                    untuk
-                                    memberikan apresiasi dan dukungan Finansial kepada para guru ngaji di wilayah
-                                    kita.
-                                </p>
-                                <a href="{{ route('aktifitas') . '#bagian-ngaji' }}" class="btn btn-primary px-3">
-                                    Lanjut Baca
-                                </a>
-
-
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <!-- Sermon End -->
-
-
-            </div>
-
-        </div>
-
-        <!-- Footer Start -->
-        <div class="container-fluid footer pt-15 wow fadeIn" data-wow-delay="0.1s">
-            <div class="container py-15">
-
-                <div class="row g-4 footer-inner">
-                    <div class="col-md-4 col-lg-6 col-xl-4">
-                        <div class="footer-item mt-5">
-                            <h4 class="text-light mb-4">Cita <span class="text-primary">Amanat Martadiredja</span>
-                            </h4>
-                            <p class="mb-4 text-light">Menjadi Pelopor Gerakan Filantropi yang memberdayakan Umat untuk
-                                Kemandirian dan kemulian dalam
-                                bingkai Keimanan dan Ketaqwaan.</p>
-                            {{-- <a href="" class="btn btn-primary py-2 px-4">Donate Now</a> --}}
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-lg-6 col-xl-4">
-                        <div class="footer-item mt-5">
-                            <h4 class="text-light mb-4">Alamat</h4>
-                            <div class="d-flex flex-column">
-                                <h6 class="text-light mb-0">Alamat Kami</h6>
-                                <div class="d-flex align-items-center border-bottom py-4">
-                                    <span class="flex-shrink-0 btn-square bg-primary me-3 p-4"><i
-                                            class="fa fa-map-marker-alt text-dark"></i></span>
-                                    <a href="" class="text">Puri Indah Cihampelas, Blok E7, No.15, Citapen,
-                                        Cihampelas, Kab Bandung Barat,
-                                        Jawa Barat, Indonesia</a>
                                 </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
-                    <div class="col-md-4 col-lg-6 col-xl-4">
-                        <div class="footer-item mt-5">
-                            <h4 class="text-light mb-4">Explore Link</h4>
-                            <div class="d-flex flex-column align-items-start">
-                                <a class="text-light mb-2" href="{{ route('landingpage') }}"><i
-                                        class="fa fa-check text-primary me-2"></i>Beranda</a>
-                                <a class="text-light mb-2" href="{{ route('tentangkami') }}"><i
-                                        class="fa fa-check text-light me-2"></i>Tentang Kami</a>
-                                <a class="text-light mb-2" href="{{ route('aktifitas') }}"><i
-                                        class="fa fa-check text-light me-2"></i>Aktifitas</a>
-                                <a class="text-light mb-2" href="{{ route('acara') }}"><i
-                                        class="fa fa-check text-light me-2"></i>Acara</a>
-                                {{-- <a class="text-light mb-2" href="{{ route('kontakkami') }}"><i class="fa fa-check text-primary me-2"></i>Kontak Kami</a> --}}
-                                <a class="text-light mb-2" href="{{ route('testimoni') }}"><i
-                                        class="fa fa-check text-light me-2"></i>Testimonial</a>
-                                <a class="text-light mb-2" href="{{ route('listmasjid') }}"><i
-                                        class="fa fa-check text-light me-2"></i>List Masjid</a>
+                </div>
 
-                            </div>
+                <!-- ============================= -->
+                <!--  KOLOM KANAN: TESTI FOTO/TEXT -->
+                <!-- ============================= -->
+                <div class="col-lg-6 mb-5">
+                    <div class="text-center mx-auto mb-4" style="max-width: 700px;">
+                        <p class="fs-5 text-uppercase text-primary">Testimonial</p>
+                        <h1 class="display-6">Apa Kata Mereka</h1>
+                    </div>
+
+                    <div class="swiper myTestimonialSwiper">
+                        <div class="swiper-wrapper">
+
+                            @foreach ($testimonials->whereNotNull('photo') as $testimonial)
+                                <div class="swiper-slide">
+                                    <div class="testimonial-item p-3 shadow-sm bg-white rounded">
+                                        <div class="d-flex mb-3">
+                                            <div class="position-relative">
+                                                @if ($testimonial->photo)
+                                                    <img src="{{ asset('public/storage/foto_pengelola/' . $testimonial->photo) }}"
+                                                        class="img-fluid rounded"
+                                                        style="width: 120px; height: 150px; object-fit: cover;">
+                                                @else
+                                                    <img src="/mosque/img/person.png" class="img-fluid rounded"
+                                                        style="width: 100px; height: 130px; object-fit: cover;">
+                                                @endif
+                                            </div>
+
+                                            <div class="ps-3 my-auto">
+                                                <h5 class="mb-0">{{ $testimonial->nama_testi }}</h5>
+                                                <p class="m-0">{{ $testimonial->keterangan }}</p>
+                                            </div>
+                                        </div>
+
+                                        <p class="fs-5 fst-italic m-0">
+                                            " {{ $testimonial->ucapan }} "
+                                        </p>
+                                    </div>
+                                </div>
+                            @endforeach
+
                         </div>
                     </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <!-- Sermon Start -->
+    <div class="container-fluid sermon py-15">
+        <div class="container py-15">
+            <div class="text-center mx-auto mb-5 wow fadeIn" data-wow-delay="0.1s" style="max-width: 700px;">
+                <p class="fs-5 text-uppercase text-primary">Aktifitas Kami</p>
+                <h3 class="display-7">Program yang Telah Direalisasikan dan Agenda Masa Depan</h3>
+            </div>
+            <div class="row g-4 justify-content-center">
+
+                <div class="col-lg-6 col-xl-3">
+                    <div class="sermon-item h-100 d-flex flex-column wow fadeIn" data-wow-delay="0.3s">
+                        <div class="overflow-hidden p-4 pb-0">
+                            <img src="/mosque/img/renov.png" class="img-fluid w-100" alt="">
+                        </div>
+                        <div class="p-4 d-flex flex-column flex-grow-1">
+                            <a href="" class="d-inline-block h4 lh-sm mb-3" >Perbaikan Beribu Masjid &
+                                Mushola</a>
+                            <p class="mb-3" style="text-align: justify; flex-grow: 1;">Memperbaiki Bangunan, memperkuat
+                                Iman dalam wujudkan mimpi bersama untuk mempercantik
+                                rumah-rumah Allah.
+
+                                Mengembalikan masjid sebagai pusat ibadah, kebudayaan dan jantung peradaban
+                                umat.
+                                .</p>
+                             <a href="{{ route('aktifitas') . '#bagian-perbaikan' }}" 
+   class="btn btn-primary px-3">
+   Lanjut Baca
+</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-xl-3">
+                    <div class="sermon-item h-100 d-flex flex-column wow fadeIn" data-wow-delay="0.3s">
+                        <div class="overflow-hidden p-4 pb-0">
+                            <img src="/mosque/img/indung6.jpg" class="img-fluid w-100" alt="">
+                        </div>
+                        <div class="p-4 d-flex flex-column flex-grow-1">
+                            <a href="#" class="d-inline-block h4 lh-sm mb-3">Nyaah Ka Indung</a>
+                            <p class="mb-3" style="text-align: justify; flex-grow: 1;">
+                                Nyaah ka Indung sebuah program yang kami hadirkan sebagai bukti
+                                kepedulian, cinta dan kasih kita kepada orang tua.
+                            </p>
+                            <a href="{{ route('aktifitas') . '#bagian-indung' }}" 
+   class="btn btn-primary px-3">
+   Lanjut Baca
+</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-xl-3">
+                    <div class="sermon-item h-100 d-flex flex-column wow fadeIn" data-wow-delay="0.3s">
+                        <div class="overflow-hidden p-4 pb-0">
+                            <img src="/mosque/img/adzancilik.png" class="img-fluid w-100" alt="">
+                        </div>
+                        <div class="p-4 d-flex flex-column flex-grow-1">
+                            <a href="" class="d-inline-block h4 lh-sm mb-3">Muadzin Cilik</a>
+                            <p class="mb-3" style="text-align: justify; flex-grow: 1;">Program Muadzin Cilik yang telah
+                                diselenggarakan sejak Februari 2025 di Masjid Hunusl Khotimah, Cileunyi Bandung, </p>
+                                 <a href="{{ route('aktifitas') . '#bagian-muadzin' }}" 
+   class="btn btn-primary px-3">
+   Lanjut Baca
+</a>
+
+
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-xl-3">
+                    <div class="sermon-item h-100 d-flex flex-column wow fadeIn" data-wow-delay="0.3s">
+                        <div class="overflow-hidden p-4 pb-0">
+                            <img src="/mosque/img/Gurungaji.jpg" class="img-fluid w-100" alt="">
+                        </div>
+                        <div class="p-4 d-flex flex-column flex-grow-1">
+
+                            <a href="" class="d-inline-block h4 lh-sm mb-3">Bantuan Honor Guru Ngaji</a>
+                            <p class="mb-3" style="text-align: justify; flex-grow: 1;">Sebuah inisiatif nyata untuk
+                                memberikan apresiasi dan dukungan Finansial kepada para guru ngaji di wilayah
+                                kita.
+                                </p> 
+                                <a href="{{ route('aktifitas') . '#bagian-ngaji' }}" 
+   class="btn btn-primary px-3">
+   Lanjut Baca
+</a>
+
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Sermon End -->
+
+
+        </div>
+
+    </div>
+
+    <!-- Footer Start -->
+    <div class="container-fluid footer pt-15 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container py-15">
+
+            <div class="row g-4 footer-inner">
+                <div class="col-md-4 col-lg-6 col-xl-4">
                     <div class="footer-item mt-5">
-                        <h4 class="text-light mb-4"> <span class="text-primary">Donasi :</span>
-                        </h4>
-                        <p class="mb-1 text-light">Dengan segala kerendahan hati, kami membuka kesempatan bagi
-                            Bapak/Ibu yang ingin menunaikan sedekah jariyah untuk kemaslahatan masjid. Donasi dapat
-                            ditransfer ke:<span class="text-primary">Yayasan Cita Amanat martadiredja
-                                <b>BNI 1967473460</b> </span> .</p>
-                        <p class="mb-1 text-light">Insya Allah, setiap amanah yang diberikan akan kami salurkan melalui
-                            program-program yang kami jalankan demi kemakmuran masjid khususnya, serta kemaslahatan umat
-                            pada umumnya. Semoga Allah membalas setiap kebaikan yang dititipkan, dan menjadikannya amal
-                            yang terus mengalir manfaatnya bagi umat.</p>
+                        <h4 class="text-light mb-4">Cita <span class="text-primary">Amanat Martadiredja</span></h4>
+                        <p class="mb-4 text-light">Menjadi Pelopor Gerakan Filantropi yang memberdayakan Umat untuk
+                            Kemandirian dan kemulian dalam
+                            bingkai Keimanan dan Ketaqwaan.</p>
                         {{-- <a href="" class="btn btn-primary py-2 px-4">Donate Now</a> --}}
                     </div>
-
                 </div>
+                <div class="col-md-4 col-lg-6 col-xl-4">
+                    <div class="footer-item mt-5">
+                        <h4 class="text-light mb-4">Alamat</h4>
+                        <div class="d-flex flex-column">
+                            <h6 class="text-light mb-0">Alamat Kami</h6>
+                            <div class="d-flex align-items-center border-bottom py-4">
+                                <span class="flex-shrink-0 btn-square bg-primary me-3 p-4"><i
+                                        class="fa fa-map-marker-alt text-dark"></i></span>
+                                <a href="" class="text">Puri Indah Cihampelas, Blok E7, No.15, Citapen,
+                                    Cihampelas, Kab Bandung Barat,
+                                    Jawa Barat, Indonesia</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-6 col-xl-4">
+                    <div class="footer-item mt-5">
+                        <h4 class="text-light mb-4">Explore Link</h4>
+                        <div class="d-flex flex-column align-items-start">
+                            <a class="text-light mb-2" href="{{ route('landingpage') }}"><i
+                                    class="fa fa-check text-primary me-2"></i>Beranda</a>
+                            <a class="text-light mb-2" href="{{ route('tentangkami') }}"><i
+                                    class="fa fa-check text-light me-2"></i>Tentang Kami</a>
+                            <a class="text-light mb-2" href="{{ route('aktifitas') }}"><i
+                                    class="fa fa-check text-light me-2"></i>Aktifitas</a>
+                            <a class="text-light mb-2" href="{{ route('acara') }}"><i
+                                    class="fa fa-check text-light me-2"></i>Acara</a>
+                            {{-- <a class="text-light mb-2" href="{{ route('kontakkami') }}"><i class="fa fa-check text-primary me-2"></i>Kontak Kami</a> --}}
+                            <a class="text-light mb-2" href="{{ route('testimoni') }}"><i
+                                    class="fa fa-check text-light me-2"></i>Testimonial</a>
+                            <a class="text-light mb-2" href="{{ route('listmasjid') }}"><i
+                                    class="fa fa-check text-light me-2"></i>List Masjid</a>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-item mt-5">
+                    <h4 class="text-light mb-4"> <span class="text-primary">Donasi :</span>
+                    </h4>
+                    <p class="mb-1 text-light">Dengan segala kerendahan hati, kami membuka kesempatan bagi
+                        Bapak/Ibu yang ingin menunaikan sedekah jariyah untuk kemaslahatan masjid. Donasi dapat
+                        ditransfer ke:<span class="text-primary">Yayasan Cita Amanat martadiredja
+                            <b>BNI 1967473460</b> </span> .</p>
+                    <p class="mb-1 text-light">Insya Allah, setiap amanah yang diberikan akan kami salurkan melalui
+                        program-program yang kami jalankan demi kemakmuran masjid khususnya, serta kemaslahatan umat
+                        pada umumnya. Semoga Allah membalas setiap kebaikan yang dititipkan, dan menjadikannya amal
+                        yang terus mengalir manfaatnya bagi umat.</p>
+                    {{-- <a href="" class="btn btn-primary py-2 px-4">Donate Now</a> --}}
+                </div>
+
             </div>
-            <div class="container py-4">
-                <div class="border-top border-secondary pb-4"></div>
-                <div class="row">
-                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        <a class="" href="#"> &copy; Cita Amanat Martadiredja 2025 , All Right
-                            Reserved.</a>
-                    </div>
-                    <div class="col-md-6 text-center text-md-end">
-                        <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
-                        <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
-                        <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
-                        Designed By | Obink
-                    </div>
+        </div>
+        <div class="container py-4">
+            <div class="border-top border-secondary pb-4"></div>
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    <a class="" href="#"> &copy; Cita Amanat Martadiredja 2025 , All Right Reserved.</a>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
+                    <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
+                    <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
+                    Designed By | Obink
                 </div>
             </div>
         </div>
-
-        <!-- Footer End -->
     </div>
+
+    <!-- Footer End -->
+   </div>
 
     <!-- Back to Top -->
     <a href="#" class="btn btn-primary border-3 border-light back-to-top"><i class="fa fa-arrow-up"></i></a>
@@ -1148,66 +1158,64 @@
         }
     </style>
 
+   
+
+   <script>
+document.addEventListener("DOMContentLoaded", function() {
+
+    // Default map jika tidak ada marker
+    var defaultLat = -7.7956;
+    var defaultLng = 110.3695;
+    var map = L.map('map').setView([defaultLat, defaultLng], 13);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '© OpenStreetMap'
+    }).addTo(map);
+
+    var markersGroup = L.featureGroup();
 
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-
-            // Default map jika tidak ada marker
-            var defaultLat = -7.7956;
-            var defaultLng = 110.3695;
-            var map = L.map('map').setView([defaultLat, defaultLng], 13);
-
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 19,
-                attribution: '© OpenStreetMap'
-            }).addTo(map);
-
-            var markersGroup = L.featureGroup();
+    // 👇 TAMBAHKAN BAGIAN INI DI SINI
+    var greenIcon = L.icon({
+        iconUrl: '/mosque/img/marker-greentua.png',   // ganti sesuai lokasi file
+        shadowUrl: '/mosque/img/marker-shadow.png',
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [41, 41]
+    });
+    // 👆 SAMPAI DI SINI
 
 
-            // 👇 TAMBAHKAN BAGIAN INI DI SINI
-            var greenIcon = L.icon({
-                iconUrl: '/mosque/img/marker-greentua.png', // ganti sesuai lokasi file
-                shadowUrl: '/mosque/img/marker-shadow.png',
-                iconSize: [25, 41],
-                iconAnchor: [12, 41],
-                popupAnchor: [1, -34],
-                shadowSize: [41, 41]
-            });
-            // 👆 SAMPAI DI SINI
+    // masjids adalah array dari PHP
+    masjids.forEach(function(item) {
 
+        if (!item.map_lokasi_masjid) return;
 
-            // masjids adalah array dari PHP
-            masjids.forEach(function(item) {
+        let coords = item.map_lokasi_masjid.split(',');
+        let lat = parseFloat(coords[0]);
+        let lng = parseFloat(coords[1]);
 
-                if (!item.map_lokasi_masjid) return;
+        if (isNaN(lat) || isNaN(lng)) return;
 
-                let coords = item.map_lokasi_masjid.split(',');
-                let lat = parseFloat(coords[0]);
-                let lng = parseFloat(coords[1]);
+        let marker = L.marker([lat, lng], { icon: greenIcon }).addTo(map);
 
-                if (isNaN(lat) || isNaN(lng)) return;
-
-                let marker = L.marker([lat, lng], {
-                    icon: greenIcon
-                }).addTo(map);
-
-                marker.bindTooltip(item.nama_masjid, {
-                    direction: 'top',
-                    offset: [0, -10],
-                    className: 'leaflet-tooltip-nama-masjid'
-                });
-
-                markersGroup.addLayer(marker);
-            });
-
-            if (markersGroup.getLayers().length > 0) {
-                map.fitBounds(markersGroup.getBounds());
-            }
-
+        marker.bindTooltip(item.nama_masjid, {
+            direction: 'top',
+            offset: [0, -10],
+            className: 'leaflet-tooltip-nama-masjid'
         });
-    </script>
+
+        markersGroup.addLayer(marker);
+    });
+
+    if (markersGroup.getLayers().length > 0) {
+        map.fitBounds(markersGroup.getBounds());
+    }
+
+});
+</script>
 
 
 
