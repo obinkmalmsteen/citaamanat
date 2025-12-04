@@ -132,7 +132,7 @@
 
 
 
-     
+
     <!-- Hero Start -->
     <div class="container-fluid hero-header">
         <div class="container">
@@ -141,7 +141,7 @@
                     <div class="hero-header-inner animated zoomIn">
                         <p class="fs-5 text-uppercase text-white"><b>Selamat Datang Di Laman</b></p>
                         <h1 class="display-6 text-black">Cita Amanat Martadiredja</h1>
-                       
+
                     </div>
                 </div>
             </div>
@@ -150,42 +150,45 @@
 
     <!-- Hero End -->
     <style>
-  /* Container indikator harus bisa di-scroll */
-.carousel-indicators {
-    position: absolute;
-    bottom: -20px;
-    left: 0;
-    right: 0;
-    width: 100%;
-    overflow-x: auto;
-    white-space: nowrap;
-    padding: 5px 10px;
-    text-align: left !important;          /* ⬅ memastikan mulai dari kiri */
-    justify-content: flex-start !important; /* ⬅ paksa align kiri */
-    scrollbar-width: none;
-}
+        /* Container indikator harus bisa di-scroll */
+        .carousel-indicators {
+            position: absolute;
+            bottom: -20px;
+            left: 0;
+            right: 0;
+            width: 100%;
+            overflow-x: auto;
+            white-space: nowrap;
+            padding: 5px 10px;
+            text-align: left !important;
+            /* ⬅ memastikan mulai dari kiri */
+            justify-content: flex-start !important;
+            /* ⬅ paksa align kiri */
+            scrollbar-width: none;
+        }
 
-.carousel-indicators::-webkit-scrollbar {
-    display: none; /* Chrome */
-}
+        .carousel-indicators::-webkit-scrollbar {
+            display: none;
+            /* Chrome */
+        }
 
-/* Membuat titik tetap bulat */
-.carousel-indicators [data-bs-target] {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background-color: #ffffff;
-    opacity: 0.4;
-    margin: 0 4px;
-    flex: 0 0 auto; /* supaya ukuran tidak mengecil */
-}
+        /* Membuat titik tetap bulat */
+        .carousel-indicators [data-bs-target] {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #ffffff;
+            opacity: 0.4;
+            margin: 0 4px;
+            flex: 0 0 auto;
+            /* supaya ukuran tidak mengecil */
+        }
 
-/* Titik aktif */
-.carousel-indicators .active {
-    opacity: 1;
-    background-color: #0d6efd;
-}
-
+        /* Titik aktif */
+        .carousel-indicators .active {
+            opacity: 1;
+            background-color: #0d6efd;
+        }
     </style>
 
 
@@ -197,7 +200,7 @@
                 <div class="col-xl-6">
                     <div class="row g-4">
                         <div id="carouselMasjid" class="carousel slide" data-ride="carousel">
-                             <div id="staticCarousel" class="carousel slide" data-bs-ride="carousel">
+                            <div id="staticCarousel" class="carousel slide" data-bs-ride="carousel">
                                 <div class="carousel-inner">
 
                                     @php
@@ -222,7 +225,7 @@
                                             'mosque/fotomasjid/masjid018.jpg',
                                             'mosque/fotomasjid/masjid019.jpg',
                                             'mosque/fotomasjid/masjid020.jpg',
-                                            
+
                                             'mosque/fotomasjid/masjid021.jpg',
                                             'mosque/fotomasjid/masjid022.jpg',
                                             'mosque/fotomasjid/masjid023.jpg',
@@ -231,8 +234,6 @@
                                             'mosque/fotomasjid/masjid026.jpg',
                                             'mosque/fotomasjid/masjid027.jpg',
                                             'mosque/fotomasjid/masjid028.jpg',
-                                            
-                                            
                                         ];
                                     @endphp
 
@@ -257,7 +258,7 @@
                                 </div>
                             </div>
 
-    {{-- <a class="carousel-control-prev" href="#carouselMasjid" role="button" data-slide="prev">
+                            {{-- <a class="carousel-control-prev" href="#carouselMasjid" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="sr-only">Prev</span>
     </a>
@@ -265,7 +266,7 @@
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
     </a> --}}
-</div>
+                        </div>
 
 
                         {{-- <div class="col-6">
@@ -848,19 +849,19 @@
                             <img src="/mosque/img/renov.png" class="img-fluid w-100" alt="">
                         </div>
                         <div class="p-4 d-flex flex-column flex-grow-1">
-                            <a href="" class="d-inline-block h4 lh-sm mb-3" >Perbaikan Beribu Masjid &
+                            <a href="" class="d-inline-block h4 lh-sm mb-3">Perbaikan Beribu Masjid &
                                 Mushola</a>
-                            <p class="mb-3" style="text-align: justify; flex-grow: 1;">Memperbaiki Bangunan, memperkuat
+                            <p class="mb-3" style="text-align: justify; flex-grow: 1;">Memperbaiki Bangunan,
+                                memperkuat
                                 Iman dalam wujudkan mimpi bersama untuk mempercantik
                                 rumah-rumah Allah.
 
                                 Mengembalikan masjid sebagai pusat ibadah, kebudayaan dan jantung peradaban
                                 umat.
                                 .</p>
-                             <a href="{{ route('aktifitas') . '#bagian-perbaikan' }}" 
-   class="btn btn-primary px-3">
-   Lanjut Baca
-</a>
+                            <a href="{{ route('aktifitas') . '#bagian-perbaikan' }}" class="btn btn-primary px-3">
+                                Lanjut Baca
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -876,10 +877,9 @@
                                 Nyaah ka Indung sebuah program yang kami hadirkan sebagai bukti
                                 kepedulian, cinta dan kasih kita kepada orang tua.
                             </p>
-                            <a href="{{ route('aktifitas') . '#bagian-indung' }}" 
-   class="btn btn-primary px-3">
-   Lanjut Baca
-</a>
+                            <a href="{{ route('aktifitas') . '#bagian-indung' }}" class="btn btn-primary px-3">
+                                Lanjut Baca
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -891,15 +891,15 @@
                         </div>
                         <div class="p-4 d-flex flex-column flex-grow-1">
                             <a href="" class="d-inline-block h4 lh-sm mb-3">Muadzin Cilik</a>
-                            <p class="mb-3" style="text-align: justify; flex-grow: 1;">Program Muadzin Cilik yang telah
+                            <p class="mb-3" style="text-align: justify; flex-grow: 1;">Program Muadzin Cilik yang
+                                telah
                                 diselenggarakan sejak Februari 2025 di Masjid Hunusl Khotimah, Cileunyi Bandung, </p>
-                                 <a href="{{ route('aktifitas') . '#bagian-muadzin' }}" 
-   class="btn btn-primary px-3">
-   Lanjut Baca
-</a>
+                            <a href="{{ route('aktifitas') . '#bagian-muadzin' }}" class="btn btn-primary px-3">
+                                Lanjut Baca
+                            </a>
 
 
-                            
+
                         </div>
                     </div>
                 </div>
@@ -915,11 +915,10 @@
                             <p class="mb-3" style="text-align: justify; flex-grow: 1;">Sebuah inisiatif nyata untuk
                                 memberikan apresiasi dan dukungan Finansial kepada para guru ngaji di wilayah
                                 kita.
-                                </p> 
-                                <a href="{{ route('aktifitas') . '#bagian-ngaji' }}" 
-   class="btn btn-primary px-3">
-   Lanjut Baca
-</a>
+                            </p>
+                            <a href="{{ route('aktifitas') . '#bagian-ngaji' }}" class="btn btn-primary px-3">
+                                Lanjut Baca
+                            </a>
 
 
                         </div>
@@ -934,6 +933,20 @@
         </div>
 
     </div>
+
+    <!-- Modal Gambar Besar -->
+<div class="modal fade" id="imageModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content bg-dark border-0">
+            <div class="modal-body p-0">
+
+                <img id="modalImage" src="" class="img-fluid w-100 rounded">
+
+            </div>
+        </div>
+    </div>
+</div>
+
 
     <!-- Footer Start -->
     <div class="container-fluid footer pt-15 wow fadeIn" data-wow-delay="0.1s">
@@ -985,40 +998,63 @@
                         </div>
                     </div>
                 </div>
-                <div class="footer-item mt-5">
-                    <h4 class="text-light mb-4"> <span class="text-primary">Donasi :</span>
-                    </h4>
-                    <p class="mb-1 text-light">Dengan segala kerendahan hati, kami membuka kesempatan bagi
-                        Bapak/Ibu yang ingin menunaikan sedekah jariyah untuk kemaslahatan masjid. Donasi dapat
-                        ditransfer ke:<span class="text-primary">Yayasan Cita Amanat martadiredja
-                            <b>BNI 1967473460</b> </span> .</p>
-                    <p class="mb-1 text-light">Insya Allah, setiap amanah yang diberikan akan kami salurkan melalui
-                        program-program yang kami jalankan demi kemakmuran masjid khususnya, serta kemaslahatan umat
-                        pada umumnya. Semoga Allah membalas setiap kebaikan yang dititipkan, dan menjadikannya amal
-                        yang terus mengalir manfaatnya bagi umat.</p>
-                    {{-- <a href="" class="btn btn-primary py-2 px-4">Donate Now</a> --}}
+            </div>
+
+
+            <div class="row g-4 footer-inner">
+                <div class="col-md-4 col-lg-6 col-xl-9">
+                    <div class="footer-item mt-5">
+                        <h4 class="text-light mb-4"><span class="text-primary">Donasi :</span></h4>
+                        <p class="mb-1 text-light">Dengan segala kerendahan hati, kami membuka kesempatan bagi
+                            Bapak/Ibu yang ingin menunaikan sedekah jariyah untuk kemaslahatan masjid. Donasi dapat
+                            ditransfer ke:<span class="text-primary">Yayasan Cita Amanat martadiredja
+                                <b>BNI 1967473460</b> </span> .</p>
+                        <p class="mb-1 text-light">Insya Allah, setiap amanah yang diberikan akan kami salurkan melalui
+                            program-program yang kami jalankan demi kemakmuran masjid khususnya, serta kemaslahatan umat
+                            pada umumnya. Semoga Allah membalas setiap kebaikan yang dititipkan, dan menjadikannya amal
+                            yang terus mengalir manfaatnya bagi umat.</p>
+                        {{-- <a href="" class="btn btn-primary py-2 px-4">Donate Now</a> --}}
+                    </div>
                 </div>
 
+                <div class="col-md-4 col-lg-6 col-xl-3">
+                    <div class="footer-item mt-5">
+                         <h4 class="text-light mb-4"><span class="text-primary">Qris:</span></h4>
+                        <div class="d-flex flex-column align-items-start">
+                             <span class=""> <img src="/mosque/img/qris.png"
+     class="img-fluid flex-shrink-10"
+     alt="QRIS"
+     width="120"
+     style="cursor:pointer;"
+     data-bs-toggle="modal"
+     data-bs-target="#imageModal"
+     onclick="showImageModal('/mosque/img/qrisCAM.jpg')">
+</span> <p class="mb-1 text-light"><i> Klik Gambar untuk Memperbesar.</i></p>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="container py-4">
-            <div class="border-top border-secondary pb-4"></div>
-            <div class="row">
-                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                    <a class="" href="#"> &copy; Cita Amanat Martadiredja 2025 , All Right Reserved.</a>
-                </div>
-                <div class="col-md-6 text-center text-md-end">
-                    <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
-                    <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
-                    <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
-                    Designed By | Obink
-                </div>
+
+    </div>
+
+    <div class="container py-4">
+        <div class="border-top border-secondary pb-4"></div>
+        <div class="row">
+            <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                <a class="" href="#"> &copy; Cita Amanat Martadiredja 2025 , All Right Reserved.</a>
+            </div>
+            <div class="col-md-6 text-center text-md-end">
+                <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
+                <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
+                <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
+                Designed By | Obink
             </div>
         </div>
     </div>
+    </div>
 
     <!-- Footer End -->
-   </div>
+    </div>
 
     <!-- Back to Top -->
     <a href="#" class="btn btn-primary border-3 border-light back-to-top"><i class="fa fa-arrow-up"></i></a>
@@ -1158,65 +1194,72 @@
         }
     </style>
 
-   
-
-   <script>
-document.addEventListener("DOMContentLoaded", function() {
-
-    // Default map jika tidak ada marker
-    var defaultLat = -7.7956;
-    var defaultLng = 110.3695;
-    var map = L.map('map').setView([defaultLat, defaultLng], 13);
-
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19,
-        attribution: '© OpenStreetMap'
-    }).addTo(map);
-
-    var markersGroup = L.featureGroup();
 
 
-    // 👇 TAMBAHKAN BAGIAN INI DI SINI
-    var greenIcon = L.icon({
-        iconUrl: '/mosque/img/marker-greentua.png',   // ganti sesuai lokasi file
-        shadowUrl: '/mosque/img/marker-shadow.png',
-        iconSize: [25, 41],
-        iconAnchor: [12, 41],
-        popupAnchor: [1, -34],
-        shadowSize: [41, 41]
-    });
-    // 👆 SAMPAI DI SINI
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+
+            // Default map jika tidak ada marker
+            var defaultLat = -7.7956;
+            var defaultLng = 110.3695;
+            var map = L.map('map').setView([defaultLat, defaultLng], 13);
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+                attribution: '© OpenStreetMap'
+            }).addTo(map);
+
+            var markersGroup = L.featureGroup();
 
 
-    // masjids adalah array dari PHP
-    masjids.forEach(function(item) {
+            // 👇 TAMBAHKAN BAGIAN INI DI SINI
+            var greenIcon = L.icon({
+                iconUrl: '/mosque/img/marker-greentua.png', // ganti sesuai lokasi file
+                shadowUrl: '/mosque/img/marker-shadow.png',
+                iconSize: [25, 41],
+                iconAnchor: [12, 41],
+                popupAnchor: [1, -34],
+                shadowSize: [41, 41]
+            });
+            // 👆 SAMPAI DI SINI
 
-        if (!item.map_lokasi_masjid) return;
 
-        let coords = item.map_lokasi_masjid.split(',');
-        let lat = parseFloat(coords[0]);
-        let lng = parseFloat(coords[1]);
+            // masjids adalah array dari PHP
+            masjids.forEach(function(item) {
 
-        if (isNaN(lat) || isNaN(lng)) return;
+                if (!item.map_lokasi_masjid) return;
 
-        let marker = L.marker([lat, lng], { icon: greenIcon }).addTo(map);
+                let coords = item.map_lokasi_masjid.split(',');
+                let lat = parseFloat(coords[0]);
+                let lng = parseFloat(coords[1]);
 
-        marker.bindTooltip(item.nama_masjid, {
-            direction: 'top',
-            offset: [0, -10],
-            className: 'leaflet-tooltip-nama-masjid'
+                if (isNaN(lat) || isNaN(lng)) return;
+
+                let marker = L.marker([lat, lng], {
+                    icon: greenIcon
+                }).addTo(map);
+
+                marker.bindTooltip(item.nama_masjid, {
+                    direction: 'top',
+                    offset: [0, -10],
+                    className: 'leaflet-tooltip-nama-masjid'
+                });
+
+                markersGroup.addLayer(marker);
+            });
+
+            if (markersGroup.getLayers().length > 0) {
+                map.fitBounds(markersGroup.getBounds());
+            }
+
         });
+    </script>
 
-        markersGroup.addLayer(marker);
-    });
-
-    if (markersGroup.getLayers().length > 0) {
-        map.fitBounds(markersGroup.getBounds());
-    }
-
-});
+<script>
+function showImageModal(src) {
+    document.getElementById('modalImage').src = src;
+}
 </script>
-
 
 
 </body>
