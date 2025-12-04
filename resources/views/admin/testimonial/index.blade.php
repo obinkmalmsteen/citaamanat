@@ -135,16 +135,11 @@
     </div>
 @endsection
 
-
-@if ($errors->any())
 <script>
 document.addEventListener("DOMContentLoaded", function() {
     const tombol = document.querySelector('[data-toggle="collapse"][data-target="#formTambahTestimonial"]');
     if (tombol) {
-        tombol.click(); // buka form hanya jika ada error
+        tombol.click(); // otomatis buka form
     }
 });
 </script>
-@endif
-
-

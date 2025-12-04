@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Masjid;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 use App\Models\Testimonial; // ✅ Tambahkan ini
 
 class DashboardController extends Controller
@@ -37,6 +38,10 @@ class DashboardController extends Controller
 
     public function index()
     {
+
+
+
+
         $data = $this->getDashboardData();
         return view('dashboard', $data);
     }
@@ -80,6 +85,16 @@ public function landingpage()
 
          // Ambil testimoni terbaru
     $listmasjid = Masjid::where('disetujui', 1)->take(150)->get();
+
+ $folderPath = public_path('storage/foto_masjid');
+     // Ambil semua file gambar di folder tersebut (jpg, jpeg, png, webp)
+    $images = collect(File::files($folderPath))
+                ->filter(function ($file) {
+                    return in_array(strtolower($file->getExtension()), ['jpg','jpeg','png','webp']);
+                })
+                ->map(function ($file) {
+                    return 'mosque/img/' . $file->getFilename();
+                });
     // Kirim ke view
     return view('landingpage', compact(
         'masjidDisetujui',
@@ -87,8 +102,12 @@ public function landingpage()
         'totalRequestRealisasi',
         'testimonials',
         'masjids',
-        'listmasjid' 
+        'listmasjid' ,
+        'images'
     ));
+   
+
+
 }
 
 
