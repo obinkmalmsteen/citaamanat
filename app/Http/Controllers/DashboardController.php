@@ -86,15 +86,22 @@ public function landingpage()
          // Ambil testimoni terbaru
     $listmasjid = Masjid::where('disetujui', 1)->take(150)->get();
 
- $folderPath = public_path('storage/foto_masjid');
-     // Ambil semua file gambar di folder tersebut (jpg, jpeg, png, webp)
-    $images = collect(File::files($folderPath))
-                ->filter(function ($file) {
-                    return in_array(strtolower($file->getExtension()), ['jpg','jpeg','png','webp']);
-                })
-                ->map(function ($file) {
-                    return 'mosque/img/' . $file->getFilename();
-                });
+   $folder = storage_path('app/public/foto_masjid');
+
+    // Ambil semua file di folder
+    $files = File::files($folder);
+
+    $images = [];
+
+    foreach ($files as $file) {
+        $filename = $file->getFilename();
+
+        // Filter hanya gambar
+        if (preg_match('/\.(jpg|jpeg|png|gif|webp)$/i', $filename)) {
+            // Buat URL yang cocok dengan asset() yang kamu pakai
+            $images[] = 'public/storage/foto_masjid/' . $filename;
+        }
+    }
     // Kirim ke view
     return view('landingpage', compact(
         'masjidDisetujui',
@@ -106,6 +113,9 @@ public function landingpage()
         'images'
     ));
    
+
+   
+
 
 
 }

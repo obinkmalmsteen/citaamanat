@@ -188,30 +188,31 @@
                             <div id="staticCarousel" class="carousel slide" data-bs-ride="carousel">
 
 
-                                <div id="staticCarousel" class="carousel slide" data-bs-ride="carousel">
-                                    <div class="carousel-inner">
+                               <div id="staticCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
 
-                                        <!-- Indicators -->
-                                        <div class="carousel-indicators">
-                                            @foreach ($images as $key => $img)
-                                                <button type="button" data-bs-target="#staticCarousel"
-                                                    data-bs-slide-to="{{ $key }}"
-                                                    class="{{ $key === 0 ? 'active' : '' }}"
-                                                    aria-label="Slide {{ $key + 1 }}">
-                                                </button>
-                                            @endforeach
-                                        </div>
+        <!-- Indicators -->
+        <div class="carousel-indicators">
+            @foreach ($images as $key => $img)
+                <button type="button" data-bs-target="#staticCarousel"
+                    data-bs-slide-to="{{ $key }}"
+                    class="{{ $key === 0 ? 'active' : '' }}"
+                    aria-label="Slide {{ $key + 1 }}"></button>
+            @endforeach
+        </div>
 
-                                        <!-- Slides -->
-                                        @foreach ($images as $key => $img)
-                                            <div class="carousel-item {{ $key === 0 ? 'active' : '' }}">
-                                                <img src="{{ $img }}" class="d-block w-100 rounded"
-                                                    style="height:350px; object-fit:cover;">
-                                            </div>
-                                        @endforeach
+        <!-- Slides -->
+        @foreach ($images as $key => $img)
+            <div class="carousel-item {{ $key === 0 ? 'active' : '' }}">
+                <img src="{{ asset($img) }}"
+                     class="d-block w-100 rounded"
+                     style="height:350px; object-fit:cover;">
+            </div>
+        @endforeach
 
-                                    </div>
-                                </div>
+    </div>
+</div>
+
 
 
 
