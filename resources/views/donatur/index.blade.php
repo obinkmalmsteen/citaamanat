@@ -37,7 +37,7 @@
                             </td>
                             <td class="text-center">
                                 @if ($donatur->logo_donatur)
-                                    <img src="{{ asset('storage/logo_donatur/' . $donatur->logo_donatur) }}" width="60">
+                                    <img src="{{ asset('public/storage/logo_donatur/' . $donatur->logo_donatur) }}" width="60">
                                 @endif
 
                             </td>
