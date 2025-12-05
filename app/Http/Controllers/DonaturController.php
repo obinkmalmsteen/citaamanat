@@ -31,11 +31,16 @@ public function store(Request $request)
     ]);
 
     // upload file jika ada
-    if ($request->hasFile('logo_donatur')) {
-        $path = $request->file('logo_donatur')->store('logo_donatur', 'public');
-        $validated['logo_donatur'] = $path;
-        StorageSync::run();
-    }
+if ($request->hasFile('logo_donatur')) {
+    $file = $request->file('logo_donatur');
+    $filename = time() . '-' . $file->getClientOriginalName();
+
+    $file->storeAs('logo_donatur', $filename, 'public');
+
+    $validated['logo_donatur'] = $filename;
+
+    StorageSync::run();
+}
 
 
 
