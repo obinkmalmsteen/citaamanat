@@ -97,7 +97,7 @@
                             <td>{{ $item->ucapan }}</td>
                             <td class="text-center">
                                 @if ($item->photo)
-                                    <img src="{{ asset('storage/foto_pengelola/' . $item->photo) }}" alt="Foto Pengelola"
+                                    <img src="{{ asset('public/storage/foto_pengelola/' . $item->photo) }}" alt="Foto Pengelola"
                                         style="width: 70px; height: 70px; object-fit: cover; border-radius: 8px;">
                                 @else
                                     <span class="text-muted">Tidak ada foto</span>
