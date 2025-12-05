@@ -64,15 +64,17 @@ Testimonial::create([
 ]);
 
 // ⬇️ UPDATE TABEL MASJIDS BERDASARKAN id_pelanggan
+
 Masjid::where('id_pelanggan', $user->nama)
     ->update([
         'testimonial_status' => 1
     ]);
 
+$item = Masjid::where('id_pelanggan', $user->nama)
+    ->first();
 
-    return redirect()->route('testimonial.index')->with('success', 'Terimakasih telah mendukung kami silahkan untuk melakukan Pengajuan Token!');
+return redirect()->route('testimonial.index')->with('success', 'Terimakasih telah mendukung kami silahkan untuk memeriksa status pengajuan Token anda!');
 }
-
 
 
 }

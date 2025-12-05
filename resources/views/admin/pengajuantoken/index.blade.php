@@ -289,7 +289,7 @@ $(document).ready(function() {
 
     const table = $('#dataTable').DataTable({
         pageLength: 20,
-        ordering: false
+        ordering: true
     });
 
     // ============================

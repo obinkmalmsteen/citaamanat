@@ -88,8 +88,8 @@
     ======================== --}}
     
             <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%">
-                    <thead class="bg-primary text-white">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead class="bg-primary text-white">
                         <tr>
                             <th>No</th>
                             <th>ID Pelanggan</th>
@@ -101,7 +101,8 @@
                             <th>Disetujui</th>
                             <th>Aksi</th>
                             <th>Pengajuan</th>
-                            <th>Koordinat</th>
+                            <th>Tgl Daftar</th>
+                            {{-- <th>Koordinat</th> --}}
                         </tr>
                     </thead>
 
@@ -127,7 +128,8 @@
                                         class="btn btn-info btn-sm">Detail</a>
                                 </td>
                                 <td>{{ $item->total_pengajuan }}</td>
-                                <td>{{ $item->map_lokasi_masjid }}</td>
+                                <td>{{ $item->created_at }}</td>
+                                {{-- <td>{{ $item->map_lokasi_masjid }}</td> --}}
 
                             </tr>
                         @endforeach
@@ -272,12 +274,14 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+
+
 <script>
     $(document).ready(function() {
 
         const table = $('#dataTable').DataTable({
             "pageLength": 10,
-            "ordering": false,
+            "ordering": true,
         });
 
         // Fungsi untuk menerapkan kedua filter
