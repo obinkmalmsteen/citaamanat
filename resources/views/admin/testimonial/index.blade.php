@@ -31,20 +31,22 @@
                     @csrf
 
                     <div class="form-group mb-3">
-    <label for="ucapan" class="form-label required">Ucapan</label><label class="form-label text-danger">. * Harus Diisi</label>
-    <textarea name="ucapan" id="ucapan" class="form-control"
-              style="background-color: #f1f1f1;" rows="4" required></textarea>
-</div>
+                        <label for="ucapan" class="form-label required">Ucapan</label><label
+                            class="form-label text-danger">. * Harus Diisi</label>
+                        <textarea name="ucapan" id="ucapan" class="form-control" style="background-color: #f1f1f1;" rows="4" required></textarea>
+                    </div>
 
                     <br>
                     <div class="form-group mb-3">
-                        <label for="keterangan" class="form-label">Nama Pengelola Masjid </label><label class="form-label text-danger">. * Harus Diisi</label>
+                        <label for="keterangan" class="form-label">Nama Pengelola Masjid </label><label
+                            class="form-label text-danger">. * Harus Diisi</label>
                         <input type="text" placeholder="Contoh: Ketua DKM Al Abror, Ahmad Saeful" name="keterangan"
                             id="keterangan" class="form-control" style="background-color: #f1f1f1;" required>
                     </div>
                     <br>
                     <div class="form-group mb-3">
-                        <label for="foto_pengelola" class="form-label">Foto Ketua DKM / Pengelola Masjid</label><label class="form-label text-danger">. * Harus Diisi</label>
+                        <label for="foto_pengelola" class="form-label">Foto Ketua DKM / Pengelola Masjid</label><label
+                            class="form-label text-danger">. * Harus Diisi</label>
                         <input type="file" name="foto_pengelola" id="foto_pengelola-field" class="form-control"
                             style="background-color: #f1f1f1;" accept="image/*" required>
                     </div>
@@ -56,8 +58,8 @@
                             style="background-color: #f1f1f1;" accept="video/*">
                     </div>
                     <br>
-                 
- <div class="col-md-12 mb-4">
+
+                    <div class="col-md-12 mb-4">
                         <button type="submit" class="btn btn-success col-12">
                             <i class="fas fa-save mr-2"></i>
                             Kirim Testimonial
@@ -136,10 +138,10 @@
 @endsection
 
 <script>
-document.addEventListener("DOMContentLoaded", function() {
-    const tombol = document.querySelector('[data-toggle="collapse"][data-target="#formTambahTestimonial"]');
-    if (tombol) {
-        tombol.click(); // otomatis buka form
-    }
-});
+    document.addEventListener("DOMContentLoaded", function() {
+        const tombol = document.querySelector('[data-toggle="collapse"][data-target="#formTambahTestimonial"]');
+        if (tombol) {
+            tombol.click(); // otomatis buka form
+        }
+    });
 </script>

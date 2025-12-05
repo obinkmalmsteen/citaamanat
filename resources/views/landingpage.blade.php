@@ -189,6 +189,31 @@
             opacity: 1;
             background-color: #0d6efd;
         }
+        .purecounter {
+    font-weight: 600 !important;
+    font-size: 2.4rem !important;
+}
+
+.shadow-sm:hover {
+    transform: translateY(-3px);
+    transition: 0.3s;
+}
+.counter-box {
+    background-color: #f9f9f9; /* abu tipis sekali */
+    border: 1px solid #efefef; /* garis halus */
+}
+
+.counter-box:hover {
+    transform: translateY(-3px);
+    transition: 0.3s ease;
+}
+
+.purecounter {
+    font-weight: 700;
+    font-size: 2.8rem;
+}
+
+
     </style>
 
 
@@ -258,6 +283,7 @@
                                 </div>
                             </div>
 
+
                             {{-- <a class="carousel-control-prev" href="#carouselMasjid" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="sr-only">Prev</span>
@@ -267,8 +293,59 @@
         <span class="sr-only">Next</span>
     </a> --}}
                         </div>
+{{-- pure counter --}}
+ <div class="container my-4">
+    <div class="row g-3">
 
+        <!-- Item 1 -->
+        <div class="col-12 col-md-4">
+            <div class="counter-box p-3 text-center rounded-3 shadow-sm h-100">
+                <h2 class="text-primary mb-2">
+                    <span class="purecounter"
+                        data-purecounter-start="0"
+                        data-purecounter-end="{{ $masjidBelumDisetujui }}"
+                        data-purecounter-duration="2"></span>
+                </h2>
+                <small class="fw-bold text-secondary">
+                    Masjid Pendaftar Baru
+                </small>
+            </div>
+        </div>
 
+        <!-- Item 2 -->
+        <div class="col-12 col-md-4">
+            <div class="counter-box p-3 text-center rounded-3 shadow-sm h-100">
+                <h2 class="text-primary mb-2">
+                    <span class="purecounter"
+                        data-purecounter-start="0"
+                        data-purecounter-end="{{ $masjidDisetujui }}"
+                        data-purecounter-duration="2"></span>
+                </h2>
+                <small class="fw-bold text-secondary">
+                    Masjid Sudah Terverifikasi
+                </small>
+            </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="col-12 col-md-4">
+            <div class="counter-box p-3 text-center rounded-3 shadow-sm h-100">
+                <h2 class="text-primary mb-2">
+                    <span class="purecounter"
+                        data-purecounter-start="0"
+                        data-purecounter-end="{{ $totalRequestRealisasi }}"
+                        data-purecounter-duration="2"></span>
+                </h2>
+                <small class="fw-bold text-secondary">
+                    Jumlah Realisasi Token
+                </small>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{{-- // --}}
                         {{-- <div class="col-6">
                             <img src="/mosque/img/about2.png" class="img-fluid pb-3 wow zoomIn" data-wow-delay="0.1s"
                                 alt="">
@@ -1032,17 +1109,18 @@
             </div>
 
 
- <div class="row g-4 footer-inner">
+            <div class="row g-4 footer-inner">
                 <div class="col-md-4 col-lg-6 col-xl-12">
                     <div class="footer-item mt-5">
                         <h4 class="text-light mb-4"><span class="text-primary">Donatur Tetap :</span></h4>
-                   
-                        <p class="mb-1 text-light">Dapur MBG Singajaya | Dapur MBG MargaAsih | Koperasi Sahabat Sukses Mulya</p>
+
+                        <p class="mb-1 text-light">Dapur MBG Singajaya | Dapur MBG MargaAsih | Koperasi Sahabat Sukses
+                            Mulya</p>
                         {{-- <a href="" class="btn btn-primary py-2 px-4">Donate Now</a> --}}
                     </div>
                 </div>
 
-              
+
             </div>
 
 

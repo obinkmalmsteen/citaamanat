@@ -1,12 +1,50 @@
 <!-- Sidebar -->
-<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+<style>
+    .logo-sidebar {
+    width: 60px !important;
+    height: auto;
+}
+.sidebar .sidebar-brand {
+    padding-left: 2rem !important;  /* atau 0.75rem */
+}
+.sidebar-brand-icon {
+    background: #ffffff; /* ganti sesuai warna */
+    border-radius: 50%;
+    padding: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* opsional (bayangan biar bagus) */
+    box-shadow: 0 0 8px rgba(0,0,0,0.15);
+}
+/* Sidebar full scroll */
+.sidebar {
+    width: 280px !important;
+    height: 100vh !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+}
+
+
+
+.sidebar.toggled {
+    width: 100px !important;
+}
+
+
+</style>
+
+<ul class="navbar-nav bg-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('dashboard') }}">
         <div class="sidebar-brand-icon">
-            <i class="fas fa-tasks"></i>
+            <img src="/mosque/img/logoyayasan.png" class="logo-sidebar"
+     alt="Logo Yayasan">
+
         </div>
-        <div class="sidebar-brand-text mx-3">Panel Administrasi</div>
+        <div class="sidebar-brand-text mx-3">Cita Amanat Martadiredja</div>
     </a>
   <!-- Sidebar Toggler (Sidebar) -->
     {{-- <div class="text-center d-none d-md-inline">
