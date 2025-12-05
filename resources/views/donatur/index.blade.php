@@ -35,24 +35,14 @@
                                     <i class="fa text-dark"> - </i>
                                 @endif
                             </td>
-                            {{-- <td class="text-center">
+                            <td class="text-center">
                                 @if ($donatur->logo_donatur)
-                                    <img src="{{ asset('public/storage/logo_donatur/' . $donatur->logo_donatur) }}" width="60">
+                                    <img src="{{ asset('storage/logo_donatur/' . $donatur->logo_donatur) }}" width="60">
                                 @endif
 
-                            </td> --}}
+                            </td>
 
-                             <td>
-                             <div class="d-flex mb-3">
-                            <div class="position-relative">
-                                <img src="{{ asset('public/storage/logo_donatur/' . $donatur->logo_donatur) }}"
-                                     alt="Logo Donatur"
-                                     height="70"
-                                     class="rounded shadow w-100 object-fit-cover">
-                               
-                            </div>
-                        </div>
-                           </td>
+                            
 
                             <td>Rp {{ number_format($donatur->jumlah_donasi) }}</td>
                             <td>
