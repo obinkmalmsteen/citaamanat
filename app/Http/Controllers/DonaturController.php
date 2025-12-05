@@ -34,6 +34,7 @@ public function store(Request $request)
     if ($request->hasFile('logo_donatur')) {
         $path = $request->file('logo_donatur')->store('logo_donatur', 'public');
         $validated['logo_donatur'] = $path;
+        StorageSync::run();
     }
 
 

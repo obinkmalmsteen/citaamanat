@@ -208,6 +208,7 @@
                         <th>No</th>
 
                         <th>Nama Masjid</th>
+                        <th>foto Masjid</th>
                         <th>Kota</th>
                         <th>Status</th>
                         <th>Pengajuan</th>
@@ -226,6 +227,18 @@
                                     {{ $item->created_at }}
                                 </small>
                             </td>
+
+                           <td>
+                             <div class="d-flex mb-3">
+                            <div class="position-relative">
+                                <img src="{{ asset('public/storage/foto_masjid/' . $item->foto_masjid) }}"
+                                     alt="Foto Masjid"
+                                     height="70"
+                                     class="rounded shadow w-100 object-fit-cover">
+                               
+                            </div>
+                        </div>
+                           </td>
                             <td><strong>{{ $item->nama_kota }}</strong><br>
                                 <small class="text-muted">{{ $item->alamat_lengkap }}</small>
                             </td>
