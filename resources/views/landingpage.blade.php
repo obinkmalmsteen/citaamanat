@@ -189,31 +189,33 @@
             opacity: 1;
             background-color: #0d6efd;
         }
+
         .purecounter {
-    font-weight: 600 !important;
-    font-size: 2.4rem !important;
-}
+            font-weight: 600 !important;
+            font-size: 2.4rem !important;
+        }
 
-.shadow-sm:hover {
-    transform: translateY(-3px);
-    transition: 0.3s;
-}
-.counter-box {
-    background-color: #f9f9f9; /* abu tipis sekali */
-    border: 1px solid #efefef; /* garis halus */
-}
+        .shadow-sm:hover {
+            transform: translateY(-3px);
+            transition: 0.3s;
+        }
 
-.counter-box:hover {
-    transform: translateY(-3px);
-    transition: 0.3s ease;
-}
+        .counter-box {
+            background-color: #f9f9f9;
+            /* abu tipis sekali */
+            border: 1px solid #efefef;
+            /* garis halus */
+        }
 
-.purecounter {
-    font-weight: 700;
-    font-size: 2.8rem;
-}
+        .counter-box:hover {
+            transform: translateY(-3px);
+            transition: 0.3s ease;
+        }
 
-
+        .purecounter {
+            font-weight: 700;
+            font-size: 2.8rem;
+        }
     </style>
 
 
@@ -293,59 +295,56 @@
         <span class="sr-only">Next</span>
     </a> --}}
                         </div>
-{{-- pure counter --}}
- <div class="container my-4">
-    <div class="row g-3">
+                        {{-- pure counter --}}
+                        <div class="container my-4">
+                            <div class="row g-3">
 
-        <!-- Item 1 -->
-        <div class="col-12 col-md-4">
-            <div class="counter-box p-3 text-center rounded-3 shadow-sm h-100">
-                <h2 class="text-primary mb-2">
-                    <span class="purecounter"
-                        data-purecounter-start="0"
-                        data-purecounter-end="{{ $masjidBelumDisetujui }}"
-                        data-purecounter-duration="2"></span>
-                </h2>
-                <small class="fw-bold text-secondary">
-                    Masjid Pendaftar Baru
-                </small>
-            </div>
-        </div>
+                                <!-- Item 1 -->
+                                <div class="col-12 col-md-4">
+                                    <div class="counter-box p-3 text-center rounded-3 shadow-sm h-100">
+                                        <h2 class="text-primary mb-2">
+                                            <span class="purecounter" data-purecounter-start="0"
+                                                data-purecounter-end="{{ $masjidBelumDisetujui }}"
+                                                data-purecounter-duration="2"></span>
+                                        </h2>
+                                        <small class="fw-bold text-secondary">
+                                            Masjid Pendaftar Baru
+                                        </small>
+                                    </div>
+                                </div>
 
-        <!-- Item 2 -->
-        <div class="col-12 col-md-4">
-            <div class="counter-box p-3 text-center rounded-3 shadow-sm h-100">
-                <h2 class="text-primary mb-2">
-                    <span class="purecounter"
-                        data-purecounter-start="0"
-                        data-purecounter-end="{{ $masjidDisetujui }}"
-                        data-purecounter-duration="2"></span>
-                </h2>
-                <small class="fw-bold text-secondary">
-                    Masjid Sudah Terverifikasi
-                </small>
-            </div>
-        </div>
+                                <!-- Item 2 -->
+                                <div class="col-12 col-md-4">
+                                    <div class="counter-box p-3 text-center rounded-3 shadow-sm h-100">
+                                        <h2 class="text-primary mb-2">
+                                            <span class="purecounter" data-purecounter-start="0"
+                                                data-purecounter-end="{{ $masjidDisetujui }}"
+                                                data-purecounter-duration="2"></span>
+                                        </h2>
+                                        <small class="fw-bold text-secondary">
+                                            Masjid Sudah Terverifikasi
+                                        </small>
+                                    </div>
+                                </div>
 
-        <!-- Item 3 -->
-        <div class="col-12 col-md-4">
-            <div class="counter-box p-3 text-center rounded-3 shadow-sm h-100">
-                <h2 class="text-primary mb-2">
-                    <span class="purecounter"
-                        data-purecounter-start="0"
-                        data-purecounter-end="{{ $totalRequestRealisasi }}"
-                        data-purecounter-duration="2"></span>
-                </h2>
-                <small class="fw-bold text-secondary">
-                    Jumlah Realisasi Token
-                </small>
-            </div>
-        </div>
+                                <!-- Item 3 -->
+                                <div class="col-12 col-md-4">
+                                    <div class="counter-box p-3 text-center rounded-3 shadow-sm h-100">
+                                        <h2 class="text-primary mb-2">
+                                            <span class="purecounter" data-purecounter-start="0"
+                                                data-purecounter-end="{{ $totalRequestRealisasi }}"
+                                                data-purecounter-duration="2"></span>
+                                        </h2>
+                                        <small class="fw-bold text-secondary">
+                                            Jumlah Realisasi Token
+                                        </small>
+                                    </div>
+                                </div>
 
-    </div>
-</div>
+                            </div>
+                        </div>
 
-{{-- // --}}
+                        {{-- // --}}
                         {{-- <div class="col-6">
                             <img src="/mosque/img/about2.png" class="img-fluid pb-3 wow zoomIn" data-wow-delay="0.1s"
                                 alt="">
@@ -1025,6 +1024,102 @@
     </div>
 
 
+    <style>
+        .footer-donatur {
+            color: #fff;
+            padding-bottom: 20px;
+            font-family: "Inter", sans-serif;
+        }
+
+        /* Grid layout seperti contoh */
+        .donatur-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+            gap: 20px 40px;
+        }
+
+        /* Nama donatur */
+        .donatur-name {
+            font-size: 14px;
+            color: #ffffff;
+            font-weight: 500;
+            margin-bottom: 6px;
+            transition: .2s;
+        }
+
+        /* Hover efek link style */
+        .donatur-name:hover {
+            color: #D79B19;
+            /* branding emas */
+        }
+
+        /* alamat kecil */
+        .donatur-address {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.65);
+            line-height: 1.3;
+        }
+
+        /* Responsif */
+        @media (max-width: 640px) {
+            .donatur-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Wrapper fix circle */
+        .avatar-wrapper {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.20);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        /* Logo & Foto */
+        .avatar-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+      .donatur-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.avatar-wrapper {
+    width: 50px;
+    height: 50px;
+    flex-shrink: 0;
+}
+
+.avatar-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.avatar-initial {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #ffc107;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #000;
+    font-size: 14px;
+}
+
+    </style>
+
     <!-- Footer Start -->
     <div class="container-fluid footer pt-15 wow fadeIn" data-wow-delay="0.1s">
         <div class="container py-15">
@@ -1033,8 +1128,9 @@
                 <div class="col-md-4 col-lg-6 col-xl-4">
                     <div class="footer-item mt-5">
                         <h4 class="text-light mb-4">Cita <span class="text-primary">Amanat Martadiredja</span></h4>
-                        <p class="mb-4 text-light">Menjadi Pelopor Gerakan Filantropi yang memberdayakan Umat untuk
-                            Kemandirian dan kemulian dalam
+                        <p class=" text-light m-0">Menjadi Pelopor Gerakan Filantropi yang memberdayakan Umat untuk
+                            Kemandirian dan
+                            kemulian dalam
                             bingkai Keimanan dan Ketaqwaan.</p>
                         {{-- <a href="" class="btn btn-primary py-2 px-4">Donate Now</a> --}}
                     </div>
@@ -1109,19 +1205,70 @@
             </div>
 
 
-            <div class="row g-4 footer-inner">
-                <div class="col-md-4 col-lg-6 col-xl-12">
-                    <div class="footer-item mt-5">
-                        <h4 class="text-light mb-4"><span class="text-primary">Donatur Tetap :</span></h4>
+            <div class="footer-donatur mt-5">
+                <h4 class="text-warning mb-4">Donatur Tetap</h4>
 
-                        <p class="mb-1 text-light">Dapur MBG Singajaya | Dapur MBG MargaAsih | Koperasi Sahabat Sukses
-                            Mulya</p>
-                        {{-- <a href="" class="btn btn-primary py-2 px-4">Donate Now</a> --}}
-                    </div>
-                </div>
+                <div class="donatur-grid">
+                    @forelse($donaturTetap as $donatur)
+                        <div class="donatur-item">
+
+    <div class="donatur-profile">
+        <div class="avatar-wrapper">
+
+            {{-- Logo --}}
+            @if (!empty($donatur->logo_donatur))
+                <img src="{{ asset('public/storage/logo_donatur/' . $donatur->logo_donatur) }}"
+                    class="avatar-image">
+
+          
+
+           
+            {{-- Initial --}}
+@else
+    @php
+        // Pisahkan nama berdasarkan spasi
+        $words = explode(' ', trim($donatur->nama_donatur));
+
+        // Ambil maksimal 3 kata
+        $initial = '';
+        foreach (array_slice($words, 0, 3) as $w) {
+            $initial .= strtoupper(substr($w, 0, 1));
+        }
+    @endphp
+
+    <div class="avatar-initial">
+        {{ $initial }}
+    </div>
+@endif
 
 
+        </div>
+
+        <div>
+            <div class="donatur-name">
+                {{ $donatur->nama_donatur }}
             </div>
+            @if ($donatur->alamat_donatur)
+                <div class="donatur-address">
+                    {{ $donatur->alamat_donatur }}
+                </div>
+            @endif
+        </div>
+    </div>
+
+</div>
+
+                    @empty
+                        <span class="text-light">Belum ada Donatur Tetap</span>
+                    @endforelse
+                </div>
+            </div>
+
+
+
+
+
+
 
 
 

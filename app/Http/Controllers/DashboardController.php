@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Masjid;
+use App\Models\Donatur;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Testimonial; // ✅ Tambahkan ini
@@ -84,6 +85,10 @@ public function landingpage()
 
          // Ambil testimoni terbaru
     $listmasjid = Masjid::where('disetujui', 1)->take(150)->get();
+
+    $donaturTetap = Donatur::where('donatur_tetap', 1)
+    ->limit(5)
+    ->get();
     // Kirim ke view
     return view('landingpage', compact(
         'masjidDisetujui',
@@ -91,7 +96,8 @@ public function landingpage()
         'totalRequestRealisasi',
         'testimonials',
         'masjids',
-        'listmasjid' 
+        'listmasjid' ,
+        'donaturTetap'
     ));
 
     
@@ -128,13 +134,16 @@ public function mobilelandingpage()
         ->whereNotNull('map_lokasi_masjid')
         ->get();
 
+    $donaturTetap = Donatur::where('donatur_tetap', 1)->get();
+
     // Kirim ke view
     return view('mobilelandingpage', compact(
         'masjidDisetujui',
         'masjidBelumDisetujui',
         'totalRequestRealisasi',
         'testimonials',
-        'masjids'
+        'masjids',
+        'donaturTetap'
     ));
 }
 
