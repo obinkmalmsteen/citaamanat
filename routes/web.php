@@ -38,6 +38,7 @@ Route::get('/list-masjid', [DashboardController::class, 'listmasjid'])->name('li
 Route::get('/form-registrasi', [DashboardController::class, 'formregistrasi'])->name('formregistrasi');
 Route::get('/mobile-landingpage', [DashboardController::class, 'landingpage'])->name('landingpage');
 Route::get('/mobile-daftarmasjid', [DashboardController::class, 'mobiledaftarmasjid'])->name('mobiledaftarmasjid');
+Route::get('/list-donatur', [DashboardController::class, 'listdonatur'])->name('listdonatur');
 
 // Login
 Route::get('login',[AuthController::class,'login'])->name('login');
@@ -145,6 +146,8 @@ Route::put('masjid/{id}/update-full', [MasjidController::class, 'updateFull'])
     ->name('masjid.updateFull');
 
 Route::get('/kirim-pesan/{id}', [MasjidController::class, 'kirimPesan'])->name('kirim.pesan');
+Route::get('/kirim-pesantemplate/{id}', [MasjidController::class, 'kirimPesanTemplate'])->name('kirim.pesantemplate');
+
 
   // karyawan membuat request
     Route::get('pengadaan', [PengadaanRequestController::class,'index'])->name('pengadaan.index');
@@ -162,6 +165,8 @@ Route::get('/pengadaan/{id}/export-pdf', [PengadaanRequestController::class, 'ex
     ->name('pengadaan.export_pdf');
 
 Route::resource('donatur', DonaturController::class);
+Route::get('/donatur/{id}', [DonaturController::class, 'show'])->name('donatur.show');
+Route::post('/donatur/{id}/donasi', [DonaturController::class, 'storeDonasi'])->name('donatur.donasi.store');
 
 
 Route::get('/export/masjids', function () {

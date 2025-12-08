@@ -5,19 +5,31 @@ namespace App\Http\Controllers;
 use App\Models\Donatur;
 use App\Helpers\StorageSync;
 use Illuminate\Http\Request;
+use App\Models\DonasiHistori;
 use Illuminate\Support\Facades\Storage;
 
 class DonaturController extends Controller
 {
     public function index()
     {
-        $donaturs = Donatur::latest()->paginate(10);
-        return view('donatur.index', compact('donaturs'));
+         $data = [
+        'title' => 'DataDonatur',
+        'menuAdminDonatur' => 'active',
+    ];
+         $totalSemuaDonasi = DonasiHistori::sum('jumlah_donasi');
+        $donaturs = Donatur::with('donasi')->paginate(10);
+    return view('donatur.index', $data, compact('donaturs','totalSemuaDonasi'));
     }
 
    public function create()
 {
-    return view('donatur.create');
+    // return view('donatur.create');
+
+    return view('donatur.create', [
+        
+        'title' => 'Data Donatur',
+        'menuAdminDonatur' => 'active'
+        ]);
 }
 
 public function store(Request $request)
@@ -52,7 +64,11 @@ if ($request->hasFile('logo_donatur')) {
 
 public function edit(Donatur $donatur)
 {
-    return view('donatur.edit', compact('donatur'));
+       $data = [
+        'title' => 'DataDonatur',
+        'menuAdminDonatur' => 'active',
+    ];
+    return view('donatur.edit',$data, compact('donatur'));
 }
 
 public function update(Request $request, Donatur $donatur)
@@ -90,4 +106,31 @@ public function update(Request $request, Donatur $donatur)
         return redirect()->route('donatur.index')
             ->with('success', 'Data donatur berhasil dihapus.');
     }
+
+
+    public function show($id)
+{
+    
+    $data = Donatur::with('donasi')->findOrFail($id);
+
+    return view('donatur.show', compact('data'));
+}
+
+
+
+public function storeDonasi(Request $request, $id)
+{
+    $validated = $request->validate([
+        'jumlah_donasi' => 'required|numeric|min:1',
+    ]);
+
+    DonasiHistori::create([
+        'donatur_id' => $id,
+        'jumlah_donasi' => $validated['jumlah_donasi'],
+    ]);
+
+    return redirect()->route('donatur.show', $id)->with('success', 'Donasi berhasil ditambahkan!');
+}
+
+
 }

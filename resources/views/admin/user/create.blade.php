@@ -51,6 +51,7 @@
                             <option value="Karyawan">Karyawan</option>
                             <option value="User">Penerima Manfaat</option>
                             <option value="Relawan">Relawan</option>
+                            <option value="Donatur">Donatur</option>
                         </select>
                         @error('jabatan')
                         <small class="text-danger">{{ $message }}</small>  

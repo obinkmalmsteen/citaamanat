@@ -51,13 +51,13 @@
             </div>
 
 
-            <div class="mb-3">
+            {{-- <div class="mb-3">
                 <label>Jumlah Donasi</label>
                 <input type="number" name="jumlah_donasi" class="form-control" value="{{ old('jumlah_donasi') }}">
                 @error('jumlah_donasi')
                     <small class="text-danger">{{ $message }}</small>
                 @enderror
-            </div>
+            </div> --}}
 
             <button class="btn btn-success">Simpan</button>
             <a href="{{ route('donatur.index') }}" class="btn btn-secondary">Kembali</a>

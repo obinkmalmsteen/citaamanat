@@ -1124,20 +1124,20 @@
         <div class="container py-15">
 
             <div class="row g-4 footer-inner">
-<div class="col-md-4 col-lg-6 col-xl-2">
+                <div class="col-md-4 col-lg-6 col-xl-2">
                     <div class="footer-item mt-5">
                         <div class="col-12">
-                            <img src="/mosque/img/logoyayasan.png" class="img-fluid rounded-circle" alt=""  class="img-fluid rounded"
-                                                        style="width: 200px; height: 200px; object-fit: cover;">
+                            <img src="/mosque/img/logoyayasan.png" class="img-fluid rounded-circle" alt=""
+                                class="img-fluid rounded" style="width: 200px; height: 200px; object-fit: cover;">
                         </div>
                     </div>
                 </div>
 
 
                 <div class="col-md-4 col-lg-6 col-xl-4">
-                    
+
                     <div class="footer-item mt-5">
-                        
+
                         <h4 class="text-light mb-4"><span class="text-primary">Cita Amanat Martadiredja</span></h4>
                         <p class=" text-light m-0">Menjadi Pelopor Gerakan Filantropi yang memberdayakan Umat untuk
                             Kemandirian dan
@@ -1145,27 +1145,27 @@
                             bingkai Keimanan dan Ketaqwaan.</p>
                         {{-- <a href="" class="btn btn-primary py-2 px-4">Donate Now</a> --}}
                     </div>
-                    
+
                 </div>
                 <div class="col-md-4 col-lg-6 col-xl-4">
                     <div class="footer-item mt-5">
                         <h4 class="text-primary mb-4">Alamat</h4>
-                        
-                            <div class="d-flex align-items-center border-bottom py-4">
-                                <span class="flex-shrink-0 btn-square bg-primary me-3 p-4"><i
-                                        class="fa fa-map-marker-alt text-dark"></i></span>
-                                <a href="" class="text">Puri Indah Cihampelas, Blok E7, No.15, Citapen,
-                                    Cihampelas, Kab Bandung Barat,
-                                    Jawa Barat, Indonesia</a>
-                            </div>
-                        
+
+                        <div class="d-flex align-items-center border-bottom py-4">
+                            <span class="flex-shrink-0 btn-square bg-primary me-3 p-4"><i
+                                    class="fa fa-map-marker-alt text-dark"></i></span>
+                            <a href="" class="text-light">Puri Indah Cihampelas, Blok E7, No.15, Citapen,
+                                Cihampelas, Kab Bandung Barat,
+                                Jawa Barat, Indonesia</a>
+                        </div>
+
                     </div>
                 </div>
                 <div class="col-md-4 col-lg-6 col-xl-2">
                     <div class="footer-item mt-5">
                         <h4 class="text-primary mb-4">Explore Link</h4>
                         <div class="d-flex flex-column align-items-start">
-                            <a class="text-light mb-2" href="{{ route('landingpage') }}"><i
+                            <a class="text-primary mb-2" href="{{ route('landingpage') }}"><i
                                     class="fa fa-check text-primary me-2"></i>Beranda</a>
                             <a class="text-light mb-2" href="{{ route('tentangkami') }}"><i
                                     class="fa fa-check text-light me-2"></i>Tentang Kami</a>
@@ -1183,22 +1183,36 @@
                     </div>
                 </div>
 
-                
+
             </div>
 
 
             <div class="row g-4 footer-inner">
-                <div class="col-md-4 col-lg-6 col-xl-9">
+                <div class="col-md-4 col-lg-6 col-xl-4">
                     <div class="footer-item mt-5">
-                        <h4 class="text-light mb-4"><span class="text-primary">Donasi :</span></h4>
-                        <p class="mb-1 text-light">Dengan segala kerendahan hati, kami membuka kesempatan bagi
-                            Bapak/Ibu yang ingin menunaikan sedekah jariyah untuk kemaslahatan masjid. Donasi dapat
-                            ditransfer ke: <span class="text-primary"> Yayasan Cita Amanat martadiredja
-                                <b>BNI 1967473460</b> </span> .</p>
-                        <p class="mb-1 text-light">Insya Allah, setiap amanah yang diberikan akan kami salurkan melalui
-                            program-program yang kami jalankan demi kemakmuran masjid khususnya, serta kemaslahatan umat
-                            pada umumnya. Semoga Allah membalas setiap kebaikan yang dititipkan, dan menjadikannya amal
-                            yang terus mengalir manfaatnya bagi umat.</p>
+                        <h6 class="text-light mb-4"><span class="text-primary">Donasi Terkumpul Sampai : <p
+                                    class="mb-1 text-light" id="tanggalSekarang"></p></span></h6>
+
+
+                        <h3 class="mb-1 text-light"><span class="text-primary">
+                                Rp {{ number_format($totalDonasi, 0, ',', '.') }} </span> </h3>
+                        <h6 class="text-light mb-4"><span class="text-primary">- </span></h6>
+                        <h6 class="text-light mb-4"><span class="text-primary">Donasi Terkumpul Sampai :{{ $totalDonaturTetap }} <p class="mb-1 text-light"></p>Partisipan Kebaikan :
+                                {{ $totalDonaturTidakTetap }}</span></h6>
+
+
+
+
+                        {{-- <a href="" class="btn btn-primary py-2 px-4">Donate Now</a> --}}
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-6 col-xl-5">
+                    <div class="footer-item mt-5">
+                        <h5 class="text-light mb-4"><span class="text-light"><br></span></h5>
+                        <h5 class="text-light mb-4"><span class="text-light">Penyaluran Donasi melalui :</span></h5>
+                        <h4 class="mb-1 text-light"><span class="text-primary"> Yayasan Cita Amanat martadiredja
+                            </span> </h4>
+                        <h4 class="mb-1 text-light">BNI 1967473460 </h4>
                         {{-- <a href="" class="btn btn-primary py-2 px-4">Donate Now</a> --}}
                     </div>
                 </div>
@@ -1276,12 +1290,6 @@
                     @endforelse
                 </div>
             </div>
-
-
-
-
-
-
 
 
 
@@ -1509,6 +1517,14 @@
         function showImageModal(src) {
             document.getElementById('modalImage').src = src;
         }
+    </script>
+    <script>
+        document.getElementById('tanggalSekarang').innerText =
+            new Date().toLocaleDateString('id-ID', {
+                day: '2-digit',
+                month: 'long',
+                year: 'numeric'
+            });
     </script>
 
 

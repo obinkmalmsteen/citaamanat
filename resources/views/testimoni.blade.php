@@ -233,8 +233,10 @@
                     <div class="footer-item mt-5">
                         <h4 class="text-light mb-4">Explore Link</h4>
                         <div class="d-flex flex-column align-items-start">
+
                             <a class="text-light mb-2" href="{{ route('landingpage') }}"><i
-                                    class="fa fa-check text-light me-2"></i>Beranda</a>
+                                    class="fa fa-check text-light me-2" active></i>Beranda</a>
+                                    
                             <a class="text-light mb-2" href="{{ route('tentangkami') }}"><i
                                     class="fa fa-check text-light me-2"></i>Tentang Kami</a>
                             <a class="text-light mb-2" href="{{ route('aktifitas') }}"><i

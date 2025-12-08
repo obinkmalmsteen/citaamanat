@@ -10,7 +10,14 @@
             </div>
 
             <div><a href="{{ url()->previous() }}" class="btn btn-secondary mb-3">Kembali</a></div>
+@php
+    use App\Models\Cabang;
 
+   
+    $user = Auth::user();
+@endphp
+
+            @if($user->jabatan === 'User')
             {{-- panel aturan start --}}
 
             <div class="row justify-content-center mt-4">
@@ -40,17 +47,18 @@
 
                 </div>
             </div>
-            {{-- panel aturan end--}}
 
+            {{-- panel aturan end --}}
+@endif
             <div class="card-body">
 
                 {{-- Tambahkan pembungkus untuk tombol --}}
                 <div class="text-center my-4">
                     @if (!$adaRequestBelumRealisasi)
-                    <div class="d-flex justify-content-center my-3">
-                        <button class="btn btn-success w-50 py-4" id="btnRequestToken">
-                            PENGAJUAN TOKEN / PEMBAYARAN LISTRIK
-                        </button>
+                        <div class="d-flex justify-content-center my-3">
+                            <button class="btn btn-success w-50 py-4" id="btnRequestToken">
+                                PENGAJUAN TOKEN / PEMBAYARAN LISTRIK
+                            </button>
                         </div>
                     @else
                         <div id="progressContainer">
@@ -74,7 +82,8 @@
                     <form action="{{ route('masjid.requestToken', $masjid->id_pelanggan) }}" method="POST">
                         @csrf
                         <div class="d-flex justify-content-center ">
-                            <button type="button" class="btn btn-secondary w-25 py-4 me-2" id="btnBatalRequest">Batal</button>
+                            <button type="button" class="btn btn-secondary w-25 py-4 me-2"
+                                id="btnBatalRequest">Batal</button>
                             <button type="submit" class="btn btn-success w-25 py-2">Kirim Permintaan</button>
                         </div>
                     </form>
@@ -203,6 +212,16 @@
                     width: 100%;
                     height: 320px;
                 }
+
+                .template-option {
+                    transition: .2s ease;
+                    cursor: pointer;
+                }
+
+                .template-option:hover {
+                    background: #f2fdf5;
+                    border-color: #86e1a8;
+                }
             </style>
 
             <div class="history-slider mt-3">
@@ -319,7 +338,36 @@
     <div class="container py-4">
         <div class="card shadow border-0 rounded-4 p-4">
 
+<div class="mt-3">
+@if(session('success'))
+<div class="alert alert-success alert-dismissible fade show mt-3 shadow-sm d-flex justify-content-between align-items-center"
+     role="alert"
+     style="border-left: 6px solid #28a745; background: #e9fdf0;">
 
+    <div class="d-flex align-items-center">
+        <i class="bi bi-check-circle-fill me-2" style="font-size: 1.3rem; color: #28a745;"></i>
+        <span class="fw-semibold">{{ session('success') }}</span>
+    </div>
+
+    <button type="button" class="btn border-0 bg-transparent fw-bold fs-5 text-secondary"
+        data-bs-dismiss="alert" aria-label="Close"
+        style="line-height: 1; padding: 0 6px;">
+    Tutup
+</button>
+
+</div>
+@endif
+
+
+
+
+                <button class="btn btn-success btn-sm w-40 py-2" data-bs-toggle="modal" data-id="{{ $masjid->id_pelanggan }}"
+                    data-bs-target="#modalTemplatePesan">
+                     <i class="bi bi-whatsapp me-2 text-white"></i> <b>Kirim Pesan WHATSAPP Kepada User Ini</b>
+                </button>
+            </div>
+            <div> <br><br> </div>
+            
             <!-- HEADER -->
             <div class="text-center mb-4">
                 <div class="text-center">
@@ -344,6 +392,10 @@
                 </p>
 
             </div>
+
+            
+
+
 
             <hr>
 
@@ -431,7 +483,11 @@
                                 'value' => $masjid->alamat_lengkap,
                             ],
                             ['icon' => 'bi-card-text', 'label' => 'Pernyataan', 'value' => $masjid->pernyataan],
-                             ['icon' => 'bi-card-text', 'label' => 'Koordinat Map', 'value' => $masjid->map_lokasi_masjid],
+                            [
+                                'icon' => 'bi-card-text',
+                                'label' => 'Koordinat Map',
+                                'value' => $masjid->map_lokasi_masjid,
+                            ],
                         ];
                     @endphp
 
@@ -497,6 +553,93 @@
     </div>
     </div>
 @endsection
+
+{{-- Modal Start --}}
+<div class="modal fade" id="modalTemplatePesan" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <form method="GET" id="formKirimPesan" class="w-100">
+
+            <div class="modal-content shadow-lg border-0 rounded-3">
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="modal-title fw-bold">
+                        <i class="bi bi-whatsapp me-2 text-success"></i>
+                        Pilih Template Pesan
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+
+                    <div class="list-group">
+
+                        <!-- Template 1 -->
+                        <label
+                            class="list-group-item border rounded-3 mb-2 d-flex align-items-start py-3 template-option">
+                            <input class="form-check-input me-3" type="radio" name="template" value="1">
+                            <div>
+                                <div class="fw-semibold">Foto Masjid Kurang Jelas</div>
+                                <small class="text-muted">
+                                    Silahkan kirim ulang foto masjid Anda agar tampak lebih jelas.
+                                </small>
+                            </div>
+                        </label>
+
+                        <!-- Template 2 -->
+                        <label
+                            class="list-group-item border rounded-3 mb-2 d-flex align-items-start py-3 template-option">
+                            <input class="form-check-input me-3" type="radio" name="template" value="2">
+                            <div>
+                                <div class="fw-semibold">Alamat Tidak Sesuai Maps</div>
+                                <small class="text-muted">
+                                    Data alamat Anda kurang sesuai, silahkan perbaiki agar sesuai lokasi Maps.
+                                </small>
+                            </div>
+                        </label>
+                           <!-- Template 3 -->
+                        <label
+                            class="list-group-item border rounded-3 mb-2 d-flex align-items-start py-3 template-option">
+                            <input class="form-check-input me-3" type="radio" name="template" value="3">
+                            <div>
+                                <div class="fw-semibold">Permohonan maaf masjid tidak Disetujui</div>
+                                <small class="text-muted">
+                                    Assalmualaikum, kami Ucapkan Mohon maaf kepada Bapak/Ibu Pengurus Masjid/Mushola ... Dikarenakan Untuk saat ini Registrasi anda belum bisa kami Setujui
+                                </small>
+                            </div>
+                        </label>
+
+                        <!-- Manual -->
+                        <label class="list-group-item border rounded-3 d-flex align-items-start py-3 template-option">
+                            <input class="form-check-input me-3" type="radio" name="template" value="manual"
+                                id="templateManual">
+                            <div>
+                                <div class="fw-semibold">Isi Pesan Manual</div>
+                                <small class="text-muted">
+                                    Tuliskan pesan Anda sendiri.
+                                </small>
+                            </div>
+                        </label>
+                    </div>
+
+                    <!-- Textarea Manual -->
+                    <div id="manualInput" class="mt-3" style="display:none;">
+                        <textarea name="pesan_manual" class="form-control rounded-3" rows="4" placeholder="Tulis pesan disini..."></textarea>
+                    </div>
+
+                </div>
+
+                <div class="modal-footer border-0 pt-0">
+                    <button type="submit" class="btn btn-success px-4 rounded-3">
+                        <i class="bi bi-send me-1"></i> Kirim Pesan
+                    </button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+{{-- modal end --}}
+
+
 <style>
     .map-square {
         width: 500px;
@@ -548,7 +691,6 @@
         });
     </script>
     {{ session()->forget('success') }}
-
 @endif
 
 @if (session('warning'))
@@ -653,5 +795,26 @@
                 btnRealisasi.style.display = 'inline-block';
             });
         }
+    });
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var modal = document.getElementById('modalTemplatePesan');
+
+        modal.addEventListener('show.bs.modal', function(event) {
+            var button = event.relatedTarget;
+            var id = button.getAttribute('data-id');
+            var form = document.getElementById('formKirimPesan');
+            form.action = "/kirim-pesantemplate/" + id;
+        });
+
+        const radios = document.querySelectorAll("input[name='template']");
+        const manualInput = document.getElementById("manualInput");
+
+        radios.forEach(radio => {
+            radio.addEventListener("change", function() {
+                manualInput.style.display = (this.value === "manual") ? "block" : "none";
+            });
+        });
     });
 </script>

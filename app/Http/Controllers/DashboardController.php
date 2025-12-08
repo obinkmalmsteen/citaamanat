@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DonasiHistori;
 use App\Models\User;
 use App\Models\Masjid;
 use App\Models\Donatur;
@@ -83,6 +84,14 @@ public function landingpage()
         ->whereNotNull('map_lokasi_masjid')
         ->get();
 
+   $totalDonasi = DonasiHistori::sum('jumlah_donasi');
+
+           // Jumlah donatur tetap (donatur_tetap = 1)
+        $totalDonaturTetap = Donatur::where('donatur_tetap', 1)->count();
+
+        // Jumlah donatur tidak tetap (donatur_tetap = 0)
+        $totalDonaturTidakTetap = Donatur::where('donatur_tetap', 0)->count();
+
          // Ambil testimoni terbaru
     $listmasjid = Masjid::where('disetujui', 1)->take(150)->get();
 
@@ -97,7 +106,10 @@ public function landingpage()
         'testimonials',
         'masjids',
         'listmasjid' ,
-        'donaturTetap'
+        'donaturTetap',
+        'totalDonasi',
+        'totalDonaturTetap',
+        'totalDonaturTidakTetap'
     ));
 
     
@@ -109,9 +121,11 @@ public function tentangkami()
 {
     // Hitung semua user terdaftar
     $jumlahUser = User::count();
-
+ $donaturTetap = Donatur::where('donatur_tetap', 1)
+    ->limit(5)
+    ->get();
     // Kirim hasilnya ke view
-    return view('tentangkami', compact('jumlahUser'));
+    return view('tentangkami', compact('jumlahUser','donaturTetap'));
 }
 public function mobilelandingpage()
 {
@@ -158,14 +172,19 @@ public function mobiledaftarmasjid()
 
 public function aktifitas()
 {
-   
-    return view('aktifitas');
+     $donaturTetap = Donatur::where('donatur_tetap', 1)
+    ->limit(5)
+    ->get();
+    return view('aktifitas', compact('donaturTetap'));
 }
 
 public function acara()
 {
+    $donaturTetap = Donatur::where('donatur_tetap', 1)
+    ->limit(5)
+    ->get();
    
-    return view('acara');
+    return view('acara', compact('donaturTetap'));
 }
 
 public function testimoni()
@@ -181,8 +200,11 @@ public function testimoni()
 
 public function kontakkami()
 {
+     $donaturTetap = Donatur::where('donatur_tetap', 1)
+    ->limit(5)
+    ->get();
    
-    return view('kontakkami');
+    return view('kontakkami', compact('donaturTetap'));
 }
 
 public function listmasjid()
@@ -194,7 +216,17 @@ public function listmasjid()
     return view('listmasjid', compact( 'listmasjid'));
 }
 
+public function listdonatur()
+{
+    // Ambil testimoni terbaru
+    $listmasjid = Masjid::where('disetujui', 1)->take(150)->get();
+      $donaturTetap = Donatur::where('donatur_tetap', 1)
+    ->limit(5)
+    ->get();
 
+    // Kirim ke view
+    return view('listdonatur', compact( 'listmasjid','donaturTetap'));
+}
 
 
 public function formregistrasi()

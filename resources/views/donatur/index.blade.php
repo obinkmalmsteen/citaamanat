@@ -37,15 +37,19 @@
                             </td>
                             <td class="text-center">
                                 @if ($donatur->logo_donatur)
-                                    <img src="{{ asset('public/storage/logo_donatur/' . $donatur->logo_donatur) }}" width="60">
+                                    <img src="{{ asset('public/storage/logo_donatur/' . $donatur->logo_donatur) }}"
+                                        width="60">
                                 @endif
 
                             </td>
 
-                            
 
-                            <td>Rp {{ number_format($donatur->jumlah_donasi) }}</td>
+
+                            <td>Rp {{ number_format($donatur->totalDonasi(), 0, ',', '.') }}</td>
+
                             <td>
+                                <a href="{{ route('donatur.show', $donatur) }}" class="btn btn-sm btn-info">Detail</a>
+
                                 <a href="{{ route('donatur.edit', $donatur) }}" class="btn btn-sm btn-warning">Edit</a>
 
                                 <form action="{{ route('donatur.destroy', $donatur) }}" method="POST"
@@ -56,12 +60,18 @@
                                         Hapus
                                     </button>
                                 </form>
-
                             </td>
+
                         </tr>
                     @endforeach
                 </tbody>
+                
             </table>
+
+            <div class="alert alert-success">
+    <strong>Total Semua Donasi:</strong> 
+    Rp {{ number_format($totalSemuaDonasi, 0, ',', '.') }}
+</div>
 
             {{ $donaturs->links() }}
         </div>

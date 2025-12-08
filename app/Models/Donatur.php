@@ -2,18 +2,27 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Donatur extends Model
 {
-    use HasFactory;
+    protected $table = 'donaturs';
 
     protected $fillable = [
         'nama_donatur',
         'alamat_donatur',
         'donatur_tetap',
         'logo_donatur',
-        'jumlah_donasi'
     ];
+
+    // tambahkan ini ⬇️
+    public function donasi()
+    {
+        return $this->hasMany(DonasiHistori::class, 'donatur_id');
+    }
+
+    public function totalDonasi()
+    {
+        return $this->donasi()->sum('jumlah_donasi');
+    }
 }

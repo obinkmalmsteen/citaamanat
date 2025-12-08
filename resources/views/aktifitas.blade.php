@@ -379,42 +379,153 @@ Dengan izin Allah, semoga program Muadzin Cilik dapat terus berkembang dan menja
     
 
 
-   <!-- Footer Start -->
-        <div class="container-fluid footer pt-15 wow fadeIn" data-wow-delay="0.1s">
+  
+    <style>
+        .footer-donatur {
+            color: #fff;
+            padding-bottom: 20px;
+            font-family: "Inter", sans-serif;
+        }
+
+        /* Grid layout seperti contoh */
+        .donatur-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+            gap: 20px 40px;
+        }
+
+        /* Nama donatur */
+        .donatur-name {
+            font-size: 14px;
+            color: #ffffff;
+            font-weight: 500;
+            margin-bottom: 6px;
+            transition: .2s;
+        }
+
+        /* Hover efek link style */
+        .donatur-name:hover {
+            color: #D79B19;
+            /* branding emas */
+        }
+
+        /* alamat kecil */
+        .donatur-address {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.65);
+            line-height: 1.3;
+        }
+
+        /* Responsif */
+        @media (max-width: 640px) {
+            .donatur-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Wrapper fix circle */
+        .avatar-wrapper {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.20);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        /* Logo & Foto */
+        .avatar-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .donatur-profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .avatar-wrapper {
+            width: 50px;
+            height: 50px;
+            flex-shrink: 0;
+        }
+
+        .avatar-image {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .avatar-initial {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #ffc107;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #000;
+            font-size: 14px;
+        }
+    </style>
+
+    <!-- Footer Start -->
+    <div class="container-fluid footer pt-15 wow fadeIn" data-wow-delay="0.1s">
         <div class="container py-15">
-         
+
             <div class="row g-4 footer-inner">
-                <div class="col-md-4 col-lg-6 col-xl-4">
+<div class="col-md-4 col-lg-6 col-xl-2">
                     <div class="footer-item mt-5">
-                        <h4 class="text-light mb-4">Cita <span class="text-primary">Amanat Martadiredja</span></h4>
-                        <p class="mb-4 text-light">Menjadi Pelopor Gerakan Filantropi yang memberdayakan Umat untuk Kemandirian dan kemulian dalam
-                    bingkai Keimanan dan Ketaqwaan.</p>
-                        {{-- <a href="" class="btn btn-primary py-2 px-4">Donate Now</a> --}}
-                    </div>
-                </div>
-                <div class="col-md-4 col-lg-6 col-xl-4">
-                    <div class="footer-item mt-5">
-                        <h4 class="text-light mb-4">Alamat</h4>
-                        <div class="d-flex flex-column">
-                            <h6 class="text-light mb-0">Alamat Kami</h6>
-                            <div class="d-flex align-items-center border-bottom py-4">
-                                <span class="flex-shrink-0 btn-square bg-primary me-3 p-4"><i
-                                        class="fa fa-map-marker-alt text-dark"></i></span>
-                                <a href="" class="text">Puri Indah Cihampelas, Blok E7, No.15, Citapen, Cihampelas, Kab Bandung Barat,
-                                        Jawa Barat, Indonesia</a>
-                            </div>                       
+                        <div class="col-12">
+                            <img src="/mosque/img/logoyayasan.png" class="img-fluid rounded-circle" alt=""  class="img-fluid rounded"
+                                                        style="width: 200px; height: 200px; object-fit: cover;">
                         </div>
                     </div>
                 </div>
+
+
+                <div class="col-md-4 col-lg-6 col-xl-4">
+                    
+                    <div class="footer-item mt-5">
+                        
+                        <h4 class="text-light mb-4"><span class="text-primary">Cita Amanat Martadiredja</span></h4>
+                        <p class=" text-light m-0">Menjadi Pelopor Gerakan Filantropi yang memberdayakan Umat untuk
+                            Kemandirian dan
+                            kemulian dalam
+                            bingkai Keimanan dan Ketaqwaan.</p>
+                        {{-- <a href="" class="btn btn-primary py-2 px-4">Donate Now</a> --}}
+                    </div>
+                    
+                </div>
                 <div class="col-md-4 col-lg-6 col-xl-4">
                     <div class="footer-item mt-5">
-                        <h4 class="text-light mb-4">Explore Link</h4>
+                        <h4 class="text-primary mb-4">Alamat</h4>
+                        
+                            <div class="d-flex align-items-center border-bottom py-4">
+                                <span class="flex-shrink-0 btn-square bg-primary me-3 p-4"><i
+                                        class="fa fa-map-marker-alt text-dark"></i></span>
+                                <a href="" class="text-light">Puri Indah Cihampelas, Blok E7, No.15, Citapen,
+                                    Cihampelas, Kab Bandung Barat,
+                                    Jawa Barat, Indonesia</a>
+                            </div>
+                        
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-6 col-xl-2">
+                    <div class="footer-item mt-5">
+                        <h4 class="text-primary mb-4">Explore Link</h4>
                         <div class="d-flex flex-column align-items-start">
-                             <a class="text-light mb-2" href="{{ route('landingpage') }}"><i
+                            <a class="text-light mb-2" href="{{ route('landingpage') }}"><i
                                     class="fa fa-check text-light me-2"></i>Beranda</a>
                             <a class="text-light mb-2" href="{{ route('tentangkami') }}"><i
                                     class="fa fa-check text-light me-2"></i>Tentang Kami</a>
-                            <a class="text-light mb-2" href="{{ route('aktifitas') }}"><i
+                            <a class="text-primary mb-2" href="{{ route('aktifitas') }}"><i
                                     class="fa fa-check text-primary me-2"></i>Aktifitas</a>
                             <a class="text-light mb-2" href="{{ route('acara') }}"><i
                                     class="fa fa-check text-light me-2"></i>Acara</a>
@@ -423,16 +534,22 @@ Dengan izin Allah, semoga program Muadzin Cilik dapat terus berkembang dan menja
                                     class="fa fa-check text-light me-2"></i>Testimonial</a>
                             <a class="text-light mb-2" href="{{ route('listmasjid') }}"><i
                                     class="fa fa-check text-light me-2"></i>List Masjid</a>
-                            
+
                         </div>
                     </div>
-                </div> 
-                <div class="footer-item mt-5">
-                        <h4 class="text-light mb-4"> <span class="text-primary">Donasi :</span>
-                        </h4>
+                </div>
+
+                
+            </div>
+
+
+            <div class="row g-4 footer-inner">
+                <div class="col-md-4 col-lg-6 col-xl-9">
+                    <div class="footer-item mt-5">
+                        <h4 class="text-light mb-4"><span class="text-primary">Donasi :</span></h4>
                         <p class="mb-1 text-light">Dengan segala kerendahan hati, kami membuka kesempatan bagi
                             Bapak/Ibu yang ingin menunaikan sedekah jariyah untuk kemaslahatan masjid. Donasi dapat
-                            ditransfer ke:<span class="text-primary">Yayasan Cita Amanat martadiredja
+                            ditransfer ke: <span class="text-primary"> Yayasan Cita Amanat martadiredja
                                 <b>BNI 1967473460</b> </span> .</p>
                         <p class="mb-1 text-light">Insya Allah, setiap amanah yang diberikan akan kami salurkan melalui
                             program-program yang kami jalankan demi kemakmuran masjid khususnya, serta kemaslahatan umat
@@ -440,16 +557,104 @@ Dengan izin Allah, semoga program Muadzin Cilik dapat terus berkembang dan menja
                             yang terus mengalir manfaatnya bagi umat.</p>
                         {{-- <a href="" class="btn btn-primary py-2 px-4">Donate Now</a> --}}
                     </div>
-                          
+                </div>
+
+                <div class="col-md-4 col-lg-6 col-xl-3">
+                    <div class="footer-item mt-5">
+                        <h4 class="text-light mb-4"><span class="text-primary">Qris:</span></h4>
+                        <div class="d-flex flex-column align-items-start">
+                            <span class=""> <img src="/mosque/img/qris.png" class="img-fluid flex-shrink-10"
+                                    alt="QRIS" width="120" style="cursor:pointer;" data-bs-toggle="modal"
+                                    data-bs-target="#imageModal" onclick="showImageModal('/mosque/img/qrisCAM.jpg')">
+                            </span>
+                            <p class="mb-1 text-light"><i> Klik Gambar untuk Memperbesar.</i></p>
+                        </div>
+                    </div>
+                </div>
             </div>
+
+
+            <div class="footer-donatur mt-5">
+                <h4 class="text-light mb-4"><span class="text-primary">Donatur Tetap:</span></h4>
+
+                <div class="donatur-grid">
+                    @forelse($donaturTetap as $donatur)
+                        <div class="donatur-item">
+
+                            <div class="donatur-profile">
+                                <div class="avatar-wrapper">
+
+                                    {{-- Logo --}}
+                                    @if (!empty($donatur->logo_donatur))
+                                        <img src="{{ asset('public/storage/logo_donatur/' . $donatur->logo_donatur) }}"
+                                            class="avatar-image">
+
+
+
+
+                                        {{-- Initial --}}
+                                    @else
+                                        @php
+                                            // Pisahkan nama berdasarkan spasi
+                                            $words = explode(' ', trim($donatur->nama_donatur));
+
+                                            // Ambil maksimal 3 kata
+                                            $initial = '';
+                                            foreach (array_slice($words, 0, 3) as $w) {
+                                                $initial .= strtoupper(substr($w, 0, 1));
+                                            }
+                                        @endphp
+
+                                        <div class="avatar-initial">
+                                            {{ $initial }}
+                                        </div>
+                                    @endif
+
+
+                                </div>
+
+                                <div>
+                                    <div class="donatur-name">
+                                        {{ $donatur->nama_donatur }}
+                                    </div>
+                                    @if ($donatur->alamat_donatur)
+                                        <div class="donatur-address">
+                                            {{ $donatur->alamat_donatur }}
+                                        </div>
+                                    @endif
+                                </div>
+                            </div>
+
+                        </div>
+
+                    @empty
+                        <span class="text-light">Belum ada Donatur Tetap</span>
+                    @endforelse
+                </div>
+            </div>
+
+
+
         </div>
+
         <div class="container py-4">
             <div class="border-top border-secondary pb-4"></div>
             <div class="row">
                 <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                     <a class="" href="#"> &copy; Cita Amanat Martadiredja 2025 , All Right Reserved.</a>
+                    <a class="" href="#"> &copy; Cita Amanat Martadiredja 2025 , All Right Reserved.</a>
                 </div>
                 <div class="col-md-6 text-center text-md-end">
+                    <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
+                    <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
+                    <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
+                    Designed By | Obink
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer End -->
+    </div>class="col-md-6 text-center text-md-end">
                     <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
                     <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
                     <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->

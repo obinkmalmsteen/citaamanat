@@ -656,6 +656,28 @@ Cita Amanat Martadiredja
     return back()->with('success', 'Pesan berhasil dikirim!');
 }
 
+public function kirimPesanTemplate(Request $request, $id_pelanggan)
+{
+  
+
+    $data = Masjid::where('id_pelanggan', $id_pelanggan)->firstOrFail();
+
+      if ($request->template === 'manual') {
+        $pesan = $request->pesan_manual;
+    } elseif ($request->template == '1') {
+        $pesan = "Data Foto Anda Kurang Jelas, Silahkan kirim ulang foto masjid Anda";
+    } elseif ($request->template == '2') {
+        $pesan = "Data Alamat Anda kurang jelas, dan tidak sesuai dengan Maps nya, Silahkan di perbaiki";
+    }elseif ($request->template == '3') {
+        $pesan = "Assalmualaikum, kami Ucapkan Mohon maaf kepada Bapak/Ibu Pengurus Masjid/Mushola *{$data->nama_masjid}* Dikarenakan Untuk saat ini Registrasi anda belum bisa kami Setujui";
+    }
+
+
+    WhatsappHelper::send($data->telp_ketua_dkm, $pesan);
+
+    return back()->with('success', 'Pesan berhasil dikirim!');
+}
+
 
 
 }
