@@ -294,6 +294,23 @@
                 </div>
                 <div class="col-lg-8 col-xl-7">
                     <div class="team-item wow fadeIn" data-wow-delay="0.1s">
+                        <h1> Ratih Mariam</h1>
+                        <h5 class="fw-normal fst-italic text-primary mb-4">Public Relation & Website Officer</h5>
+                        <p class="mb-4">Phone:</p>
+                        <div class="team-icon d-flex pb-4 mb-4 border-bottom border-primary">
+                            <a class="btn btn-primary btn-lg-square me-2" href=""><i
+                                    class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-primary btn-lg-square me-2" href=""><i
+                                    class="fab fa-twitter"></i></a>
+                            <a href="#" class="btn btn-primary btn-lg-square me-2"><i
+                                    class="fab fa-instagram"></i></a>
+                            <a href="#" class="btn btn-primary btn-lg-square"><i
+                                    class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8 col-xl-7">
+                    <div class="team-item wow fadeIn" data-wow-delay="0.1s">
                         <h1>Robi</h1>
                         <h5 class="fw-normal fst-italic text-primary mb-4">Chief Technology Officer</h5>
                         <p class="mb-4">Phone:</p>

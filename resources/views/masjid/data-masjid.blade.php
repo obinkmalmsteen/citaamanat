@@ -175,76 +175,77 @@
     <div class="container ">
         <div class="table-container">
 
-         <div class="mt-4 d-flex justify-content-between">
-    <a href="{{ route('landingpage') }}" class="btn btn-outline-dark"
-        style="border-radius: 8px; padding: 8px 20px;">
-        ⬅ Ke Beranda
-    </a>
+            <div class="mt-4 d-flex justify-content-between">
+                <a href="{{ route('landingpage') }}" class="btn btn-outline-dark"
+                    style="border-radius: 8px; padding: 8px 20px;">
+                    ⬅ Ke Beranda
+                </a>
 
-    <a href="" style="color: #d9534f; font-weight: bold;" class="btn"
-        >
-        Untuk Masjid Yang sudah terverifikasi tapi masih belum membuat pengajuan Token, segera lakukan pengajuan token dengan login ke akun anda.
-</a>
-</div>
+                <a href="" style="color: #d9534f; font-weight: bold;" class="btn">
+                    Untuk Masjid Yang sudah terverifikasi tapi masih belum membuat pengajuan Token, segera lakukan
+                    pengajuan token dengan login ke akun anda.
+                </a>
+            </div>
 
             <h3 class="mb-3">📋 Daftar Masjid </h3>
 
-<form method="GET" class="mb-3 d-flex" style="gap:10px;">
-    <select name="filter_pengajuan" class="form-select" onchange="this.form.submit()">
+            <form method="GET" class="mb-3 d-flex" style="gap:10px;">
+                <select name="filter_pengajuan" class="form-select" onchange="this.form.submit()">
 
-        <option value="">Semua</option>
-        <option value="0" {{ request('filter_pengajuan') == '0' ? 'selected' : '' }}>Belum Pernah (0)</option>
-        <option value="1" {{ request('filter_pengajuan') == '1' ? 'selected' : '' }}>Sudah Pernah (≥1)</option>
-    </select>
-
-  
-</form>
-
+                    <option value="">Semua</option>
+                    <option value="0" {{ request('filter_pengajuan') == '0' ? 'selected' : '' }}>Belum Pernah (0)
+                    </option>
+                    <option value="1" {{ request('filter_pengajuan') == '1' ? 'selected' : '' }}>Sudah Pernah (≥1)
+                    </option>
+                </select>
 
 
-            <table class="table-modern">
-                <thead>
-                    <tr>
-                        <th>No</th>
+            </form>
 
-                        <th>Nama Masjid</th>
-                        <th>foto Masjid</th>
-                        <th>Kota</th>
-                        <th>Status</th>
-                        <th>Pengajuan</th>
-                    </tr>
-                </thead>
+
+
+          <table class="table-modern">
+    <colgroup>
+        <col style="width: 5%">
+        <col style="width: 40%">
+        <col style="width: 30%">
+        <col style="width: 25%">
+       
+    </colgroup>
+
+    <thead>
+        <tr>
+            <th>No</th>
+            <th>Foto Masjid</th>
+            <th>Nama Masjid</th>
+            <th>Kota</th>
+           
+           
+        </tr>
+    </thead>
 
                 <tbody>
                     @foreach ($masjid as $item)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
+
+                            <td>
+                                <div class="d-flex mb-3">
+                                    <div class="position-relative">
+                                        <img src="{{ asset('storage/foto_masjid/' . $item->foto_masjid) }}"
+                                            alt="Foto Masjid" height="120" width="220"
+                                            class="rounded shadow w-100 object-fit-cover">
+
+                                    </div>
+                                </div>
+                            </td>
                             <td class="kota"><strong>{{ $item->nama_masjid }}</strong><br>
                                 <small class="text-muted">
                                     ID: {{ substr($item->id_pelanggan, 0, -3) . 'xxx' }}
                                 </small><br>
                                 <small class="text-muted">
                                     {{ $item->created_at }}
-                                </small>
-                            </td>
-
-                           <td>
-                             <div class="d-flex mb-3">
-                            <div class="position-relative">
-                                <img src="{{ asset('public/storage/foto_masjid/' . $item->foto_masjid) }}"
-                                     alt="Foto Masjid"
-                                     height="70"
-                                     class="rounded shadow w-100 object-fit-cover">
-                               
-                            </div>
-                        </div>
-                           </td>
-                            <td><strong>{{ $item->nama_kota }}</strong><br>
-                                <small class="text-muted">{{ $item->alamat_lengkap }}</small>
-                            </td>
-
-                            <td>
-                                @if ($item->disetujui == 1)
+                                </small><br>@if ($item->disetujui == 1)
                                     <span class="badge-status badge-verified"><i class="bi bi-check-circle"></i>
                                         Terverifikasi</span>
                                 @elseif ($item->disetujui == 0)
@@ -256,11 +257,15 @@
                                 @else
                                     <span class="badge-status badge-custom-purple"><i class="bi bi-question-circle"></i>
                                         Tidak Diketahui</span>
-                                @endif
+                                @endif <br><strong>{{ $item->total_pengajuan }} Kali</strong>
                             </td>
-                            <td><strong>{{ $item->total_pengajuan }} Kali</strong>
 
+                            <td><strong>{{ $item->nama_kota }}</strong><br>
+                                <small class="text-muted">{{ $item->alamat_lengkap }}</small>
                             </td>
+
+                           
+                            
                         </tr>
                     @endforeach
                 </tbody>
