@@ -1197,7 +1197,7 @@
                         <h3 class="mb-1 text-light"><span class="text-primary">
                                 Rp {{ number_format($totalDonasi, 0, ',', '.') }} </span> </h3>
                         <h6 class="text-light mb-4"><span class="text-primary">- </span></h6>
-                        <h6 class="text-light mb-4"><span class="text-primary">Donasi Terkumpul Sampai :{{ $totalDonaturTetap }} <p class="mb-1 text-light"></p>Partisipan Kebaikan :
+                        <h6 class="text-light mb-4"><span class="text-primary">Donatur Tetap :{{ $totalDonaturTetap }} <p class="mb-1 text-light"></p>Partisipan Kebaikan :
                                 {{ $totalDonaturTidakTetap }}</span></h6>
 
 
