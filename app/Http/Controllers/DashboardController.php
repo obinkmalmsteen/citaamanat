@@ -84,13 +84,14 @@ public function landingpage()
         ->whereNotNull('map_lokasi_masjid')
         ->get();
 
-   $totalDonasi = DonasiHistori::sum('jumlah_donasi');
+    // Total nilai donatur
+    $totalDonasi = DonasiHistori::sum('jumlah_donasi');
 
-           // Jumlah donatur tetap (donatur_tetap = 1)
-        $totalDonaturTetap = Donatur::where('donatur_tetap', 1)->count();
+    // Jumlah donatur tetap (donatur_tetap = 1)
+    $totalDonaturTetap = Donatur::where('donatur_tetap', 1)->count();
 
-        // Jumlah donatur tidak tetap (donatur_tetap = 0)
-        $totalDonaturTidakTetap = Donatur::where('donatur_tetap', 0)->count();
+    // Jumlah donatur tidak tetap (donatur_tetap = 0)
+    $totalDonaturTidakTetap = Donatur::where('donatur_tetap', 0)->count();
 
          // Ambil testimoni terbaru
     $listmasjid = Masjid::where('disetujui', 1)->take(150)->get();
@@ -124,8 +125,18 @@ public function tentangkami()
  $donaturTetap = Donatur::where('donatur_tetap', 1)
     ->limit(5)
     ->get();
+           // Total nilai donatur
+    $totalDonasi = DonasiHistori::sum('jumlah_donasi');
+
+    // Jumlah donatur tetap (donatur_tetap = 1)
+    $totalDonaturTetap = Donatur::where('donatur_tetap', 1)->count();
+
+    // Jumlah donatur tidak tetap (donatur_tetap = 0)
+    $totalDonaturTidakTetap = Donatur::where('donatur_tetap', 0)->count();
     // Kirim hasilnya ke view
-    return view('tentangkami', compact('jumlahUser','donaturTetap'));
+    return view('tentangkami', compact('jumlahUser','donaturTetap','totalDonasi',
+        'totalDonaturTetap',
+        'totalDonaturTidakTetap'));
 }
 public function mobilelandingpage()
 {
@@ -175,7 +186,19 @@ public function aktifitas()
      $donaturTetap = Donatur::where('donatur_tetap', 1)
     ->limit(5)
     ->get();
-    return view('aktifitas', compact('donaturTetap'));
+
+       // Total nilai donatur
+    $totalDonasi = DonasiHistori::sum('jumlah_donasi');
+
+    // Jumlah donatur tetap (donatur_tetap = 1)
+    $totalDonaturTetap = Donatur::where('donatur_tetap', 1)->count();
+
+    // Jumlah donatur tidak tetap (donatur_tetap = 0)
+    $totalDonaturTidakTetap = Donatur::where('donatur_tetap', 0)->count();
+
+    return view('aktifitas', compact('donaturTetap','totalDonasi',
+        'totalDonaturTetap',
+        'totalDonaturTidakTetap'));
 }
 
 public function acara()
@@ -183,8 +206,17 @@ public function acara()
     $donaturTetap = Donatur::where('donatur_tetap', 1)
     ->limit(5)
     ->get();
-   
-    return view('acara', compact('donaturTetap'));
+       // Total nilai donatur
+    $totalDonasi = DonasiHistori::sum('jumlah_donasi');
+
+    // Jumlah donatur tetap (donatur_tetap = 1)
+    $totalDonaturTetap = Donatur::where('donatur_tetap', 1)->count();
+
+    // Jumlah donatur tidak tetap (donatur_tetap = 0)
+    $totalDonaturTidakTetap = Donatur::where('donatur_tetap', 0)->count();
+    return view('acara', compact('donaturTetap','totalDonasi',
+        'totalDonaturTetap',
+        'totalDonaturTidakTetap'));
 }
 
 public function testimoni()

@@ -409,27 +409,32 @@
             color: #000;
             font-size: 14px;
         }
+                  .footer-line {
+            border-top: 1px solid #ffc107;
+            /* warna warning */
+        }
+
+        .footer-lineright {
+            border-right: 1px solid #ffc107;
+            /* warna warning */
+        }
     </style>
 
-    <!-- Footer Start -->
+<!-- Footer Start -->
     <div class="container-fluid footer pt-15 wow fadeIn" data-wow-delay="0.1s">
         <div class="container py-15">
-
-            <div class="row g-4 footer-inner">
-<div class="col-md-4 col-lg-6 col-xl-2">
-                    <div class="footer-item mt-5">
+            <div class="row g-4 footer-inner ">
+                <div class="col-md-4 col-lg-6 col-xl-2">
+                    <div class="footer-item mt-5 mb-3">
                         <div class="col-12">
-                            <img src="/mosque/img/logoyayasan.png" class="img-fluid rounded-circle" alt=""  class="img-fluid rounded"
-                                                        style="width: 200px; height: 200px; object-fit: cover;">
+                            <img src="/mosque/img/logoyayasan.png" class="img-fluid rounded-circle" alt=""
+                                class="img-fluid rounded" style="width: 200px; height: 200px; object-fit: cover;">
                         </div>
                     </div>
                 </div>
 
-
                 <div class="col-md-4 col-lg-6 col-xl-4">
-                    
                     <div class="footer-item mt-5">
-                        
                         <h4 class="text-light mb-4"><span class="text-primary">Cita Amanat Martadiredja</span></h4>
                         <p class=" text-light m-0">Menjadi Pelopor Gerakan Filantropi yang memberdayakan Umat untuk
                             Kemandirian dan
@@ -437,30 +442,28 @@
                             bingkai Keimanan dan Ketaqwaan.</p>
                         {{-- <a href="" class="btn btn-primary py-2 px-4">Donate Now</a> --}}
                     </div>
-                    
                 </div>
                 <div class="col-md-4 col-lg-6 col-xl-4">
                     <div class="footer-item mt-5">
                         <h4 class="text-primary mb-4">Alamat</h4>
-                        
-                            <div class="d-flex align-items-center border-bottom py-4">
-                                <span class="flex-shrink-0 btn-square bg-primary me-3 p-4"><i
-                                        class="fa fa-map-marker-alt text-dark"></i></span>
-                                <a href="" class="text-light">Puri Indah Cihampelas, Blok E7, No.15, Citapen,
-                                    Cihampelas, Kab Bandung Barat,
-                                    Jawa Barat, Indonesia</a>
-                            </div>
-                        
+
+                        <div class="d-flex align-items-center  py-4">
+                            <span class="flex-shrink-0 btn-square bg-primary me-3 p-4"><i
+                                    class="fa fa-map-marker-alt text-dark"></i></span>
+                            <a href="" class="text-light">Puri Indah Cihampelas, Blok E7, No.15, Citapen,
+                                Cihampelas, Kab Bandung Barat,
+                                Jawa Barat, Indonesia</a>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-4 col-lg-6 col-xl-2">
                     <div class="footer-item mt-5">
                         <h4 class="text-primary mb-4">Explore Link</h4>
                         <div class="d-flex flex-column align-items-start">
-                            <a class="text-light mb-2" href="{{ route('landingpage') }}"><i
-                                    class="fa fa-check text-light me-2"></i>Beranda</a>
-                            <a class="text-primary mb-2" href="{{ route('tentangkami') }}"><i
-                                    class="fa fa-check text-primary me-2"></i>Tentang Kami</a>
+                            <a class="text-primary mb-2" href="{{ route('landingpage') }}"><i
+                                    class="fa fa-check text-primary me-2"></i>Beranda</a>
+                            <a class="text-light mb-2" href="{{ route('tentangkami') }}"><i
+                                    class="fa fa-check text-light me-2"></i>Tentang Kami</a>
                             <a class="text-light mb-2" href="{{ route('aktifitas') }}"><i
                                     class="fa fa-check text-light me-2"></i>Aktifitas</a>
                             <a class="text-light mb-2" href="{{ route('acara') }}"><i
@@ -474,140 +477,128 @@
                         </div>
                     </div>
                 </div>
-
-                
             </div>
 
+            {{-- baris1 --}}
+            <div class="container  ">
+                <div class="footer-line mb-15 "></div>
+                <div class="row g-4 footer-inner ">
 
-            <div class="row g-4 footer-inner">
-                <div class="col-md-4 col-lg-6 col-xl-9">
-                    <div class="footer-item mt-5">
-                        <h4 class="text-light mb-4"><span class="text-primary">Donasi :</span></h4>
-                        <p class="mb-1 text-light">Dengan segala kerendahan hati, kami membuka kesempatan bagi
-                            Bapak/Ibu yang ingin menunaikan sedekah jariyah untuk kemaslahatan masjid. Donasi dapat
-                            ditransfer ke: <span class="text-primary"> Yayasan Cita Amanat martadiredja
-                                <b>BNI 1967473460</b> </span> .</p>
-                        <p class="mb-1 text-light">Insya Allah, setiap amanah yang diberikan akan kami salurkan melalui
-                            program-program yang kami jalankan demi kemakmuran masjid khususnya, serta kemaslahatan umat
-                            pada umumnya. Semoga Allah membalas setiap kebaikan yang dititipkan, dan menjadikannya amal
-                            yang terus mengalir manfaatnya bagi umat.</p>
-                        {{-- <a href="" class="btn btn-primary py-2 px-4">Donate Now</a> --}}
+                    <div class="col-md-4 col-lg-6 col-xl-4">
+                        <div class="footer-item mt-3">
+                            <a class="text-light mb-1"><span class="text-primary">Donasi Terkumpul Sampai : <p
+                                        class="mb-1 text-primary" id="tanggalSekarang"></p></span></a>
+                            <h2 class="mt-4 mb-4 text-light"><span class="text-light">
+                                    Rp {{ number_format($totalDonasi, 0, ',', '.') }} </span> </h2>
+                            <a class="text-light mt-1"><span class="text-primary">Donatur Tetap :
+                                    {{ $totalDonaturTetap }} <p class="mb-1 text-light"></p>Partisipan Kebaikan :
+                                    {{ $totalDonaturTidakTetap }}</span></a>
+                        </div>
                     </div>
-                </div>
 
-                <div class="col-md-4 col-lg-6 col-xl-3">
-                    <div class="footer-item mt-5">
-                        <h4 class="text-light mb-4"><span class="text-primary">Qris:</span></h4>
-                        <div class="d-flex flex-column align-items-start">
-                            <span class=""> <img src="/mosque/img/qris.png" class="img-fluid flex-shrink-10"
-                                    alt="QRIS" width="120" style="cursor:pointer;" data-bs-toggle="modal"
-                                    data-bs-target="#imageModal" onclick="showImageModal('/mosque/img/qrisCAM.jpg')">
-                            </span>
-                            <p class="mb-1 text-light"><i> Klik Gambar untuk Memperbesar.</i></p>
+
+                    <div class="col-md-4 col-lg-6 col-xl-5">
+
+                        <div class="footer-item mt-5">
+
+                            <h5 class="text-light mb-4"><span class="text-light fs-4">Penyaluran Donasi melalui :</span>
+                            </h5>
+                            <a class="mb-1 text-light">
+                                <span class="text-primary fs-4">Yayasan Cita Amanat Martadiredja</span>
+                            </a>
+
+                            <h3 class="mb-1 text-primary">BNI 1967473460 </h3>
+                            {{-- <a href="" class="btn btn-primary py-2 px-4">Donate Now</a> --}}
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 col-lg-6 col-xl-3">
+                        <div class="footer-item mt-4">
+                            <h4 class="text-light mb-4"><span class="text-primary">Qris:</span></h4>
+                            <div class="d-flex flex-column align-items-start">
+                                <span class=""> <img src="/mosque/img/qris.png"
+                                        class="img-fluid flex-shrink-10" alt="QRIS" width="120"
+                                        style="cursor:pointer;" data-bs-toggle="modal" data-bs-target="#imageModal"
+                                        onclick="showImageModal('/mosque/img/qrisCAM.jpg')">
+                                </span>
+                                <p class="mb-1 text-light"><i> Klik Gambar untuk Memperbesar.</i></p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
 
-            <div class="footer-donatur mt-5">
-                <h4 class="text-light mb-4"><span class="text-primary">Donatur Tetap:</span></h4>
+                {{-- bagian baris 2  --}}
+                <div class="footer-donatur ">
+                    <h4 class="text-light mt-3 mb-10"><span class="text-primary">Donatur Tetap:</span></h4>
+                    <div class="footer-line  mb-3"></div>
+                    <div class="donatur-grid">
 
-                <div class="donatur-grid">
-                    @forelse($donaturTetap as $donatur)
-                        <div class="donatur-item">
+                        @forelse($donaturTetap as $donatur)
+                            <div class="donatur-item">
 
-                            <div class="donatur-profile">
-                                <div class="avatar-wrapper">
+                                <div class="donatur-profile">
+                                    <div class="avatar-wrapper">
 
-                                    {{-- Logo --}}
-                                    @if (!empty($donatur->logo_donatur))
-                                        <img src="{{ asset('public/storage/logo_donatur/' . $donatur->logo_donatur) }}"
-                                            class="avatar-image">
+                                        {{-- Logo --}}
+                                        @if (!empty($donatur->logo_donatur))
+                                            <img src="{{ asset('public/storage/logo_donatur/' . $donatur->logo_donatur) }}"
+                                                class="avatar-image">
 
+                                            {{-- Initial --}}
+                                        @else
+                                            @php
+                                                // Pisahkan nama berdasarkan spasi
+                                                $words = explode(' ', trim($donatur->nama_donatur));
 
+                                                // Ambil maksimal 3 kata
+                                                $initial = '';
+                                                foreach (array_slice($words, 0, 3) as $w) {
+                                                    $initial .= strtoupper(substr($w, 0, 1));
+                                                }
+                                            @endphp
 
-
-                                        {{-- Initial --}}
-                                    @else
-                                        @php
-                                            // Pisahkan nama berdasarkan spasi
-                                            $words = explode(' ', trim($donatur->nama_donatur));
-
-                                            // Ambil maksimal 3 kata
-                                            $initial = '';
-                                            foreach (array_slice($words, 0, 3) as $w) {
-                                                $initial .= strtoupper(substr($w, 0, 1));
-                                            }
-                                        @endphp
-
-                                        <div class="avatar-initial">
-                                            {{ $initial }}
-                                        </div>
-                                    @endif
-
-
-                                </div>
-
-                                <div>
-                                    <div class="donatur-name">
-                                        {{ $donatur->nama_donatur }}
+                                            <div class="avatar-initial">
+                                                {{ $initial }}
+                                            </div>
+                                        @endif
                                     </div>
-                                    @if ($donatur->alamat_donatur)
-                                        <div class="donatur-address">
-                                            {{ $donatur->alamat_donatur }}
+
+                                    <div>
+                                        <div class="donatur-name">
+                                            {{ $donatur->nama_donatur }}
                                         </div>
-                                    @endif
+                                        @if ($donatur->alamat_donatur)
+                                            <div class="donatur-address">
+                                                {{ $donatur->alamat_donatur }}
+                                            </div>
+                                        @endif
+                                    </div>
                                 </div>
                             </div>
-
-                        </div>
-
-                    @empty
-                        <span class="text-light">Belum ada Donatur Tetap</span>
-                    @endforelse
+                        @empty
+                            <span class="text-light">Belum ada Donatur Tetap</span>
+                        @endforelse
+                    </div>
                 </div>
             </div>
 
-
-
-        </div>
-
-        <div class="container py-4">
-            <div class="border-top border-secondary pb-4"></div>
-            <div class="row">
-                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                    <a class="" href="#"> &copy; Cita Amanat Martadiredja 2025 , All Right Reserved.</a>
-                </div>
-                <div class="col-md-6 text-center text-md-end">
-                    <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
-                    <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
-                    <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
-                    Designed By | Obink
+            <div class="container py-4">
+                <div class="border-top border-secondary pb-4"></div>
+                <div class="row">
+                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                        <a class="" href="#"> &copy; Cita Amanat Martadiredja 2025 , All Right
+                            Reserved.</a>
+                    </div>
+                    <div class="col-md-6 text-center text-md-end">
+                       
+                        Designed By | Obink
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-
-    <!-- Footer End -->
-    </div>class="col-md-6 text-center text-md-end">
-                    <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
-                    <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
-                    <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
-                    Designed By | Obink
-                </div>
-            </div>
-        </div>
-    </div>
-
-        <!-- Footer End -->
-          
-        
     </div>
     <!-- Footer End -->
-
-    </div>
-
     <!-- Back to Top -->
     <a href="#" class="btn btn-primary border-3 border-light back-to-top"><i class="fa fa-arrow-up"></i></a>
 
