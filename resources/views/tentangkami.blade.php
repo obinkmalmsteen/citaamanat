@@ -101,6 +101,7 @@
                                 <a href="{{ route('testimoni') }}" class="dropdown-item">Testimonial</a>
                                 <a href="{{ route('listmasjid') }}" class="dropdown-item">List Masjid</a>
                                 <a href="{{ route('registrasi') }}" class="dropdown-item">Registrasi</a>
+                                <a href="{{ route('listdonatur') }}" class="dropdown-item">Donatur</a>
                             </div>
                         </div>
 
@@ -294,7 +295,7 @@
                 </div>
                 <div class="col-lg-8 col-xl-7">
                     <div class="team-item wow fadeIn" data-wow-delay="0.1s">
-                        <h1> Ratih Mariam</h1>
+                        <h1> Ratih Maryam</h1>
                         <h5 class="fw-normal fst-italic text-primary mb-4">Public Relation & Website Officer</h5>
                         <p class="mb-4">Phone:</p>
                         <div class="team-icon d-flex pb-4 mb-4 border-bottom border-primary">
@@ -460,16 +461,23 @@
                         {{-- <a href="" class="btn btn-primary py-2 px-4">Donate Now</a> --}}
                     </div>
                 </div>
-                <div class="col-md-4 col-lg-6 col-xl-4">
-                    <div class="footer-item mt-5">
-                        <h4 class="text-primary mb-4">Alamat</h4>
-
+                 <div class="col-md-4 col-lg-6 col-xl-4">
+                    <div class="footer-item mt-15">
                         <div class="d-flex align-items-center  py-4">
                             <span class="flex-shrink-0 btn-square bg-primary me-3 p-4"><i
                                     class="fa fa-map-marker-alt text-dark"></i></span>
                             <a href="" class="text-light">Puri Indah Cihampelas, Blok E7, No.15, Citapen,
                                 Cihampelas, Kab Bandung Barat,
                                 Jawa Barat, Indonesia</a>
+                        </div>
+                        <div class="d-flex align-items-center  mt-15">
+                            <span class="flex-shrink-0 btn-square bg-primary me-3 p-4"><i
+                                    class="fa fa-phone-alt text-dark"></i></span>
+                            <a href="" class="text-light">082 246 777 900</a>
+                        </div>
+                         <div class="d-flex align-items-center  py-4">
+                            <span class="flex-shrink-0 btn-square bg-primary me-3 p-4 text-dark"><b>@</b></i></span>
+                            <a href="" class="text-light">Terangiberibumasjid@gmail.com</a>
                         </div>
                     </div>
                 </div>

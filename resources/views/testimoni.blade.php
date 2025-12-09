@@ -101,6 +101,7 @@
                                 <a href="{{ route('testimoni') }}" class="dropdown-item active">Testimonial</a>
                                 <a href="{{ route('listmasjid') }}" class="dropdown-item">List Masjid</a>
                                 <a href="{{ route('registrasi') }}" class="dropdown-item">Registrasi</a>
+                                <a href="{{ route('listdonatur') }}" class="dropdown-item">Donatur</a>
                             </div>
                         </div>
 

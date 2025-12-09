@@ -103,6 +103,7 @@
                                 <a href="{{ route('testimoni') }}" class="dropdown-item">Testimonial</a>
                                 <a href="{{ route('listmasjid') }}" class="dropdown-item">List Masjid</a>
                                 <a href="{{ route('registrasi') }}" class="dropdown-item">Registrasi</a>
+                                <a href="{{ route('listdonatur') }}" class="dropdown-item">Donatur</a>
                             </div>
                         </div>
 
@@ -1152,10 +1153,9 @@
                         {{-- <a href="" class="btn btn-primary py-2 px-4">Donate Now</a> --}}
                     </div>
                 </div>
-                <div class="col-md-4 col-lg-6 col-xl-4">
-                    <div class="footer-item mt-5">
-                        <h4 class="text-primary mb-4">Alamat</h4>
 
+                <div class="col-md-4 col-lg-6 col-xl-4">
+                    <div class="footer-item mt-15">
                         <div class="d-flex align-items-center  py-4">
                             <span class="flex-shrink-0 btn-square bg-primary me-3 p-4"><i
                                     class="fa fa-map-marker-alt text-dark"></i></span>
@@ -1163,8 +1163,19 @@
                                 Cihampelas, Kab Bandung Barat,
                                 Jawa Barat, Indonesia</a>
                         </div>
+                        <div class="d-flex align-items-center  mt-15">
+                            <span class="flex-shrink-0 btn-square bg-primary me-3 p-4"><i
+                                    class="fa fa-phone-alt text-dark"></i></span>
+                            <a href="" class="text-light">082 246 777 900</a>
+                        </div>
+                         <div class="d-flex align-items-center  py-4">
+                            <span class="flex-shrink-0 btn-square bg-primary me-3 p-4 text-dark"><b>@</b></i></span>
+                            <a href="" class="text-light">Terangiberibumasjid@gmail.com</a>
+                        </div>
                     </div>
                 </div>
+
+
                 <div class="col-md-4 col-lg-6 col-xl-2">
                     <div class="footer-item mt-5">
                         <h4 class="text-primary mb-4">Explore Link</h4>

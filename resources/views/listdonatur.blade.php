@@ -101,6 +101,7 @@
                                 <a href="{{ route('testimoni') }}" class="dropdown-item">Testimonial</a>
                                 <a href="{{ route('listmasjid') }}" class="dropdown-item">List Masjid</a>
                                 <a href="{{ route('registrasi') }}" class="dropdown-item">Registrasi</a>
+                                <a href="{{ route('listdonatur') }}" class="dropdown-item">Donatur</a>
                             </div>
                         </div>
 
@@ -135,9 +136,9 @@
         <div class="container-fluid contact py-5">
             <div class="container py-5">
                 <div class="text-center mx-auto mb-5 wow fadeIn" data-wow-delay="0.1s" style="max-width: 700px;">
-                    <p class="fs-5 text-uppercase text-primary">Tetaplah Bersama Kami</p>
-                    <h1 class="display-7">Contact For Any Queries</h1>
-                    <p class="mb-0">Untuk saat ini belum tersedia</a>.</p>
+                    <p class="fs-5 text-uppercase text-primary">Donatur </p>
+                    <h1 class="display-7">Donatur</h1>
+                    
                 </div>
                 <div class="row g-4 wow fadeIn" data-wow-delay="0.3s">
                     <div class="col-sm-6">

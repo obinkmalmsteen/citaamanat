@@ -16,9 +16,15 @@ class DonaturController extends Controller
         'title' => 'DataDonatur',
         'menuAdminDonatur' => 'active',
     ];
+        // Jumlah donatur tetap (donatur_tetap = 1)
+    $totalDonaturTetap = Donatur::where('donatur_tetap', 1)->count();
+
+    // Jumlah donatur tidak tetap (donatur_tetap = 0)
+    $totalDonaturTidakTetap = Donatur::where('donatur_tetap', 0)->count();
+
          $totalSemuaDonasi = DonasiHistori::sum('jumlah_donasi');
         $donaturs = Donatur::with('donasi')->paginate(10);
-    return view('donatur.index', $data, compact('donaturs','totalSemuaDonasi'));
+    return view('donatur.index', $data, compact('donaturs','totalSemuaDonasi','totalDonaturTetap','totalDonaturTidakTetap'));
     }
 
    public function create()
