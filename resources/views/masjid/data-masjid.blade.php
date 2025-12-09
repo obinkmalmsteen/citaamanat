@@ -233,7 +233,7 @@
                                 <div class="d-flex mb-3">
                                     <div class="position-relative">
                                         <img src="{{ asset('public/storage/foto_masjid/' . $item->foto_masjid) }}"
-                                            alt="Foto Masjid" height="120" width="220"
+                                            alt="Foto Masjid"  width="120"
                                             class="rounded shadow w-100 object-fit-cover">
 
                                     </div>
