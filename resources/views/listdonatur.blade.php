@@ -462,6 +462,14 @@
 <script>
     new PureCounter();
 </script>
+ <script>
+        document.getElementById('tanggalSekarang').innerText =
+            new Date().toLocaleDateString('id-ID', {
+                day: '2-digit',
+                month: 'long',
+                year: 'numeric'
+            });
+    </script>
 </body>
 
 </html>
