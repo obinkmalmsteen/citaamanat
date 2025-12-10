@@ -191,15 +191,12 @@
 
             <form method="GET" class="mb-3 d-flex" style="gap:10px;">
                 <select name="filter_pengajuan" class="form-select" onchange="this.form.submit()">
-
                     <option value="">Semua</option>
                     <option value="0" {{ request('filter_pengajuan') == '0' ? 'selected' : '' }}>Belum Pernah (0)
                     </option>
                     <option value="1" {{ request('filter_pengajuan') == '1' ? 'selected' : '' }}>Sudah Pernah (≥1)
                     </option>
                 </select>
-
-
             </form>
 
 
@@ -235,7 +232,6 @@
                                         <img src="{{ asset('public/storage/foto_masjid/' . $item->foto_masjid) }}"
                                             alt="Foto Masjid" height="120" 
                                             class="rounded shadow w-100 object-fit-cover">
-
                                     </div>
                                 </div>
                             </td>
@@ -262,10 +258,7 @@
 
                             <td><strong>{{ $item->nama_kota }}</strong><br>
                                 <small class="text-muted">{{ $item->alamat_lengkap }}</small>
-                            </td>
-
-                           
-                            
+                            </td>  
                         </tr>
                     @endforeach
                 </tbody>

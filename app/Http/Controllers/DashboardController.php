@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\DonasiHistori;
 use App\Models\User;
 use App\Models\Masjid;
 use App\Models\Donatur;
+use App\Models\Pengeluaran;
 use Illuminate\Http\Request;
+use App\Models\DonasiHistori;
 use Illuminate\Support\Facades\DB;
 use App\Models\Testimonial; // ✅ Tambahkan ini
 
@@ -99,6 +100,11 @@ public function landingpage()
     $donaturTetap = Donatur::where('donatur_tetap', 1)
     ->limit(5)
     ->get();
+
+    $totalSemuaPengeluaran = Pengeluaran::sum('jumlah');
+
+    // Hitung sisa saldo
+    $sisaSaldo = $totalDonasi - $totalSemuaPengeluaran;
     // Kirim ke view
     return view('landingpage', compact(
         'masjidDisetujui',
@@ -110,7 +116,9 @@ public function landingpage()
         'donaturTetap',
         'totalDonasi',
         'totalDonaturTetap',
-        'totalDonaturTidakTetap'
+        'totalDonaturTidakTetap',
+        'totalSemuaPengeluaran',
+        'sisaSaldo'
     ));
 
     
@@ -133,10 +141,15 @@ public function tentangkami()
 
     // Jumlah donatur tidak tetap (donatur_tetap = 0)
     $totalDonaturTidakTetap = Donatur::where('donatur_tetap', 0)->count();
+
+         $totalSemuaPengeluaran = Pengeluaran::sum('jumlah');
+
+    // Hitung sisa saldo
+    $sisaSaldo = $totalDonasi - $totalSemuaPengeluaran;
     // Kirim hasilnya ke view
     return view('tentangkami', compact('jumlahUser','donaturTetap','totalDonasi',
         'totalDonaturTetap',
-        'totalDonaturTidakTetap'));
+        'totalDonaturTidakTetap','totalSemuaPengeluaran','sisaSaldo'));
 }
 public function mobilelandingpage()
 {
@@ -195,10 +208,14 @@ public function aktifitas()
 
     // Jumlah donatur tidak tetap (donatur_tetap = 0)
     $totalDonaturTidakTetap = Donatur::where('donatur_tetap', 0)->count();
+        $totalSemuaPengeluaran = Pengeluaran::sum('jumlah');
+
+    // Hitung sisa saldo
+    $sisaSaldo = $totalDonasi - $totalSemuaPengeluaran;
 
     return view('aktifitas', compact('donaturTetap','totalDonasi',
         'totalDonaturTetap',
-        'totalDonaturTidakTetap'));
+        'totalDonaturTidakTetap','totalSemuaPengeluaran','sisaSaldo'));
 }
 
 public function acara()
@@ -214,9 +231,14 @@ public function acara()
 
     // Jumlah donatur tidak tetap (donatur_tetap = 0)
     $totalDonaturTidakTetap = Donatur::where('donatur_tetap', 0)->count();
+
+     $totalSemuaPengeluaran = Pengeluaran::sum('jumlah');
+
+    // Hitung sisa saldo
+    $sisaSaldo = $totalDonasi - $totalSemuaPengeluaran;
     return view('acara', compact('donaturTetap','totalDonasi',
         'totalDonaturTetap',
-        'totalDonaturTidakTetap'));
+        'totalDonaturTidakTetap','totalSemuaPengeluaran','sisaSaldo'));
 }
 
 public function testimoni()

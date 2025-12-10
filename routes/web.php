@@ -168,6 +168,7 @@ Route::resource('donatur', DonaturController::class);
 Route::get('/donatur/{id}', [DonaturController::class, 'show'])->name('donatur.show');
 Route::post('/donatur/{id}/donasi', [DonaturController::class, 'storeDonasi'])->name('donatur.donasi.store');
 
+Route::resource('pengeluaran', App\Http\Controllers\PengeluaranController::class);
 
 Route::get('/export/masjids', function () {
     $timestamp = now()->format('d-m-Y');

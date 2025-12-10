@@ -374,6 +374,7 @@
             </div>
 
             {{-- baris1 --}}
+            {{-- baris1 --}}
             <div class="container  ">
                 <div class="footer-line mb-15 "></div>
                 <div class="row g-4 footer-inner ">
@@ -382,7 +383,7 @@
                         <div class="footer-item mt-3">
                             <a class="text-light mb-1"><span class="text-primary">Donasi Terkumpul Sampai : <p
                                         class="mb-1 text-primary" id="tanggalSekarang"></p></span></a>
-                            <h2 class="mt-4 mb-4 text-light"><span class="text-light">
+                            <h2 class="mt-5 mb-5 text-light"><span class="text-light">
                                     Rp {{ number_format($totalDonasi, 0, ',', '.') }} </span> </h2>
                             <a class="text-light mt-1"><span class="text-primary">Donatur Tetap :
                                     {{ $totalDonaturTetap }} <p class="mb-1 text-light"></p>Partisipan Kebaikan :
@@ -391,27 +392,36 @@
                     </div>
 
 
-                    <div class="col-md-4 col-lg-6 col-xl-5">
-
-                        <div class="footer-item mt-5">
-
-                            <h5 class="text-light mb-4"><span class="text-light fs-4">Penyaluran Donasi melalui :</span>
-                            </h5>
-                            <a class="mb-1 text-light">
-                                <span class="text-primary fs-4">Yayasan Cita Amanat Martadiredja</span>
-                            </a>
-
-                            <h3 class="mb-1 text-primary">BNI 1967473460 </h3>
-                            {{-- <a href="" class="btn btn-primary py-2 px-4">Donate Now</a> --}}
+                   <div class="col-md-4 col-lg-6 col-xl-4">
+                        <div class="footer-item mt-3">
+                            <a class="text-light mb-1"><span class="text-primary">Realisasi Donasi Sampai : <p
+                                        class="mb-1 text-primary" id="tanggalSekarang1"></p></span></a>
+                            <h2 class="mt-5 mb-5 text-light"><span class="text-light">
+                                    Rp {{ number_format($totalSemuaPengeluaran, 0, ',', '.') }} </span> </h2>
+                            <a class="text-light mt-1"><span class="text-primary">Saldo Donasi :
+                                   </a>
+                                    <h5 class="mt-1 mb-4 text-warning"><span class="text-warning">
+                                    Rp {{ number_format($sisaSaldo, 0, ',', '.') }} </span> </h5>
                         </div>
-                    </div>
+                    </div>  
 
-                    <div class="col-md-4 col-lg-6 col-xl-3">
+                    
+
+                    <div class="col-md-4 col-lg-6 col-xl-4">
                         <div class="footer-item mt-4">
-                            <h4 class="text-light mb-4"><span class="text-primary">Qris:</span></h4>
-                            <div class="d-flex flex-column align-items-start">
+                            <a class="text-light mb-4"><span class="text-light ">Penyaluran Donasi melalui :</span>
+                            </a>
+                            <p class="mb-1 text-light">
+                                <span class="text-primary ">Yayasan Cita Amanat Martadiredja</span>
+                            </p>
+
+                            <h5 class="mb-1 text-primary">BNI 1967473460 </h5>
+                                        
+                            <h4 class="text-light mb-1 mt-3"><span class="text-primary">Qris:</span></h4>
+                             
+                            <div class="d-flex flex-column align-items-start mt-1">
                                 <span class=""> <img src="/mosque/img/qris.png"
-                                        class="img-fluid flex-shrink-10" alt="QRIS" width="120"
+                                        class="img-fluid flex-shrink-10" alt="QRIS" width="100"
                                         style="cursor:pointer;" data-bs-toggle="modal" data-bs-target="#imageModal"
                                         onclick="showImageModal('/mosque/img/qrisCAM.jpg')">
                                 </span>
@@ -517,6 +527,14 @@
 </script>
  <script>
         document.getElementById('tanggalSekarang').innerText =
+            new Date().toLocaleDateString('id-ID', {
+                day: '2-digit',
+                month: 'long',
+                year: 'numeric'
+            });
+    </script>
+         <script>
+        document.getElementById('tanggalSekarang1').innerText =
             new Date().toLocaleDateString('id-ID', {
                 day: '2-digit',
                 month: 'long',
