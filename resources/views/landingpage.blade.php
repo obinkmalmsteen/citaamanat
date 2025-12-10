@@ -433,7 +433,7 @@
 
                             <h4>1. Daftarkan Masjid / Mushola </h4>
                             <p class="mb-4">Silakan daftarkan masjid baru melalui tombol di bawah ini:</p>
-                            <a href="{{ route('registrasi') }}" class="btn btn-primary px-3">Daftar
+                            <a href="#" class="btn btn-primary px-3">Daftar
                                 Sekarang</a>
                             <div class="btn-md-square bg-primary rounded-circle position-absolute"
                                 style="top: 25px; left: -25px;">
@@ -444,6 +444,8 @@
                     </div>
 
                 </div>
+{{-- tombol daftar diatas di disable sementara , isi dari hrefnya:  href="{{ route('registrasi') }}" --}}
+
 
                 <div class="col-lg-6 col-xl-4">
                     <div class="activities-item p-4 wow fadeIn" data-wow-delay="0.1s">
