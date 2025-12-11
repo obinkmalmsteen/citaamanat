@@ -383,7 +383,7 @@
 </script>
 
 
-@if (Auth::check() && Auth::user()->jabatan == 'User' && $item->testimonial_status != 1 && $item->total_pengajuan >= 1)
+{{-- @if (Auth::check() && Auth::user()->jabatan == 'User' && $item->testimonial_status != 1 && $item->total_pengajuan >= 1)
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             Swal.fire({
@@ -401,4 +401,4 @@
             });
         });
     </script>
-@endif
+@endif          obink testimonial paksa  --}}  

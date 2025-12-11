@@ -19,6 +19,7 @@ use App\Http\Controllers\PengajuanController;
 use App\Http\Controllers\JenisBarangController;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\PengadaanRequestController;
+use App\Http\Controllers\PengadaanItemController;
 
 
 
@@ -55,7 +56,7 @@ Route::post('daftar-masjid/store', [MasjidController::class, 'storePublic'])->na
 
 Route::get('/form-masjid', [MasjidController::class, 'publicForm'])->name('formMasjid');
 
-
+//Route::get('/registrasi', [MasjidController::class, 'showProvinces'])->name('registrasi');   obinkini route registrasi asli yang lagi dimatikan
 Route::get('/registrasi', [MasjidController::class, 'showProvinces'])->name('registrasi');
 Route::get('/get-regencies/{province_id}', [MasjidController::class, 'getRegencies'])->name('getRegencies');
 Route::get('/get-districts/{regency_id}', [MasjidController::class, 'getDistricts'])->name('getDistricts');
@@ -148,7 +149,16 @@ Route::put('masjid/{id}/update-full', [MasjidController::class, 'updateFull'])
 Route::get('/kirim-pesan/{id}', [MasjidController::class, 'kirimPesan'])->name('kirim.pesan');
 Route::get('/kirim-pesantemplate/{id}', [MasjidController::class, 'kirimPesanTemplate'])->name('kirim.pesantemplate');
 
-
+Route::get('/pengadaan/items', [PengadaanItemController::class, 'index'])
+    ->name('pengadaan.items.index');
+    Route::prefix('pengadaan')->name('pengadaan.')->group(function(){
+    Route::get('/items', [PengadaanItemController::class, 'index'])->name('items.index');
+    Route::get('/items/data', [PengadaanItemController::class, 'data'])->name('items.data'); // DataTables AJAX
+    Route::get('/items/export-excel', [PengadaanItemController::class, 'exportExcel'])->name('items.export.excel');
+    Route::get('/items/export-pdf', [PengadaanItemController::class, 'exportPdf'])->name('items.export.pdf');
+    Route::get('/items/group-by-cabang', [PengadaanItemController::class, 'groupByCabang'])->name('items.group.cabang');
+    Route::get('/items/summary-by-request', [PengadaanItemController::class, 'summaryByRequest'])->name('items.summary.request');
+});
   // karyawan membuat request
     Route::get('pengadaan', [PengadaanRequestController::class,'index'])->name('pengadaan.index');
     Route::post('pengadaan/store', [PengadaanRequestController::class,'store'])->name('pengadaan.store');
@@ -163,6 +173,7 @@ Route::get('/kirim-pesantemplate/{id}', [MasjidController::class, 'kirimPesanTem
 
 Route::get('/pengadaan/{id}/export-pdf', [PengadaanRequestController::class, 'exportPdf'])
     ->name('pengadaan.export_pdf');
+
 
 Route::resource('donatur', DonaturController::class);
 Route::get('/donatur/{id}', [DonaturController::class, 'show'])->name('donatur.show');

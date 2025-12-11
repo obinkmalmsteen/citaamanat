@@ -31,9 +31,20 @@
 .sidebar.toggled {
     width: 100px !important;
 }
+.sidebar-divider {
+    border-top: 1px solid #c9c9c9 !important; /* ketebalan 3px */
+}
 
 
 </style>
+
+@php
+    use App\Models\Cabang;
+
+    $allCabang = Cabang::orderBy('nama_cabang')->get();
+    $user = Auth::user();
+@endphp
+
 
 <ul class="navbar-nav bg-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
@@ -66,8 +77,8 @@
         <hr class="sidebar-divider">
 
         <!-- Heading -->
-        <div class="sidebar-heading">
-            MENU ADMIN
+        <div class="sidebar-heading text-white">
+            MENU ADMIN MASJID
         </div>
 
         <!-- Nav Item - Data User -->
@@ -140,7 +151,9 @@
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
-
+<div class="sidebar-heading text-white">
+            MENU PENGADAAN BARANG SPPG
+        </div>
  @if(Auth::check() && Auth::user()->jabatan === 'Admin')
         <li class="nav-item {{ $menuDapurDashboard ?? '' }}">
             <a class="nav-link" href="{{ route('dapurdashboard') }}">
@@ -171,19 +184,49 @@
 
         </div>
     </div>
-</li>
-
-    
+</li>  
 @endif
 
+<li class="nav-item">
+     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePengadaan"
+        aria-expanded="false" aria-controls="collapsePengadaan">
+        <i class="fas fa-tools"></i>
+        <span>Pengadaan Barang</span>
+    </a> 
 
-@php
-    use App\Models\Cabang;
+    <div id="collapsePengadaan" class="collapse" data-parent="#accordionSidebar">
+        <div class=" py-2 rounded">
+            @if(Auth::check() && Auth::user()->jabatan !== 'Karyawan')
+            <a class="nav-link pl-5 {{ $menuPengadaan ?? '' }}" href="{{ route('pengadaan.index') }}">
+                <i class="fas fa-dot-circle"></i>
+                <span>Permintaan Barang</span>
+            </a>
+            @endif
+@if($user->jabatan === 'Admin')
+            <a class="nav-link pl-5 {{ $menuDataSemuaBarang ?? '' }}" href="{{ route('pengadaan.items.index') }}">
+                <i class="fas fa-dot-circle"></i>
+                <span>All Permintaan Barang</span>
+            </a>
+@endif
+{{-- 
+    <a href="{{ route('pengadaan.items.index') }}"
+   class="btn btn-primary mb-3">
+    <i class="fas fa-box-open"></i> Lihat Semua Item Barang
+</a> --}}
 
-    $allCabang = Cabang::orderBy('nama_cabang')->get();
-    $user = Auth::user();
-@endphp
 
+
+        </div>
+    </div>
+</li>
+
+
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block">
+        <!-- Heading -->
+        <div class="sidebar-heading text-white">
+            DAFTAR DAPUR SPPG
+        </div>
 {{-- ADMIN: bisa lihat semua cabang --}}
 @if($user->jabatan === 'Admin')
     @foreach($allCabang as $c)
@@ -223,7 +266,7 @@
 
 @endif
 
-@if($user->jabatan === 'Admin')
+{{-- @if($user->jabatan === 'Admin')
 
 <li class="nav-item {{ $menuPengadaan ?? '' }}">
     <a class="nav-link" href="{{ route('pengadaan.index') }}">
@@ -232,7 +275,7 @@
     </a>
 </li>
 
-@endif
+@endif --}}
 
 
 

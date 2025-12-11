@@ -2,6 +2,10 @@
 
 @section('content')
 <div class="container">
+    {{-- <a href="{{ route('pengadaan.items.index') }}"
+   class="btn btn-primary mb-3">
+    <i class="fas fa-box-open"></i> Lihat Semua Item Barang
+</a> --}}
     <h3 class="mb-3">Daftar Request Pengadaan</h3>
 
     @if(session('success')) <div class="alert alert-success">{{ session('success') }}</div> @endif

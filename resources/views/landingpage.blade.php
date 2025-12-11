@@ -444,7 +444,7 @@
                     </div>
 
                 </div>
-{{-- tombol daftar diatas di disable sementara , isi dari hrefnya:  href="{{ route('registrasi') }}" --}}
+{{--obink tombol daftar diatas di disable sementara , isi dari hrefnya:  href="{{ route('registrasi') }}" --}}
 
 
                 <div class="col-lg-6 col-xl-4">

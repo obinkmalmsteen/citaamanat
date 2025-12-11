@@ -19,16 +19,18 @@ class PengadaanRequest extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class, 'user_id','id');
     }
 
     public function approver()
     {
         return $this->belongsTo(User::class, 'approved_by');
     }
-    public function cabang()
+public function cabang()
 {
-    return $this->belongsTo(Cabang::class, 'cabang_id');
+    return $this->belongsTo(Cabang::class, 'cabang_id', 'id');
 }
+
+
 
 }

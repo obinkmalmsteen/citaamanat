@@ -14,11 +14,19 @@ class PengadaanRequestItem extends Model
 
     public function barang()
     {
-        return $this->belongsTo(Barang::class, 'barang_id');
+        return $this->belongsTo(Barang::class, 'barang_id', 'id');
     }
 
-    public function request()
-    {
-        return $this->belongsTo(PengadaanRequest::class, 'pengadaan_request_id');
-    }
+   public function request()
+{
+    return $this->belongsTo(PengadaanRequest::class, 'pengadaan_request_id', 'id');
+}
+
+
+    public function requestPengadaan()
+{
+    return $this->belongsTo(PengadaanRequest::class, 'request_id');
+}
+
+
 }
