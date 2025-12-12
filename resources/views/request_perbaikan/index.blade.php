@@ -34,14 +34,14 @@
             <td>Rp {{ number_format($r->estimasi_biaya, 0, ',', '.') }}</td>
  <td class="text-center">
                                 @if ($r->foto1)
-                                    <img src="{{ asset('storage/foto1/' . $r->foto1) }}"
+                                    <img src="{{ asset('public/storage/foto1/' . $r->foto1) }}"
                                         width="60">
                                 @endif
 
                             </td>
                              <td class="text-center">
                                 @if ($r->foto2)
-                                    <img src="{{ asset('storage/foto2/' . $r->foto2) }}"
+                                    <img src="{{ asset('public/storage/foto2/' . $r->foto2) }}"
                                         width="60">
                                 @endif
 
