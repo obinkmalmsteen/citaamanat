@@ -47,8 +47,8 @@ Route::post('login',[AuthController::class,'loginProses'])->name('loginProses');
 // Logout
 Route::get('logout',[AuthController::class,'logout'])->name('logout');
 
-// 🔹 ROUTE PUBLIK (tanpa login)
-Route::get('daftar-masjid', [MasjidController::class, 'createPublic'])->name('masjidPublicForm');
+// 🔹 ROUTE PUBLIK (tanpa login) Route::get('daftar-masjid', [MasjidController::class, 'createPublic'])->name('masjidPublicForm');
+Route::get('daftar-masjid', [DashboardController::class, 'landingpage'])->name('landingpage');
 Route::post('daftar-masjid/store', [MasjidController::class, 'storePublic'])->name('masjidPublicStore');
 
 // Ambil daftar kota berdasarkan provinsi
