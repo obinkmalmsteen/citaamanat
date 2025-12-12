@@ -188,38 +188,47 @@
 @endif
 
 <li class="nav-item">
-     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePengadaan"
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePengadaan"
         aria-expanded="false" aria-controls="collapsePengadaan">
-        <i class="fas fa-tools"></i>
+        <i class="fas fa-boxes"></i>
         <span>Pengadaan Barang</span>
-    </a> 
+    </a>
 
     <div id="collapsePengadaan" class="collapse" data-parent="#accordionSidebar">
-        <div class=" py-2 rounded">
-            @if(Auth::check() && Auth::user()->jabatan !== 'Karyawan')
-            <a class="nav-link pl-5 {{ $menuPengadaan ?? '' }}" href="{{ route('pengadaan.index') }}">
-                <i class="fas fa-dot-circle"></i>
-                <span>Permintaan Barang</span>
-            </a>
+        <div class="py-2 rounded">
+
+            {{-- Jika Karyawan → tampilkan menu Permintaan Barang saja --}}
+            @if(Auth::check() && Auth::user()->jabatan === 'Karyawan')
+                <a class="nav-link pl-5 {{ $menuPengadaan ?? '' }}" href="{{ route('pengadaan.index') }}">
+                    <i class="fas fa-dot-circle"></i>
+                    <span>Permintaan Barang</span>
+                </a>
             @endif
-@if($user->jabatan === 'Admin')
-            <a class="nav-link pl-5 {{ $menuDataSemuaBarang ?? '' }}" href="{{ route('pengadaan.items.index') }}">
-                <i class="fas fa-dot-circle"></i>
-                <span>All Permintaan Barang</span>
-            </a>
-@endif
-{{-- 
-    <a href="{{ route('pengadaan.items.index') }}"
-   class="btn btn-primary mb-3">
-    <i class="fas fa-box-open"></i> Lihat Semua Item Barang
-</a> --}}
 
+            {{-- Jika Admin → tampilkan SEMUA MENU --}}
+            @if(Auth::check() && Auth::user()->jabatan === 'Admin')
+                <a class="nav-link pl-5 {{ $menuPengadaan ?? '' }}" href="{{ route('pengadaan.index') }}">
+                    <i class="fas fa-dot-circle"></i>
+                    <span>Permintaan Barang</span>
+                </a>
 
+                <a class="nav-link pl-5 {{ $menuDataSemuaBarang ?? '' }}" href="{{ route('pengadaan.items.index') }}">
+                    <i class="fas fa-dot-circle"></i>
+                    <span>All Permintaan Barang</span>
+                </a>
+            @endif
 
         </div>
     </div>
 </li>
 
+
+<li class="nav-item">
+    <a class="nav-link" href="{{ route('request-perbaikan.index') }}">
+        <i class="fas fa-tools"></i>
+        <span>Request Perbaikan</span>
+    </a>
+</li>
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
@@ -257,12 +266,12 @@
 </li>
 
 
-<li class="nav-item {{ $menu['menuPengadaan'] ?? '' }}">
+{{-- <li class="nav-item {{ $menu['menuPengadaan'] ?? '' }}">
     <a class="nav-link" href="{{ route('pengadaan.index', ['cabang_id' => $user->cabang_id]) }}">
         <i class="fas fa-box"></i>
         <span>Pengadaan Barang</span>
     </a>
-</li>
+</li> --}}
 
 @endif
 

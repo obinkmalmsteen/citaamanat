@@ -180,10 +180,15 @@ Route::get('/donatur/{id}', [DonaturController::class, 'show'])->name('donatur.s
 Route::post('/donatur/{id}/donasi', [DonaturController::class, 'storeDonasi'])->name('donatur.donasi.store');
 
 Route::resource('pengeluaran', App\Http\Controllers\PengeluaranController::class);
+Route::resource('request-perbaikan', \App\Http\Controllers\RequestPerbaikanController::class);
 
 Route::get('/export/masjids', function () {
     $timestamp = now()->format('d-m-Y');
  // contoh: 2025-11-22_14-35
+
+
+
+
 
     return Excel::download(new MasjidsExport, "masjids_{$timestamp}.xlsx"); 
 });

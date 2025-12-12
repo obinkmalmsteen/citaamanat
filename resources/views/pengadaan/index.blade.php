@@ -21,6 +21,8 @@
                 <th>Tanggal</th>
                 <th>Status</th>
                 <th>Jumlah Item</th>
+                <th>Total</th>
+                <th>BOP/NON BOP</th>
                 <th>Aksi</th>
             </tr>
         </thead>
@@ -29,7 +31,7 @@
             <tr>
                 <td>{{ $r->kode }}</td>
                 <td>{{ $r->user->nama ?? '—' }}</td>
-                <td>{{ $r->cabang_id ?? '—' }}</td>
+                <td>{{ $r->cabang->nama_cabang ?? '—' }}</td>
                 <td>{{ $r->created_at->format('Y-m-d H:i') }}</td>
                 <td>
                     @if($r->status === 'pending') <span class="badge bg-warning">Pending</span> @endif
@@ -38,12 +40,16 @@
                     @if($r->status === 'partially_approved') <span class="badge bg-primary">Partially Approved</span> @endif
                 </td>
                 <td>{{ $r->items->count() }}</td>
-                <td>
+            
+                <td>Rp {{ number_format($r->total_harga, 0, ',', '.')  }}</td>
+                <td>{{ $r->status_permintaan }}</td>
+                 <td>
                     <a href="{{ route('pengadaan.show', $r->id) }}" class="btn btn-sm btn-info">Lihat</a>
                     @if(auth()->user()->jabatan === 'Admin' && $r->status === 'pending')
                         <!-- Approve/Reject akan ada di show -->
                     @endif
                 </td>
+                
             </tr>
             @endforeach
         </tbody>

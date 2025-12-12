@@ -34,69 +34,128 @@
                         </tbody>
                     </table>
                 </div>
+                <p id="totalHargaPreview" class="mt-2 fw-bold"></p>
+
             </div>
             <div class="mb-3 d-flex justify-content-end">
                 <button type="button" id="generateBtn" class="btn btn-primary">Generate Request</button>
             </div>
-            <div class="mb-3">
-                <label for="divisi">Divisi</label>
-                <input name="divisi" id="divisi" class="form-control" rows="2">{{ old('divisi') }}</input>
-            </div>
+           
 
-            <div class="mb-3">
-                <label for="note">Catatan umum (opsional)</label>
-                <textarea name="note" id="note" class="form-control" rows="2">{{ old('note') }}</textarea>
-            </div>
+                   <div class="card shadow-sm mb-4">
+    <div class="card-header bg-primary text-white">
+        <h5 class="mb-0">Informasi Permintaan</h5>
+    </div>
 
-            <div class="mb-2">
-                <input type="text" id="searchInput" class="form-control" placeholder="Cari barang...">
-            </div>
+    <div class="card-body">
 
-            <table class="table table-bordered" id="barangTable">
-                <thead>
-                    <tr>
-                        <th style="width:40px">#</th>
-                        <th style="width:40px"><input type="checkbox" id="check_all"></th>
-                        <th>Nama Barang</th>
-                        <th>Stok</th>
-                        <th>Satuan</th>
-                        <th style="width:120px">Qty Request</th>
-                        <th style="width:210px">Harga Request</th>
-                        <th>Keterangan</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($barang as $i => $b)
+        <!-- Divisi -->
+        <div class="mb-3">
+            <label for="divisi" class="form-label">Divisi</label>
+            <input 
+                type="text" 
+                name="divisi" 
+                id="divisi" 
+                class="form-control" 
+                value="{{ old('divisi') }}"
+            >
+        </div>
+
+        <!-- Catatan -->
+        <div class="mb-3">
+            <label for="note" class="form-label">Catatan Umum (opsional)</label>
+            <textarea 
+                name="note" 
+                id="note" 
+                class="form-control" 
+                rows="2"
+            >{{ old('note') }}</textarea>
+        </div>
+
+        <!-- Status Request -->
+        <div class="mb-3">
+            <label class="form-label">
+                <span class="text-danger">*</span> Status Request (BOP / NON BOP)
+            </label>
+            <select 
+                name="status_permintaan" 
+                class="form-select"
+            >
+                <option selected disabled>== Pilih ==</option>
+                <option value="BOP">BOP</option>
+                <option value="NON BOP">NON BOP</option>
+                <option value="">-</option>
+            </select>
+
+            @error('status_permintaan')
+                <small class="text-danger">{{ $message }}</small>
+            @enderror
+        </div>
+
+        <!-- Hidden Total Harga -->
+        <input 
+            type="hidden" 
+            name="total_harga" 
+            id="total_harga_input"
+        >
+
+    </div>
+</div>
+
+
+                
+ 
+
+
+                <div class="mb-2">
+                    <input type="text" id="searchInput" class="form-control" placeholder="Cari barang...">
+                </div>
+
+                <table class="table table-bordered" id="barangTable">
+                    <thead>
                         <tr>
-                            <td>{{ $i + 1 }}</td>
-                            <td>
-                                <input type="checkbox" class="check-item" data-id="{{ $b->id }}">
-                            </td>
-                            <td>{{ $b->nama_barang }}</td>
-                            <td>{{ $b->stok }}</td>
-                            <td>{{ $b->satuan }}</td>
-                            <td>
-                                <input type="number" min="1" class="form-control qty-input"
-                                    data-id="{{ $b->id }}" disabled>
-                            </td>
-                            <td>
-                                <div class="input-group">
-                                    <span class="input-group-text">Rp</span>
-                                    <input type="text" min="0" class="form-control harga-input"
-                                        data-id="{{ $b->id }}" disabled>
-                                </div>
-                            </td>
-
-                            <td>
-                                <input type="text" class="form-control note-input" data-id="{{ $b->id }}"
-                                    disabled>
-                            </td>
+                            <th style="width:40px">#</th>
+                            <th style="width:40px"><input type="checkbox" id="check_all"></th>
+                            <th>Nama Barang</th>
+                            <th>Stok</th>
+                            <th>Satuan</th>
+                            <th style="width:120px">Qty Request</th>
+                            <th style="width:210px">Harga Request</th>
+                            <th>Keterangan</th>
                         </tr>
-                    @endforeach
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        @foreach ($barang as $i => $b)
+                            <tr>
+                                <td>{{ $i + 1 }}</td>
+                                <td>
+                                    <input type="checkbox" class="check-item" data-id="{{ $b->id }}">
+                                </td>
+                                <td>{{ $b->nama_barang }}</td>
+                                <td>{{ $b->stok }}</td>
+                                <td>{{ $b->satuan }}</td>
+                                <td>
+                                    <input type="number" min="1" class="form-control qty-input"
+                                        data-id="{{ $b->id }}" disabled>
+                                </td>
+                                <td>
+                                    <div class="input-group">
+                                        <span class="input-group-text">Rp</span>
+                                        <input type="text" min="0" class="form-control harga-input"
+                                            data-id="{{ $b->id }}" disabled>
+                                    </div>
+                                </td>
 
-            <input type="hidden" name="items_json" id="items_json">
+                                <td>
+                                    <input type="text" class="form-control note-input" data-id="{{ $b->id }}"
+                                        disabled>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+
+                <input type="hidden" name="items_json" id="items_json">
 
 
         </form>
@@ -142,23 +201,26 @@
             }
 
             // saat klik generate, buat input hidden array sesuai format yang diharapkan backend
-           document.getElementById('generateBtn').addEventListener('click', function() {
-    const items = [];
-    document.querySelectorAll('.check-item:checked').forEach(cb => {
-        const id = cb.getAttribute('data-id');
-        const qty = document.querySelector('.qty-input[data-id="' + id + '"]').value || 0;
-        const hargaRaw = document.querySelector('.harga-input[data-id="' + id + '"]').value || 0;
-        const note = document.querySelector('.note-input[data-id="' + id + '"]').value || null;
+            document.getElementById('generateBtn').addEventListener('click', function() {
+                const items = [];
+                document.querySelectorAll('.check-item:checked').forEach(cb => {
+                    const id = cb.getAttribute('data-id');
+                    const qty = document.querySelector('.qty-input[data-id="' + id + '"]').value ||
+                        0;
+                    const hargaRaw = document.querySelector('.harga-input[data-id="' + id + '"]')
+                        .value || 0;
+                    const note = document.querySelector('.note-input[data-id="' + id + '"]')
+                        .value || null;
 
-        const hargaBersih = parseInt(hargaRaw.replace(/\./g, ''));
+                    const hargaBersih = parseInt(hargaRaw.replace(/\./g, ''));
 
-        items.push({
-            barang_id: id,
-            qty: parseInt(qty),
-            harga: hargaBersih,
-            note: note
-        });
-    });
+                    items.push({
+                        barang_id: id,
+                        qty: parseInt(qty),
+                        harga: hargaBersih,
+                        note: note
+                    });
+                });
 
 
                 if (items.length === 0) {
@@ -218,6 +280,8 @@
             const tbody = document.getElementById('previewTableBody');
             tbody.innerHTML = ''; // reset
 
+            let totalHarga = 0;
+
             const checkedItems = document.querySelectorAll('.check-item:checked');
 
             if (checkedItems.length === 0) {
@@ -226,34 +290,41 @@
             }
 
             checkedItems.forEach((cb, index) => {
-                const id = cb.getAttribute('data-id');
                 const row = cb.closest('tr');
                 const nama = row.children[2].textContent;
-                const qty = row.querySelector('.qty-input').value;
-                const harga = row.querySelector('.harga-input').value;
+
+                const qty = parseInt(row.querySelector('.qty-input').value.replace(/\./g, '')) || 0;
+                const harga = parseInt(row.querySelector('.harga-input').value.replace(/\./g, '')) || 0;
                 const note = row.querySelector('.note-input').value;
+
+                totalHarga += qty * harga;
 
                 const tr = document.createElement('tr');
                 tr.innerHTML = `
             <td>${index + 1}</td>
             <td>${nama}</td>
             <td>${qty}</td>
-            <td>${harga}</td>
+            <td>${harga.toLocaleString('id-ID')}</td>
             <td>${note}</td>
         `;
                 tbody.appendChild(tr);
             });
 
+            // ⬇️⛳️ Kirim total harga ke controller
+            document.getElementById('total_harga_input').value = totalHarga;
+
+            // tampilkan total di UI
+            document.getElementById('totalHargaPreview').textContent =
+                "Total Harga: Rp " + totalHarga.toLocaleString('id-ID');
+
             document.getElementById('previewContainer').style.display = 'block';
-            // scroll ke preview
+
             document.getElementById('previewContainer').scrollIntoView({
                 behavior: 'smooth'
             });
-
-
-
         });
     </script>
+
     <script>
         document.addEventListener("input", function(e) {
             if (e.target.classList.contains("harga-input")) {

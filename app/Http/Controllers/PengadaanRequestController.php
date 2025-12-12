@@ -90,7 +90,7 @@ $menu = $this->getMenuData();
     DB::beginTransaction();
     try {
 
-        $kode = 'PR-' . Carbon::now()->format('Ymd') . '-' . Str::upper(Str::random(4));
+        $kode = 'RB-' . Carbon::now()->format('Ymd') . '-' . Str::upper(Str::random(2)) . '-' . $user->cabang->id_cabang ;
 
         $pengadaan = PengadaanRequest::create([
             'kode' => $kode,
@@ -99,6 +99,8 @@ $menu = $this->getMenuData();
             'divisi' => $request->divisi ?? null,
             'status' => 'pending',
             'note' => $request->note ?? null,
+            'total_harga' => $request->total_harga ?? null,
+            'status_permintaan' => $request->status_permintaan ?? null,
         ]);
 
         foreach ($request->items as $it) {
