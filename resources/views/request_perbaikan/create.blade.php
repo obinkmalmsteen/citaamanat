@@ -9,7 +9,7 @@
         </div>
 
         <div class="card-body">
-            <form action="{{ route('request-perbaikan.store') }}" method="POST">
+            <form action="{{ route('request-perbaikan.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
 
                 <div class="mb-3">
@@ -59,6 +59,20 @@
                     <label>Keterangan</label>
                     <textarea name="keterangan" class="form-control" rows="2"></textarea>
                 </div>
+                  <div class="mb-3">
+                <label>Foto 1</label>
+                <input type="file" name="foto1" class="form-control">
+                @error('foto1')
+                    <small class="text-danger">{{ $message }}</small>
+                @enderror
+            </div>
+            <div class="mb-3">
+                <label>Foto 2</label>
+                <input type="file" name="foto2" class="form-control">
+                @error('foto2')
+                    <small class="text-danger">{{ $message }}</small>
+                @enderror
+            </div>
 
                 <button class="btn btn-success mt-3">Simpan</button>
             </form>

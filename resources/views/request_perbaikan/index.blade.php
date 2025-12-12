@@ -16,6 +16,8 @@
             <th>Kerusakan</th>
             <th>Type</th>
             <th>Estimasi</th>
+            <th>Foto 1</th>
+            <th>Foto 2</th>
             <th>Aksi</th>
         </tr>
     </thead>
@@ -30,7 +32,20 @@
             <td>{{ $r->jenis_kerusakan }}</td>
             <td>{{ $r->type_perbaikan }}</td>
             <td>Rp {{ number_format($r->estimasi_biaya, 0, ',', '.') }}</td>
+ <td class="text-center">
+                                @if ($r->foto1)
+                                    <img src="{{ asset('storage/foto1/' . $r->foto1) }}"
+                                        width="60">
+                                @endif
 
+                            </td>
+                             <td class="text-center">
+                                @if ($r->foto2)
+                                    <img src="{{ asset('storage/foto2/' . $r->foto2) }}"
+                                        width="60">
+                                @endif
+
+                            </td>
             <td>
                 <a href="{{ route('request-perbaikan.edit', $r->id) }}" class="btn btn-warning btn-sm">Edit</a>
                 <form action="{{ route('request-perbaikan.destroy', $r->id) }}" method="POST" class="d-inline">

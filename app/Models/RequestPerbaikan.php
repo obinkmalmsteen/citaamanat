@@ -9,7 +9,7 @@ class RequestPerbaikan extends Model
     protected $fillable = [
         'kode', 'user_id', 'cabang_id',
         'area_perbaikan', 'jenis_kerusakan',
-        'type_perbaikan', 'estimasi_biaya', 'keterangan'
+        'type_perbaikan', 'estimasi_biaya', 'keterangan','foto1','foto2'
     ];
 
     public function user()

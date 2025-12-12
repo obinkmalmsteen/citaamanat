@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\RequestPerbaikan;
+use App\Helpers\StorageSync;
 use Illuminate\Http\Request;
+use App\Models\RequestPerbaikan;
 
 class RequestPerbaikanController extends Controller
 {
@@ -37,7 +38,25 @@ public function index()
         'type_perbaikan' => 'required',
         'estimasi_biaya' => 'nullable|numeric',
         'keterangan' => 'nullable',
+        'foto1'   => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+        'foto2'   => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048'
     ]);
+
+     // upload file jika ada
+if ($request->hasFile('foto1')) {
+    $file = $request->file('foto1');
+    $filename = time() . '-1-' . $file->getClientOriginalName();
+    $file->storeAs('foto1', $filename, 'public');
+    $validated['foto1'] = $filename;
+}
+
+if ($request->hasFile('foto2')) {
+    $file = $request->file('foto2');
+    $filename = time() . '-2-' . $file->getClientOriginalName();
+    $file->storeAs('foto2', $filename, 'public');
+    $validated['foto2'] = $filename;
+}
+
 
     // buat kode otomatis
     $validated['kode'] = 'RP-' . now()->format('YmdHis');
