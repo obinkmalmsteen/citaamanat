@@ -56,8 +56,9 @@ Route::post('daftar-masjid/store', [MasjidController::class, 'storePublic'])->na
 
 Route::get('/form-masjid', [MasjidController::class, 'publicForm'])->name('formMasjid');
 
+
 //Route::get('/registrasi', [MasjidController::class, 'showProvinces'])->name('registrasi');   obinkini route registrasi asli yang lagi dimatikan
-Route::get('/registrasi', [MasjidController::class, 'showProvinces'])->name('registrasi');
+Route::get('/registrasi', [DashboardController::class, 'landingpage'])->name('registrasi');
 Route::get('/get-regencies/{province_id}', [MasjidController::class, 'getRegencies'])->name('getRegencies');
 Route::get('/get-districts/{regency_id}', [MasjidController::class, 'getDistricts'])->name('getDistricts');
 Route::get('/get-villages/{district_id}', [MasjidController::class, 'getVillages'])->name('getVillages');
