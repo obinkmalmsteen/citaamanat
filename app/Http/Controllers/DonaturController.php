@@ -127,13 +127,17 @@ public function update(Request $request, Donatur $donatur)
 }
 
 
-    public function destroy(Donatur $donatur)
-    {
-        $donatur->delete();
+public function destroy(Donatur $donatur)
+{
+    // hapus semua data anak terlebih dahulu
+    $donatur->donasi()->delete();
 
-        return redirect()->route('donatur.index')
-            ->with('success', 'Data donatur berhasil dihapus.');
-    }
+    // hapus donatur
+    $donatur->delete();
+
+    return redirect()->route('donatur.index')
+        ->with('success', 'Data donatur dan histori donasi berhasil dihapus.');
+}
 
 
     public function show($id)
@@ -158,6 +162,35 @@ public function storeDonasi(Request $request, $id)
     ]);
 
     return redirect()->route('donatur.show', $id)->with('success', 'Donasi berhasil ditambahkan!');
+}
+
+
+public function editDonasi(DonasiHistori $donasi)
+{
+    return view('donasi.edit', compact('donasi'));
+}
+
+public function updateDonasi(Request $request, DonasiHistori $donasi)
+{
+    $request->validate([
+        'nominal_donasi' => 'required|numeric|min:1'
+    ]);
+
+    $donasi->update([
+        'nominal_donasi' => $request->nominal_donasi
+    ]);
+
+    return redirect()
+        ->route('donatur.show', $donasi->donatur_id)
+        ->with('success', 'Histori donasi berhasil diperbarui.');
+}
+
+
+public function destroyDonasi(DonasiHistori $donasi)
+{
+    $donasi->delete();
+
+    return back()->with('success', 'Histori donasi berhasil dihapus.');
 }
 
 

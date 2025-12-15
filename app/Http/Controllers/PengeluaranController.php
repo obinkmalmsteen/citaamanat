@@ -16,7 +16,7 @@ public function index()
     $totalSemuaPengeluaran = Pengeluaran::sum('jumlah');
 
     // Total donasi masuk
-    $totalSemuaDonasi = DonasiHistori::sum('jumlah_donasi');
+    $totalSemuaDonasi = DonasiHistori::sum('nominal_donasi');
 
     // Hitung sisa saldo
     $sisaSaldo = $totalSemuaDonasi - $totalSemuaPengeluaran;

@@ -110,7 +110,7 @@
                         <th>Status Partisipan </th>
                         <th>Logo Partisipan</th>
                         <th>Jumlah Donasi</th>
-                        <th>Tambah Donasi</th>
+                        <th>Edit Donasi</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -142,7 +142,7 @@
                             <td>
                                 @if ($donatur->donatur_tetap == 1)
                                     <a href="{{ route('donatur.show', $donatur) }}" class="btn btn-sm btn-info">
-                                        Tambah Donasi
+                                        Edit Donasi
                                     </a>
                                 @else
                                     <span class="text-muted">_______</span>

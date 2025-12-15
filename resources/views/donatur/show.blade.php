@@ -43,28 +43,50 @@
 
     
 
-    <h4 class="mt-4">Histori Donasi</h4>
+   <h4 class="mt-4">Histori Donasi</h4>
 
-    @if($data->donasi->count() > 0)
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>Tanggal</th>
-                    <th>Jumlah</th>
-                </tr>
-            </thead>
-            <tbody>
-            @foreach($data->donasi as $item)
-                <tr>
-                    <td>{{ $item->created_at->format('d M Y') }}</td>
-                    <td>Rp {{ number_format($item->nominal_donasi, 0, ',', '.') }}</td>
-                </tr>
-            @endforeach
-            </tbody>
-        </table>
-    @else
-        <p>Belum ada histori donasi.</p>
-    @endif
+@if($data->donasi->count() > 0)
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Tanggal</th>
+                <th>Jumlah</th>
+                <th width="120">Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach($data->donasi as $item)
+            <tr>
+                <td>{{ $item->created_at->format('d M Y') }}</td>
+                <td>Rp {{ number_format($item->nominal_donasi, 0, ',', '.') }}</td>
+                <td class="text-center">
+                    <!-- tombol edit -->
+                  <a href="{{ route('donatur.donasi.edit', $item->id) }}"
+   class="btn btn-sm btn-warning">
+    Edit
+</a>
+
+
+                    <!-- tombol delete -->
+                    <form action="{{ route('donatur.donasi.destroy', $item->id) }}"
+      method="POST"
+      class="d-inline"
+      onsubmit="return confirm('Yakin hapus histori donasi ini?')">
+    @csrf
+    @method('DELETE')
+    <button class="btn btn-sm btn-danger">
+        Hapus
+    </button>
+</form>
+
+                </td>
+            </tr>
+        @endforeach
+        </tbody>
+    </table>
+@else
+    <p>Belum ada histori donasi.</p>
+@endif
 
     <a href="{{ route('donatur.index') }}" class="btn btn-secondary mt-3">Kembali</a>
 

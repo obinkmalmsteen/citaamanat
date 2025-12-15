@@ -179,9 +179,27 @@ Route::get('/pengadaan/{id}/export-pdf', [PengadaanRequestController::class, 'ex
 Route::resource('donatur', DonaturController::class);
 Route::get('/donatur/{id}', [DonaturController::class, 'show'])->name('donatur.show');
 Route::post('/donatur/{id}/donasi', [DonaturController::class, 'storeDonasi'])->name('donatur.donasi.store');
+/* HAPUS HISTORI DONASI (1 BARIS) */
+Route::delete(
+    '/donatur/donasi/{donasi}',
+    [DonaturController::class, 'destroyDonasi']
+)->name('donatur.donasi.destroy');
+Route::get(
+    '/donatur/donasi/{donasi}/edit',
+    [DonaturController::class, 'editDonasi']
+)->name('donatur.donasi.edit');
+
+Route::put(
+    '/donatur/donasi/{donasi}',
+    [DonaturController::class, 'updateDonasi']
+)->name('donatur.donasi.update');
+
+
 
 Route::resource('pengeluaran', App\Http\Controllers\PengeluaranController::class);
 Route::resource('request-perbaikan', \App\Http\Controllers\RequestPerbaikanController::class);
+
+
 
 Route::get('/export/masjids', function () {
     $timestamp = now()->format('d-m-Y');
