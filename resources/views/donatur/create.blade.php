@@ -6,29 +6,29 @@
 
         <form action="{{ route('donatur.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
- <div class="row">
-    <div class="col-12">
-        <label class="form-label">
-            <span class="text-danger">*</span> Type Partisipan :
-        </label>
+            <div class="row">
+                <div class="col-12">
+                    <label class="form-label">
+                        <span class="text-danger">*</span> Type Partisipan :
+                    </label>
 
-        <select name="donatur_tetap" id="donatur_tetap" class="form-control">
-            <option value="" disabled {{ old('donatur_tetap') === null ? 'selected' : '' }}>
-                == Pilih Type Partisipan ==
-            </option>
-            <option value="1" {{ old('donatur_tetap') == '1' ? 'selected' : '' }}>
-                Donatur Tetap
-            </option>
-            <option value="0" {{ old('donatur_tetap') == '0' ? 'selected' : '' }}>
-                Partisipan Kebaikan
-            </option>
-        </select>
+                    <select name="donatur_tetap" id="donatur_tetap" class="form-control">
+                        <option value="" disabled {{ old('donatur_tetap') === null ? 'selected' : '' }}>
+                            == Pilih Type Partisipan ==
+                        </option>
+                        <option value="1" {{ old('donatur_tetap') == '1' ? 'selected' : '' }}>
+                            Donatur Tetap
+                        </option>
+                        <option value="0" {{ old('donatur_tetap') == '0' ? 'selected' : '' }}>
+                            Partisipan Kebaikan
+                        </option>
+                    </select>
 
-        @error('donatur_tetap')
-            <small class="text-danger">{{ $message }}</small>
-        @enderror
-    </div>
-</div>
+                    @error('donatur_tetap')
+                        <small class="text-danger">{{ $message }}</small>
+                    @enderror
+                </div>
+            </div>
 
             <div class="mb-3">
                 <label>Nama Partisipan</label>
@@ -37,14 +37,14 @@
                     <small class="text-danger">{{ $message }}</small>
                 @enderror
             </div>
-             <div class="mb-3">
+            <div class="mb-3">
                 <label>Alamat Partisipan</label>
                 <input type="text" name="alamat_donatur" class="form-control" value="{{ old('alamat_donatur') }}">
                 @error('alamat_donatur')
                     <small class="text-danger">{{ $message }}</small>
                 @enderror
             </div>
-         
+
             <div class="mb-3">
                 <label>Logo Partisipan (Jika ada)</label>
                 <input type="file" name="logo_donatur" class="form-control">
@@ -53,29 +53,46 @@
                 @enderror
             </div>
 
-<div class="row mt-3" id="nominalWrapper" style="display:none;">
-    <div class="col-12">
-        <label class="form-label">
-            <span class="text-danger">*</span> Nominal Donasi
-        </label>
-        <input type="number"
-               name="nominal_donasi"
-               class="form-control"
-               min="1"
-               value="{{ old('nominal_donasi') }}">
+            <div class="row mt-3" id="nominalWrapper" style="display:none;">
+                <div class="col-12">
+                    <label class="form-label">
+                        <span class="text-danger">*</span> Nominal Donasi
+                    </label>
+                    <input type="text" id="nominal_donasi" class="form-control" 
+                        value="{{ old('nominal_donasi') }}">
 
-        @error('nominal_donasi')
-            <small class="text-danger">{{ $message }}</small>
-        @enderror
-    </div>
-</div>
+                    <!-- input tersembunyi utk dikirim ke server -->
+                    <input type="hidden" name="nominal_donasi" id="nominal_donasi_raw">
+
+                    @error('nominal_donasi')
+                        <small class="text-danger">{{ $message }}</small>
+                    @enderror
+                </div>
+            </div>
 
 
-<script>
-document.getElementById('donatur_tetap').addEventListener('change', function () {
-    document.getElementById('nominalWrapper').style.display =
-        this.value == '0' ? 'block' : 'none';
-});
+            <script>
+                document.getElementById('donatur_tetap').addEventListener('change', function() {
+                    document.getElementById('nominalWrapper').style.display =
+                        this.value == '0' ? 'block' : 'none';
+                });
+            </script>
+
+            <script>
+    const input = document.getElementById('nominal_donasi');
+    const rawInput = document.getElementById('nominal_donasi_raw');
+
+    input.addEventListener('input', function() {
+        let value = this.value.replace(/\D/g, '');
+        if (value === '') {
+            this.value = '';
+            rawInput.value = '';
+            return;
+        }
+
+        rawInput.value = value;
+        this.value = new Intl.NumberFormat('id-ID').format(value);
+    });
 </script>
             {{-- <div class="mb-3">
                 <label>Jumlah Donasi</label>

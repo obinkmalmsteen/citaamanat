@@ -105,14 +105,45 @@
             </button>
           </div>
 
-          <div class="modal-body">
+        <div class="modal-body">
 
-            <div class="form-group">
-                <label>Nominal Donasi</label>
-                <input type="number" name="nominal_donasi" class="form-control" required>
-            </div>
+    <div class="form-group">
+        <label>Nominal Donasi</label>
 
-          </div>
+        <!-- input tampilan -->
+        Rp <input type="text"
+               id="nominal_donasi_modal"
+               class="form-control"
+               
+               > 
+
+        <!-- input tersembunyi (nilai asli) -->
+        <input type="hidden"
+               name="nominal_donasi"
+               id="nominal_donasi_modal_raw">
+    </div>
+
+</div>
+
+
+<script>
+const modalInput = document.getElementById('nominal_donasi_modal');
+const modalRaw = document.getElementById('nominal_donasi_modal_raw');
+
+modalInput.addEventListener('input', function () {
+    let value = this.value.replace(/\D/g, '');
+
+    if (value === '') {
+        this.value = '';
+        modalRaw.value = '';
+        return;
+    }
+
+    modalRaw.value = value;
+    this.value = new Intl.NumberFormat('id-ID').format(value);
+});
+</script>
+
 
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
