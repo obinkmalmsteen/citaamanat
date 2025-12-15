@@ -92,8 +92,8 @@
         <!-- Nav Item - Data User -->
         <li class="nav-item {{ $menuAdminDonatur ?? '' }}">
             <a class="nav-link" href="{{ route('donatur.index') }}">
-                <i class="fas fa-user"></i>
-                <span>Data Donatur</span>
+                <i class="fas fa-money-bill-wave"></i>
+                <span>Data Pemasukan</span>
             </a>
         </li>
 

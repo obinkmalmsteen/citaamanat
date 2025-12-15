@@ -10,7 +10,7 @@ class DonasiHistori extends Model
 
     protected $fillable = [
         'donatur_id',
-        'jumlah_donasi',
+        'nominal_donasi',
     ];
 
     public function donatur()

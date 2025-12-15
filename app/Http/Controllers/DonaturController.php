@@ -10,22 +10,39 @@ use Illuminate\Support\Facades\Storage;
 
 class DonaturController extends Controller
 {
-    public function index()
-    {
-         $data = [
-        'title' => 'DataDonatur',
+    public function index(Request $request)
+{
+    $data = [
+        'title' => 'Data Donatur',
         'menuAdminDonatur' => 'active',
     ];
-        // Jumlah donatur tetap (donatur_tetap = 1)
+
+    // Counter GLOBAL (tidak terpengaruh filter)
     $totalDonaturTetap = Donatur::where('donatur_tetap', 1)->count();
-
-    // Jumlah donatur tidak tetap (donatur_tetap = 0)
     $totalDonaturTidakTetap = Donatur::where('donatur_tetap', 0)->count();
+    $totalSemuaDonasi = DonasiHistori::sum('nominal_donasi');
 
-         $totalSemuaDonasi = DonasiHistori::sum('jumlah_donasi');
-        $donaturs = Donatur::with('donasi')->paginate(10);
-    return view('donatur.index', $data, compact('donaturs','totalSemuaDonasi','totalDonaturTetap','totalDonaturTidakTetap'));
-    }
+    // Query utama (pakai filter)
+    $donaturs = Donatur::with('donasi')
+        ->when(request()->filled('donatur_tetap'), function ($query) {
+            $query->where('donatur_tetap', request('donatur_tetap'));
+        })
+        ->latest()
+        ->paginate(10)
+        ->withQueryString(); // penting agar filter tidak hilang saat pagination
+
+    return view(
+        'donatur.index',
+        $data,
+        compact(
+            'donaturs',
+            'totalSemuaDonasi',
+            'totalDonaturTetap',
+            'totalDonaturTidakTetap'
+        )
+    );
+}
+
 
    public function create()
 {
@@ -41,32 +58,37 @@ class DonaturController extends Controller
 public function store(Request $request)
 {
     $validated = $request->validate([
-        'nama_donatur'   => 'required|min:3',
-        'alamat_donatur'   => 'nullable|min:3',
         'donatur_tetap'  => 'required|in:1,0',
-        'logo_donatur'   => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
-        'jumlah_donasi'  => 'required|integer|min:1000',
+        'nama_donatur'   => 'required|min:3',
+        'alamat_donatur'=> 'nullable|min:3',
+        'logo_donatur'  => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+        'nominal_donasi'=> 'nullable|required_if:donatur_tetap,0|numeric|min:1',
     ]);
 
-    // upload file jika ada
-if ($request->hasFile('logo_donatur')) {
-    $file = $request->file('logo_donatur');
-    $filename = time() . '-' . $file->getClientOriginalName();
+    // upload logo
+    if ($request->hasFile('logo_donatur')) {
+        $file = $request->file('logo_donatur');
+        $filename = time() . '-' . $file->getClientOriginalName();
+        $file->storeAs('logo_donatur', $filename, 'public');
+        $validated['logo_donatur'] = $filename;
+        StorageSync::run();
+    }
 
-    $file->storeAs('logo_donatur', $filename, 'public');
+    // simpan donatur
+    $donatur = Donatur::create($validated);
 
-    $validated['logo_donatur'] = $filename;
+    // jika BUKAN donatur tetap, langsung simpan donasi
+    if ($validated['donatur_tetap'] == 0) {
+        DonasiHistori::create([
+            'donatur_id' => $donatur->id,
+            'nominal_donasi' => $validated['nominal_donasi'],
+        ]);
+    }
 
-    StorageSync::run();
+    return redirect()->route('donatur.show', $donatur->id)
+        ->with('success', 'Donatur berhasil ditambahkan');
 }
 
-
-
-    Donatur::create($validated);
-
-    return redirect()->route('donatur.index')
-        ->with('success', 'Data donatur berhasil disimpan.');
-}
 
 public function edit(Donatur $donatur)
 {
@@ -80,11 +102,11 @@ public function edit(Donatur $donatur)
 public function update(Request $request, Donatur $donatur)
 {
     $validated = $request->validate([
+        'donatur_tetap'  => 'required|in:1,0',
         'nama_donatur'   => 'required|min:3',
         'alamat_donatur'   => 'nullable|min:3',
-        'donatur_tetap'  => 'required|in:1,0',
         'logo_donatur'   => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
-        'jumlah_donasi'  => 'required|integer|min:1000',
+        
     ]);
 
     // jika ganti logo
@@ -127,12 +149,12 @@ public function update(Request $request, Donatur $donatur)
 public function storeDonasi(Request $request, $id)
 {
     $validated = $request->validate([
-        'jumlah_donasi' => 'required|numeric|min:1',
+        'nominal_donasi' => 'required|numeric|min:1',
     ]);
 
     DonasiHistori::create([
         'donatur_id' => $id,
-        'jumlah_donasi' => $validated['jumlah_donasi'],
+        'nominal_donasi' => $validated['nominal_donasi'],
     ]);
 
     return redirect()->route('donatur.show', $id)->with('success', 'Donasi berhasil ditambahkan!');

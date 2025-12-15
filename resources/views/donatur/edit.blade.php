@@ -8,6 +8,21 @@
             @csrf
             @method('PUT')
 
+
+            <div class="row">
+                    <div class="col-12">
+                        <label class="form-label"><span class="text-danger">*</span> Type Partisipan :</label>
+                        <select name="donatur_tetap" class="form-control" value="{{ old('donatur_tetap') }}">
+                            <option selected disabled>== Pilih Type Partisipan ==</option>
+                            <option value="1">Donatur Tetap</option>
+                            <option value="0">Partisipan Kebaikan</option>
+                            
+                        </select>
+                        @error('donatur_tetap')
+                        <small class="text-danger">{{ $message }}</small>  
+                        @enderror
+                    </div>
+                </div>
             <div class="mb-3">
                 <label>Nama Donatur</label>
                 <input type="text" name="nama_donatur" class="form-control"
@@ -24,28 +39,7 @@
                     <small class="text-danger">{{ $message }}</small>
                 @enderror
             </div>
-            <div class="col-md-6 mb-4">
-                <label class="form-label">
-                    <span class="text-danger">*</span> Donatur Tetap:
-                </label>
-                <div
-                    style="background-color: #f9f7e7; padding: 10px; border-radius: 5px; display: flex; gap: 30px; align-items: center;">
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="donatur_tetap" id="masjid" value="1"
-                            {{ old('donatur_tetap', $donatur->donatur_tetap) == 1 ? 'checked' : '' }} <label
-                            class="form-check-label" for="1">Ya</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="donatur_tetap" id="mushola" value="0"
-                            {{ old('donatur_tetap', $donatur->donatur_tetap) == 0 ? 'checked' : '' }}>
-                        <label class="form-check-label" for="0">Tidak</label>
-                    </div>
-                </div>
-                @error('donatur_tetap')
-                    <small class="text-danger">{{ $message }}</small>
-                @enderror
-            </div>
-          
+               
             
             <div class="mb-3">
     <label class="form-label">Logo Donatur</label>

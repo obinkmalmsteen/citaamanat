@@ -86,7 +86,7 @@ public function landingpage()
         ->get();
 
     // Total nilai donatur
-    $totalDonasi = DonasiHistori::sum('jumlah_donasi');
+    $totalDonasi = DonasiHistori::sum('nominal_donasi');
 
     // Jumlah donatur tetap (donatur_tetap = 1)
     $totalDonaturTetap = Donatur::where('donatur_tetap', 1)->count();
@@ -134,7 +134,7 @@ public function tentangkami()
     ->limit(5)
     ->get();
            // Total nilai donatur
-    $totalDonasi = DonasiHistori::sum('jumlah_donasi');
+    $totalDonasi = DonasiHistori::sum('nominal_donasi');
 
     // Jumlah donatur tetap (donatur_tetap = 1)
     $totalDonaturTetap = Donatur::where('donatur_tetap', 1)->count();
@@ -201,7 +201,7 @@ public function aktifitas()
     ->get();
 
        // Total nilai donatur
-    $totalDonasi = DonasiHistori::sum('jumlah_donasi');
+    $totalDonasi = DonasiHistori::sum('nominal_donasi');
 
     // Jumlah donatur tetap (donatur_tetap = 1)
     $totalDonaturTetap = Donatur::where('donatur_tetap', 1)->count();
@@ -224,7 +224,7 @@ public function acara()
     ->limit(5)
     ->get();
        // Total nilai donatur
-    $totalDonasi = DonasiHistori::sum('jumlah_donasi');
+    $totalDonasi = DonasiHistori::sum('nominal_donasi');
 
     // Jumlah donatur tetap (donatur_tetap = 1)
     $totalDonaturTetap = Donatur::where('donatur_tetap', 1)->count();

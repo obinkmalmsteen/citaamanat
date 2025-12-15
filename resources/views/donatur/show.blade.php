@@ -4,7 +4,7 @@
 <div class="container">
 
     <div class="d-flex justify-content-between align-items-center mb-3">
-    <h3>Detail Donatur</h3>
+    <h3>Detail Donasi </h3>
     
     <!-- Button Modal -->
     <button class="btn btn-success" data-toggle="modal" data-target="#modalDonasi">
@@ -57,7 +57,7 @@
             @foreach($data->donasi as $item)
                 <tr>
                     <td>{{ $item->created_at->format('d M Y') }}</td>
-                    <td>Rp {{ number_format($item->jumlah_donasi, 0, ',', '.') }}</td>
+                    <td>Rp {{ number_format($item->nominal_donasi, 0, ',', '.') }}</td>
                 </tr>
             @endforeach
             </tbody>
@@ -86,8 +86,8 @@
           <div class="modal-body">
 
             <div class="form-group">
-                <label>Jumlah Donasi</label>
-                <input type="number" name="jumlah_donasi" class="form-control" required>
+                <label>Nominal Donasi</label>
+                <input type="number" name="nominal_donasi" class="form-control" required>
             </div>
 
           </div>

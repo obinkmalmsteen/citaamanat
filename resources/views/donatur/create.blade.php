@@ -2,55 +2,81 @@
 
 @section('content')
     <div class="container">
-        <h3 class="mb-4">Tambah Donatur</h3>
+        <h3 class="mb-4">Tambah Partisipan</h3>
 
         <form action="{{ route('donatur.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
+ <div class="row">
+    <div class="col-12">
+        <label class="form-label">
+            <span class="text-danger">*</span> Type Partisipan :
+        </label>
+
+        <select name="donatur_tetap" id="donatur_tetap" class="form-control">
+            <option value="" disabled {{ old('donatur_tetap') === null ? 'selected' : '' }}>
+                == Pilih Type Partisipan ==
+            </option>
+            <option value="1" {{ old('donatur_tetap') == '1' ? 'selected' : '' }}>
+                Donatur Tetap
+            </option>
+            <option value="0" {{ old('donatur_tetap') == '0' ? 'selected' : '' }}>
+                Partisipan Kebaikan
+            </option>
+        </select>
+
+        @error('donatur_tetap')
+            <small class="text-danger">{{ $message }}</small>
+        @enderror
+    </div>
+</div>
 
             <div class="mb-3">
-                <label>Nama Donatur</label>
+                <label>Nama Partisipan</label>
                 <input type="text" name="nama_donatur" class="form-control" value="{{ old('nama_donatur') }}">
                 @error('nama_donatur')
                     <small class="text-danger">{{ $message }}</small>
                 @enderror
             </div>
              <div class="mb-3">
-                <label>Alamat Donatur</label>
+                <label>Alamat Partisipan</label>
                 <input type="text" name="alamat_donatur" class="form-control" value="{{ old('alamat_donatur') }}">
                 @error('alamat_donatur')
                     <small class="text-danger">{{ $message }}</small>
                 @enderror
             </div>
-            <div class="col-md-6 mb-4">
-                <label class="form-label">
-                    <span class="text-danger">*</span> Donatur Tetap:
-                </label>
-                <div
-                    style="background-color: #f9f7e7; padding: 10px; border-radius: 5px; display: flex; gap: 30px; align-items: center;">
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="donatur_tetap" id="masjid" value="1"
-                            {{ old('donatur_tetap') == 'Masjid' ? 'checked' : '' }}>
-                        <label class="form-check-label" for="1">Ya</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="donatur_tetap" id="mushola" value="0"
-                            {{ old('donatur_tetap') == 'Mushola' ? 'checked' : '' }}>
-                        <label class="form-check-label" for="0">Tidak</label>
-                    </div>
-                </div>
-                @error('donatur_tetap')
-                    <small class="text-danger">{{ $message }}</small>
-                @enderror
-            </div>
+         
             <div class="mb-3">
-                <label>Logo Donatur</label>
+                <label>Logo Partisipan (Jika ada)</label>
                 <input type="file" name="logo_donatur" class="form-control">
                 @error('logo_donatur')
                     <small class="text-danger">{{ $message }}</small>
                 @enderror
             </div>
 
+<div class="row mt-3" id="nominalWrapper" style="display:none;">
+    <div class="col-12">
+        <label class="form-label">
+            <span class="text-danger">*</span> Nominal Donasi
+        </label>
+        <input type="number"
+               name="nominal_donasi"
+               class="form-control"
+               min="1"
+               value="{{ old('nominal_donasi') }}">
 
+        @error('nominal_donasi')
+            <small class="text-danger">{{ $message }}</small>
+        @enderror
+    </div>
+</div>
+
+
+<script>
+document.getElementById('donatur_tetap').addEventListener('change', function () {
+    document.getElementById('nominalWrapper').style.display =
+        this.value == '0' ? 'block' : 'none';
+});
+</script>
             {{-- <div class="mb-3">
                 <label>Jumlah Donasi</label>
                 <input type="number" name="jumlah_donasi" class="form-control" value="{{ old('jumlah_donasi') }}">
@@ -64,3 +90,4 @@
         </form>
     </div>
 @endsection
+

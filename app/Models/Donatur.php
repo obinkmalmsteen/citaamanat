@@ -13,6 +13,7 @@ class Donatur extends Model
         'alamat_donatur',
         'donatur_tetap',
         'logo_donatur',
+        'jumlah_donasi',
     ];
 
     // tambahkan ini ⬇️
@@ -23,6 +24,6 @@ class Donatur extends Model
 
     public function totalDonasi()
     {
-        return $this->donasi()->sum('jumlah_donasi');
+        return $this->donasi()->sum('nominal_donasi');
     }
 }
