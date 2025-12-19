@@ -221,7 +221,14 @@ Yayasan Cita Amanat Martadiredja";
 }
 
 
+public function showProvincesMobile()
+{
+    // Ambil semua provinsi dari tabel reg_provinces
+    $provinces = DB::table('reg_provinces')->orderBy('name', 'asc')->get();
 
+    // Kirim ke view
+    return view('mobilemasjid.mobileregistrasi', compact('provinces'));
+}
 
 public function showProvinces()
 {

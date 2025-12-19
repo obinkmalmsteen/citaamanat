@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Models;
-
 use App\Models\RegRegency;
 use App\Models\RegVillage;
 use App\Models\RegDistrict;
@@ -9,7 +8,8 @@ use App\Models\RegProvince;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Masjid extends Model
+
+class MobileMasjid extends Model
 {
     use HasFactory;
    
@@ -52,8 +52,6 @@ class Masjid extends Model
 'disetujui',
 
     ];
-
-
 public function province()
 {
     return $this->belongsTo(RegProvince::class, 'provinsi_id', 'id');

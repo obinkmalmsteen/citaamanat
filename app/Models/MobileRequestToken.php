@@ -2,16 +2,12 @@
 
 namespace App\Models;
 
-use App\Models\RegRegency;
-use App\Models\RegVillage;
-use App\Models\RegDistrict;
-use App\Models\RegProvince;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Masjid extends Model
+class MobileRequestToken extends Model
 {
-    use HasFactory;
+      use HasFactory;
    
 
     // ✅ kasih tahu Laravel bahwa primary key-nya adalah id_pelanggan
@@ -52,8 +48,6 @@ class Masjid extends Model
 'disetujui',
 
     ];
-
-
 public function province()
 {
     return $this->belongsTo(RegProvince::class, 'provinsi_id', 'id');
@@ -73,8 +67,6 @@ public function village()
 {
     return $this->belongsTo(RegVillage::class, 'kelurahan_id', 'id');
 }
-
-
 
 
 }

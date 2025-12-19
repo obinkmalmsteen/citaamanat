@@ -30,13 +30,16 @@
 
     <!-- Custom styles for this template -->
     <link href="mobile/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
 </head>
 
 <body>
     <div class="row no-gutters vh-100 loader-screen">
         <div class="col align-self-center text-white text-center">
-            <img src="mobile/img/logoyayasanwhite.png" width="100" height="100" alt="logo">
-            <h1><span class="font-weight-light">Cita</span>Amanat</h1>
+            <img src="mobile/img/logo_tamama_putih.png" width="100" height="100" alt="logo">
+            <h1><span class="font-weight-light"></span>Cita Amanat Martadiredja</h1>
             <div class="laoderhorizontal">
                 <div></div>
                 <div></div>
@@ -48,31 +51,51 @@
     <div class="sidebar">
         <div class="text-center">
             <div class="figure-menu shadow">
-                <figure><img src="mobile/img/user1.png" alt=""></figure>
+                <figure><img src="mobile/img/useeer.png" alt=""></figure>
             </div>
-            <h5 class="mb-1 ">Robi</h5>
-            <p class="text-mute small">Bandung</p>
+            <h5 class="mb-1 ">
+                @auth
+                    <span class="user-name-title text-white">
+                        {{ Auth::user()->masjid->nama_ketua_dkm ?? Auth::user()->nama }}
+                    </span>
+
+                @endauth
+            </h5>
+            <br>
+            <p class="mb-1 ">
+                @auth
+                    <span class="user-name-title text-white">Ketua DKM :
+                        {{ Auth::user()->masjid->nama_masjid ?? Auth::user()->nama }}
+                    </span>
+
+                @endauth
+                </p>
+            <br>
+             <p class="mb-1 ">
+                @auth
+                    <span class="user-name-title text-white">
+                        {{ Auth::user()->masjid->regency->name ?? '' }}
+                    </span>
+
+                @endauth
+                </p>
+            @auth
+                <span class="user-name-title">
+
+                    <p class="text-light">
+                        {{ Auth::user()->masjid->province->name ?? '' }}
+                    </p>
+                </span>
+            @endauth
+
         </div>
         <br>
         <div class="row mx-0">
             <div class="col">
-                <div class="card mb-3 border-0 shadow-sm bg-template-light">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col">
-                                <p class="text-secondary small mb-0">Balance Available</p>
-                                <h6 class="text-dark my-0">$2585.00</h6>
-                            </div>
-                            <div class="col-auto">
-                                <button class="btn btn-default button-rounded-36 shadow"><i
-                                        class="material-icons">add</i></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
                 <h5 class="subtitle text-uppercase"><span>Menu</span></h5>
                 <div class="list-group main-menu">
-                    <a href="index.html" class="list-group-item list-group-item-action active">Store</a>
+                   @auth <a href="index.html" class="list-group-item list-group-item-action active">Total Pengajuan Token :{{ Auth::user()->masjid->total_pengajuan ?? Auth::user()->nama }} Kali</a>@endauth
                     <a href="notification.html" class="list-group-item list-group-item-action">Notification <span
                             class="badge badge-dark text-white">2</span></a>
                     <a href="all-products.html" class="list-group-item list-group-item-action">All Products</a>
@@ -95,11 +118,19 @@
                             alt=""><span class="new-notification"></span></button>
                 </div>
                 <div class="col text-center">
-                         <h6 class=" mt-3 text-white">Cita Amanat Martadiredja</h6>
+                    <h6 class=" mt-3 text-white">Cita Amanat Martadiredja</h6>
                 </div>
-                <div class="col-auto">
-                    <a href="profile.html" class="btn  btn-link text-white"><i
-                            class="material-icons">account_circle</i></a>
+                <div class="col-auto d-flex align-items-center">
+
+                    @auth
+                        <span class="user-name text-white">
+                            {{ Auth::user()->masjid->nama_ketua_dkm ?? Auth::user()->nama }}
+                        </span>
+
+                    @endauth
+                    <a href="#" class="btn btn-link text-white p-0 me-1">
+                        <i class="material-icons">account_circle</i>
+                    </a>
                 </div>
             </div>
         </div>
@@ -107,10 +138,10 @@
         <!-- MOBILE HEADER (hanya tampil di HP) -->
         <!-- MOBILE HEADER (Background image + text di dalam gambar) -->
         <div class="mobile-header text-white d-block d-md-none">
-            <div class="content-wrapper">
-                <h5 class="text-uppercase mb-2">Yayasan</h5>
-                <h5 class="text-uppercase mb-2">Cita Amanat Martadiredja</h5>
 
+            <div class="content-wrapper">
+                <p class="text-uppercase  mb-1">Yayasan</p>
+                <p class="text-uppercase mb-1">Cita Amanat Martadiredja</p>
             </div>
         </div>
 
@@ -124,8 +155,8 @@
 
             <div class="subtitle h6 mb-3">
                 <div class="d-inline-block">
-                    Program Utama Kami:<br>
-                   
+                    Visi Kami:<br>
+
                 </div>
             </div>
             {{-- row 1 end --}}
@@ -137,15 +168,15 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-auto align-self-center pr-1">
-                                    <span class=" ">
-                                        <img src="/mosque/img/logoyayasan.png" width="100" height="100"
+                                    <span class="">
+                                        <img src="/mobile/img/logo masjid.png" width="70" height="70"
                                             class="img-fluid rounded-circle" alt="">
                                     </span>
                                 </div>
                                 <div class="col pl-1">
-                                    <p class="text-secondary mb-0 small justify"> <i> "Kami Akan Berusaha Untuk
-                                            Mewujudkan Sarana Ibadah Yang Layak, Nyaman, dan Berkelanjutan Melalui
-                                            Revitalisasi Insfrastruktur Masjid dan Mushola."</i></p>
+                                    <p class="text-secondary mb-0 small justify"> "Kami Akan Berusaha Untuk
+                                        Mewujudkan Sarana Ibadah Yang Layak, Nyaman, dan Berkelanjutan Melalui
+                                        Revitalisasi Insfrastruktur Masjid dan Mushola."</p>
                                     <p class="text-dark my-0">Founder | Erick Martadiredja </p>
 
                                 </div>
@@ -157,79 +188,65 @@
             </div>
             {{-- row 2 end --}}
 
-            <div class="container">
-                <h6 class="subtitle">Terangi Beribu Masjid Dan Mushola</h6>
-                <div class="row">
-                    <!-- Swiper -->
-                    <div class="swiper-container news-slide">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <div class="card  border-0 ">
-                                    <figure class="background">
-                                        <img src="mosque/img/masjid1.jpg" alt="">
-                                    </figure>
+            @php
+                $images = [
+                    'masjid001.jpg',
+                    'masjid002.jpg',
+                    'masjid003.jpg',
+                    'masjid004.jpg',
+                    'masjid005.jpg',
+                    'masjid006.jpg',
+                    'masjid007.jpg',
+                    'masjid008.jpg',
+                    'masjid009.jpg',
+                    'masjid010.jpg',
+                    'masjid011.jpg',
+                    'masjid012.jpg',
 
-                                </div>
-                            </div>
+                    'masjid014.jpg',
+                    'masjid015.jpg',
+                    'masjid016.jpg',
+                    'masjid017.jpg',
+                    'masjid018.jpg',
+                    'masjid019.jpg',
+                    'masjid020.jpg',
+                    'masjid021.jpg',
+                    'masjid022.jpg',
+                    'masjid023.jpg',
+                    'masjid024.jpg',
+                ];
+            @endphp
+
+            <div class="container my-4">
+                <p class="text-success mb-3">Program Utama Kami :<br><span class="text-dark"><b>Terangi Beribu
+                            Masjid/Mushola</b></span></p>
+
+                <!-- Swiper -->
+                <div class="swiper news-slide">
+                    <div class="swiper-wrapper">
+
+                        @foreach ($images as $img)
                             <div class="swiper-slide">
-                                <div class="card shadow-sm border-0 bg-dark text-white">
-                                    <figure class="background">
-                                        <img src="mosque/img/masjid2.jpg" alt="">
-                                    </figure>
-                                    <div class="card-body">
-                                        
-                                    </div>
+                                <div class="slider-card">
+                                    <img src="{{ asset('mosque/fotomasjid/' . $img) }}" alt="Masjid">
                                 </div>
                             </div>
-                            <div class="swiper-slide">
-                                <div class="card shadow-sm border-0 bg-dark text-white">
-                                    <figure class="background">
-                                        <img src="mosque/img/masjid3.jpg" alt="">
-                                    </figure>
-                                    <div class="card-body">
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="card shadow-sm border-0 bg-dark text-white">
-                                    <figure class="background">
-                                        <img src="mosque/img/masjid4.jpg" alt="">
-                                    </figure>
-                                    <div class="card-body">
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="card shadow-sm border-0 bg-dark text-white">
-                                    <figure class="background">
-                                        <img src="mosque/img/masjid5.jpg" alt="">
-                                    </figure>
-                                    <div class="card-body">
-                                       
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="card shadow-sm border-0 bg-dark text-white">
-                                    <figure class="background">
-                                       <img src="mosque/img/masjid6.jpg" alt="">
-                                    </figure>
-                                    <div class="card-body">
-                                       
-                                        <p class="text-mute small">By Anand Mangal</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Add Pagination -->
-                        <div class="swiper-pagination"></div>
+                        @endforeach
+
                     </div>
+
+                    <!-- Pagination -->
+                    <div class="swiper-pagination"></div>
                 </div>
             </div>
 
+
             <style>
+                html,
+                body {
+                    overflow-x: hidden;
+                }
+
                 .collapsible-text {
                     max-height: 40px;
                     /* tinggi awal (collapse) */
@@ -266,17 +283,114 @@
                 .justify {
                     text-align: justify;
                 }
+
+
+
+                .slider-card {
+                    border-radius: 6px;
+                    overflow: hidden;
+                    height: 140px;
+                }
+
+                .slider-card img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    border-radius: 6px;
+                }
+
+                .news-slide {
+                    position: relative;
+                    padding-bottom: 28px;
+                    /* ruang secukupnya */
+                }
+
+                .news-slide .swiper-pagination {
+                    position: absolute;
+                    bottom: 4px;
+                    /* naikkan titik */
+                    left: 0;
+                    right: 0;
+                    text-align: center;
+                }
+
+                .swiper-pagination {
+                    margin-top: 0 !important;
+                }
+
+                .user-name {
+                    max-width: 25vw;
+                    display: -webkit-box;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 2;
+                    overflow: hidden;
+                    line-height: 1.2em;
+
+                    text-align: right;
+                    word-break: break-word;
+
+                    font-size: 12px;
+                    /* ⭐ PERKECIL HURUF */
+                    font-weight: 400;
+                    /* opsional, biar tidak terlalu tebal */
+                    padding-right: -12px;
+                }
+
+                .user-name-title {
+                    max-width: 50vw;
+                    display: -webkit-box;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 2;
+                    overflow: hidden;
+                    line-height: 1.2em;
+
+                    text-align: center;
+                    word-break: break-word;
+
+                    padding-left: 28px;
+                    /* ⭐ JARAK DARI TEPI KIRI */
+                }
             </style>
+
+            <script>
+                new Swiper('.news-slide', {
+                    slidesPerView: 2,
+                    spaceBetween: 10,
+                    loop: true,
+
+                    autoplay: {
+                        delay: 3000, // 3 detik
+                        disableOnInteraction: false, // tetap lanjut meski disentuh
+                        pauseOnMouseEnter: true, // pause saat hover (desktop)
+                    },
+
+                    pagination: {
+                        el: '.swiper-pagination',
+                        clickable: true,
+                    },
+
+                    breakpoints: {
+                        768: {
+                            slidesPerView: 3,
+                        },
+                        992: {
+                            slidesPerView: 4,
+                        }
+                    }
+                });
+            </script>
+
+
             {{-- row 4 start --}}
             <div class="card mb-3 border-0 shadow-sm" onclick="toggleExpand(this)">
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-auto align-self-center pr-1">
+                        {{-- <div class="col-auto align-self-center pr-1">
                             <span class="">
                                 <img src="/mobile/img/logo masjid.png" width="70" height="70"
                                     class="img-fluid rounded-circle" alt="">
                             </span>
-                        </div>
+                        </div> --}}
 
                         <div class="col pl-1">
                             <h6 class="text">Terangi Beribu Masjid Dan Mushola</h6>
@@ -301,35 +415,52 @@
             {{-- row 42 end --}}
 
             <div class="row">
-                <div class="col-6">
+                <div class="col-4">
                     <div class="card mb-3 border-0 shadow-sm">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-auto align-self-center pr-1">
-                                    <span class="btn btn-success button-rounded-26">
-                                        <i class="material-icons md-18 text-mute">card_giftcard</i>
+                                    <span class="btn btn-warning button-rounded-26">
+                                        <i class="material-icons md-18 text-mute">history</i>
                                     </span>
                                 </div>
                                 <div class="col pl-1">
-                                    <p class="text-secondary mb-0 small">Pendaftar Baru Belum terverifikasi</p>
+                                    <p class="text-secondary mb-0 small">Masjid Pendaftar Baru</p>
                                     <h6 class="text-dark my-0">{{ $masjidBelumDisetujui }}</h6>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-6">
+                <div class="col-4">
                     <div class="card mb-3 border-0 shadow-sm">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-auto align-self-center pr-1">
-                                    <span class="btn btn-warning button-rounded-26">
+                                    <span class="btn btn-success button-rounded-26">
+                                        <i class="material-icons md-18 text-mute">home</i>
+                                    </span>
+                                </div>
+                                <div class="col pl-1">
+                                    <p class="text-secondary mb-0 small">Masjid Terverifikasi</p>
+                                    <h6 class="text-dark my-0">{{ $masjidDisetujui }}</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="card mb-3 border-0 shadow-sm">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-auto align-self-center pr-1">
+                                    <span class="btn btn-primary button-rounded-26">
                                         <i class="material-icons md-18 text-mute">payment</i>
                                     </span>
                                 </div>
                                 <div class="col pl-1">
-                                    <p class="text-secondary mb-0 small">Masjid Sudah Terverifikasi</p>
-                                    <h6 class="text-dark my-0">{{ $masjidDisetujui }}</h6>
+                                    <p class="text-secondary mb-0 small">Token Listrik Terealisasi</p>
+                                    <h6 class="text-dark my-0">{{ $totalRequestRealisasi }}</h6>
                                 </div>
                             </div>
                         </div>
@@ -339,7 +470,7 @@
 
             {{-- login register start --}}
 
-<h6 class="subtitle">Registrasi Masjid/Mushola</h6>
+            <h6 class="subtitle">Registrasi Masjid/Mushola</h6>
             <div class="row">
 
                 <div class="col-12 col-md-6 col-lg-4">
@@ -347,18 +478,47 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-auto">
-                                    <figure class="product-image my-0"><img src="mobile/img/online-registration.png" width="70" height="70"
-                                            alt="" class=""></figure>
+                                    <figure class="product-image my-0"><img src="mobile/img/online-registration.png"
+                                            width="70" height="70" alt="" class=""></figure>
                                 </div>
                                 <div class="col pl-0">
                                     <h6 class="text-dark my-0">1. Daftarkan Masjid/Mushola Anda</h6>
-                                    <p class="text-secondary mb-1">Silakan daftarkan masjid baru melalui tombol di
-                                        samping ini</p>
+                                    <p class="text-secondary mb-1">Silakan daftarkan masjid baru Disini</p>
+
+                                </div>
+
+                                <div class="col-auto pl-0 align-self-center">
+                                    <a href="{{ route('mobileregistrasi') }}"
+                                        class="btn btn-default button-rounded-56 shadow">
+                                        <i class="material-icons">create</i>
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card shadow-sm border-0 mb-4">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-auto">
+                                    <figure class="product-image my-0"><img src="mobile/img/mosque.png"
+                                            width="70" height="70" alt="" class=""></figure>
+                                </div>
+                                <div class="col pl-0">
+                                    <h6 class="text-dark my-0">2. Data Status Masjid/Mushola</h6>
+                                    <p class="text-secondary mb-1">Melihat lebih lanjut List Masjid Yang dan status
+                                        Masjid yang Anda Daftarkan.</p>
 
                                 </div>
                                 <div class="col-auto pl-0 align-self-center">
-                                    <button class="btn btn-default button-rounded-56 shadow"><i
-                                            class="material-icons ">create</i></button>
+                                    <a href="{{ route('mobilelistmasjid') }}"
+                                        class="btn btn-default button-rounded-56 shadow">
+                                        <i class="material-icons">list</i>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -371,12 +531,13 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-auto">
-                                    <figure class="product-image my-0"><img src="mobile/img/mosque.png" width="70" height="70"
-                                            alt="" class=""></figure>
+                                    <figure class="product-image my-0"><img src="mobile/img/registrasi.png"
+                                            width="70" height="70" alt="" class=""></figure>
                                 </div>
                                 <div class="col pl-0">
-                                    <h6 class="text-dark my-0">2. Data Status Masjid/Mushola</h6>
-                                    <p class="text-secondary mb-1">Melihat lebih lanjut List Masjid Yang dan status Masjid yang Anda Daftarkan.</p>
+                                    <h6 class="text-dark my-0">3. Login</h6>
+                                    <p class="text-secondary mb-1">Jika status Pendaftaran telah diverifikasi, maka
+                                        silahkan login Disini.</p>
 
                                 </div>
                                 <div class="col-auto pl-0 align-self-center">
@@ -389,196 +550,88 @@
                 </div>
 
 
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card shadow-sm border-0 mb-4">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-auto">
-                                    <figure class="product-image my-0"><img src="mobile/img/registrasi.png" width="70" height="70"
-                                            alt="" class=""></figure>
-                                </div>
-                                <div class="col pl-0">
-                                    <h6 class="text-dark my-0">3. Login</h6>
-                                    <p class="text-secondary mb-1">Jika status Pendaftaran telah diverifikasi, maka silahkan login ID dan password adalah Nomor ID Pelangan yang didaftarkan.</p>
 
-                                </div>
-                                <div class="col-auto pl-0 align-self-center">
-                                    <button class="btn btn-default button-rounded-56 shadow"><i
-                                            class="material-icons">install_mobile</i></button>
-                                </div>
+
+
+            </div>
+
+            <div class="container mb-3">
+                <div class="row">
+                    <div class="col text-center">
+                        <h5 class="subtitle mb-1">Most Exciting Feature</h5>
+                        <p class="text-secondary">Take a look at our services</p>
+                    </div>
+                </div>
+                <div class="row text-center mt-4">
+                    <div class="col-6 col-md-3">
+                        <div class="card shadow-sm border-0 mb-4">
+                            <div class="card-body">
+                                <i class="material-icons mb-4 md-36 text-template">card_giftcard</i>
+                                <h2>2546</h2>
+                                <p class="text-secondary text-mute">Gift it out</p>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                
-                
-            </div>
-
-            <h6 class="subtitle">Registrasi Masjid/Mushola </h6>
-            <div class="row">
-                <!-- Swiper -->
-                <div class="swiper-container small-slide">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <div class="card shadow-sm border-0">
-                                <div class="card-body">
-                                    <div class="row no-gutters h-100">
-                                        <img src="mobile/img/sofa.png" alt="" class="small-slide-right">
-                                        <div class="col-8">
-                                            <button class="btn btn-sm btn-link p-0"><i
-                                                    class="material-icons md-18">favorite_outline</i></button>
-                                            <a href="#" class="text-dark mb-1 mt-2 h6 d-block">Sofa</a>
-                                            <p class="text-secondary small">Colored, Office, Woolen</p>
-                                        </div>
-                                    </div>
-                                </div>
+                    <div class="col-6 col-md-3">
+                        <div class="card shadow-sm border-0 mb-4">
+                            <div class="card-body">
+                                <i class="material-icons mb-4 md-36 text-template">subscriptions</i>
+                                <h2>635</h2>
+                                <p class="text-secondary text-mute">Monthly Billed</p>
                             </div>
                         </div>
-                        <div class="swiper-slide">
-                            <div class="card shadow-sm border-0">
-                                <div class="card-body">
-                                    <div class="row no-gutters h-100">
-                                        <img src="mobile/img/chair-small.png" alt=""
-                                            class="small-slide-right">
-                                        <div class="col-8">
-                                            <button class="btn btn-sm btn-link p-0"><i
-                                                    class="material-icons md-18">favorite</i></button>
-                                            <a href="#" class="text-dark mb-1 mt-2 h6 d-block">Chair </a>
-                                            <p class="text-secondary small">Support, Back, Hand</p>
-                                        </div>
-                                    </div>
-                                </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="card shadow-sm border-0 mb-4">
+                            <div class="card-body">
+                                <i class="material-icons mb-4 md-36 text-template">local_florist</i>
+                                <h2>1542</h2>
+                                <p class="text-secondary text-mute">Eco environment</p>
                             </div>
                         </div>
-                        <div class="swiper-slide">
-                            <div class="card shadow-sm border-0">
-                                <div class="card-body">
-                                    <div class="row no-gutters h-100">
-                                        <img src="mobile/img/table.png" alt="" class="small-slide-right">
-                                        <div class="col-9">
-                                            <button class="btn btn-sm btn-link p-0"><i
-                                                    class="material-icons md-18">favorite_outline</i></button>
-                                            <a href="#" class="text-dark mb-1 mt-2 h6 d-block">Table</a>
-                                            <p class="text-secondary small">Office, Home, General</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="card shadow-sm border-0">
-                                <div class="card-body">
-                                    <div class="row no-gutters h-100">
-                                        <img src="mobile/img/sofa.png" alt="" class="small-slide-right">
-                                        <div class="col-8">
-                                            <button class="btn btn-sm btn-link p-0"><i
-                                                    class="material-icons md-18">favorite_outline</i></button>
-                                            <a href="#" class="text-dark mb-1 mt-2 h6 d-block">Sofa</a>
-                                            <p class="text-secondary small">Colored, Office, Woolen</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="card shadow-sm border-0">
-                                <div class="card-body">
-                                    <div class="row no-gutters h-100">
-                                        <img src="mobile/img/chair-small.png" alt=""
-                                            class="small-slide-right">
-                                        <div class="col-8">
-                                            <button class="btn btn-sm btn-link p-0"><i
-                                                    class="material-icons md-18">favorite</i></button>
-                                            <a href="#" class="text-dark mb-1 mt-2 h6 d-block">Chair </a>
-                                            <p class="text-secondary small">Support, Back, Hand</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="card shadow-sm border-0">
-                                <div class="card-body">
-                                    <div class="row no-gutters h-100">
-                                        <img src="mobile/img/table.png" alt="" class="small-slide-right">
-                                        <div class="col-9">
-                                            <button class="btn btn-sm btn-link p-0"><i
-                                                    class="material-icons md-18">favorite_outline</i></button>
-                                            <a href="#" class="text-dark mb-1 mt-2 h6 d-block">Table</a>
-                                            <p class="text-secondary small">Office, Home, General</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="card shadow-sm border-0">
-                                <div class="card-body">
-                                    <div class="row no-gutters h-100">
-                                        <img src="mobile/img/sofa.png" alt="" class="small-slide-right">
-                                        <div class="col-8">
-                                            <button class="btn btn-sm btn-link p-0"><i
-                                                    class="material-icons md-18">favorite_outline</i></button>
-                                            <a href="#" class="text-dark mb-1 mt-2 h6 d-block">Sofa</a>
-                                            <p class="text-secondary small">Colored, Office, Woolen</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="card shadow-sm border-0">
-                                <div class="card-body">
-                                    <div class="row no-gutters h-100">
-                                        <img src="mobile/img/chair-small.png" alt=""
-                                            class="small-slide-right">
-                                        <div class="col-8">
-                                            <button class="btn btn-sm btn-link p-0"><i
-                                                    class="material-icons md-18">favorite</i></button>
-                                            <a href="#" class="text-dark mb-1 mt-2 h6 d-block">Chair </a>
-                                            <p class="text-secondary small">Support, Back, Hand</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="card shadow-sm border-0">
-                                <div class="card-body">
-                                    <div class="row no-gutters h-100">
-                                        <img src="mobile/img/table.png" alt="" class="small-slide-right">
-                                        <div class="col-9">
-                                            <button class="btn btn-sm btn-link p-0"><i
-                                                    class="material-icons md-18">favorite_outline</i></button>
-                                            <a href="#" class="text-dark mb-1 mt-2 h6 d-block">Table</a>
-                                            <p class="text-secondary small">Office, Home, General</p>
-                                        </div>
-                                    </div>
-                                </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="card shadow-sm border-0 mb-4">
+                            <div class="card-body">
+                                <i class="material-icons mb-4 md-36 text-template">location_city</i>
+                                <h2>154</h2>
+                                <p class="text-secondary text-mute">Four Offices</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <h6 class="subtitle">Testimonials </h6>
 
-            
+            <!-- Swiper -->
+            <div class="swiper-container small-slide">
+
+                <div class="swiper-slide">
+                    <div class="card ">
+
+                    </div>
+                </div>
+
+            </div>
+
+
+
         </div>
 
-        <div class="container-fluid bg-success text-white mb-3">
+        <div class="container-fluid warna-background  text-white mb-3">
             <div class="row">
                 <div class="container">
                     <div class="row  py-4 ">
                         <div class="col">
-                            <h1 class="text-uppercase mb-3">20% OFF Season Sale</h1>
-                            <p class="mb-3">Use Coupan Code<br><span class="text-dark">DFR0020</span></p>
+                            <h3 class="text-uppercase mb-3">Cita Amanat Martadiredja</h3>
+                            {{-- <p class="mb-3">Use Coupan Code<br><span class="text-dark">DFR0020</span></p> --}}
                         </div>
-                        <div class="col-5 col-md-3 col-lg-2 col-xl-2">
-                            <img src="mobile/img/hanging2.png" alt="" class="mw-100 mt-3">
+                        <div class="col-3 col-md-3 col-lg-2 col-xl-2">
+                            <img src="mobile/img/logoyayasanwhite.png" alt="" class="mw-100 mt-3">
                         </div>
                         <div class="w-100"></div>
                         <div class="col">
-                            <p>Get the all new furnitures at very low price</p>
+                            {{-- <p>Get the all new furnitures at very low price</p> --}}
                         </div>
                     </div>
                 </div>
@@ -594,20 +647,30 @@
                             </a>
                         </div>
                         <div class="col-auto">
-                            <a href="statistics.html" class="btn btn-link-default ">
+                            <a href="{{ route('mobileaktifitas') }}" class="btn btn-link-default ">
                                 <i class="material-icons">insert_chart_outline</i>
                             </a>
                         </div>
                         <div class="col-auto">
-                            <a href="cart.html" class="btn btn-default shadow centerbutton">
+                            <a href="{{ route('mobilelistmasjid') }}" class="btn btn-link-default">
                                 <i class="material-icons">local_mall</i>
                             </a>
                         </div>
-                        <div class="col-auto">
-                            <a href="{{ route('mobiledaftarmasjid') }}" class="btn btn-link-default">
-                                <i class="material-icons">favorite</i>
-                            </a>
-                        </div>
+
+
+                        @if (Auth::check() && Auth::user()->nama)
+    <a href="{{ route('mobilerequesttoken') }}" class="btn btn-link-default">
+        <i class="material-icons">favorite</i>
+    </a>
+@else
+    <a href="{{ route('mobile.login') }}" class="btn btn-link-default">
+        <i class="material-icons">favorite</i>
+    </a>
+@endif
+
+
+
+
                         <div class="col-auto">
                             <a href="profile.html" class="btn btn-link-default">
                                 <i class="material-icons">account_circle</i>
@@ -619,6 +682,26 @@
         </div>
     </div>
 
+
+    <!-- Modal -->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+            <div class="modal-content shadow">
+                <div class="modal-header">
+                    <h5 class="header-title mb-0">Logout</h5>
+                </div>
+                <div class="modal-body text-center pr-4 pl-4">
+
+
+                    <h5 class="my-3 text-success">Anda Berhasil Logout</h5>
+
+                    <button class="btn btn-default btn-rounded btn-block" data-dismiss="modal">
+                        OK
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- jquery, popper and bootstrap js -->
     <script src="mobile/js/jquery-3.3.1.min.js"></script>
@@ -783,6 +866,15 @@
             icon.classList.toggle('expanded-icon');
         }
     </script>
+
+
+    @if (session('logout_success'))
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                $('#logoutModal').modal('show');
+            });
+        </script>
+    @endif
 
 
 </body>

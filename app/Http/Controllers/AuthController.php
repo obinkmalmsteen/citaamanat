@@ -50,9 +50,22 @@ class AuthController extends Controller
         }
     }
 
-    public function logout()
-    {
-        Auth::logout();
-        return redirect()->route('login')->with('success', 'Anda Berhasil Logout');
+ 
+
+public function logout(Request $request)
+{
+    Auth::logout();
+
+    $request->session()->invalidate();
+    $request->session()->regenerateToken();
+
+    // DETEKSI MOBILE DARI URL
+    if ($request->is('mobile*')) {
+        return redirect()->route('mobilelandingpage');
     }
+
+    // DEFAULT WEB
+    return redirect()->route('login');
+}
+
 }

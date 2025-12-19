@@ -16,10 +16,11 @@ use App\Http\Controllers\DonaturController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PengajuanController;
+use App\Http\Controllers\MobileAuthController;
 use App\Http\Controllers\JenisBarangController;
 use App\Http\Controllers\TestimonialController;
-use App\Http\Controllers\PengadaanRequestController;
 use App\Http\Controllers\PengadaanItemController;
+use App\Http\Controllers\PengadaanRequestController;
 
 
 
@@ -38,30 +39,56 @@ Route::get('/kontak-kami', [DashboardController::class, 'kontakkami'])->name('ko
 Route::get('/list-masjid', [DashboardController::class, 'listmasjid'])->name('listmasjid');
 Route::get('/form-registrasi', [DashboardController::class, 'formregistrasi'])->name('formregistrasi');
 Route::get('/mobile-landingpage', [DashboardController::class, 'landingpage'])->name('landingpage');
+
+
 Route::get('/mobile-daftarmasjid', [DashboardController::class, 'mobiledaftarmasjid'])->name('mobiledaftarmasjid');
 Route::get('/list-donatur', [DashboardController::class, 'listdonatur'])->name('listdonatur');
 
 // Login
 Route::get('login',[AuthController::class,'login'])->name('login');
+
+
 Route::post('login',[AuthController::class,'loginProses'])->name('loginProses');
 // Logout
 Route::get('logout',[AuthController::class,'logout'])->name('logout');
 
+// LOGIN MOBILE (FRONTEND)
+Route::get('/mobile/login', [MobileAuthController::class, 'showLogin'])
+    ->name('mobile.login');
+
+Route::post('/mobile/login', [MobileAuthController::class, 'login'])
+    ->name('mobile.login.process');
+
+Route::get('/mobile', function () {
+    return view('mobile.home');
+})->name('mobile.home');
+Route::get('/mobile/logout', [MobileAuthController::class, 'logout'])
+    ->name('mobile.logout');
+
+
+Route::middleware('checkLogin:user,karyawan,admin')->group(function () {
+    Route::get('/mobile-requesttoken');
+});
+
+
 // 🔹 ROUTE PUBLIK (tanpa login) Route::get('daftar-masjid', [MasjidController::class, 'createPublic'])->name('masjidPublicForm');
-Route::get('daftar-masjid', [DashboardController::class, 'landingpage'])->name('landingpage');
+Route::get('daftar-masjid', [MasjidController::class, 'createPublic'])->name('masjidPublicForm');
+//Route::get('daftar-masjid', [DashboardController::class, 'landingpage'])->name('landingpage');
 Route::post('daftar-masjid/store', [MasjidController::class, 'storePublic'])->name('masjidPublicStore');
 
 // Ambil daftar kota berdasarkan provinsi
 // Form publik
 
 Route::get('/form-masjid', [MasjidController::class, 'publicForm'])->name('formMasjid');
-
-
+Route::get('/mobile-aktifitas', [DashboardController::class, 'mobileaktifitas'])->name('mobileaktifitas');
+Route::get('/mobile-listmasjid', [DashboardController::class, 'mobilelistmasjid'])->name('mobilelistmasjid');
+Route::get('/mobile-registrasi', [MasjidController::class, 'showProvincesMobile'])->name('mobileregistrasi');
 //Route::get('/registrasi', [MasjidController::class, 'showProvinces'])->name('registrasi');   obinkini route registrasi asli yang lagi dimatikan
-Route::get('/registrasi', [DashboardController::class, 'landingpage'])->name('registrasi');
+Route::get('/registrasi', [MasjidController::class, 'showProvinces'])->name('registrasi');
 Route::get('/get-regencies/{province_id}', [MasjidController::class, 'getRegencies'])->name('getRegencies');
 Route::get('/get-districts/{regency_id}', [MasjidController::class, 'getDistricts'])->name('getDistricts');
 Route::get('/get-villages/{district_id}', [MasjidController::class, 'getVillages'])->name('getVillages');
+
 
 
 
@@ -78,21 +105,26 @@ Route::get('masjid/data-masjid', [MasjidController::class, 'dataMasjidPublik'])-
 
 // 🔒 ROUTE YANG PERLU LOGIN
 Route::middleware('checkLogin')->group(function(){
-
     // Dashboard
     Route::get('dashboard',[DashboardController::class,'index'])->name('dashboard');
     //dapurdashboard
      Route::get('dapurdashboard',[DapurController::class,'dapurdashboard'])->name('dapurdashboard');
-
      //barang
-
-   
-    
     Route::resource('jenis_barang', JenisBarangController::class);
+    Route::resource('barang', BarangController::class);
 
-Route::resource('barang', BarangController::class);
+     // Mobile - Request Token
+    Route::get('/mobile-request', [DashboardController::class, 'mobilerequesttoken'])
+        ->name('mobilerequesttoken');
+        
+  Route::get('/mobile-requesttokenlanjut', [DashboardController::class, 'mobilerequesttokenlanjut'])
+        ->name('mobilerequesttokenlanjut');
+        
 
-
+Route::post(
+    '/mobile-requesttokenlanjutform',
+    [DashboardController::class, 'mobilerequesttokenlanjutform']
+)->name('mobilerequesttokenlanjutform');
 
 
 
@@ -204,10 +236,6 @@ Route::resource('request-perbaikan', \App\Http\Controllers\RequestPerbaikanContr
 Route::get('/export/masjids', function () {
     $timestamp = now()->format('d-m-Y');
  // contoh: 2025-11-22_14-35
-
-
-
-
 
     return Excel::download(new MasjidsExport, "masjids_{$timestamp}.xlsx"); 
 });

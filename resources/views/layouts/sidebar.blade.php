@@ -147,8 +147,10 @@
      <!-- Nav Item - Data User -->
 
      
-
-
+@php
+    $jabatan = Auth::check() ? Auth::user()->jabatan : null;
+@endphp
+@if(in_array($jabatan, ['Admin', 'Karyawan']))
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
 <div class="sidebar-heading text-white">
@@ -161,7 +163,7 @@
                 <span>Dapur Dashboard</span>
             </a>
         </li>
-
+@endif
 <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseDapur"
         aria-expanded="false" aria-controls="collapseDapur">
@@ -187,6 +189,9 @@
 </li>  
 @endif
 
+
+
+@if(in_array($jabatan, ['Admin', 'Karyawan']))
 <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePengadaan"
         aria-expanded="false" aria-controls="collapsePengadaan">
@@ -197,21 +202,14 @@
     <div id="collapsePengadaan" class="collapse" data-parent="#accordionSidebar">
         <div class="py-2 rounded">
 
-            {{-- Jika Karyawan → tampilkan menu Permintaan Barang saja --}}
-            @if(Auth::check() && Auth::user()->jabatan === 'Karyawan')
-                <a class="nav-link pl-5 {{ $menuPengadaan ?? '' }}" href="{{ route('pengadaan.index') }}">
-                    <i class="fas fa-dot-circle"></i>
-                    <span>Permintaan Barang</span>
-                </a>
-            @endif
+            {{-- Karyawan → hanya Permintaan Barang --}}
+            <a class="nav-link pl-5 {{ $menuPengadaan ?? '' }}" href="{{ route('pengadaan.index') }}">
+                <i class="fas fa-dot-circle"></i>
+                <span>Permintaan Barang</span>
+            </a>
 
-            {{-- Jika Admin → tampilkan SEMUA MENU --}}
-            @if(Auth::check() && Auth::user()->jabatan === 'Admin')
-                <a class="nav-link pl-5 {{ $menuPengadaan ?? '' }}" href="{{ route('pengadaan.index') }}">
-                    <i class="fas fa-dot-circle"></i>
-                    <span>Permintaan Barang</span>
-                </a>
-
+            {{-- Admin → menu tambahan --}}
+            @if($jabatan === 'Admin')
                 <a class="nav-link pl-5 {{ $menuDataSemuaBarang ?? '' }}" href="{{ route('pengadaan.items.index') }}">
                     <i class="fas fa-dot-circle"></i>
                     <span>All Permintaan Barang</span>
@@ -221,8 +219,12 @@
         </div>
     </div>
 </li>
-
-
+ <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block">
+        <!-- Heading -->
+        <div class="sidebar-heading text-white">
+            DAFTAR DAPUR SPPG
+        </div>
 <li class="nav-item">
     <a class="nav-link" href="{{ route('request-perbaikan.index') }}">
         <i class="fas fa-tools"></i>
@@ -230,12 +232,12 @@
     </a>
 </li>
 
-    <!-- Divider -->
-    <hr class="sidebar-divider d-none d-md-block">
-        <!-- Heading -->
-        <div class="sidebar-heading text-white">
-            DAFTAR DAPUR SPPG
-        </div>
+@endif
+
+
+
+
+   
 {{-- ADMIN: bisa lihat semua cabang --}}
 @if($user->jabatan === 'Admin')
     @foreach($allCabang as $c)

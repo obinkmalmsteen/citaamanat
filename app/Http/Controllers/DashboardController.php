@@ -8,8 +8,11 @@ use App\Models\Donatur;
 use App\Models\Pengeluaran;
 use Illuminate\Http\Request;
 use App\Models\DonasiHistori;
+use App\Helpers\WhatsappHelper;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Testimonial; // ✅ Tambahkan ini
+use Carbon\Carbon;
 
 class DashboardController extends Controller
 {
@@ -185,6 +188,8 @@ public function mobilelandingpage()
     ));
 }
 
+
+
 public function mobiledaftarmasjid()
 {
     // Hitung semua user terdaftar
@@ -192,6 +197,207 @@ public function mobiledaftarmasjid()
 
     // Kirim hasilnya ke view
     return view('mobiledaftarmasjid', compact('jumlahUser'));
+}
+
+public function mobilerequesttoken()
+{
+    $user = Auth::user();
+
+    if (!$user || empty($user->nama)) {
+        abort(403);
+    }
+
+    $id_pelanggan = $user->nama;
+
+    $jumlahUser = User::count();
+
+    $masjid = Masjid::where('id_pelanggan', $id_pelanggan)->get();
+
+    return view('mobilemasjid.mobilerequesttoken', [
+        'masjid' => $masjid,
+        'jumlahUser' => $jumlahUser,
+        'title' => 'Data Masjid',
+        'menuAdminMasjid' => 'active',
+    ]);
+}
+
+public function mobilerequesttokenlanjut()
+{
+    $user = Auth::user();
+
+    if (!$user || empty($user->nama)) {
+        abort(403, 'Akses ditolak.');
+    }
+
+    $id_pelanggan = $user->nama;
+
+    $masjid = Masjid::where('id_pelanggan', $id_pelanggan)->firstOrFail();
+
+    $historiBayar = DB::table('histori_bayar')
+        ->where('id_pelanggan', $id_pelanggan)
+        ->orderBy('tgl_request_token', 'desc')
+        ->get();
+
+    $adaRequestBelumRealisasi = DB::table('histori_bayar')
+        ->where('id_pelanggan', $id_pelanggan)
+        ->whereNull('tgl_realisasi_token')
+        ->where('status_realisasi', 0)
+        ->exists();
+
+    $tglRequestTokenTerakhir = DB::table('histori_bayar')
+        ->where('id_pelanggan', $id_pelanggan)
+        ->max('tgl_request_token');
+// Ambil histori terakhir
+    $historiTerakhir = DB::table('histori_bayar')
+        ->where('id_pelanggan', $id_pelanggan)
+        ->orderBy('tgl_request_token', 'desc')
+        ->first();
+
+    // 🔒 FLAG disable tombol
+    $disableRequestBulanIni = false;
+
+    if ($historiTerakhir && $historiTerakhir->tgl_request_token) {
+        if (Carbon::parse($historiTerakhir->tgl_request_token)->isSameMonth(now())) {
+            $disableRequestBulanIni = true;
+        }
+    }
+    return view('mobilemasjid.mobilerequesttokenlanjut', [
+        'masjid' => $masjid,
+        'historiBayar' => $historiBayar,
+        'adaRequestBelumRealisasi' => $adaRequestBelumRealisasi,
+        'tglRequestTokenTerakhir' => $tglRequestTokenTerakhir,
+        'disableRequestBulanIni' => $disableRequestBulanIni,
+        'title' => 'Detail Masjid',
+    ]);
+}
+public function mobilerequesttokenlanjutform(Request $request)
+{
+    $user = Auth::user();
+
+    // Wajib login & wajib punya id_pelanggan (disimpan di nama)
+    if (!$user || empty($user->nama)) {
+        abort(403, 'Akses ditolak.');
+    }
+
+    $id_pelanggan = $user->nama;
+
+    $masjid = Masjid::where('id_pelanggan', $id_pelanggan)->firstOrFail();
+
+    // 🔍 Ambil histori terakhir
+    $historiTerakhir = DB::table('histori_bayar')
+        ->where('id_pelanggan', $id_pelanggan)
+        ->orderBy('tgl_request_token', 'desc')
+        ->first();
+// ❌ Blok request jika sudah request di bulan yang sama
+if ($historiTerakhir && $historiTerakhir->tgl_request_token) {
+    $tglRequestTerakhir = Carbon::parse($historiTerakhir->tgl_request_token);
+
+    if ($tglRequestTerakhir->isSameMonth(now())) {
+        return back()->withErrors(
+            'Pengajuan token untuk bulan ini sudah dilakukan. Silakan menunggu bulan berikutnya.'
+        );
+    }
+}
+
+    $jumlahRealisasiBaru = null;
+
+    if ($historiTerakhir && $historiTerakhir->jumlah_realisasi_token !== null) {
+        $jumlahRealisasiBaru = $historiTerakhir->jumlah_realisasi_token;
+    }
+$adaRequestAktif = DB::table('histori_bayar')
+    ->where('id_pelanggan', $id_pelanggan)
+    ->whereNull('tgl_realisasi_token')
+    ->where('status_realisasi', 0)
+    ->exists();
+
+if ($adaRequestAktif) {
+    return back()->withErrors('Masih ada permintaan yang belum direalisasi.');
+}
+
+    // 🟢 Insert histori baru
+    DB::table('histori_bayar')->insert([
+        'id_pelanggan' => $masjid->id_pelanggan,
+        'no_meteran_listrik' => $masjid->no_meteran_listrik,
+        'nama_masjid' => $masjid->jenis_bangunan . ' ' . $masjid->nama_masjid,
+        'nama_kota' => $masjid->regency->name ?? '-',
+        'nama_provinsi' => $masjid->province->name ?? '-',
+        'tgl_request_token' => now(),
+        'tgl_realisasi_token' => null,
+        'no_token_listrik' => null,
+        'jumlah_realisasi_token' => $jumlahRealisasiBaru,
+    ]);
+
+    // Tambah total pengajuan
+    Masjid::where('id_pelanggan', $id_pelanggan)
+        ->increment('total_pengajuan');
+
+    // Kirim WA (tetap sama)
+    if ($masjid->telp_penerima_informasi) {
+        $pesan =
+            "Assalamualaikum.\n\n" .
+            "Masjid *{$masjid->nama_masjid}*.\n" .
+            "Berhasil melakukan permintaan pengisian token listrik.\n\n" .
+            "Silakan menunggu sampai permintaan direalisasikan.\n\n" .
+            "Terima kasih.\n\n" .
+            "Cita Amanat Martadiredja.";
+
+        WhatsappHelper::send($masjid->telp_penerima_informasi, $pesan);
+    }
+
+    return redirect()
+        ->route('mobilerequesttokenlanjut')
+        ->with('success', 'Permintaan token berhasil dikirim.');
+}
+
+
+public function mobileregistrasi()
+{
+    // Hitung semua user terdaftar
+    $jumlahUser = User::count();
+
+    // Kirim hasilnya ke view
+    return view('mobilemasjid.mobileregistrasi', compact('jumlahUser'));
+}
+public function mobileaktifitas()
+{
+    // Hitung semua user terdaftar
+    $jumlahUser = User::count();
+
+    // Kirim hasilnya ke view
+    return view('mobilemasjid.mobileaktifitas', compact('jumlahUser'));
+}
+public function mobilelistmasjid(Request $request)
+{
+    $filter = $request->filter_pengajuan;
+    $search = $request->search;
+
+    $masjid = DB::table('masjids')
+        ->leftJoin('reg_regencies', 'masjids.kota_id', '=', 'reg_regencies.id')
+        ->select(
+            'masjids.*',
+            'reg_regencies.name as nama_kota'
+        )
+
+        // 🔍 SEARCH NAMA MASJID
+        ->when($search, function ($q, $search) {
+            $q->where('masjids.nama_masjid', 'like', '%' . $search . '%');
+        })
+
+        // 🔎 FILTER PENGAJUAN
+        ->when($filter === '0', function ($q) {
+            $q->where('masjids.total_pengajuan', 0);
+        })
+        ->when($filter === '1', function ($q) {
+            $q->where('masjids.total_pengajuan', '>', 0);
+        })
+
+        ->orderBy('masjids.created_at', 'desc')
+        ->paginate(100);
+
+    return view('mobilemasjid.mobilelistmasjid', [
+        'masjid' => $masjid,
+        'title'  => 'Data Masjid Terdaftar'
+    ]);
 }
 
 public function aktifitas()

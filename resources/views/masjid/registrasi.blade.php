@@ -24,45 +24,46 @@
         transition: opacity 0.3s ease;
     }
 
-           .table-container {
-            background: #f5f7fb;
-            border-radius: 16px;
-            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
-            padding: 20px;
-            margin-top: 150px;
-        }
-                body {
-            background-color: #f5f7fb;
-            font-family: "Poppins", sans-serif;
-            color: #333;
-            font-size: 0.8rem; /* 🔹 perkecil seluruh teks jadi ~70% */
-              margin-top: 150px;
-        }
+    .table-container {
+        background: #f5f7fb;
+        border-radius: 16px;
+        box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+        padding: 20px;
+        margin-top: 150px;
+    }
+
+    body {
+        background-color: #f5f7fb;
+        font-family: "Poppins", sans-serif;
+        color: #333;
+        font-size: 0.8rem;
+        /* 🔹 perkecil seluruh teks jadi ~70% */
+        margin-top: 150px;
+    }
 
 
 
 
-        .hp-warning {
-    display: none;
-    background: #dc3545;
-    color: #fff;
-    padding: 6px 12px;
-    border-radius: 6px;
-    font-size: 13px;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    margin-top: 4px;
-    opacity: 0;
-    transition: opacity .3s ease;
-    z-index: 10;
-}
+    .hp-warning {
+        display: none;
+        background: #dc3545;
+        color: #fff;
+        padding: 6px 12px;
+        border-radius: 6px;
+        font-size: 13px;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        margin-top: 4px;
+        opacity: 0;
+        transition: opacity .3s ease;
+        z-index: 10;
+    }
 
-.hp-warning.show {
-    display: block;
-    opacity: 1;
-}
-
+    .hp-warning.show {
+        display: block;
+        opacity: 1;
+    }
 </style>
 
 
@@ -74,22 +75,23 @@
     <div class="container">
         <nav class="navbar navbar-light navbar-expand-lg py-3">
 
-                <a href="{{ route('landingpage') }}" class="navbar-brand">
-                     
-                    <h2 class="mb-0"> <span><img src="/mosque/img/logoyayasan.png" class="img-fluid flex-shrink-10" alt="" width="100"> </span><span class="text-dark">Cita Amanat Martadiredja</span>   </h2>
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarCollapse">
-                    <span class="fa fa-bars text-primary"></span>
-                </button>
-                <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
-                   
-                    
-                </div>
-            </nav>
-        </div>
+            <a href="{{ route('landingpage') }}" class="navbar-brand">
+
+                <h2 class="mb-0"> <span><img src="/mosque/img/logoyayasan.png" class="img-fluid flex-shrink-10"
+                            alt="" width="100"> </span><span class="text-dark">Cita Amanat
+                        Martadiredja</span> </h2>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="fa fa-bars text-primary"></span>
+            </button>
+            <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
+
+
+            </div>
+        </nav>
     </div>
-    <!-- Topbar End -->
+</div>
+<!-- Topbar End -->
 
 <body>
 
@@ -100,10 +102,11 @@
     <div class="container">
 
         <div class="mt-4 text-left">
-    <a href="{{ route('landingpage') }}" class="btn btn-warning btn-outline-dark" style="border-radius: 8px; padding: 8px 20px;">
-        ⬅ Kembali ke Halaman Utama
-    </a>
-</div>
+            <a href="{{ route('landingpage') }}" class="btn btn-warning btn-outline-dark"
+                style="border-radius: 8px; padding: 8px 20px;">
+                ⬅ Kembali ke Halaman Utama
+            </a>
+        </div>
         <h2 class="mt-4 text-center">Form Registrasi Masjid</h2>
         <br>
         <form method="POST" enctype="multipart/form-data" action="{{ route('masjidPublicStore') }}">
@@ -124,16 +127,15 @@
                         </div>
 
 
-                      <div class="col-md-6 mb-4 position-relative">
-    <label class="form-label">Telepon/HP Ketua DKM (Awali nomor dengan 62 bukan Nol)</label>
-     <small class="text-muted d-block">Mengetik Angka nol di awal akan otomatis jadi <b>62</b> , tinggal lanjutkan ke angka berikutnya. <b>Contoh: 628157XXXX</b></small>
-    <input type="text" name="telp_ketua_dkm" 
-           class="form-control input-hp"
-           style="background-color: #f9f7e7;"
-            value="{{ old('telp_ketua_dkm') }}" required>
+                        <div class="col-md-6 mb-4 position-relative">
+                            <label class="form-label">Telepon/HP Ketua DKM (Awali nomor dengan 62 bukan Nol)</label>
+                            <small class="text-muted d-block">Mengetik Angka nol di awal akan otomatis jadi <b>62</b> ,
+                                tinggal lanjutkan ke angka berikutnya. <b>Contoh: 628157XXXX</b></small>
+                            <input type="text" name="telp_ketua_dkm" class="form-control input-hp"
+                                style="background-color: #f9f7e7;" value="{{ old('telp_ketua_dkm') }}" required>
 
-    <div class="hp-warning popup-hp">Nomor harus diawali 62 (bukan 0)</div>
-</div>
+                            <div class="hp-warning popup-hp">Nomor harus diawali 62 (bukan 0)</div>
+                        </div>
 
 
 
@@ -152,15 +154,17 @@
 
 
 
-                      <div class="col-md-6 mb-4 position-relative">
-    <label class="form-label">Telepon Penerima Informasi (Awali nomor dengan 62 bukan Nol)</label>
-     <small class="text-muted d-block">Mengetik angka nol di awal akan otomatis jadi <b>62</b> , tinggal lanjutkan ke angka berikutnya. <b>Contoh: 628157XXXX</b></small>
-    <input type="text" name="telp_penerima_informasi" 
-           class="form-control input-hp"
-           style="background-color: #f9f7e7;" value="{{ old('telp_penerima_informasi') }}" required>
+                        <div class="col-md-6 mb-4 position-relative">
+                            <label class="form-label">Telepon Penerima Informasi (Awali nomor dengan 62 bukan
+                                Nol)</label>
+                            <small class="text-muted d-block">Mengetik angka nol di awal akan otomatis jadi <b>62</b> ,
+                                tinggal lanjutkan ke angka berikutnya. <b>Contoh: 628157XXXX</b></small>
+                            <input type="text" name="telp_penerima_informasi" class="form-control input-hp"
+                                style="background-color: #f9f7e7;" value="{{ old('telp_penerima_informasi') }}"
+                                required>
 
-    <div class="hp-warning popup-hp">Nomor harus diawali 62 (bukan 0)</div>
-</div>
+                            <div class="hp-warning popup-hp">Nomor harus diawali 62 (bukan 0)</div>
+                        </div>
 
 
 
@@ -207,8 +211,8 @@
                         <div class="col-md-12 mb-4">
                             <label for="alamat_lengkap-field" class="pb-2">Alamat Lengkap</label>
                             <input type="text" class="form-control" style="background-color: #f9f7e7;"
-                                name="alamat_lengkap" id="alamat_lengkap-field"
-                                value="{{ old('alamat_lengkap') }}" required>
+                                name="alamat_lengkap" id="alamat_lengkap-field" value="{{ old('alamat_lengkap') }}"
+                                required>
                         </div>
 
                         {{-- Provinsi --}}
@@ -252,20 +256,21 @@
                         </div>
 
                         <div class="col-md-6 mb-4">
-                            <label for="foto_masjid" class="form-label">Foto Masjid (Diusahakan Foto posisi Landscape)</label>
+                            <label for="foto_masjid" class="form-label">Foto Masjid (Diusahakan Foto posisi
+                                Landscape)</label>
                             <input type="file" name="foto_masjid" id="foto_masjid-field" class="form-control"
                                 style="background-color: #f9f7e7;" accept="image/*" required>
                         </div>
-<div id="koordinatDisplay" style="margin-bottom: 10px; font-weight: bold;">
-    Lat: - , Lng: -
-</div>
+                        <div id="koordinatDisplay" style="margin-bottom: 10px; font-weight: bold;">
+                            Lat: - , Lng: -
+                        </div>
 
                         <div class="mb-3">
                             <label for="map">Tandai Lokasi Masjid di Peta</label>
                             <div id="map" style="height: 400px; border-radius: 10px;"></div>
 
                             <input type="hidden" name="map_lokasi_masjid" id="map_lokasi_masjid"
-                                value="{{ old('map_lokasi_masjid') }}" >
+                                value="{{ old('map_lokasi_masjid') }}">
                         </div>
 
 
@@ -298,7 +303,7 @@
                             <label for="no_meteran_listrik" class="form-label">Nomor Meteran Listrik</label>
                             <input type="text" name="no_meteran_listrik" class="form-control"
                                 id="no_meteran_listrik-field" style="background-color: #f9f7e7;"
-                                value="{{ old('no_meteran_listrik') }}" >
+                                value="{{ old('no_meteran_listrik') }}">
 
                             @error('no_meteran_listrik')
                                 <div class="text-danger mt-2">{{ $message }}</div>
@@ -311,7 +316,8 @@
                         <div class="col-md-6 mb-4">
                             <label for="nama_pelanggan-field" class="pb-2">Nama Pelanggan PLN</label>
                             <input type="text" class="form-control" style="background-color: #f9f7e7;"
-                               value="{{ old('nama_pelanggan') }}" name="nama_pelanggan" id="nama_pelanggan-field" required>
+                                value="{{ old('nama_pelanggan') }}" name="nama_pelanggan" id="nama_pelanggan-field"
+                                required>
                         </div>
 
                         <!-- 4. Jenis Pembayaran Listrik -->
@@ -387,7 +393,8 @@
                                 memakai
                                 Nama yang berbeda dari nama Masjid atau Mushola nya</label>
                             <input type="text" class="form-control" style="background-color: #f9f7e7;"
-                                 value="{{ old('alasan_id_berbeda') }}"  name="alasan_id_berbeda" id="alasan_id_berbeda-field">
+                                value="{{ old('alasan_id_berbeda') }}" name="alasan_id_berbeda"
+                                id="alasan_id_berbeda-field">
                         </div>
 
                         <div class="col-md-6 mb-4">
@@ -395,7 +402,7 @@
                             <input type="file" name="foto_meteran_listrik" id="foto_meteran_listrik-field"
                                 class="form-control" style="background-color: #f9f7e7;" accept="image/*" required>
                         </div>
-                        
+
 
                     </div>
                 </div>
@@ -430,20 +437,20 @@
     </div>
 
 
- <div class="card mb-4">
-    <div class="row">
-        <div class="col-md-12 mb-4">
-            <button type="submit" class="btn btn-primary col-12">
-                <i class="fas fa-save mr-2"></i>
-                Simpan
-            </button>
+    <div class="card mb-4">
+        <div class="row">
+            <div class="col-md-12 mb-4">
+                <button type="submit" class="btn btn-primary col-12">
+                    <i class="fas fa-save mr-2"></i>
+                    Simpan
+                </button>
+            </div>
         </div>
     </div>
-</div>
     </form>
 
 
-    
+
     <script>
         $(document).ready(function() {
 
@@ -510,79 +517,81 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
-   <script>
-document.addEventListener("DOMContentLoaded", function() {
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
 
-    var defaultLat = -7.7956;
-    var defaultLng = 110.3695;
+            var defaultLat = -7.7956;
+            var defaultLng = 110.3695;
 
-    var savedCoords = document.getElementById('map_lokasi_masjid').value;
-    var lat = defaultLat;
-    var lng = defaultLng;
+            var savedCoords = document.getElementById('map_lokasi_masjid').value;
+            var lat = defaultLat;
+            var lng = defaultLng;
 
-    // Tampilkan koordinat
-    function updateDisplay(lat, lng) {
-        document.getElementById('koordinatDisplay').innerHTML =
-            "Lat: " + lat.toFixed(7) + " | Lng: " + lng.toFixed(7);
-    }
+            // Tampilkan koordinat
+            function updateDisplay(lat, lng) {
+                document.getElementById('koordinatDisplay').innerHTML =
+                    "Lat: " + lat.toFixed(7) + " | Lng: " + lng.toFixed(7);
+            }
 
-    // Kalau sudah ada koordinat tersimpan
-    if (savedCoords && savedCoords.includes(',')) {
-        var parts = savedCoords.split(',');
-        lat = parseFloat(parts[0]);
-        lng = parseFloat(parts[1]);
-    }
+            // Kalau sudah ada koordinat tersimpan
+            if (savedCoords && savedCoords.includes(',')) {
+                var parts = savedCoords.split(',');
+                lat = parseFloat(parts[0]);
+                lng = parseFloat(parts[1]);
+            }
 
-    // Buat peta
-    var map = L.map('map').setView([lat, lng], 13);
+            // Buat peta
+            var map = L.map('map').setView([lat, lng], 13);
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19,
-        attribution: '© OpenStreetMap'
-    }).addTo(map);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+                attribution: '© OpenStreetMap'
+            }).addTo(map);
 
-    // Marker
-    var marker = L.marker([lat, lng], { draggable: true }).addTo(map);
+            // Marker
+            var marker = L.marker([lat, lng], {
+                draggable: true
+            }).addTo(map);
 
-    // Update tampilan koordinat awal
-    updateDisplay(lat, lng);
+            // Update tampilan koordinat awal
+            updateDisplay(lat, lng);
 
-    // Saat marker digeser
-    marker.on('dragend', function() {
-        var pos = marker.getLatLng();
-        updateDisplay(pos.lat, pos.lng);
-        document.getElementById('map_lokasi_masjid').value =
-            pos.lat.toFixed(7) + ',' + pos.lng.toFixed(7);
-    });
-
-    // Saat klik peta
-    map.on('click', function(e) {
-        marker.setLatLng(e.latlng);
-        updateDisplay(e.latlng.lat, e.latlng.lng);
-        document.getElementById('map_lokasi_masjid').value =
-            e.latlng.lat.toFixed(7) + ',' + e.latlng.lng.toFixed(7);
-    });
-
-    // Ambil lokasi user (GPS)
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position) {
-
-            var userLat = position.coords.latitude;
-            var userLng = position.coords.longitude;
-
-            if (!savedCoords) {
-                map.setView([userLat, userLng], 15);
-                marker.setLatLng([userLat, userLng]);
-                updateDisplay(userLat, userLng);
+            // Saat marker digeser
+            marker.on('dragend', function() {
+                var pos = marker.getLatLng();
+                updateDisplay(pos.lat, pos.lng);
                 document.getElementById('map_lokasi_masjid').value =
-                    userLat.toFixed(7) + ',' + userLng.toFixed(7);
+                    pos.lat.toFixed(7) + ',' + pos.lng.toFixed(7);
+            });
+
+            // Saat klik peta
+            map.on('click', function(e) {
+                marker.setLatLng(e.latlng);
+                updateDisplay(e.latlng.lat, e.latlng.lng);
+                document.getElementById('map_lokasi_masjid').value =
+                    e.latlng.lat.toFixed(7) + ',' + e.latlng.lng.toFixed(7);
+            });
+
+            // Ambil lokasi user (GPS)
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+
+                    var userLat = position.coords.latitude;
+                    var userLng = position.coords.longitude;
+
+                    if (!savedCoords) {
+                        map.setView([userLat, userLng], 15);
+                        marker.setLatLng([userLat, userLng]);
+                        updateDisplay(userLat, userLng);
+                        document.getElementById('map_lokasi_masjid').value =
+                            userLat.toFixed(7) + ',' + userLng.toFixed(7);
+                    }
+
+                });
             }
 
         });
-    }
-
-});
-</script>
+    </script>
 
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -655,84 +664,84 @@ document.addEventListener("DOMContentLoaded", function() {
 
         telp_penerima_informasi - field
     </script>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const selectField = document.querySelector('select[name="sesuai_id_mesjid"]');
-        const alasanFieldDiv = document.querySelector('#alasan_id_berbeda-field').closest('.col-md-12');
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const selectField = document.querySelector('select[name="sesuai_id_mesjid"]');
+            const alasanFieldDiv = document.querySelector('#alasan_id_berbeda-field').closest('.col-md-12');
 
-        function toggleAlasanField() {
-            if (selectField.value === 'Tidak') {
-                alasanFieldDiv.classList.remove('hidden');
-            } else {
-                alasanFieldDiv.classList.add('hidden');
-                document.querySelector('#alasan_id_berbeda-field').value = '';
+            function toggleAlasanField() {
+                if (selectField.value === 'Tidak') {
+                    alasanFieldDiv.classList.remove('hidden');
+                } else {
+                    alasanFieldDiv.classList.add('hidden');
+                    document.querySelector('#alasan_id_berbeda-field').value = '';
+                }
             }
+
+            // Jalankan saat pertama kali halaman dimuat
+            toggleAlasanField();
+
+            // Jalankan setiap kali pilihan berubah
+            selectField.addEventListener('change', toggleAlasanField);
+        });
+    </script>
+
+
+    <script>
+        // Ambil semua input HP
+        const hpInputs = document.querySelectorAll(".input-hp");
+
+        // Fungsi menampilkan popup fade
+        function showWarning(el) {
+            const warn = el.parentElement.querySelector(".hp-warning");
+            warn.classList.add("show");
         }
 
-        // Jalankan saat pertama kali halaman dimuat
-        toggleAlasanField();
-
-        // Jalankan setiap kali pilihan berubah
-        selectField.addEventListener('change', toggleAlasanField);
-    });
-</script>
-
-
-<script>
-// Ambil semua input HP
-const hpInputs = document.querySelectorAll(".input-hp");
-
-// Fungsi menampilkan popup fade
-function showWarning(el) {
-    const warn = el.parentElement.querySelector(".hp-warning");
-    warn.classList.add("show");
-}
-
-// Fungsi menyembunyikan popup
-function hideWarning(el) {
-    const warn = el.parentElement.querySelector(".hp-warning");
-    warn.classList.remove("show");
-}
-
-// Event listener untuk setiap input HP
-hpInputs.forEach(input => {
-    input.addEventListener("input", function() {
-        let v = this.value;
-
-        // Jika ketik 0 di awal → otomatis jadi 62
-        if (v.startsWith("0")) {
-            this.value = "62" + v.substring(1);
-            showWarning(this);
-            return;
+        // Fungsi menyembunyikan popup
+        function hideWarning(el) {
+            const warn = el.parentElement.querySelector(".hp-warning");
+            warn.classList.remove("show");
         }
 
-        // Jika tidak diawali 62
-        if (v.length > 0 && !v.startsWith("62")) {
-            showWarning(this);
-        } else {
-            hideWarning(this);
-        }
-    });
-});
+        // Event listener untuk setiap input HP
+        hpInputs.forEach(input => {
+            input.addEventListener("input", function() {
+                let v = this.value;
 
-// VALIDASI SAAT SUBMIT FORM
-document.querySelector("form").addEventListener("submit", function(e) {
-    let valid = true;
+                // Jika ketik 0 di awal → otomatis jadi 62
+                if (v.startsWith("0")) {
+                    this.value = "62" + v.substring(1);
+                    showWarning(this);
+                    return;
+                }
 
-    hpInputs.forEach(input => {
-        let v = input.value.trim();
+                // Jika tidak diawali 62
+                if (v.length > 0 && !v.startsWith("62")) {
+                    showWarning(this);
+                } else {
+                    hideWarning(this);
+                }
+            });
+        });
 
-        if (v !== "" && !v.startsWith("62")) {
-            showWarning(input);
-            valid = false;
-        }
-    });
+        // VALIDASI SAAT SUBMIT FORM
+        document.querySelector("form").addEventListener("submit", function(e) {
+            let valid = true;
 
-    if (!valid) {
-        e.preventDefault(); // blokir submit
-    }
-});
-</script>
+            hpInputs.forEach(input => {
+                let v = input.value.trim();
+
+                if (v !== "" && !v.startsWith("62")) {
+                    showWarning(input);
+                    valid = false;
+                }
+            });
+
+            if (!valid) {
+                e.preventDefault(); // blokir submit
+            }
+        });
+    </script>
 
 </body>
 
