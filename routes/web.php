@@ -37,7 +37,7 @@ Route::get('/acara-kami', [DashboardController::class, 'acara'])->name('acara');
 Route::get('/testimoni-kami', [DashboardController::class, 'testimoni'])->name('testimoni');
 Route::get('/kontak-kami', [DashboardController::class, 'kontakkami'])->name('kontakkami');
 Route::get('/list-masjid', [DashboardController::class, 'listmasjid'])->name('listmasjid');
-Route::get('/form-registrasi', [DashboardController::class, 'formregistrasi'])->name('formregistrasi');
+Route::get('/form-registrasi', [DashboardController::class, 'landingpage'])->name('landingpage');
 Route::get('/mobile-landingpage', [DashboardController::class, 'landingpage'])->name('landingpage');
 
 
@@ -125,6 +125,10 @@ Route::post(
     '/mobile-requesttokenlanjutform',
     [DashboardController::class, 'mobilerequesttokenlanjutform']
 )->name('mobilerequesttokenlanjutform');
+Route::delete(
+    '/mobile-requesttoken/{id}/cancel',
+    [DashboardController::class, 'cancelRequestToken']
+)->name('mobilerequesttoken.cancel');
 
 
 

@@ -233,7 +233,7 @@
                 <div class="col-auto mx-auto">
                     <div class="row no-gutters justify-content-center">
                         <div class="col-auto">
-                            <a href="{{ route('mobilelandingpage') }}" class="btn btn-link-default ">
+                            <a href="{{ route('mobilelandingpage') }}" class="btn btn-link-default  ">
                                 <i class="material-icons">store_mall_directory</i>
                             </a>
                         </div>
@@ -242,24 +242,24 @@
                                 <i class="material-icons">insert_chart_outline</i>
                             </a>
                         </div>
-                          <div class="col-auto">
+                        <div class="col-auto">
                             <a href="{{ route('mobilelistmasjid') }}" class="btn btn-link-default active">
                                 <i class="material-icons">local_mall</i>
                             </a>
                         </div>
-                          <div class="col-auto">
-    @if(Auth::check())
-        {{-- SUDAH LOGIN --}}
-        <a href="{{ route('mobilerequesttoken') }}" class="btn btn-link-default">
-            <i class="material-icons">favorite</i>
-        </a>
-    @else
-        {{-- BELUM LOGIN --}}
-        <a href="{{ route('mobile.login') }}" class="btn btn-link-default">
-            <i class="material-icons">favorite</i>
-        </a>
-    @endif
-</div>
+                        <div class="col-auto">
+                            @if (Auth::check())
+                                {{-- SUDAH LOGIN --}}
+                                <a href="{{ route('mobilerequesttoken') }}" class="btn btn-link-default">
+                                    <i class="material-icons">favorite</i>
+                                </a>
+                            @else
+                                {{-- BELUM LOGIN --}}
+                                <a href="{{ route('mobile.login') }}" class="btn btn-link-default">
+                                    <i class="material-icons">favorite</i>
+                                </a>
+                            @endif
+                        </div>
 
                         <div class="col-auto">
                             <a href="profile.html" class="btn btn-link-default">

@@ -986,7 +986,7 @@
                 <div class="col-lg-6 col-xl-3">
                     <div class="sermon-item h-100 d-flex flex-column wow fadeIn" data-wow-delay="0.3s">
                         <div class="overflow-hidden p-4 pb-0">
-                            <img src="/mosque/img/Gurungaji.jpg" class="img-fluid w-100" alt="">
+                            <img src="mosque/img/Gurungaji.jpg" class="img-fluid w-100" alt="">
                         </div>
                         <div class="p-4 d-flex flex-column flex-grow-1">
 

@@ -130,7 +130,7 @@
 
                     <div class="card shadow-lg border-0 rounded-4">
                         <div class="card-body p-4">
-                            <h4>SOP PENGAJUAN & REALISASI TOKEN LISTRIK</h4>
+                            <h4>TATA CARA PENGAJUAN & REALISASI TOKEN LISTRIK</h4>
                             <p><b>1. Frekuensi Pengisian</b><br> Token Listrik (PraBayar maupun PascaBayar) diberikan <b>1
                                     Kali Setiap Bulan.</b></p>
 

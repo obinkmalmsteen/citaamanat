@@ -33,8 +33,8 @@
 </style>
 
 <body>
-    
-   
+
+
     <div class="row no-gutters  vh-100 loader-screen">
         <div class="col align-self-center text-white text-center">
             <img src="mobile/img/logo_tamama_putih.png" width="100" height="100" alt="logo">
@@ -142,7 +142,7 @@
             </div>
         </div>
 
-           <!-- MOBILE HEADER (Background image + text di dalam gambar) -->
+        <!-- MOBILE HEADER (Background image + text di dalam gambar) -->
         <div class="mobile-header-aktifitas text-white d-block d-md-none">
 
             <div class="content-wrapper">
@@ -180,10 +180,10 @@
             <h6 class="subtitle">Berbagai Aktifitas Kami Yang Sudah Terlaksana <a href="all-products.html"
                     class="float-right small">View All</a></h6>
             <div class="row">
-             
 
 
-                 <div class="col-6 col-md-4 col-lg-3 col-xl-2">
+
+                <div class="col-6 col-md-4 col-lg-3 col-xl-2">
                     <div class="card product-card shadow-sm border-0 mb-4">
                         <!-- GAMBAR DI LUAR CARD-BODY -->
                         <div class="product-image">
@@ -209,7 +209,7 @@
                     </div>
                 </div>
 
-                 <div class="col-6 col-md-4 col-lg-3 col-xl-2">
+                <div class="col-6 col-md-4 col-lg-3 col-xl-2">
                     <div class="card product-card shadow-sm border-0 mb-4">
                         <!-- GAMBAR DI LUAR CARD-BODY -->
                         <div class="product-image">
@@ -222,7 +222,7 @@
                     </div>
                 </div>
 
-                  <div class="col-6 col-md-4 col-lg-3 col-xl-2">
+                <div class="col-6 col-md-4 col-lg-3 col-xl-2">
                     <div class="card product-card shadow-sm border-0 mb-4">
                         <!-- GAMBAR DI LUAR CARD-BODY -->
                         <div class="product-image">
@@ -235,9 +235,9 @@
                     </div>
                 </div>
 
-               
-              
-              
+
+
+
 
 
             </div>
@@ -427,24 +427,24 @@
                                 <i class="material-icons">insert_chart_outline</i>
                             </a>
                         </div>
-                          <div class="col-auto">
+                        <div class="col-auto">
                             <a href="{{ route('mobilelistmasjid') }}" class="btn btn-link-default">
                                 <i class="material-icons">local_mall</i>
                             </a>
                         </div>
-                          <div class="col-auto">
-    @if(Auth::check())
-        {{-- SUDAH LOGIN --}}
-        <a href="{{ route('mobilerequesttoken') }}" class="btn btn-link-default">
-            <i class="material-icons">favorite</i>
-        </a>
-    @else
-        {{-- BELUM LOGIN --}}
-        <a href="{{ route('mobile.login') }}" class="btn btn-link-default">
-            <i class="material-icons">favorite</i>
-        </a>
-    @endif
-</div>
+                        <div class="col-auto">
+                            @if (Auth::check())
+                                {{-- SUDAH LOGIN --}}
+                                <a href="{{ route('mobilerequesttoken') }}" class="btn btn-link-default">
+                                    <i class="material-icons">favorite</i>
+                                </a>
+                            @else
+                                {{-- BELUM LOGIN --}}
+                                <a href="{{ route('mobile.login') }}" class="btn btn-link-default">
+                                    <i class="material-icons">favorite</i>
+                                </a>
+                            @endif
+                        </div>
 
                         <div class="col-auto">
                             <a href="profile.html" class="btn btn-link-default">

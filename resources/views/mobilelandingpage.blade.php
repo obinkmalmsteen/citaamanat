@@ -69,16 +69,16 @@
                     </span>
 
                 @endauth
-                </p>
+            </p>
             <br>
-             <p class="mb-1 ">
+            <p class="mb-1 ">
                 @auth
                     <span class="user-name-title text-white">
                         {{ Auth::user()->masjid->regency->name ?? '' }}
                     </span>
 
                 @endauth
-                </p>
+            </p>
             @auth
                 <span class="user-name-title">
 
@@ -95,7 +95,8 @@
 
                 <h5 class="subtitle text-uppercase"><span>Menu</span></h5>
                 <div class="list-group main-menu">
-                   @auth <a href="index.html" class="list-group-item list-group-item-action active">Total Pengajuan Token :{{ Auth::user()->masjid->total_pengajuan ?? Auth::user()->nama }} Kali</a>@endauth
+                    @auth <a href="index.html" class="list-group-item list-group-item-action active">Total Pengajuan
+                        Token :{{ Auth::user()->masjid->total_pengajuan ?? Auth::user()->nama }} Kali</a>@endauth
                     <a href="notification.html" class="list-group-item list-group-item-action">Notification <span
                             class="badge badge-dark text-white">2</span></a>
                     <a href="all-products.html" class="list-group-item list-group-item-action">All Products</a>
@@ -642,8 +643,8 @@
                 <div class="col-auto mx-auto">
                     <div class="row no-gutters justify-content-center">
                         <div class="col-auto">
-                            <a href="{{ route('mobilelandingpage') }}" class="btn btn-link-default active">
-                                <i class="material-icons">store_mall_directory</i>
+                            <a href="{{ route('mobilelandingpage') }}" class="btn btn-link-default active ">
+                                <i class="material-icons">home</i>
                             </a>
                         </div>
                         <div class="col-auto">
@@ -656,20 +657,19 @@
                                 <i class="material-icons">local_mall</i>
                             </a>
                         </div>
-
-
-                        @if (Auth::check() && Auth::user()->nama)
-    <a href="{{ route('mobilerequesttoken') }}" class="btn btn-link-default">
-        <i class="material-icons">favorite</i>
-    </a>
-@else
-    <a href="{{ route('mobile.login') }}" class="btn btn-link-default">
-        <i class="material-icons">favorite</i>
-    </a>
-@endif
-
-
-
+                        <div class="col-auto">
+                            @if (Auth::check())
+                                {{-- SUDAH LOGIN --}}
+                                <a href="{{ route('mobilerequesttoken') }}" class="btn btn-link-default">
+                                    <i class="material-icons">favorite</i>
+                                </a>
+                            @else
+                                {{-- BELUM LOGIN --}}
+                                <a href="{{ route('mobile.login') }}" class="btn btn-link-default">
+                                    <i class="material-icons">favorite</i>
+                                </a>
+                            @endif
+                        </div>
 
                         <div class="col-auto">
                             <a href="profile.html" class="btn btn-link-default">

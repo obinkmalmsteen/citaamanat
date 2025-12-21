@@ -437,7 +437,7 @@
     </div>
 
 
-    <div class="card mb-4">
+    {{-- <div class="card mb-4">
         <div class="row">
             <div class="col-md-12 mb-4">
                 <button type="submit" class="btn btn-primary col-12">
@@ -446,7 +446,7 @@
                 </button>
             </div>
         </div>
-    </div>
+    </div> --}}
     </form>
 
 

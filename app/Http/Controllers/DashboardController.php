@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Masjid;
 use App\Models\Donatur;
@@ -12,7 +13,6 @@ use App\Helpers\WhatsappHelper;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Testimonial; // ✅ Tambahkan ini
-use Carbon\Carbon;
 
 class DashboardController extends Controller
 {
@@ -221,39 +221,30 @@ public function mobilerequesttoken()
     ]);
 }
 
+
+
 public function mobilerequesttokenlanjut()
 {
     $user = Auth::user();
 
     if (!$user || empty($user->nama)) {
-        abort(403, 'Akses ditolak.');
+        abort(403);
     }
 
     $id_pelanggan = $user->nama;
 
     $masjid = Masjid::where('id_pelanggan', $id_pelanggan)->firstOrFail();
 
+    // 🔍 Ambil semua histori
     $historiBayar = DB::table('histori_bayar')
         ->where('id_pelanggan', $id_pelanggan)
         ->orderBy('tgl_request_token', 'desc')
         ->get();
 
-    $adaRequestBelumRealisasi = DB::table('histori_bayar')
-        ->where('id_pelanggan', $id_pelanggan)
-        ->whereNull('tgl_realisasi_token')
-        ->where('status_realisasi', 0)
-        ->exists();
+    // histori terakhir
+    $historiTerakhir = $historiBayar->first();
 
-    $tglRequestTokenTerakhir = DB::table('histori_bayar')
-        ->where('id_pelanggan', $id_pelanggan)
-        ->max('tgl_request_token');
-// Ambil histori terakhir
-    $historiTerakhir = DB::table('histori_bayar')
-        ->where('id_pelanggan', $id_pelanggan)
-        ->orderBy('tgl_request_token', 'desc')
-        ->first();
-
-    // 🔒 FLAG disable tombol
+    // 🔒 flag disable
     $disableRequestBulanIni = false;
 
     if ($historiTerakhir && $historiTerakhir->tgl_request_token) {
@@ -261,93 +252,93 @@ public function mobilerequesttokenlanjut()
             $disableRequestBulanIni = true;
         }
     }
+
     return view('mobilemasjid.mobilerequesttokenlanjut', [
         'masjid' => $masjid,
         'historiBayar' => $historiBayar,
-        'adaRequestBelumRealisasi' => $adaRequestBelumRealisasi,
-        'tglRequestTokenTerakhir' => $tglRequestTokenTerakhir,
+        'historiTerakhir' => $historiTerakhir,
         'disableRequestBulanIni' => $disableRequestBulanIni,
         'title' => 'Detail Masjid',
     ]);
 }
+
+
+
 public function mobilerequesttokenlanjutform(Request $request)
 {
     $user = Auth::user();
 
-    // Wajib login & wajib punya id_pelanggan (disimpan di nama)
     if (!$user || empty($user->nama)) {
-        abort(403, 'Akses ditolak.');
+        abort(403);
     }
 
     $id_pelanggan = $user->nama;
 
-    $masjid = Masjid::where('id_pelanggan', $id_pelanggan)->firstOrFail();
-
-    // 🔍 Ambil histori terakhir
+    // histori terakhir
     $historiTerakhir = DB::table('histori_bayar')
         ->where('id_pelanggan', $id_pelanggan)
         ->orderBy('tgl_request_token', 'desc')
         ->first();
-// ❌ Blok request jika sudah request di bulan yang sama
-if ($historiTerakhir && $historiTerakhir->tgl_request_token) {
-    $tglRequestTerakhir = Carbon::parse($historiTerakhir->tgl_request_token);
 
-    if ($tglRequestTerakhir->isSameMonth(now())) {
+    // ❌ BLOK jika bulan sama
+    if ($historiTerakhir &&
+        Carbon::parse($historiTerakhir->tgl_request_token)->isSameMonth(now())) {
         return back()->withErrors(
-            'Pengajuan token untuk bulan ini sudah dilakukan. Silakan menunggu bulan berikutnya.'
+            'Pengajuan token bulan ini sudah dilakukan.'
         );
     }
-}
 
-    $jumlahRealisasiBaru = null;
+    $masjid = Masjid::where('id_pelanggan', $id_pelanggan)->firstOrFail();
 
-    if ($historiTerakhir && $historiTerakhir->jumlah_realisasi_token !== null) {
-        $jumlahRealisasiBaru = $historiTerakhir->jumlah_realisasi_token;
-    }
-$adaRequestAktif = DB::table('histori_bayar')
-    ->where('id_pelanggan', $id_pelanggan)
-    ->whereNull('tgl_realisasi_token')
-    ->where('status_realisasi', 0)
-    ->exists();
-
-if ($adaRequestAktif) {
-    return back()->withErrors('Masih ada permintaan yang belum direalisasi.');
-}
-
-    // 🟢 Insert histori baru
+    // 🟢 INSERT
     DB::table('histori_bayar')->insert([
         'id_pelanggan' => $masjid->id_pelanggan,
         'no_meteran_listrik' => $masjid->no_meteran_listrik,
-        'nama_masjid' => $masjid->jenis_bangunan . ' ' . $masjid->nama_masjid,
+        'nama_masjid' => $masjid->jenis_bangunan.' '.$masjid->nama_masjid,
         'nama_kota' => $masjid->regency->name ?? '-',
         'nama_provinsi' => $masjid->province->name ?? '-',
         'tgl_request_token' => now(),
         'tgl_realisasi_token' => null,
         'no_token_listrik' => null,
-        'jumlah_realisasi_token' => $jumlahRealisasiBaru,
     ]);
 
-    // Tambah total pengajuan
     Masjid::where('id_pelanggan', $id_pelanggan)
         ->increment('total_pengajuan');
-
-    // Kirim WA (tetap sama)
-    if ($masjid->telp_penerima_informasi) {
-        $pesan =
-            "Assalamualaikum.\n\n" .
-            "Masjid *{$masjid->nama_masjid}*.\n" .
-            "Berhasil melakukan permintaan pengisian token listrik.\n\n" .
-            "Silakan menunggu sampai permintaan direalisasikan.\n\n" .
-            "Terima kasih.\n\n" .
-            "Cita Amanat Martadiredja.";
-
-        WhatsappHelper::send($masjid->telp_penerima_informasi, $pesan);
-    }
 
     return redirect()
         ->route('mobilerequesttokenlanjut')
         ->with('success', 'Permintaan token berhasil dikirim.');
 }
+public function cancelRequestToken($id_histori)
+{
+    $user = Auth::user();
+
+    if (!$user || empty($user->nama)) {
+        abort(403);
+    }
+
+    $id_pelanggan = $user->nama;
+
+    $histori = DB::table('histori_bayar')
+        ->where('id_histori', $id_histori)
+        ->where('id_pelanggan', $id_pelanggan)
+        ->first();
+
+    if (!$histori) {
+        abort(404);
+    }
+
+    // ❌ Sudah direalisasi → tidak boleh cancel
+    if ($histori->tgl_realisasi_token || $histori->no_token_listrik) {
+        return back()->withErrors('Permintaan sudah direalisasi dan tidak bisa dibatalkan.');
+    }
+
+    // 🗑️ HAPUS REQUEST
+    DB::table('histori_bayar')->where('id_histori', $id_histori)->delete();
+
+    return back()->with('success', 'Permintaan token berhasil dibatalkan.');
+}
+
 
 
 public function mobileregistrasi()

@@ -2033,6 +2033,12 @@ pre {
     background-color: #02c40f;
 }
 
+.green-theme .btn-defaulty,
+.green-theme .btn-defaulty:focus {
+    color: #ffffff;
+    background-color: #bebdbd;
+}
+
 .green-theme .filter,
 .green-theme .filter .form-control,
 .green-theme .filter .form-group label,
@@ -2050,6 +2056,8 @@ pre {
 .green-theme .filter .form-group label {
     opacity: 0.85;
 }
+
+
 
 .green-theme .btn-default:hover,
 .green-theme .btn-default:focus {

@@ -134,247 +134,272 @@
 
                 {{-- Tambahkan pembungkus untuk tombol --}}
                 <div class="text-center my-4">
-                    @if (!$adaRequestBelumRealisasi)
-                        <div class="d-flex justify-content-center my-3">
-                            <button
-    class="btn btn-success w-50 py-4 {{ $disableRequestBulanIni ? 'disabled' : '' }}"
-    {{ $disableRequestBulanIni ? 'disabled' : '' }}>
-    LAKUKAN PENGAJUAN TOKEN SEKARANG
-</button>
-@if ($disableRequestBulanIni)
-    <small class="text-muted d-block mt-2 text-center">
-        Anda sudah melakukan pengajuan token bulan ini.<br>
-        Pengajuan berikutnya bisa dilakukan bulan depan.
-    </small>
-@endif
 
-                        </div>
-                    @else
-                        <div id="progressContainer">
-                            <div class="progress" style="height: 40px;">
-                                <div id="progressBar" class="progress-bar bg-secondary" role="progressbar"
-                                    style="width: 0%;">
-                                </div>
-                            </div>
-                            <small id="progressText" class="text-muted d-block mt-2 text-center"></small>
-                        </div>
+                    <button type="button" class="btn btn-success w-75 py-4" id="btnRequestToken"
+                        @if ($disableRequestBulanIni) disabled @endif
+                        @unless ($disableRequestBulanIni)
+        data-toggle="modal"
+        data-target="#exampleModalCenter"
+    @endunless>
+                        @if ($disableRequestBulanIni)
+                            ANDA SUDAH REQUEST BULAN INI
+                        @else
+                            LAKUKAN PENGAJUAN TOKEN SEKARANG
+                        @endif
+                    </button>
+
+
+                    @if ($disableRequestBulanIni)
+                        <small class="text-muted d-block mt-2">
+                            Silakan menunggu hingga bulan berikutnya
+                        </small>
                     @endif
+
                 </div>
 
-                <input type="hidden" id="tgl_request_token" value="{{ $tglRequestTokenTerakhir }}">
+
+
+                <input type="hidden" id="tgl_request_token"
+                    value="{{ optional($historiTerakhir)->tgl_request_token }}">
+
+
 
 
 
                 <!-- Form Request Token -->
 
-                <div id="formRequestToken" class="card p-3 mb-3" style="display: none;">
+                {{-- <div id="formRequestToken" class="card shadow-sm p-4 mb-3" style="display: none;">
                     <form action="{{ route('mobilerequesttokenlanjutform') }}" method="POST">
                         @csrf
-                        <div class="d-flex justify-content-center">
-                            <button type="button" class="btn btn-secondary w-25 py-4 me-2"
-                                id="btnBatalRequest">Batal</button>
-                            <button type="submit" class="btn btn-success w-25 py-2">
+
+                        <div class="d-grid gap-3">
+                            <button type="submit" class="btn btn-success btn-lg">
+                                <i class="fa fa-paper-plane me-2"></i>
                                 Kirim Permintaan
+                            </button>
+
+                            <button type="button" class="btn btn-outline-secondary btn-lg" id="btnBatalRequest">
+                                Batal
                             </button>
                         </div>
                     </form>
+                </div> --}}
 
-                </div>
 
             </div>
 
-<div class="card-body">
+            <div class="card-body">
 
-        <!-- Card histori Realisasi Token START-->
+                <!-- Card histori Realisasi Token START-->
 
-        <h4 class="mt-4">Histori Permintaan & Realisasi Token</h4>
+                <h4 class="mt-4">Histori Permintaan & Realisasi Token</h4>
 
-        @if ($historiBayar->isEmpty())
-            <p class="text-muted">Belum ada histori permintaan token.</p>
-        @else
-            <style>
-                .history-slider {
-                    display: flex;
-                    overflow-x: auto;
-                    gap: 16px;
-                    padding-bottom: 10px;
-                    scroll-snap-type: x mandatory;
-                }
+                @if ($historiBayar->isEmpty())
+                    <p class="text-muted">Belum ada histori permintaan token.</p>
+                @else
+                    <style>
+                        .history-slider {
+                            display: flex;
+                            overflow-x: auto;
+                            gap: 16px;
+                            padding-bottom: 10px;
+                            scroll-snap-type: x mandatory;
+                        }
 
-                .history-card {
-                    min-width: 320px;
-                    flex: 0 0 auto;
-                    scroll-snap-align: start;
-                }
+                        .history-card {
+                            min-width: 320px;
+                            flex: 0 0 auto;
+                            scroll-snap-align: start;
+                        }
 
-                .history-slider::-webkit-scrollbar {
-                    height: 6px;
-                }
+                        .history-slider::-webkit-scrollbar {
+                            height: 6px;
+                        }
 
-                .history-slider::-webkit-scrollbar-thumb {
-                    background: #0d6efd;
-                    border-radius: 10px;
-                }
-            
-                .profile-item {
-                    display: flex;
-                    align-items: center;
-                    gap: 12px;
-                    padding: 4px 0;
-                }
+                        .history-slider::-webkit-scrollbar-thumb {
+                            background: #0d6efd;
+                            border-radius: 10px;
+                        }
 
-                .profile-item .icon {
-                    font-size: 26px;
-                    color: #0d6efd;
-                    width: 32px;
-                    text-align: center;
-                }
+                        .profile-item {
+                            display: flex;
+                            align-items: center;
+                            gap: 12px;
+                            padding: 4px 0;
+                        }
 
-                .profile-item label {
-                    font-size: 13px;
-                    font-weight: 700;
-                    color: #6c757d;
-                    margin-bottom: 2px;
-                    letter-spacing: .3px;
-                    text-transform: uppercase;
-                }
+                        .profile-item .icon {
+                            font-size: 26px;
+                            color: #0d6efd;
+                            width: 32px;
+                            text-align: center;
+                        }
 
-                .profile-item .value {
-                    font-size: 17px;
-                    font-weight: 600;
-                    color: #222;
-                }
+                        .profile-item label {
+                            font-size: 13px;
+                            font-weight: 700;
+                            color: #6c757d;
+                            margin-bottom: 2px;
+                            letter-spacing: .3px;
+                            text-transform: uppercase;
+                        }
 
-                .info {
-                    flex: 1;
-                }
+                        .profile-item .value {
+                            font-size: 17px;
+                            font-weight: 600;
+                            color: #222;
+                        }
 
-                hr {
-                    margin: 8px 0;
-                    opacity: .15;
-                }
+                        .info {
+                            flex: 1;
+                        }
 
-                .map-square {
-                    width: 100%;
-                    height: 320px;
-                }
+                        hr {
+                            margin: 8px 0;
+                            opacity: .15;
+                        }
 
-                .template-option {
-                    transition: .2s ease;
-                    cursor: pointer;
-                }
+                        .map-square {
+                            width: 100%;
+                            height: 320px;
+                        }
 
-                .template-option:hover {
-                    background: #f2fdf5;
-                    border-color: #86e1a8;
-                }
-            </style>
+                        .template-option {
+                            transition: .2s ease;
+                            cursor: pointer;
+                        }
 
-            <div class="history-slider mt-3">
+                        .template-option:hover {
+                            background: #f2fdf5;
+                            border-color: #86e1a8;
+                        }
 
-                @foreach ($historiBayar as $index => $bayar)
-                    <div class="card shadow history-card rounded-4">
+                        .modal {
+                            z-index: 1055 !important;
+                        }
 
-                        @php
-                            $nomor = $historiBayar->count() - $index;
+                        .modal-backdrop {
+                            z-index: 1040 !important;
+                        }
+                    </style>
 
-                            // Tentukan warna bar
-                            $warnaHeader =
-                                $bayar->status_realisasi == 1
-                                    ? 'bg-success' // Hijau
-                                    : 'bg-warning text-dark'; // Oranye
-                        @endphp
+                    <div class="history-slider mt-3">
 
-                        <div class="card-header {{ $warnaHeader }} text-white rounded-top-4">
-                            <strong>Permintaan Token Ke {{ $nomor }}</strong>
-                        </div>
+                        @foreach ($historiBayar as $index => $bayar)
+                            <div class="card shadow history-card rounded-4">
 
+                                @php
+                                    $nomor = $historiBayar->count() - $index;
 
-                        <div class="card-body">
+                                    // Tentukan warna bar
+                                    $warnaHeader =
+                                        $bayar->status_realisasi == 1
+                                            ? 'bg-success' // Hijau
+                                            : 'bg-warning text-dark'; // Oranye
+                                @endphp
 
-                            <div class="mb-2">
-                                <small class="text-muted">"Silahkan isikan nomor ini jika sudah tersedia"</small><br>
-                                <small class="text-muted">Nomor Token</small><br>
-                                <span class="fw-semibold">
-                                    <h5><b>{{ $bayar->no_token_listrik ? trim(chunk_split($bayar->no_token_listrik, 4, ' ')) : '-' }}</b>
-                                    </h5>
-                                </span>
-                            </div>
+                                <div class="card-header {{ $warnaHeader }} text-white rounded-top-4">
+                                    <strong>Permintaan Token Ke {{ $nomor }}</strong>
+                                </div>
 
 
-                            <hr>
-                            <div class="mb-2">
-                                <small class="text-muted">Tanggal Realisasi</small><br>
-                                <span class="fw-semibold">
-                                    @if ($bayar->tgl_realisasi_token)
-                                        {{ \Carbon\Carbon::parse($bayar->tgl_realisasi_token)->format('d/m/Y') }}
-                                    @else
-                                        <span class="text-warning"><b>Belum direalisasikan</b></span>
+                                <div class="card-body">
+
+                                    {{-- ===== ISI CARD KAMU (TIDAK DIUBAH) ===== --}}
+                                    <div class="mb-2">
+                                        <small class="text-muted">"Silahkan isikan nomor ini jika sudah
+                                            tersedia"</small><br>
+                                        <small class="text-muted">Nomor Token</small><br>
+                                        <h5>
+                                            <b>
+                                                {{ $bayar->no_token_listrik ? trim(chunk_split($bayar->no_token_listrik, 4, ' ')) : '-' }}
+                                            </b>
+                                        </h5>
+                                    </div>
+
+                                    <hr>
+
+                                    <div class="mb-2">
+                                        <small class="text-muted">Tanggal Realisasi</small><br>
+                                        @if ($bayar->tgl_realisasi_token)
+                                            {{ \Carbon\Carbon::parse($bayar->tgl_realisasi_token)->format('d/m/Y') }}
+                                        @else
+                                            <span class="text-warning"><b>Belum direalisasikan</b></span>
+                                        @endif
+                                    </div>
+
+                                    <div class="mb-2">
+                                        <small class="text-muted">Tanggal Request</small><br>
+                                        {{ $bayar->tgl_request_token ? \Carbon\Carbon::parse($bayar->tgl_request_token)->format('d/m/Y') : '-' }}
+                                    </div>
+
+                                    <div class="mb-2">
+                                        <small class="text-muted">ID Pelanggan</small><br>
+                                        {{ $bayar->id_pelanggan ?? '-' }}
+                                    </div>
+
+                                    <div class="mb-2">
+                                        <small class="text-muted">Nomor Meteran</small><br>
+                                        {{ $bayar->no_meteran_listrik ?? '-' }}
+                                    </div>
+
+                                    <div class="mb-2">
+                                        <small class="text-muted">Nama Masjid</small><br>
+                                        {{ $bayar->nama_masjid ?? '-' }}
+                                    </div>
+
+                                    <hr>
+
+                                    <div class="mb-2">
+                                        <small class="text-muted">Nominal Token</small><br>
+                                        @if ($bayar->jumlah_realisasi_token)
+                                            Rp {{ number_format($bayar->jumlah_realisasi_token, 0, ',', '.') }}
+                                        @else
+                                            -
+                                        @endif
+                                    </div>
+
+                                    <div class="mt-3">
+                                        @if ($bayar->status_realisasi == 1)
+                                            <span class="badge bg-success px-3 py-2">
+                                                <i class="fa fa-check"></i> Selesai
+                                            </span>
+                                        @else
+                                            <span class="badge bg-warning text-dark px-3 py-2">
+                                                <i class="fa fa-hourglass-half"></i> Menunggu
+                                            </span>
+                                        @endif
+                                    </div>
+
+                                    {{-- ===== TOMBOL CANCEL ===== --}}
+                                    @if ($bayar->status_realisasi == 0 && is_null($bayar->tgl_realisasi_token) && $loop->first)
+                                        <form action="{{ route('mobilerequesttoken.cancel', $bayar->id_histori) }}"
+                                            method="POST" class="mt-3"
+                                            onsubmit="return confirm('Batalkan permintaan token ini?');">
+                                            @csrf
+                                            @method('DELETE')
+
+                                            <button class="btn btn-outline-danger w-100">
+                                                Batalkan Permintaan
+                                            </button>
+                                        </form>
                                     @endif
-                                </span>
+
+                                </div>
+
                             </div>
+                        @endforeach
 
-                            <div class="mb-2">
-                                <small class="text-muted">Tanggal Request</small><br>
-                                <span class="fw-semibold">
-                                    @if ($bayar->tgl_request_token)
-                                        {{ \Carbon\Carbon::parse($bayar->tgl_request_token)->format('d/m/Y') }}
-                                    @else
-                                        -
-                                    @endif
-                                </span>
-                            </div>
-
-                            <div class="mb-2">
-                                <small class="text-muted">ID Pelanggan</small><br>
-                                <span class="fw-semibold">{{ $bayar->id_pelanggan ?? '-' }}</span>
-                            </div>
-
-                            <div class="mb-2">
-                                <small class="text-muted">Nomor Meteran</small><br>
-                                <span class="fw-semibold">{{ $bayar->no_meteran_listrik ?? '-' }}</span>
-                            </div>
-
-                            <div class="mb-2">
-                                <small class="text-muted">Nama Masjid</small><br>
-                                <span class="fw-semibold">{{ $bayar->nama_masjid ?? '-' }}</span>
-                            </div>
-
-                            <hr>
-
-                            <div class="mb-2">
-                                <small class="text-muted">Nominal Token</small><br>
-                                <span class="fw-semibold">
-                                    @if ($bayar->jumlah_realisasi_token)
-                                        Rp {{ number_format($bayar->jumlah_realisasi_token, 0, ',', '.') }}
-                                    @else
-                                        -
-                                    @endif
-                                </span>
-                            </div>
-
-                            <div class="mt-3">
-                                @if ($bayar->status_realisasi == 1)
-                                    <span class="badge bg-success text-light px-3 py-2">
-                                        <i class="fa fa-check text-light"></i> Selesai
-                                    </span>
-                                @else
-                                    <span class="badge bg-warning text-dark px-3 py-2">
-                                        <i class="fa fa-hourglass-half text-dark"></i> Menunggu
-                                    </span>
-                                @endif
-                            </div>
-
-                        </div>
                     </div>
-                @endforeach
-
+                @endif
             </div>
-        @endif
-    </div>
 
             <!-- page content ends -->
         </div>
+
+
+
+
 
         <!-- footer -->
         <div class="footer">
@@ -402,7 +427,8 @@
                         <div class="col-auto">
                             @if (Auth::check())
                                 {{-- SUDAH LOGIN --}}
-                                <a href="{{ route('mobilerequesttokenlanjut') }}" class="btn btn-link-default active">
+                                <a href="{{ route('mobilerequesttokenlanjut') }}"
+                                    class="btn btn-link-default active">
                                     <i class="material-icons">favorite</i>
                                 </a>
                             @else
@@ -425,7 +451,9 @@
         </div>
         <!-- footer ends -->
     </div>
-    <!-- Modal -->
+    
+
+    <!-- Modal logout-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
             <div class="modal-content shadow">
@@ -446,6 +474,84 @@
             </div>
         </div>
     </div>
+
+
+    {{-- modal request token--}}
+    <div class="modal fade" id="modalRequestToken" tabindex="-1" role="dialog" data-backdrop="static"
+        data-keyboard="false">
+
+        <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+            <div class="modal-content rounded">
+
+                <div class="modal-header">
+                    <h5 class="modal-title">Konfirmasi Pengajuan</h5>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span>&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body text-center">
+                    <p class="text-muted mb-3">
+                        Apakah Anda yakin ingin mengajukan permintaan token listrik?
+                    </p>
+
+                    <form action="{{ route('mobilerequesttokenlanjutform') }}" method="POST"
+                        onsubmit="
+        const btn = this.querySelector('button[type=submit]');
+        btn.disabled = true;
+        btn.innerText = 'Mengirim...';
+      ">
+                        @csrf
+
+
+
+                        <button type="submit" class="btn btn-success btn-block mb-4">
+                            Ya, Kirim Permintaan
+                        </button>
+
+                        <button type="button" class="btn btn-outline-secondary btn-block" data-dismiss="modal">
+                            Batal
+                        </button>
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+<!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+            <div class="modal-content shadow">
+                <div class="modal-header">
+                    <h5 class="header-title mb-0">Konfirmasi Pengajuan</h5>
+                </div>
+                <div class="modal-body text-center pr-4 pl-4">
+                    
+                    <h5 class="my-2"> Apakah Anda yakin ingin mengajukan permintaan token listrik?</h5>
+                    
+                    <div class="text-center">
+                        <form action="{{ route('mobilerequesttokenlanjutform') }}" method="POST"
+                        onsubmit="
+        const btn = this.querySelector('button[type=submit]');
+        btn.disabled = true;
+        btn.innerText = 'Mengirim...';
+      ">
+                        @csrf
+
+                        <button type="submit"  class="btn btn-default btn-rounded btn-block col">Ya, Kirim Permintaan</button>
+                        <br>
+                        <button class="btn btn-defaulty btn-rounded btn-block col" data-dismiss="modal">Batal</button>
+                        </form>
+                    </div>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <!-- jquery, popper and bootstrap js -->
     <script src="mobile/js/jquery-3.3.1.min.js"></script>
@@ -475,63 +581,63 @@
             document.getElementById('btnRequestToken').style.display = 'block';
         });
     </script>
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const btn = document.getElementById("btnRequestToken");
-        const tglRequestInput = document.getElementById("tgl_request_token");
-        const progressBar = document.getElementById("progressBar");
-        const progressText = document.getElementById("progressText");
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const btn = document.getElementById("btnRequestToken");
+            const tglRequestInput = document.getElementById("tgl_request_token");
+            const progressBar = document.getElementById("progressBar");
+            const progressText = document.getElementById("progressText");
 
-        const tglStr = tglRequestInput.value;
-        if (!tglStr) return;
+            const tglStr = tglRequestInput.value;
+            if (!tglStr) return;
 
-        const tglTerakhir = new Date(tglStr);
-        const hariIni = new Date();
+            const tglTerakhir = new Date(tglStr);
+            const hariIni = new Date();
 
-        const bulanTerakhir = tglTerakhir.getMonth();
-        const tahunTerakhir = tglTerakhir.getFullYear();
+            const bulanTerakhir = tglTerakhir.getMonth();
+            const tahunTerakhir = tglTerakhir.getFullYear();
 
-        const bulanSekarang = hariIni.getMonth();
-        const tahunSekarang = hariIni.getFullYear();
+            const bulanSekarang = hariIni.getMonth();
+            const tahunSekarang = hariIni.getFullYear();
 
-        // Jika request masih dalam bulan yang sama → tampilkan progress
-        if (bulanSekarang === bulanTerakhir && tahunSekarang === tahunTerakhir) {
+            // Jika request masih dalam bulan yang sama → tampilkan progress
+            if (bulanSekarang === bulanTerakhir && tahunSekarang === tahunTerakhir) {
 
-            if (progressBar) {
-                const totalHariBulanIni = new Date(tahunSekarang, bulanSekarang + 1, 0).getDate();
-                const hariSekarang = hariIni.getDate();
+                if (progressBar) {
+                    const totalHariBulanIni = new Date(tahunSekarang, bulanSekarang + 1, 0).getDate();
+                    const hariSekarang = hariIni.getDate();
 
-                const progress = (hariSekarang / totalHariBulanIni) * 100;
-                const sisaHari = totalHariBulanIni - hariSekarang;
+                    const progress = (hariSekarang / totalHariBulanIni) * 100;
+                    const sisaHari = totalHariBulanIni - hariSekarang;
 
-                progressBar.style.width = progress + "%";
-                progressBar.innerHTML = Math.floor(progress) + "%";
+                    progressBar.style.width = progress + "%";
+                    progressBar.innerHTML = Math.floor(progress) + "%";
 
-                if (progressText) {
-                    progressText.innerHTML =
-                        `Tombol PERMINTRAAN TOKEN  Akan Aktif Dalam <b>${sisaHari}</b> Hari Lagi (reset pada tanggal 1 bulan depan).`;
+                    if (progressText) {
+                        progressText.innerHTML =
+                            `Tombol PERMINTRAAN TOKEN  Akan Aktif Dalam <b>${sisaHari}</b> Hari Lagi (reset pada tanggal 1 bulan depan).`;
+                    }
+                }
+
+                // Jika user klik tombol normal, tetap blok
+                if (btn) {
+                    btn.addEventListener("click", function(e) {
+                        e.preventDefault();
+                        e.stopImmediatePropagation();
+                        Swal.fire({
+                            icon: 'warning',
+                            title: 'Mohon Maaf',
+                            text: "Anda telah melakukan permintaan bulan ini. Mohon tunggu hingga bulan depan.",
+                            confirmButtonText: 'OK'
+                        });
+                        return false;
+
+                    });
+
                 }
             }
-
-            // Jika user klik tombol normal, tetap blok
-            if (btn) {
-                btn.addEventListener("click", function(e) {
-                    e.preventDefault();
-                    e.stopImmediatePropagation();
-                    Swal.fire({
-                        icon: 'warning',
-                        title: 'Mohon Maaf',
-                        text: "Anda telah melakukan permintaan bulan ini. Mohon tunggu hingga bulan depan.",
-                        confirmButtonText: 'OK'
-                    });
-                    return false;
-
-                });
-
-            }
-        }
-    });
-</script>
+        });
+    </script>
 </body>
 
 </html>
