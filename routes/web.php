@@ -84,7 +84,7 @@ Route::get('/mobile-aktifitas', [DashboardController::class, 'mobileaktifitas'])
 Route::get('/mobile-listmasjid', [DashboardController::class, 'mobilelistmasjid'])->name('mobilelistmasjid');
 Route::get('/mobile-registrasi', [MasjidController::class, 'showProvincesMobile'])->name('mobileregistrasi');
 //Route::get('/registrasi', [MasjidController::class, 'showProvinces'])->name('registrasi');   obinkini route registrasi asli yang lagi dimatikan
-Route::get('/registrasi', [MasjidController::class, 'showProvinces'])->name('registrasi');
+Route::get('/registrasi', [MasjidController::class, 'showProvinces'])->name('landingpage');
 Route::get('/get-regencies/{province_id}', [MasjidController::class, 'getRegencies'])->name('getRegencies');
 Route::get('/get-districts/{regency_id}', [MasjidController::class, 'getDistricts'])->name('getDistricts');
 Route::get('/get-villages/{district_id}', [MasjidController::class, 'getVillages'])->name('getVillages');
