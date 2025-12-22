@@ -466,190 +466,161 @@
     </div>
 
 
-    <div class="container-fluid testimonial py-15">
-        <div class="container py-15">
-            <div class="row">
-                <!-- ============================= -->
-                <!--  KOLOM KIRI: VIDEO            -->
-                <!-- ============================= -->
-                <div class="col-lg-6 mb-5">
-                    <div class="text-center mx-auto mb-4" style="max-width: 700px;">
-                        <p class="fs-5 text-uppercase text-primary">Testimonial Video</p>
-                        <h5 class="display-6">Video Terbaru</h5>
-                    </div>
+ <div class="container-fluid testimonial py-4">
+    <div class="container py-2">
+        <div class="row g-4">
 
-                    <div class="swiper myVideoTestimonialSwiper">
-                        <div class="swiper-wrapper">
-                            @foreach ($testimonials->whereNotNull('video') as $testimonial)
-                                <div class="swiper-slide">
-                                    <div class="testimonial-item p-3 shadow-sm bg-white rounded">
-                                        <div class="ratio ratio-16x9 mb-3">
-                                            <video controls class="rounded shadow-sm w-100">
-                                                <source src="{{ asset('public/storage/' . $testimonial->video) }}"
-                                                    type="video/mp4">
-                                            </video>
-                                        </div>
-                                        <h5 class="text-center mb-1">{{ $testimonial->nama_testi }}</h5>
-                                        <p class="text-muted text-center mb-2">{{ $testimonial->keterangan }}</p>
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
-                    </div>
+            <!-- ============================= -->
+            <!--  KOLOM KIRI: VIDEO            -->
+            <!-- ============================= -->
+            <div class="col-lg-6 mb-3">
+                <div class="text-center mx-auto mb-2" style="max-width: 700px;">
+                    <p class="fs-6 text-uppercase text-primary mb-1">Testimonial Video</p>
+                    <h5 class="display-6 mb-2">Video Terbaru</h5>
                 </div>
 
-                <!-- ============================= -->
-                <!--  KOLOM KANAN: TESTI FOTO/TEXT -->
-                <!-- ============================= -->
-                <div class="col-lg-6 mb-1">
-                    <div class="text-center mx-auto mb-4" style="max-width: 700px;">
-                        <p class="fs-5 text-uppercase text-primary">Testimonial</p>
-                        <h1 class="display-6">Apa Kata Mereka</h1>
-                    </div>
-
-                    <div class="swiper myTestimonialSwiper">
-                        <div class="swiper-wrapper">
-
-                            @foreach ($testimonials->whereNotNull('photo') as $testimonial)
-                                <div class="swiper-slide">
-                                    <div class="testimonial-item p-3 shadow-sm bg-white rounded">
-                                        <div class="d-flex mb-3">
-                                            <div class="position-relative">
-                                                @if ($testimonial->photo)
-                                                    <img src="{{ asset('public/storage/foto_pengelola/' . $testimonial->photo) }}"
-                                                        class="img-fluid rounded"
-                                                        style="width: 120px; height: 150px; object-fit: cover;">
-                                                @else
-                                                    <img src="/mosque/img/person.png" class="img-fluid rounded"
-                                                        style="width: 100px; height: 130px; object-fit: cover;">
-                                                @endif
-                                            </div>
-
-                                            <div class="ps-3 my-auto">
-                                                <h5 class="mb-0">{{ $testimonial->nama_testi }}</h5>
-                                                <p class="m-0">{{ $testimonial->keterangan }}</p>
-                                            </div>
-                                        </div>
-
-                                        <p class="fs-5 fst-italic m-0">
-                                            " {{ $testimonial->ucapan }} "
-                                        </p>
+                <div class="swiper myVideoTestimonialSwiper">
+                    <div class="swiper-wrapper">
+                        @foreach ($testimonials->whereNotNull('video') as $testimonial)
+                            <div class="swiper-slide">
+                                <div class="testimonial-item p-3 shadow-sm bg-white rounded">
+                                    <div class="ratio ratio-16x9 mb-2">
+                                        <video controls class="rounded shadow-sm w-100">
+                                            <source src="{{ asset('public/storage/' . $testimonial->video) }}"
+                                                type="video/mp4">
+                                        </video>
                                     </div>
+                                    <h6 class="text-center mb-1">{{ $testimonial->nama_testi }}</h6>
+                                    <p class="text-muted text-center mb-0 small">
+                                        {{ $testimonial->keterangan }}
+                                    </p>
                                 </div>
-                            @endforeach
-
-                        </div>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
+
+            <!-- ============================= -->
+            <!--  KOLOM KANAN: TESTI FOTO/TEXT -->
+            <!-- ============================= -->
+            <div class="col-lg-6 mb-3">
+                <div class="text-center mx-auto mb-2" style="max-width: 700px;">
+                    <p class="fs-6 text-uppercase text-primary mb-1">Testimonial</p>
+                    <h5 class="display-6 mb-2">Apa Kata Mereka</h5>
+                </div>
+
+                <div class="swiper myTestimonialSwiper">
+                    <div class="swiper-wrapper">
+                        @foreach ($testimonials->whereNotNull('photo') as $testimonial)
+                            <div class="swiper-slide">
+                                <div class="testimonial-item p-3 shadow-sm bg-white rounded">
+                                    <div class="d-flex mb-2 align-items-center">
+                                        <div class="position-relative">
+                                            @if ($testimonial->photo)
+                                                <img src="{{ asset('public/storage/foto_pengelola/' . $testimonial->photo) }}"
+                                                    class="rounded"
+                                                    style="width: 90px; height: 120px; object-fit: cover;">
+                                            @else
+                                                <img src="/mosque/img/person.png"
+                                                    class="rounded"
+                                                    style="width: 90px; height: 120px; object-fit: cover;">
+                                            @endif
+                                        </div>
+
+                                        <div class="ps-3">
+                                            <h6 class="mb-0">{{ $testimonial->nama_testi }}</h6>
+                                            <small class="text-muted">{{ $testimonial->keterangan }}</small>
+                                        </div>
+                                    </div>
+
+                                    <p class="fst-italic mb-0 small">
+                                        “{{ $testimonial->ucapan }}”
+                                    </p>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
+</div>
+
 
     {{-- testimonial link --}}
 
-    <div class="container">
-        <div class="row">
-            <div class="container text-center bg-success-custom  py-5 wow fadeIn" data-wow-delay="0.1s">
-                <div class="row g-4 align-items-center">
-                    <div class="col-lg-2">
-                        <i class="fa fa-mosque fa-5x text-white"></i>
-                    </div>
-                    <div class="col-lg-7 text-center text-primary">
-                        <h5 class="mb-0 text-light">"Testimonial Penerangan adalah fasilitas penting yang menunjang
-                            kenyamanan dan
-                            kekhusyukan beribadah di masjid. <br> Cahaya yang menerangi masjid, InsyaAllah
-                            menjadi
-                            cahaya bagi para jamaahnya."</h5>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
 
     <!-- Sermon Start -->
-    <div class="container-fluid sermon py-5">
-        <div class="container py-5">
-            <div class="text-center mx-auto mb-5 wow fadeIn" data-wow-delay="0.1s" style="max-width: 700px;">
-                <p class="fs-5 text-uppercase text-primary">Program Kami</p>
-                <h3 class="display-7">Program yang Telah Direalisasikan dan Agenda Masa Depan</h3>
-            </div>
-            <div class="row g-4 justify-content-center">
+  <div class="container-fluid sermon py-3">
+    <div class="container py-2">
 
+        <div class="text-center mx-auto mb-3 wow fadeIn" style="max-width: 700px;">
+            <p class="fs-6 text-uppercase text-primary mb-1">Program Kami</p>
+            <h3 class="display-7 mb-0">
+                Program yang Telah Direalisasikan dan Agenda Masa Depan
+            </h3>
+        </div>
+
+        <div class="row g-4 justify-content-center">
+
+            @php
+                $programs = [
+                    [
+                        'img' => '/mosque/img/renov.png',
+                        'title' => 'Memperbaiki Bangunan Menguatkan Iman',
+                        'desc' => 'Mewujudkan mimpi bersama untuk mempercantik rumah-rumah Allah...',
+                        'link' => route('aktifitas') . '#bagian-perbaikan'
+                    ],
+                    [
+                        'img' => '/mosque/img/indung6.jpg',
+                        'title' => 'Nyaah Ka Indung',
+                        'desc' => 'Wujud kepedulian dan kasih sayang kepada orang tua.',
+                        'link' => route('aktifitas') . '#bagian-indung'
+                    ],
+                    [
+                        'img' => '/mosque/img/fadhlanadzan.png',
+                        'title' => 'Muadzin Cilik',
+                        'desc' => 'Program pembinaan muazin cilik sejak Februari 2025.',
+                        'link' => route('aktifitas') . '#bagian-muadzin'
+                    ],
+                    [
+                        'img' => '/mosque/img/Gurungajji.jpeg',
+                        'title' => 'Apresiasi Guru Ngaji',
+                        'desc' => 'Dukungan dan apresiasi untuk para guru ngaji.',
+                        'link' => route('aktifitas') . '#bagian-ngaji'
+                    ],
+                ];
+            @endphp
+
+            @foreach ($programs as $program)
                 <div class="col-lg-6 col-xl-3">
-                    <div class="sermon-item h-100 d-flex flex-column wow fadeIn" data-wow-delay="0.3s">
-                        <div class="overflow-hidden p-4 pb-0">
-                            <img src="/mosque/img/renov.png" class="img-fluid w-100" alt="">
+                    <div class="sermon-item h-100 d-flex flex-column shadow-sm rounded bg-white">
+                        <div class="overflow-hidden p-3 pb-0">
+                            <img src="{{ $program['img'] }}" class="img-fluid w-100 rounded" alt="">
                         </div>
-                        <div class="p-4 d-flex flex-column flex-grow-1">
-                            <a href="" class="d-inline-block h4 lh-sm mb-3">Memperbaiki Bangunan Menguatkan
-                                Iman</a>
-                            <p class="mb-3" style="text-align: justify; flex-grow: 1;">Mewujudkan mimpi bersama
-                                untuk mempercantik rumah-rumah Allah dengan mengembalikan masjid sebagai pusat ibadah,
-                                kebudayaan, serta jantung peradaban umat.
-                                .</p>
-                            <a href="{{ route('aktifitas') . '#bagian-perbaikan' }}" class="btn btn-primary px-3">
-                                Lanjut Baca
+                        <div class="p-3 d-flex flex-column flex-grow-1">
+                            <a href="{{ $program['link'] }}"
+                               class="h6 fw-semibold mb-2 text-decoration-none">
+                                {{ $program['title'] }}
                             </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-6 col-xl-3">
-                    <div class="sermon-item h-100 d-flex flex-column wow fadeIn" data-wow-delay="0.3s">
-                        <div class="overflow-hidden p-4 pb-0">
-                            <img src="/mosque/img/indung6.jpg" class="img-fluid w-100" alt="">
-                        </div>
-                        <div class="p-4 d-flex flex-column flex-grow-1">
-                            <a href="#" class="d-inline-block h4 lh-sm mb-3">Nyaah Ka Indung</a>
-                            <p class="mb-3" style="text-align: justify; flex-grow: 1;">
-                                Sebuah program yang kami hadirkan sebagai wujud kepedulian, cinta, dan kasih sayang
-                                kepada orang tua.
+                            <p class="small mb-3 flex-grow-1" style="text-align: justify;">
+                                {{ $program['desc'] }}
                             </p>
-                            <a href="{{ route('aktifitas') . '#bagian-indung' }}" class="btn btn-primary px-3">
+                            <a href="{{ $program['link'] }}" class="btn btn-primary btn-sm mt-auto">
                                 Lanjut Baca
                             </a>
                         </div>
                     </div>
                 </div>
+            @endforeach
 
-                <div class="col-lg-6 col-xl-3">
-                    <div class="sermon-item h-100 d-flex flex-column wow fadeIn" data-wow-delay="0.3s">
-                        <div class="overflow-hidden p-4 pb-0">
-                            <img src="/mosque/img/fadhlanadzan.png" class="img-fluid w-100" alt="">
-                        </div>
-                        <div class="p-4 d-flex flex-column flex-grow-1">
-                            <a href="" class="d-inline-block h4 lh-sm mb-3">Muadzin Cilik</a>
-                            <p class="mb-3" style="text-align: justify; flex-grow: 1;">Program pembinaan muazin
-                                cilik yang telah diselenggarakan sejak Februari 2025 di Masjid Husnul Khatimah,
-                                Cileunyi, Bandung. </p>
-                            <a href="{{ route('aktifitas') . '#bagian-muadzin' }}" class="btn btn-primary px-3">
-                                Lanjut Baca
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-6 col-xl-3">
-                    <div class="sermon-item h-100 d-flex flex-column wow fadeIn" data-wow-delay="0.3s">
-                        <div class="overflow-hidden p-4 pb-0">
-                            <img src="mosque/img/Gurungajji.jpeg" class="img-fluid w-100" alt="">
-                        </div>
-                        <div class="p-4 d-flex flex-column flex-grow-1">
-
-                            <a href="" class="d-inline-block h4 lh-sm mb-3">Apresiasi Guru Ngaji</a>
-                            <p class="mb-3" style="text-align: justify; flex-grow: 1;">Sebuah inisiatif nyata untuk
-                                memberikan apresiasi dan dukungan finansial kepada para guru ngaji di wilayah sekitar.
-                            </p>
-                            <a href="{{ route('aktifitas') . '#bagian-ngaji' }}" class="btn btn-primary px-3">
-                                Lanjut Baca
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
+</div>
+
 
     <!-- Modal Gambar Besar -->
     <div class="modal fade" id="imageModal" tabindex="-1">
@@ -664,6 +635,16 @@
 
 
     <style>
+        /* Pastikan swiper tidak memaksa tinggi */
+.swiper {
+    height: auto !important;
+}
+
+/* Divider halus antar section */
+.testimonial {
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
         .footer-donatur {
             color: #fff;
             padding-bottom: 20px;
