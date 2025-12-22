@@ -217,6 +217,10 @@
             font-weight: 700;
             font-size: 2.8rem;
         }
+
+        .bg-success-customsatu {
+            background-color: #08a212 !important;
+        }
     </style>
 
 
@@ -285,16 +289,6 @@
                                     @endforeach
                                 </div>
                             </div>
-
-
-                            {{-- <a class="carousel-control-prev" href="#carouselMasjid" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Prev</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselMasjid" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-    </a> --}}
                         </div>
                         {{-- pure counter --}}
                         <div class="container my-4">
@@ -341,34 +335,21 @@
                                         </small>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
-
-                        {{-- // --}}
-                        {{-- <div class="col-6">
-                            <img src="/mosque/img/about2.png" class="img-fluid pb-3 wow zoomIn" data-wow-delay="0.1s"
-                                alt="">
-                            <img src="/mosque/img/003.png" class="img-fluid pt-3 wow zoomIn" data-wow-delay="0.1s"
-                                alt="">
-                        </div> --}}
                     </div>
                 </div>
 
 
                 <div class="col-xl-6 wow fadeIn" data-wow-delay="0.5s">
                     <p class="fs-5 text-uppercase text-primary"><b>Program Utama Kami</b></p>
-                    <h1 class="display-5 pb-4 m-0">Terangi Beribu Masjid & Mushola</h1>
+                    <h1 class="display-5 pb-4 m-0">Terangi Beribu Masjid & Musala</h1>
                     <p class="pb-4" style="text-align: justify;">
-                        Sebuah gerakan mengembalikan kejayaan Masjid dan Mushola sebagai pusat dari
-                        kegiatan Agama, mendidik dan mencetak generasi berjiwa Islami dengan mewujudkan tempat yang
-                        nyaman dan asri serta penerangan yang baik dan cukup.
-
-                        Kami hadir menyalurkan dan memastikan setiap Masjid dan Mushola tersedia token listrik
-                        yang cukup, demi kelangsungan operasional masjid yang sehat.
-                    </p>
-
-
+                        Sebuah gerakan untuk mengembalikan kejayaan masjid dan musala sebagai pusat kegiatan agama,
+                        mendidik, dan mencetak generasi berjiwa Islami dengan mewujudkan tempat yang nyaman, asri, serta
+                        memiliki penerangan yang baik dan cukup. Kami hadir untuk menyalurkan dan memastikan setiap
+                        masjid dan musala tersedia token listrik yang memadai demi kelangsungan operasional masjid yang
+                        sehat.</p>
                     <div class="bg-light p-3 mb-4">
                         <div class="row align-items-center justify-content-center">
                             <div class="col-3">
@@ -376,35 +357,28 @@
                                     alt="">
                             </div>
                             <div class="col-9">
-                                <p class="mb-0 justify"><i>"Kami Akan Berusaha Untuk Mewujudkan Sarana Ibadah Yang
-                                        Layak,
-                                        Nyaman, dan
-                                        Berkelanjutan Melalui Revitalisasi Insfrastruktur Masjid dan Mushola."</i></p>
+                                <p class="mb-0 justify"><i>"Kami akan berusaha mewujudkan sarana ibadah yang layak,
+                                        nyaman, dan berkelanjutan melalui revitalisasi infrastruktur masjid dan
+                                        musala."</i></p>
                             </div>
-
                         </div>
                     </div>
-
-
-
-
-
                 </div>
             </div>
 
-            <div class="container text-center bg-success-custom py-5 wow fadeIn" data-wow-delay="0.1s">
+            <div class="container text-center bg-success-customsatu  py-5 wow fadeIn" data-wow-delay="0.1s">
                 <div class="row g-4 align-items-center">
                     <div class="col-lg-2">
                         <i class="fa fa-mosque fa-5x text-white"></i>
                     </div>
-                    <div class="col-lg-7 text-center text-primary">
-                        <h5 class="mb-0 text-light">"Penerangan adalah fasilitas penting yang menunjang
-                            kenyamanan dan
-                            kekhusyukan beribadah di masjid. <br> Cahaya yang menerangi masjid, InsyaAllah
-                            menjadi
-                            cahaya bagi para jamaahnya."</h5>
+                    <div class="col-lg-8 text-center text-primary">
+                        <h5 class="mb-0 text-light">"Penerangan merupakan fasilitas esensial yang menunjang kenyamanan
+                            dan kekhusyukan ibadah di masjid. Cahaya yang menerangi masjid diharapkan menjadi nilai
+                            keberkahan serta memberikan manfaat berkelanjutan bagi para jemaah."</h5>
                     </div>
-
+                    <div class="col-lg-2">
+                        <i class="fa fa-mosque fa-5x text-white"></i>
+                    </div>
                 </div>
             </div>
         </div>
@@ -421,18 +395,13 @@
             </div>
 
             <div class="row g-4">
-
-
                 <div class="col-lg-6 col-xl-4">
-
                     <div class="activities-item p-4 wow fadeIn" data-wow-delay="0.5s">
-
                         <i class="fa fa-pen fa-4x text-dark"></i>
-
                         <div class="ms-4">
-
-                            <h4>1. Daftarkan Masjid / Mushola </h4>
-                            <p class="mb-4">Silakan daftarkan masjid baru melalui tombol di bawah ini:</p>
+                            <h4>1. Daftarkan Masjid / Musala</h4>
+                            <p class="mb-4">Silakan daftarkan masjid atau musala baru melalui tombol di bawah ini.
+                            </p>
                             <a href="#" class="btn btn-primary px-3">Daftar
                                 Sekarang</a>
                             <div class="btn-md-square bg-primary rounded-circle position-absolute"
@@ -440,24 +409,21 @@
                                 <i class="fa fa-quote-left text-dark"></i>
                             </div>
                         </div>
-
                     </div>
-
                 </div>
-{{--obink tombol daftar diatas di disable sementara , isi dari hrefnya:  href="{{ route('registrasi') }}" --}}
+                {{-- obink tombol daftar diatas di disable sementara , isi dari hrefnya:  href="{{ route('registrasi') }}" --}}
 
 
                 <div class="col-lg-6 col-xl-4">
                     <div class="activities-item p-4 wow fadeIn" data-wow-delay="0.1s">
                         <i class="fa fa-mosque fa-4x text-dark"></i>
                         <div class="ms-4">
-                            <h4>2. Data Masjid / Mushola</h4>
+                            <h4>2. Data Masjid / Musala</h4>
                             <p class="mb-4">Melihat lebih lanjut List Masjid Yang Sudah Mendaftar dan Untuk
                                 Mengetahui Status Masjid, Apakah Sudah Disetujui Atau Belum Dari Masjid Yang
                                 Anda Daftarkan.</p>
                             <a href="{{ route('data.masjid.publik') }}" class="btn btn-primary px-3">Lihat
-                                Data
-                                Pendaftar</a>
+                                Lihat daftar masjid dan musala yang telah mendaftar</a>
                         </div>
                     </div>
                 </div>
@@ -486,7 +452,6 @@
 
 
 
-
     <div class="container-fluid testimonial py-5">
         <div class="container py-15">
             <div class="mx-auto text-center mb-5 wow fadeIn" data-wow-delay="0.1s" style="max-width: 700px;">
@@ -499,339 +464,10 @@
             </div>
         </div>
     </div>
-    <!-- MAP -->
 
-
-    <!-- MAP END-->
-
-    <!-- Events Start
-        <div class="container-fluid event py-5">
-            <div class="container py-5">
-                <h1 class="display-3 mb-5 wow fadeIn" data-wow-delay="0.1s">Upcoming <span class="text-primary">Events</span></h1>
-                <div class="row g-4 event-item wow fadeIn" data-wow-delay="0.1s">
-                    <div class="col-3 col-lg-2 pe-0">
-                        <div class="text-center border-bottom border-dark py-3 px-2">
-                            <h6>01 Jan 2045</h6>
-                            <p class="mb-0">Fri 06:55</p>
-                        </div>
-                    </div>
-                    <div class="col-9 col-lg-6 border-start border-dark pb-5">
-                        <div class="ms-3">
-                            <h4 class="mb-3">Milad Un Nabi</h4>
-                            <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                aliquip ex ea commodo consequat. Duis aute irure dolor in </p>
-                            <a href="#" class="btn btn-primary px-3">Join Now</a>
-                        </div>
-                    </div>
-                    <div class="col-12 col-lg-4">
-                        <div class="overflow-hidden mb-5">
-                            <img src="/mosque/img/events-1.jpg" class="img-fluid w-100" alt="">
-                        </div>
-                    </div>
-                </div>
-                <div class="row g-4 event-item wow fadeIn" data-wow-delay="0.3s">
-                    <div class="col-3 col-lg-2 pe-0">
-                        <div class="text-center border-bottom border-dark py-3 px-2">
-                            <h6>01 Jan 2045</h6>
-                            <p class="mb-0">Wed 11:30</p>
-                        </div>
-                    </div>
-                    <div class="col-9 col-lg-6 border-start border-dark pb-5">
-                        <div class="ms-3">
-                            <h4 class="mb-3">Eid Ul Fitr</h4>
-                            <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                aliquip ex ea commodo consequat. Duis aute irure dolor in </p>
-                            <a href="#" class="btn btn-primary px-3">Join Now</a>
-                        </div>
-                    </div>
-                    <div class="col-12 col-lg-4">
-                        <div class="overflow-hidden mb-5">
-                            <img src="/mosque/img/events-2.jpg" class="img-fluid w-100" alt="">
-                        </div>
-                    </div>
-                </div>
-                <div class="row g-4 event-item wow fadeIn" data-wow-delay="0.5s">
-                    <div class="col-3 col-lg-2 pe-0">
-                        <div class="text-center border-bottom border-dark py-3 px-2">
-                            <h6>01 Jan 2045</h6>
-                            <p class="mb-0">Thu 11:30</p>
-                        </div>
-                    </div>
-                    <div class="col-9 col-lg-6 border-start border-dark pb-5">
-                        <div class="ms-3">
-                            <h4 class="mb-3">Eud Ul Azha</h4>
-                            <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                aliquip ex ea commodo consequat. Duis aute irure dolor in </p>
-                            <a href="#" class="btn btn-primary px-3">Join Now</a>
-                        </div>
-                    </div>
-                    <div class="col-12 col-lg-4">
-                        <div class="overflow-hidden mb-5">
-                            <img src="/mosque/img/events-3.jpg" class="img-fluid w-100" alt="">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        Events End -->
-
-
-    <!-- Sermon Start
-        <div class="container-fluid sermon py-5">
-            <div class="container py-5">
-                <div class="text-center mx-auto mb-5 wow fadeIn" data-wow-delay="0.1s" style="max-width: 700px;">
-                    <p class="fs-5 text-uppercase text-primary">Sermons</p>
-                    <h1 class="display-3">Join The Islamic Community</h1>
-                </div>
-                <div class="row g-4 justify-content-center">
-                    <div class="col-lg-6 col-xl-4">
-                        <div class="sermon-item wow fadeIn" data-wow-delay="0.1s">
-                            <div class="overflow-hidden p-4 pb-0">
-                                <img src="/mosque/img/sermon-1.jpg" class="img-fluid w-100" alt="">
-                            </div>
-                            <div class="p-4">
-                                <div class="sermon-meta d-flex justify-content-between pb-2">
-                                    <div class="">
-                                        <small><i class="fa fa-calendar me-2 text-muted"></i><a href="" class="text-muted me-2">13 Nov 2023</small></a>
-                                        <small><i class="fas fa-user me-2 text-muted"></i><a href="" class="text-muted">Admin</small></a>
-                                    </div>
-                                    <div class="">
-                                        <a href="" class="me-1"><i class="fas fa-video text-muted"></i></a>
-                                        <a href="" class="me-1"><i class="fas fa-headphones text-muted"></i></a>
-                                        <a href="" class="me-1"><i class="fas fa-file-alt text-muted"></i></a>
-                                        <a href="" class=""><i class="fas fa-image text-muted"></i></a>
-                                    </div>
-                                </div>
-                                <a href="" class="d-inline-block h4 lh-sm mb-3">How to get closer to Allah</a>
-                                <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                aliquip ex ea commodo consequat.</p>
-                            </div>
-                        </div>
-                    </div>
-                   <div class="col-lg-6 col-xl-4">
-                        <div class="sermon-item wow fadeIn" data-wow-delay="0.3s">
-                            <div class="overflow-hidden p-4 pb-0">
-                                <img src="/mosque/img/sermon-2.jpg" class="img-fluid w-100" alt="">
-                            </div>
-                            <div class="p-4">
-                                <div class="sermon-meta d-flex justify-content-between pb-2">
-                                    <div class="">
-                                        <small><i class="fa fa-calendar me-2 text-muted"></i><a href="" class="text-muted me-2">13 Nov 2023</small></a>
-                                        <small><i class="fas fa-user me-2 text-muted"></i><a href="" class="text-muted">Admin</small></a>
-                                    </div>
-                                    <div class="">
-                                        <a href="" class="me-1"><i class="fas fa-video text-muted"></i></a>
-                                        <a href="" class="me-1"><i class="fas fa-headphones text-muted"></i></a>
-                                        <a href="" class="me-1"><i class="fas fa-file-alt text-muted"></i></a>
-                                        <a href="" class=""><i class="fas fa-image text-muted"></i></a>
-                                    </div>
-                                </div>
-                                <a href="" class="d-inline-block h4 lh-sm mb-3">Importance of Hajj in Islam</a>
-                                <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                aliquip ex ea commodo consequat.</p>
-                            </div>
-                        </div>
-                    </div>
-                   <div class="col-lg-6 col-xl-4">
-                        <div class="sermon-item wow fadeIn" data-wow-delay="0.5s">
-                            <div class="overflow-hidden p-4 pb-0">
-                                <img src="/mosque/img/sermon-3.jpg" class="img-fluid w-100" alt="">
-                            </div>
-                            <div class="p-4">
-                                <div class="sermon-meta d-flex justify-content-between pb-2">
-                                    <div class="">
-                                        <small><i class="fa fa-calendar me-2 text-muted"></i><a href="" class="text-muted me-2">13 Nov 2023</small></a>
-                                        <small><i class="fas fa-user me-2 text-muted"></i><a href="" class="text-muted">Admin</small></a>
-                                    </div>
-                                    <div class="">
-                                        <a href="" class="me-1"><i class="fas fa-video text-muted"></i></a>
-                                        <a href="" class="me-1"><i class="fas fa-headphones text-muted"></i></a>
-                                        <a href="" class="me-1"><i class="fas fa-file-alt text-muted"></i></a>
-                                        <a href="" class=""><i class="fas fa-image text-muted"></i></a>
-                                    </div>
-                                </div>
-                                <a href="" class="d-inline-block h4 lh-sm mb-3">Importance of “Piller” of Islam</a>
-                                <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                aliquip ex ea commodo consequat.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        Sermon End -->
-
-
-    <!-- Blog Start
-        <div class="container-fluid py-5">
-            <div class="container py-5">
-                <h1 class="display-3 mb-5 wow fadeIn" data-wow-delay="0.1s">Latest From <span class="text-primary">Our Blog</span></h1>
-                <div class="row g-4 justify-content-center">
-                    <div class="col-lg-6 col-xl-4">
-                        <div class="blog-item wow fadeIn" data-wow-delay="0.1s">
-                            <div class="blog-img position-relative overflow-hidden">
-                                <img src="/mosque/img/blog-1.jpg" class="img-fluid w-100" alt="">
-                                <div class="bg-primary d-inline px-3 py-2 text-center text-white position-absolute top-0 end-0">01 Jan 2045</div>
-                            </div>
-                            <div class="p-4">
-                                <div class="blog-meta d-flex justify-content-between pb-2">
-                                    <div class="">
-                                        <small><i class="fas fa-user me-2 text-muted"></i><a href="" class="text-muted me-2">By Admin</small></a>
-                                        <small><i class="fa fa-comment-alt me-2 text-muted"></i><a href="" class="text-muted me-2">12 Comments</small></a>
-                                    </div>
-                                    <div class="">
-                                        <a href=""><i class="fas fa-bookmark text-muted"></i></a>
-                                    </div>
-                                </div>
-                                <a href="" class="d-inline-block h4 lh-sm mb-3">Importance of “Piller” of Islam</a>
-                                <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                aliquip ex ea commodo consequat.</p>
-                                <a href="#" class="btn btn-primary px-3">More Details</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-xl-4">
-                        <div class="blog-item wow fadeIn" data-wow-delay="0.3s">
-                            <div class="blog-img position-relative overflow-hidden">
-                                <img src="/mosque/img/blog-2.jpg" class="img-fluid w-100" alt="">
-                                <div class="bg-primary d-inline px-3 py-2 text-center text-white position-absolute top-0 end-0">01 Jan 2045</div>
-                            </div>
-                            <div class="p-4">
-                                <div class="blog-meta d-flex justify-content-between pb-2">
-                                    <div class="">
-                                        <small><i class="fas fa-user me-2 text-muted"></i><a href="" class="text-muted me-2">By Admin</small></a>
-                                        <small><i class="fa fa-comment-alt me-2 text-muted"></i><a href="" class="text-muted me-2">12 Comments</small></a>
-                                    </div>
-                                    <div class="">
-                                        <a href=""><i class="fas fa-bookmark text-muted"></i></a>
-                                    </div>
-                                </div>
-                                <a href="" class="d-inline-block h4 lh-sm mb-3">How to get closer to Allah</a>
-                                <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                aliquip ex ea commodo consequat.</p>
-                                <a href="#" class="btn btn-primary px-3">More Details</a>
-                            </div>
-                        </div>
-                    </div>
-                   <div class="col-lg-6 col-xl-4">
-                        <div class="blog-item wow fadeIn" data-wow-delay="0.5s">
-                            <div class="blog-img position-relative overflow-hidden">
-                                <img src="/mosque/img/blog-3.jpg" class="img-fluid w-100" alt="">
-                                <div class="bg-primary d-inline px-3 py-2 text-center text-white position-absolute top-0 end-0">01 Jan 2045</div>
-                            </div>
-                            <div class="p-4">
-                                <div class="blog-meta d-flex justify-content-between pb-2">
-                                    <div class="">
-                                        <small><i class="fas fa-user me-2 text-muted"></i><a href="" class="text-muted me-2">By Admin</small></a>
-                                        <small><i class="fa fa-comment-alt me-2 text-muted"></i><a href="" class="text-muted me-2">12 Comments</small></a>
-                                    </div>
-                                    <div class="">
-                                        <a href=""><i class="fas fa-bookmark text-muted"></i></a>
-                                    </div>
-                                </div>
-                                <a href="" class="d-inline-block h4 lh-sm mb-3">Importance of Hajj in Islam</a>
-                                <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                aliquip ex ea commodo consequat.</p>
-                                <a href="#" class="btn btn-primary px-3">More Details</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        Blog End -->
-
-
-    <!-- Team Start
-
-
-        <div class="container-fluid team py-5">
-            <div class="container py-5">
-                <div class="text-center mx-auto mb-5 wow fadeIn" data-wow-delay="0.1s" style="max-width: 700px;">
-                    <p class="fs-5 text-uppercase text-primary">Our Team</p>
-                    <h1 class="display-3">Meet Our Organizer</h1>
-                </div>
-                <div class="row g-5">
-                    <div class="col-lg-4 col-xl-5">
-                        <div class="team-img wow zoomIn" data-wow-delay="0.1s">
-                            <img src="/mosque/img/team-1.jpg" class="img-fluid" alt="">
-                        </div>
-                    </div>
-                    <div class="col-lg-8 col-xl-7">
-                        <div class="team-item wow fadeIn" data-wow-delay="0.1s">
-                            <h1>Anamul Hasan</h1>
-                            <h5 class="fw-normal fst-italic text-primary mb-4">President</h5>
-                            <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. aliquip ex ea commodo consequat.</p>
-                            <div class="team-icon d-flex pb-4 mb-4 border-bottom border-primary">
-                                <a class="btn btn-primary btn-lg-square me-2" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-primary btn-lg-square me-2" href=""><i class="fab fa-twitter"></i></a>
-                                <a href="#" class="btn btn-primary btn-lg-square me-2"><i class="fab fa-instagram"></i></a>
-                                <a href="#" class="btn btn-primary btn-lg-square"><i class="fab fa-linkedin-in"></i></a>
-                            </div>
-                        </div>
-                        <div class="row g-4">
-                            <div class="col-md-4">
-                                <div class="team-item wow zoomIn" data-wow-delay="0.2s">
-                                    <img src="/mosque/img/team-2.jpg" class="img-fluid w-100" alt="">
-                                    <div class="team-content text-dark text-center py-3">
-                                        <div class="team-content-inner">
-                                            <h5 class="mb-0">Mustafa Kamal</h5>
-                                            <p class="text-dark">Imam</p>
-                                            <div class="team-icon d-flex align-items-center justify-content-center">
-                                                <a class="btn btn-primary btn-sm-square me-2" href=""><i class="fab fa-facebook-f"></i></a>
-                                                <a class="btn btn-primary btn-sm-square me-2" href=""><i class="fab fa-twitter"></i></a>
-                                                <a href="#" class="btn btn-primary btn-sm-square me-2"><i class="fab fa-instagram"></i></a>
-                                                <a href="#" class="btn btn-primary btn-sm-square"><i class="fab fa-linkedin-in"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="team-item wow zoomIn" data-wow-delay="0.4s">
-                                    <img src="/mosque/img/team-3.jpg" class="img-fluid w-100" alt="">
-                                    <div class="team-content text-dark text-center py-3">
-                                        <div class="team-content-inner">
-                                            <h5 class="mb-0">Nahiyan Momen</h5>
-                                            <p class="text-dark">Teacher</p>
-                                            <div class="team-icon d-flex align-items-center justify-content-center">
-                                                <a class="btn btn-primary btn-sm-square me-2" href=""><i class="fab fa-facebook-f"></i></a>
-                                                <a class="btn btn-primary btn-sm-square me-2" href=""><i class="fab fa-twitter"></i></a>
-                                                <a href="#" class="btn btn-primary btn-sm-square me-2"><i class="fab fa-instagram"></i></a>
-                                                <a href="#" class="btn btn-primary btn-sm-square"><i class="fab fa-linkedin-in"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="team-item wow zoomIn" data-wow-delay="0.6s">
-                                    <img src="/mosque/img/team-4.jpg" class="img-fluid w-100" alt="">
-                                    <div class="team-content text-dark text-center py-3">
-                                        <div class="team-content-inner">
-                                            <h5 class="mb-0">Asfaque Ali</h5>
-                                            <p class="text-dark">Volunteer</p>
-                                            <div class="team-icon d-flex align-items-center justify-content-center">
-                                                <a class="btn btn-primary btn-sm-square me-2" href=""><i class="fab fa-facebook-f"></i></a>
-                                                <a class="btn btn-primary btn-sm-square me-2" href=""><i class="fab fa-twitter"></i></a>
-                                                <a href="#" class="btn btn-primary btn-sm-square me-2"><i class="fab fa-instagram"></i></a>
-                                                <a href="#" class="btn btn-primary btn-sm-square"><i class="fab fa-linkedin-in"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        Team End -->
 
     <div class="container-fluid testimonial py-15">
         <div class="container py-15">
-
             <div class="row">
                 <!-- ============================= -->
                 <!--  KOLOM KIRI: VIDEO            -->
@@ -865,7 +501,7 @@
                 <!-- ============================= -->
                 <!--  KOLOM KANAN: TESTI FOTO/TEXT -->
                 <!-- ============================= -->
-                <div class="col-lg-6 mb-5">
+                <div class="col-lg-6 mb-1">
                     <div class="text-center mx-auto mb-4" style="max-width: 700px;">
                         <p class="fs-5 text-uppercase text-primary">Testimonial</p>
                         <h1 class="display-6">Apa Kata Mereka</h1>
@@ -905,19 +541,37 @@
                         </div>
                     </div>
                 </div>
-
             </div>
+        </div>
+    </div>
 
+    {{-- testimonial link --}}
+
+    <div class="container">
+        <div class="row">
+            <div class="container text-center bg-success-custom  py-5 wow fadeIn" data-wow-delay="0.1s">
+                <div class="row g-4 align-items-center">
+                    <div class="col-lg-2">
+                        <i class="fa fa-mosque fa-5x text-white"></i>
+                    </div>
+                    <div class="col-lg-7 text-center text-primary">
+                        <h5 class="mb-0 text-light">"Testimonial Penerangan adalah fasilitas penting yang menunjang
+                            kenyamanan dan
+                            kekhusyukan beribadah di masjid. <br> Cahaya yang menerangi masjid, InsyaAllah
+                            menjadi
+                            cahaya bagi para jamaahnya."</h5>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
 
-
     <!-- Sermon Start -->
-    <div class="container-fluid sermon py-15">
-        <div class="container py-15">
+    <div class="container-fluid sermon py-5">
+        <div class="container py-5">
             <div class="text-center mx-auto mb-5 wow fadeIn" data-wow-delay="0.1s" style="max-width: 700px;">
-                <p class="fs-5 text-uppercase text-primary">Aktifitas Kami</p>
+                <p class="fs-5 text-uppercase text-primary">Program Kami</p>
                 <h3 class="display-7">Program yang Telah Direalisasikan dan Agenda Masa Depan</h3>
             </div>
             <div class="row g-4 justify-content-center">
@@ -928,15 +582,11 @@
                             <img src="/mosque/img/renov.png" class="img-fluid w-100" alt="">
                         </div>
                         <div class="p-4 d-flex flex-column flex-grow-1">
-                            <a href="" class="d-inline-block h4 lh-sm mb-3">Perbaikan Beribu Masjid &
-                                Mushola</a>
-                            <p class="mb-3" style="text-align: justify; flex-grow: 1;">Memperbaiki Bangunan,
-                                memperkuat
-                                Iman dalam wujudkan mimpi bersama untuk mempercantik
-                                rumah-rumah Allah.
-
-                                Mengembalikan masjid sebagai pusat ibadah, kebudayaan dan jantung peradaban
-                                umat.
+                            <a href="" class="d-inline-block h4 lh-sm mb-3">Memperbaiki Bangunan Menguatkan
+                                Iman</a>
+                            <p class="mb-3" style="text-align: justify; flex-grow: 1;">Mewujudkan mimpi bersama
+                                untuk mempercantik rumah-rumah Allah dengan mengembalikan masjid sebagai pusat ibadah,
+                                kebudayaan, serta jantung peradaban umat.
                                 .</p>
                             <a href="{{ route('aktifitas') . '#bagian-perbaikan' }}" class="btn btn-primary px-3">
                                 Lanjut Baca
@@ -953,8 +603,8 @@
                         <div class="p-4 d-flex flex-column flex-grow-1">
                             <a href="#" class="d-inline-block h4 lh-sm mb-3">Nyaah Ka Indung</a>
                             <p class="mb-3" style="text-align: justify; flex-grow: 1;">
-                                Nyaah ka Indung sebuah program yang kami hadirkan sebagai bukti
-                                kepedulian, cinta dan kasih kita kepada orang tua.
+                                Sebuah program yang kami hadirkan sebagai wujud kepedulian, cinta, dan kasih sayang
+                                kepada orang tua.
                             </p>
                             <a href="{{ route('aktifitas') . '#bagian-indung' }}" class="btn btn-primary px-3">
                                 Lanjut Baca
@@ -966,19 +616,16 @@
                 <div class="col-lg-6 col-xl-3">
                     <div class="sermon-item h-100 d-flex flex-column wow fadeIn" data-wow-delay="0.3s">
                         <div class="overflow-hidden p-4 pb-0">
-                            <img src="/mosque/img/adzancilik.png" class="img-fluid w-100" alt="">
+                            <img src="/mosque/img/fadhlanadzan.png" class="img-fluid w-100" alt="">
                         </div>
                         <div class="p-4 d-flex flex-column flex-grow-1">
                             <a href="" class="d-inline-block h4 lh-sm mb-3">Muadzin Cilik</a>
-                            <p class="mb-3" style="text-align: justify; flex-grow: 1;">Program Muadzin Cilik yang
-                                telah
-                                diselenggarakan sejak Februari 2025 di Masjid Hunusl Khotimah, Cileunyi Bandung, </p>
+                            <p class="mb-3" style="text-align: justify; flex-grow: 1;">Program pembinaan muazin
+                                cilik yang telah diselenggarakan sejak Februari 2025 di Masjid Husnul Khatimah,
+                                Cileunyi, Bandung. </p>
                             <a href="{{ route('aktifitas') . '#bagian-muadzin' }}" class="btn btn-primary px-3">
                                 Lanjut Baca
                             </a>
-
-
-
                         </div>
                     </div>
                 </div>
@@ -986,31 +633,22 @@
                 <div class="col-lg-6 col-xl-3">
                     <div class="sermon-item h-100 d-flex flex-column wow fadeIn" data-wow-delay="0.3s">
                         <div class="overflow-hidden p-4 pb-0">
-                            <img src="mosque/img/Gurungaji.jpg" class="img-fluid w-100" alt="">
+                            <img src="mosque/img/Gurungajji.jpeg" class="img-fluid w-100" alt="">
                         </div>
                         <div class="p-4 d-flex flex-column flex-grow-1">
 
-                            <a href="" class="d-inline-block h4 lh-sm mb-3">Bantuan Honor Guru Ngaji</a>
+                            <a href="" class="d-inline-block h4 lh-sm mb-3">Apresiasi Guru Ngaji</a>
                             <p class="mb-3" style="text-align: justify; flex-grow: 1;">Sebuah inisiatif nyata untuk
-                                memberikan apresiasi dan dukungan Finansial kepada para guru ngaji di wilayah
-                                kita.
+                                memberikan apresiasi dan dukungan finansial kepada para guru ngaji di wilayah sekitar.
                             </p>
                             <a href="{{ route('aktifitas') . '#bagian-ngaji' }}" class="btn btn-primary px-3">
                                 Lanjut Baca
                             </a>
-
-
                         </div>
                     </div>
                 </div>
-
             </div>
-
-            <!-- Sermon End -->
-
-
         </div>
-
     </div>
 
     <!-- Modal Gambar Besar -->
@@ -1018,9 +656,7 @@
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content bg-dark border-0">
                 <div class="modal-body p-0">
-
                     <img id="modalImage" src="" class="img-fluid w-100 rounded">
-
                 </div>
             </div>
         </div>
@@ -1170,7 +806,7 @@
                                     class="fa fa-phone-alt text-dark"></i></span>
                             <a href="" class="text-light">082 246 777 900</a>
                         </div>
-                         <div class="d-flex align-items-center  py-4">
+                        <div class="d-flex align-items-center  py-4">
                             <span class="flex-shrink-0 btn-square bg-primary me-3 p-4 text-dark"><b>@</b></i></span>
                             <a href="" class="text-light">Terangiberibumasjid@gmail.com</a>
                         </div>
@@ -1210,8 +846,12 @@
                         <div class="footer-item mt-3">
                             <a class="text-light mb-1"><span class="text-primary">Donasi Terkumpul Sampai : <p
                                         class="mb-1 text-primary" id="tanggalSekarang"></p></span></a>
-                            <h2 class="mt-5 mb-5 text-light"><span class="text-light">
-                                    Rp {{ number_format($totalDonasi, 0, ',', '.') }} </span> </h2>
+                            <a href="{{ route('listdonatur') }}" class="link-donasi">
+                                <h2 class="mt-5 mb-5 text-light">
+                                    Rp {{ number_format($totalDonasi, 0, ',', '.') }}
+                                </h2>
+                            </a>
+
                             <a class="text-light mt-1"><span class="text-primary">Donatur Tetap :
                                     {{ $totalDonaturTetap }} <p class="mb-1 text-light"></p>Partisipan Kebaikan :
                                     {{ $totalDonaturTidakTetap }}</span></a>
@@ -1219,20 +859,28 @@
                     </div>
 
 
-                   <div class="col-md-4 col-lg-6 col-xl-4">
+                    <div class="col-md-4 col-lg-6 col-xl-4">
                         <div class="footer-item mt-3">
                             <a class="text-light mb-1"><span class="text-primary">Realisasi Donasi Sampai : <p
                                         class="mb-1 text-primary" id="tanggalSekarang1"></p></span></a>
-                            <h2 class="mt-5 mb-5 text-light"><span class="text-light">
-                                    Rp {{ number_format($totalSemuaPengeluaran, 0, ',', '.') }} </span> </h2>
+
+
+                            <a href="{{ route('listdonatur') }}#Pengeluaran-Dana" class="link-donasi">
+                                <h2 class="mt-5 mb-5 text-light">
+                                    Rp {{ number_format($totalSemuaPengeluaran, 0, ',', '.') }}
+                                </h2>
+                            </a>
+
+
+
                             <a class="text-light mt-1"><span class="text-primary">Saldo Donasi :
-                                   </a>
-                                    <h5 class="mt-1 mb-4 text-warning"><span class="text-warning">
+                            </a>
+                            <h5 class="mt-1 mb-4 text-warning"><span class="text-warning">
                                     Rp {{ number_format($sisaSaldo, 0, ',', '.') }} </span> </h5>
                         </div>
-                    </div>  
+                    </div>
 
-                    
+
 
                     <div class="col-md-4 col-lg-6 col-xl-4">
                         <div class="footer-item mt-4">
@@ -1243,9 +891,9 @@
                             </p>
 
                             <h5 class="mb-1 text-primary">BNI 1967473460 </h5>
-                                        
+
                             <h4 class="text-light mb-1 mt-3"><span class="text-primary">Qris:</span></h4>
-                             
+
                             <div class="d-flex flex-column align-items-start mt-1">
                                 <span class=""> <img src="/mosque/img/qris.png"
                                         class="img-fluid flex-shrink-10" alt="QRIS" width="100"
@@ -1322,7 +970,7 @@
                             Reserved.</a>
                     </div>
                     <div class="col-md-6 text-center text-md-end">
-                       
+
                         Designed By | Obink
                     </div>
                 </div>
@@ -1543,7 +1191,7 @@
                 year: 'numeric'
             });
     </script>
-     <script>
+    <script>
         document.getElementById('tanggalSekarang1').innerText =
             new Date().toLocaleDateString('id-ID', {
                 day: '2-digit',

@@ -18,6 +18,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PengajuanController;
 use App\Http\Controllers\MobileAuthController;
 use App\Http\Controllers\JenisBarangController;
+use App\Http\Controllers\ListDonaturController;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\PengadaanItemController;
 use App\Http\Controllers\PengadaanRequestController;
@@ -42,7 +43,8 @@ Route::get('/mobile-landingpage', [DashboardController::class, 'landingpage'])->
 
 
 Route::get('/mobile-daftarmasjid', [DashboardController::class, 'mobiledaftarmasjid'])->name('mobiledaftarmasjid');
-Route::get('/list-donatur', [DashboardController::class, 'listdonatur'])->name('listdonatur');
+Route::get('/list-donatur', [ListDonaturController::class, 'listdonatur'])->name('listdonatur');
+
 
 // Login
 Route::get('login',[AuthController::class,'login'])->name('login');
