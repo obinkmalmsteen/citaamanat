@@ -102,7 +102,7 @@
                             <div class="dropdown-menu m-0 rounded-0">
                                 <a href="{{ route('testimoni') }}" class="dropdown-item">Testimonial</a>
                                 <a href="{{ route('listmasjid') }}" class="dropdown-item">List Masjid</a>
-                                <a href="{{ route('registrasi') }}" class="dropdown-item">Registrasi</a>
+                                <a href="{{ route('landingpage') }}" class="dropdown-item">Registrasi</a>    {{-- obink matikan registrasi sementara --}}
                                 <a href="{{ route('listdonatur') }}" class="dropdown-item">Donatur</a>
                             </div>
                         </div>

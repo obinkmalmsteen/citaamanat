@@ -98,7 +98,7 @@
                             <div class="dropdown-menu m-0 rounded-0">
                                 <a href="{{ route('testimoni') }}" class="dropdown-item">Testimonial</a>
                                 <a href="{{ route('listmasjid') }}" class="dropdown-item">List Masjid</a>
-                                <a href="{{ route('formregistrasi') }}" class="dropdown-item active">Registrasi</a>
+                                <a href="{{ route('landingpage') }}" class="dropdown-item active">Registrasi</a>
                             </div>
                         </div>
 

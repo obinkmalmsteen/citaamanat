@@ -100,7 +100,7 @@
                             <div class="dropdown-menu m-0 rounded-0">
                                 <a href="{{ route('testimoni') }}" class="dropdown-item">Testimonial</a>
                                 <a href="{{ route('listmasjid') }}" class="dropdown-item">List Masjid</a>
-                                <a href="{{ route('registrasi') }}" class="dropdown-item">Registrasi</a>
+                                <a href="{{ route('landingpage') }}" class="dropdown-item">Registrasi</a>
                                 <a href="{{ route('listdonatur') }}" class="dropdown-item">Donatur</a>
                             </div>
                         </div>
@@ -302,7 +302,7 @@
             <div class="row g-5">
                 <div class="col-lg-4 col-xl-5">
                     <div class="team-img wow zoomIn" data-wow-delay="0.1s">
-                        <img src="/mosque/img/adzan0.png" class="img-fluid" alt="">
+                        <img src="/mosque/img/fadhlanadzan.png" class="img-fluid" alt="">
                     </div>
                 </div>
                 <div class="col-lg-8 col-xl-7">
@@ -378,7 +378,7 @@
             <div class="row g-5">
                 <div class="col-lg-4 col-xl-5">
                     <div class="team-img wow zoomIn" data-wow-delay="0.1s">
-                        <img src="/mosque/img/ngaji0.png" class="img-fluid" alt="">
+                        <img src="/mosque/img/Gurungajji.jpeg" class="img-fluid" alt="">
                     </div>
                 </div>
                 <div class="col-lg-8 col-xl-7">
