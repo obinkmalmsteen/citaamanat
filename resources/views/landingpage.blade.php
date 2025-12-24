@@ -524,7 +524,7 @@
                                 @if ($testimonial->photo)
                                     <img src="{{ asset('public/storage/foto_pengelola/' . $testimonial->photo) }}"
                                         class="rounded"
-                                        style="width: 140px; height: 200px; object-fit: cover;">
+                                        style="width: 220px; height: 370px; object-fit: cover;">
                                 @else
                                     <img src="/mosque/img/person.png"
                                         class="rounded"
