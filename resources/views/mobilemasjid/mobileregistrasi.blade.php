@@ -631,7 +631,7 @@
                     <div class="row no-gutters justify-content-center">
                          <div class="col-auto">
                             <a href="{{ route('mobilelandingpage') }}" class="btn btn-link-default active">
-                                <i class="material-icons">store_mall_directory</i>
+                                <i class="material-icons">home</i>
                             </a>
                         </div>
                         <div class="col-auto">
@@ -646,7 +646,7 @@
                         </div>
                         <div class="col-auto">
                             <a href="{{ route('mobilerequesttoken') }}" class="btn btn-link-default">
-                                <i class="material-icons">favorite</i>
+                                <i class="material-icons">star</i>
                             </a>
                         </div>
                         <div class="col-auto">

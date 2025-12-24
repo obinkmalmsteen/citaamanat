@@ -240,10 +240,9 @@
                         @endphp
 
                         <div class="card-header {{ $warnaHeader }} text-white rounded-top-4">
-                            <strong>Permintaan Token Ke {{ $nomor }}</strong>
+                            <strong>Permintaan Token Ke {{ $nomor }}</strong><br><span class="fw-semibold">{{ $masjid->jenis_layanan ?? '-' }}</span>
                         </div>
-
-
+                           
                         <div class="card-body">
 
                             <div class="mb-2">

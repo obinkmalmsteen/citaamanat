@@ -244,7 +244,7 @@
                         </div>
                         <div class="col-auto">
                             <a href="{{ route('mobiledaftarmasjid') }}" class="btn btn-link-default active">
-                                <i class="material-icons">favorite</i>
+                                <i class="material-icons">bolt</i>
                             </a>
                         </div>
                         <div class="col-auto">

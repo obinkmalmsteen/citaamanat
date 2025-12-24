@@ -661,12 +661,12 @@
                             @if (Auth::check())
                                 {{-- SUDAH LOGIN --}}
                                 <a href="{{ route('mobilerequesttoken') }}" class="btn btn-link-default">
-                                    <i class="material-icons">favorite</i>
+                                    <i class="material-icons">star</i>
                                 </a>
                             @else
                                 {{-- BELUM LOGIN --}}
                                 <a href="{{ route('mobile.login') }}" class="btn btn-link-default">
-                                    <i class="material-icons">favorite</i>
+                                    <i class="material-icons">star</i>
                                 </a>
                             @endif
                         </div>

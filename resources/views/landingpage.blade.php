@@ -569,25 +569,25 @@
             @php
                 $programs = [
                     [
-                        'img' => '/mosque/img/renov.png',
+                        'img' => '/mosque/img/002bangun.png',
                         'title' => 'Memperbaiki Bangunan Menguatkan Iman',
                         'desc' => 'Mewujudkan mimpi bersama untuk mempercantik rumah-rumah Allah...',
                         'link' => route('aktifitas') . '#bagian-perbaikan'
                     ],
                     [
-                        'img' => '/mosque/img/indung6.jpg',
+                        'img' => '/mosque/img/004nyaah.png',
                         'title' => 'Nyaah Ka Indung',
                         'desc' => 'Wujud kepedulian dan kasih sayang kepada orang tua.',
                         'link' => route('aktifitas') . '#bagian-indung'
                     ],
                     [
-                        'img' => '/mosque/img/fadhlanadzan.png',
+                        'img' => '/mosque/img/001adzan.png',
                         'title' => 'Muadzin Cilik',
                         'desc' => 'Program pembinaan muazin cilik sejak Februari 2025.',
                         'link' => route('aktifitas') . '#bagian-muadzin'
                     ],
                     [
-                        'img' => '/mosque/img/Gurungajji.jpeg',
+                        'img' => '/mosque/img/003gurungaji.png',
                         'title' => 'Apresiasi Guru Ngaji',
                         'desc' => 'Dukungan dan apresiasi untuk para guru ngaji.',
                         'link' => route('aktifitas') . '#bagian-ngaji'

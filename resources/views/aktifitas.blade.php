@@ -156,7 +156,7 @@
             <div class="row g-5">
                 <div class="col-lg-4 col-xl-5">
                     <div class="team-img wow zoomIn" data-wow-delay="0.1s">
-                        <img src="/mosque/img/renov1.png" class="img-fluid" alt="">
+                        <img src="/mosque/img/002bangun.png" class="img-fluid" alt="">
                     </div>
                 </div>
                 <div class="col-lg-8 col-xl-7">
@@ -212,7 +212,7 @@
     <div class="row g-5">
         <div class="col-lg-4 col-xl-5">
                     <div class="team-img wow zoomIn" data-wow-delay="0.1s">
-                        <img src="/mosque/img/ibu0.jpg" class="img-fluid" alt="">
+                        <img src="/mosque/img/004nyaah.png" class="img-fluid" alt="">
                     </div>
                 </div>
                 <div class="col-lg-8 col-xl-7">
@@ -302,7 +302,7 @@
             <div class="row g-5">
                 <div class="col-lg-4 col-xl-5">
                     <div class="team-img wow zoomIn" data-wow-delay="0.1s">
-                        <img src="/mosque/img/fadhlanadzan.png" class="img-fluid" alt="">
+                        <img src="/mosque/img/001adzan.png" class="img-fluid" alt="">
                     </div>
                 </div>
                 <div class="col-lg-8 col-xl-7">
@@ -378,7 +378,7 @@
             <div class="row g-5">
                 <div class="col-lg-4 col-xl-5">
                     <div class="team-img wow zoomIn" data-wow-delay="0.1s">
-                        <img src="/mosque/img/Gurungajji.jpeg" class="img-fluid" alt="">
+                        <img src="/mosque/img/003gurungaji.jpeg" class="img-fluid" alt="">
                     </div>
                 </div>
                 <div class="col-lg-8 col-xl-7">

@@ -408,7 +408,7 @@
                     <div class="row no-gutters justify-content-center">
                         <div class="col-auto">
                             <a href="{{ route('mobilelandingpage') }}" class="btn btn-link-default ">
-                                <i class="material-icons">store_mall_directory</i>
+                                <i class="material-icons">home</i>
                             </a>
                         </div>
                         <div class="col-auto">
@@ -429,12 +429,12 @@
                                 {{-- SUDAH LOGIN --}}
                                 <a href="{{ route('mobilerequesttokenlanjut') }}"
                                     class="btn btn-link-default active">
-                                    <i class="material-icons">favorite</i>
+                                    <i class="material-icons">star</i>
                                 </a>
                             @else
                                 {{-- BELUM LOGIN --}}
                                 <a href="{{ route('mobile.login') }}" class="btn btn-link-default active">
-                                    <i class="material-icons">favorite</i>
+                                    <i class="material-icons">star</i>
                                 </a>
                             @endif
                         </div>
