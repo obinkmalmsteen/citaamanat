@@ -505,44 +505,54 @@
             <!--  KOLOM KANAN: TESTI FOTO/TEXT -->
             <!-- ============================= -->
             <div class="col-lg-6 mb-3">
-                <div class="text-center mx-auto mb-2" style="max-width: 700px;">
-                    <p class="fs-6 text-uppercase text-primary mb-1">Testimonial</p>
-                    <h5 class="display-6 mb-2">Apa Kata Mereka</h5>
-                </div>
+    <div class="text-center mx-auto mb-2" style="max-width: 700px;">
+        <p class="fs-6 text-uppercase text-primary mb-1">Testimonial</p>
+        <h5 class="display-6 mb-2">Apa Kata Mereka</h5>
+    </div>
 
-                <div class="swiper myTestimonialSwiper">
-                    <div class="swiper-wrapper">
-                        @foreach ($testimonials->whereNotNull('photo') as $testimonial)
-                            <div class="swiper-slide">
-                                <div class="testimonial-item p-3 shadow-sm bg-white rounded">
-                                    <div class="d-flex mb-2 align-items-center">
-                                        <div class="position-relative">
-                                            @if ($testimonial->photo)
-                                                <img src="{{ asset('public/storage/foto_pengelola/' . $testimonial->photo) }}"
-                                                    class="rounded"
-                                                    style="width: 90px; height: 120px; object-fit: cover;">
-                                            @else
-                                                <img src="/mosque/img/person.png"
-                                                    class="rounded"
-                                                    style="width: 90px; height: 120px; object-fit: cover;">
-                                            @endif
-                                        </div>
+    <div class="swiper myTestimonialSwiper">
+        <div class="swiper-wrapper">
+            @foreach ($testimonials->whereNotNull('photo') as $testimonial)
+                <div class="swiper-slide">
+                    <div class="testimonial-item p-3 shadow-sm bg-white rounded">
 
-                                        <div class="ps-3">
-                                            <h6 class="mb-0">{{ $testimonial->nama_testi }}</h6>
-                                            <small class="text-muted">{{ $testimonial->keterangan }}</small>
-                                        </div>
-                                    </div>
+                        <!-- ROW UTAMA -->
+                        <div class="d-flex align-items-start gap-3">
 
-                                    <p class="fst-italic mb-0 small">
-                                        “{{ $testimonial->ucapan }}”
-                                    </p>
-                                </div>
+                            <!-- FOTO (KIRI) -->
+                            <div class="flex-shrink-0">
+                                @if ($testimonial->photo)
+                                    <img src="{{ asset('public/storage/foto_pengelola/' . $testimonial->photo) }}"
+                                        class="rounded"
+                                        style="width: 140px; height: 200px; object-fit: cover;">
+                                @else
+                                    <img src="/mosque/img/person.png"
+                                        class="rounded"
+                                        style="width: 90px; height: 120px; object-fit: cover;">
+                                @endif
                             </div>
-                        @endforeach
+
+                            <!-- TEKS (KANAN) -->
+                            <div class="flex-grow-1">
+                                <h6 class="mb-1">{{ $testimonial->nama_testi }}</h6>
+                                <small class="text-muted d-block mb-2">
+                                    {{ $testimonial->keterangan }}
+                                </small>
+
+                                <p class="fst-italic mb-0 small">
+                                    “{{ $testimonial->ucapan }}”
+                                </p>
+                            </div>
+
+                        </div>
+
                     </div>
                 </div>
-            </div>
+            @endforeach
+        </div>
+    </div>
+</div>
+
 
         </div>
     </div>
