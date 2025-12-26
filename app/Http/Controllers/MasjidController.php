@@ -221,23 +221,37 @@ Yayasan Cita Amanat Martadiredja";
 }
 
 
+
 public function showProvincesMobile()
 {
-    // Ambil semua provinsi dari tabel reg_provinces
-    $provinces = DB::table('reg_provinces')->orderBy('name', 'asc')->get();
+    // 🔒 CEK STATUS REGISTRASI (SAKELAR YANG SAMA)
+    if ((int) setting('registration_active') !== 1) {
+        return redirect('/')
+            ->with('error', 'Pendaftaran masjid sedang ditutup sementara');
+    }
 
-    // Kirim ke view
-    return view('mobilemasjid.mobileregistrasi', compact('provinces'));
+    $provinces = DB::table('reg_provinces')
+        ->orderBy('name', 'asc')
+        ->get();
+
+    return view('masjid.mobile.registrasi', compact('provinces'));
 }
+
 
 public function showProvinces()
 {
-    // Ambil semua provinsi dari tabel reg_provinces
-    $provinces = DB::table('reg_provinces')->orderBy('name', 'asc')->get();
+    if ((int) setting('registration_active') !== 1) {
+        return redirect('/')
+            ->with('error', 'Pendaftaran masjid sedang ditutup sementara');
+    }
 
-    // Kirim ke view
+    $provinces = DB::table('reg_provinces')
+        ->orderBy('name', 'asc')
+        ->get();
+
     return view('masjid.registrasi', compact('provinces'));
 }
+
 public function getRegencies($province_id)
 {
     $regencies = DB::table('reg_regencies')

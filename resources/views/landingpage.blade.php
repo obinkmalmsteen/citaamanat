@@ -102,7 +102,7 @@
                             <div class="dropdown-menu m-0 rounded-0">
                                 <a href="{{ route('testimoni') }}" class="dropdown-item">Testimonial</a>
                                 <a href="{{ route('listmasjid') }}" class="dropdown-item">List Masjid</a>
-                                <a href="{{ route('landingpage') }}" class="dropdown-item">Registrasi</a>    {{-- obink matikan registrasi sementara --}}
+                                <a href="{{ route('registrasi') }}" class="dropdown-item">Registrasi</a>    {{-- obink matikan registrasi sementara --}}
                                 <a href="{{ route('listdonatur') }}" class="dropdown-item">Donatur</a>
                             </div>
                         </div>
@@ -402,7 +402,7 @@
                             <h4>1. Daftarkan Masjid / Musala</h4>
                             <p class="mb-4">Silakan daftarkan masjid atau musala baru melalui tombol di bawah ini.
                             </p>
-                            <a href="#" class="btn btn-primary px-3">Daftar
+                            <a href="{{ route('registrasi') }}" class="btn btn-primary px-3">Daftar
                                 Sekarang</a>
                             <div class="btn-md-square bg-primary rounded-circle position-absolute"
                                 style="top: 25px; left: -25px;">

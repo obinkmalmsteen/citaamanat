@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\IsAdmin;
 use App\Http\Middleware\checkLogin;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
@@ -13,7 +14,9 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware): void {
         $middleware->alias([
-            'checkLogin' => checkLogin::class
+            'checkLogin' => checkLogin::class,
+            'is_admin'   => IsAdmin::class, // 👈 INI YANG KURANG
+            'mobileMode' => \App\Http\Middleware\CheckMobileMode::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {

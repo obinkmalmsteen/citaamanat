@@ -20,6 +20,7 @@ use App\Http\Controllers\MobileAuthController;
 use App\Http\Controllers\JenisBarangController;
 use App\Http\Controllers\ListDonaturController;
 use App\Http\Controllers\TestimonialController;
+use App\Http\Controllers\AdminSettingController;
 use App\Http\Controllers\PengadaanItemController;
 use App\Http\Controllers\PengadaanRequestController;
 
@@ -38,8 +39,8 @@ Route::get('/acara-kami', [DashboardController::class, 'acara'])->name('acara');
 Route::get('/testimoni-kami', [DashboardController::class, 'testimoni'])->name('testimoni');
 Route::get('/kontak-kami', [DashboardController::class, 'kontakkami'])->name('kontakkami');
 Route::get('/list-masjid', [DashboardController::class, 'listmasjid'])->name('listmasjid');
-Route::get('/form-registrasi', [DashboardController::class, 'landingpage'])->name('landingpage');
-Route::get('/mobile-landingpage', [DashboardController::class, 'landingpage'])->name('landingpage');
+Route::get('/form-registrasi', [DashboardController::class, 'formregistrasi'])->name('formregistrasi');
+Route::get('/mobile-landingpage', [DashboardController::class, 'mobilelandingpage'])->name('mobilelandingpage');
 
 
 Route::get('/mobile-daftarmasjid', [DashboardController::class, 'mobiledaftarmasjid'])->name('mobiledaftarmasjid');
@@ -85,8 +86,8 @@ Route::get('/form-masjid', [MasjidController::class, 'publicForm'])->name('formM
 Route::get('/mobile-aktifitas', [DashboardController::class, 'mobileaktifitas'])->name('mobileaktifitas');
 Route::get('/mobile-listmasjid', [DashboardController::class, 'mobilelistmasjid'])->name('mobilelistmasjid');
 Route::get('/mobile-registrasi', [MasjidController::class, 'showProvincesMobile'])->name('mobileregistrasi');
-//Route::get('/registrasi', [MasjidController::class, 'showProvinces'])->name('registrasi');   obinkini route registrasi asli yang lagi dimatikan
-Route::get('/registrasiyangdisembunyikan', [MasjidController::class, 'showProvinces'])->name('registrasi');
+Route::get('/registrasi', [MasjidController::class, 'showProvinces'])->name('registrasi');  
+//Route::get('/registrasiyangdisembunyikan', [MasjidController::class, 'showProvinces'])->name('registrasi');  obinkini route registrasi asli yang lagi dimatikan
 Route::get('/get-regencies/{province_id}', [MasjidController::class, 'getRegencies'])->name('getRegencies');
 Route::get('/get-districts/{regency_id}', [MasjidController::class, 'getDistricts'])->name('getDistricts');
 Route::get('/get-villages/{district_id}', [MasjidController::class, 'getVillages'])->name('getVillages');
@@ -133,7 +134,18 @@ Route::delete(
 )->name('mobilerequesttoken.cancel');
 
 
+// route untuk mematikan fungsi registrasi
+Route::post('/admin/toggle-registration', [AdminSettingController::class, 'toggle'])
+    ->middleware(['checkLogin'])
+    ->name('admin.toggle.registration');
 
+// route untuk mennganti versi mobile atau web
+Route::post('/admin/toggle-mobile', [AdminSettingController::class, 'toggleMobileMode'])
+    ->middleware(['checkLogin'])
+    ->name('admin.toggle.mobile');
+
+
+  Route::get('setting',[AdminSettingController::class,'index'])->name('setting');
     // User
     Route::get('user',[UserController::class,'index'])->name('user');
     Route::get('user/create',[UserController::class,'create'])->name('userCreate');

@@ -287,7 +287,27 @@
 </li>
 
 @endif --}}
+<!-- Nav Item - Dashboard -->
+    @if(Auth::check() && Auth::user()->jabatan === 'Admin')
+        
 
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+        <!-- Heading -->
+        <div class="sidebar-heading text-white">
+            SETTING
+        </div>
+
+        <!-- Nav Item - Data User -->
+        <li class="nav-item {{ $menusettings ?? '' }}">
+            <a class="nav-link" href="{{ route('setting') }}">
+                <i class="fas fa-user"></i>
+                <span>Setting</span>
+            </a>
+        </li>
+
+@endif
 
 
     <!-- Sidebar Toggler (Sidebar) -->
@@ -296,6 +316,7 @@
     </div>
 
 </ul>
+
 
 
 <!-- End of Sidebar -->

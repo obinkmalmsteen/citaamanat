@@ -156,6 +156,12 @@ public function tentangkami()
 }
 public function mobilelandingpage()
 {
+    // 🔒 CEK STATUS MOBILE LANDING
+    if ((int) setting('mobile_mode_active') !== 1) {
+        // fallback ke landing web
+        return $this->landingpage();
+    }
+
    // Hitung jumlah masjid yang disetujui (disetujui = 1)
     $masjidDisetujui = Masjid::where('disetujui', 1)->count();
 
