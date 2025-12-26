@@ -113,7 +113,7 @@
   {{-- row 42 end --}}
 
           
-<a href="{{ route('mobile.logout') }}">Logout</a>
+
 
 
 @php
@@ -200,7 +200,7 @@
                         </div>      
             <!-- page content ends -->
         </div>
-
+<a href="{{ route('mobile.logout') }}">Logout</a>
         <!-- footer -->
         <div class="footer">
             <div class="no-gutters">

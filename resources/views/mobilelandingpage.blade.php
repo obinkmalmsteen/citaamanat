@@ -109,7 +109,7 @@
                     <a href="controls.html" class="list-group-item list-group-item-action">Pages Controls <span
                             class="badge badge-light ml-2">Check</span></a>
                     <a href="setting.html" class="list-group-item list-group-item-action">Settings</a>
-                    <a href="login.html" class="list-group-item list-group-item-action mt-4">Logout</a>
+                    <a href="{{ route('mobile.logout') }}" class="list-group-item list-group-item-action mt-4">Logout</a>
                 </div>
             </div>
         </div>
@@ -607,9 +607,11 @@ margin-bottom: 6px;
                                         silahkan login Disini.</p>
 
                                 </div>
-                                <div class="col-auto pl-0 align-self-center">
-                                    <button class="btn btn-default button-rounded-56 shadow"><i
-                                            class="material-icons">playlist_add_check</i></button>
+                                 <div class="col-auto pl-0 align-self-center">
+                                    <a href="{{ route('mobile.login') }}"
+                                        class="btn btn-default button-rounded-56 shadow">
+                                        <i class="material-icons">list</i>
+                                    </a>
                                 </div>
                             </div>
                         </div>
