@@ -174,7 +174,7 @@ public function mobilelandingpage()
         ->count();
 
     // Ambil testimoni terbaru
-    $testimonials = Testimonial::latest()->take(150)->get();
+    $testimonials = Testimonial::latest()->take(20)->get();
 
     // Ambil semua masjid beserta nama dan koordinat map (jika ada)
     $masjids = Masjid::select('nama_masjid', 'map_lokasi_masjid')
@@ -183,6 +183,71 @@ public function mobilelandingpage()
 
     $donaturTetap = Donatur::where('donatur_tetap', 1)->get();
 
+    $mobileMenus = [
+    [
+        'label' => 'Home',
+        'icon'  => 'home',
+        'route' => 'mobilelandingpage',
+    ],
+    [
+        'label' => 'Aktifitas',
+        'icon'  => 'timeline',
+        'route' => 'mobileaktifitas',
+    ],
+    [
+        'label' => 'Tentang Kami',
+        'icon'  => 'info',
+        'route' => 'mobiletentangkami',
+    ],
+    [
+        'label' => 'Registrasi',
+        'icon'  => 'how_to_reg',
+        'route' => 'mobileregistrasi',
+    ],
+    [
+        'label' => 'List Masjid',
+        'icon'  => 'list_alt',
+        'route' => 'mobilelistmasjid',
+    ],
+    [
+        'label' => 'Testimonial',
+        'icon'  => 'reviews',
+        'route' => 'mobiletestimonial',
+    ],
+    [
+        'label' => 'Donatur',
+        'icon'  => 'volunteer_activism',
+        'route' => 'mobiledonatur',
+    ],
+    [
+        'label' => 'Acara',
+        'icon'  => 'event',
+        'route' => 'mobileacara',
+    ],
+    [
+        'label' => 'Data Masjid',
+        'icon'  => 'analytics',
+        'route' => 'mobiledatamasjid',
+    ],
+    [
+        'label' => 'Kontak Kami',
+        'icon'  => 'contact_mail',
+        'route' => 'kontak',
+    ],
+    [
+        'label' => 'Request Token',
+        'icon'  => 'bolt',
+        'route' => 'mobilerequesttoken',
+    ],
+    [
+        'label' => 'Profil',
+        'icon'  => 'account_circle',
+        'route' => 'profile',
+    ],
+];
+
+
+
     // Kirim ke view
     return view('mobilelandingpage', compact(
         'masjidDisetujui',
@@ -190,7 +255,8 @@ public function mobilelandingpage()
         'totalRequestRealisasi',
         'testimonials',
         'masjids',
-        'donaturTetap'
+        'mobileMenus'
+
     ));
 }
 
@@ -345,8 +411,46 @@ public function cancelRequestToken($id_histori)
     return back()->with('success', 'Permintaan token berhasil dibatalkan.');
 }
 
+public function mobiletentangkami()
+{
+    // Hitung semua user terdaftar
+    $jumlahUser = User::count();
 
+    // Kirim hasilnya ke view
+    return view('mobilemasjid.mobiletentangkami', compact('jumlahUser'));
+}
+public function mobiletestimonial()
+{
+    // Hitung semua user terdaftar
+    $jumlahUser = User::count();
 
+    // Kirim hasilnya ke view
+    return view('mobilemasjid.mobiletestimonial', compact('jumlahUser'));
+}
+public function mobiledonatur()
+{
+    // Hitung semua user terdaftar
+    $jumlahUser = User::count();
+
+    // Kirim hasilnya ke view
+    return view('mobilemasjid.mobiledonatur', compact('jumlahUser'));
+}
+public function mobileacara()
+{
+    // Hitung semua user terdaftar
+    $jumlahUser = User::count();
+
+    // Kirim hasilnya ke view
+    return view('mobilemasjid.mobileacara', compact('jumlahUser'));
+}
+public function mobiledatamasjid()
+{
+    // Hitung semua user terdaftar
+    $jumlahUser = User::count();
+
+    // Kirim hasilnya ke view
+    return view('mobilemasjid.mobiledatamasjid', compact('jumlahUser'));
+}
 public function mobileregistrasi()
 {
     // Hitung semua user terdaftar

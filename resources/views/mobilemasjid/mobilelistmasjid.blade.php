@@ -271,74 +271,7 @@
             </div>
         </div>
     </div>
-    <div class="filter">
-        <button class="btn btn-default filter-btn shadow"><i class="material-icons">filter_list</i></button>
-        <div class="container filters-container">
-            <div class="subtitle h6">
-                <div class="d-inline-block">
-                    Filter Criteria<br>
-                    <p class="small text-mute">2154 products</p>
-                </div>
-            </div>
-            <hr>
-            <div class="form-group">
-                <label class="form-control-lable">
-                    Select Price Range
-                </label>
-                <br>
-                <div id="rangeslider" class="mt-2"></div>
-            </div>
-            <div class="form-group float-label pt-0">
-                <div class="row">
-                    <div class="col">
-                        <input type="number" min="0" max="500" value="100" step="1" id="input-select" class="form-control">
-                    </div>
-                    <div class="col-auto pt-2"> to </div>
-                    <div class="col">
-                        <input type="number" min="0" max="500" value="100" step="1" id="input-number" class="form-control">
-                    </div>
-                </div>
-            </div>
-            <div class="form-group float-label active">
-                <select class="form-control chosen" multiple>
-                    <optgroup label="Sofa">
-                        <option>King Sofa</option>
-                        <option>Rajpuri</option>
-                        <option>Sofa</option>
-                    </optgroup>
-                    <optgroup label="Chair">
-                        <option>Office Chair</option>
-                        <option>General</option>
-                    </optgroup>
-                    <optgroup label="Tables">
-                        <option>General</option>
-                        <option>Kitchen</option>
-                        <option>Office</option>
-                    </optgroup>
-                </select>
-                <label class="form-control-label">Select Fruite</label>
-            </div>
-            <div class="form-group float-label">
-                <input type="text" class="form-control">
-                <label class="form-control-label">Keyword</label>
-            </div>
-
-            <div class="form-group float-label active">
-                <select class="form-control chosen">
-                    <option>10% </option>
-                    <option>30%</option>
-                    <option>50%</option>
-                    <option>80%</option>
-                </select>
-                <label class="form-control-label">Offer Discount</label>
-            </div>
-
-            <br>
-            <button class="btn btn-light btn-rounded btn-block">Search</button>
-            <br>
-
-        </div>
-    </div>
+    
     <!-- jquery, popper and bootstrap js -->
     <script src="mobile/js/jquery-3.3.1.min.js"></script>
     <script src="mobile/js/popper.min.js"></script>

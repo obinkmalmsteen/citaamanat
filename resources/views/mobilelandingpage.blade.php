@@ -20,6 +20,7 @@
     <link href="mobile/vendor/bootstrap-4.4.1/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Swiper CSS -->
+
     <link href="mobile/vendor/swiper/css/swiper.min.css" rel="stylesheet">
 
     <!-- Chosen multiselect CSS -->
@@ -27,6 +28,9 @@
 
     <!-- nouislider CSS -->
     <link href="mobile/vendor/nouislider/nouislider.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet">
+
 
     <!-- Custom styles for this template -->
     <link href="mobile/css/style.css" rel="stylesheet">
@@ -351,35 +355,97 @@
                     padding-left: 28px;
                     /* ⭐ JARAK DARI TEPI KIRI */
                 }
+               .testimonial-vertical {
+    height: 360px; /* 3 x ±120px */
+    overflow: hidden;
+}
+
+.testimonial-card {
+    height: 110px;
+}
+
+.testimonial-photo {
+    width: 70px;
+    height: 95px;
+    border-radius: .5rem;
+    overflow: hidden;
+    background: #f1f1f1;
+    flex-shrink: 0;
+  
+    margin-right: 6px;
+margin-bottom: 6px;
+
+}
+
+.testimonial-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.testimonial-row {
+    gap: 14px;        /* JARAK FOTO & TEKS */
+    padding: 10px 12px;
+}
+.video-testimonial-card {
+    border-radius: .75rem;
+    overflow: hidden;
+}
+
+.video-testimonial-card video {
+    border-radius: .75rem .75rem 0 0;
+}
+
+.mobileVideoTestimonialSwiper {
+    padding-bottom: 10px;
+}
+.nav-icon {
+    padding: 6px 10px;
+}
+
+.nav-icon i {
+    display: block;     /* ⬅️ PAKSA BARIS BARU */
+    font-size: 22px;
+    line-height: 1;
+}
+
+
+.nav-label {
+    display: block;     /* ⬅️ INI KUNCI UTAMA */
+    font-size: 11px;
+    line-height: 1;
+    margin-top: 1px;
+}
+
+
+
+
+.nav-icon.active .nav-label,
+.nav-icon.active i {
+    color: #00dd2c; /* warna aktif */
+}
+.nav-grid {
+    display: grid;
+    grid-template-rows: auto auto;
+    justify-items: center;
+    row-gap: 2px;
+    padding: 6px 10px;
+}
+
+.nav-grid i {
+    font-size: 29px;
+    line-height: 1;
+}
+
+.nav-grid span {
+    font-size: 15px;
+    line-height: 1;
+}
+
             </style>
 
-            <script>
-                new Swiper('.news-slide', {
-                    slidesPerView: 2,
-                    spaceBetween: 10,
-                    loop: true,
 
-                    autoplay: {
-                        delay: 3000, // 3 detik
-                        disableOnInteraction: false, // tetap lanjut meski disentuh
-                        pauseOnMouseEnter: true, // pause saat hover (desktop)
-                    },
 
-                    pagination: {
-                        el: '.swiper-pagination',
-                        clickable: true,
-                    },
-
-                    breakpoints: {
-                        768: {
-                            slidesPerView: 3,
-                        },
-                        992: {
-                            slidesPerView: 4,
-                        }
-                    }
-                });
-            </script>
 
 
             {{-- row 4 start --}}
@@ -550,76 +616,234 @@
                     </div>
                 </div>
 
-
-
-
-
-            </div>
-
-            <div class="container mb-3">
-                <div class="row">
-                    <div class="col text-center">
-                        <h5 class="subtitle mb-1">Most Exciting Feature</h5>
-                        <p class="text-secondary">Take a look at our services</p>
-                    </div>
-                </div>
-                <div class="row text-center mt-4">
-                    <div class="col-6 col-md-3">
-                        <div class="card shadow-sm border-0 mb-4">
-                            <div class="card-body">
-                                <i class="material-icons mb-4 md-36 text-template">card_giftcard</i>
-                                <h2>2546</h2>
-                                <p class="text-secondary text-mute">Gift it out</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-3">
-                        <div class="card shadow-sm border-0 mb-4">
-                            <div class="card-body">
-                                <i class="material-icons mb-4 md-36 text-template">subscriptions</i>
-                                <h2>635</h2>
-                                <p class="text-secondary text-mute">Monthly Billed</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-3">
-                        <div class="card shadow-sm border-0 mb-4">
-                            <div class="card-body">
-                                <i class="material-icons mb-4 md-36 text-template">local_florist</i>
-                                <h2>1542</h2>
-                                <p class="text-secondary text-mute">Eco environment</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-3">
-                        <div class="card shadow-sm border-0 mb-4">
-                            <div class="card-body">
-                                <i class="material-icons mb-4 md-36 text-template">location_city</i>
-                                <h2>154</h2>
-                                <p class="text-secondary text-mute">Four Offices</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <h6 class="subtitle">Testimonials </h6>
-
-            <!-- Swiper -->
-            <div class="swiper-container small-slide">
-
-                <div class="swiper-slide">
-                    <div class="card ">
-
-                    </div>
-                </div>
-
             </div>
 
 
+
+            {{-- icon 12 --}}
+            
+{{-- FULL BLEED BACKGROUND --}}
+<div class="mobile-menu-full">
+    <div class="mobile-menu-inner">
+        <div class="mobile-menu-grid">
+
+            @foreach ($mobileMenus as $menu)
+                <a href="{{ Route::has($menu['route']) ? route($menu['route']) : '#' }}"
+                   class="mobile-menu-item">
+
+                    <div class="menu-icon">
+                        <span class="material-symbols-outlined">{{ $menu['icon'] }}</span>
+                       
+                    </div>
+
+                    <span class="menu-label">
+                        {{ $menu['label'] }}
+                    </span>
+
+                </a>
+            @endforeach
 
         </div>
+    </div>
+</div>
+{{-- end menu icon --}}
 
-        <div class="container-fluid warna-background  text-white mb-3">
+<style>
+  /* background putih menembus kiri-kanan */
+.mobile-menu-full {
+    background: #fff;
+    width: 100vw;                 /* ⬅️ KUNCI */
+    margin-left: 50%;
+    transform: translateX(-50%);  /* ⬅️ KUNCI */
+}
+
+
+/* isi tetap rapi & tidak nempel */
+.mobile-menu-inner {
+    padding: 16px 12px;
+}
+
+/* grid menu */
+.mobile-menu-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+}
+
+.mobile-menu-item {
+    text-align: center;
+    text-decoration: none;
+    color: #333;
+}
+
+.menu-icon {
+    width: 56px;
+    height: 56px;
+    margin: 0 auto 6px;
+    border-radius: 12px;
+    background: #f4f6f8;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.menu-icon span {
+    color: #1ba43b; /* hijau lebih tua */
+}
+.menu-text span {
+    color: #1e7e34; /* hijau lebih tua */
+}
+
+
+.menu-item {
+    text-align: center;
+}
+
+.menu-icon span {
+    font-size: 28px;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.menu-text {
+    font-size: 9px;
+    line-height: 1.2;
+    
+}
+.menu-item {
+    text-align: center;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent; /* Hapus garis saat tap di mobile */
+    outline: none; /* Hapus garis saat focus */
+}
+
+
+/* KOTAK ICON */
+.menu-icon {
+    width: 62px;
+    height: 62px;
+    margin: 0 auto 6px;
+    background: #ffffff;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* ICON */
+.menu-icon span {
+    font-size: 32px;
+    color: #02a31a;
+    transition: transform 0.15s ease;
+}
+
+/* SAAT DIKLIK / TAP */
+.menu-item:active .menu-icon {
+    transform: scale(1.12);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+}
+
+.menu-item:active .menu-icon span {
+    transform: scale(1.15);
+}
+
+
+</style>
+
+ <!-- video testimoni -->
+<h6 class="subtitle">Video Testimoni</h6>
+
+<div class="swiper mobileVideoTestimonialSwiper">
+    <div class="swiper-wrapper">
+
+        @foreach ($testimonials->whereNotNull('video') as $testimonial)
+            <div class="swiper-slide">
+
+                <div class="card shadow-sm border-0 mb-3 video-testimonial-card">
+
+                    <div class="ratio ratio-16x9">
+                        <video controls preload="metadata" class="w-100 rounded-top">
+                            <source
+                                src="{{ asset('public/storage/' . $testimonial->video) }}"
+                                type="video/mp4">
+                        </video>
+                    </div>
+
+                    <div class="card-body py-2 text-center">
+                        <h6 class="mb-0">
+                            {{ $testimonial->nama_testi }}
+                        </h6>
+                        <small class="text-muted">
+                            {{ $testimonial->keterangan }}
+                        </small>
+                    </div>
+
+                </div>
+
+            </div>
+        @endforeach
+
+    </div>
+</div>
+
+
+
+            <!-- page content ends -->
+<h6 class="subtitle">Testimonial</h6>
+
+<div class="swiper testimonial-vertical">
+    <div class="swiper-wrapper">
+
+        @foreach ($testimonials->whereNotNull('photo') as $testimonial)
+            <div class="swiper-slide">
+
+                <div class="card shadow-sm border-0 testimonial-card">
+
+                    <div class="card-body d-flex align-items-start testimonial-row">
+
+
+                        {{-- FOTO --}}
+                        <div class="testimonial-photo">
+                            <img
+                                src="{{ asset('public/storage/foto_pengelola/' . $testimonial->photo) }}"
+                                alt="{{ $testimonial->nama_testi }}">
+                        </div>
+
+                        {{-- TEKS --}}
+                        <div class="testimonial-content">
+                            <h6 class="mb-1">
+                                {{ $testimonial->nama_testi }}
+                            </h6>
+
+                            <small class="text-muted d-block mb-1">
+                                {{ $testimonial->keterangan }}
+                            </small>
+
+                            <p class="small fst-italic mb-0">
+                                “{{ Str::limit($testimonial->ucapan, 90) }}”
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        @endforeach
+
+    </div>
+</div>
+
+
+        <!-- page content ends -->
+</div>
+
+
+
+
+        <div class="container-fluid warna-background  text-white mt-3">
             <div class="row">
                 <div class="container">
                     <div class="row  py-4 ">
@@ -642,11 +866,17 @@
             <div class="no-gutters">
                 <div class="col-auto mx-auto">
                     <div class="row no-gutters justify-content-center">
+
                         <div class="col-auto">
-                            <a href="{{ route('mobilelandingpage') }}" class="btn btn-link-default active ">
-                                <i class="material-icons">home</i>
-                            </a>
-                        </div>
+                     <a href="{{ route('mobilelandingpage') }}"
+   class="btn btn-link-default nav-grid active">
+
+    <i class="material-icons">home</i>
+    <span>Home</span>
+
+</a>
+
+ </div>
                         <div class="col-auto">
                             <a href="{{ route('mobileaktifitas') }}" class="btn btn-link-default ">
                                 <i class="material-icons">insert_chart_outline</i>
@@ -866,6 +1096,31 @@
             icon.classList.toggle('expanded-icon');
         }
     </script>
+            <script>
+    new Swiper('.testimonial-vertical', {
+        direction: 'vertical',
+        slidesPerView: 3,
+        spaceBetween: 12,
+        loop: true,
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+        },
+        mousewheel: true,
+    });
+</script>
+<script>
+    new Swiper('.mobileVideoTestimonialSwiper', {
+        slidesPerView: 1.05,
+        spaceBetween: 14,
+        centeredSlides: true,
+        loop: true,
+        autoplay: {
+            delay: 4500,
+            disableOnInteraction: true,
+        },
+    });
+</script>
 
 
     @if (session('logout_success'))
@@ -876,6 +1131,13 @@
         </script>
     @endif
 
+    <!-- jquery, popper and bootstrap js -->
+    <script src="mobile/js/jquery-3.3.1.min.js"></script>
+    <script src="mobile/js/popper.min.js"></script>
+    <script src="mobile/vendor/bootstrap-4.4.1/js/bootstrap.min.js"></script>
+    <!-- swiper js -->
+
+    <script src="mobile/vendor/swiper/js/swiper.min.js"></script>
 
 </body>
 

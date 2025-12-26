@@ -84,6 +84,11 @@ Route::post('daftar-masjid/store', [MasjidController::class, 'storePublic'])->na
 
 Route::get('/form-masjid', [MasjidController::class, 'publicForm'])->name('formMasjid');
 Route::get('/mobile-aktifitas', [DashboardController::class, 'mobileaktifitas'])->name('mobileaktifitas');
+Route::get('/mobile-tentangkami', [DashboardController::class, 'mobiletentangkami'])->name('mobiletentangkami');
+Route::get('/mobile-testimonial', [DashboardController::class, 'mobiletestimonial'])->name('mobiletestimonial');
+Route::get('/mobile-donatur', [DashboardController::class, 'mobiledonatur'])->name('mobiledonatur');
+Route::get('/mobile-acara', [DashboardController::class, 'mobileacara'])->name('mobileacara');
+Route::get('/mobile-datamasjid', [DashboardController::class, 'mobiledatamasjid'])->name('mobiledatamasjid');
 Route::get('/mobile-listmasjid', [DashboardController::class, 'mobilelistmasjid'])->name('mobilelistmasjid');
 Route::get('/mobile-registrasi', [MasjidController::class, 'showProvincesMobile'])->name('mobileregistrasi');
 Route::get('/registrasi', [MasjidController::class, 'showProvinces'])->name('registrasi');  

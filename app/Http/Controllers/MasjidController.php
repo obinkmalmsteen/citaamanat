@@ -234,7 +234,7 @@ public function showProvincesMobile()
         ->orderBy('name', 'asc')
         ->get();
 
-    return view('masjid.mobile.registrasi', compact('provinces'));
+    return view('mobilemasjid.mobileregistrasi', compact('provinces'));
 }
 
 

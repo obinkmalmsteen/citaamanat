@@ -146,7 +146,7 @@
         <div class="mobile-header-aktifitas text-white d-block d-md-none">
 
             <div class="content-wrapper">
-                <p class="text-uppercase  mb-1">Aktifitas</p>
+                <p class="text-uppercase  mb-1">Tentang kami</p>
                 <p class="text-uppercase mb-1">Cita Amanat Martadiredja</p>
             </div>
         </div>
@@ -179,75 +179,14 @@
 
             <h6 class="subtitle">Berbagai Aktifitas Kami Yang Sudah Terlaksana <a href="all-products.html"
                     class="float-right small">View All</a></h6>
-            <div class="row">
 
-
-
-                <div class="col-6 col-md-4 col-lg-3 col-xl-2">
-                    <div class="card product-card shadow-sm border-0 mb-4">
-                        <!-- GAMBAR DI LUAR CARD-BODY -->
-                        <div class="product-image">
-                            <img src="/mosque/img/renov.png" alt="">
-                        </div>
-                        <div class="card-body pt-3">
-                            <h6 class="mb-1">Perbaikan Beribu Masjid & Mushola</h6>
-                            <small class="text-muted">Unique</small>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-6 col-md-4 col-lg-3 col-xl-2">
-                    <div class="card product-card shadow-sm border-0 mb-4">
-                        <!-- GAMBAR DI LUAR CARD-BODY -->
-                        <div class="product-image">
-                            <img src="/mosque/img/indung6.jpg" alt="">
-                        </div>
-                        <div class="card-body pt-3">
-                            <h6 class="mb-1">Nyaah Ka Indung</h6>
-                            <small class="text-muted">Unique</small>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-6 col-md-4 col-lg-3 col-xl-2">
-                    <div class="card product-card shadow-sm border-0 mb-4">
-                        <!-- GAMBAR DI LUAR CARD-BODY -->
-                        <div class="product-image">
-                            <img src="/mosque/img/adzancilik.png" alt="">
-                        </div>
-                        <div class="card-body pt-3">
-                            <h6 class="mb-1">Muadzin Cilik</h6>
-                            <small class="text-muted">Unique</small>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-6 col-md-4 col-lg-3 col-xl-2">
-                    <div class="card product-card shadow-sm border-0 mb-4">
-                        <!-- GAMBAR DI LUAR CARD-BODY -->
-                        <div class="product-image">
-                            <img src="/mosque/img/Gurungaji.jpg" alt="">
-                        </div>
-                        <div class="card-body pt-3">
-                            <h6 class="mb-1">Bantuan Honor Guru Ngaji</h6>
-                            <small class="text-muted">Unique</small>
-                        </div>
-                    </div>
-                </div>
-
-
-
-
-
-
-            </div>
         </div>
-        <div class="container-fluid bg-warning text-white my-3">
+        <div class="container-fluid warna-background  text-white my-3">
             <div class="row">
                 <div class="container">
                     <div class="row  py-4 ">
                         <div class="col">
-                            <h1 class="text-uppercase mb-3">Aktifitas</h1>
+                            <h1 class="text-uppercase mb-3">Halaman Tentang Kami Saat Ini Belum Tersedia</h1>
                            
                         </div>
                         <div class="col-5 col-md-3 col-lg-2 col-xl-2">
@@ -255,164 +194,14 @@
                         </div>
                         <div class="w-100"></div>
                         <div class="col">
-                            <p>Aktifitas</p>
+                            <p>Tentang Kami</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        {{-- <div class="container">
-            <h6 class="subtitle">Are you looking for:</h6>
-            <div class="row">
-                <div class="col">
-                    <button class="btn btn-lg btn-light btn-rounded shadow-xs my-1 mr-2">New</button>
-                    <button class="btn btn-lg btn-light btn-rounded shadow-xs my-1 mr-2">$100 - $299</button>
-                    <button class="btn btn-lg btn-light btn-rounded shadow-xs my-1 mr-2">600+</button>
-                    <button class="btn btn-lg btn-light btn-rounded shadow-xs my-1 mr-2">$300 - $599</button>
-                    <button class="btn btn-lg btn-light btn-rounded shadow-xs my-1 mr-2">Deliver Today</button>
-                </div>
-            </div>
-            <h6 class="subtitle">News Updates</h6>
-            <div class="row">
-                <!-- Swiper -->
-                <div class="swiper-container news-slide">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <div class="card shadow-sm border-0 bg-dark text-white">
-                                <figure class="background">
-                                    <img src="img/wall.jpg" alt="">
-                                </figure>
-                                <div class="card-body">
-                                    <a href=""
-                                        class="btn btn-default button-rounded-36 shadow-sm float-bottom-right"><i
-                                            class="material-icons md-18">arrow_forward</i></a>
-                                    <h5 class="small">Multipurpose Furniture allows you to grow faster</h5>
-                                    <p class="text-mute small">By Anand Mangal</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="card shadow-sm border-0 bg-dark text-white">
-                                <figure class="background">
-                                    <img src="img/kitchen.jpg" alt="">
-                                </figure>
-                                <div class="card-body">
-                                    <a href=""
-                                        class="btn btn-default button-rounded-36 shadow-sm float-bottom-right"><i
-                                            class="material-icons md-18">arrow_forward</i></a>
-                                    <h5 class="small">Multipurpose Furniture allows you to grow faster</h5>
-                                    <p class="text-mute small">By Anand Mangal</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="card shadow-sm border-0 bg-dark text-white">
-                                <figure class="background">
-                                    <img src="img/wall.jpg" alt="">
-                                </figure>
-                                <div class="card-body">
-                                    <a href=""
-                                        class="btn btn-default button-rounded-36 shadow-sm float-bottom-right"><i
-                                            class="material-icons md-18">arrow_forward</i></a>
-                                    <h5 class="small">Multipurpose Furniture allows you to grow faster</h5>
-                                    <p class="text-mute small">By Anand Mangal</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="card shadow-sm border-0 bg-dark text-white">
-                                <figure class="background">
-                                    <img src="img/kitchen.jpg" alt="">
-                                </figure>
-                                <div class="card-body">
-                                    <a href=""
-                                        class="btn btn-default button-rounded-36 shadow-sm float-bottom-right"><i
-                                            class="material-icons md-18">arrow_forward</i></a>
-                                    <h5 class="small">Multipurpose Furniture allows you to grow faster</h5>
-                                    <p class="text-mute small">By Anand Mangal</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="card shadow-sm border-0 bg-dark text-white">
-                                <figure class="background">
-                                    <img src="img/wall.jpg" alt="">
-                                </figure>
-                                <div class="card-body">
-                                    <a href=""
-                                        class="btn btn-default button-rounded-36 shadow-sm float-bottom-right"><i
-                                            class="material-icons md-18">arrow_forward</i></a>
-                                    <h5 class="small">Multipurpose Furniture allows you to grow faster</h5>
-                                    <p class="text-mute small">By Anand Mangal</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="card shadow-sm border-0 bg-dark text-white">
-                                <figure class="background">
-                                    <img src="img/kitchen.jpg" alt="">
-                                </figure>
-                                <div class="card-body">
-                                    <a href=""
-                                        class="btn btn-default button-rounded-36 shadow-sm float-bottom-right"><i
-                                            class="material-icons md-18">arrow_forward</i></a>
-                                    <h5 class="small">Multipurpose Furniture allows you to grow faster</h5>
-                                    <p class="text-mute small">By Anand Mangal</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Add Pagination -->
-                    <div class="swiper-pagination"></div>
-                </div>
-            </div>
-        </div> --}}
-        <div class="container mb-3">
-            <div class="row">
-                <div class="col text-center">
-                    <h5 class="subtitle mb-1">Most Exciting Feature</h5>
-                    <p class="text-secondary">Take a look at our services</p>
-                </div>
-            </div>
-            <div class="row text-center mt-4">
-                <div class="col-6 col-md-3">
-                    <div class="card shadow-sm border-0 mb-4">
-                        <div class="card-body">
-                            <i class="material-icons mb-4 md-36 text-template">card_giftcard</i>
-                            <h2>2546</h2>
-                            <p class="text-secondary text-mute">Gift it out</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3">
-                    <div class="card shadow-sm border-0 mb-4">
-                        <div class="card-body">
-                            <i class="material-icons mb-4 md-36 text-template">subscriptions</i>
-                            <h2>635</h2>
-                            <p class="text-secondary text-mute">Monthly Billed</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3">
-                    <div class="card shadow-sm border-0 mb-4">
-                        <div class="card-body">
-                            <i class="material-icons mb-4 md-36 text-template">local_florist</i>
-                            <h2>1542</h2>
-                            <p class="text-secondary text-mute">Eco environment</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3">
-                    <div class="card shadow-sm border-0 mb-4">
-                        <div class="card-body">
-                            <i class="material-icons mb-4 md-36 text-template">location_city</i>
-                            <h2>154</h2>
-                            <p class="text-secondary text-mute">Four Offices</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+
+       
         <div class="footer">
             <div class="no-gutters">
                 <div class="col-auto mx-auto">
