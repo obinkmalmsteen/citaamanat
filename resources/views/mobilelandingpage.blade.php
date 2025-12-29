@@ -28,15 +28,14 @@
 
     <!-- nouislider CSS -->
     <link href="mobile/vendor/nouislider/nouislider.min.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
-      rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
 
 
     <!-- Custom styles for this template -->
     <link href="mobile/css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
 <body>
@@ -109,7 +108,8 @@
                     <a href="controls.html" class="list-group-item list-group-item-action">Pages Controls <span
                             class="badge badge-light ml-2">Check</span></a>
                     <a href="setting.html" class="list-group-item list-group-item-action">Settings</a>
-                    <a href="{{ route('mobile.logout') }}" class="list-group-item list-group-item-action mt-4">Logout</a>
+                    <a href="{{ route('mobile.logout') }}"
+                        class="list-group-item list-group-item-action mt-4">Logout</a>
                 </div>
             </div>
         </div>
@@ -192,47 +192,51 @@
 
             </div>
             {{-- row 2 end --}}
-{{-- FULL BLEED BACKGROUND --}}
-<div class="mobile-menu-full">
-    <div class="mobile-menu-inner">
-        <div class="mobile-menu-grid">
+            {{-- FULL BLEED BACKGROUND --}}
+            <div class="mobile-menu-full">
+                <div class="mobile-menu-inner">
+                    <div class="mobile-menu-grid">
 
-            @foreach ($mobileMenus as $menu)
-                @php
-                    // Cek apakah route butuh login
-                    $route = $menu['route'];
-                    $needsLogin = in_array($route, [
-    'mobilerequesttoken',
-    'mobileprofile', // ⬅️ tambahkan di sini
-]);
- // tambah route lain jika perlu
+                        @foreach ($mobileMenus as $menu)
+                            @php
+                                // Cek apakah route butuh login
+                                $route = $menu['route'];
+                                $needsLogin = in_array($route, [
+                                    'mobilerequesttoken',
+                                    'mobileprofile', // ⬅️ tambahkan di sini
+                                ]);
+                                // tambah route lain jika perlu
 
-                    // Tentukan link
-                    $href = $needsLogin
-                        ? (Auth::check() ? route($route) : route('mobile.login'))
-                        : (Route::has($route) ? route($route) : '#');
-                @endphp
+                                // Tentukan link
+                                $href = $needsLogin
+                                    ? (Auth::check()
+                                        ? route($route)
+                                        : route('mobile.login'))
+                                    : (Route::has($route)
+                                        ? route($route)
+                                        : '#');
+                            @endphp
 
 
 
-                <a href="{{ $href }}" class="mobile-menu-item">
+                            <a href="{{ $href }}" class="mobile-menu-item">
 
-                    <div class="menu-icon">
-                        <span class="material-symbols-outlined">{{ $menu['icon'] }}</span>
+                                <div class="menu-icon">
+                                    <span class="material-symbols-outlined">{{ $menu['icon'] }}</span>
+                                </div>
+
+                                <span class="menu-label">
+                                    {{ $menu['label'] }}
+                                </span>
+
+                            </a>
+                        @endforeach
+
                     </div>
+                </div>
+            </div>
 
-                    <span class="menu-label">
-                        {{ $menu['label'] }}
-                    </span>
-
-                </a>
-            @endforeach
-
-        </div>
-    </div>
-</div>
-
-{{-- end menu icon --}}
+            {{-- end menu icon --}}
 
 
 
@@ -400,93 +404,101 @@
                     padding-left: 28px;
                     /* ⭐ JARAK DARI TEPI KIRI */
                 }
-               .testimonial-vertical {
-    height: 360px; /* 3 x ±120px */
-    overflow: hidden;
-}
 
-.testimonial-card {
-    height: 110px;
-}
+                .testimonial-vertical {
+                    height: 360px;
+                    /* 3 x ±120px */
+                    overflow: hidden;
+                }
 
-.testimonial-photo {
-    width: 70px;
-    height: 95px;
-    border-radius: .5rem;
-    overflow: hidden;
-    background: #f1f1f1;
-    flex-shrink: 0;
-  
-    margin-right: 6px;
-margin-bottom: 6px;
+                .testimonial-card {
+                    height: 110px;
+                }
 
-}
+                .testimonial-photo {
+                    width: 70px;
+                    height: 95px;
+                    border-radius: .5rem;
+                    overflow: hidden;
+                    background: #f1f1f1;
+                    flex-shrink: 0;
 
-.testimonial-photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
+                    margin-right: 6px;
+                    margin-bottom: 6px;
 
-.testimonial-row {
-    gap: 14px;        /* JARAK FOTO & TEKS */
-    padding: 10px 12px;
-}
-.video-testimonial-card {
-    border-radius: .75rem;
-    overflow: hidden;
-}
+                }
 
-.video-testimonial-card video {
-    border-radius: .75rem .75rem 0 0;
-}
+                .testimonial-photo img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
 
-.mobileVideoTestimonialSwiper {
-    padding-bottom: 10px;
-}
-.nav-icon {
-    padding: 6px 10px;
-}
+                .testimonial-row {
+                    gap: 14px;
+                    /* JARAK FOTO & TEKS */
+                    padding: 10px 12px;
+                }
 
-.nav-icon i {
-    display: block;     /* ⬅️ PAKSA BARIS BARU */
-    font-size: 22px;
-    line-height: 1;
-}
+                .video-testimonial-card {
+                    border-radius: .75rem;
+                    overflow: hidden;
+                }
 
+                .video-testimonial-card video {
+                    border-radius: .75rem .75rem 0 0;
+                }
 
-.nav-label {
-    display: block;     /* ⬅️ INI KUNCI UTAMA */
-    font-size: 11px;
-    line-height: 1;
-    margin-top: 1px;
-}
+                .mobileVideoTestimonialSwiper {
+                    padding-bottom: 10px;
+                }
+
+                .nav-icon {
+                    padding: 6px 10px;
+                }
+
+                .nav-icon i {
+                    display: block;
+                    /* ⬅️ PAKSA BARIS BARU */
+                    font-size: 22px;
+                    line-height: 1;
+                }
 
 
+                .nav-label {
+                    display: block;
+                    /* ⬅️ INI KUNCI UTAMA */
+                    font-size: 11px;
+                    line-height: 1;
+                    margin-top: 1px;
+                }
 
 
-.nav-icon.active .nav-label,
-.nav-icon.active i {
-    color: #00dd2c; /* warna aktif */
-}
-.nav-grid {
-    display: grid;
-    grid-template-rows: auto auto;
-    justify-items: center;
-    row-gap: 2px;
-    padding: 6px 10px;
-}
 
-.nav-grid i {
-    font-size: 29px;
-    line-height: 1;
-}
 
-.nav-grid span {
-    font-size: 15px;
-    line-height: 1;
-}
+                .nav-icon.active .nav-label,
+                .nav-icon.active i {
+                    color: #00dd2c;
+                    /* warna aktif */
+                }
 
+                .nav-grid {
+                    display: grid;
+                    grid-template-rows: auto auto;
+                    justify-items: center;
+                    row-gap: 2px;
+                    padding: 6px 10px;
+                }
+
+                .nav-grid i {
+                    font-size: 29px;
+                    line-height: 1;
+                }
+
+                .nav-grid span {
+                    font-size: 15px;
+                    line-height: 1;
+                }
             </style>
 
 
@@ -526,8 +538,8 @@ margin-bottom: 6px;
 
             {{-- row 42 end --}}
 
-    {{-- icon 12 --}}
-            
+            {{-- icon 12 --}}
+
 
 
 
@@ -658,7 +670,7 @@ margin-bottom: 6px;
                                         silahkan login Disini.</p>
 
                                 </div>
-                                 <div class="col-auto pl-0 align-self-center">
+                                <div class="col-auto pl-0 align-self-center">
                                     <a href="{{ route('mobile.login') }}"
                                         class="btn btn-default button-rounded-56 shadow">
                                         <i class="material-icons">list</i>
@@ -673,199 +685,204 @@ margin-bottom: 6px;
 
 
 
-        
-
-<style>
-  /* background putih menembus kiri-kanan */
-.mobile-menu-full {
-    background: #fff;
-    width: 100vw;                 /* ⬅️ KUNCI */
-    margin-left: 50%;
-    transform: translateX(-50%);  /* ⬅️ KUNCI */
-}
 
 
-/* isi tetap rapi & tidak nempel */
-.mobile-menu-inner {
-    padding: 16px 12px;
-}
-
-/* grid menu */
-.mobile-menu-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 14px;
-}
-
-.mobile-menu-item {
-    text-align: center;
-    text-decoration: none;
-    color: #333;
-}
-
-.menu-icon {
-    width: 56px;
-    height: 56px;
-    margin: 0 auto 6px;
-    border-radius: 12px;
-    background: #f4f6f8;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.menu-icon span {
-    color: #1ba43b; /* hijau lebih tua */
-}
-.menu-text span {
-    color: #1e7e34; /* hijau lebih tua */
-}
+            <style>
+                /* background putih menembus kiri-kanan */
+                .mobile-menu-full {
+                    background: #fff;
+                    width: 100vw;
+                    /* ⬅️ KUNCI */
+                    margin-left: 50%;
+                    transform: translateX(-50%);
+                    /* ⬅️ KUNCI */
+                }
 
 
-.menu-item {
-    text-align: center;
-}
+                /* isi tetap rapi & tidak nempel */
+                .mobile-menu-inner {
+                    padding: 16px 12px;
+                }
 
-.menu-icon span {
-    font-size: 28px;
-    display: block;
-    margin-bottom: 4px;
-}
+                /* grid menu */
+                .mobile-menu-grid {
+                    display: grid;
+                    grid-template-columns: repeat(4, 1fr);
+                    gap: 14px;
+                }
 
-.menu-text {
-    font-size: 9px;
-    line-height: 1.2;
-    
-}
-.menu-item {
-    text-align: center;
-    cursor: pointer;
-    -webkit-tap-highlight-color: transparent; /* Hapus garis saat tap di mobile */
-    outline: none; /* Hapus garis saat focus */
-}
+                .mobile-menu-item {
+                    text-align: center;
+                    text-decoration: none;
+                    color: #333;
+                }
 
+                .menu-icon {
+                    width: 56px;
+                    height: 56px;
+                    margin: 0 auto 6px;
+                    border-radius: 12px;
+                    background: #f4f6f8;
 
-/* KOTAK ICON */
-.menu-icon {
-    width: 62px;
-    height: 62px;
-    margin: 0 auto 6px;
-    background: #ffffff;
-    border-radius: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
 
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
+                .menu-icon span {
+                    color: #1ba43b;
+                    /* hijau lebih tua */
+                }
 
-/* ICON */
-.menu-icon span {
-    font-size: 32px;
-    color: #02a31a;
-    transition: transform 0.15s ease;
-}
-
-/* SAAT DIKLIK / TAP */
-.menu-item:active .menu-icon {
-    transform: scale(1.12);
-    box-shadow: 0 6px 14px rgba(0,0,0,0.15);
-}
-
-.menu-item:active .menu-icon span {
-    transform: scale(1.15);
-}
+                .menu-text span {
+                    color: #1e7e34;
+                    /* hijau lebih tua */
+                }
 
 
-</style>
+                .menu-item {
+                    text-align: center;
+                }
 
- <!-- video testimoni -->
-<h6 class="subtitle">Video Testimoni</h6>
+                .menu-icon span {
+                    font-size: 28px;
+                    display: block;
+                    margin-bottom: 4px;
+                }
 
-<div class="swiper mobileVideoTestimonialSwiper">
-    <div class="swiper-wrapper">
+                .menu-text {
+                    font-size: 9px;
+                    line-height: 1.2;
 
-        @foreach ($testimonials->whereNotNull('video') as $testimonial)
-            <div class="swiper-slide">
+                }
 
-                <div class="card shadow-sm border-0 mb-3 video-testimonial-card">
+                .menu-item {
+                    text-align: center;
+                    cursor: pointer;
+                    -webkit-tap-highlight-color: transparent;
+                    /* Hapus garis saat tap di mobile */
+                    outline: none;
+                    /* Hapus garis saat focus */
+                }
 
-                    <div class="ratio ratio-16x9">
-                        <video controls preload="metadata" class="w-100 rounded-top">
-                            <source
-                                src="{{ asset('public/storage/' . $testimonial->video) }}"
-                                type="video/mp4">
-                        </video>
-                    </div>
 
-                    <div class="card-body py-2 text-center">
-                        <h6 class="mb-0">
-                            {{ $testimonial->nama_testi }}
-                        </h6>
-                        <small class="text-muted">
-                            {{ $testimonial->keterangan }}
-                        </small>
-                    </div>
+                /* KOTAK ICON */
+                .menu-icon {
+                    width: 62px;
+                    height: 62px;
+                    margin: 0 auto 6px;
+                    background: #ffffff;
+                    border-radius: 14px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    transition: transform 0.15s ease, box-shadow 0.15s ease;
+                }
+
+                /* ICON */
+                .menu-icon span {
+                    font-size: 32px;
+                    color: #02a31a;
+                    transition: transform 0.15s ease;
+                }
+
+                /* SAAT DIKLIK / TAP */
+                .menu-item:active .menu-icon {
+                    transform: scale(1.12);
+                    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+                }
+
+                .menu-item:active .menu-icon span {
+                    transform: scale(1.15);
+                }
+            </style>
+
+            <!-- video testimoni -->
+            <h6 class="subtitle">Video Testimoni</h6>
+
+            <div class="swiper mobileVideoTestimonialSwiper">
+                <div class="swiper-wrapper">
+
+                    @foreach ($testimonials->whereNotNull('video') as $testimonial)
+                        <div class="swiper-slide">
+
+                            <div class="card shadow-sm border-0 mb-3 video-testimonial-card">
+
+                                <div class="ratio ratio-16x9">
+                                    <video controls preload="metadata" class="w-100 rounded-top">
+                                        <source src="{{ asset('public/storage/' . $testimonial->video) }}"
+                                            type="video/mp4">
+                                    </video>
+                                </div>
+
+                                <div class="card-body py-2 text-center">
+                                    <h6 class="mb-0">
+                                        {{ $testimonial->nama_testi }}
+                                    </h6>
+                                    <small class="text-muted">
+                                        {{ $testimonial->keterangan }}
+                                    </small>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    @endforeach
 
                 </div>
-
             </div>
-        @endforeach
-
-    </div>
-</div>
 
 
 
             <!-- page content ends -->
-<h6 class="subtitle">Testimonial</h6>
+            <h6 class="subtitle">Testimonial</h6>
 
-<div class="swiper testimonial-vertical">
-    <div class="swiper-wrapper">
+            <div class="swiper testimonial-vertical">
+                <div class="swiper-wrapper">
 
-        @foreach ($testimonials->whereNotNull('photo') as $testimonial)
-            <div class="swiper-slide">
+                    @foreach ($testimonials->whereNotNull('photo') as $testimonial)
+                        <div class="swiper-slide">
 
-                <div class="card shadow-sm border-0 testimonial-card">
+                            <div class="card shadow-sm border-0 testimonial-card">
 
-                    <div class="card-body d-flex align-items-start testimonial-row">
+                                <div class="card-body d-flex align-items-start testimonial-row">
 
 
-                        {{-- FOTO --}}
-                        <div class="testimonial-photo">
-                            <img
-                                src="{{ asset('public/storage/foto_pengelola/' . $testimonial->photo) }}"
-                                alt="{{ $testimonial->nama_testi }}">
+                                    {{-- FOTO --}}
+                                    <div class="testimonial-photo">
+                                        <img src="{{ asset('public/storage/foto_pengelola/' . $testimonial->photo) }}"
+                                            alt="{{ $testimonial->nama_testi }}">
+                                    </div>
+
+                                    {{-- TEKS --}}
+                                    <div class="testimonial-content">
+                                        <h6 class="mb-1">
+                                            {{ $testimonial->nama_testi }}
+                                        </h6>
+
+                                        <small class="text-muted d-block mb-1">
+                                            {{ $testimonial->keterangan }}
+                                        </small>
+
+                                        <p class="small fst-italic mb-0">
+                                            “{{ Str::limit($testimonial->ucapan, 90) }}”
+                                        </p>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
                         </div>
-
-                        {{-- TEKS --}}
-                        <div class="testimonial-content">
-                            <h6 class="mb-1">
-                                {{ $testimonial->nama_testi }}
-                            </h6>
-
-                            <small class="text-muted d-block mb-1">
-                                {{ $testimonial->keterangan }}
-                            </small>
-
-                            <p class="small fst-italic mb-0">
-                                “{{ Str::limit($testimonial->ucapan, 90) }}”
-                            </p>
-                        </div>
-
-                    </div>
+                    @endforeach
 
                 </div>
-
             </div>
-        @endforeach
-
-    </div>
-</div>
 
 
-        <!-- page content ends -->
-</div>
+            <!-- page content ends -->
+        </div>
 
 
 
@@ -889,65 +906,126 @@ margin-bottom: 6px;
                 </div>
             </div>
         </div>
-        <div class="footer">
-            <div class="no-gutters">
-                <div class="col-auto mx-auto">
-                    <div class="row no-gutters justify-content-center">
-
-                        <div class="col-auto">
-                     <a href="{{ route('mobilelandingpage') }}"
-   class="btn btn-link-default nav-grid active">
-
-    <i class="material-icons">home</i>
-    <span>Home</span>
-
-</a>
-
- </div>
-                        <div class="col-auto">
-                            <a href="{{ route('mobileaktifitas') }}" class="btn btn-link-default ">
-                                <i class="material-icons">insert_chart_outline</i>
-                            </a>
-                        </div>
-                        <div class="col-auto">
-                            <a href="{{ route('mobilelistmasjid') }}" class="btn btn-link-default">
-                                <i class="material-icons">local_mall</i>
-                            </a>
-                        </div>
-                        <div class="col-auto">
-                            @if (Auth::check())
-                                {{-- SUDAH LOGIN --}}
-                                <a href="{{ route('mobilerequesttoken') }}" class="btn btn-link-default">
-                                    <i class="material-icons">star</i>
-                                </a>
-                            @else
-                                {{-- BELUM LOGIN --}}
-                                <a href="{{ route('mobile.login') }}" class="btn btn-link-default">
-                                    <i class="material-icons">star</i>
-                                </a>
-                            @endif
-                        </div>
-
-                        <div class="col-auto">
-                            @if (Auth::check())
-                                {{-- SUDAH LOGIN --}}
-                                <a href="{{ route('mobileprofile') }}" class="btn btn-link-default">
-                                    <i class="material-icons">star</i>
-                                </a>
-                            @else
-                                {{-- BELUM LOGIN --}}
-                                <a href="{{ route('mobile.login') }}" class="btn btn-link-default">
-                                    <i class="material-icons">star</i>
-                                </a>
-                            @endif
-                        </div>
-
-                       
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
+
+
+
+    <style>
+        /* footer */
+
+
+        body {
+            margin: 0 0 55px 0;
+        }
+
+        .navi {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            height: 65px;
+            box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+            background-color: #ffffff;
+            display: flex;
+            overflow-x: auto;
+
+        }
+
+        .navi__link {
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex-grow: 1;
+            min-width: 50px;
+            overflow: hidden;
+            white-space: nowrap;
+            font-family: sans-serif;
+            font-size: 13px;
+            color: #8e8e8e;
+            text-decoration: none;
+            -webkit-tap-highlight-color: transparent;
+            transition: background-color 0.1s ease-in-out;
+        }
+
+        .navi__link:hover {
+            background-color: #eeeeee;
+        }
+
+
+
+        .navi__link--active {
+            color: #6b650d;
+        }
+
+        .navi__icon {
+            font-size: 24px;
+            color: #a7a7a7;
+            /* ⬅️ penting */
+        }
+
+        .navi__icon--active {
+            font-size: 24px;
+            color: #07c511;
+            /* ⬅️ penting */
+        }
+
+        .navi__text {
+            font-size: 16px;
+            color: #a7a7a7;
+            /* ⬅️ penting */
+        }
+
+        .navi__text--active {
+            font-size: 16px;
+            color: #07c511;
+            /* ⬅️ penting */
+        }
+    </style>
+    <div class="footer">
+        <nav class="navi">
+
+            <a href="{{ route('mobilelandingpage') }}" class="navi__link navi__link--active">
+                <i class="material-icons navi__icon--active">dashboard</i>
+                <span class="navi__text--active">Home</span>
+            </a>
+
+            <a href="{{ route('mobileaktifitas') }}" class="navi__link">
+                <i class="material-icons navi__icon">person</i>
+                <span class="navi__text">Aktifitas</span>
+            </a>
+
+            <a href="{{ route('mobilelistmasjid') }}" class="navi__link">
+                <i class="material-icons navi__icon">devices</i>
+                <span class="navi__text">List</span>
+            </a>
+
+            {{-- 🔐 MENU PROFILE (LOGIN AWARE) --}}
+            <a href="{{ Auth::check() ? route('mobilerequesttoken') : route('mobile.login') }}" class="navi__link">
+
+                <i class="material-icons navi__icon">
+                    {{ Auth::check() ? 'settings' : 'bolt' }}
+                </i>
+
+                <span class="navi__text">
+                    Request
+                </span>
+            </a>
+            {{-- 🔐 MENU PROFILE (LOGIN AWARE) --}}
+            <a href="{{ Auth::check() ? route('mobileprofile') : route('mobile.login') }}" class="navi__link">
+
+                <i class="material-icons navi__icon">
+                    {{ Auth::check() ? 'settings' : 'account_circle' }}
+                </i>
+
+                <span class="navi__text">
+                    Profile
+                </span>
+            </a>
+
+        </nav>
+    </div>
+
 
 
     <!-- Modal -->
@@ -1133,31 +1211,31 @@ margin-bottom: 6px;
             icon.classList.toggle('expanded-icon');
         }
     </script>
-            <script>
-    new Swiper('.testimonial-vertical', {
-        direction: 'vertical',
-        slidesPerView: 3,
-        spaceBetween: 12,
-        loop: true,
-        autoplay: {
-            delay: 3000,
-            disableOnInteraction: false,
-        },
-        mousewheel: true,
-    });
-</script>
-<script>
-    new Swiper('.mobileVideoTestimonialSwiper', {
-        slidesPerView: 1.05,
-        spaceBetween: 14,
-        centeredSlides: true,
-        loop: true,
-        autoplay: {
-            delay: 4500,
-            disableOnInteraction: true,
-        },
-    });
-</script>
+    <script>
+        new Swiper('.testimonial-vertical', {
+            direction: 'vertical',
+            slidesPerView: 3,
+            spaceBetween: 12,
+            loop: true,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
+            mousewheel: true,
+        });
+    </script>
+    <script>
+        new Swiper('.mobileVideoTestimonialSwiper', {
+            slidesPerView: 1.05,
+            spaceBetween: 14,
+            centeredSlides: true,
+            loop: true,
+            autoplay: {
+                delay: 4500,
+                disableOnInteraction: true,
+            },
+        });
+    </script>
 
 
     @if (session('logout_success'))

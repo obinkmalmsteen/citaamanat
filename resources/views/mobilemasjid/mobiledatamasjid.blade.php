@@ -24,6 +24,7 @@
 
     <!-- Custom styles for this template -->
     <link href="mobile/css/style.css" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <style>
     .swiper-container {
@@ -180,47 +181,48 @@
 
         
         <div class="footer">
-            <div class="no-gutters">
-                <div class="col-auto mx-auto">
-                    <div class="row no-gutters justify-content-center">
-                        <div class="col-auto">
-                            <a href="{{ route('mobilelandingpage') }}" class="btn btn-link-default ">
-                                <i class="material-icons">home</i>
-                            </a>
-                        </div>
-                        <div class="col-auto">
-                            <a href="{{ route('mobileaktifitas') }}" class="btn btn-link-default active">
-                                <i class="material-icons">insert_chart_outline</i>
-                            </a>
-                        </div>
-                        <div class="col-auto">
-                            <a href="{{ route('mobilelistmasjid') }}" class="btn btn-link-default">
-                                <i class="material-icons">local_mall</i>
-                            </a>
-                        </div>
-                        <div class="col-auto">
-                            @if (Auth::check())
-                                {{-- SUDAH LOGIN --}}
-                                <a href="{{ route('mobilerequesttoken') }}" class="btn btn-link-default">
-                                    <i class="material-icons">favorite</i>
-                                </a>
-                            @else
-                                {{-- BELUM LOGIN --}}
-                                <a href="{{ route('mobile.login') }}" class="btn btn-link-default">
-                                    <i class="material-icons">bolt</i>
-                                </a>
-                            @endif
-                        </div>
+        <nav class="navi">
 
-                        <div class="col-auto">
-                            <a href="profile.html" class="btn btn-link-default">
-                                <i class="material-icons">account_circle</i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+            <a href="{{ route('mobilelandingpage') }}" class="navi__link ">
+                <i class="material-icons navi__icon">dashboard</i>
+                <span class="navi__text">Home</span>
+            </a>
+
+            <a href="{{ route('mobileaktifitas') }}" class="navi__link">
+                <i class="material-icons navi__icon">person</i>
+                <span class="navi__text">Aktifitas</span>
+            </a>
+
+            <a href="{{ route('mobilelistmasjid') }}" class="navi__link">
+                <i class="material-icons navi__icon">devices</i>
+                <span class="navi__text">List</span>
+            </a>
+
+            {{-- 🔐 MENU PROFILE (LOGIN AWARE) --}}
+            <a href="{{ Auth::check() ? route('mobilerequesttoken') : route('mobile.login') }}" class="navi__link">
+
+                <i class="material-icons navi__icon">
+                    {{ Auth::check() ? 'settings' : 'bolt' }}
+                </i>
+
+                <span class="navi__text">
+                    Request
+                </span>
+            </a>
+            {{-- 🔐 MENU PROFILE (LOGIN AWARE) --}}
+            <a href="{{ Auth::check() ? route('mobileprofile') : route('mobile.login') }}" class="navi__link">
+
+                <i class="material-icons navi__icon">
+                    {{ Auth::check() ? 'settings' : 'account_circle' }}
+                </i>
+
+                <span class="navi__text">
+                    Profile
+                </span>
+            </a>
+
+        </nav>
+    </div>
     </div>
 
     <!-- notification -->
