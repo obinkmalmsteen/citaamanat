@@ -24,7 +24,7 @@
 
     <!-- Custom styles for this template -->
     <link href="mobile/css/style.css" rel="stylesheet">
-     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
 <body>
@@ -204,8 +204,81 @@
             <!-- page content ends -->
         </div>
         <a href="{{ route('mobile.logout') }}">Logout</a>
+
+
+
+          <style>
+            /* footer */
+
+
+            body {
+                margin: 0 0 55px 0;
+            }
+
+            .navi {
+                position: fixed;
+                bottom: 0;
+                width: 100%;
+                height: 65px;
+                box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+                background-color: #ffffff;
+                display: flex;
+                overflow-x: auto;
+
+            }
+
+            .navi__link {
+
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                flex-grow: 1;
+                min-width: 50px;
+                overflow: hidden;
+                white-space: nowrap;
+                font-family: sans-serif;
+                font-size: 13px;
+                color: #8e8e8e;
+                text-decoration: none;
+                -webkit-tap-highlight-color: transparent;
+                transition: background-color 0.1s ease-in-out;
+            }
+
+            .navi__link:hover {
+                background-color: #eeeeee;
+            }
+
+
+
+            .navi__link--active {
+                color: #6b650d;
+            }
+
+            .navi__icon {
+                font-size: 24px;
+                color: #a7a7a7;
+                /* ⬅️ penting */
+            }
+            .navi__icon--active {
+                font-size: 24px;
+                color: #07c511;
+                /* ⬅️ penting */
+            }
+            .navi__text {
+                font-size: 16px;
+                color: #a7a7a7;
+                /* ⬅️ penting */
+            }
+              .navi__text--active {
+                font-size: 16px;
+                color: #07c511;
+                /* ⬅️ penting */
+            }
+
+        </style>
         <!-- footer -->
-         <div class="footer">
+        <div class="footer">
         <nav class="navi">
 
             <a href="{{ route('mobilelandingpage') }}" class="navi__link ">
@@ -214,12 +287,12 @@
             </a>
 
             <a href="{{ route('mobileaktifitas') }}" class="navi__link">
-                <i class="material-icons navi__icon">person</i>
+                <i class="material-icons navi__icon">sports_kabaddi</i>
                 <span class="navi__text">Aktifitas</span>
             </a>
 
             <a href="{{ route('mobilelistmasjid') }}" class="navi__link">
-                <i class="material-icons navi__icon">devices</i>
+                <i class="material-icons navi__icon">mosque</i>
                 <span class="navi__text">List</span>
             </a>
 
@@ -227,7 +300,7 @@
             <a href="{{ Auth::check() ? route('mobilerequesttoken') : route('mobile.login') }}" class="navi__link">
 
                 <i class="material-icons navi__icon--active">
-                    {{ Auth::check() ? 'settings' : 'bolt' }}
+                    {{ Auth::check() ? 'electric_bolt' : 'electric_bolt' }}
                 </i>
 
                 <span class="navi__text--active">
@@ -238,7 +311,7 @@
             <a href="{{ Auth::check() ? route('mobileprofile') : route('mobile.login') }}" class="navi__link">
 
                 <i class="material-icons navi__icon">
-                    {{ Auth::check() ? 'settings' : 'account_circle' }}
+                    {{ Auth::check() ? 'person' : 'person' }}
                 </i>
 
                 <span class="navi__text">

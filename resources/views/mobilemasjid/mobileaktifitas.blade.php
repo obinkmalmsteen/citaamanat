@@ -51,31 +51,52 @@
     <div class="sidebar">
         <div class="text-center">
             <div class="figure-menu shadow">
-                <figure><img src="mobile/img/user1.png" alt=""></figure>
+                <figure><img src="mobile/img/useeer.png" alt=""></figure>
             </div>
-            <h5 class="mb-1 ">Ammy Jahnson</h5>
-            <p class="text-mute small">Sydney, Australia</p>
+            <h5 class="mb-1 ">
+                @auth
+                    <span class="user-name-title text-white">
+                        {{ Auth::user()->masjid->nama_ketua_dkm ?? Auth::user()->nama }}
+                    </span>
+
+                @endauth
+            </h5>
+            <br>
+            <p class="mb-1 ">
+                @auth
+                    <span class="user-name-title text-white">Ketua DKM :
+                        {{ Auth::user()->masjid->nama_masjid ?? Auth::user()->nama }}
+                    </span>
+
+                @endauth
+            </p>
+            <br>
+            <p class="mb-1 ">
+                @auth
+                    <span class="user-name-title text-white">
+                        {{ Auth::user()->masjid->regency->name ?? '' }}
+                    </span>
+
+                @endauth
+            </p>
+            @auth
+                <span class="user-name-title">
+
+                    <p class="text-light">
+                        {{ Auth::user()->masjid->province->name ?? '' }}
+                    </p>
+                </span>
+            @endauth
+
         </div>
         <br>
         <div class="row mx-0">
             <div class="col">
-                <div class="card mb-3 border-0 shadow-sm bg-template-light">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col">
-                                <p class="text-secondary small mb-0">Balance Available</p>
-                                <h6 class="text-dark my-0">$2585.00</h6>
-                            </div>
-                            <div class="col-auto">
-                                <button class="btn btn-default button-rounded-36 shadow"><i
-                                        class="material-icons">add</i></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
                 <h5 class="subtitle text-uppercase"><span>Menu</span></h5>
                 <div class="list-group main-menu">
-                    <a href="index.html" class="list-group-item list-group-item-action active">Store</a>
+                    @auth <a href="index.html" class="list-group-item list-group-item-action active">Total Pengajuan
+                        Token :{{ Auth::user()->masjid->total_pengajuan ?? Auth::user()->nama }} Kali</a>@endauth
                     <a href="notification.html" class="list-group-item list-group-item-action">Notification <span
                             class="badge badge-dark text-white">2</span></a>
                     <a href="all-products.html" class="list-group-item list-group-item-action">All Products</a>
@@ -84,7 +105,8 @@
                     <a href="controls.html" class="list-group-item list-group-item-action">Pages Controls <span
                             class="badge badge-light ml-2">Check</span></a>
                     <a href="setting.html" class="list-group-item list-group-item-action">Settings</a>
-                    <a href="login.html" class="list-group-item list-group-item-action mt-4">Logout</a>
+                    <a href="{{ route('mobile.logout') }}"
+                        class="list-group-item list-group-item-action mt-4">Logout</a>
                 </div>
             </div>
         </div>
@@ -484,7 +506,7 @@
             }
 
         </style>
-         <div class="footer">
+        <div class="footer">
         <nav class="navi">
 
             <a href="{{ route('mobilelandingpage') }}" class="navi__link ">
@@ -493,12 +515,12 @@
             </a>
 
             <a href="{{ route('mobileaktifitas') }}" class="navi__link">
-                <i class="material-icons navi__icon--active">person</i>
+                <i class="material-icons navi__icon--active">sports_kabaddi</i>
                 <span class="navi__text--active">Aktifitas</span>
             </a>
 
             <a href="{{ route('mobilelistmasjid') }}" class="navi__link">
-                <i class="material-icons navi__icon">devices</i>
+                <i class="material-icons navi__icon">mosque</i>
                 <span class="navi__text">List</span>
             </a>
 
@@ -506,7 +528,7 @@
             <a href="{{ Auth::check() ? route('mobilerequesttoken') : route('mobile.login') }}" class="navi__link">
 
                 <i class="material-icons navi__icon">
-                    {{ Auth::check() ? 'settings' : 'bolt' }}
+                    {{ Auth::check() ? 'electric_bolt' : 'electric_bolt' }}
                 </i>
 
                 <span class="navi__text">
@@ -517,7 +539,7 @@
             <a href="{{ Auth::check() ? route('mobileprofile') : route('mobile.login') }}" class="navi__link">
 
                 <i class="material-icons navi__icon">
-                    {{ Auth::check() ? 'settings' : 'account_circle' }}
+                    {{ Auth::check() ? 'person' : 'person' }}
                 </i>
 
                 <span class="navi__text">

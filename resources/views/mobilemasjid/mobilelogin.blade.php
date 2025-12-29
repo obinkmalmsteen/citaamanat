@@ -19,10 +19,49 @@
 
     <!-- Custom styles for this template-->
     <link href="{{ asset('sbadmin2/css/sb-admin-2.min.css') }}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 
 </head>
 
 <body class="bg-gradient-success">
+<br>
+<br>
+<style>
+.btn-back {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 50px;
+    height: 50px;
+
+    margin-left: 18px;   /* ⬅️ JARAK DARI PINGGIR */
+    margin-top: 15px;
+
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 2px 6px rgba(0,0,0,.15);
+
+    color: #07b536;
+    text-decoration: bold;
+    
+}
+.btn-back i.material-icons {
+    font-size: 32px; /* 🔥 BESARKAN PANAH */
+    text-decoration: bold;
+}
+
+
+
+</style>
+<div class="mobile-header">
+    <a href="{{ url()->previous() }}" class="btn-back">
+        <i class="material-icons">arrow_back</i>
+    </a>
+    <span class="header-title">Kembali</span>
+</div>
+
 
     <div class="container">
 

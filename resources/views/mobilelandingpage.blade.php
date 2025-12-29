@@ -991,12 +991,12 @@
             </a>
 
             <a href="{{ route('mobileaktifitas') }}" class="navi__link">
-                <i class="material-icons navi__icon">person</i>
+                <i class="material-icons navi__icon">sports_kabaddi</i>
                 <span class="navi__text">Aktifitas</span>
             </a>
 
             <a href="{{ route('mobilelistmasjid') }}" class="navi__link">
-                <i class="material-icons navi__icon">devices</i>
+                <i class="material-icons navi__icon">mosque</i>
                 <span class="navi__text">List</span>
             </a>
 
@@ -1004,7 +1004,7 @@
             <a href="{{ Auth::check() ? route('mobilerequesttoken') : route('mobile.login') }}" class="navi__link">
 
                 <i class="material-icons navi__icon">
-                    {{ Auth::check() ? 'settings' : 'bolt' }}
+                    {{ Auth::check() ? 'electric_bolt' : 'electric_bolt' }}
                 </i>
 
                 <span class="navi__text">
@@ -1015,7 +1015,7 @@
             <a href="{{ Auth::check() ? route('mobileprofile') : route('mobile.login') }}" class="navi__link">
 
                 <i class="material-icons navi__icon">
-                    {{ Auth::check() ? 'settings' : 'account_circle' }}
+                    {{ Auth::check() ? 'person' : 'person' }}
                 </i>
 
                 <span class="navi__text">

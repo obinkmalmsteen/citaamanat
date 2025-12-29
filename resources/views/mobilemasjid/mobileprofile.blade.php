@@ -24,7 +24,7 @@
 
     <!-- Custom styles for this template -->
     <link href="mobile/css/style.css" rel="stylesheet">
-     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
 <body>
@@ -89,15 +89,15 @@
 
 
                             <div class="col-md-6 text-center">
-                    <label class="fw-bold d-block mb-2">Foto Masjid</label>
-                    @if ($item->foto_masjid)
-                        <img src="{{ asset('public/storage/foto_masjid/' . $item->foto_masjid) }}"
-                            class="img-fluid rounded shadow">
-                    @else
-                        <p class="text-muted">Belum ada foto.</p>
-                    @endif
-                </div>
-                           
+                                <label class="fw-bold d-block mb-2">Foto Masjid</label>
+                                @if ($item->foto_masjid)
+                                    <img src="{{ asset('public/storage/foto_masjid/' . $item->foto_masjid) }}"
+                                        class="img-fluid rounded shadow">
+                                @else
+                                    <p class="text-muted">Belum ada foto.</p>
+                                @endif
+                            </div>
+
 
                             <div class="mb-3">
                                 <small class="text-muted d-block">Nama Ketua DKM</small>
@@ -110,16 +110,16 @@
                             </div>
 
                         </div>
-                        
+
                     </div>
 
-                    
+
                 @endif
             </div>
         </div>
         <!-- page content ends -->
 
- {{-- <div class="d-flex justify-content-center my-3">
+        {{-- <div class="d-flex justify-content-center my-3">
                 @if (Auth::check() && Auth::user()->nama)
                     <a href="{{ route('mobilerequesttokenlanjut') }}" class="btn btn-primary w-50 py-3 text-center">
                         <p class="me-2">Lanjut Pengajuan Token</p>
@@ -130,7 +130,7 @@
 
         <a href="{{ route('mobile.logout') }}">Logout</a>
         <!-- footer -->
-         <style>
+        <style>
             /* footer */
 
 
@@ -183,69 +183,76 @@
                 color: #a7a7a7;
                 /* ⬅️ penting */
             }
+
             .navi__icon--active {
                 font-size: 24px;
                 color: #07c511;
                 /* ⬅️ penting */
             }
+
             .navi__text {
                 font-size: 16px;
                 color: #a7a7a7;
                 /* ⬅️ penting */
             }
-              .navi__text--active {
+
+            .navi__text--active {
                 font-size: 16px;
                 color: #07c511;
                 /* ⬅️ penting */
             }
-
         </style>
         <div class="footer">
-        <nav class="navi">
+            <nav class="navi">
 
-            <a href="{{ route('mobilelandingpage') }}" class="navi__link ">
-                <i class="material-icons navi__icon">dashboard</i>
-                <span class="navi__text">Home</span>
-            </a>
+                <a href="{{ route('mobilelandingpage') }}" class="navi__link ">
+                    <i class="material-icons navi__icon">dashboard</i>
+                    <span class="navi__text">Home</span>
+                </a>
 
-            <a href="{{ route('mobileaktifitas') }}" class="navi__link">
-                <i class="material-icons navi__icon">person</i>
-                <span class="navi__text">Aktifitas</span>
-            </a>
+                <a href="{{ route('mobileaktifitas') }}" class="navi__link">
+                    <i class="material-icons navi__icon">sports_kabaddi</i>
+                    <span class="navi__text">Aktifitas</span>
+                </a>
 
-            <a href="{{ route('mobilelistmasjid') }}" class="navi__link">
-                <i class="material-icons navi__icon">devices</i>
-                <span class="navi__text">List</span>
-            </a>
+                <a href="{{ route('mobilelistmasjid') }}" class="navi__link">
+                    <i class="material-icons navi__icon">mosque</i>
+                    <span class="navi__text">List</span>
+                </a>
 
-            {{-- 🔐 MENU PROFILE (LOGIN AWARE) --}}
-            <a href="{{ Auth::check() ? route('mobilerequesttoken') : route('mobile.login') }}" class="navi__link">
+                {{-- 🔐 MENU PROFILE (LOGIN AWARE) --}}
+                <a href="{{ Auth::check() ? route('mobilerequesttoken') : route('mobile.login') }}" class="navi__link">
 
-                <i class="material-icons navi__icon">
-                    {{ Auth::check() ? 'settings' : 'bolt' }}
-                </i>
+                    <i class="material-icons navi__icon">
+                        {{ Auth::check() ? 'electric_bolt' : 'electric_bolt' }}
+                    </i>
 
-                <span class="navi__text">
-                    Request
-                </span>
-            </a>
-            {{-- 🔐 MENU PROFILE (LOGIN AWARE) --}}
-            <a href="{{ Auth::check() ? route('mobileprofile') : route('mobile.login') }}" class="navi__link">
+                    <span class="navi__text">
+                        Request
+                    </span>
+                </a>
+                {{-- 🔐 MENU PROFILE (LOGIN AWARE) --}}
+                <a href="{{ Auth::check() ? route('mobileprofile') : route('mobile.login') }}" class="navi__link">
 
-                <i class="material-icons navi__icon--active">
-                    {{ Auth::check() ? 'settings' : 'account_circle' }}
-                </i>
+                    <i class="material-icons navi__icon--active">
+                        {{ Auth::check() ? 'person' : 'person' }}
+                    </i>
 
-                <span class="navi__text--active">
-                    Profile
-                </span>
-            </a>
+                    <span class="navi__text--active">
+                        Profile
+                    </span>
+                </a>
 
-        </nav>
-    </div>
+            </nav>
+        </div>
 
         <!-- footer ends -->
     </div>
+
+
+
+
+    
     <!-- Modal -->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-sm modal-dialog-centered" role="document">

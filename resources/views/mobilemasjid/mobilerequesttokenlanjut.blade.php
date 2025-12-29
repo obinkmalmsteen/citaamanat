@@ -24,6 +24,7 @@
 
     <!-- Custom styles for this template -->
     <link href="mobile/css/style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
 <body>
@@ -43,34 +44,55 @@
     <!-- Loader ends -->
 
     <!-- sidebar -->
-    <div class="sidebar">
+   <div class="sidebar">
         <div class="text-center">
             <div class="figure-menu shadow">
-                <figure><img src="img/user1.png" alt=""></figure>
+                <figure><img src="mobile/img/useeer.png" alt=""></figure>
             </div>
-            <h5 class="mb-1 ">Ammy Jahnson</h5>
-            <p class="text-mute small">Sydney, Australia</p>
+            <h5 class="mb-1 ">
+                @auth
+                    <span class="user-name-title text-white">
+                        {{ Auth::user()->masjid->nama_ketua_dkm ?? Auth::user()->nama }}
+                    </span>
+
+                @endauth
+            </h5>
+            <br>
+            <p class="mb-1 ">
+                @auth
+                    <span class="user-name-title text-white">Ketua DKM :
+                        {{ Auth::user()->masjid->nama_masjid ?? Auth::user()->nama }}
+                    </span>
+
+                @endauth
+            </p>
+            <br>
+            <p class="mb-1 ">
+                @auth
+                    <span class="user-name-title text-white">
+                        {{ Auth::user()->masjid->regency->name ?? '' }}
+                    </span>
+
+                @endauth
+            </p>
+            @auth
+                <span class="user-name-title">
+
+                    <p class="text-light">
+                        {{ Auth::user()->masjid->province->name ?? '' }}
+                    </p>
+                </span>
+            @endauth
+
         </div>
         <br>
         <div class="row mx-0">
             <div class="col">
-                <div class="card mb-3 border-0 shadow-sm bg-template-light">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col">
-                                <p class="text-secondary small mb-0">Balance Available</p>
-                                <h6 class="text-dark my-0">$2585.00</h6>
-                            </div>
-                            <div class="col-auto">
-                                <button class="btn btn-default button-rounded-36 shadow"><i
-                                        class="material-icons">add</i></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
                 <h5 class="subtitle text-uppercase"><span>Menu</span></h5>
                 <div class="list-group main-menu">
-                    <a href="index.html" class="list-group-item list-group-item-action active">Store</a>
+                    @auth <a href="index.html" class="list-group-item list-group-item-action active">Total Pengajuan
+                        Token :{{ Auth::user()->masjid->total_pengajuan ?? Auth::user()->nama }} Kali</a>@endauth
                     <a href="notification.html" class="list-group-item list-group-item-action">Notification <span
                             class="badge badge-dark text-white">2</span></a>
                     <a href="all-products.html" class="list-group-item list-group-item-action">All Products</a>
@@ -79,7 +101,8 @@
                     <a href="controls.html" class="list-group-item list-group-item-action">Pages Controls <span
                             class="badge badge-light ml-2">Check</span></a>
                     <a href="setting.html" class="list-group-item list-group-item-action">Settings</a>
-                    <a href="login.html" class="list-group-item list-group-item-action mt-4">Logout</a>
+                    <a href="{{ route('mobile.logout') }}"
+                        class="list-group-item list-group-item-action mt-4">Logout</a>
                 </div>
             </div>
         </div>
@@ -401,53 +424,120 @@
 
 
 
-        <!-- footer -->
-        <div class="footer">
-            <div class="no-gutters">
-                <div class="col-auto mx-auto">
-                    <div class="row no-gutters justify-content-center">
-                        <div class="col-auto">
-                            <a href="{{ route('mobilelandingpage') }}" class="btn btn-link-default ">
-                                <i class="material-icons">home</i>
-                            </a>
-                        </div>
-                        <div class="col-auto">
-                            <a href="{{ route('mobileaktifitas') }}" class="btn btn-link-default ">
-                                <i class="material-icons">insert_chart_outline</i>
-                            </a>
-                        </div>
-                        <div class="col-auto">
-                            <a href="{{ route('mobilelistmasjid') }}" class="btn btn-link-default">
-                                <i class="material-icons">local_mall</i>
-                            </a>
-                        </div>
+         <style>
+        /* footer */
+
+
+        body {
+            margin: 0 0 55px 0;
+        }
+
+        .navi {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            height: 65px;
+            box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+            background-color: #ffffff;
+            display: flex;
+            overflow-x: auto;
+
+        }
+
+        .navi__link {
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex-grow: 1;
+            min-width: 50px;
+            overflow: hidden;
+            white-space: nowrap;
+            font-family: sans-serif;
+            font-size: 13px;
+            color: #8e8e8e;
+            text-decoration: none;
+            -webkit-tap-highlight-color: transparent;
+            transition: background-color 0.1s ease-in-out;
+        }
+
+        .navi__link:hover {
+            background-color: #eeeeee;
+        }
 
 
 
-                        <div class="col-auto">
-                            @if (Auth::check())
-                                {{-- SUDAH LOGIN --}}
-                                <a href="{{ route('mobilerequesttokenlanjut') }}"
-                                    class="btn btn-link-default active">
-                                    <i class="material-icons">star</i>
-                                </a>
-                            @else
-                                {{-- BELUM LOGIN --}}
-                                <a href="{{ route('mobile.login') }}" class="btn btn-link-default active">
-                                    <i class="material-icons">star</i>
-                                </a>
-                            @endif
-                        </div>
+        .navi__link--active {
+            color: #6b650d;
+        }
 
+        .navi__icon {
+            font-size: 24px;
+            color: #a7a7a7;
+            /* ⬅️ penting */
+        }
 
-                        <div class="col-auto">
-                            <a href="profile.html" class="btn btn-link-default">
-                                <i class="material-icons">account_circle</i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        .navi__icon--active {
+            font-size: 24px;
+            color: #07c511;
+            /* ⬅️ penting */
+        }
+
+        .navi__text {
+            font-size: 16px;
+            color: #a7a7a7;
+            /* ⬅️ penting */
+        }
+
+        .navi__text--active {
+            font-size: 16px;
+            color: #07c511;
+            /* ⬅️ penting */
+        }
+    </style>
+    <div class="footer">
+        <nav class="navi">
+
+            <a href="{{ route('mobilelandingpage') }}" class="navi__link ">
+                <i class="material-icons navi__icon">dashboard</i>
+                <span class="navi__text">Home</span>
+            </a>
+
+            <a href="{{ route('mobileaktifitas') }}" class="navi__link">
+                <i class="material-icons navi__icon">sports_kabaddi</i>
+                <span class="navi__text">Aktifitas</span>
+            </a>
+
+            <a href="{{ route('mobilelistmasjid') }}" class="navi__link">
+                <i class="material-icons navi__icon">mosque</i>
+                <span class="navi__text">List</span>
+            </a>
+
+            {{-- 🔐 MENU PROFILE (LOGIN AWARE) --}}
+            <a href="{{ Auth::check() ? route('mobilerequesttoken') : route('mobile.login') }}" class="navi__link">
+
+                <i class="material-icons navi__icon--active">
+                    {{ Auth::check() ? 'electric_bolt' : 'electric_bolt' }}
+                </i>
+
+                <span class="navi__text--active">
+                    Request
+                </span>
+            </a>
+            {{-- 🔐 MENU PROFILE (LOGIN AWARE) --}}
+            <a href="{{ Auth::check() ? route('mobileprofile') : route('mobile.login') }}" class="navi__link">
+
+                <i class="material-icons navi__icon">
+                    {{ Auth::check() ? 'person' : 'person' }}
+                </i>
+
+                <span class="navi__text">
+                    Profile
+                </span>
+            </a>
+
+        </nav>
         </div>
         <!-- footer ends -->
     </div>
