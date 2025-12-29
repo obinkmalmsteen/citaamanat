@@ -242,7 +242,7 @@ public function mobilelandingpage()
     [
         'label' => 'Profil',
         'icon'  => 'account_circle',
-        'route' => 'profile',
+        'route' => 'mobileprofile',
     ],
 ];
 
@@ -467,6 +467,28 @@ public function mobileaktifitas()
     // Kirim hasilnya ke view
     return view('mobilemasjid.mobileaktifitas', compact('jumlahUser'));
 }
+public function mobileprofile()
+{
+    $user = Auth::user();
+
+    if (!$user || empty($user->nama)) {
+        abort(403);
+    }
+
+    $id_pelanggan = $user->nama;
+
+    $jumlahUser = User::count();
+
+    $masjid = Masjid::where('id_pelanggan', $id_pelanggan)->get();
+
+    return view('mobilemasjid.mobileprofile', [
+        'masjid' => $masjid,
+        'jumlahUser' => $jumlahUser,
+        'title' => 'Data Masjid',
+        'menuAdminMasjid' => 'active',
+    ]);
+}
+
 public function mobilelistmasjid(Request $request)
 {
     $filter = $request->filter_pengajuan;

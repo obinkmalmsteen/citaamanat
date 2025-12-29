@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="Maxartkiller">
 
-    <title>Shop · GoFurniture</title>
+    <title>Profile</title>
 
     <!-- Material design icons CSS -->
     <link rel="stylesheet" href="mobile/vendor/materializeicon/material-icons.css">
@@ -42,50 +42,7 @@
     </div>
     <!-- Loader ends -->
 
-    <!-- sidebar -->
-    <div class="sidebar">
-        <div class="text-center">
-            <div class="figure-menu shadow">
-                <figure><img src="img/user1.png" alt=""></figure>
-            </div>
-            <h5 class="mb-1 ">Ammy Jahnson</h5>
-            <p class="text-mute small">Sydney, Australia</p>
-        </div>
-        <br>
-        <div class="row mx-0">
-            <div class="col">
-                <div class="card mb-3 border-0 shadow-sm bg-template-light">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col">
-                                <p class="text-secondary small mb-0">Balance Available</p>
-                                <h6 class="text-dark my-0">$2585.00</h6>
-                            </div>
-                            <div class="col-auto">
-                                <button class="btn btn-default button-rounded-36 shadow"><i
-                                        class="material-icons">add</i></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <h5 class="subtitle text-uppercase"><span>Menu</span></h5>
-                <div class="list-group main-menu">
-                    <a href="index.html" class="list-group-item list-group-item-action active">Store</a>
-                    <a href="notification.html" class="list-group-item list-group-item-action">Notification <span
-                            class="badge badge-dark text-white">2</span></a>
-                    <a href="all-products.html" class="list-group-item list-group-item-action">All Products</a>
-                    <a href="my-order.html" class="list-group-item list-group-item-action">My Order</a>
-                    <a href="profile.html" class="list-group-item list-group-item-action">My Profile</a>
-                    <a href="controls.html" class="list-group-item list-group-item-action">Pages Controls <span
-                            class="badge badge-light ml-2">Check</span></a>
-                    <a href="setting.html" class="list-group-item list-group-item-action">Settings</a>
-                    <a href="login.html" class="list-group-item list-group-item-action mt-4">Logout</a>
-                </div>
-            </div>
-        </div>
 
-    </div>
-    <!-- sidebar ends -->
 
     <div class="wrapper">
 
@@ -114,85 +71,44 @@
             </div>
         @endif
 
+
+        <!-- page content here -->
         <div class="container">
-            <!-- page content here -->
-            {{-- row 42 end --}}
-
-
-
-
-
             @php
                 use App\Models\Cabang;
 
                 $user = Auth::user();
             @endphp
-            @if ($user->jabatan === 'User')
-                {{-- panel aturan start --}}
-
-                <div class="row justify-content-center mt-4">
-                    <div class="col-md-8">
-
-                        <div class="card shadow-lg border-0 rounded-4">
-                            <div class="card-body p-4">
-                                <h4>TATA CARA PENGAJUAN & REALISASI TOKEN LISTRIK</h4>
-                                <p><b>1. Frekuensi Pengisian</b><br> Token Listrik (PraBayar maupun PascaBayar)
-                                    diberikan <b>1
-                                        Kali Setiap Bulan.</b></p>
-
-                                <p><b>2. Realisasi Pembelian Token </b></p>
-
-
-                                <table class="table table-bordered table-sm text-center">
-                                    <thead>
-                                        <tr>
-                                            <th>Pengajuan Tanggal</th>
-                                            <th>Realisasi Tanggal</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>1 – 7</td>
-                                            <td><b>10</b></td>
-                                        </tr>
-                                        <tr>
-                                            <td>8 – 17</td>
-                                            <td><b>20</b></td>
-                                        </tr>
-                                        <tr>
-                                            <td>18 – 27</td>
-                                            <td><b>30</b></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <p style="color: #d9534f; font-weight: bold;"> HARAP MENJADI PERHATIAN! <br>Dikarenakan
-                                    Kami masih Melakukan pembelian token secara manual, maka diharapkan untuk membuat
-                                    pengajuan paling dekat berjarak 3 hari
-                                    (H-3) sebelum jadwal realisasi, (Jangan terlalu mepet dengan tgl realisasi).</p>
-
-                                <p><b>3. Kewajiban DKM</b><br>DKM Wajib melakukan pengajuan token setiap bulan sebagai
-                                    bentuk
-                                    konfirmasi bahwa DKM masih Aktif.</p>
-                                <p><b>4. Menunggu Realisasi</b><br>Jika sudah mengajukan permintaan token diharapkan Cek
-                                    secara berkala ke akun anda, dan
-                                    segera isikan token jika sudah tersedia, karena jika tidak segera dipakai maka token
-                                    itu
-                                    akan Hangus dan jadi Mubadzir.</p>
-
-
-
-
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-                {{-- panel aturan end --}}
-            @endif
 
             @php $item = $masjid->first(); @endphp
             <div class="d-flex justify-content-center my-3">
+                @if (Auth::check() && Auth::user()->nama)
+                    <div class="card shadow-sm border-0 rounded-3 w-100" style="max-width: 420px;">
+                        <div class="card-body p-3">
+
+                            <div class="mb-3">
+                                <small class="text-muted d-block">ID Pelanggan</small>
+                                <span class="fw-semibold">{{ $item->id_pelanggan ?? '-' }}</span>
+                            </div>
+
+                            <div class="mb-3">
+                                <small class="text-muted d-block">Nama Ketua DKM</small>
+                                <span class="fw-semibold">{{ $item->nama_ketua_dkm ?? '-' }}</span>
+                            </div>
+
+                            <div class="mb-0">
+                                <small class="text-muted d-block">Telp Ketua DKM</small>
+                                <span class="fw-semibold">{{ $item->telp_ketua_dkm ?? '-' }}</span>
+                            </div>
+
+                        </div>
+                    </div>
+                @endif
+            </div>
+        </div>
+        <!-- page content ends -->
+
+ <div class="d-flex justify-content-center my-3">
                 @if (Auth::check() && Auth::user()->nama)
                     <a href="{{ route('mobilerequesttokenlanjut') }}" class="btn btn-primary w-50 py-3 text-center">
                         <p class="me-2">Lanjut Pengajuan Token</p>
@@ -200,8 +116,7 @@
                 @endif
 
             </div>
-            <!-- page content ends -->
-        </div>
+
         <a href="{{ route('mobile.logout') }}">Logout</a>
         <!-- footer -->
         <div class="footer">
@@ -223,15 +138,15 @@
                                 <i class="material-icons">local_mall</i>
                             </a>
                         </div>
-                        <div class="col-auto">
+                           <div class="col-auto">
                             @if (Auth::check())
                                 {{-- SUDAH LOGIN --}}
-                                <a href="{{ route('mobilerequesttoken') }}" class="btn btn-link-default active">
+                                <a href="{{ route('mobileprofile') }}" class="btn btn-link-default">
                                     <i class="material-icons">star</i>
                                 </a>
                             @else
                                 {{-- BELUM LOGIN --}}
-                                <a href="{{ route('mobile.login') }}" class="btn btn-link-default active">
+                                <a href="{{ route('mobile.login') }}" class="btn btn-link-default">
                                     <i class="material-icons">star</i>
                                 </a>
                             @endif

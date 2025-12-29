@@ -90,12 +90,14 @@ Route::get('/mobile-donatur', [DashboardController::class, 'mobiledonatur'])->na
 Route::get('/mobile-acara', [DashboardController::class, 'mobileacara'])->name('mobileacara');
 Route::get('/mobile-datamasjid', [DashboardController::class, 'mobiledatamasjid'])->name('mobiledatamasjid');
 Route::get('/mobile-listmasjid', [DashboardController::class, 'mobilelistmasjid'])->name('mobilelistmasjid');
+//Route::get('/mobile-profile', [DashboardController::class, 'mobileprofile'])->name('mobileprofile');
 Route::get('/mobile-registrasi', [MasjidController::class, 'showProvincesMobile'])->name('mobileregistrasi');
 Route::get('/registrasi', [MasjidController::class, 'showProvinces'])->name('registrasi');  
 //Route::get('/registrasiyangdisembunyikan', [MasjidController::class, 'showProvinces'])->name('registrasi');  obinkini route registrasi asli yang lagi dimatikan
 Route::get('/get-regencies/{province_id}', [MasjidController::class, 'getRegencies'])->name('getRegencies');
 Route::get('/get-districts/{regency_id}', [MasjidController::class, 'getDistricts'])->name('getDistricts');
 Route::get('/get-villages/{district_id}', [MasjidController::class, 'getVillages'])->name('getVillages');
+
 
 
 
@@ -121,6 +123,9 @@ Route::middleware('checkLogin')->group(function(){
     Route::resource('jenis_barang', JenisBarangController::class);
     Route::resource('barang', BarangController::class);
 
+// route untuk  lihat profile
+    Route::get('/mobile-profile', [DashboardController::class, 'mobileprofile'])
+        ->name('mobileprofile');
      // Mobile - Request Token
     Route::get('/mobile-request', [DashboardController::class, 'mobilerequesttoken'])
         ->name('mobilerequesttoken');

@@ -155,30 +155,11 @@
 
         <div class="container ">
 
-            <h6 class="subtitle">Program Terangi Beribu Masjid Dan Mushola</h6>
-
-            <!-- page content here -->
-            <div data-pagination='{"el": ".swiper-pagination"}' data-loop="true"
-                class="swiper-container swiper-init demo-swiper">
-                <div class="swiper-pagination"></div>
-                <div class="swiper-wrapper">
-                    <div style="background-image:url(mosque/fotomasjid/masjid001.jpg)" class="swiper-slide"></div>
-                    <div style="background-image:url(mosque/fotomasjid/masjid002.jpg)" class="swiper-slide"></div>
-                    <div style="background-image:url(mosque/fotomasjid/masjid003.jpg)" class="swiper-slide"></div>
-                    <div style="background-image:url(mosque/fotomasjid/masjid004.jpg)" class="swiper-slide"></div>
-                    <div style="background-image:url(mosque/fotomasjid/masjid005.jpg)" class="swiper-slide"></div>
-                    <div style="background-image:url(mosque/fotomasjid/masjid006.jpg)" class="swiper-slide"></div>
-                    <div style="background-image:url(mosque/fotomasjid/masjid007.jpg)" class="swiper-slide"></div>
-                    <div style="background-image:url(mosque/fotomasjid/masjid008.jpg)" class="swiper-slide"></div>
-                    <div style="background-image:url(mosque/fotomasjid/masjid009.jpg)" class="swiper-slide"></div>
-
-                </div>
-            </div>
+           
             <!-- page content ends -->
 
 
-            <h6 class="subtitle">Berbagai Aktifitas Kami Yang Sudah Terlaksana <a href="all-products.html"
-                    class="float-right small">View All</a></h6>
+           
 
         </div>
         <div class="container-fluid warna-background  text-white my-3">
@@ -186,7 +167,7 @@
                 <div class="container">
                     <div class="row  py-4 ">
                         <div class="col">
-                            <h1 class="text-uppercase mb-3">Halaman Tentang Kami Saat Ini Belum Tersedia</h1>
+                            <h1 class="text-uppercase mb-3">Halaman Ini Sedang dalam Maintenance</h1>
                            
                         </div>
                         <div class="col-5 col-md-3 col-lg-2 col-xl-2">

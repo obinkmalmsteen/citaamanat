@@ -192,6 +192,51 @@
 
             </div>
             {{-- row 2 end --}}
+{{-- FULL BLEED BACKGROUND --}}
+<div class="mobile-menu-full">
+    <div class="mobile-menu-inner">
+        <div class="mobile-menu-grid">
+
+            @foreach ($mobileMenus as $menu)
+                @php
+                    // Cek apakah route butuh login
+                    $route = $menu['route'];
+                    $needsLogin = in_array($route, [
+    'mobilerequesttoken',
+    'mobileprofile', // ⬅️ tambahkan di sini
+]);
+ // tambah route lain jika perlu
+
+                    // Tentukan link
+                    $href = $needsLogin
+                        ? (Auth::check() ? route($route) : route('mobile.login'))
+                        : (Route::has($route) ? route($route) : '#');
+                @endphp
+
+
+
+                <a href="{{ $href }}" class="mobile-menu-item">
+
+                    <div class="menu-icon">
+                        <span class="material-symbols-outlined">{{ $menu['icon'] }}</span>
+                    </div>
+
+                    <span class="menu-label">
+                        {{ $menu['label'] }}
+                    </span>
+
+                </a>
+            @endforeach
+
+        </div>
+    </div>
+</div>
+
+{{-- end menu icon --}}
+
+
+
+
 
             @php
                 $images = [
@@ -481,6 +526,12 @@ margin-bottom: 6px;
 
             {{-- row 42 end --}}
 
+    {{-- icon 12 --}}
+            
+
+
+
+
             <div class="row">
                 <div class="col-4">
                     <div class="card mb-3 border-0 shadow-sm">
@@ -622,33 +673,7 @@ margin-bottom: 6px;
 
 
 
-            {{-- icon 12 --}}
-            
-{{-- FULL BLEED BACKGROUND --}}
-<div class="mobile-menu-full">
-    <div class="mobile-menu-inner">
-        <div class="mobile-menu-grid">
-
-            @foreach ($mobileMenus as $menu)
-                <a href="{{ Route::has($menu['route']) ? route($menu['route']) : '#' }}"
-                   class="mobile-menu-item">
-
-                    <div class="menu-icon">
-                        <span class="material-symbols-outlined">{{ $menu['icon'] }}</span>
-                       
-                    </div>
-
-                    <span class="menu-label">
-                        {{ $menu['label'] }}
-                    </span>
-
-                </a>
-            @endforeach
-
-        </div>
-    </div>
-</div>
-{{-- end menu icon --}}
+        
 
 <style>
   /* background putih menembus kiri-kanan */
@@ -904,10 +929,20 @@ margin-bottom: 6px;
                         </div>
 
                         <div class="col-auto">
-                            <a href="profile.html" class="btn btn-link-default">
-                                <i class="material-icons">account_circle</i>
-                            </a>
+                            @if (Auth::check())
+                                {{-- SUDAH LOGIN --}}
+                                <a href="{{ route('mobileprofile') }}" class="btn btn-link-default">
+                                    <i class="material-icons">star</i>
+                                </a>
+                            @else
+                                {{-- BELUM LOGIN --}}
+                                <a href="{{ route('mobile.login') }}" class="btn btn-link-default">
+                                    <i class="material-icons">star</i>
+                                </a>
+                            @endif
                         </div>
+
+                       
                     </div>
                 </div>
             </div>

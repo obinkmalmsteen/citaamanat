@@ -169,7 +169,7 @@
                 <div class="container">
                     <div class="row  py-4 ">
                         <div class="col">
-                            <h1 class="text-uppercase mb-3">Halaman Acara Saat Ini Belum Tersedia</h1>
+                            <h1 class="text-uppercase mb-3">Halaman Ini Sedang dalam Maintenance</h1>
                            
                         </div>
                         <div class="col-5 col-md-3 col-lg-2 col-xl-2">

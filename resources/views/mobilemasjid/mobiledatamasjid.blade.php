@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="Maxartkiller">
 
-    <title>Shop · GoFurniture</title>
+    <title>Data Masjid</title>
 
     <!-- Material design icons CSS -->
     <link rel="stylesheet" href="mobile/vendor/materializeicon/material-icons.css">
@@ -155,13 +155,7 @@
 
         <div class="container ">
 
-            <h6 class="subtitle">Data Masjid</h6>
-
-            
-
-
-            <h6 class="subtitle">Berbagai Aktifitas Kami Yang Sudah Terlaksana <a href="all-products.html"
-                    class="float-right small">View All</a></h6>
+        
 
         </div>
         <div class="container-fluid warna-background  text-white my-3">
@@ -169,7 +163,7 @@
                 <div class="container">
                     <div class="row  py-4 ">
                         <div class="col">
-                            <h1 class="text-uppercase mb-3">Halaman Data Masjid Saat Ini Belum Tersedia</h1>
+                            <h1 class="text-uppercase mb-3">Halaman ini Sedang Dalam Maintenance</h1>
                            
                         </div>
                         <div class="col-5 col-md-3 col-lg-2 col-xl-2">
