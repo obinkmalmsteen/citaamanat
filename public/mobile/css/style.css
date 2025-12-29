@@ -2134,7 +2134,7 @@ pre {
 /* obink mobile header start */
 
 .mobile-header {
-    background-image: url('../img/tamama1.png'); /* gambar kamu */
+    background-image: url('/mobile/img/tamama1.png'); /* gambar kamu */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -2144,7 +2144,7 @@ pre {
 }
 
 .mobile-header-aktifitas {
-    background-image: url('../img/green-background.jpg'); /* gambar kamu */
+    background-image: url('/mobile/img/green-background.jpg'); /* gambar kamu */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -2155,7 +2155,7 @@ pre {
 /* obink mobile header start */
 
 .mobile-header-registrasi {
-    background-image: url('../img/mobileregistrasi.png'); /* gambar kamu */
+    background-image: url('/mobile/img/mobileregistrasi.png'); /* gambar kamu */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
