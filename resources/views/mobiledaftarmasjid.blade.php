@@ -250,10 +250,11 @@
                 <span class="navi__text">Home</span>
             </a>
 
-            <a href="{{ route('mobileaktifitas') }}" class="navi__link">
-                <i class="material-icons navi__icon">sports_kabaddi</i>
-                <span class="navi__text">Aktifitas</span>
+           <a href="{{ route('mobileregistrasi') }}" class="navi__link">
+                <i class="material-icons navi__icon">border_color</i>
+                <span class="navi__text">Registrasi</span>
             </a>
+
 
             <a href="{{ route('mobilelistmasjid') }}" class="navi__link">
                 <i class="material-icons navi__icon">mosque</i>

@@ -6,10 +6,10 @@
     <meta name="viewport"
         content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover, user-scalable=no">
     <meta name="description" content="">
-    <meta name="author" content="Maxartkiller">
+    <meta name="author" content="Obink">
 
-    <title>Profile</title>
-
+    <title>TAMAMA . Profile</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('mobile/img/favicontamama1.ico') }}">
     <!-- Material design icons CSS -->
     <link rel="stylesheet" href="mobile/vendor/materializeicon/material-icons.css">
 
@@ -25,9 +25,18 @@
     <!-- Custom styles for this template -->
     <link href="mobile/css/style.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ asset('mobile/css/mobile-menu.css') }}">
+
+
+
 </head>
 
 <body>
+    @include('partials.mobile-slide-menu')
     <!-- Loader -->
     <div class="row no-gutters vh-100 loader-screen">
         <div class="col align-self-center text-white text-center">
@@ -71,7 +80,78 @@
                 STATUS: BELUM LOGIN
             </div>
         @endif
+        <style>
+            .info-icon {
+                font-size: 32px;
+                color: #16a34a;
+                /* hijau */
+                margin-top: 2px;
+                flex-shrink: 0;
+            }
 
+            .info-item {
+                display: flex;
+                gap: 12px;
+                padding: 12px 0;
+            }
+
+            .info-item-noline {
+                display: flex;
+                gap: 12px;
+                padding: 12px 0;
+            }
+
+
+            .info-item:not(:last-child) {
+                border-bottom: 1px solid #d1d1d1;
+            }
+
+            .info-item-noline:not(:last-child) {}
+
+            .info-section {
+                background: #ffffff;
+                border-radius: 16px;
+                padding:  16px;
+                margin-bottom: 20px;
+                box-shadow: 0 6px 16px rgba(0, 0, 0, .06);
+            }
+
+.info-section:not(:last-child) {
+    margin-bottom: 20px;
+    border-bottom: 1px dashed #000000;
+}
+
+            .section-header {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                padding: 12px 0;
+                margin-bottom: 8px;
+                border-bottom: 1px solid #e5e7eb;
+            }
+
+            .section-icon {
+                font-size: 38px;
+                color: #f2a900;
+            }
+
+            .section-title {
+                font-size: 1.25rem;
+                font-weight: 700;
+                margin: 0;
+                color: #f2a900;
+            }
+            #mapShow {
+    position: relative;
+    z-index: 1;
+}
+.leaflet-pane,
+.leaflet-top,
+.leaflet-bottom {
+    z-index: 2 !important;
+}
+
+        </style>
 
         <!-- page content here -->
         <div class="container">
@@ -85,31 +165,205 @@
             <div class="d-flex justify-content-center my-3">
                 @if (Auth::check() && Auth::user()->nama)
                     <div class="card shadow-sm border-0 rounded-3 w-100" style="max-width: 420px;">
-                        <div class="card-body p-3">
+                        
+                            <div class="info-section">
+
+                                <div class="section-header">
+                                    <i class="material-icons section-icon">badge</i>
+                                    <h6 class="section-title">Data Pengurus Masjid</h6>
+                                </div>
 
 
-                            <div class="col-md-6 text-center">
-                                <label class="fw-bold d-block mb-2">Foto Masjid</label>
-                                @if ($item->foto_masjid)
-                                    <img src="{{ asset('public/storage/foto_masjid/' . $item->foto_masjid) }}"
-                                        class="img-fluid rounded shadow">
-                                @else
-                                    <p class="text-muted">Belum ada foto.</p>
-                                @endif
+                                <div class="col-md-6 text-center">
+                                    <label class="fw-bold d-block mb-2">Foto Masjid</label>
+                                    @if ($item->foto_masjid)
+                                        <img src="{{ asset('public/storage/foto_masjid/' . $item->foto_masjid) }}"
+                                            class="img-fluid rounded shadow">
+                                    @else
+                                        <p class="text-muted">Belum ada foto.</p>
+                                    @endif
+                                </div>
+
+
+                                <div class="info-item mb-1">
+                                    <span class="material-symbols-outlined info-icon mr-4">person</span>
+                                    <div>
+                                        <small class="text-muted d-block">Nama Ketua DKM</small>
+                                        <span class="fw-semibold">{{ $item->nama_ketua_dkm ?? '-' }}</span>
+                                    </div>
+                                </div>
+
+                                <div class="info-item mb-1">
+                                    <span class="material-symbols-outlined info-icon mr-4">call</span>
+                                    <div>
+                                        <small class="text-muted d-block">Telp Ketua DKM</small>
+                                        <span class="fw-semibold">{{ $item->telp_ketua_dkm ?? '-' }}</span>
+                                    </div>
+                                </div>
+
+                                <div class="info-item mb-1">
+                                    <span class="material-symbols-outlined info-icon mr-4">person</span>
+                                    <div>
+                                        <small class="text-muted d-block">Nama Penerima Informasi</small>
+                                        <span class="fw-semibold">{{ $item->penerima_informasi ?? '-' }}</span>
+                                    </div>
+                                </div>
+
+                                <div class="info-item mb-3">
+                                    <span class="material-symbols-outlined info-icon mr-4">phone</span>
+                                    <div>
+                                        <small class="text-muted d-block">Telp Penerima Informasi</small>
+                                        <span class="fw-semibold">{{ $item->telp_penerima_informasi ?? '-' }}</span>
+                                    </div>
+                                </div>
                             </div>
 
 
-                            <div class="mb-3">
-                                <small class="text-muted d-block">Nama Ketua DKM</small>
-                                <span class="fw-semibold">{{ $item->nama_ketua_dkm ?? '-' }}</span>
+                            {{-- section kedua --}}
+
+                            <div class="info-section">
+
+                                <div class="section-header">
+                                    <span class="material-icons section-icon">mosque</span>
+                                    <h6 class="section-title">Data Detail Bangunan</h6>
+                                </div>
+
+
+                                <div class="info-item mb-1">
+                                    <span class="material-symbols-outlined info-icon mr-4">home_work</span>
+                                    <div>
+                                        <small class="text-muted d-block">Jenis Bangunan</small>
+                                        <span class="fw-semibold">{{ $item->jenis_bangunan ?? '-' }}</span>
+                                    </div>
+                                </div>
+
+                                <div class="info-item mb-1">
+                                    <span class="material-symbols-outlined info-icon mr-4">label</span>
+                                    <div>
+                                        <small class="text-muted d-block">Nama</small>
+                                        <span class="fw-semibold">{{ $item->nama_masjid ?? '-' }}</span>
+                                    </div>
+                                </div>
+
+                                <div class="info-item mb-1">
+                                    <span class="material-symbols-outlined info-icon mr-4">location_on</span>
+                                    <div>
+                                        <small class="text-muted d-block">Alamat</small>
+                                        <span class="fw-semibold">{{ $item->alamat_lengkap ?? '-' }}</span>
+                                    </div>
+                                </div>
+
+                                <div class="info-item-noline  mb-1">
+                                    <i class="material-icons info-icon me-2  mr-4">location_on</i>
+                                    <div>
+                                        <small class="text-muted d-block">Kelurahan</small>
+                                        <span class="fw-semibold">
+                                            {{ $item->village->name ?? '-' }}
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="info-item-noline  mb-1">
+                                    <i class="material-icons info-icon me-2  mr-4">location_on</i>
+                                    <div>
+                                        <small class="text-muted d-block">Kecamatan</small>
+                                        <span class="fw-semibold">
+                                            {{ $item->district->name ?? '-' }}
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="info-item-noline  mb-1">
+                                    <i class="material-icons info-icon me-2  mr-4">location_on</i>
+                                    <div>
+                                        <small class="text-muted d-block">Kota/Kabupaten</small>
+                                        <span class="fw-semibold">
+                                            {{ $item->regency->name ?? '-' }}
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="info-item-noline  mb-1">
+                                    <i class="material-icons info-icon me-2  mr-4">location_on</i>
+                                    <div>
+                                        <small class="text-muted d-block">Provinsi</small>
+                                        <span class="fw-semibold">
+                                            {{ $item->province->name ?? '-' }}
+                                        </span>
+                                    </div>
+                                </div>
+
+
+                                <div class="text-center">
+                                    <label class="fw-bold d-block mb-3">
+                                        <i class="bi bi-geo-fill"></i> Lokasi Masjid di Peta
+                                    </label>
+                                    <div id="mapShow" class="map-square rounded shadow"></div>
+                                    <span class="fw-semibold">
+                                        {{ $item->map_lokasi_masjid ?? '-' }}
+                                    </span>
+                                </div>
                             </div>
 
-                            <div class="mb-0">
-                                <small class="text-muted d-block">Telp Ketua DKM</small>
-                                <span class="fw-semibold">{{ $item->telp_ketua_dkm ?? '-' }}</span>
+                            {{-- section ketiga --}}
+                            <div class="info-section">
+
+                                <div class="section-header">
+                                    <i class="material-icons section-icon">bolt</i>
+                                    <h6 class="section-title">Detail Listrik PLN Masjid</h6>
+                                </div>
+
+
+                                <div class="col-md-6 text-center">
+                                    <label class="fw-bold d-block mb-2">Foto Meteran Listrik</label>
+                                    @if ($item->foto_meteran_listrik)
+                                        <img src="{{ asset('public/storage/foto_masjid/' . $item->foto_meteran_listrik) }}"
+                                            class="img-fluid rounded shadow">
+                                    @else
+                                        <p class="text-muted">Belum ada foto.</p>
+                                    @endif
+                                </div>
+
+
+                                <div class="info-item mb-1">
+                                    <span class="material-symbols-outlined info-icon mr-4">bolt</span>
+                                    <div>
+                                        <small class="text-muted d-block">ID Pelanggan</small>
+                                        <span class="fw-semibold">{{ $item->id_pelanggan ?? '-' }}</span>
+                                    </div>
+                                </div>
+
+                                <div class="info-item mb-1">
+                                    <span class="material-symbols-outlined info-icon mr-4">recent_patient</span>
+                                    <div>
+                                        <small class="text-muted d-block">Nama Pelanggan</small>
+                                        <span class="fw-semibold">{{ $item->nama_pelanggan ?? '-' }}</span>
+                                    </div>
+                                </div>
+
+                                <div class="info-item mb-1">
+                                    <span class="material-symbols-outlined info-icon mr-4">electric_meter</span>
+                                    <div>
+                                        <small class="text-muted d-block">Jenis Pembayaran Listrik</small>
+                                        <span class="fw-semibold">{{ $item->jenis_layanan ?? '-' }}</span>
+                                    </div>
+                                </div>
+
+                                <div class="info-item mb-3">
+                                    <span class="material-symbols-outlined info-icon mr-4">payments</span>
+                                    <div>
+                                        <small class="text-muted d-block">Estimasi Biaya Perbulan</small>
+                                        <span
+                                            class="fw-semibold">{{ 'Rp ' . number_format($item->estimasi_biaya, 0, ',', '.') }}</span>
+
+                                    </div>
+                                </div>
+                                <div class="info-item mb-1">
+                                    <span class="material-symbols-outlined info-icon mr-4">quickreply</span>
+                                    <div>
+                                        <small class="text-muted d-block">Total Pengajuan Token</small>
+                                        <span class="fw-semibold">{{ ($item->total_pengajuan ?? '-') . ' Kali' }}</span>
+                                    </div>
+                                </div>
                             </div>
 
-                        </div>
 
                     </div>
 
@@ -127,8 +381,15 @@
                 @endif
 
             </div> --}}
+<div class="d-flex justify-content-center my-3">
+                @if (Auth::check() && Auth::user()->nama)
+                    <a href="{{ route('mobile.logout') }}" class="btn btn-grey w-50 py-3 text-center">
+                        <p class="me-2">Logout</p>
+                    </a>
+                @endif
 
-        <a href="{{ route('mobile.logout') }}">Logout</a>
+            </div>
+        {{-- <a href="{{ route('mobile.logout') }}">Logout</a> --}}
         <!-- footer -->
         <style>
             /* footer */
@@ -201,27 +462,40 @@
                 color: #07c511;
                 /* ⬅️ penting */
             }
+
+            .map-square {
+                width: 500px;
+                height: 400px;
+                border-radius: 12px;
+                border: 2px solid #ccc;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            }
+
+            @media (max-width: 500px) {
+                .map-square {
+                    width: 100%;
+                    height: 300px;
+                }
+            }
         </style>
         <div class="footer">
             <nav class="navi">
 
-                <a href="{{ route('mobilelandingpage') }}" class="navi__link ">
+                <a href="{{ route('mobilelandingpage') }}" class="navi__link">
                     <i class="material-icons navi__icon">dashboard</i>
                     <span class="navi__text">Home</span>
                 </a>
 
-                <a href="{{ route('mobileaktifitas') }}" class="navi__link">
-                    <i class="material-icons navi__icon">sports_kabaddi</i>
-                    <span class="navi__text">Aktifitas</span>
-                </a>
+
 
                 <a href="{{ route('mobilelistmasjid') }}" class="navi__link">
                     <i class="material-icons navi__icon">mosque</i>
-                    <span class="navi__text">List</span>
+                    <span class="navi__text">List Masjid</span>
                 </a>
 
                 {{-- 🔐 MENU PROFILE (LOGIN AWARE) --}}
-                <a href="{{ Auth::check() ? route('mobilerequesttoken') : route('mobile.login') }}" class="navi__link">
+                <a href="{{ Auth::check() ? route('mobilerequesttoken') : route('mobile.login') }}"
+                    class="navi__link">
 
                     <i class="material-icons navi__icon">
                         {{ Auth::check() ? 'electric_bolt' : 'electric_bolt' }}
@@ -231,8 +505,12 @@
                         Request
                     </span>
                 </a>
+                <a href="{{ route('mobilehelp') }}" class="navi__link">
+                    <i class="material-icons navi__icon">help</i>
+                    <span class="navi__text">F.A.Q</span>
+                </a>
                 {{-- 🔐 MENU PROFILE (LOGIN AWARE) --}}
-                <a href="{{ Auth::check() ? route('mobileprofile') : route('mobile.login') }}" class="navi__link">
+                <a href="{{ Auth::check() ? route('mobileprofile') : route('mobile.login') }}" class="navi__link navi__link--active">
 
                     <i class="material-icons navi__icon--active">
                         {{ Auth::check() ? 'person' : 'person' }}
@@ -243,6 +521,7 @@
                     </span>
                 </a>
 
+
             </nav>
         </div>
 
@@ -252,7 +531,7 @@
 
 
 
-    
+
     <!-- Modal -->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
@@ -292,7 +571,28 @@
 
         });
     </script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var coordString = "{{ $item->map_lokasi_masjid }}";
+            var lat = -7.7956;
+            var lng = 110.3695;
 
+            if (coordString && coordString.includes(',')) {
+                var parts = coordString.split(',');
+                lat = parseFloat(parts[0]);
+                lng = parseFloat(parts[1]);
+            }
+
+            var map = L.map('mapShow').setView([lat, lng], 15);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+                attribution: '© OpenStreetMap'
+            }).addTo(map);
+            L.marker([lat, lng]).addTo(map);
+        });
+    </script>
 </body>
 
 </html>

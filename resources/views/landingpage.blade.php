@@ -7,7 +7,8 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
-
+ 
+<link rel="icon" type="image/x-icon" href="{{ asset('mobile/img/favicontamama1.ico') }}">
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -692,9 +693,12 @@
 
         /* Responsif */
         @media (max-width: 640px) {
-            .donatur-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
+           .donatur-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 item per baris */
+    gap: 12px;
+}
+
         }
 
         /* Wrapper fix circle */

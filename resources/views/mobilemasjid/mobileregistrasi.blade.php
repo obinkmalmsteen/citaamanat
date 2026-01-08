@@ -6,10 +6,10 @@
     <meta name="viewport"
         content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover, user-scalable=no">
     <meta name="description" content="">
-    <meta name="author" content="Maxartkiller">
+    <meta name="author" content="Obink">
 
-    <title>Cita Amanat martadiredja</title>
-
+    <title>TAMAMA . Registrasi</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('mobile/img/favicontamama1.ico') }}">
     <!-- Material design icons CSS -->
     <link rel="stylesheet" href="mobile/vendor/materializeicon/material-icons.css">
 
@@ -30,9 +30,16 @@
 
     <!-- Custom styles for this template -->
     <link href="mobile/css/style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('mobile/css/mobile-menu.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
 </head>
 
 <body>
+    @include('partials.mobile-slide-menu')
+
     <div class="row no-gutters vh-100 loader-screen">
         <div class="col align-self-center text-white text-center">
             <img src="mobile/img/logoyayasanwhite.png" width="100" height="100" alt="logo">
@@ -97,9 +104,17 @@
                 <div class="col text-center">
                     <h6 class=" mt-3 text-white">Cita Amanat Martadiredja</h6>
                 </div>
-                <div class="col-auto">
-                    <a href="profile.html" class="btn  btn-link text-white"><i
-                            class="material-icons">account_circle</i></a>
+                <div class="col-auto d-flex align-items-center">
+
+                    @auth
+                        <span class="user-name text-white">
+                            {{ Auth::user()->masjid->nama_ketua_dkm ?? Auth::user()->nama }}
+                        </span>
+
+                    @endauth
+                    <a href="#" class="btn btn-link text-white p-0 me-1">
+                        <i class="material-icons">account_circle</i>
+                    </a>
                 </div>
             </div>
         </div>
@@ -172,8 +187,8 @@
                 <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
 
                     <!-- STEP 1 -->
-                    <a class="nav-item nav-link text-left active" id="nav-step1-tab" data-toggle="tab" href="#nav-step1"
-                        role="tab" aria-controls="nav-step1" aria-selected="true">
+                    <a class="nav-item nav-link text-left active" id="nav-step1-tab" data-toggle="tab"
+                        href="#nav-step1" role="tab" aria-controls="nav-step1" aria-selected="true">
 
                         <div class="row">
                             <div class="col-auto align-self-center pr-1">
@@ -625,38 +640,123 @@
             </form>
         </div>
 
+        <style>
+            /* footer */
+
+
+            body {
+                margin: 0 0 55px 0;
+            }
+
+            .navi {
+                position: fixed;
+                bottom: 0;
+                width: 100%;
+                height: 65px;
+                box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+                background-color: #ffffff;
+                display: flex;
+                overflow-x: auto;
+
+            }
+
+            .navi__link {
+
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                flex-grow: 1;
+                min-width: 50px;
+                overflow: hidden;
+                white-space: nowrap;
+                font-family: sans-serif;
+                font-size: 13px;
+                color: #8e8e8e;
+                text-decoration: none;
+                -webkit-tap-highlight-color: transparent;
+                transition: background-color 0.1s ease-in-out;
+            }
+
+            .navi__link:hover {
+                background-color: #eeeeee;
+            }
+
+
+
+            .navi__link--active {
+                color: #6b650d;
+            }
+
+            .navi__icon {
+                font-size: 24px;
+                color: #a7a7a7;
+                /* ⬅️ penting */
+            }
+
+            .navi__icon--active {
+                font-size: 24px;
+                color: #07c511;
+                /* ⬅️ penting */
+            }
+
+            .navi__text {
+                font-size: 16px;
+                color: #a7a7a7;
+                /* ⬅️ penting */
+            }
+
+            .navi__text--active {
+                font-size: 16px;
+                color: #07c511;
+                /* ⬅️ penting */
+            }
+        </style>
         <div class="footer">
-            <div class="no-gutters">
-                <div class="col-auto mx-auto">
-                    <div class="row no-gutters justify-content-center">
-                         <div class="col-auto">
-                            <a href="{{ route('mobilelandingpage') }}" class="btn btn-link-default active">
-                                <i class="material-icons">home</i>
-                            </a>
-                        </div>
-                        <div class="col-auto">
-                            <a href="{{ route('mobileaktifitas') }}" class="btn btn-link-default ">
-                                <i class="material-icons">insert_chart_outline</i>
-                            </a>
-                        </div>
-                        <div class="col-auto">
-                            <a href="{{ route('mobilelistmasjid') }}" class="btn btn-link-default">
-                                <i class="material-icons">local_mall</i>
-                            </a>
-                        </div>
-                        <div class="col-auto">
-                            <a href="{{ route('mobilerequesttoken') }}" class="btn btn-link-default">
-                                <i class="material-icons">star</i>
-                            </a>
-                        </div>
-                        <div class="col-auto">
-                            <a href="profile.html" class="btn btn-link-default">
-                                <i class="material-icons">account_circle</i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <nav class="navi">
+
+                <a href="{{ route('mobilelandingpage') }}" class="navi__link">
+                    <i class="material-icons navi__icon">dashboard</i>
+                    <span class="navi__text">Home</span>
+                </a>
+
+
+
+                <a href="{{ route('mobilelistmasjid') }}" class="navi__link">
+                    <i class="material-icons navi__icon">mosque</i>
+                    <span class="navi__text">List Masjid</span>
+                </a>
+
+                {{-- 🔐 MENU PROFILE (LOGIN AWARE) --}}
+                <a href="{{ Auth::check() ? route('mobilerequesttoken') : route('mobile.login') }}"
+                    class="navi__link">
+
+                    <i class="material-icons navi__icon">
+                        {{ Auth::check() ? 'electric_bolt' : 'electric_bolt' }}
+                    </i>
+
+                    <span class="navi__text">
+                        Request
+                    </span>
+                </a>
+                <a href="{{ route('mobilehelp') }}" class="navi__link">
+                    <i class="material-icons navi__icon">help</i>
+                    <span class="navi__text">F.A.Q</span>
+                </a>
+                {{-- 🔐 MENU PROFILE (LOGIN AWARE) --}}
+                <a href="{{ Auth::check() ? route('mobileprofile') : route('mobile.login') }}" class="navi__link">
+
+                    <i class="material-icons navi__icon">
+                        {{ Auth::check() ? 'person' : 'person' }}
+                    </i>
+
+                    <span class="navi__text">
+                        Profile
+                    </span>
+                </a>
+
+
+            </nav>
         </div>
     </div>
 
@@ -1218,7 +1318,7 @@
             }
         });
     </script>
-<script>
+    <script>
         // Ambil semua input HP
         const hpInputs = document.querySelectorAll(".input-hp");
 
@@ -1254,9 +1354,6 @@
                 }
             });
         });
-
-       
-        
     </script>
 
 

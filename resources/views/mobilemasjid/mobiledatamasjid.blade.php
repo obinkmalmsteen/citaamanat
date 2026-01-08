@@ -6,10 +6,10 @@
     <meta name="viewport"
         content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover, user-scalable=no">
     <meta name="description" content="">
-    <meta name="author" content="Maxartkiller">
+    <meta name="author" content="Obink">
 
-    <title>Data Masjid</title>
-
+    <title>TAMAMA . Data Masjid</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('mobile/img/favicontamama1.ico') }}">
     <!-- Material design icons CSS -->
     <link rel="stylesheet" href="mobile/vendor/materializeicon/material-icons.css">
 
@@ -24,7 +24,13 @@
 
     <!-- Custom styles for this template -->
     <link href="mobile/css/style.css" rel="stylesheet">
-     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ asset('mobile/css/mobile-menu.css') }}">
+
 </head>
 <style>
     .swiper-container {
@@ -34,7 +40,7 @@
 </style>
 
 <body>
-
+    @include('partials.mobile-slide-menu')
 
     <div class="row no-gutters  vh-100 loader-screen">
         <div class="col align-self-center text-white text-center">
@@ -178,7 +184,7 @@
 
         <div class="container ">
 
-        
+
 
         </div>
         <div class="container-fluid warna-background  text-white my-3">
@@ -187,7 +193,7 @@
                     <div class="row  py-4 ">
                         <div class="col">
                             <h1 class="text-uppercase mb-3">Halaman ini Sedang Dalam Maintenance</h1>
-                           
+
                         </div>
                         <div class="col-5 col-md-3 col-lg-2 col-xl-2">
                             <img src="img/sofa1.png" alt="" class="mw-100 mt-3">
@@ -201,50 +207,53 @@
             </div>
         </div>
 
-        
+
         <div class="footer">
-        <nav class="navi">
+            <nav class="navi">
 
-            <a href="{{ route('mobilelandingpage') }}" class="navi__link ">
-                <i class="material-icons navi__icon">dashboard</i>
-                <span class="navi__text">Home</span>
-            </a>
+                <a href="{{ route('mobilelandingpage') }}" class="navi__link navi__link">
+                    <i class="material-icons navi__icon">dashboard</i>
+                    <span class="navi__text">Home</span>
+                </a>
 
-            <a href="{{ route('mobileaktifitas') }}" class="navi__link">
-                <i class="material-icons navi__icon">person</i>
-                <span class="navi__text">Aktifitas</span>
-            </a>
 
-            <a href="{{ route('mobilelistmasjid') }}" class="navi__link">
-                <i class="material-icons navi__icon">devices</i>
-                <span class="navi__text">List</span>
-            </a>
 
-            {{-- 🔐 MENU PROFILE (LOGIN AWARE) --}}
-            <a href="{{ Auth::check() ? route('mobilerequesttoken') : route('mobile.login') }}" class="navi__link">
+                <a href="{{ route('mobilelistmasjid') }}" class="navi__link">
+                    <i class="material-icons navi__icon">mosque</i>
+                    <span class="navi__text">List Masjid</span>
+                </a>
 
-                <i class="material-icons navi__icon">
-                    {{ Auth::check() ? 'settings' : 'bolt' }}
-                </i>
+                {{-- 🔐 MENU PROFILE (LOGIN AWARE) --}}
+                <a href="{{ Auth::check() ? route('mobilerequesttoken') : route('mobile.login') }}"
+                    class="navi__link">
 
-                <span class="navi__text">
-                    Request
-                </span>
-            </a>
-            {{-- 🔐 MENU PROFILE (LOGIN AWARE) --}}
-            <a href="{{ Auth::check() ? route('mobileprofile') : route('mobile.login') }}" class="navi__link">
+                    <i class="material-icons navi__icon">
+                        {{ Auth::check() ? 'electric_bolt' : 'electric_bolt' }}
+                    </i>
 
-                <i class="material-icons navi__icon">
-                    {{ Auth::check() ? 'settings' : 'account_circle' }}
-                </i>
+                    <span class="navi__text">
+                        Request
+                    </span>
+                </a>
+                <a href="{{ route('mobilehelp') }}" class="navi__link">
+                    <i class="material-icons navi__icon">help</i>
+                    <span class="navi__text">F.A.Q</span>
+                </a>
+                {{-- 🔐 MENU PROFILE (LOGIN AWARE) --}}
+                <a href="{{ Auth::check() ? route('mobileprofile') : route('mobile.login') }}" class="navi__link">
 
-                <span class="navi__text">
-                    Profile
-                </span>
-            </a>
+                    <i class="material-icons navi__icon">
+                        {{ Auth::check() ? 'person' : 'person' }}
+                    </i>
 
-        </nav>
-    </div>
+                    <span class="navi__text">
+                        Profile
+                    </span>
+                </a>
+
+
+            </nav>
+        </div>
     </div>
 
     <!-- notification -->

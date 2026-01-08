@@ -6,10 +6,13 @@
     <meta name="viewport"
         content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover, user-scalable=no">
     <meta name="description" content="">
-    <meta name="author" content="Maxartkiller">
+    <meta name="author" content="Obink">
 
-    <title>Shop · GoFurniture</title>
+    <title>TAMAMA . Tentang kami</title>
 
+
+
+    <link rel="icon" type="image/x-icon" href="{{ asset('mobile/img/favicontamama1.ico') }}">
     <!-- Material design icons CSS -->
     <link rel="stylesheet" href="mobile/vendor/materializeicon/material-icons.css">
 
@@ -24,6 +27,14 @@
 
     <!-- Custom styles for this template -->
     <link href="mobile/css/style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Custom styles for this template -->
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ asset('mobile/css/mobile-menu.css') }}">
 </head>
 <style>
     .swiper-container {
@@ -33,7 +44,7 @@
 </style>
 
 <body>
-
+    @include('partials.mobile-slide-menu')
 
     <div class="row no-gutters  vh-100 loader-screen">
         <div class="col align-self-center text-white text-center">
@@ -135,15 +146,23 @@
                 </div>
                 <div class="col text-center"><img src="mobile/img/logo tamamama.png" alt="" class="header-logo">
                 </div>
-                <div class="col-auto">
-                    <a href="profile.html" class="btn  btn-link text-dark"><i
-                            class="material-icons">account_circle</i></a>
+                <div class="col-auto d-flex align-items-center">
+
+                    @auth
+                        <span class="user-name text-white">
+                            {{ Auth::user()->masjid->nama_ketua_dkm ?? Auth::user()->nama }}
+                        </span>
+
+                    @endauth
+                    <a href="#" class="btn btn-link text-white p-0 me-1">
+                        <i class="material-icons">account_circle</i>
+                    </a>
                 </div>
             </div>
         </div>
 
         <!-- MOBILE HEADER (Background image + text di dalam gambar) -->
-        <div class="mobile-header-aktifitas text-white d-block d-md-none">
+        <div class="mobile-header-tentangkami text-white d-block d-md-none">
 
             <div class="content-wrapper">
                 <p class="text-uppercase  mb-1">Tentang kami</p>
@@ -152,23 +171,89 @@
         </div>
 
 
-
         <div class="container ">
 
-           
-            <!-- page content ends -->
 
 
-           
+            <div class="row">
+                <div class="col-12 col-lg-6">
+                    <div class="card shadow-sm border-0 mb-4">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-3 col-md-2 col-lg-2 align-self-center">
+                                    <figure class="product-image"><img src="img/sofa2.png" alt=""
+                                            class=""></figure>
+                                </div>
+                                <div class="col">
+                                    <button class="btn btn-sm btn-link p-0 float-right"><i
+                                            class="material-icons md-18">favorite_outline</i></button>
+                                    <a href="#" class="text-dark mb-1 h6 d-block">VISI</a>
+                                    <p>Menjadi Pelopor Gerakan Filantropi yang memberdayakan Umat untuk Kemandirian dan
+                                        kemulian dalam
+                                        bingkai Keimanan dan Ketaqwaan.</p>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <br>
+            <div class="row">
+                <div class="col-12 col-lg-6">
+                    <div class="card shadow-sm border-0 mb-4">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-3 col-md-2 col-lg-2 align-self-center">
+                                    <figure class="product-image"><img src="img/sofa2.png" alt=""
+                                            class=""></figure>
+                                </div>
+                                <div class="col">
+                                    <button class="btn btn-sm btn-link p-0 float-right"><i
+                                            class="material-icons md-18">favorite_outline</i></button>
+                                    <a href="#" class="text-dark mb-1 h6 d-block">MISI</a>
+                                    <ul>
+                                        <li><i class="justify"></i> <span>Mewujudkan sarana ibadah yang layak,
+                                                nyaman, dan
+                                                berkelanjutan melalui revitalisasi insfrastruktur Masjid dan
+                                                Mushola.</span></li>
+                                        <li><i class="justify"></i> <span>Meningkatkan kualitas kehidupan seorang
+                                                Ibu dan
+                                                keluarga sebagai pilar utama peradaban melalui program Santunan
+                                                dalam bentuk uang
+                                                dan sembako (Nyaah ka Indung).</span></li>
+                                        <li><i class="justify"></i> <span>membangun jejaring kolaborasi (mitra)
+                                                dengan
+                                                berbagai pihak untuk memperluas dampak kebaikan dan keberlanjutan
+                                                program.</span>
+                                        </li>
+                                        <li><i class="justify"></i> <span>Menjaga Amanah dan menyalurkan donasi
+                                                dengan
+                                                prinsip transparansi, akuntabilitas dan profesional.</span></li>
+                                    </ul>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
 
         </div>
+        <!-- page content ends -->
         <div class="container-fluid warna-background  text-white my-3">
             <div class="row">
                 <div class="container">
                     <div class="row  py-4 ">
                         <div class="col">
                             <h1 class="text-uppercase mb-3">Halaman Ini Sedang dalam Maintenance</h1>
-                           
+
                         </div>
                         <div class="col-5 col-md-3 col-lg-2 col-xl-2">
                             <img src="img/sofa1.png" alt="" class="mw-100 mt-3">
@@ -182,48 +267,123 @@
             </div>
         </div>
 
-       
-        <div class="footer">
-            <div class="no-gutters">
-                <div class="col-auto mx-auto">
-                    <div class="row no-gutters justify-content-center">
-                        <div class="col-auto">
-                            <a href="{{ route('mobilelandingpage') }}" class="btn btn-link-default ">
-                                <i class="material-icons">home</i>
-                            </a>
-                        </div>
-                        <div class="col-auto">
-                            <a href="{{ route('mobileaktifitas') }}" class="btn btn-link-default active">
-                                <i class="material-icons">insert_chart_outline</i>
-                            </a>
-                        </div>
-                        <div class="col-auto">
-                            <a href="{{ route('mobilelistmasjid') }}" class="btn btn-link-default">
-                                <i class="material-icons">local_mall</i>
-                            </a>
-                        </div>
-                        <div class="col-auto">
-                            @if (Auth::check())
-                                {{-- SUDAH LOGIN --}}
-                                <a href="{{ route('mobilerequesttoken') }}" class="btn btn-link-default">
-                                    <i class="material-icons">favorite</i>
-                                </a>
-                            @else
-                                {{-- BELUM LOGIN --}}
-                                <a href="{{ route('mobile.login') }}" class="btn btn-link-default">
-                                    <i class="material-icons">bolt</i>
-                                </a>
-                            @endif
-                        </div>
+        <style>
+            /* footer */
 
-                        <div class="col-auto">
-                            <a href="profile.html" class="btn btn-link-default">
-                                <i class="material-icons">account_circle</i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
+            body {
+                margin: 0 0 55px 0;
+            }
+
+            .navi {
+                position: fixed;
+                bottom: 0;
+                width: 100%;
+                height: 65px;
+                box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+                background-color: #ffffff;
+                display: flex;
+                overflow-x: auto;
+
+            }
+
+            .navi__link {
+
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                flex-grow: 1;
+                min-width: 50px;
+                overflow: hidden;
+                white-space: nowrap;
+                font-family: sans-serif;
+                font-size: 13px;
+                color: #8e8e8e;
+                text-decoration: none;
+                -webkit-tap-highlight-color: transparent;
+                transition: background-color 0.1s ease-in-out;
+            }
+
+            .navi__link:hover {
+                background-color: #eeeeee;
+            }
+
+
+
+            .navi__link--active {
+                color: #6b650d;
+            }
+
+            .navi__icon {
+                font-size: 24px;
+                color: #a7a7a7;
+                /* ⬅️ penting */
+            }
+
+            .navi__icon--active {
+                font-size: 24px;
+                color: #07c511;
+                /* ⬅️ penting */
+            }
+
+            .navi__text {
+                font-size: 16px;
+                color: #a7a7a7;
+                /* ⬅️ penting */
+            }
+
+            .navi__text--active {
+                font-size: 16px;
+                color: #07c511;
+                /* ⬅️ penting */
+            }
+        </style>
+        <div class="footer">
+            <nav class="navi">
+
+                <a href="{{ route('mobilelandingpage') }}" class="navi__link">
+                    <i class="material-icons navi__icon">dashboard</i>
+                    <span class="navi__text">Home</span>
+                </a>
+
+
+
+                <a href="{{ route('mobilelistmasjid') }}" class="navi__link">
+                    <i class="material-icons navi__icon">mosque</i>
+                    <span class="navi__text">List Masjid</span>
+                </a>
+
+                {{-- 🔐 MENU PROFILE (LOGIN AWARE) --}}
+                <a href="{{ Auth::check() ? route('mobilerequesttoken') : route('mobile.login') }}"
+                    class="navi__link">
+
+                    <i class="material-icons navi__icon">
+                        {{ Auth::check() ? 'electric_bolt' : 'electric_bolt' }}
+                    </i>
+
+                    <span class="navi__text">
+                        Request
+                    </span>
+                </a>
+                <a href="{{ route('mobilehelp') }}" class="navi__link">
+                    <i class="material-icons navi__icon">help</i>
+                    <span class="navi__text">F.A.Q</span>
+                </a>
+                {{-- 🔐 MENU PROFILE (LOGIN AWARE) --}}
+                <a href="{{ Auth::check() ? route('mobileprofile') : route('mobile.login') }}" class="navi__link">
+
+                    <i class="material-icons navi__icon">
+                        {{ Auth::check() ? 'person' : 'person' }}
+                    </i>
+
+                    <span class="navi__text">
+                        Profile
+                    </span>
+                </a>
+
+
+            </nav>
         </div>
     </div>
 

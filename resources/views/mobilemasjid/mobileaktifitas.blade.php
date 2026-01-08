@@ -6,10 +6,10 @@
     <meta name="viewport"
         content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover, user-scalable=no">
     <meta name="description" content="">
-    <meta name="author" content="Maxartkiller">
+    <meta name="author" content="Obink">
 
-    <title>Shop · GoFurniture</title>
-
+    <title>TAMAMA ·Aktifitas</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('mobile/img/favicontamama1.ico') }}">
     <!-- Material design icons CSS -->
     <link rel="stylesheet" href="mobile/vendor/materializeicon/material-icons.css">
 
@@ -24,7 +24,12 @@
 
     <!-- Custom styles for this template -->
     <link href="mobile/css/style.css" rel="stylesheet">
-     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ asset('mobile/css/mobile-menu.css') }}">
 </head>
 <style>
     .swiper-container {
@@ -35,7 +40,7 @@
 
 <body>
 
-
+    @include('partials.mobile-slide-menu')
     <div class="row no-gutters  vh-100 loader-screen">
         <div class="col align-self-center text-white text-center">
             <img src="mobile/img/logo_tamama_putih.png" width="100" height="100" alt="logo">
@@ -158,9 +163,17 @@
                 </div>
                 <div class="col text-center"><img src="mobile/img/logo tamamama.png" alt="" class="header-logo">
                 </div>
-                <div class="col-auto">
-                    <a href="profile.html" class="btn  btn-link text-dark"><i
-                            class="material-icons">account_circle</i></a>
+                <div class="col-auto d-flex align-items-center">
+
+                    @auth
+                        <span class="user-name text-white">
+                            {{ Auth::user()->masjid->nama_ketua_dkm ?? Auth::user()->nama }}
+                        </span>
+
+                    @endauth
+                    <a href="#" class="btn btn-link text-white p-0 me-1">
+                        <i class="material-icons">account_circle</i>
+                    </a>
                 </div>
             </div>
         </div>
@@ -169,8 +182,8 @@
         <div class="mobile-header-aktifitas text-white d-block d-md-none">
 
             <div class="content-wrapper">
-                <p class="text-uppercase  mb-1">Aktifitas</p>
-                <p class="text-uppercase mb-1">Cita Amanat Martadiredja</p>
+                <p class="text-uppercase  mb-1">Aktifitas Kami</p>
+
             </div>
         </div>
 
@@ -198,7 +211,52 @@
                 </div>
             </div>
             <!-- page content ends -->
-
+            <div class="container mb-3">
+                <div class="row">
+                    <div class="col text-center">
+                        <h5 class="subtitle mb-1">Most Exciting Feature</h5>
+                        <p class="text-secondary">Take a look at our services</p>
+                    </div>
+                </div>
+                <div class="row text-center mt-4">
+                    <div class="col-6 col-md-3">
+                        <div class="card shadow-sm border-0 mb-4">
+                            <div class="card-body">
+                                <i class="material-icons mb-4 md-36 text-template">mosque</i>
+                                <h2>46</h2>
+                                <p class="text-secondary text-mute">Perbaikan Beribu Masjid </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="card shadow-sm border-0 mb-4">
+                            <div class="card-body">
+                                <i class="material-icons mb-4 md-36 text-template">elderly_woman</i>
+                                <h2>35</h2>
+                                <p class="text-secondary text-mute">Nyaah Ka Indung</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="card shadow-sm border-0 mb-4">
+                            <div class="card-body">
+                                <i class="material-icons mb-4 md-36 text-template">local_florist</i>
+                                <h2>12</h2>
+                                <p class="text-secondary text-mute">Muadzin Cilik</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="card shadow-sm border-0 mb-4">
+                            <div class="card-body">
+                                <i class="material-icons mb-4 md-36 text-template">books</i>
+                                <h2>14</h2>
+                                <p class="text-secondary text-mute">Apresiasi Guru Ngaji</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <h6 class="subtitle">Berbagai Aktifitas Kami Yang Sudah Terlaksana <a href="all-products.html"
                     class="float-right small">View All</a></h6>
@@ -271,7 +329,7 @@
                     <div class="row  py-4 ">
                         <div class="col">
                             <h1 class="text-uppercase mb-3">Aktifitas</h1>
-                           
+
                         </div>
                         <div class="col-5 col-md-3 col-lg-2 col-xl-2">
                             <img src="img/sofa1.png" alt="" class="mw-100 mt-3">
@@ -390,53 +448,8 @@
                 </div>
             </div>
         </div> --}}
-        <div class="container mb-3">
-            <div class="row">
-                <div class="col text-center">
-                    <h5 class="subtitle mb-1">Most Exciting Feature</h5>
-                    <p class="text-secondary">Take a look at our services</p>
-                </div>
-            </div>
-            <div class="row text-center mt-4">
-                <div class="col-6 col-md-3">
-                    <div class="card shadow-sm border-0 mb-4">
-                        <div class="card-body">
-                            <i class="material-icons mb-4 md-36 text-template">card_giftcard</i>
-                            <h2>2546</h2>
-                            <p class="text-secondary text-mute">Gift it out</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3">
-                    <div class="card shadow-sm border-0 mb-4">
-                        <div class="card-body">
-                            <i class="material-icons mb-4 md-36 text-template">subscriptions</i>
-                            <h2>635</h2>
-                            <p class="text-secondary text-mute">Monthly Billed</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3">
-                    <div class="card shadow-sm border-0 mb-4">
-                        <div class="card-body">
-                            <i class="material-icons mb-4 md-36 text-template">local_florist</i>
-                            <h2>1542</h2>
-                            <p class="text-secondary text-mute">Eco environment</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3">
-                    <div class="card shadow-sm border-0 mb-4">
-                        <div class="card-body">
-                            <i class="material-icons mb-4 md-36 text-template">location_city</i>
-                            <h2>154</h2>
-                            <p class="text-secondary text-mute">Four Offices</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-         <style>
+
+        <style>
             /* footer */
 
 
@@ -489,66 +502,71 @@
                 color: #a7a7a7;
                 /* ⬅️ penting */
             }
+
             .navi__icon--active {
                 font-size: 24px;
                 color: #07c511;
                 /* ⬅️ penting */
             }
+
             .navi__text {
                 font-size: 16px;
                 color: #a7a7a7;
                 /* ⬅️ penting */
             }
-              .navi__text--active {
+
+            .navi__text--active {
                 font-size: 16px;
                 color: #07c511;
                 /* ⬅️ penting */
             }
-
         </style>
         <div class="footer">
-        <nav class="navi">
+            <nav class="navi">
 
-            <a href="{{ route('mobilelandingpage') }}" class="navi__link ">
-                <i class="material-icons navi__icon">dashboard</i>
-                <span class="navi__text">Home</span>
-            </a>
+                <a href="{{ route('mobilelandingpage') }}" class="navi__link navi__link">
+                    <i class="material-icons navi__icon">dashboard</i>
+                    <span class="navi__text">Home</span>
+                </a>
 
-            <a href="{{ route('mobileaktifitas') }}" class="navi__link">
-                <i class="material-icons navi__icon--active">sports_kabaddi</i>
-                <span class="navi__text--active">Aktifitas</span>
-            </a>
 
-            <a href="{{ route('mobilelistmasjid') }}" class="navi__link">
-                <i class="material-icons navi__icon">mosque</i>
-                <span class="navi__text">List</span>
-            </a>
 
-            {{-- 🔐 MENU PROFILE (LOGIN AWARE) --}}
-            <a href="{{ Auth::check() ? route('mobilerequesttoken') : route('mobile.login') }}" class="navi__link">
+                <a href="{{ route('mobilelistmasjid') }}" class="navi__link">
+                    <i class="material-icons navi__icon">mosque</i>
+                    <span class="navi__text">List Masjid</span>
+                </a>
 
-                <i class="material-icons navi__icon">
-                    {{ Auth::check() ? 'electric_bolt' : 'electric_bolt' }}
-                </i>
+                {{-- 🔐 MENU PROFILE (LOGIN AWARE) --}}
+                <a href="{{ Auth::check() ? route('mobilerequesttoken') : route('mobile.login') }}"
+                    class="navi__link">
 
-                <span class="navi__text">
-                    Request
-                </span>
-            </a>
-            {{-- 🔐 MENU PROFILE (LOGIN AWARE) --}}
-            <a href="{{ Auth::check() ? route('mobileprofile') : route('mobile.login') }}" class="navi__link">
+                    <i class="material-icons navi__icon">
+                        {{ Auth::check() ? 'electric_bolt' : 'electric_bolt' }}
+                    </i>
 
-                <i class="material-icons navi__icon">
-                    {{ Auth::check() ? 'person' : 'person' }}
-                </i>
+                    <span class="navi__text">
+                        Request
+                    </span>
+                </a>
+                <a href="{{ route('mobilehelp') }}" class="navi__link">
+                    <i class="material-icons navi__icon">help</i>
+                    <span class="navi__text">F.A.Q</span>
+                </a>
+                {{-- 🔐 MENU PROFILE (LOGIN AWARE) --}}
+                <a href="{{ Auth::check() ? route('mobileprofile') : route('mobile.login') }}" class="navi__link">
 
-                <span class="navi__text">
-                    Profile
-                </span>
-            </a>
+                    <i class="material-icons navi__icon">
+                        {{ Auth::check() ? 'person' : 'person' }}
+                    </i>
 
-        </nav>
-    </div>
+                    <span class="navi__text">
+                        Profile
+                    </span>
+                </a>
+
+
+            </nav>
+        </div>
     </div>
 
     <!-- notification -->

@@ -9,7 +9,7 @@
     <meta name="author" content="Maxartkiller">
 
     <title>Cita Amanat martadiredja</title>
-
+<link rel="icon" type="image/x-icon" href="{{ asset('mobile/img/favicontamama1.ico') }}">
     <!-- Material design icons CSS -->
     <link rel="stylesheet" href="mobile/vendor/materializeicon/material-icons.css">
 
@@ -29,6 +29,7 @@
     <!-- nouislider CSS -->
     <link href="mobile/vendor/nouislider/nouislider.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+>
 
 
     <!-- Custom styles for this template -->
@@ -36,9 +37,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 </head>
 
 <body>
+    
     <div class="row no-gutters vh-100 loader-screen">
         <div class="col align-self-center text-white text-center">
             <img src="mobile/img/logo_tamama_putih.png" width="100" height="100" alt="logo">
@@ -140,6 +143,9 @@
             </div>
         </div>
 
+
+
+        
         <!-- MOBILE HEADER (hanya tampil di HP) -->
         <!-- MOBILE HEADER (Background image + text di dalam gambar) -->
         <div class="mobile-header text-white d-block d-md-none">
@@ -372,38 +378,7 @@
                     margin-top: 0 !important;
                 }
 
-                .user-name {
-                    max-width: 25vw;
-                    display: -webkit-box;
-                    -webkit-box-orient: vertical;
-                    -webkit-line-clamp: 2;
-                    overflow: hidden;
-                    line-height: 1.2em;
-
-                    text-align: right;
-                    word-break: break-word;
-
-                    font-size: 12px;
-                    /* ⭐ PERKECIL HURUF */
-                    font-weight: 400;
-                    /* opsional, biar tidak terlalu tebal */
-                    padding-right: -12px;
-                }
-
-                .user-name-title {
-                    max-width: 50vw;
-                    display: -webkit-box;
-                    -webkit-box-orient: vertical;
-                    -webkit-line-clamp: 2;
-                    overflow: hidden;
-                    line-height: 1.2em;
-
-                    text-align: center;
-                    word-break: break-word;
-
-                    padding-left: 28px;
-                    /* ⭐ JARAK DARI TEPI KIRI */
-                }
+                
 
                 .testimonial-vertical {
                     height: 360px;
@@ -990,14 +965,11 @@
                 <span class="navi__text--active">Home</span>
             </a>
 
-            <a href="{{ route('mobileaktifitas') }}" class="navi__link">
-                <i class="material-icons navi__icon">sports_kabaddi</i>
-                <span class="navi__text">Aktifitas</span>
-            </a>
+            
 
             <a href="{{ route('mobilelistmasjid') }}" class="navi__link">
                 <i class="material-icons navi__icon">mosque</i>
-                <span class="navi__text">List</span>
+                <span class="navi__text">List Masjid</span>
             </a>
 
             {{-- 🔐 MENU PROFILE (LOGIN AWARE) --}}
@@ -1011,6 +983,13 @@
                     Request
                 </span>
             </a>
+
+
+            
+            <a href="{{ route('mobilehelp') }}" class="navi__link">
+                <i class="material-icons navi__icon">help</i>
+                <span class="navi__text">F.A.Q</span>
+            </a>
             {{-- 🔐 MENU PROFILE (LOGIN AWARE) --}}
             <a href="{{ Auth::check() ? route('mobileprofile') : route('mobile.login') }}" class="navi__link">
 
@@ -1022,6 +1001,7 @@
                     Profile
                 </span>
             </a>
+            
 
         </nav>
     </div>
@@ -1049,6 +1029,8 @@
     </div>
 
     <!-- jquery, popper and bootstrap js -->
+
+
     <script src="mobile/js/jquery-3.3.1.min.js"></script>
     <script src="mobile/js/popper.min.js"></script>
     <script src="mobile/vendor/bootstrap-4.4.1/js/bootstrap.min.js"></script>

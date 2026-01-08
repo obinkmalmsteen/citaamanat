@@ -10,46 +10,50 @@
             </div>
 
             <div><a href="{{ url()->previous() }}" class="btn btn-secondary mb-3">Kembali</a></div>
-@php
-    use App\Models\Cabang;
+            @php
+                use App\Models\Cabang;
 
-   
-    $user = Auth::user();
-@endphp
+                $user = Auth::user();
+            @endphp
 
-            @if($user->jabatan === 'User')
-            {{-- panel aturan start --}}
+            @if ($user->jabatan === 'User')
+                {{-- panel aturan start --}}
 
-            <div class="row justify-content-center mt-4">
-                <div class="col-md-8">
+                <div class="row justify-content-center mt-4">
+                    <div class="col-md-8">
 
-                    <div class="card shadow-lg border-0 rounded-4">
-                        <div class="card-body p-4">
-                            <h4>SOP PENGAJUAN & REALISASI TOKEN LISTRIK</h4>
-                            <p><b>1. Frekuensi Pengisian</b><br> Token Listrik (PraBayar maupun PascaBayar) diberikan <b>1
-                                    Kali Setiap Bulan.</b></p>
+                        <div class="card shadow-lg border-0 rounded-4">
+                            <div class="card-body p-4">
+                                <h4>SOP PENGAJUAN & REALISASI TOKEN LISTRIK</h4>
+                                <p><b>1. Frekuensi Pengisian</b><br> Token Listrik (PraBayar maupun PascaBayar) diberikan
+                                    <b>1
+                                        Kali Setiap Bulan.</b></p>
 
-                            <p><b>2. Kewajiban DKM</b><br>DKM Wajib melakukan pengajuan token setiap bulan sebagai bentuk
-                                konfirmasi bahwa DKM masih Aktif.</p>
+                                <p><b>2. Kewajiban DKM</b><br>DKM Wajib melakukan pengajuan token setiap bulan sebagai
+                                    bentuk
+                                    konfirmasi bahwa DKM masih Aktif.</p>
 
-                            <p><b>3. Jadwal Realisasi</b><br>Kami melakukan pembelian token secara berkala dan kolektif per
-                                <b>10 hari (tgl 10, 20 dan 30)</b> setiap bulan
-                            </p>
+                                <p><b>3. Jadwal Realisasi</b><br>Kami melakukan pembelian token secara berkala dan kolektif
+                                    per
+                                    <b>10 hari (tgl 10, 20 dan 30)</b> setiap bulan
+                                </p>
 
-                            <p style="color: #d9534f; font-weight: bold;"> HARAP MENJADI PERHATIAN! <br>Demi Kelancaran Data
-                                untuk Proses Realisasi, maka diharapkan untuk membuat pengajuan paling dekat berjarak 3 hari
-                                (H-3) sebelum jadwal realisasi, (Jangan terlalu mepet dengan tgl-tgl tersebut).</p>
-                            <p>4. Jika sudah mengajukan permintaan token diharapkan Cek secara berkala ke akun anda, dan
-                                segera isikan token jika sudah tersedia, karena jika tidak segera dipakai maka token itu
-                                akan Hangus dan jadi Mubadzir.</p>
+                                <p style="color: #d9534f; font-weight: bold;"> HARAP MENJADI PERHATIAN! <br>Demi Kelancaran
+                                    Data
+                                    untuk Proses Realisasi, maka diharapkan untuk membuat pengajuan paling dekat berjarak 3
+                                    hari
+                                    (H-3) sebelum jadwal realisasi, (Jangan terlalu mepet dengan tgl-tgl tersebut).</p>
+                                <p>4. Jika sudah mengajukan permintaan token diharapkan Cek secara berkala ke akun anda, dan
+                                    segera isikan token jika sudah tersedia, karena jika tidak segera dipakai maka token itu
+                                    akan Hangus dan jadi Mubadzir.</p>
+                            </div>
                         </div>
+
                     </div>
-
                 </div>
-            </div>
 
-            {{-- panel aturan end --}}
-@endif
+                {{-- panel aturan end --}}
+            @endif
             <div class="card-body">
 
                 {{-- Tambahkan pembungkus untuk tombol --}}
@@ -240,9 +244,10 @@
                         @endphp
 
                         <div class="card-header {{ $warnaHeader }} text-white rounded-top-4">
-                            <strong>Permintaan Token Ke {{ $nomor }}</strong><br><span class="fw-semibold">{{ $masjid->jenis_layanan ?? '-' }}</span>
+                            <strong>Permintaan Token Ke {{ $nomor }}</strong><br><span
+                                class="fw-semibold">{{ $masjid->jenis_layanan ?? '-' }}</span>
                         </div>
-                           
+
                         <div class="card-body">
 
                             <div class="mb-2">
@@ -337,36 +342,34 @@
     <div class="container py-4">
         <div class="card shadow border-0 rounded-4 p-4">
 
-<div class="mt-3">
-@if(session('success'))
-<div class="alert alert-success alert-dismissible fade show mt-3 shadow-sm d-flex justify-content-between align-items-center"
-     role="alert"
-     style="border-left: 6px solid #28a745; background: #e9fdf0;">
+            <div class="mt-3">
+                @if (session('success'))
+                    <div class="alert alert-success alert-dismissible fade show mt-3 shadow-sm d-flex justify-content-between align-items-center"
+                        role="alert" style="border-left: 6px solid #28a745; background: #e9fdf0;">
 
-    <div class="d-flex align-items-center">
-        <i class="bi bi-check-circle-fill me-2" style="font-size: 1.3rem; color: #28a745;"></i>
-        <span class="fw-semibold">{{ session('success') }}</span>
-    </div>
+                        <div class="d-flex align-items-center">
+                            <i class="bi bi-check-circle-fill me-2" style="font-size: 1.3rem; color: #28a745;"></i>
+                            <span class="fw-semibold">{{ session('success') }}</span>
+                        </div>
 
-    <button type="button" class="btn border-0 bg-transparent fw-bold fs-5 text-secondary"
-        data-bs-dismiss="alert" aria-label="Close"
-        style="line-height: 1; padding: 0 6px;">
-    Tutup
-</button>
+                        <button type="button" class="btn border-0 bg-transparent fw-bold fs-5 text-secondary"
+                            data-bs-dismiss="alert" aria-label="Close" style="line-height: 1; padding: 0 6px;">
+                            Tutup
+                        </button>
 
-</div>
-@endif
+                    </div>
+                @endif
 
 
 
 
-                <button class="btn btn-success btn-sm w-40 py-2" data-bs-toggle="modal" data-id="{{ $masjid->id_pelanggan }}"
-                    data-bs-target="#modalTemplatePesan">
-                     <i class="bi bi-whatsapp me-2 text-white"></i> <b>Kirim Pesan WHATSAPP Kepada User Ini</b>
+                <button class="btn btn-success btn-sm w-40 py-2" data-bs-toggle="modal"
+                    data-id="{{ $masjid->id_pelanggan }}" data-bs-target="#modalTemplatePesan">
+                    <i class="bi bi-whatsapp me-2 text-white"></i> <b>Kirim Pesan WHATSAPP Kepada User Ini</b>
                 </button>
             </div>
             <div> <br><br> </div>
-            
+
             <!-- HEADER -->
             <div class="text-center mb-4">
                 <div class="text-center">
@@ -392,7 +395,7 @@
 
             </div>
 
-            
+
 
 
 
@@ -594,14 +597,15 @@
                                 </small>
                             </div>
                         </label>
-                           <!-- Template 3 -->
+                        <!-- Template 3 -->
                         <label
                             class="list-group-item border rounded-3 mb-2 d-flex align-items-start py-3 template-option">
                             <input class="form-check-input me-3" type="radio" name="template" value="3">
                             <div>
                                 <div class="fw-semibold">Permohonan maaf masjid tidak Disetujui</div>
                                 <small class="text-muted">
-                                    Assalmualaikum, kami Ucapkan Mohon maaf kepada Bapak/Ibu Pengurus Masjid/Mushola ... Dikarenakan Untuk saat ini Registrasi anda belum bisa kami Setujui
+                                    Assalmualaikum, kami Ucapkan Mohon maaf kepada Bapak/Ibu Pengurus Masjid/Mushola ...
+                                    Dikarenakan Untuk saat ini Registrasi anda belum bisa kami Setujui
                                 </small>
                             </div>
                         </label>

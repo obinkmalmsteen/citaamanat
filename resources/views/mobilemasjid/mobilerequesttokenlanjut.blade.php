@@ -6,10 +6,10 @@
     <meta name="viewport"
         content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover, user-scalable=no">
     <meta name="description" content="">
-    <meta name="author" content="Maxartkiller">
+    <meta name="author" content="Obink">
 
-    <title>Shop · GoFurniture</title>
-
+    <title>TAMAMA . Request Token</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('mobile/img/favicontamama1.ico') }}">
     <!-- Material design icons CSS -->
     <link rel="stylesheet" href="mobile/vendor/materializeicon/material-icons.css">
 
@@ -25,9 +25,16 @@
     <!-- Custom styles for this template -->
     <link href="mobile/css/style.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ asset('mobile/css/mobile-menu.css') }}">
+
 </head>
 
 <body>
+    @include('partials.mobile-slide-menu')
     <!-- Loader -->
     <div class="row no-gutters vh-100 loader-screen">
         <div class="col align-self-center text-white text-center">
@@ -44,7 +51,7 @@
     <!-- Loader ends -->
 
     <!-- sidebar -->
-   <div class="sidebar">
+    <div class="sidebar">
         <div class="text-center">
             <div class="figure-menu shadow">
                 <figure><img src="mobile/img/useeer.png" alt=""></figure>
@@ -187,26 +194,6 @@
 
 
 
-
-
-                <!-- Form Request Token -->
-
-                {{-- <div id="formRequestToken" class="card shadow-sm p-4 mb-3" style="display: none;">
-                    <form action="{{ route('mobilerequesttokenlanjutform') }}" method="POST">
-                        @csrf
-
-                        <div class="d-grid gap-3">
-                            <button type="submit" class="btn btn-success btn-lg">
-                                <i class="fa fa-paper-plane me-2"></i>
-                                Kirim Permintaan
-                            </button>
-
-                            <button type="button" class="btn btn-outline-secondary btn-lg" id="btnBatalRequest">
-                                Batal
-                            </button>
-                        </div>
-                    </form>
-                </div> --}}
 
 
             </div>
@@ -424,124 +411,127 @@
 
 
 
-         <style>
-        /* footer */
+        <style>
+            /* footer */
 
 
-        body {
-            margin: 0 0 55px 0;
-        }
+            body {
+                margin: 0 0 55px 0;
+            }
 
-        .navi {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            height: 65px;
-            box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
-            background-color: #ffffff;
-            display: flex;
-            overflow-x: auto;
+            .navi {
+                position: fixed;
+                bottom: 0;
+                width: 100%;
+                height: 65px;
+                box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+                background-color: #ffffff;
+                display: flex;
+                overflow-x: auto;
 
-        }
+            }
 
-        .navi__link {
+            .navi__link {
 
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            flex-grow: 1;
-            min-width: 50px;
-            overflow: hidden;
-            white-space: nowrap;
-            font-family: sans-serif;
-            font-size: 13px;
-            color: #8e8e8e;
-            text-decoration: none;
-            -webkit-tap-highlight-color: transparent;
-            transition: background-color 0.1s ease-in-out;
-        }
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                flex-grow: 1;
+                min-width: 50px;
+                overflow: hidden;
+                white-space: nowrap;
+                font-family: sans-serif;
+                font-size: 13px;
+                color: #8e8e8e;
+                text-decoration: none;
+                -webkit-tap-highlight-color: transparent;
+                transition: background-color 0.1s ease-in-out;
+            }
 
-        .navi__link:hover {
-            background-color: #eeeeee;
-        }
+            .navi__link:hover {
+                background-color: #eeeeee;
+            }
 
 
 
-        .navi__link--active {
-            color: #6b650d;
-        }
+            .navi__link--active {
+                color: #6b650d;
+            }
 
-        .navi__icon {
-            font-size: 24px;
-            color: #a7a7a7;
-            /* ⬅️ penting */
-        }
+            .navi__icon {
+                font-size: 24px;
+                color: #a7a7a7;
+                /* ⬅️ penting */
+            }
 
-        .navi__icon--active {
-            font-size: 24px;
-            color: #07c511;
-            /* ⬅️ penting */
-        }
+            .navi__icon--active {
+                font-size: 24px;
+                color: #07c511;
+                /* ⬅️ penting */
+            }
 
-        .navi__text {
-            font-size: 16px;
-            color: #a7a7a7;
-            /* ⬅️ penting */
-        }
+            .navi__text {
+                font-size: 16px;
+                color: #a7a7a7;
+                /* ⬅️ penting */
+            }
 
-        .navi__text--active {
-            font-size: 16px;
-            color: #07c511;
-            /* ⬅️ penting */
-        }
-    </style>
-    <div class="footer">
-        <nav class="navi">
+            .navi__text--active {
+                font-size: 16px;
+                color: #07c511;
+                /* ⬅️ penting */
+            }
+        </style>
+        <div class="footer">
+            <nav class="navi">
 
-            <a href="{{ route('mobilelandingpage') }}" class="navi__link ">
-                <i class="material-icons navi__icon">dashboard</i>
-                <span class="navi__text">Home</span>
-            </a>
+                <a href="{{ route('mobilelandingpage') }}" class="navi__link">
+                    <i class="material-icons navi__icon">dashboard</i>
+                    <span class="navi__text">Home</span>
+                </a>
 
-            <a href="{{ route('mobileaktifitas') }}" class="navi__link">
-                <i class="material-icons navi__icon">sports_kabaddi</i>
-                <span class="navi__text">Aktifitas</span>
-            </a>
 
-            <a href="{{ route('mobilelistmasjid') }}" class="navi__link">
-                <i class="material-icons navi__icon">mosque</i>
-                <span class="navi__text">List</span>
-            </a>
 
-            {{-- 🔐 MENU PROFILE (LOGIN AWARE) --}}
-            <a href="{{ Auth::check() ? route('mobilerequesttoken') : route('mobile.login') }}" class="navi__link">
+                <a href="{{ route('mobilelistmasjid') }}" class="navi__link">
+                    <i class="material-icons navi__icon">mosque</i>
+                    <span class="navi__text">List Masjid</span>
+                </a>
 
-                <i class="material-icons navi__icon--active">
-                    {{ Auth::check() ? 'electric_bolt' : 'electric_bolt' }}
-                </i>
+                 {{-- 🔐 MENU PROFILE (LOGIN AWARE) --}}
+                <a href="{{ Auth::check() ? route('mobilerequesttoken') : route('mobile.login') }}"
+                    class="navi__link navi__link--active">
 
-                <span class="navi__text--active">
-                    Request
-                </span>
-            </a>
-            {{-- 🔐 MENU PROFILE (LOGIN AWARE) --}}
-            <a href="{{ Auth::check() ? route('mobileprofile') : route('mobile.login') }}" class="navi__link">
+                    <i class="material-icons navi__icon--active">
+                        {{ Auth::check() ? 'electric_bolt' : 'electric_bolt' }}
+                    </i>
 
-                <i class="material-icons navi__icon">
-                    {{ Auth::check() ? 'person' : 'person' }}
-                </i>
+                    <span class="navi__text--active">
+                        Request
+                    </span>
+                </a>
+                <a href="{{ route('mobilehelp') }}" class="navi__link">
+                    <i class="material-icons navi__icon">help</i>
+                    <span class="navi__text">F.A.Q</span>
+                </a>
+                {{-- 🔐 MENU PROFILE (LOGIN AWARE) --}}
+                <a href="{{ Auth::check() ? route('mobileprofile') : route('mobile.login') }}" class="navi__link">
 
-                <span class="navi__text">
-                    Profile
-                </span>
-            </a>
+                    <i class="material-icons navi__icon">
+                        {{ Auth::check() ? 'person' : 'person' }}
+                    </i>
 
-        </nav>
+                    <span class="navi__text">
+                        Profile
+                    </span>
+                </a>
+
+
+            </nav>
         </div>
         <!-- footer ends -->
     </div>
-    
+
 
     <!-- Modal logout-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-hidden="true">
@@ -566,7 +556,7 @@
     </div>
 
 
-    {{-- modal request token--}}
+    {{-- modal request token --}}
     <div class="modal fade" id="modalRequestToken" tabindex="-1" role="dialog" data-backdrop="static"
         data-keyboard="false">
 
@@ -611,7 +601,7 @@
     </div>
 
 
-<!-- Modal -->
+    <!-- Modal -->
     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
             <div class="modal-content shadow">
@@ -619,21 +609,23 @@
                     <h5 class="header-title mb-0">Konfirmasi Pengajuan</h5>
                 </div>
                 <div class="modal-body text-center pr-4 pl-4">
-                    
+
                     <h5 class="my-2"> Apakah Anda yakin ingin mengajukan permintaan token listrik?</h5>
-                    
+
                     <div class="text-center">
                         <form action="{{ route('mobilerequesttokenlanjutform') }}" method="POST"
-                        onsubmit="
+                            onsubmit="
         const btn = this.querySelector('button[type=submit]');
         btn.disabled = true;
         btn.innerText = 'Mengirim...';
       ">
-                        @csrf
+                            @csrf
 
-                        <button type="submit"  class="btn btn-default btn-rounded btn-block col">Ya, Kirim Permintaan</button>
-                        <br>
-                        <button class="btn btn-defaulty btn-rounded btn-block col" data-dismiss="modal">Batal</button>
+                            <button type="submit" class="btn btn-default btn-rounded btn-block col">Ya, Kirim
+                                Permintaan</button>
+                            <br>
+                            <button class="btn btn-defaulty btn-rounded btn-block col"
+                                data-dismiss="modal">Batal</button>
                         </form>
                     </div>
                     <br>

@@ -1246,9 +1246,9 @@ body a.btn-light-grey {
 /*  filter */
 .filter {
     height: 100%;
-    width: 280px;
+    width: 220px;
     position: fixed;
-    right: -280px;
+    right: -220px;
     top: 0;
     transition: all ease 0.5s;
     -webkit-transition: all ease 0.5s;
@@ -1268,7 +1268,7 @@ body a.btn-light-grey {
 
 .filter > .filter-btn {
     border-radius: 30px 0 0 30px;
-    width: 40px;
+    width: 30px;
     text-align: left;
     position: absolute;
     left: -39px;
@@ -1278,6 +1278,8 @@ body a.btn-light-grey {
 .text-normal {
     text-transform: none
 }
+
+
 
 @media screen and (max-width:610px) {
     .filter-group {
@@ -2134,7 +2136,7 @@ pre {
 /* obink mobile header start */
 
 .mobile-header {
-    background-image: url('/mobile/img/tamama1.png'); /* gambar kamu */
+    background-image: url('../img/tamama1.png'); /* gambar kamu */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -2144,7 +2146,7 @@ pre {
 }
 
 .mobile-header-aktifitas {
-    background-image: url('/mobile/img/green-background.jpg'); /* gambar kamu */
+    background-image: url('../img/green-background.jpg'); /* gambar kamu */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -2155,7 +2157,7 @@ pre {
 /* obink mobile header start */
 
 .mobile-header-registrasi {
-    background-image: url('/mobile/img/mobileregistrasi.png'); /* gambar kamu */
+    background-image: url('../img/mobileregistrasi.png'); /* gambar kamu */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
