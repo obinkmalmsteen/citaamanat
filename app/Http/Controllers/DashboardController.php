@@ -515,7 +515,7 @@ public function acara()
 public function testimoni()
 {
     // Ambil testimoni terbaru
-    $testimonials = Testimonial::latest()->take(150)->get();
+    $testimonials = Testimonial::latest()->take(1000)->get();
 
     // Kirim ke view
     return view('testimoni', compact( 'testimonials'));
