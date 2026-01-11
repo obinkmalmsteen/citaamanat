@@ -16,7 +16,7 @@ class ListDonaturController extends Controller
         'title' => 'Data Donatur',
         'menuAdminDonatur' => 'active',
     ];
-    $datakeluar = Pengeluaran::latest()->paginate(10);
+    $datakeluar = Pengeluaran::latest()->paginate(20);
   // Ambil testimoni terbaru
     $listmasjid = Masjid::where('disetujui', 1)->take(150)->get();
       $donaturTetap = Donatur::where('donatur_tetap', 1)
@@ -33,7 +33,7 @@ class ListDonaturController extends Controller
 
     // Hitung sisa saldo
     $sisaSaldo = $totalDonasi - $totalSemuaPengeluaran;
-    $data = Pengeluaran::latest()->paginate(10);
+    $data = Pengeluaran::latest()->paginate(20);
     $query = Pengeluaran::query();
 
 if (request('bulan')) {
@@ -85,7 +85,7 @@ foreach ($pengeluaran as $row) {
             $query->where('donatur_tetap', request('donatur_tetap'));
         })
         ->latest()
-        ->paginate(10)
+        ->paginate(20)
         ->withQueryString(); // penting agar filter tidak hilang saat pagination
 
     return view(
@@ -120,7 +120,7 @@ public function mobiledonatur(Request $request)
         'title' => 'Data Donatur',
         'menuAdminDonatur' => 'active',
     ];
-    $datakeluar = Pengeluaran::latest()->paginate(10);
+    $datakeluar = Pengeluaran::latest()->paginate(20);
   // Ambil testimoni terbaru
     $listmasjid = Masjid::where('disetujui', 1)->take(150)->get();
       $donaturTetap = Donatur::where('donatur_tetap', 1)
@@ -137,7 +137,7 @@ public function mobiledonatur(Request $request)
 
     // Hitung sisa saldo
     $sisaSaldo = $totalDonasi - $totalSemuaPengeluaran;
-    $data = Pengeluaran::latest()->paginate(10);
+    $data = Pengeluaran::latest()->paginate(20);
     $query = Pengeluaran::query();
 
 if (request('bulan')) {
@@ -189,7 +189,7 @@ foreach ($pengeluaran as $row) {
             $query->where('donatur_tetap', request('donatur_tetap'));
         })
         ->latest()
-        ->paginate(10)
+        ->paginate(20)
         ->withQueryString(); // penting agar filter tidak hilang saat pagination
 
     return view(
