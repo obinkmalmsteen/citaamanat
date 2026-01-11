@@ -39,7 +39,7 @@ return [
     [
         'label' => 'Acara',
         'icon'  => 'event',
-        'route' => 'mobileacara',
+        'route' => 'mobileaktifitas',
     ],
     [
         'label' => 'F . A . Q',
