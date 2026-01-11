@@ -28,8 +28,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <link href="mobile/css/mobile-menu.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="{{ asset('mobile/css/mobile-menu.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('mobile/css/mobile-menu.css') }}"> --}}
 </head>
 <style>
     .swiper-container {
