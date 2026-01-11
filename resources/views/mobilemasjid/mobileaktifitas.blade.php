@@ -19,24 +19,24 @@
     <!-- Bootstrap core CSS -->
     <link href="mobile/vendor/bootstrap-4.4.1/css/bootstrap.min.css" rel="stylesheet">
 
- 
 
-  <!-- Swiper CSS -->
-<link rel="stylesheet" href="{{ asset('mobile/vendor/swiper/css/swiper.min.css') }}">
 
-<!-- Custom styles -->
-<link rel="stylesheet" href="{{ asset('mobile/css/style.css') }}">
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="{{ asset('mobile/vendor/swiper/css/swiper.min.css') }}">
 
-<!-- Google Icons -->
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="{{ asset('mobile/css/style.css') }}">
 
-<!-- Swiper CDN -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
-<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <!-- Google Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
 
-<!-- Mobile menu -->
-<link rel="stylesheet" href="{{ asset('mobile/css/mobile-menu.css') }}?v={{ time() }}">
+    <!-- Swiper CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+    <!-- Mobile menu -->
+    <link rel="stylesheet" href="{{ asset('mobile/css/mobile-menu.css') }}?v={{ time() }}">
 
     {{-- <link rel="stylesheet" href="{{ asset('mobile/css/mobile-menu.css') }}"> --}}
 </head>
@@ -162,30 +162,30 @@
             align-items: center;
             justify-content: center;
         }
+
         .card-link {
-    text-decoration: none;
-    color: inherit;
-    display: block;
-}
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
 
-/* Desktop hover */
-@media (hover: hover) and (pointer: fine) {
-    .card-link:hover .product-card {
-        transform: translateY(-4px);
-        box-shadow: 0 12px 24px rgba(0,0,0,.15);
-    }
-}
+        /* Desktop hover */
+        @media (hover: hover) and (pointer: fine) {
+            .card-link:hover .product-card {
+                transform: translateY(-4px);
+                box-shadow: 0 12px 24px rgba(0, 0, 0, .15);
+            }
+        }
 
-/* Mobile tap effect */
-.card-link:active .product-card {
-    transform: scale(0.97);
-    box-shadow: 0 6px 12px rgba(0,0,0,.12);
-}
+        /* Mobile tap effect */
+        .card-link:active .product-card {
+            transform: scale(0.97);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, .12);
+        }
 
-.product-card {
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
-
+        .product-card {
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
     </style>
     <div class="wrapper">
         <div class="header ">
@@ -239,7 +239,7 @@
                     <div style="background-image:url(mosque/img/renov3.png)" class="swiper-slide"></div>
                     <div style="background-image:url(mosque/img/adzan1.jpg)" class="swiper-slide"></div>
                     <div style="background-image:url(mosque/img/ngaji1.png)" class="swiper-slide"></div>
-                    
+
 
                 </div>
             </div>
@@ -251,44 +251,50 @@
                         <p class="text-secondary">Program -Program Kami</p>
                     </div>
                 </div>
-                <div class="row text-center mt-4">
-                    <div class="col-6 col-md-3">
-                        <div class="card shadow-sm border-0 mb-4">
-                            <div class="card-body">
-                                <i class="material-icons mb-4 md-36 text-template">mosque</i>
-                                <h2>5</h2>
-                                <p class="text-secondary text-mute">Perbaikan Beribu Masjid </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-3">
-                        <div class="card shadow-sm border-0 mb-4">
-                            <div class="card-body">
-                                <i class="material-icons mb-4 md-36 text-template">elderly_woman</i>
-                                <h2>14</h2>
-                                <p class="text-secondary text-mute">Nyaah Ka Indung</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-3">
-                        <div class="card shadow-sm border-0 mb-4">
-                            <div class="card-body">
-                                <i class="material-icons mb-4 md-36 text-template">local_florist</i>
-                                <h2>12</h2>
-                                <p class="text-secondary text-mute">Muadzin Cilik</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-3">
-                        <div class="card shadow-sm border-0 mb-4">
-                            <div class="card-body">
-                                <i class="material-icons mb-4 md-36 text-template">books</i>
-                                <h2>2</h2>
-                                <p class="text-secondary text-mute">Apresiasi Guru Ngaji</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <div class="row text-center mt-4 g-2">
+
+    <div class="col-3">
+        <div class="card shadow-sm border-0">
+            <div class="card-body p-2">
+                <i class="material-icons md-30 text-template">mosque</i>
+                <h6 class="mb-0 fw-bold">1</h6>
+                <small class="text-muted">Perbaikan Masjid</small>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-3">
+        <div class="card shadow-sm border-0">
+            <div class="card-body p-2">
+                <i class="material-icons md-30 text-template">elderly_woman</i>
+                <h6 class="mb-0 fw-bold">20</h6>
+                <small class="text-muted">Nyaah KaIndung</small>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-3">
+        <div class="card shadow-sm border-0">
+            <div class="card-body p-2">
+                <i class="material-icons md-30 text-template">local_florist</i>
+                <h6 class="mb-0 fw-bold">10</h6>
+                <small class="text-muted">Muadzin Cilik</small>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-3">
+        <div class="card shadow-sm border-0">
+            <div class="card-body p-2">
+                <i class="material-icons md-30 text-template">books</i>
+                <h6 class="mb-0 fw-bold">3</h6>
+                <small class="text-muted">Guru Ngaji</small>
+            </div>
+        </div>
+    </div>
+
+</div>
+
             </div>
 
             <h6 class="subtitle">Berbagai Aktifitas Kami Yang Sudah Terlaksana </h6>
@@ -296,63 +302,63 @@
 
 
 
- <div class="col-6 col-md-4 col-lg-3 col-xl-2">
-    <a href="{{ route('mobileperbaikanberibumasjid') }}" class="card-link">
-        <div class="card product-card shadow-sm border-0 mb-4">
-            <div class="product-image">
-                <img src="/mosque/img/renov.png" alt="">
-            </div>
-            <div class="card-body pt-3">
-                <h6 class="mb-1">Perbaikan Beribu Masjid & Mushola</h6>
-                <small class="text-muted">Unique</small>
-            </div>
-        </div>
-    </a>
-</div>
+                <div class="col-6 col-md-4 col-lg-3 col-xl-2">
+                    <a href="{{ route('mobileperbaikanberibumasjid') }}" class="card-link">
+                        <div class="card product-card shadow-sm border-0 mb-4">
+                            <div class="product-image">
+                                <img src="/mosque/img/renov.png" alt="">
+                            </div>
+                            <div class="card-body pt-3">
+                                <h6 class="mb-1">Perbaikan Beribu Masjid & Mushola</h6>
+                                <small class="text-muted">Klik Untuk Baca Lebih Detail</small>
+                            </div>
+                        </div>
+                    </a>
+                </div>
 
- <div class="col-6 col-md-4 col-lg-3 col-xl-2">
-    <a href="{{ route('mobilenyaahkaindung') }}" class="card-link">
-        <div class="card product-card shadow-sm border-0 mb-4">
-            <div class="product-image">
-                <img src="/mosque/img/indung6.jpg" alt="">
-            </div>
-            <div class="card-body pt-3">
-                <h6 class="mb-1">Nyaah Ka Indung</h6>
-                <small class="text-muted">Unique</small>
-            </div>
-        </div>
-    </a>
-</div>
+                <div class="col-6 col-md-4 col-lg-3 col-xl-2">
+                    <a href="{{ route('mobilenyaahkaindung') }}" class="card-link">
+                        <div class="card product-card shadow-sm border-0 mb-4">
+                            <div class="product-image">
+                                <img src="/mosque/img/indung6.jpg" alt="">
+                            </div>
+                            <div class="card-body pt-3">
+                                <h6 class="mb-1">Nyaah Ka Indung</h6>
+                                <small class="text-muted">Klik Untuk Baca Lebih Detail</small>
+                            </div>
+                        </div>
+                    </a>
+                </div>
 
- <div class="col-6 col-md-4 col-lg-3 col-xl-2">
-    <a href="{{ route('mobilemuadzincilik') }}" class="card-link">
-        <div class="card product-card shadow-sm border-0 mb-4">
-            <div class="product-image">
-                <img src="/mosque/img/001adzan.png" alt="">
-            </div>
-            <div class="card-body pt-3">
-                <h6 class="mb-1">Muadzin Cilik</h6>
-                <small class="text-muted">Unique</small>
-            </div>
-        </div>
-    </a>
-</div>
- <div class="col-6 col-md-4 col-lg-3 col-xl-2">
-    <a href="{{ route('mobilehonorgurungaji') }}" class="card-link">
-        <div class="card product-card shadow-sm border-0 mb-4">
-            <div class="product-image">
-                <img src="/mosque/img/Gurungaji.jpg" alt="">
-            </div>
-            <div class="card-body pt-3">
-                <h6 class="mb-1">Honor Guru Ngaji</h6>
-                <small class="text-muted">Unique</small>
-            </div>
-        </div>
-    </a>
-</div>
+                <div class="col-6 col-md-4 col-lg-3 col-xl-2">
+                    <a href="{{ route('mobilemuadzincilik') }}" class="card-link">
+                        <div class="card product-card shadow-sm border-0 mb-4">
+                            <div class="product-image">
+                                <img src="/mosque/img/001adzan.png" alt="">
+                            </div>
+                            <div class="card-body pt-3">
+                                <h6 class="mb-1">Muadzin Cilik</h6>
+                                <small class="text-muted">Klik Untuk Baca Lebih Detail</small>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 col-xl-2">
+                    <a href="{{ route('mobilehonorgurungaji') }}" class="card-link">
+                        <div class="card product-card shadow-sm border-0 mb-4">
+                            <div class="product-image">
+                                <img src="/mosque/img/Gurungaji.jpg" alt="">
+                            </div>
+                            <div class="card-body pt-3">
+                                <h6 class="mb-1">Honor Guru Ngaji</h6>
+                                <small class="text-muted">Klik Untuk Baca Lebih Detail</small>
+                            </div>
+                        </div>
+                    </a>
+                </div>
 
 
-              
+
 
 
 
@@ -368,7 +374,7 @@
                             <h1 class="text-uppercase mb-3">Aktifitas</h1>
 
                         </div>
-                       
+
                         <div class="w-100"></div>
                         <div class="col">
                             <p>Aktifitas</p>
@@ -377,7 +383,7 @@
                 </div>
             </div>
         </div>
-      
+
 
         <style>
             /* footer */
@@ -497,6 +503,7 @@
 
             </nav>
         </div>
+
     </div>
 
     <!-- notification -->

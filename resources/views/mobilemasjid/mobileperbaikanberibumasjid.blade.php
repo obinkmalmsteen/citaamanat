@@ -244,55 +244,80 @@
         }
 
         .mobile-back-wrapper {
-    display: flex;
-    justify-content: center;
-    margin: 24px 0;
-}
+            display: flex;
+            justify-content: center;
+            margin: 24px 0;
+        }
 
-/* Tombol utama */
-.mobile-back-btn {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+        /* Tombol utama */
+        .mobile-back-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
 
-    padding: 12px 20px;
-    border-radius: 999px;
+            padding: 12px 20px;
+            border-radius: 999px;
 
-    background: #00d620; /* bootstrap primary */
-    color: #000000;
-    font-size: 14px;
-    font-weight: 500;
+            background: #00d620;
+            /* bootstrap primary */
+            color: #000000;
+            font-size: 14px;
+            font-weight: 500;
 
-    text-decoration: none;
-    box-shadow: 0 8px 20px rgba(13,110,253,.35);
+            text-decoration: none;
+            box-shadow: 0 8px 20px rgba(13, 110, 253, .35);
 
-    transition: transform .15s ease, box-shadow .15s ease;
-}
+            transition: transform .15s ease, box-shadow .15s ease;
+        }
 
-/* Tap effect (mobile) */
-.mobile-back-btn:active {
-    transform: scale(0.96);
-    box-shadow: 0 4px 10px rgba(13,110,253,.25);
-}
+        /* Tap effect (mobile) */
+        .mobile-back-btn:active {
+            transform: scale(0.96);
+            box-shadow: 0 4px 10px rgba(13, 110, 253, .25);
+        }
 
-/* Icon */
-.mobile-back-btn .material-icons {
-    font-size: 20px;
-}
-.mobile-back-btn .back-text {
-    color: #fff;
-}
-.mobile-back-btn .material-icons {
-    color: #fff;
-}
+        /* Icon */
+        .mobile-back-btn .material-icons {
+            font-size: 20px;
+        }
 
-/* Desktop (opsional: sembunyikan) */
-@media (min-width: 768px) {
-    .mobile-back-wrapper {
-        display: none;
-    }
-}
+        .mobile-back-btn .back-text {
+            color: #fff;
+        }
 
+        .mobile-back-btn .material-icons {
+            color: #fff;
+        }
+
+        /* Desktop (opsional: sembunyikan) */
+        @media (min-width: 768px) {
+            .mobile-back-wrapper {
+                display: none;
+            }
+        }
+
+        .gallery-item {
+            cursor: pointer;
+        }
+
+        .modal-body img {
+            max-height: 60vh;
+            object-fit: contain;
+        }
+
+        .card {
+            overflow: hidden;
+            /* biar rounded rapi */
+        }
+
+        .gallery-scroll {
+            gap: 12px;
+        }
+
+        .section-desc {
+            font-size: .9rem;
+            line-height: 1.6;
+        }
     </style>
     <div class="wrapper">
         <div class="header ">
@@ -340,7 +365,7 @@
 
             <h6 class="subtitle">Program Terangi Beribu Masjid Dan Mushola</h6>
 
-           
+
             <!-- page content ends -->
 
 
@@ -368,12 +393,151 @@
                             untuk generasi mendatang.
                         </p>
 
-                        <!-- GALERI MOBILE -->
-                        <div class="gallery-scroll">
-                            <img src="/mosque/img/renov2.png" alt="">
-                            <img src="/mosque/img/renov3.png" alt="">
-                            <img src="/mosque/img/renov4.png" alt="">
+                        <div class="card shadow-sm ">
+                            <!-- GALERI MOBILE -->
+                            <div class="gallery-scroll">
+
+                                <img src="/mosque/img/perbaikan001.png"
+                                    data-title="Realisasi Perbaikan Masjid / Mushola"
+                                    data-desc="Bantuan dana untuk renovasi majelis taklim Shalawat & Dzikir Khairil Anam Kp. Babakan Kinin Rt 04 RW 15 Ds Cileunyi"
+                                    data-bs-toggle="modal" data-bs-target="#galleryModal" class="gallery-item"
+                                    alt="">
+
+                                <img src="/mosque/img/perbaikan002.png"
+                                    data-title="Realisasi Perbaikan Masjid / Mushola"
+                                    data-desc="Bantuan dana untuk renovasi majelis taklim Shalawat & Dzikir Khairil Anam Kp. Babakan Kinin Rt 04 RW 15 Ds Cileunyi"
+                                    data-bs-toggle="modal" data-bs-target="#galleryModal" class="gallery-item"
+                                    alt="">
+
+                                <img src="/mosque/img/perbaikan003.png"
+                                    data-title="Realisasi Perbaikan Masjid / Mushola"
+                                    data-desc="Bantuan dana untuk renovasi majelis taklim Shalawat & Dzikir Khairil Anam Kp. Babakan Kinin Rt 04 RW 15 Ds Cileunyi"
+                                    data-bs-toggle="modal" data-bs-target="#galleryModal" class="gallery-item"
+                                    alt="">
+
+                                <img src="/mosque/img/perbaikan004.png"
+                                    data-title="Realisasi Perbaikan Masjid / Mushola"
+                                    data-desc="Bantuan dana untuk renovasi majelis taklim Shalawat & Dzikir Khairil Anam Kp. Babakan Kinin Rt 04 RW 15 Ds Cileunyi"
+                                    data-bs-toggle="modal" data-bs-target="#galleryModal" class="gallery-item"
+                                    alt="">
+
+                                <img src="/mosque/img/perbaikan005.png"
+                                    data-title="Realisasi Perbaikan Masjid / Mushola"
+                                    data-desc="Bantuan dana untuk renovasi majelis taklim Shalawat & Dzikir Khairil Anam Kp. Babakan Kinin Rt 04 RW 15 Ds Cileunyi"
+                                    data-bs-toggle="modal" data-bs-target="#galleryModal" class="gallery-item"
+                                    alt="">
+                                <img src="/mosque/img/perbaikan006.png"
+                                    data-title="Realisasi Perbaikan Masjid / Mushola"
+                                    data-desc="Bantuan dana untuk renovasi majelis taklim Shalawat & Dzikir Khairil Anam Kp. Babakan Kinin Rt 04 RW 15 Ds Cileunyi"
+                                    data-bs-toggle="modal" data-bs-target="#galleryModal" class="gallery-item"
+                                    alt="">
+
+                            </div>
+                            <!-- DESKRIPSI -->
+                            <div class="card-body pt-0">
+                                <p class="section-desc mb-0">
+                                    Bantuan dana untuk renovasi majelis taklim Shalawat & Dzikir Khairil Anam
+                                    Kp. Babakan Kinin Rt 04 RW 15 Ds Cileunyi Kulon Kec Cileunyi Kab. Bandung
+                                    sebesar Rp. 5.000.000,- <br>
+                                    <small class="text-muted">[20-08-2025]</small>
+                                </p>
+                            </div>
                         </div>
+
+                        <div class="card shadow-sm mt-4">
+                            <!-- GALERI MOBILE -->
+                            <div class="gallery-scroll">
+
+                                <img src="/mosque/img/perbaikan1.jpg"
+                                    data-title="Realisasi Perbaikan Masjid / Mushola"
+                                    data-desc="pengadaan Power Mixer di Pondok Pesantren Tahfidz Quran At Tamim Cileunyi"
+                                    data-bs-toggle="modal" data-bs-target="#galleryModal" class="gallery-item"
+                                    alt="">
+
+                                <img src="/mosque/img/perbaikan2.jpg"
+                                    data-title="Realisasi Perbaikan Masjid / Mushola"
+                                    data-desc="pengadaan Power Mixer di Pondok Pesantren Tahfidz Quran At Tamim Cileunyi"
+                                    data-bs-toggle="modal" data-bs-target="#galleryModal" class="gallery-item"
+                                    alt="">
+
+                                <img src="/mosque/img/perbaikan3.jpg"
+                                    data-title="Realisasi Perbaikan Masjid / Mushola"
+                                    data-desc="pengadaan Power Mixer di Pondok Pesantren Tahfidz Quran At Tamim Cileunyi"
+                                    data-bs-toggle="modal" data-bs-target="#galleryModal" class="gallery-item"
+                                    alt="">
+
+                                <img src="/mosque/img/perbaikan4.jpg"
+                                    data-title="Realisasi Perbaikan Masjid / Mushola"
+                                    data-desc="pengadaan Power Mixer di Pondok Pesantren Tahfidz Quran At Tamim Cileunyi"
+                                    data-bs-toggle="modal" data-bs-target="#galleryModal" class="gallery-item"
+                                    alt="">
+
+                                <img src="/mosque/img/perbaikan5.jpg"
+                                    data-title="Realisasi Perbaikan Masjid / Mushola"
+                                    data-desc="pengadaan Power Mixer di Pondok Pesantren Tahfidz Quran At Tamim Cileunyi"
+                                    data-bs-toggle="modal" data-bs-target="#galleryModal" class="gallery-item"
+                                    alt="">
+                                <img src="/mosque/img/perbaikan6.jpg"
+                                    data-title="Realisasi Perbaikan Masjid / Mushola"
+                                    data-desc="pengadaan Power Mixer di Pondok Pesantren Tahfidz Quran At Tamim Cileunyi"
+                                    data-bs-toggle="modal" data-bs-target="#galleryModal" class="gallery-item"
+                                    alt="">
+
+                            </div>
+                            <!-- DESKRIPSI -->
+                            <div class="card-body pt-0">
+                                <p class="section-desc mb-0">
+                                    Kegiatan perbaikan 1000 Masjid, dalam perbaikan sound system berupa pengadaan Power
+                                    Mixer di Pondok Pesantren Tahfidz Quran At Tamim Cileunyi – Kabupaten Bandung
+                                    sebesar Rp. 2.000.000,- [29-08-2025]
+                                    <br>
+                                    <small class="text-muted">[20-08-2025]</small>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="card shadow-sm mt-4">
+                            <!-- GALERI MOBILE -->
+                            <div class="gallery-scroll">
+
+                                <img src="/mosque/img/perbaikantoilet1.png"
+                                    data-title="Realisasi Perbaikan Masjid / Mushola"
+                                    data-desc="Perbaikan Toilet Masjid At Taqwa Kampung Banceuy-Cianjur"
+                                    data-bs-toggle="modal" data-bs-target="#galleryModal" class="gallery-item"
+                                    alt="">
+
+                                <img src="/mosque/img/perbaikantoilet2.png"
+                                    data-title="Realisasi Perbaikan Masjid / Mushola"
+                                    data-desc="Perbaikan Toilet Masjid At Taqwa Kampung Banceuy-Cianjur"
+                                    data-bs-toggle="modal" data-bs-target="#galleryModal" class="gallery-item"
+                                    alt="">
+
+                                <img src="/mosque/img/perbaikantoilet3.png"
+                                    data-title="Realisasi Perbaikan Masjid / Mushola"
+                                    data-desc="Perbaikan Toilet Masjid At Taqwa Kampung Banceuy-Cianjur"
+                                    data-bs-toggle="modal" data-bs-target="#galleryModal" class="gallery-item"
+                                    alt="">
+
+                                <img src="/mosque/img/perbaikantoilet4.png"
+                                    data-title="Realisasi Perbaikan Masjid / Mushola"
+                                    data-desc="Perbaikan Toilet Masjid At Taqwa Kampung Banceuy-Cianjur"
+                                    data-bs-toggle="modal" data-bs-target="#galleryModal" class="gallery-item"
+                                    alt="">
+
+                            </div>
+                            <!-- DESKRIPSI -->
+                            <div class="card-body pt-0">
+                                <p class="section-desc mb-0">
+                                    Bantuan perbaikan Toilet Masjid At Taqwa Kampung Banceuy RT. 02/01 desa Cikahuripan
+                                    Gekbrong Cianjur Senilai Rp. 1.500.000,-
+
+                                    <br>
+                                    <small class="text-muted">[20-08-2025]</small>
+                                </p>
+                            </div>
+                        </div>
+
+
 
                     </div>
                 </div>
@@ -381,12 +545,12 @@
             </div>
 
 
-         <div class="mobile-back-wrapper">
-    <a href="{{ url()->previous() }}" class="mobile-back-btn">
-        <span class="material-icons">arrow_back</span>
-        <span class="back-text">Kembali</span>
-    </a>
-</div>
+            <div class="mobile-back-wrapper">
+                <a href="{{ url()->previous() }}" class="mobile-back-btn">
+                    <span class="material-icons">arrow_back</span>
+                    <span class="back-text">Kembali</span>
+                </a>
+            </div>
 
 
 
@@ -394,29 +558,29 @@
 
 
 
+        </div>
+    
+    <div class="container-fluid warna-background  text-white mt-3">
+        <div class="row">
+            <div class="container">
+                <div class="row  py-4 ">
+                    <div class="col">
+                        <h3 class="text-uppercase mb-3">Perbaiki Beribu Masjid</h3>
+                        {{-- <p class="mb-3">Use Coupan Code<br><span class="text-dark">DFR0020</span></p> --}}
+                    </div>
+                    <div class="col-3 col-md-3 col-lg-2 col-xl-2">
+                        <img src="mobile/img/logoyayasanwhite.png" alt="" class="mw-100 mt-3">
+                    </div>
+                    <div class="w-100"></div>
+                    <div class="col">
+                        {{-- <p>Get the all new furnitures at very low price</p> --}}
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-     <div class="container-fluid warna-background  text-white mt-3">
-            <div class="row">
-                <div class="container">
-                    <div class="row  py-4 ">
-                        <div class="col">
-                            <h3 class="text-uppercase mb-3">Perbaiki Beribu Masjid</h3>
-                            {{-- <p class="mb-3">Use Coupan Code<br><span class="text-dark">DFR0020</span></p> --}}
-                        </div>
-                        <div class="col-3 col-md-3 col-lg-2 col-xl-2">
-                            <img src="mobile/img/logoyayasanwhite.png" alt="" class="mw-100 mt-3">
-                        </div>
-                        <div class="w-100"></div>
-                        <div class="col">
-                            {{-- <p>Get the all new furnitures at very low price</p> --}}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-  
 </div>
+    </div>
     <style>
         /* footer */
 
@@ -488,6 +652,58 @@
             color: #07c511;
             /* ⬅️ penting */
         }
+
+        /* Wrapper */
+        .gallery-nav {
+            padding: 12px 16px;
+        }
+
+        /* Tombol next & prev */
+        .gallery-btn {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+
+            border: none;
+            background: rgba(0, 0, 0, .65);
+            color: #fff;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            box-shadow: 0 6px 16px rgba(0, 0, 0, .3);
+            transition: transform .15s ease, background .15s ease;
+        }
+
+        /* Icon */
+        .gallery-btn .material-icons {
+            font-size: 32px;
+        }
+
+        /* Tap effect (mobile) */
+        .gallery-btn:active {
+            transform: scale(0.9);
+            background: rgba(0, 0, 0, .85);
+        }
+
+        /* Desktop sedikit lebih kecil */
+        @media (min-width: 768px) {
+            .gallery-btn {
+                width: 44px;
+                height: 44px;
+            }
+
+            .gallery-btn .material-icons {
+                font-size: 26px;
+            }
+        }
+
+        .modal-body img {
+            width: 100%;
+            max-height: 75vh;
+            object-fit: cover;
+        }
     </style>
     <div class="footer">
         <nav class="navi">
@@ -553,7 +769,37 @@
         </div>
     </div>
     <!-- notification ends -->
+    {{-- modal --}}
+    <div class="modal fade" id="galleryModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down">
+            <div class="modal-content rounded-0">
 
+                <div class="modal-header border-0">
+                    <h6 class="modal-title" id="galleryTitle"></h6>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body text-center">
+                    <img id="galleryImage" src="" class="img-fluid rounded mb-3">
+                    <p id="galleryDesc" class="text-muted small"></p>
+                </div>
+
+                <div class="modal-footer border-0 justify-content-between gallery-nav">
+                    <button type="button" class="gallery-btn prev" id="prevImg">
+                        <span class="material-icons">chevron_left</span>
+                    </button>
+
+                    <button type="button" class="gallery-btn next" id="nextImg">
+                        <span class="material-icons">chevron_right</span>
+                    </button>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    {{-- end modal --}}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- jquery, popper and bootstrap js -->
     <script src="mobile/js/jquery-3.3.1.min.js"></script>
@@ -613,7 +859,38 @@
             });
         });
     </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
 
+            const items = document.querySelectorAll('.gallery-item');
+            let currentIndex = 0;
+
+            const modalImg = document.getElementById('galleryImage');
+            const modalTitle = document.getElementById('galleryTitle');
+            const modalDesc = document.getElementById('galleryDesc');
+
+            function showImage(index) {
+                const item = items[index];
+                modalImg.src = item.src;
+                modalTitle.textContent = item.dataset.title;
+                modalDesc.textContent = item.dataset.desc;
+                currentIndex = index;
+            }
+
+            items.forEach((img, index) => {
+                img.addEventListener('click', () => showImage(index));
+            });
+
+            document.getElementById('nextImg').onclick = () => {
+                showImage((currentIndex + 1) % items.length);
+            };
+
+            document.getElementById('prevImg').onclick = () => {
+                showImage((currentIndex - 1 + items.length) % items.length);
+            };
+
+        });
+    </script>
     <script>
         var swiper = new Swiper('.swiper-container', {
             slidesPerView: 1,
