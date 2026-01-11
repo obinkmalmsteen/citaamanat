@@ -464,7 +464,8 @@
                                          {{-- Logo --}}
                                         @if (!empty($donatur->logo_donatur))
                                             <img src="{{ asset('public/storage/logo_donatur/' . $donatur->logo_donatur) }}"
-                                                class="avatar-image">
+                                                class="rounded-circle mb-3 logo-donatur"
+                                                alt="Logo {{ $donatur->nama_donatur }}">
 
                                             {{-- Initial --}}
                                         @else
@@ -527,8 +528,6 @@
                     <div class="d-flex justify-content-center mt-5">
                         {{ $donaturs->links() }}
                     </div>
-
-
 
                 </div>
 
