@@ -162,6 +162,30 @@
             align-items: center;
             justify-content: center;
         }
+        .card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+/* Desktop hover */
+@media (hover: hover) and (pointer: fine) {
+    .card-link:hover .product-card {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 24px rgba(0,0,0,.15);
+    }
+}
+
+/* Mobile tap effect */
+.card-link:active .product-card {
+    transform: scale(0.97);
+    box-shadow: 0 6px 12px rgba(0,0,0,.12);
+}
+
+.product-card {
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
     </style>
     <div class="wrapper">
         <div class="header ">
@@ -207,15 +231,15 @@
                 class="swiper-container swiper-init demo-swiper">
                 <div class="swiper-pagination"></div>
                 <div class="swiper-wrapper">
-                    <div style="background-image:url(mosque/fotomasjid/masjid001.jpg)" class="swiper-slide"></div>
-                    <div style="background-image:url(mosque/fotomasjid/masjid002.jpg)" class="swiper-slide"></div>
-                    <div style="background-image:url(mosque/fotomasjid/masjid003.jpg)" class="swiper-slide"></div>
-                    <div style="background-image:url(mosque/fotomasjid/masjid004.jpg)" class="swiper-slide"></div>
-                    <div style="background-image:url(mosque/fotomasjid/masjid005.jpg)" class="swiper-slide"></div>
-                    <div style="background-image:url(mosque/fotomasjid/masjid006.jpg)" class="swiper-slide"></div>
-                    <div style="background-image:url(mosque/fotomasjid/masjid007.jpg)" class="swiper-slide"></div>
-                    <div style="background-image:url(mosque/fotomasjid/masjid008.jpg)" class="swiper-slide"></div>
-                    <div style="background-image:url(mosque/fotomasjid/masjid009.jpg)" class="swiper-slide"></div>
+                    <div style="background-image:url(mosque/img/renov.png)" class="swiper-slide"></div>
+                    <div style="background-image:url(mosque/img/004nyaah.png)" class="swiper-slide"></div>
+                    <div style="background-image:url(mosque/img/001adzan.png)" class="swiper-slide"></div>
+                    <div style="background-image:url(mosque/img/003gurungaji.png)" class="swiper-slide"></div>
+                    <div style="background-image:url(mosque/img/ibu1.jpg)" class="swiper-slide"></div>
+                    <div style="background-image:url(mosque/img/renov3.png)" class="swiper-slide"></div>
+                    <div style="background-image:url(mosque/img/adzan1.jpg)" class="swiper-slide"></div>
+                    <div style="background-image:url(mosque/img/ngaji1.png)" class="swiper-slide"></div>
+                    
 
                 </div>
             </div>
@@ -223,8 +247,8 @@
             <div class="container mb-3">
                 <div class="row">
                     <div class="col text-center">
-                        <h5 class="subtitle mb-1">Most Exciting Feature</h5>
-                        <p class="text-secondary">Take a look at our services</p>
+                        <h5 class="subtitle mb-1">Berbagai Aktifitas</h5>
+                        <p class="text-secondary">Program -Program Kami</p>
                     </div>
                 </div>
                 <div class="row text-center mt-4">
@@ -232,7 +256,7 @@
                         <div class="card shadow-sm border-0 mb-4">
                             <div class="card-body">
                                 <i class="material-icons mb-4 md-36 text-template">mosque</i>
-                                <h2>46</h2>
+                                <h2>5</h2>
                                 <p class="text-secondary text-mute">Perbaikan Beribu Masjid </p>
                             </div>
                         </div>
@@ -241,7 +265,7 @@
                         <div class="card shadow-sm border-0 mb-4">
                             <div class="card-body">
                                 <i class="material-icons mb-4 md-36 text-template">elderly_woman</i>
-                                <h2>35</h2>
+                                <h2>14</h2>
                                 <p class="text-secondary text-mute">Nyaah Ka Indung</p>
                             </div>
                         </div>
@@ -259,7 +283,7 @@
                         <div class="card shadow-sm border-0 mb-4">
                             <div class="card-body">
                                 <i class="material-icons mb-4 md-36 text-template">books</i>
-                                <h2>14</h2>
+                                <h2>2</h2>
                                 <p class="text-secondary text-mute">Apresiasi Guru Ngaji</p>
                             </div>
                         </div>
@@ -267,64 +291,68 @@
                 </div>
             </div>
 
-            <h6 class="subtitle">Berbagai Aktifitas Kami Yang Sudah Terlaksana <a href="all-products.html"
-                    class="float-right small">View All</a></h6>
+            <h6 class="subtitle">Berbagai Aktifitas Kami Yang Sudah Terlaksana </h6>
             <div class="row">
 
 
 
-                <div class="col-6 col-md-4 col-lg-3 col-xl-2">
-                    <div class="card product-card shadow-sm border-0 mb-4">
-                        <!-- GAMBAR DI LUAR CARD-BODY -->
-                        <div class="product-image">
-                            <img src="/mosque/img/renov.png" alt="">
-                        </div>
-                        <div class="card-body pt-3">
-                            <h6 class="mb-1">Perbaikan Beribu Masjid & Mushola</h6>
-                            <small class="text-muted">Unique</small>
-                        </div>
-                    </div>
-                </div>
+ <div class="col-6 col-md-4 col-lg-3 col-xl-2">
+    <a href="{{ route('mobileperbaikanberibumasjid') }}" class="card-link">
+        <div class="card product-card shadow-sm border-0 mb-4">
+            <div class="product-image">
+                <img src="/mosque/img/renov.png" alt="">
+            </div>
+            <div class="card-body pt-3">
+                <h6 class="mb-1">Perbaikan Beribu Masjid & Mushola</h6>
+                <small class="text-muted">Unique</small>
+            </div>
+        </div>
+    </a>
+</div>
 
-                <div class="col-6 col-md-4 col-lg-3 col-xl-2">
-                    <div class="card product-card shadow-sm border-0 mb-4">
-                        <!-- GAMBAR DI LUAR CARD-BODY -->
-                        <div class="product-image">
-                            <img src="/mosque/img/indung6.jpg" alt="">
-                        </div>
-                        <div class="card-body pt-3">
-                            <h6 class="mb-1">Nyaah Ka Indung</h6>
-                            <small class="text-muted">Unique</small>
-                        </div>
-                    </div>
-                </div>
+ <div class="col-6 col-md-4 col-lg-3 col-xl-2">
+    <a href="{{ route('mobilenyaahkaindung') }}" class="card-link">
+        <div class="card product-card shadow-sm border-0 mb-4">
+            <div class="product-image">
+                <img src="/mosque/img/indung6.jpg" alt="">
+            </div>
+            <div class="card-body pt-3">
+                <h6 class="mb-1">Nyaah Ka Indung</h6>
+                <small class="text-muted">Unique</small>
+            </div>
+        </div>
+    </a>
+</div>
 
-                <div class="col-6 col-md-4 col-lg-3 col-xl-2">
-                    <div class="card product-card shadow-sm border-0 mb-4">
-                        <!-- GAMBAR DI LUAR CARD-BODY -->
-                        <div class="product-image">
-                            <img src="/mosque/img/adzancilik.png" alt="">
-                        </div>
-                        <div class="card-body pt-3">
-                            <h6 class="mb-1">Muadzin Cilik</h6>
-                            <small class="text-muted">Unique</small>
-                        </div>
-                    </div>
-                </div>
+ <div class="col-6 col-md-4 col-lg-3 col-xl-2">
+    <a href="{{ route('mobilemuadzincilik') }}" class="card-link">
+        <div class="card product-card shadow-sm border-0 mb-4">
+            <div class="product-image">
+                <img src="/mosque/img/001adzan.png" alt="">
+            </div>
+            <div class="card-body pt-3">
+                <h6 class="mb-1">Muadzin Cilik</h6>
+                <small class="text-muted">Unique</small>
+            </div>
+        </div>
+    </a>
+</div>
+ <div class="col-6 col-md-4 col-lg-3 col-xl-2">
+    <a href="{{ route('mobilehonorgurungaji') }}" class="card-link">
+        <div class="card product-card shadow-sm border-0 mb-4">
+            <div class="product-image">
+                <img src="/mosque/img/Gurungaji.jpg" alt="">
+            </div>
+            <div class="card-body pt-3">
+                <h6 class="mb-1">Honor Guru Ngaji</h6>
+                <small class="text-muted">Unique</small>
+            </div>
+        </div>
+    </a>
+</div>
 
-                <div class="col-6 col-md-4 col-lg-3 col-xl-2">
-                    <div class="card product-card shadow-sm border-0 mb-4">
-                        <!-- GAMBAR DI LUAR CARD-BODY -->
-                        <div class="product-image">
-                            <img src="/mosque/img/Gurungaji.jpg" alt="">
-                        </div>
-                        <div class="card-body pt-3">
-                            <h6 class="mb-1">Bantuan Honor Guru Ngaji</h6>
-                            <small class="text-muted">Unique</small>
-                        </div>
-                    </div>
-                </div>
 
+              
 
 
 
@@ -332,7 +360,7 @@
 
             </div>
         </div>
-        <div class="container-fluid bg-warning text-white my-3">
+        <div class="container-fluid warna-background text-white my-3">
             <div class="row">
                 <div class="container">
                     <div class="row  py-4 ">
@@ -340,9 +368,7 @@
                             <h1 class="text-uppercase mb-3">Aktifitas</h1>
 
                         </div>
-                        <div class="col-5 col-md-3 col-lg-2 col-xl-2">
-                            <img src="img/sofa1.png" alt="" class="mw-100 mt-3">
-                        </div>
+                       
                         <div class="w-100"></div>
                         <div class="col">
                             <p>Aktifitas</p>
@@ -351,112 +377,7 @@
                 </div>
             </div>
         </div>
-        {{-- <div class="container">
-            <h6 class="subtitle">Are you looking for:</h6>
-            <div class="row">
-                <div class="col">
-                    <button class="btn btn-lg btn-light btn-rounded shadow-xs my-1 mr-2">New</button>
-                    <button class="btn btn-lg btn-light btn-rounded shadow-xs my-1 mr-2">$100 - $299</button>
-                    <button class="btn btn-lg btn-light btn-rounded shadow-xs my-1 mr-2">600+</button>
-                    <button class="btn btn-lg btn-light btn-rounded shadow-xs my-1 mr-2">$300 - $599</button>
-                    <button class="btn btn-lg btn-light btn-rounded shadow-xs my-1 mr-2">Deliver Today</button>
-                </div>
-            </div>
-            <h6 class="subtitle">News Updates</h6>
-            <div class="row">
-                <!-- Swiper -->
-                <div class="swiper-container news-slide">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <div class="card shadow-sm border-0 bg-dark text-white">
-                                <figure class="background">
-                                    <img src="img/wall.jpg" alt="">
-                                </figure>
-                                <div class="card-body">
-                                    <a href=""
-                                        class="btn btn-default button-rounded-36 shadow-sm float-bottom-right"><i
-                                            class="material-icons md-18">arrow_forward</i></a>
-                                    <h5 class="small">Multipurpose Furniture allows you to grow faster</h5>
-                                    <p class="text-mute small">By Anand Mangal</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="card shadow-sm border-0 bg-dark text-white">
-                                <figure class="background">
-                                    <img src="img/kitchen.jpg" alt="">
-                                </figure>
-                                <div class="card-body">
-                                    <a href=""
-                                        class="btn btn-default button-rounded-36 shadow-sm float-bottom-right"><i
-                                            class="material-icons md-18">arrow_forward</i></a>
-                                    <h5 class="small">Multipurpose Furniture allows you to grow faster</h5>
-                                    <p class="text-mute small">By Anand Mangal</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="card shadow-sm border-0 bg-dark text-white">
-                                <figure class="background">
-                                    <img src="img/wall.jpg" alt="">
-                                </figure>
-                                <div class="card-body">
-                                    <a href=""
-                                        class="btn btn-default button-rounded-36 shadow-sm float-bottom-right"><i
-                                            class="material-icons md-18">arrow_forward</i></a>
-                                    <h5 class="small">Multipurpose Furniture allows you to grow faster</h5>
-                                    <p class="text-mute small">By Anand Mangal</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="card shadow-sm border-0 bg-dark text-white">
-                                <figure class="background">
-                                    <img src="img/kitchen.jpg" alt="">
-                                </figure>
-                                <div class="card-body">
-                                    <a href=""
-                                        class="btn btn-default button-rounded-36 shadow-sm float-bottom-right"><i
-                                            class="material-icons md-18">arrow_forward</i></a>
-                                    <h5 class="small">Multipurpose Furniture allows you to grow faster</h5>
-                                    <p class="text-mute small">By Anand Mangal</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="card shadow-sm border-0 bg-dark text-white">
-                                <figure class="background">
-                                    <img src="img/wall.jpg" alt="">
-                                </figure>
-                                <div class="card-body">
-                                    <a href=""
-                                        class="btn btn-default button-rounded-36 shadow-sm float-bottom-right"><i
-                                            class="material-icons md-18">arrow_forward</i></a>
-                                    <h5 class="small">Multipurpose Furniture allows you to grow faster</h5>
-                                    <p class="text-mute small">By Anand Mangal</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="card shadow-sm border-0 bg-dark text-white">
-                                <figure class="background">
-                                    <img src="img/kitchen.jpg" alt="">
-                                </figure>
-                                <div class="card-body">
-                                    <a href=""
-                                        class="btn btn-default button-rounded-36 shadow-sm float-bottom-right"><i
-                                            class="material-icons md-18">arrow_forward</i></a>
-                                    <h5 class="small">Multipurpose Furniture allows you to grow faster</h5>
-                                    <p class="text-mute small">By Anand Mangal</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Add Pagination -->
-                    <div class="swiper-pagination"></div>
-                </div>
-            </div>
-        </div> --}}
+      
 
         <style>
             /* footer */

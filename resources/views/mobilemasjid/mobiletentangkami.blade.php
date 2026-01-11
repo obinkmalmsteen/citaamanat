@@ -180,10 +180,7 @@
                     <div class="card shadow-sm border-0 mb-4">
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-3 col-md-2 col-lg-2 align-self-center">
-                                    <figure class="product-image"><img src="img/sofa2.png" alt=""
-                                            class=""></figure>
-                                </div>
+                               
                                 <div class="col">
                                     <button class="btn btn-sm btn-link p-0 float-right"><i
                                             class="material-icons md-18">favorite_outline</i></button>
@@ -206,10 +203,7 @@
                     <div class="card shadow-sm border-0 mb-4">
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-3 col-md-2 col-lg-2 align-self-center">
-                                    <figure class="product-image"><img src="img/sofa2.png" alt=""
-                                            class=""></figure>
-                                </div>
+                                
                                 <div class="col">
                                     <button class="btn btn-sm btn-link p-0 float-right"><i
                                             class="material-icons md-18">favorite_outline</i></button>
@@ -255,9 +249,7 @@
                             <h1 class="text-uppercase mb-3">Halaman Ini Sedang dalam Maintenance</h1>
 
                         </div>
-                        <div class="col-5 col-md-3 col-lg-2 col-xl-2">
-                            <img src="img/sofa1.png" alt="" class="mw-100 mt-3">
-                        </div>
+                       
                         <div class="w-100"></div>
                         <div class="col">
                             <p>Tentang Kami</p>

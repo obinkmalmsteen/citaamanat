@@ -21,6 +21,7 @@ use App\Http\Controllers\JenisBarangController;
 use App\Http\Controllers\ListDonaturController;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\AdminSettingController;
+use App\Http\Controllers\AktifitasController;
 use App\Http\Controllers\PengadaanItemController;
 use App\Http\Controllers\PengadaanRequestController;
 
@@ -84,6 +85,11 @@ Route::post('daftar-masjid/store', [MasjidController::class, 'storePublic'])->na
 
 Route::get('/form-masjid', [MasjidController::class, 'publicForm'])->name('formMasjid');
 Route::get('/mobile-aktifitas', [DashboardController::class, 'mobileaktifitas'])->name('mobileaktifitas');
+Route::get('/mobile-perbaikanberibumasjid', [AktifitasController::class, 'mobileperbaikanberibumasjid'])->name('mobileperbaikanberibumasjid');
+Route::get('/mobile-nyaahkaindung', [AktifitasController::class, 'mobilenyaahkaindung'])->name('mobilenyaahkaindung');
+Route::get('/mobile-muadzincilik', [AktifitasController::class, 'mobilemuadzincilik'])->name('mobilemuadzincilik');
+Route::get('/mobile-honorgurungaji', [AktifitasController::class, 'mobilehonorgurungaji'])->name('mobilehonorgurungaji');
+
 Route::get('/mobile-tentangkami', [DashboardController::class, 'mobiletentangkami'])->name('mobiletentangkami');
 Route::get('/mobile-testimonial', [DashboardController::class, 'mobiletestimonial'])->name('mobiletestimonial');
 Route::get('/mobile-donatur', [ListDonaturController::class, 'mobiledonatur'])->name('mobiledonatur');
