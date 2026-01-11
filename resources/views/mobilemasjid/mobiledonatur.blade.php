@@ -102,6 +102,7 @@
         object-fit: contain;
     }
 
+
     .donatur-profile {
         display: flex;
         align-items: center;
@@ -451,13 +452,35 @@
                                     <div class="card-body text-center p-4">
 
                                         {{-- Logo --}}
-                                        @if ($donatur->logo_donatur)
+                                        {{-- @if ($donatur->logo_donatur)
                                             <img src="{{ asset('public/storage/logo_donatur/' . $donatur->logo_donatur) }}"
                                                 class="rounded-circle mb-3 logo-donatur"
                                                 alt="Logo {{ $donatur->nama_donatur }}">
                                         @else
                                             <div class="logo-placeholder mb-3">
                                                 <i class="bi bi-person"></i>
+                                            </div>
+                                        @endif --}}
+                                         {{-- Logo --}}
+                                        @if (!empty($donatur->logo_donatur))
+                                            <img src="{{ asset('public/storage/logo_donatur/' . $donatur->logo_donatur) }}"
+                                                class="avatar-image">
+
+                                            {{-- Initial --}}
+                                        @else
+                                            @php
+                                                // Pisahkan nama berdasarkan spasi
+                                                $words = explode(' ', trim($donatur->nama_donatur));
+
+                                                // Ambil maksimal 3 kata
+                                                $initial = '';
+                                                foreach (array_slice($words, 0, 3) as $w) {
+                                                    $initial .= strtoupper(substr($w, 0, 1));
+                                                }
+                                            @endphp
+
+                                            <div class="avatar-initial">
+                                                {{ $initial }}
                                             </div>
                                         @endif
 
@@ -511,9 +534,7 @@
 
 
                 {{-- end donaturr container --}}
-                <div class="container my-5">
-
-
+                <div class="container my-5 ">
 
                     <div class="text-center mb-4">
                         <h4 class="fw-bold text-danger mb-1" id="Pengeluaran-Dana">Pengeluaran Dana</h4>

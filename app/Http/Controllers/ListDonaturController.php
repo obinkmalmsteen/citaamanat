@@ -45,7 +45,7 @@ if (request('kategori')) {
     $query->where('kategori', request('kategori'));
 }
 
-$datakeluar = $query->latest()->paginate(12)->withQueryString();
+$datakeluar = $query->latest()->paginate(20)->withQueryString();
 
 $kategoriList = Pengeluaran::select('kategori')->distinct()->pluck('kategori');
 
@@ -149,7 +149,7 @@ if (request('kategori')) {
     $query->where('kategori', request('kategori'));
 }
 
-$datakeluar = $query->latest()->paginate(12)->withQueryString();
+$datakeluar = $query->latest()->paginate(20)->withQueryString();
 
 $kategoriList = Pengeluaran::select('kategori')->distinct()->pluck('kategori');
 
