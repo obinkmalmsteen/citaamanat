@@ -62,7 +62,7 @@
             </div>
         </div>
     </div>
-    <div class="sidebar">
+     <div class="sidebar">
         <div class="text-center">
             <div class="figure-menu shadow">
                 <figure><img src="mobile/img/useeer.png" alt=""></figure>
@@ -111,14 +111,7 @@
                 <div class="list-group main-menu">
                     @auth <a href="index.html" class="list-group-item list-group-item-action active">Total Pengajuan
                         Token :{{ Auth::user()->masjid->total_pengajuan ?? Auth::user()->nama }} Kali</a>@endauth
-                    <a href="notification.html" class="list-group-item list-group-item-action">Notification <span
-                            class="badge badge-dark text-white">2</span></a>
-                    <a href="all-products.html" class="list-group-item list-group-item-action">All Products</a>
-                    <a href="my-order.html" class="list-group-item list-group-item-action">My Order</a>
-                    <a href="profile.html" class="list-group-item list-group-item-action">My Profile</a>
-                    <a href="controls.html" class="list-group-item list-group-item-action">Pages Controls <span
-                            class="badge badge-light ml-2">Check</span></a>
-                    <a href="setting.html" class="list-group-item list-group-item-action">Settings</a>
+                    
                     <a href="{{ route('mobile.logout') }}"
                         class="list-group-item list-group-item-action mt-4">Logout</a>
                 </div>

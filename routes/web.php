@@ -215,6 +215,9 @@ Route::put('masjid/{id}/update-full', [MasjidController::class, 'updateFull'])
 
 Route::get('/kirim-pesan/{id}', [MasjidController::class, 'kirimPesan'])->name('kirim.pesan');
 Route::get('/kirim-pesantemplate/{id}', [MasjidController::class, 'kirimPesanTemplate'])->name('kirim.pesantemplate');
+Route::post('/kirim-wa-bulk', [MasjidController::class, 'kirimPesanBulk'])
+    ->name('kirim.wa.bulk');
+
 
 Route::get('/pengadaan/items', [PengadaanItemController::class, 'index'])
     ->name('pengadaan.items.index');

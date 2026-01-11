@@ -154,7 +154,12 @@
     width: 80px;
     text-align: center;
 }
-
+/* Tombol pesan wa terkirim */
+#dataTable th:nth-child(11),
+#dataTable td:nth-child(11) {
+    width: 80px;
+    text-align: center;
+}
 </style>
 
 
@@ -177,14 +182,17 @@
                         <th>
                             <i class="fas fa-cog"></i>
                         </th>
-                        <th>Kirim Pesan</th>
+                        <th>
+                <input type="checkbox" id="checkAll">
+            </th>
+                        <th>Last WA</th> 
                     </tr>
                 </thead>
 
                 <tbody>
                     @foreach ($pengajuantoken as $item)
                         <tr>
-                            <td class="text-center" style="vertical-align: middle;"> {{ $loop->iteration }}</td>
+                            <td class="text-center" style="vertical-align: middle;"> {{ $item->id_histori }}</td>
                             <td class="text-center " style="vertical-align: middle ;">{{ $item->tgl_request_token }}</td>
                             <td class="text-center copyable" style="vertical-align: middle ;">{{ $item->id_pelanggan }}</td>
                             <td class="text-center" style="vertical-align: middle;"> {{ $item->nama_masjid }}</td>
@@ -220,22 +228,14 @@
                                     Detail
                                 </a>
                             </td>
-                            <td class="text-center">
-@if($item->pesan_terkirim_at)
-    <button class="btn btn-secondary btn-sm" disabled>
-        Pesan Terkirim
-    </button>
-@else
-    <a href="{{ route('kirim.pesan', $item->id_pelanggan) }}"
-       class="btn btn-success btn-sm">
-       Kirim WA
-    </a>
-@endif
-
-
-                              
-                            </td>
-                           
+                            
+                            <td>
+                    <input type="checkbox"
+                           name="pelanggan_ids[]"
+                           value="{{ $item->id_pelanggan }}"
+                           class="wa-checkbox">
+                </td>
+                           <td class="text-center" style="vertical-align: middle;"> {{ $item->pesan_terkirim_at }}</td>
                         </tr>
                     @endforeach
                 </tbody>

@@ -43,7 +43,7 @@ body {
 
 .bg-success,
 .badge-success {
-    background-color: #00BE7D !important
+    background-color: #00af09 !important
 }
 
 .text-success {
@@ -1529,6 +1529,11 @@ pre {
 .warna-background {
     background-color: #3cc31e 
 }
+.warna-background-oranye {
+    background-color: #114605 
+}
+
+
 
 .pink-theme .wrapper {
     background-color: #E3EAF1;

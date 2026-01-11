@@ -35,6 +35,7 @@ class HistoriBayarExport implements
         }
 
         return $query->select(
+            'id_histori',
             'id_pelanggan',
             'tgl_request_token',
             'nama_masjid',
@@ -50,6 +51,7 @@ class HistoriBayarExport implements
     public function headings(): array
     {
         return [
+            'id_histori',
             'id_pelanggan',
             'tgl_request_token',
             'nama_masjid',
@@ -65,6 +67,7 @@ class HistoriBayarExport implements
     public function map($row): array
     {
         return [
+            $row->id_histori,
             "'" . $row->id_pelanggan,        // dipaksa text
             $row->tgl_request_token,
             $row->nama_masjid,
@@ -81,7 +84,8 @@ class HistoriBayarExport implements
     {
         return [
             'A' => NumberFormat::FORMAT_TEXT,
-            'G' => NumberFormat::FORMAT_TEXT,
+            'B' => NumberFormat::FORMAT_TEXT,
+            'H' => NumberFormat::FORMAT_TEXT,
         ];
     }
 }

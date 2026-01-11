@@ -633,7 +633,14 @@ public function export(Request $request)
 
 public function kirimPesan($id_pelanggan)
 {
-    // Ambil data histori + masjid
+    $this->kirimWaPerPelanggan($id_pelanggan);
+
+    return back()->with('success', 'Pesan berhasil dikirim!');
+}
+
+
+private function kirimWaPerPelanggan($id_pelanggan)
+{
     $data = HistoriBayar::join('masjids', 'histori_bayar.id_pelanggan', '=', 'masjids.id_pelanggan')
         ->select(
             'histori_bayar.*',
@@ -641,9 +648,12 @@ public function kirimPesan($id_pelanggan)
             'masjids.telp_ketua_dkm'
         )
         ->where('histori_bayar.id_pelanggan', $id_pelanggan)
-        ->firstOrFail();
+        ->first();
 
-    // Format data
+    if (!$data || !$data->telp_ketua_dkm) {
+        return false;
+    }
+
     $tokenFormatted  = trim(chunk_split($data->no_token_listrik, 4, ' '));
     $jumlahFormatted = number_format($data->jumlah_realisasi_token, 0, ',', '.');
 
@@ -667,15 +677,35 @@ Hormat kami,
 Cita Amanat Martadiredja
 ";
 
-    // Kirim WA
     WhatsappHelper::send($data->telp_ketua_dkm, $pesan);
 
-    // Simpan status pesan terkirim
     HistoriBayar::where('id_pelanggan', $id_pelanggan)
         ->update(['pesan_terkirim_at' => now()]);
 
-    return back()->with('success', 'Pesan berhasil dikirim!');
+    return true;
 }
+
+public function kirimPesanBulk(Request $request)
+{
+    $request->validate([
+        'pelanggan_ids' => 'required|array|min:1'
+    ]);
+
+    $berhasil = 0;
+
+    foreach ($request->pelanggan_ids as $id_pelanggan) {
+        if ($this->kirimWaPerPelanggan($id_pelanggan)) {
+            $berhasil++;
+        }
+    }
+
+    return back()->with(
+        'success',
+        "Pesan berhasil dikirim ke {$berhasil} masjid."
+    );
+}
+
+
 
 public function kirimPesanTemplate(Request $request, $id_pelanggan)
 {
