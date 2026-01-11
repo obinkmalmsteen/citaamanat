@@ -133,7 +133,9 @@
         font-weight: bold;
         color: #000;
         font-size: 14px;
+        margin: 0 auto;
     }
+  
 
     /* Donatur Card */
     .card-donatur {
@@ -480,7 +482,7 @@
                                                 }
                                             @endphp
 
-                                            <div class="avatar-initial">
+                                            <div class="avatar-initial mb-3">
                                                 {{ $initial }}
                                             </div>
                                         @endif
