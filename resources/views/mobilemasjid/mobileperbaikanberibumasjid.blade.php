@@ -665,7 +665,7 @@
             border-radius: 50%;
 
             border: none;
-            background: rgba(0, 0, 0, .65);
+            background: rgba(101, 196, 0, 0.953);
             color: #fff;
 
             display: flex;
@@ -684,7 +684,7 @@
         /* Tap effect (mobile) */
         .gallery-btn:active {
             transform: scale(0.9);
-            background: rgba(0, 0, 0, .85);
+            background: rgb(236, 154, 1);
         }
 
         /* Desktop sedikit lebih kecil */

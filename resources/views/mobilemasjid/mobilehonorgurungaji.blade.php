@@ -467,7 +467,7 @@
             <div class="container">
                 <div class="row  py-4 ">
                     <div class="col">
-                        <h3 class="text-uppercase mb-3">Program Nyaah Ka Indung</h3>
+                        <h3 class="text-uppercase mb-3">Program Tunjangan Honor Guru Ngaji</h3>
                         {{-- <p class="mb-3">Use Coupan Code<br><span class="text-dark">DFR0020</span></p> --}}
                     </div>
                     <div class="col-3 col-md-3 col-lg-2 col-xl-2">
