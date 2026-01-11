@@ -19,16 +19,24 @@
     <!-- Bootstrap core CSS -->
     <link href="mobile/vendor/bootstrap-4.4.1/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Swiper CSS -->
-    <link href="mobile/vendor/swiper/css/swiper.min.css" rel="stylesheet">
+ 
 
-    <!-- Custom styles for this template -->
-    <link href="mobile/css/style.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
-    <link href="mobile/css/mobile-menu.css" rel="stylesheet">
+  <!-- Swiper CSS -->
+<link rel="stylesheet" href="{{ asset('mobile/vendor/swiper/css/swiper.min.css') }}">
+
+<!-- Custom styles -->
+<link rel="stylesheet" href="{{ asset('mobile/css/style.css') }}">
+
+<!-- Google Icons -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+
+<!-- Swiper CDN -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+<!-- Mobile menu -->
+<link rel="stylesheet" href="{{ asset('mobile/css/mobile-menu.css') }}?v={{ time() }}">
 
     {{-- <link rel="stylesheet" href="{{ asset('mobile/css/mobile-menu.css') }}"> --}}
 </head>
