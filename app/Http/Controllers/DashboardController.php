@@ -408,6 +408,14 @@ public function mobileaktifitas()
     // Kirim hasilnya ke view
     return view('mobilemasjid.mobileaktifitas', compact('jumlahUser'));
 }
+public function mobilekontakkami()
+{
+    // Hitung semua user terdaftar
+    $jumlahUser = User::count();
+  
+    // Kirim hasilnya ke view
+    return view('mobilemasjid.mobilekontakkami', compact('jumlahUser'));
+}
 public function mobileprofile()
 {
     $user = Auth::user();

@@ -90,6 +90,7 @@ Route::get('/mobile-nyaahkaindung', [AktifitasController::class, 'mobilenyaahkai
 Route::get('/mobile-muadzincilik', [AktifitasController::class, 'mobilemuadzincilik'])->name('mobilemuadzincilik');
 Route::get('/mobile-honorgurungaji', [AktifitasController::class, 'mobilehonorgurungaji'])->name('mobilehonorgurungaji');
 
+Route::get('/mobile-kontakkami', [DashboardController::class, 'mobilekontakkami'])->name('mobilekontakkami');
 Route::get('/mobile-tentangkami', [DashboardController::class, 'mobiletentangkami'])->name('mobiletentangkami');
 Route::get('/mobile-testimonial', [DashboardController::class, 'mobiletestimonial'])->name('mobiletestimonial');
 Route::get('/mobile-donatur', [ListDonaturController::class, 'mobiledonatur'])->name('mobiledonatur');

@@ -394,7 +394,7 @@
         </div>
     </div>
 
-    <!-- notification -->
+    <!-- notification 
     <div class="notification bg-white shadow border-primary">
         <div class="row">
             <div class="col-auto align-self-center pr-0">
@@ -410,7 +410,7 @@
             </div>
         </div>
     </div>
-    <!-- notification ends -->
+     notification ends -->
 
 
     <!-- jquery, popper and bootstrap js -->
@@ -459,8 +459,7 @@
                 }
             });
 
-            /* notification view and hide */
-            setTimeout(function() {
+            /*   setTimeout(function() {
                 $('.notification').addClass('active');
                 setTimeout(function() {
                     $('.notification').removeClass('active');
@@ -468,7 +467,8 @@
             }, 500);
             $('.closenotification').on('click', function() {
                 $(this).closest('.notification').removeClass('active')
-            });
+            }); */
+            
         });
     </script>
 

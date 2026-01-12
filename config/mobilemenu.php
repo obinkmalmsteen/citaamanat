@@ -49,7 +49,7 @@ return [
     [
         'label' => 'Kontak Kami',
         'icon'  => 'contact_mail',
-        'route' => 'kontak',
+        'route' => 'mobilekontakkami',
     ],
     [
         'label' => 'Request Token',

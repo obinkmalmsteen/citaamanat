@@ -151,7 +151,7 @@
                 </div>
             </div>
         </div>
-        <div class="mobile-header-listmasjid text-white d-block d-md-none">
+        <div class="mobile-header-aktifitas text-white d-block d-md-none">
 
             <div class="content-wrapper">
                 <p class="text-uppercase  mb-1 title-list-masjid">List Masjid</p>

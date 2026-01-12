@@ -764,7 +764,68 @@
                 .menu-item:active .menu-icon span {
                     transform: scale(1.15);
                 }
+                /* Map dipaksa lebih rendah */
+#map {
+    position: relative;
+    z-index: 1;
+}
             </style>
+
+
+
+<style>
+        .leaflet-tooltip-nama-masjid {
+            background: rgba(255, 255, 255, 0.95);
+            color: #222;
+            font-weight: 600;
+            border: 1px solid #ccc;
+            padding: 2px 6px;
+            border-radius: 6px;
+            box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.12);
+            white-space: nowrap;
+        }
+
+        .img-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+
+        .img-text {
+            position: absolute;
+            bottom: 30px;
+            /* posisi: bisa bottom, top, atau center */
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(27, 27, 27, 0.4);
+            /* putih transparan */
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-weight: 100;
+            text-align: center;
+            width: max-content;
+            max-width: 90%;
+        }
+    </style>
+{{-- peta --}}
+
+ <div class="card mb-3 border-0 shadow-sm">
+                <div class="card-body">
+                    <div class="container py-15">
+                        <div class="mx-auto text-center mb-5 wow fadeIn" data-wow-delay="0.1s"
+                            style="max-width: 700px;">
+                            {{-- <p class="fs-5 text-uppercase text-primary">MAPS</p> --}}
+                            <h5 class="display-6">Sebaran Lokasi Masjid</h5>
+                        </div>
+                        <div class="mb-1">
+                            <label for="map">Titik Lokasi Masjid Yang Sudah Teregistrasi</label>
+                            <div id="map" style="height: 400px;  border-radius: 10px;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+{{-- end peta --}}
+
+ 
 
             <!-- video testimoni -->
             <h6 class="subtitle">Video Testimoni</h6>
@@ -1045,6 +1106,64 @@
     <script src="mobile/js/main.js"></script>
 
     <!-- page level script -->
+     <script>
+        document.addEventListener("DOMContentLoaded", function() {
+
+            // Default map jika tidak ada marker
+            var defaultLat = -7.7956;
+            var defaultLng = 110.3695;
+            var map = L.map('map').setView([defaultLat, defaultLng], 13);
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+                attribution: '© OpenStreetMap'
+            }).addTo(map);
+
+            var markersGroup = L.featureGroup();
+
+
+            // 👇 TAMBAHKAN BAGIAN INI DI SINI
+            var greenIcon = L.icon({
+                iconUrl: '/mosque/img/marker-greentua.png', // ganti sesuai lokasi file
+                shadowUrl: '/mosque/img/marker-shadow.png',
+                iconSize: [25, 41],
+                iconAnchor: [12, 41],
+                popupAnchor: [1, -34],
+                shadowSize: [41, 41]
+            });
+            // 👆 SAMPAI DI SINI
+
+
+            // masjids adalah array dari PHP
+            masjids.forEach(function(item) {
+
+                if (!item.map_lokasi_masjid) return;
+
+                let coords = item.map_lokasi_masjid.split(',');
+                let lat = parseFloat(coords[0]);
+                let lng = parseFloat(coords[1]);
+
+                if (isNaN(lat) || isNaN(lng)) return;
+
+                let marker = L.marker([lat, lng], {
+                    icon: greenIcon
+                }).addTo(map);
+
+                marker.bindTooltip(item.nama_masjid, {
+                    direction: 'top',
+                    offset: [0, -10],
+                    className: 'leaflet-tooltip-nama-masjid'
+                });
+
+                markersGroup.addLayer(marker);
+            });
+
+            if (markersGroup.getLayers().length > 0) {
+                map.fitBounds(markersGroup.getBounds());
+            }
+
+        });
+    </script>
     <script>
         $(window).on('load', function() {
             var swiper = new Swiper('.small-slide', {
@@ -1220,7 +1339,13 @@
             });
         </script>
     @endif
+       <script>
+        // aman: jika variabel tidak dikirim dari controller, gunakan array kosong
+        const masjids = @json($masjids ?? []);
+    </script>
 
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <!-- jquery, popper and bootstrap js -->
     <script src="mobile/js/jquery-3.3.1.min.js"></script>
     <script src="mobile/js/popper.min.js"></script>
