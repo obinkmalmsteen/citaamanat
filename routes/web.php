@@ -14,6 +14,7 @@ use App\Http\Controllers\BarangController;
 use App\Http\Controllers\MasjidController;
 use App\Http\Controllers\DonaturController;
 use App\Http\Controllers\LandingController;
+use App\Http\Controllers\AktifitasController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PengajuanController;
 use App\Http\Controllers\MobileAuthController;
@@ -21,9 +22,9 @@ use App\Http\Controllers\JenisBarangController;
 use App\Http\Controllers\ListDonaturController;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\AdminSettingController;
-use App\Http\Controllers\AktifitasController;
 use App\Http\Controllers\PengadaanItemController;
 use App\Http\Controllers\PengadaanRequestController;
+use App\Http\Controllers\MobileTestimonialController;
 
 
 
@@ -93,6 +94,7 @@ Route::get('/mobile-honorgurungaji', [AktifitasController::class, 'mobilehonorgu
 Route::get('/mobile-kontakkami', [DashboardController::class, 'mobilekontakkami'])->name('mobilekontakkami');
 Route::get('/mobile-tentangkami', [DashboardController::class, 'mobiletentangkami'])->name('mobiletentangkami');
 Route::get('/mobile-testimonial', [DashboardController::class, 'mobiletestimonial'])->name('mobiletestimonial');
+
 Route::get('/mobile-donatur', [ListDonaturController::class, 'mobiledonatur'])->name('mobiledonatur');
 Route::get('/mobile-acara', [DashboardController::class, 'mobileacara'])->name('mobileacara');
 Route::get('/mobile-datamasjid', [DashboardController::class, 'mobiledatamasjid'])->name('mobiledatamasjid');
@@ -193,6 +195,24 @@ Route::post('/masjid/{id_pelanggan}/realisasi-token', [MasjidController::class, 
     Route::get('testimonial',[TestimonialController::class,'index'])->name('testimonial');
  Route::get('/testimonial', [TestimonialController::class, 'index'])->name('testimonial.index');
     Route::post('/testimonial/store', [TestimonialController::class, 'store'])->name('testimonial.store');
+
+Route::get('/mobile-givetestimoni', [MobileTestimonialController::class, 'index'])->name('mobilegivetestimoni');
+Route::post('/mobile/testimonial/store', [MobileTestimonialController::class, 'store'])
+    ->name('mobile.testimonial.store');
+// halaman utama testimoni (form / hasil)
+
+Route::get('/mobile/testimonial', [MobileTestimonialController::class, 'index'])
+    ->name('mobile.testimonial.index');
+
+// halaman edit / tambah video
+Route::get('/mobile/testimonial/edit-video', 
+    [MobileTestimonialController::class, 'editVideo']
+)->name('mobile.testimonial.edit');
+
+Route::post('/mobile/testimonial/update-video', 
+    [MobileTestimonialController::class, 'updateVideo']
+)->name('mobile.testimonial.updateVideo');
+
 
 
  Route::get('/pengajuantoken', [PengajuanController::class, 'index'])->name('pengajuantoken.index');

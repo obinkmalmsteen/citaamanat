@@ -416,6 +416,7 @@ public function mobilekontakkami()
     // Kirim hasilnya ke view
     return view('mobilemasjid.mobilekontakkami', compact('jumlahUser'));
 }
+
 public function mobileprofile()
 {
     $user = Auth::user();
