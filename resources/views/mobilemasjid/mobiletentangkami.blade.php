@@ -151,6 +151,57 @@
             align-items: center;
             justify-content: center;
         }
+
+        .icon-circle {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #e7f1ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+}
+
+.icon-circle span {
+    font-size: 28px;
+    color: #04dc01;
+}
+
+.bg-soft-success {
+    background: #e8f5e9;
+}
+
+.visi-card p {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.misi-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.misi-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.misi-item span {
+    font-size: 22px;
+    color: #198754;
+    margin-top: 2px;
+}
+
+.misi-item p {
+    margin: 0;
+    font-size: 16px;
+    color: #555;
+    line-height: 1.5;
+}
+
     </style>
     <div class="wrapper">
         <div class="header ">
@@ -181,87 +232,89 @@
 
             <div class="content-wrapper">
                 <p class="text-uppercase  mb-1">Tentang kami</p>
-                <p class="text-uppercase mb-1">Cita Amanat Martadiredja</p>
+               
             </div>
         </div>
 
 
-        <div class="container ">
+       <div class="container my-4">
 
+    <!-- VISI -->
+    <div class="card visi-card border-0 shadow-sm mb-4">
+        <div class="card-body text-center p-4">
 
-
-            <div class="row">
-                <div class="col-12 col-lg-6">
-                    <div class="card shadow-sm border-0 mb-4">
-                        <div class="card-body">
-                            <div class="row">
-                               
-                                <div class="col">
-                                    <button class="btn btn-sm btn-link p-0 float-right"><i
-                                            class="material-icons md-18">favorite_outline</i></button>
-                                    <a href="#" class="text-dark mb-1 h6 d-block">VISI</a>
-                                    <p>Menjadi Pelopor Gerakan Filantropi yang memberdayakan Umat untuk Kemandirian dan
-                                        kemulian dalam
-                                        bingkai Keimanan dan Ketaqwaan.</p>
-
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
+            <div class="icon-circle mb-3">
+                <span class="material-symbols-outlined">visibility</span>
             </div>
 
-            <br>
-            <div class="row">
-                <div class="col-12 col-lg-6">
-                    <div class="card shadow-sm border-0 mb-4">
-                        <div class="card-body">
-                            <div class="row">
-                                
-                                <div class="col">
-                                    <button class="btn btn-sm btn-link p-0 float-right"><i
-                                            class="material-icons md-18">favorite_outline</i></button>
-                                    <a href="#" class="text-dark mb-1 h6 d-block">MISI</a>
-                                    <ul>
-                                        <li><i class="justify"></i> <span>Mewujudkan sarana ibadah yang layak,
-                                                nyaman, dan
-                                                berkelanjutan melalui revitalisasi insfrastruktur Masjid dan
-                                                Mushola.</span></li>
-                                        <li><i class="justify"></i> <span>Meningkatkan kualitas kehidupan seorang
-                                                Ibu dan
-                                                keluarga sebagai pilar utama peradaban melalui program Santunan
-                                                dalam bentuk uang
-                                                dan sembako (Nyaah ka Indung).</span></li>
-                                        <li><i class="justify"></i> <span>membangun jejaring kolaborasi (mitra)
-                                                dengan
-                                                berbagai pihak untuk memperluas dampak kebaikan dan keberlanjutan
-                                                program.</span>
-                                        </li>
-                                        <li><i class="justify"></i> <span>Menjaga Amanah dan menyalurkan donasi
-                                                dengan
-                                                prinsip transparansi, akuntabilitas dan profesional.</span></li>
-                                    </ul>
-
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-
+            <h5 class="fw-bold mb-2">Visi</h5>
+            <p class="text-muted mb-0">
+                Menjadi pelopor gerakan filantropi yang memberdayakan umat
+                untuk kemandirian dan kemuliaan dalam bingkai keimanan dan ketaqwaan.
+            </p>
 
         </div>
+    </div>
+
+    <!-- MISI -->
+    <div class="card misi-card border-0 shadow-sm">
+        <div class="card-body p-4">
+
+            <div class="text-center mb-3">
+                <div class="icon-circle bg-soft-success mb-2">
+                    <span class="material-symbols-outlined">flag</span>
+                </div>
+                <h5 class="fw-bold">Misi</h5>
+            </div>
+
+            <div class="misi-list">
+
+                <div class="misi-item">
+                    <span class="material-symbols-outlined">check_circle</span>
+                    <p>
+                        Mewujudkan sarana ibadah yang layak, nyaman, dan berkelanjutan
+                        melalui revitalisasi infrastruktur Masjid dan Mushola.
+                    </p>
+                </div>
+
+                <div class="misi-item">
+                    <span class="material-symbols-outlined">favorite</span>
+                    <p>
+                        Meningkatkan kualitas kehidupan Ibu dan keluarga sebagai pilar
+                        utama peradaban melalui program santunan dan sembako.
+                    </p>
+                </div>
+
+                <div class="misi-item">
+                    <span class="material-symbols-outlined">groups</span>
+                    <p>
+                        Membangun jejaring kolaborasi dengan berbagai pihak
+                        untuk memperluas dampak kebaikan.
+                    </p>
+                </div>
+
+                <div class="misi-item">
+                    <span class="material-symbols-outlined">verified</span>
+                    <p>
+                        Menjaga amanah dan menyalurkan donasi dengan prinsip
+                        transparansi, akuntabilitas, dan profesional.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
         <!-- page content ends -->
         <div class="container-fluid warna-background  text-white my-3">
             <div class="row">
                 <div class="container">
                     <div class="row  py-4 ">
                         <div class="col">
-                            <h1 class="text-uppercase mb-3">Halaman Ini Sedang dalam Maintenance</h1>
+                            <h4 class="text-uppercase mb-3">Tentang Kami</h4>
 
                         </div>
                        

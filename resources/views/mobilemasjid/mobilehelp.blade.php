@@ -116,10 +116,10 @@
         </div>
 
         <!-- MOBILE HEADER (Background image + text di dalam gambar) -->
-        <div class="mobile-header-aktifitas text-white d-block d-md-none">
+        <div class="mobile-header-faqmobile text-white d-block d-md-none">
 
             <div class="content-wrapper">
-                <p class="text-uppercase  mb-1">Data Masjid</p>
+                <p class="text-uppercase  mb-1">Frequently Asked Questions</p>
                 <p class="text-uppercase mb-1">Cita Amanat Martadiredja</p>
             </div>
         </div>
