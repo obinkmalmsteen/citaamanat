@@ -162,7 +162,8 @@
 }
 </style>
 
-
+<form action="{{ route('kirim.wa.bulk') }}" method="POST">
+    @csrf
         <div class="table-responsive">
             <table class="table table-bordered table-sm small-text"id="dataTable" width="100%" cellspacing="0">
                 <thead class="bg-primary text-white">
@@ -240,6 +241,22 @@
                     @endforeach
                 </tbody>
             </table>
+
+<!-- Tombol Kirim Massal -->
+<div class="d-flex justify-content-end mt-4 mb-4">
+  <button type="submit"
+        class="btn btn-success mt-2"
+        onclick="return confirm('Kirim WA ke semua yang dicentang?')">
+    <i class="fab fa-whatsapp me-1"></i>
+    Kirim WA Terpilih
+</button>
+
+</div>
+
+
+</form>
+
+
         </div>
 
         <form action="{{ route('histori.import') }}" method="POST" enctype="multipart/form-data" class="mb-3">

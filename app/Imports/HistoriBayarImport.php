@@ -6,8 +6,11 @@ namespace App\Imports;
 use App\Models\HistoriBayar;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
-
+use PhpOffice\PhpSpreadsheet\Shared\Date;
 use Carbon\Carbon;
+
+
+
 
 class HistoriBayarImport implements ToModel, WithHeadingRow
 {
@@ -17,17 +20,28 @@ class HistoriBayarImport implements ToModel, WithHeadingRow
             return null;
         }
 
+        $tglRealisasi = null;
+
+        if (!empty($row['tgl_realisasi_token'])) {
+            $tglRealisasi = Carbon::instance(
+                Date::excelToDateTimeObject($row['tgl_realisasi_token'])
+            );
+        }
+
         HistoriBayar::where('id_histori', $row['id_histori'])
-            ->where('id_pelanggan', $row['id_pelanggan'])
-            ->whereNull('no_token_listrik')
-            ->where('status_realisasi', 0)
+            // ->where('id_pelanggan', $row['id_pelanggan'])
+            // ->whereNull('tgl_realisasi_token')
             ->update([
-                'no_token_listrik' => $row['no_token_listrik'],
-                'jumlah_realisasi_token' => $row['jumlah_realisasi_token'],
-                'status_realisasi' => $row['status_realisasi'],
+                'tgl_realisasi_token' => $tglRealisasi,
+                'updated_at'  => now(),
+                'no_token_listrik'     => $row['no_token_listrik'],
+                'status_realisasi'     => $row['status_realisasi'],
             ]);
     }
 }
+
+
+
 
 
 
