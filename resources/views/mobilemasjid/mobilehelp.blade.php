@@ -384,11 +384,59 @@
 
 
 
+<a href="{{ route('mobilelivechat') }}" class="btn-livechat">
+    <span class="icon">💬</span>
+    <span class="text">
+        <strong>Live Chat</strong><br>
+        <small>Chat langsung dengan admin</small>
+    </span>
+</a>
+
+<style>
+.btn-livechat {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #1e88e5, #42a5f5);
+    color: #fff;
+    text-decoration: none;
+    box-shadow: 0 6px 16px rgba(0,0,0,.25);
+    transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.btn-livechat:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(0,0,0,.3);
+    color: #fff;
+}
+
+.btn-livechat .icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    background: rgba(255,255,255,.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
+
+.btn-livechat .text small {
+    font-size: 12px;
+    opacity: .85;
+}
+</style>
 
 
 
 
         </div>
+
+
+
+
         {{-- end faq --}}
         <div class="container-fluid warna-background  text-white my-3">
             <div class="row">

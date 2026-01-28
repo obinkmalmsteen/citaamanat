@@ -224,7 +224,7 @@
                                     <span class="material-symbols-outlined">{{ $menu['icon'] }}</span>
                                 </div>
 
-                                <span class="menu-label">
+                                <span class="menu-label-utama">
                                     {{ $menu['label'] }}
                                 </span>
 
@@ -467,6 +467,12 @@
                     font-size: 15px;
                     line-height: 1;
                 }
+                .menu-label-utama {
+    font-size: .95rem;
+    font-weight: 600;
+    color: #006b09; /* main 12 icon menu text color */
+}
+
             </style>
 
 
@@ -698,12 +704,12 @@
                 }
 
                 .menu-icon span {
-                    color: #1ba43b;
+                    color: #02360e;
                     /* hijau lebih tua */
                 }
 
                 .menu-text span {
-                    color: #1e7e34;
+                    color: #075f14;
                     /* hijau lebih tua */
                 }
 
@@ -751,7 +757,7 @@
                 /* ICON */
                 .menu-icon span {
                     font-size: 32px;
-                    color: #02a31a;
+                    color: #00460a; /* warna icon 12 menu landing page */
                     transition: transform 0.15s ease;
                 }
 

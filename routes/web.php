@@ -162,6 +162,9 @@ Route::post('/admin/toggle-registration', [AdminSettingController::class, 'toggl
 Route::post('/admin/toggle-mobile', [AdminSettingController::class, 'toggleMobileMode'])
     ->middleware(['checkLogin'])
     ->name('admin.toggle.mobile');
+ 
+Route::get('/mobile-livechat', [DashboardController::class, 'mobilelivechat'])->name('mobilelivechat');    
+
 
 
   Route::get('setting',[AdminSettingController::class,'index'])->name('setting');

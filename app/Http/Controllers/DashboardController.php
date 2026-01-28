@@ -174,7 +174,7 @@ public function mobilelandingpage()
         ->count();
 
     // Ambil testimoni terbaru
-    $testimonials = Testimonial::latest()->take(10)->get();
+    $testimonials = Testimonial::latest()->take(40)->get();
 
     // Ambil semua masjid beserta nama dan koordinat map (jika ada)
     $masjids = Masjid::select('nama_masjid', 'map_lokasi_masjid')
@@ -573,5 +573,10 @@ public function mobilehelp()
 {
    
     return view('mobilemasjid.mobilehelp');
+}
+public function mobilelivechat()
+{
+   
+    return view('mobilemasjid.mobilelivechat');
 }
 }
