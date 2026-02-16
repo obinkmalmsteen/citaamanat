@@ -631,15 +631,15 @@ public function export(Request $request)
     return Excel::download(new HistoriBayarExport($status), $filename);
 }
 
-public function kirimPesan($id_pelanggan)
+public function kirimPesan($id_histori)
 {
-    $this->kirimWaPerPelanggan($id_pelanggan);
+    $this->kirimWaPerHistori($id_histori);
 
-    return back()->with('success', 'Pesan berhasil dikirim!');
+    return back()->with('success', 'Pesan bulk berhasil dikirim!');
 }
 
 
-private function kirimWaPerPelanggan($id_pelanggan)
+private function kirimWaPerHistori($id_histori)
 {
     $data = HistoriBayar::join('masjids', 'histori_bayar.id_pelanggan', '=', 'masjids.id_pelanggan')
         ->select(
@@ -647,7 +647,7 @@ private function kirimWaPerPelanggan($id_pelanggan)
             'masjids.nama_masjid',
             'masjids.telp_ketua_dkm'
         )
-        ->where('histori_bayar.id_pelanggan', $id_pelanggan)
+        ->where('histori_bayar.id_histori', $id_histori)
         ->first();
 
     if (!$data || !$data->telp_ketua_dkm) {
@@ -679,29 +679,31 @@ Cita Amanat Martadiredja
 
     WhatsappHelper::send($data->telp_ketua_dkm, $pesan);
 
-    HistoriBayar::where('id_pelanggan', $id_pelanggan)
+    // ✅ update hanya 1 histori (unik)
+    HistoriBayar::where('id_histori', $id_histori)
         ->update(['pesan_terkirim_at' => now()]);
 
     return true;
 }
 
+
 public function kirimPesanBulk(Request $request)
 {
     $request->validate([
-        'pelanggan_ids' => 'required|array|min:1'
+        'histori_ids' => 'required|array|min:1'
     ]);
 
     $berhasil = 0;
 
-    foreach ($request->pelanggan_ids as $id_pelanggan) {
-        if ($this->kirimWaPerPelanggan($id_pelanggan)) {
+    foreach ($request->histori_ids as $id_histori) {
+        if ($this->kirimWaPerHistori($id_histori)) {
             $berhasil++;
         }
     }
 
     return back()->with(
         'success',
-        "Pesan berhasil dikirim ke {$berhasil} masjid."
+        "Pesan berhasil dikirim ke {$berhasil} histori pembayaran."
     );
 }
 

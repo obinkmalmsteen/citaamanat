@@ -209,7 +209,7 @@
                                         -
                                     @endif
 
-</td>
+ </td>
 
                            <td class="text-center" style="vertical-align: middle;"> 
                                 @if ($item->status_realisasi == 1)
@@ -232,8 +232,8 @@
                             
                             <td>
                     <input type="checkbox"
-                           name="pelanggan_ids[]"
-                           value="{{ $item->id_pelanggan }}"
+                           name="histori_ids[]"
+                           value="{{ $item->id_histori }}"
                            class="wa-checkbox">
                 </td>
                            <td class="text-center" style="vertical-align: middle;"> {{ $item->pesan_terkirim_at }}</td>
