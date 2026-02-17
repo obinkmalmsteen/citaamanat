@@ -101,7 +101,7 @@ public function landingpage()
     $listmasjid = Masjid::where('disetujui', 1)->take(150)->get();
 
     $donaturTetap = Donatur::where('donatur_tetap', 1)
-    ->limit(10)
+    ->limit(40)
     ->get();
 
     $totalSemuaPengeluaran = Pengeluaran::sum('jumlah');
