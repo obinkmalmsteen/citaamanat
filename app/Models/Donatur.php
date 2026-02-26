@@ -14,6 +14,7 @@ class Donatur extends Model
         'donatur_tetap',
         'logo_donatur',
         'jumlah_donasi',
+        'web_address',
     ];
 
     // tambahkan ini ⬇️

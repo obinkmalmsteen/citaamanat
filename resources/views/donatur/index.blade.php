@@ -109,6 +109,7 @@
                         <th>Alamat Partisipan</th>
                         <th>Status Partisipan </th>
                         <th>Logo Partisipan</th>
+                        <th>Alamat Website</th>
                         <th>Jumlah Donasi</th>
                         <th>Edit Donasi</th>
                         <th>Aksi</th>
@@ -136,7 +137,7 @@
                                         width="60">
                                 @endif
                             </td>
-
+                            <td>{{ $donatur->web_address }}</td>
                             <td>Rp {{ number_format($donatur->totalDonasi(), 0, ',', '.') }}</td>
 
                             <td>

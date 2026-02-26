@@ -63,6 +63,7 @@ public function store(Request $request)
         'alamat_donatur'=> 'nullable|min:3',
         'logo_donatur'  => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
         'nominal_donasi'=> 'nullable|required_if:donatur_tetap,0|numeric|min:1',
+        'web_address'=> 'nullable|min:3',
     ]);
 
     // upload logo
@@ -106,6 +107,7 @@ public function update(Request $request, Donatur $donatur)
         'nama_donatur'   => 'required|min:3',
         'alamat_donatur'   => 'nullable|min:3',
         'logo_donatur'   => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+        'web_address'=> 'nullable|min:3',
         
     ]);
 

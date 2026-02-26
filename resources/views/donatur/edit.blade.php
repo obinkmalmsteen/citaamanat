@@ -60,7 +60,14 @@
         <small class="text-danger">{{ $message }}</small>
     @enderror
 </div>
-
+<div class="mb-3">
+                <label>Alamat Website</label>
+                <input type="text" name="web_address" class="form-control"
+                    value="{{ old('web_address', $donatur->web_address) }}">
+                @error('web_address')
+                    <small class="text-danger">{{ $message }}</small>
+                @enderror
+            </div>
 
             {{-- <div class="mb-3">
                 <label>Jumlah Donasi</label>
