@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="Maxartkiller">
 
-    <title>Cita Amanat martadiredja</title>
+    <title>Terangi Beribu Masjid</title>
 <link rel="icon" type="image/x-icon" href="{{ asset('mobile/img/favicontamama1.ico') }}">
     <!-- Material design icons CSS -->
     <link rel="stylesheet" href="mobile/vendor/materializeicon/material-icons.css">
