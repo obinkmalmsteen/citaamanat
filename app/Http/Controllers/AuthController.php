@@ -38,6 +38,8 @@ class AuthController extends Controller
                 return redirect()->route('masjid')->with('success', 'Selamat datang, User!');
             } elseif ($user->jabatan === 'Karyawan') {
                 return redirect()->route('dapurdashboard')->with('success', 'Selamat datang, Karyawan!');
+            } elseif ($user->jabatan === 'Relawan') {
+                return redirect()->route('dapurdashboard')->with('success', 'Selamat datang, Relawan!');
             } elseif ($user->jabatan === 'Donatur') {
                 return redirect()->route('donatur.index')->with('success', 'Selamat datang, Donatur!');
             } else {

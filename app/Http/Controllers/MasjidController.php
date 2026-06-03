@@ -558,7 +558,7 @@ Cita Amanat Martadiredja";
 
 public function editField($id, $field)
 {
-    $allowed = ['nama_masjid','nama_pelanggan','nama_ketua_dkm','telp_ketua_dkm', /* dst */];
+    $allowed = ['nama_masjid','nama_pelanggan','penerima_informasi','telp_penerima_informasi','nama_ketua_dkm','telp_ketua_dkm', /* dst */];
 
     if (!in_array($field, $allowed)) {
         abort(404);

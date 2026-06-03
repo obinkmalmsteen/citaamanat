@@ -14,6 +14,12 @@
         <label>Nama Masjid</label>
         <input type="text" class="form-control" name="nama_masjid" value="{{ $masjid->nama_masjid }}">
 
+        <label>Nama PIC Penerima Informasi</label>
+        <input type="text" class="form-control" name="penerima_informasi" value="{{ $masjid->penerima_informasi }}">
+
+        <label>Nomor Telepon PIC Penerima Informasi</label>
+        <input type="text" class="form-control" name="telp_penerima_informasi" value="{{ $masjid->telp_penerima_informasi }}">
+
         <label>Nama Ketua DKM</label>
         <input type="text" class="form-control" name="nama_ketua_dkm" value="{{ $masjid->nama_ketua_dkm }}">
 

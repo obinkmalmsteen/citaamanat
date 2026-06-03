@@ -250,6 +250,18 @@
     @endforeach
 @endif
 
+{{-- RELAWAN: bisa lihat semua cabang --}}
+@if($user->jabatan === 'Admin')
+    @foreach($allCabang as $c)
+        <li class="nav-item {{ $menuCabang ?? '' }}">
+            <a class="nav-link" href="{{ route('barang.index', ['cabang_id' => $c->id]) }}">
+                <i class="fas fa-fw fa-store"></i>
+                <span>{{ $c->nama_cabang }}</span>
+            </a>
+        </li>
+    @endforeach
+@endif
+
 {{-- KARYAWAN: hanya cabangnya sendiri --}}
 @if($user->jabatan === 'Karyawan')
 
