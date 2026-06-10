@@ -205,7 +205,7 @@ public function storePublic(Request $request)
 Alhamdulillah,
 Registrasi Masjid/Mushola *{$masjid->nama_masjid}* telah kami terima.
 Saat ini data sedang dalam proses dan menunggu tahap verifikasi.
-Kunjungi Website kami http://citaamanatmartadiredja.id untuk pengecekan status secara berkala
+Kunjungi Website kami http://terangiberibumasjid.id untuk pengecekan status secara berkala
 
 Wassalamu'alikum Wr.WB
 
