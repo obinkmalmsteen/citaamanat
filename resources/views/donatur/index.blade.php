@@ -121,18 +121,18 @@
         <div class="table-responsive">
             <table class="table table-bordered table-hover" width="100%" cellspacing="0">
                 <thead class="bg-primary text-white">
-                    <tr>
-                        <th>No</th>
-                        <th>Nama Partisipan</th>
-                        <th>Alamat Partisipan</th>
-                        <th>Status Partisipan</th>
-                        <th>Logo Partisipan</th>
-                        <th>Alamat Website</th>
-                        <th>Jumlah Donasi</th>
-                        <th>Edit Donasi</th>
-                        <th>Aksi</th>
-                    </tr>
-                </thead>
+    <tr>
+        <th width="50">No</th>
+         <th style="min-width:250px;">Nama Partisipan</th>
+        <th style="min-width:300px;">Alamat Partisipan</th>
+        <th width="100">Status Partisipan</th>
+        <th width="100">Logo Partisipan</th>
+        <th width="100">Alamat Website</th>
+        <th width="100">Jumlah Donasi</th>
+        <th width="100">Edit Donasi</th>
+        <th width="100">Aksi</th>
+    </tr>
+</thead>
 
                 <tbody>
                     @forelse ($donaturs as $donatur)
