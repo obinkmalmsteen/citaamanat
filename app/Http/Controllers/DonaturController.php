@@ -23,12 +23,14 @@ class DonaturController extends Controller
     $totalSemuaDonasi = DonasiHistori::sum('nominal_donasi');
 
     // Query utama (pakai filter)
+
+    $perPage = $request->get('per_page', 10);
     $donaturs = Donatur::with('donasi')
         ->when(request()->filled('donatur_tetap'), function ($query) {
             $query->where('donatur_tetap', request('donatur_tetap'));
         })
         ->latest()
-        ->paginate(10)
+        ->paginate($perPage)
         ->withQueryString(); // penting agar filter tidak hilang saat pagination
 
     return view(

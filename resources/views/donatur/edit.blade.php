@@ -10,18 +10,33 @@
 
 
             <div class="row">
-                    <div class="col-12">
-                        <label class="form-label"><span class="text-danger">*</span> Type Partisipan :</label>
-                        <select name="donatur_tetap" class="form-control" value="{{ old('donatur_tetap') }}">
-                            <option selected disabled>== Pilih Type Partisipan ==</option>
-                            <option value="1">Donatur Tetap</option>
-                            <option value="0">Partisipan Kebaikan</option>
-                            
-                        </select>
-                        @error('donatur_tetap')
-                        <small class="text-danger">{{ $message }}</small>  
-                        @enderror
-                    </div>
+                   <div class="col-12">
+    <label class="form-label">
+        <span class="text-danger">*</span> Type Partisipan :
+    </label>
+
+    <select name="donatur_tetap" class="form-control">
+
+        <option disabled>
+            == Pilih Type Partisipan ==
+        </option>
+
+        <option value="1"
+            {{ old('donatur_tetap', $donatur->donatur_tetap) == '1' ? 'selected' : '' }}>
+            Donatur Tetap
+        </option>
+
+        <option value="0"
+            {{ old('donatur_tetap', $donatur->donatur_tetap) == '0' ? 'selected' : '' }}>
+            Partisipan Kebaikan
+        </option>
+
+    </select>
+
+    @error('donatur_tetap')
+        <small class="text-danger">{{ $message }}</small>
+    @enderror
+</div>
                 </div>
             <div class="mb-3">
                 <label>Nama Donatur</label>

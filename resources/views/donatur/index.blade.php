@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+   
         <h3 class="mb-3">List Pemasukan</h3>
 
         <div class="row">
@@ -60,7 +60,7 @@
 
         </div>
 
-        <a href="{{ route('donatur.create') }}" class="btn btn-primary mb-3">Tambah Partisipan</a>
+        <a href="{{ route('donatur.create') }}" class="btn btn-primary mb-3"> + Tambah Partisipan</a>
 
         @if (session('success'))
             <div class="alert alert-success">{{ session('success') }}</div>
@@ -70,44 +70,62 @@
 
         <form method="GET" action="{{ route('donatur.index') }}" class="mb-3">
             <div class="row g-2 align-items-end">
+
                 <div class="col-md-4">
                     <label class="form-label">Filter Type Partisipan</label>
-                    <select name="donatur_tetap" class="form-control">
+                    <select name="donatur_tetap" class="form-control" onchange="this.form.submit()">
+
                         <option value="">Semua Partisipan</option>
+
                         <option value="1" {{ request('donatur_tetap') === '1' ? 'selected' : '' }}>
                             Donatur Tetap
                         </option>
+
                         <option value="0" {{ request('donatur_tetap') === '0' ? 'selected' : '' }}>
                             Partisipan Kebaikan
                         </option>
+
                     </select>
                 </div>
 
                 <div class="col-md-2">
-                    <button class="btn btn-primary w-100">Terapkan</button>
+                    <label class="form-label">Tampilkan</label>
+
+                    <select name="per_page" class="form-control" onchange="this.form.submit()">
+                        <option value="10" {{ request('per_page', 10) == 10 ? 'selected' : '' }}>10</option>
+                        <option value="20" {{ request('per_page') == 20 ? 'selected' : '' }}>20</option>
+                        <option value="50" {{ request('per_page') == 50 ? 'selected' : '' }}>50</option>
+                        <option value="100" {{ request('per_page') == 100 ? 'selected' : '' }}>100</option>
+                    </select>
                 </div>
 
-                @if (request()->has('donatur_tetap'))
-                    <div class="col-md-2">
-                        <a href="{{ route('donatur.index') }}" class="btn btn-secondary w-100">
-                            Reset
-                        </a>
-                    </div>
-                @endif
+                {{-- <div class="col-md-2">
+            <button class="btn btn-primary w-100">
+                Terapkan
+            </button>
+        </div> --}}
+
+                <div class="col-md-2">
+                    <a href="{{ route('donatur.index') }}" class="btn btn-secondary w-100">
+                        Reset
+                    </a>
+                </div>
+
             </div>
         </form>
 
 
 
 
+
         <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <table class="table table-bordered table-hover" width="100%" cellspacing="0">
                 <thead class="bg-primary text-white">
                     <tr>
                         <th>No</th>
                         <th>Nama Partisipan</th>
                         <th>Alamat Partisipan</th>
-                        <th>Status Partisipan </th>
+                        <th>Status Partisipan</th>
                         <th>Logo Partisipan</th>
                         <th>Alamat Website</th>
                         <th>Jumlah Donasi</th>
@@ -115,65 +133,102 @@
                         <th>Aksi</th>
                     </tr>
                 </thead>
+
                 <tbody>
-                    @foreach ($donaturs as $donatur)
+                    @forelse ($donaturs as $donatur)
                         <tr>
-                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $donaturs->firstItem() + $loop->index }}</td>
+
                             <td>{{ $donatur->nama_donatur }}</td>
+
                             <td>{{ $donatur->alamat_donatur }}</td>
+
                             <td>
-
                                 @if ($donatur->donatur_tetap == 1)
-                                    <span class="badge bg-success text-white">Donatur Tetap</span>
+                                    <span class="badge bg-success text-white">
+                                        Donatur Tetap
+                                    </span>
+                                @else
+                                    <span class="badge bg-warning text-dark">
+                                        Partisipan Kebaikan
+                                    </span>
                                 @endif
-                                @if ($donatur->donatur_tetap == 0)
-                                    <span class="badge bg-warning">Partisipan Kebaikan</span>
-                                @endif
-
                             </td>
+
                             <td class="text-center">
                                 @if ($donatur->logo_donatur)
                                     <img src="{{ asset('public/storage/logo_donatur/' . $donatur->logo_donatur) }}"
-                                        width="60">
+                                        class="img-fluid rounded" style="max-width:80px; max-height:80px;">
                                 @endif
                             </td>
-                            <td>{{ $donatur->web_address }}</td>
-                            <td>Rp {{ number_format($donatur->totalDonasi(), 0, ',', '.') }}</td>
+
+                            <td>
+                                @if ($donatur->web_address)
+                                    <a href="{{ $donatur->web_address }}" target="_blank">
+                                        {{ $donatur->web_address }}
+                                    </a>
+                                @endif
+                            </td>
+
+                            <td>
+                                Rp {{ number_format($donatur->totalDonasi(), 0, ',', '.') }}
+                            </td>
 
                             <td>
                                 @if ($donatur->donatur_tetap == 1)
-                                    <a href="{{ route('donatur.show', $donatur) }}" class="btn btn-sm btn-info">
+                                    <a href="{{ route('donatur.show', $donatur) }}" class="btn btn-info btn-sm">
                                         Edit Donasi
                                     </a>
                                 @else
-                                    <span class="text-muted">_______</span>
+                                    <span class="text-muted">-</span>
                                 @endif
                             </td>
 
+                            <td class="text-nowrap">
+                                <a href="{{ route('donatur.edit', $donatur) }}" class="btn btn-warning btn-sm">
+                                    Edit
+                                </a>
 
-                            <td>
-                                <a href="{{ route('donatur.edit', $donatur) }}" class="btn btn-sm btn-warning">Edit</a>
-                                <form action="{{ route('donatur.destroy', $donatur) }}" method="POST"
-                                    style="display:inline-block;">
+                                <form action="{{ route('donatur.destroy', $donatur) }}" method="POST" class="d-inline">
                                     @csrf
                                     @method('DELETE')
-                                    <button onclick="return confirm('Hapus data ini?')" class="btn btn-sm btn-danger">
+
+                                    <button type="submit" class="btn btn-danger btn-sm"
+                                        onclick="return confirm('Hapus data ini?')">
                                         Hapus
                                     </button>
                                 </form>
                             </td>
-
                         </tr>
-                    @endforeach
+                    @empty
+                        <tr>
+                            <td colspan="9" class="text-center">
+                                Tidak ada data partisipan
+                            </td>
+                        </tr>
+                    @endforelse
                 </tbody>
-
             </table>
+        </div>
 
-            <div class="alert alert-success">
-                <strong>Total Semua Donasi:</strong>
-                Rp {{ number_format($totalSemuaDonasi, 0, ',', '.') }}
+        <div class="alert alert-success mt-3">
+            <strong>Total Semua Donasi:</strong>
+            Rp {{ number_format($totalSemuaDonasi, 0, ',', '.') }}
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center mt-3">
+            <div class="text-muted">
+                Menampilkan
+                {{ $donaturs->firstItem() ?? 0 }}
+                -
+                {{ $donaturs->lastItem() ?? 0 }}
+                dari
+                {{ $donaturs->total() }}
+                partisipan
             </div>
 
             {{ $donaturs->links() }}
         </div>
+    
+
     @endsection
